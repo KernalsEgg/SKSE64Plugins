@@ -1,0 +1,12 @@
+{
+	"fixes":
+	{
+		"magicEffectConditions":	true,	/* Eliminate floating-point error from the elapsed time of magic effects so that updates to their conditions will not be skipped. */
+		"speechExperience":
+		{
+			"enchantedItems":		true,	/* Earn speech experience from enchantments when bartering. */
+			"itemStacks":			true	/* Earn speech experience for every item in a stack when bartering. */
+		},
+		"speedMultUpdates":			true	/* Update an actors movement speed when their SpeedMult actor value is changed. */
+	}
+}

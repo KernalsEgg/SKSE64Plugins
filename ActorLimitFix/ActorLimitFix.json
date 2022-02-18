@@ -1,0 +1,17 @@
+{
+	"fixes":
+	{
+		/* The maximum number of actors that can have their face morphs updated at any given time.
+		When you hit the morph limit, you will encounter actors who do not make facial expressions and have their lips synced to their voice lines.
+		The default morph limit is 10. */
+		"morphLimit": 128,
+		/* The maximum number of actors that can have their movement updated at any given time.
+		When you hit the mover limit, you will encounter actors that float around.
+		The default mover limit is 128. */
+		"moverLimit": 256,
+		/* Increases the size of a static array that lists actors in order of their distance from the player.
+		It is used by tasks that are only performed on a limited number of actors, such as face morphs.
+		The default size of the static array is 64, which is increased to 512. */
+		"replaceStaticArray": true
+	}
+}

@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HeaderFiles\Shared\PCH.h" />
+    <ClInclude Include="HeaderFiles\Shared\Relocation\AddressLibrary.h" />
+    <ClInclude Include="HeaderFiles\Shared\Relocation\FileMapping.h" />
+    <ClInclude Include="HeaderFiles\Shared\Relocation\Module.h" />
+    <ClInclude Include="HeaderFiles\Shared\Relocation\Version.h" />
+    <ClInclude Include="HeaderFiles\Shared\SKSE\Events.h" />
+    <ClInclude Include="HeaderFiles\Shared\SKSE\Interfaces.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\Addresses.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AccumulatingValueModifierEffect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActiveEffect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Actor.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorProcess.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorState.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValue.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValueOwner.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AITimestamp.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AlchemyItem.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ArrowProjectile.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AssociationType.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Atmosphere.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AttachTechniqueInput.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AttackAnimationArrayMap.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Attribute.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BaseFormComponent.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAbilityPerkEntry.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAddonNode.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSArtObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAssociationType.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAttackData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAttackDataForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAttackDataMap.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSBehaviorGraphModel.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSBipedObjectForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSBlockBashData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSBodyPartData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSCollisionLayer.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSColorForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSConstructibleObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDestructibleObjectForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointFunctionData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointFunctionDataActivateChoice.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointFunctionDataSpellItem.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointPerkEntry.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEquipSlot.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEquipType.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSExplosion.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSFootstep.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSFootstepSet.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSHazard.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSHeadPart.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSImpactData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSImpactDataSet.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSKeyword.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSKeywordForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSLensFlare.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSListForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSLocalizedStringDL.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSMaterialObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSMaterialType.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSMenuDisplayObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSMessageIcon.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSMovementType.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSOpenCloseForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSOutfit.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSOverridePackCollection.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSPerk.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSPerkEntry.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSPerkRankArray.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSPickupPutdownSounds.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSPreloadable.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSProjectile.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSReferenceEffect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSRelationship.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSShaderParticleGeometryData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSSkinForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSSoundDescriptorForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSTextureModel.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSTextureSet.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSVoiceType.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSVolumetricLighting.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkConstraint.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkEntity.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkRefObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkRigidBody.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkSerializable.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorld.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorldObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedObjectSlot.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BodyPartType.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAnimationGraphEvent.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAtomic.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSCoreTypes.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSExtraData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSFile.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSFixedString.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSGeometry.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSHandleRefObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSIntrusiveRefCounted.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSISoundDescriptor.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSLensFlareRenderData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSMaterialObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSMultiBoundNode.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSNiNode.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSPointerHandle.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSSimpleList.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSString.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSStringPool.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTArray.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTempEffect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTEventSink.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTEventSource.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTextureSet.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTHashMap.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSThread.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTPoint.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTriShape.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTSingleton.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTTuple.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSVolumetricLightingRenderData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CameraState.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Character.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Clouds.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Color.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CombatReaction.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ContainerItemExtra.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CraftingSubMenu.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DecalData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\D\Difficulty.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DirectionalAmbientLighting.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\Events.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\Effect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectArchetype.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectSetting.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EnchantConstructMenu.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EnchantmentItem.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraCharge.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraDataList.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraDataType.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraEnchantment.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraLevCreaModifier.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWorn.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWornLeft.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FactionRank.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FileID.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FindAppropriateDisplaceEffect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FindMaxMagnitudeVisitor.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FirstPersonState.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FormType.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FxDelegateHandler.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GameSettingCollection.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMemoryStat.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountBase.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountBaseStatImpl.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountImpl.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountImplCore.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GridArray.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GridCellArray.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HandleEntryPointVisitor.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HighProcessData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkBaseObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkReferencedObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkRefPtr.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IAnimationGraphManagerHolder.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ICellAttachDetachEventSource.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ID.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMenu.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMovementInterface.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMovementState.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ImpactResult.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IngredientItem.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\INIPrefSettingCollection.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\INISettingCollection.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InitTESThread.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InventoryChanges.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InventoryEntryData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IPostAnimationChannelUpdateFunctor.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicCaster.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicItem.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicItemTraversalFunctor.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicSystem.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicTarget.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MiddleHighProcessData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MissileProjectile.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\ModelReferenceEffect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\Moon.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiAVObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBillboardNode.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBinaryStream.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBound.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiCollisionObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiColor.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiDirectionalLight.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiFile.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiLight.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiMatrix33.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiNode.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiObjectNET.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiPoint2.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiPoint3.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiPointer.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiProperty.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiQuaternion.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiRefObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTArray.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTexture.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTList.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTransform.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PerkEntryVisitor.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PersistentFormManager.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerCamera.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerCharacter.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerInputHandler.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\Precipitation.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\ProcessLists.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\Projectile.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RefAttachTechniqueInput.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffectController.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RegSettingCollection.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScriptEventSourceHolder.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrollItem.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SetEventData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Setting.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SettingCollection.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SettingCollectionList.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SettingCollectionMap.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SettingT.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Sex.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SimpleAnimationGraphManagerHolder.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SimpleArray.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Skill.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Sky.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SkyEffectController.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SkyObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SoundLevel.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SpellItem.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Stars.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Sun.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TES.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESActorBase.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESActorBaseData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESAIForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESAmmo.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESAttackDamageForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESBipedModelForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESBoundAnimObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESBoundObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESCamera.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESCameraState.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESClass.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESClimate.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESCombatStyle.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESCondition.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESContainer.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESDataHandler.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESDescription.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESEffectShader.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESEnchantableForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFaction.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFile.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFlora.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFullName.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFurniture.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESHitEvent.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESIcon.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESImageSpace.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESImageSpaceModifiableForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESImageSpaceModifier.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLeveledList.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLevItem.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLevSpell.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESMagicCasterForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESMagicTargetForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESModel.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESModelPSA.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESModelRDT.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESModelTextureSwap.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESModelTri.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESNPC.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectACTI.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectARMA.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectARMO.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectCELL.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectCONT.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectDOOR.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectLIGH.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectREFR.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectSTAT.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectTREE.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectWEAP.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESProduceForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESQuestStageItem.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESRace.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESRaceForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESReactionForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESRegion.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESShout.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESSpellList.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESTexture.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESTexture1024.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESValueForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWaitStartEvent.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWaitStopEvent.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWaterForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWeather.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWeightForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWordOfPower.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWorldSpace.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UI.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\V\ValueModifierEffect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\Assembly.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\Convert.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\Enumeration.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\EventSource.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\Log.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\Math.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\Memory.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\Message.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\MessageBox.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\Trampoline.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\TypeTraits.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SourceFiles\Shared\PCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Relocation\AddressLibrary.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Relocation\FileMapping.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Relocation\Module.cpp" />
+    <ClCompile Include="SourceFiles\Shared\SKSE\Interfaces.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActiveEffect.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\Actor.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorProcess.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\AttachTechniqueInput.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSAtomic.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSFixedString.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSHandleRefObject.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSIntrusiveRefCounted.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSStringPool.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\Events.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\Effect.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EffectSetting.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EnchantmentItem.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\ExtraDataList.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindAppropriateDisplaceEffect.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindMaxMagnitudeVisitor.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GameSettingCollection.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkReferencedObject.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\INISettingCollection.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\InventoryChanges.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\InventoryEntryData.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\M\MagicItem.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\M\MagicTarget.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiBinaryStream.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiRefObject.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\P\PersistentFormManager.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\P\PlayerCharacter.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\R\ReferenceEffect.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScriptEventSourceHolder.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\Sky.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\SpellItem.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TES.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESBoundObject.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESCondition.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESContainer.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESDataHandler.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESForm.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectREFR.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\U\UI.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Utility\Log.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Utility\Memory.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Utility\Trampoline.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{efc3af1c-a311-4857-a75e-fab2e3915f35}</ProjectGuid>
+    <RootNamespace>Shared</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Shared.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Shared.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Shared.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Shared.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <VcpkgTriplet>x64-windows-static-md</VcpkgTriplet>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Shared/PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

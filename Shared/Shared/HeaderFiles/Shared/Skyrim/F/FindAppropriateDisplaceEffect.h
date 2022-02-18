@@ -1,0 +1,36 @@
+#pragma once
+
+#include "Shared/PCH.h"
+
+#include "Shared/Skyrim/M/MagicTarget.h"
+
+
+
+namespace Skyrim
+{
+	class MagicItem;
+	class SpellItem;
+
+	class FindAppropriateDisplaceEffect :
+		public MagicTarget::ForEachActiveEffectVisitor // 0
+	{
+	public:
+		// Override
+		virtual ~FindAppropriateDisplaceEffect() override = default; // 0
+
+		// Override (MagicTarget::ForEachActiveEffectVisitor)
+		virtual MagicTarget::ForEachActiveEffectVisitor::ReturnType Visit(ActiveEffect* activeEffect) override; // 1
+
+		// Member variables
+		MagicItem*   displacementSpell; // 8
+		SpellItem*   addiction;         // 10
+		bool         displace;          // 18
+		std::int8_t  padding19;         // 19
+		std::int16_t padding1A;         // 1A
+		std::int32_t padding1C;         // 1C
+	};
+	static_assert(offsetof(FindAppropriateDisplaceEffect, displacementSpell) == 0x8);
+	static_assert(offsetof(FindAppropriateDisplaceEffect, addiction) == 0x10);
+	static_assert(offsetof(FindAppropriateDisplaceEffect, displace) == 0x18);
+	static_assert(sizeof(FindAppropriateDisplaceEffect) == 0x20);
+}

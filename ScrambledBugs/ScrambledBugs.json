@@ -1,0 +1,43 @@
+{
+	"fixes":
+	{
+		"activateFurniture":					true,	/* Block the activation of furniture while mounted. */
+		"actorValuePercentage":					true,	/* Calculate the percentage of an actor value using both permanent and temporary modifiers. */
+		"enchantmentCost":						true,	/* Save the overridden cost of player created enchantments. */
+		"harvestedFlags":						true,	/* Save whether flora and trees are harvested when they respawn. */
+		"hitEffectRaceCondition":				true,	/* Eliminate a race condition that can prevent hit effects from being applied when an actors mesh is loaded after their magic effects are updated. */
+		"killCamera":							true,	/* Do not fire the Apply Combat Hit Spell perk entry point when the kill camera simulates the trajectory of an arrow. */
+		"magicEffectFlags":						true,	/* Flags are respected when scaling the duration and magnitude of a magic effect with its effectiveness. */
+		"modArmorWeightPerkEntryPoint":			true,	/* Modify the weight of only worn armor with the Mod Armor Weight perk entry point. */
+		"quickShot":							true,	/* Account for the Quick Shot perk when calculating the power of an arrow fired by the player. */
+		"quickShotPlaybackSpeed":				2.0,	/* The playback speed of the nocking animation when you have the Quick Shot perk. */
+		"terrainDecals":						true,	/* Apply decals to terrain in cells that have been partially unloaded. */
+		"trainingMenu":							true,	/* Display the correct cost of a lesson in the training menu when the relevant skill is buffed or debuffed. */
+		"weaponCharge":							true	/* The charge of equipped enchanted weapons can always be fully restored. */
+	},
+	"patches":
+	{
+		"accumulatingMagnitude":				true,	/* The maximum magnitude of accumulating magnitude magic effects scales with effectiveness instead of the rate of accumulation. */
+		"alreadyCaughtPickpocketing":			true,	/* Pickpocket an actor even if they have already caught you. */
+		"attachHitEffectArt":					true,	/* Always attach hit effect art to actors. */
+		"cloakHitEffects":						true,	/* Each of a cloaking spells effects can apply hit effects. */
+		"enchantmentValue":						true,	/* Automatically calculate the value of player created enchantments. */
+		"equipBestAmmo":						true,	/* Automatically equip your best playable arrows or bolts when you equip a bow or crossbow. */
+		"improveMultipleEnchantmentEffects":	true,	/* Your skill in enchanting improves each of an enchantments effects. */
+		"leveledCharacters":					true,	/* Very hard leveled characters can be the same level as hard leveled characters. */
+		"lockpickingExperience":				true,	/* Earn experience each time you pick a lock. */
+		"pausedGameHitEffects":					true,	/* Apply any number of hit effects to the player while the game is paused. */
+		"perkEntryPoints":
+		{
+			"applyMultipleSpells":				true,	/* Apply any number of spells at once using perk entry points. */
+			"castSpells":						true	/* Spells applied by perk entry points are cast by the source on the target. */
+		},
+		"poisonResistance":						true,	/* Poisons are not always resisted by poison resistance. */
+		"powerAttackStamina":					true,	/* Power attacks and bashes can only be performed with the required stamina. */
+		"reflectDamage":						true,	/* Reflect any amount of damage. */
+		"scrollExperience":						true,	/* Earn experience when using scrolls. */
+		"staffExperience":						true,	/* Earn experience when using staves. */
+		"teammateDifficulty":					true,	/* Teammates use the same difficulty multipliers as the player. */
+		"underfilledSoulGems":					true	/* Trap only souls of the appropriate size in soul gems. */
+	}
+}

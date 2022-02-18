@@ -1,0 +1,1257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Shared">
+      <UniqueIdentifier>{d26059c0-2391-427c-884b-dbc702dbf3a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Relocation">
+      <UniqueIdentifier>{6d977139-f491-4d0f-b9ba-1b7167439dde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\SKSE">
+      <UniqueIdentifier>{fd27ec9b-8fe8-4236-a8dc-aa2c10a50f99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim">
+      <UniqueIdentifier>{2f9fdbde-a2d1-4837-8393-28ac309a942e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\A">
+      <UniqueIdentifier>{1bca60c3-5d3f-4895-a025-5059245442a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\B">
+      <UniqueIdentifier>{c23fd878-c8e4-4bab-9c73-619a7789351b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\C">
+      <UniqueIdentifier>{49dd0d39-c8ec-4456-8e0a-28f40657aec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\D">
+      <UniqueIdentifier>{fd2d2ab6-bfb0-488b-97e8-24e59536701d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\E">
+      <UniqueIdentifier>{630a3dc2-ab24-4f34-b2ab-c48cdc9ddf6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\F">
+      <UniqueIdentifier>{a8b58e9a-0871-4fd4-9056-6547348997df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\G">
+      <UniqueIdentifier>{039dbfc9-4048-4ec0-baef-94cb6b2b407e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\H">
+      <UniqueIdentifier>{105f39cb-c526-4f77-8b00-c6fc69d9381b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\I">
+      <UniqueIdentifier>{67993948-89b4-4262-82b1-d37a9d7678d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\M">
+      <UniqueIdentifier>{d9745294-a709-44fa-829b-24d37a1e2a71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\N">
+      <UniqueIdentifier>{118d85c5-7c8e-417c-83ec-fbfe07a1a630}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\P">
+      <UniqueIdentifier>{08e98738-01cd-4881-b775-f70f83b66d35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\R">
+      <UniqueIdentifier>{7f76c543-2535-4b17-b194-0343b839d307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\S">
+      <UniqueIdentifier>{3aa0b7d7-b55e-4d43-891e-e494555335fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\T">
+      <UniqueIdentifier>{0426f9fb-bfef-4277-99b3-e8618d491c28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\U">
+      <UniqueIdentifier>{4bd93281-35ac-4a9c-ade4-589ef6f9a2da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\V">
+      <UniqueIdentifier>{27dcd6df-9b5e-4722-a91d-d999a1855d32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared\Utility">
+      <UniqueIdentifier>{1506a8b7-78d1-4d79-a082-881c17d86aab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Shared">
+      <UniqueIdentifier>{3efa5361-dfd7-40bb-8323-52da68ab5a73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Relocation">
+      <UniqueIdentifier>{f5d9f12e-f447-4c82-b8d4-bdb4314c19a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\SKSE">
+      <UniqueIdentifier>{f2ffa2e2-d7d9-41d9-ad92-deda833116a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim">
+      <UniqueIdentifier>{7371056e-79d4-48cd-8d55-77ec62df1da5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\A">
+      <UniqueIdentifier>{eba3897a-5879-4303-a00f-36a262803a15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\B">
+      <UniqueIdentifier>{e24ab704-0289-4721-abf3-d9ac019748cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\E">
+      <UniqueIdentifier>{75f255be-9706-4187-841b-bf1479349d1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\F">
+      <UniqueIdentifier>{6d761dcb-715e-4c58-87d8-b977450ee324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\G">
+      <UniqueIdentifier>{31ed10ef-db61-424b-8484-79df29117167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\H">
+      <UniqueIdentifier>{b0783540-50d7-4b4e-8134-86a73d9a34a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\I">
+      <UniqueIdentifier>{c234c650-1d8b-442c-9a36-d0a9e1568124}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\M">
+      <UniqueIdentifier>{4b505d11-8251-4531-b694-c4788360d1f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\N">
+      <UniqueIdentifier>{3577fca9-7267-4735-a3fa-321b52bfd448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\P">
+      <UniqueIdentifier>{ae96790a-8376-46a7-b94e-0041a1325965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\R">
+      <UniqueIdentifier>{e6e7dbc4-5eeb-47df-9b78-2cf823c29fb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\S">
+      <UniqueIdentifier>{b1817c86-e84f-4ef4-bc97-c92bc4874eed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\T">
+      <UniqueIdentifier>{6cdcfd3c-cce3-4645-9a7a-85f6d40094fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\U">
+      <UniqueIdentifier>{a13595b1-6c6d-40f7-bb9f-44233e5450cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared\Utility">
+      <UniqueIdentifier>{3dc289dd-4db0-4ea5-985d-200492225836}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HeaderFiles\Shared\PCH.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Relocation\AddressLibrary.h">
+      <Filter>Header Files\Shared\Relocation</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Relocation\FileMapping.h">
+      <Filter>Header Files\Shared\Relocation</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Relocation\Module.h">
+      <Filter>Header Files\Shared\Relocation</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Relocation\Version.h">
+      <Filter>Header Files\Shared\Relocation</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\Events.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\Interfaces.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AccumulatingValueModifierEffect.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActiveEffect.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Actor.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorProcess.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorState.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValue.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValueOwner.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AITimestamp.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AlchemyItem.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ArrowProjectile.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AssociationType.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Atmosphere.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AttachTechniqueInput.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AttackAnimationArrayMap.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Attribute.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\Addresses.h">
+      <Filter>Header Files\Shared\Skyrim</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BaseFormComponent.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAbilityPerkEntry.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAddonNode.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSArtObject.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAssociationType.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAttackData.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAttackDataForm.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAttackDataMap.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSBehaviorGraphModel.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSBipedObjectForm.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSBlockBashData.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSBodyPartData.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSCollisionLayer.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSColorForm.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSConstructibleObject.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDestructibleObjectForm.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointFunctionData.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointFunctionDataActivateChoice.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointFunctionDataSpellItem.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointPerkEntry.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEquipSlot.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEquipType.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSExplosion.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSFootstep.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSFootstepSet.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSHazard.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSHeadPart.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSImpactData.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSImpactDataSet.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSKeyword.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSKeywordForm.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSLensFlare.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSListForm.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSLocalizedStringDL.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSMaterialObject.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSMaterialType.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSMenuDisplayObject.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSMessageIcon.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSMovementType.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSOpenCloseForm.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSOutfit.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSOverridePackCollection.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSPerk.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSPerkEntry.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSPerkRankArray.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSPickupPutdownSounds.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSPreloadable.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSProjectile.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSReferenceEffect.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSRelationship.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSShaderParticleGeometryData.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSSkinForm.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSSoundDescriptorForm.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSTextureModel.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSTextureSet.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSVoiceType.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSVolumetricLighting.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkConstraint.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkEntity.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkRefObject.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkRigidBody.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkSerializable.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorld.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorldObject.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedObjectSlot.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BodyPartType.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAnimationGraphEvent.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAtomic.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSCoreTypes.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSExtraData.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSFile.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSFixedString.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSGeometry.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSHandleRefObject.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSIntrusiveRefCounted.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSISoundDescriptor.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSLensFlareRenderData.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSMaterialObject.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSMultiBoundNode.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSNiNode.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSPointerHandle.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSSimpleList.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSString.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSStringPool.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTArray.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTempEffect.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTEventSink.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTEventSource.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTextureSet.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTHashMap.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSThread.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTPoint.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTriShape.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTSingleton.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTTuple.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSVolumetricLightingRenderData.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CameraState.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Character.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Clouds.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Color.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CombatReaction.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ContainerItemExtra.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CraftingSubMenu.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DecalData.h">
+      <Filter>Header Files\Shared\Skyrim\D</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\D\Difficulty.h">
+      <Filter>Header Files\Shared\Skyrim\D</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DirectionalAmbientLighting.h">
+      <Filter>Header Files\Shared\Skyrim\D</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\Effect.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectArchetype.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectSetting.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EnchantConstructMenu.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EnchantmentItem.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraCharge.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraDataList.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraDataType.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraEnchantment.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraLevCreaModifier.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWorn.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWornLeft.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\Events.h">
+      <Filter>Header Files\Shared\Skyrim</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FactionRank.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FileID.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FindAppropriateDisplaceEffect.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FindMaxMagnitudeVisitor.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FirstPersonState.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FormType.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FxDelegateHandler.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GameSettingCollection.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMemoryStat.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountBase.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountBaseStatImpl.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountImpl.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountImplCore.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GridArray.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GridCellArray.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HandleEntryPointVisitor.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HighProcessData.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkBaseObject.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkReferencedObject.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkRefPtr.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IAnimationGraphManagerHolder.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ICellAttachDetachEventSource.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ID.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMenu.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMovementInterface.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMovementState.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ImpactResult.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IngredientItem.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\INIPrefSettingCollection.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\INISettingCollection.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InitTESThread.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InventoryChanges.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InventoryEntryData.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IPostAnimationChannelUpdateFunctor.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicCaster.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicItem.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicItemTraversalFunctor.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicSystem.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicTarget.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MiddleHighProcessData.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MissileProjectile.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\ModelReferenceEffect.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\Moon.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiAVObject.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBillboardNode.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBinaryStream.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBound.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiCollisionObject.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiColor.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiDirectionalLight.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiFile.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiLight.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiMatrix33.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiNode.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiObject.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiObjectNET.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiPoint2.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiPoint3.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiPointer.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiProperty.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiQuaternion.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiRefObject.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTArray.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTexture.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTList.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTransform.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PerkEntryVisitor.h">
+      <Filter>Header Files\Shared\Skyrim\P</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PersistentFormManager.h">
+      <Filter>Header Files\Shared\Skyrim\P</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerCamera.h">
+      <Filter>Header Files\Shared\Skyrim\P</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerCharacter.h">
+      <Filter>Header Files\Shared\Skyrim\P</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerInputHandler.h">
+      <Filter>Header Files\Shared\Skyrim\P</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\Precipitation.h">
+      <Filter>Header Files\Shared\Skyrim\P</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\ProcessLists.h">
+      <Filter>Header Files\Shared\Skyrim\P</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\Projectile.h">
+      <Filter>Header Files\Shared\Skyrim\P</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RefAttachTechniqueInput.h">
+      <Filter>Header Files\Shared\Skyrim\R</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffect.h">
+      <Filter>Header Files\Shared\Skyrim\R</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffectController.h">
+      <Filter>Header Files\Shared\Skyrim\R</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RegSettingCollection.h">
+      <Filter>Header Files\Shared\Skyrim\R</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScriptEventSourceHolder.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrollItem.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SetEventData.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Setting.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SettingCollection.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SettingCollectionList.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SettingCollectionMap.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SettingT.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Sex.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SimpleAnimationGraphManagerHolder.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SimpleArray.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Skill.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Sky.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SkyEffectController.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SkyObject.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SoundLevel.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SpellItem.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Stars.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Sun.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TES.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESActorBase.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESActorBaseData.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESAIForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESAmmo.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESAttackDamageForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESBipedModelForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESBoundAnimObject.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESBoundObject.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESCamera.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESCameraState.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESClass.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESClimate.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESCombatStyle.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESCondition.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESContainer.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESDataHandler.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESDescription.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESEffectShader.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESEnchantableForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFaction.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFile.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFlora.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFullName.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFurniture.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESHitEvent.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESIcon.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESImageSpace.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESImageSpaceModifiableForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESImageSpaceModifier.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLeveledList.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLevItem.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLevSpell.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESMagicCasterForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESMagicTargetForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESModel.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESModelPSA.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESModelRDT.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESModelTextureSwap.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESModelTri.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESNPC.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObject.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectACTI.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectARMA.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectARMO.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectCELL.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectCONT.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectDOOR.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectLIGH.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectREFR.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectSTAT.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectTREE.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectWEAP.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESProduceForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESQuestStageItem.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESRace.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESRaceForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESReactionForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESRegion.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESShout.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESSpellList.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESTexture.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESTexture1024.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESValueForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWaitStartEvent.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWaitStopEvent.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWaterForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWeather.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWeightForm.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWordOfPower.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWorldSpace.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UI.h">
+      <Filter>Header Files\Shared\Skyrim\U</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\V\ValueModifierEffect.h">
+      <Filter>Header Files\Shared\Skyrim\V</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\Assembly.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\Convert.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\Enumeration.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\EventSource.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\Log.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\Math.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\Memory.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\Message.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\MessageBox.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\Trampoline.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\TypeTraits.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SourceFiles\Shared\PCH.cpp">
+      <Filter>Source Files\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Relocation\AddressLibrary.cpp">
+      <Filter>Source Files\Shared\Relocation</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Relocation\FileMapping.cpp">
+      <Filter>Source Files\Shared\Relocation</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Relocation\Module.cpp">
+      <Filter>Source Files\Shared\Relocation</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\SKSE\Interfaces.cpp">
+      <Filter>Source Files\Shared\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActiveEffect.cpp">
+      <Filter>Source Files\Shared\Skyrim\A</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\Actor.cpp">
+      <Filter>Source Files\Shared\Skyrim\A</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorProcess.cpp">
+      <Filter>Source Files\Shared\Skyrim\A</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\AttachTechniqueInput.cpp">
+      <Filter>Source Files\Shared\Skyrim\A</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSAtomic.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSFixedString.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSHandleRefObject.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSIntrusiveRefCounted.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSStringPool.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\Effect.cpp">
+      <Filter>Source Files\Shared\Skyrim\E</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EffectSetting.cpp">
+      <Filter>Source Files\Shared\Skyrim\E</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EnchantmentItem.cpp">
+      <Filter>Source Files\Shared\Skyrim\E</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\ExtraDataList.cpp">
+      <Filter>Source Files\Shared\Skyrim\E</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\Events.cpp">
+      <Filter>Source Files\Shared\Skyrim</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindAppropriateDisplaceEffect.cpp">
+      <Filter>Source Files\Shared\Skyrim\F</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindMaxMagnitudeVisitor.cpp">
+      <Filter>Source Files\Shared\Skyrim\F</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GameSettingCollection.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkReferencedObject.cpp">
+      <Filter>Source Files\Shared\Skyrim\H</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\INISettingCollection.cpp">
+      <Filter>Source Files\Shared\Skyrim\I</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\InventoryChanges.cpp">
+      <Filter>Source Files\Shared\Skyrim\I</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\InventoryEntryData.cpp">
+      <Filter>Source Files\Shared\Skyrim\I</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\M\MagicItem.cpp">
+      <Filter>Source Files\Shared\Skyrim\M</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\M\MagicTarget.cpp">
+      <Filter>Source Files\Shared\Skyrim\M</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiBinaryStream.cpp">
+      <Filter>Source Files\Shared\Skyrim\N</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiRefObject.cpp">
+      <Filter>Source Files\Shared\Skyrim\N</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\P\PersistentFormManager.cpp">
+      <Filter>Source Files\Shared\Skyrim\P</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\P\PlayerCharacter.cpp">
+      <Filter>Source Files\Shared\Skyrim\P</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\R\ReferenceEffect.cpp">
+      <Filter>Source Files\Shared\Skyrim\R</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScriptEventSourceHolder.cpp">
+      <Filter>Source Files\Shared\Skyrim\S</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\Sky.cpp">
+      <Filter>Source Files\Shared\Skyrim\S</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\SpellItem.cpp">
+      <Filter>Source Files\Shared\Skyrim\S</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TES.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESBoundObject.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESCondition.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESContainer.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESDataHandler.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESForm.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectREFR.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\U\UI.cpp">
+      <Filter>Source Files\Shared\Skyrim\U</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Utility\Log.cpp">
+      <Filter>Source Files\Shared\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Utility\Memory.cpp">
+      <Filter>Source Files\Shared\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Utility\Trampoline.cpp">
+      <Filter>Source Files\Shared\Utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

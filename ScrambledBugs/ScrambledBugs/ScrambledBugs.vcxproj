@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HeaderFiles\Addresses.h" />
+    <ClInclude Include="HeaderFiles\Fixes\ActivateFurniture.h" />
+    <ClInclude Include="HeaderFiles\Fixes\ActorValuePercentage.h" />
+    <ClInclude Include="HeaderFiles\Fixes\EnchantmentCost.h" />
+    <ClInclude Include="HeaderFiles\Fixes\HarvestedFlags.h" />
+    <ClInclude Include="HeaderFiles\Fixes\HitEffectRaceCondition.h" />
+    <ClInclude Include="HeaderFiles\Fixes\KillCamera.h" />
+    <ClInclude Include="HeaderFiles\Fixes\MagicEffectFlags.h" />
+    <ClInclude Include="HeaderFiles\Fixes\ModArmorWeightPerkEntryPoint.h" />
+    <ClInclude Include="HeaderFiles\Fixes\QuickShot.h" />
+    <ClInclude Include="HeaderFiles\Fixes\TerrainDecals.h" />
+    <ClInclude Include="HeaderFiles\Fixes\TrainingMenu.h" />
+    <ClInclude Include="HeaderFiles\Fixes\WeaponCharge.h" />
+    <ClInclude Include="HeaderFiles\Patches\AccumulatingMagnitude.h" />
+    <ClInclude Include="HeaderFiles\Patches\AlreadyCaughtPickpocketing.h" />
+    <ClInclude Include="HeaderFiles\Patches\AttachHitEffectArt.h" />
+    <ClInclude Include="HeaderFiles\Patches\CloakHitEffects.h" />
+    <ClInclude Include="HeaderFiles\Patches\EquipBestAmmo.h" />
+    <ClInclude Include="HeaderFiles\Patches\ImproveMultipleEnchantmentEffects.h" />
+    <ClInclude Include="HeaderFiles\Patches\LeveledCharacters.h" />
+    <ClInclude Include="HeaderFiles\Patches\LockpickingExperience.h" />
+    <ClInclude Include="HeaderFiles\Patches\PausedGameHitEffects.h" />
+    <ClInclude Include="HeaderFiles\Patches\PerkEntryPoints\ApplyMultipleSpells.h" />
+    <ClInclude Include="HeaderFiles\Patches\PerkEntryPoints\CastSpells.h" />
+    <ClInclude Include="HeaderFiles\Patches\PoisonResistance.h" />
+    <ClInclude Include="HeaderFiles\Patches\PowerAttackStamina.h" />
+    <ClInclude Include="HeaderFiles\Patches\ReflectDamage.h" />
+    <ClInclude Include="HeaderFiles\Patches\ScrollExperience.h" />
+    <ClInclude Include="HeaderFiles\Patches\StaffExperience.h" />
+    <ClInclude Include="HeaderFiles\Patches\TeammateDifficulty.h" />
+    <ClInclude Include="HeaderFiles\Patches\UnderfilledSoulGems.h" />
+    <ClInclude Include="HeaderFiles\Patterns.h" />
+    <ClInclude Include="HeaderFiles\PCH.h" />
+    <ClInclude Include="HeaderFiles\Serialization.h" />
+    <ClInclude Include="HeaderFiles\Settings.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SourceFiles\Fixes\ActivateFurniture.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\ActorValuePercentage.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\EnchantmentCost.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\HarvestedFlags.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\HitEffectRaceCondition.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\KillCamera.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\MagicEffectFlags.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\ModArmorWeightPerkEntryPoint.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\QuickShot.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\TerrainDecals.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\TrainingMenu.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\WeaponCharge.cpp" />
+    <ClCompile Include="SourceFiles\Patches\AccumulatingMagnitude.cpp" />
+    <ClCompile Include="SourceFiles\Patches\AlreadyCaughtPickpocketing.cpp" />
+    <ClCompile Include="SourceFiles\Patches\AttachHitEffectArt.cpp" />
+    <ClCompile Include="SourceFiles\Patches\CloakHitEffects.cpp" />
+    <ClCompile Include="SourceFiles\Patches\EquipBestAmmo.cpp" />
+    <ClCompile Include="SourceFiles\Patches\ImproveMultipleEnchantmentEffects.cpp" />
+    <ClCompile Include="SourceFiles\Patches\LeveledCharacters.cpp" />
+    <ClCompile Include="SourceFiles\Patches\LockpickingExperience.cpp" />
+    <ClCompile Include="SourceFiles\Patches\PausedGameHitEffects.cpp" />
+    <ClCompile Include="SourceFiles\Patches\PerkEntryPoints\ApplyMultipleSpells.cpp" />
+    <ClCompile Include="SourceFiles\Patches\PerkEntryPoints\CastSpells.cpp" />
+    <ClCompile Include="SourceFiles\Patches\PoisonResistance.cpp" />
+    <ClCompile Include="SourceFiles\Patches\PowerAttackStamina.cpp" />
+    <ClCompile Include="SourceFiles\Patches\ReflectDamage.cpp" />
+    <ClCompile Include="SourceFiles\Patches\ScrollExperience.cpp" />
+    <ClCompile Include="SourceFiles\Patches\StaffExperience.cpp" />
+    <ClCompile Include="SourceFiles\Patches\TeammateDifficulty.cpp" />
+    <ClCompile Include="SourceFiles\Patches\UnderfilledSoulGems.cpp" />
+    <ClCompile Include="SourceFiles\Patterns.cpp" />
+    <ClCompile Include="SourceFiles\PCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\ScrambledBugs.cpp" />
+    <ClCompile Include="SourceFiles\Serialization.cpp" />
+    <ClCompile Include="SourceFiles\Settings.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{28168474-ff38-4a86-ba5a-e95a0cca3270}</ProjectGuid>
+    <RootNamespace>ScrambledBugs</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Shared\Shared\Shared.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Shared\Shared\Shared.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Shared\Shared\Shared.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Shared\Shared\Shared.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <VcpkgTriplet>x64-windows-static-md</VcpkgTriplet>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;SCRAMBLEDBUGS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;SCRAMBLEDBUGS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;SCRAMBLEDBUGS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;SCRAMBLEDBUGS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>PCH.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <EnableUAC>true</EnableUAC>
+      <AdditionalDependencies>..\x64\Release\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
+copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).json"
+copy /Y "$(SolutionDir)$(TargetName).log" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
