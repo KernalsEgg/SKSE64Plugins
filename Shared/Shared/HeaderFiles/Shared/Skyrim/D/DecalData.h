@@ -22,19 +22,6 @@ namespace Skyrim
 		};
 		static_assert(sizeof(Flags) == 0x1);
 
-#pragma pack(push, 1)
-		struct Parallax
-		{
-		public:
-			// Member variables
-			float       scale;  // 0
-			std::int8_t passes; // 4
-		};
-		static_assert(offsetof(Parallax, scale) == 0x0);
-		static_assert(offsetof(Parallax, passes) == 0x4);
-		static_assert(sizeof(Parallax) == 0x5);
-#pragma pack(pop)
-
 		// Member variables
 		float                                     minimumWidth;   // 0
 		float                                     maximumWidth;   // 4
@@ -42,7 +29,8 @@ namespace Skyrim
 		float                                     maximumHeight;  // C
 		float                                     depth;          // 10
 		float                                     shininess;      // 14
-		Parallax                                  parallax;       // 18
+		float                                     parallaxScale;  // 18
+		std::uint8_t                              parallaxPasses; // 1C
 		Utility::Enumeration<Flags, std::uint8_t> decalDataFlags; // 1D
 		std::int16_t                              padding1E;      // 1E
 		Color                                     color;          // 20
@@ -53,7 +41,8 @@ namespace Skyrim
 	static_assert(offsetof(DecalData, maximumHeight) == 0xC);
 	static_assert(offsetof(DecalData, depth) == 0x10);
 	static_assert(offsetof(DecalData, shininess) == 0x14);
-	static_assert(offsetof(DecalData, parallax) == 0x18);
+	static_assert(offsetof(DecalData, parallaxScale) == 0x18);
+	static_assert(offsetof(DecalData, parallaxPasses) == 0x1C);
 	static_assert(offsetof(DecalData, decalDataFlags) == 0x1D);
 	static_assert(offsetof(DecalData, color) == 0x20);
 	static_assert(sizeof(DecalData) == 0x24);

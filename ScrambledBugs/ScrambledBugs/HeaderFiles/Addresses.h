@@ -40,6 +40,15 @@ namespace ScrambledBugs::Addresses
 			inline const std::uintptr_t ShouldUpdate{ Relocation::AddressLibrary::GetSingleton().GetAddress(33289) + 0x0 };
 		}
 
+		namespace ImpactEffectCrash
+		{
+			/// <summary>SkyrimSE.exe + 0x1AE090</summary>
+			inline const std::uintptr_t DecalApplier{ Relocation::AddressLibrary::GetSingleton().GetAddress(15040) + 0x92 };
+
+			/// <summary>SkyrimSE.exe + 0x1AE520</summary>
+			inline const std::uintptr_t MainUpdate{ Relocation::AddressLibrary::GetSingleton().GetAddress(15045) + 0x12D };
+		}
+
 		namespace KillCamera
 		{
 			/// <summary>ArrowProjectile::GetImpactData (SkyrimSE.exe + 0x732400)</summary>

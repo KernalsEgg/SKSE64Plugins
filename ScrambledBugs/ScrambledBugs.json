@@ -6,6 +6,7 @@
 		"enchantmentCost":						true,	/* Save the overridden cost of player created enchantments. */
 		"harvestedFlags":						true,	/* Save whether flora and trees are harvested when they respawn. */
 		"hitEffectRaceCondition":				true,	/* Eliminate a race condition that can prevent hit effects from being applied when an actors mesh is loaded after their magic effects are updated. */
+		"impactEffectCrash":					true,	/* Prevent a crash that occurs when you load a save in which an impact effect has been placed that has a now uninstalled texture set. */
 		"killCamera":							true,	/* Do not fire the Apply Combat Hit Spell perk entry point when the kill camera simulates the trajectory of an arrow. */
 		"magicEffectFlags":						true,	/* Flags are respected when scaling the duration and magnitude of a magic effect with its effectiveness. */
 		"modArmorWeightPerkEntryPoint":			true,	/* Modify the weight of only worn armor with the Mod Armor Weight perk entry point. */

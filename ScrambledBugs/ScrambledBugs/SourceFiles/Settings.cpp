@@ -36,6 +36,11 @@ namespace ScrambledBugs
 			fixes.at("hitEffectRaceCondition").get_to(this->hitEffectRaceCondition);
 		}
 
+		if (fixes.contains("impactEffectCrash"))
+		{
+			fixes.at("impactEffectCrash").get_to(this->impactEffectCrash);
+		}
+
 		if (fixes.contains("killCamera"))
 		{
 			fixes.at("killCamera").get_to(this->killCamera);
@@ -86,6 +91,7 @@ namespace ScrambledBugs
 		fixes["enchantmentCost"]              = this->enchantmentCost;
 		fixes["harvestedFlags"]               = this->harvestedFlags;
 		fixes["hitEffectRaceCondition"]       = this->hitEffectRaceCondition;
+		fixes["impactEffectCrash"]            = this->impactEffectCrash;
 		fixes["killCamera"]                   = this->killCamera;
 		fixes["magicEffectFlags"]             = this->magicEffectFlags;
 		fixes["modArmorWeightPerkEntryPoint"] = this->modArmorWeightPerkEntryPoint;

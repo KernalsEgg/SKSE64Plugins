@@ -39,9 +39,9 @@ namespace Skyrim
 		virtual void Unknown41(TESObject*) override; // 41
 
 		// Override (BSTextureSet)
-		virtual const char* GetTextureFilename(Utility::Enumeration<TextureMap, std::uint32_t> textureMap) override;                              // 25
-		virtual void        SetTexture(Utility::Enumeration<TextureMap, std::uint32_t> textureMap, NiSourceTexture* sourceTexture) override;      // 26
-		virtual void        SetTextureFilename(Utility::Enumeration<TextureMap, std::uint32_t> textureMap, const char* textureFilename) override; // 27
+		virtual const char* GetTexturePath(Utility::Enumeration<TextureMap, std::uint32_t> textureMap) override;                             // 25
+		virtual void        SetTexture(Utility::Enumeration<TextureMap, std::uint32_t> textureMap, NiSourceTexture* sourceTexture) override; // 26
+		virtual void        SetTexturePath(Utility::Enumeration<TextureMap, std::uint32_t> textureMap, const char* texturePath) override;    // 27
 
 		// Member variables
 		TESTexture                                 textures[Utility::ToUnderlying(TextureMap::kTotal)];   // 40

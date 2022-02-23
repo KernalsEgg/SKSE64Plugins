@@ -18,6 +18,12 @@ namespace ScrambledBugs::Patterns
 			bool RemoveHarvestedFlag();
 		}
 
+		namespace ImpactEffectCrash
+		{
+			bool DecalApplier();
+			bool MainUpdate();
+		}
+
 		namespace KillCamera
 		{
 			bool HasWeapon();

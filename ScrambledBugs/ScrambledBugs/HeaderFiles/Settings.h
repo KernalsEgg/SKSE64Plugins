@@ -24,6 +24,7 @@ namespace ScrambledBugs
 			bool  enchantmentCost{ false };
 			bool  harvestedFlags{ false };
 			bool  hitEffectRaceCondition{ false };
+			bool  impactEffectCrash{ false };
 			bool  killCamera{ false };
 			bool  magicEffectFlags{ false };
 			bool  modArmorWeightPerkEntryPoint{ false };

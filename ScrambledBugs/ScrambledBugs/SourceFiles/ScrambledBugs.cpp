@@ -5,6 +5,7 @@
 #include "Fixes/EnchantmentCost.h"
 #include "Fixes/HarvestedFlags.h"
 #include "Fixes/HitEffectRaceCondition.h"
+#include "Fixes/ImpactEffectCrash.h"
 #include "Fixes/KillCamera.h"
 #include "Fixes/MagicEffectFlags.h"
 #include "Fixes/ModArmorWeightPerkEntryPoint.h"
@@ -68,6 +69,11 @@ void Settings()
 	if (settings.fixes.hitEffectRaceCondition)
 	{
 		settings.fixes.hitEffectRaceCondition = ScrambledBugs::Fixes::HitEffectRaceCondition::Fix();
+	}
+
+	if (settings.fixes.impactEffectCrash)
+	{
+		settings.fixes.impactEffectCrash = ScrambledBugs::Fixes::ImpactEffectCrash::Fix();
 	}
 
 	if (settings.fixes.killCamera)

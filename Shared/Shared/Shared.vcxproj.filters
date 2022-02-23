@@ -465,6 +465,9 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTempEffect.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTempEffectSimpleDecal.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTEventSink.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>

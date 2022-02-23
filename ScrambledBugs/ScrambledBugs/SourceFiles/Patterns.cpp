@@ -33,6 +33,25 @@ namespace ScrambledBugs::Patterns
 			}
 		}
 
+		namespace ImpactEffectCrash
+		{
+			bool DecalApplier()
+			{
+				return Relocation::AddressLibrary::MatchPattern(
+					Addresses::Fixes::ImpactEffectCrash::DecalApplier, // 0x5
+					0xE8ui8, std::optional<std::int32_t>{}             // call BSTempEffectSimpleDecal::Apply
+				);
+			}
+
+			bool MainUpdate()
+			{
+				return Relocation::AddressLibrary::MatchPattern(
+					Addresses::Fixes::ImpactEffectCrash::MainUpdate, // 0x5
+					0xE8ui8, std::optional<std::int32_t>{}           // call BSTempEffectSimpleDecal::Apply
+				);
+			}
+		}
+
 		namespace KillCamera
 		{
 			bool HasWeapon()

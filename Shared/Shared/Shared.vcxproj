@@ -128,6 +128,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSStringPool.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTArray.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTempEffect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTempEffectSimpleDecal.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTEventSink.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTEventSource.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTextureSet.h" />

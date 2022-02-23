@@ -27,8 +27,8 @@ namespace Skyrim
 		virtual void Unknown6(TESTexture*); // 6
 
 		// Member variables
-		BSFixedString textureFilename; // 8
+		BSFixedString texturePath; // 8
 	};
-	static_assert(offsetof(TESTexture, textureFilename) == 0x8);
+	static_assert(offsetof(TESTexture, texturePath) == 0x8);
 	static_assert(sizeof(TESTexture) == 0x10);
 }

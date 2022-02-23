@@ -51,6 +51,9 @@
     <ClInclude Include="HeaderFiles\Fixes\HitEffectRaceCondition.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Fixes\ImpactEffectCrash.h">
+      <Filter>Header Files\Fixes</Filter>
+    </ClInclude>
     <ClInclude Include="HeaderFiles\Fixes\KillCamera.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
@@ -153,6 +156,9 @@
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Fixes\HitEffectRaceCondition.cpp">
+      <Filter>Source Files\Fixes</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Fixes\ImpactEffectCrash.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Fixes\KillCamera.cpp">

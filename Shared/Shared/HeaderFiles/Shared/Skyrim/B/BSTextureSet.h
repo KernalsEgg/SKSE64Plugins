@@ -42,9 +42,9 @@ namespace Skyrim
 		virtual void          Unknown1C(NiObject*) override; // 1C
 
 		// Add
-		virtual const char* GetTextureFilename(Utility::Enumeration<TextureMap, std::uint32_t> textureMap)                              = 0; // 25
-		virtual void        SetTexture(Utility::Enumeration<TextureMap, std::uint32_t> textureMap, NiSourceTexture* sourceTexture)      = 0; // 26
-		virtual void        SetTextureFilename(Utility::Enumeration<TextureMap, std::uint32_t> textureMap, const char* textureFilename) = 0; // 27
+		virtual const char* GetTexturePath(Utility::Enumeration<TextureMap, std::uint32_t> textureMap)                             = 0; // 25
+		virtual void        SetTexture(Utility::Enumeration<TextureMap, std::uint32_t> textureMap, NiSourceTexture* sourceTexture) = 0; // 26
+		virtual void        SetTexturePath(Utility::Enumeration<TextureMap, std::uint32_t> textureMap, const char* texturePath)    = 0; // 27
 	};
 	static_assert(sizeof(BSTextureSet) == 0x10);
 }
