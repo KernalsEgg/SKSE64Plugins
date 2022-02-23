@@ -24,6 +24,7 @@ I would also like to thank the regulars on the SkyrimRE Discord server for their
 * [Infernio](https://github.com/Infernio)
 * [Karandra](https://www.nexusmods.com/skyrimspecialedition/users/2734453)
 * [Loki](https://www.nexusmods.com/skyrimspecialedition/users/53567771)
+* [matzibeater](https://www.nexusmods.com/users/4273674/)
 * [Maxsu](https://www.nexusmods.com/skyrimspecialedition/users/47103898)
 * [Nukem](https://www.nexusmods.com/skyrimspecialedition/users/4995023)
 * [Parapets](https://www.nexusmods.com/skyrimspecialedition/users/39501725)
