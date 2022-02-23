@@ -23,7 +23,7 @@ namespace ScrambledBugs::Patches
 			return false;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::EquipBestAmmo::InitializeDamage + 0x4, static_cast<std::int32_t>(Addresses::Patches::EquipBestAmmo::FloatMinimumValue - (0x8 + Addresses::Patches::EquipBestAmmo::InitializeDamage))); // movss xmm6, -std::numeric_limits<float>::max()
+		Utility::Memory::SafeWrite(Addresses::Patches::EquipBestAmmo::InitializeDamage + 0x4, static_cast<std::int32_t>(Addresses::Patches::EquipBestAmmo::FloatMinimumValue - (Addresses::Patches::EquipBestAmmo::InitializeDamage + 0x8))); // movss xmm6, -std::numeric_limits<float>::max()
 		Utility::Memory::SafeWrite(Addresses::Patches::EquipBestAmmo::CompareDamageContainer, 0x76ui8, std::optional<std::uint8_t>{});                                                                                                        // jbe 6
 		Utility::Memory::SafeWrite(Addresses::Patches::EquipBestAmmo::CompareDamageInventoryChanges, 0x76ui8, std::optional<std::uint8_t>{});                                                                                                 // jbe 10
 

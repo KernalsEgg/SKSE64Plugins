@@ -45,10 +45,10 @@ namespace ScrambledBugs::Patches
 
 		auto actor = static_cast<Skyrim::Actor*>(magicTarget);
 
+		float magicResistance{ 0.0F };
+
 		float effectResistance{ 0.0F };
 		auto  effectResistanceActorValue = effect->baseEffect->resistanceActorValue;
-
-		float magicResistance{ 0.0F };
 
 		if (isPoison || spellType == Skyrim::MagicSystem::SpellType::kPoison)
 		{

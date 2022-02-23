@@ -40,11 +40,11 @@ namespace ScrambledBugs::Fixes
 
 			if (oldMagnitude >= 0.0F)
 			{
-				activeEffect->magnitude = newMagnitude < 1.0F ? newMagnitude : 1.0F;
+				activeEffect->magnitude = newMagnitude >= 1.0F ? newMagnitude : 1.0F;
 			}
 			else
 			{
-				activeEffect->magnitude = newMagnitude > -1.0F ? newMagnitude : -1.0F;
+				activeEffect->magnitude = newMagnitude <= -1.0F ? newMagnitude : -1.0F;
 			}
 		}
 	}
