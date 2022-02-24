@@ -147,23 +147,23 @@ namespace Skyrim
 		Color                                     cloudColors[Utility::ToUnderlying(Layer::kTotal)][Utility::ToUnderlying(Time::kTotal)]; // 260
 		float                                     cloudAlpha[Utility::ToUnderlying(Layer::kTotal)][Utility::ToUnderlying(Time::kTotal)];  // 460, General, Cloud Textures
 		std::uint32_t                             disabledCloudLayers;                                                                    // 660, General, Cloud Textures (bitfield)
-		std::int8_t                               windSpeed;                                                                              // 664, General
+		std::uint8_t                              windSpeed;                                                                              // 664, General
 		std::uint8_t                              unknown665;                                                                             // 665
 		std::uint8_t                              unknown666;                                                                             // 666
-		std::int8_t                               transDelta;                                                                             // 667, General
-		std::int8_t                               sunGlare;                                                                               // 668, General
-		std::int8_t                               sunDamage;                                                                              // 669, General
-		std::int8_t                               precipitationBeginFadeIn;                                                               // 66A, Precipitation, Precipitation
-		std::int8_t                               precipitationEndFadeOut;                                                                // 66B, Precipitation, Precipitation
-		std::int8_t                               thunderLightningBeginFadeIn;                                                            // 66C, Precipitation, Thunder/Lightning
-		std::int8_t                               thunderLightningEndFadeOut;                                                             // 66D, Precipitation, Thunder/Lightning
-		std::int8_t                               thunderLightningFrequency;                                                              // 66E, Precipitation, Thunder/Lightning
+		std::uint8_t                              transitionDelta;                                                                        // 667, General
+		std::uint8_t                              sunGlare;                                                                               // 668, General
+		std::uint8_t                              sunDamage;                                                                              // 669, General
+		std::uint8_t                              precipitationBeginFadeIn;                                                               // 66A, Precipitation, Precipitation
+		std::uint8_t                              precipitationEndFadeOut;                                                                // 66B, Precipitation, Precipitation
+		std::uint8_t                              thunderLightningBeginFadeIn;                                                            // 66C, Precipitation, Thunder/Lightning
+		std::uint8_t                              thunderLightningEndFadeOut;                                                             // 66D, Precipitation, Thunder/Lightning
+		std::uint8_t                              thunderLightningFrequency;                                                              // 66E, Precipitation, Thunder/Lightning
 		Utility::Enumeration<Flags, std::uint8_t> weatherFlags;                                                                           // 66F
 		Color3                                    lightningColor;                                                                         // 670, Precipitation, Lightning Color
-		std::int8_t                               visualEffectBegin;                                                                      // 673, Effects, Visual Effect
-		std::int8_t                               visualEffectEnd;                                                                        // 674, Effects, Visual Effect
-		std::int8_t                               windDirection;                                                                          // 675, General
-		std::int8_t                               windDirectionRange;                                                                     // 676, General
+		std::uint8_t                              visualEffectBegin;                                                                      // 673, Effects, Visual Effect
+		std::uint8_t                              visualEffectEnd;                                                                        // 674, Effects, Visual Effect
+		std::uint8_t                              windDirection;                                                                          // 675, General
+		std::uint8_t                              windDirectionRange;                                                                     // 676, General
 		std::uint8_t                              unknown677;                                                                             // 677
 		FogDistance                               fogDistance;                                                                            // 678, General, Fog Distance
 		Color                                     colors[Utility::ToUnderlying(Type::kTotal)][Utility::ToUnderlying(Time::kTotal)];       // 698
@@ -186,7 +186,7 @@ namespace Skyrim
 	static_assert(offsetof(TESWeather, cloudAlpha) == 0x460);
 	static_assert(offsetof(TESWeather, disabledCloudLayers) == 0x660);
 	static_assert(offsetof(TESWeather, windSpeed) == 0x664);
-	static_assert(offsetof(TESWeather, transDelta) == 0x667);
+	static_assert(offsetof(TESWeather, transitionDelta) == 0x667);
 	static_assert(offsetof(TESWeather, sunGlare) == 0x668);
 	static_assert(offsetof(TESWeather, sunDamage) == 0x669);
 	static_assert(offsetof(TESWeather, precipitationBeginFadeIn) == 0x66A);

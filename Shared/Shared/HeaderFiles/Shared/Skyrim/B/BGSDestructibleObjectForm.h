@@ -29,7 +29,7 @@ namespace Skyrim
 		static_assert(sizeof(Flags) == 0x1);
 
 		// Member variables
-		std::int8_t                               modelDamageStage;             // 0
+		std::uint8_t                              modelDamageStage;             // 0
 		std::uint8_t                              healthPercentage;             // 1
 		Utility::Enumeration<Flags, std::uint8_t> destructibleObjectStageFlags; // 2
 		std::uint8_t                              padding3;                     // 3
@@ -62,11 +62,11 @@ namespace Skyrim
 
 		// Member variables
 		std::uint32_t                             health;                         // 0
-		std::int8_t                               stageCount;                     // 4
+		std::uint8_t                              stageCount;                     // 4
 		Utility::Enumeration<Flags, std::uint8_t> destructibleObjectDataFlags;    // 5
 		std::uint16_t                             padding6;                       // 6
 		DestructibleObjectStage**                 stages;                         // 8
-		volatile std::int32_t                     replacementModelReferenceCount; // 10
+		volatile std::uint32_t                    replacementModelReferenceCount; // 10
 		std::uint32_t                             padding14;                      // 14
 		NiPointer<QueuedFile>                     preloadedReplacementModels;     // 18
 	};

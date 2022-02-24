@@ -15,7 +15,7 @@ namespace Skyrim
 	public:
 		// Member variables
 		BGSPerk*      perk;        // 0
-		std::int8_t   currentRank; // 8
+		std::uint8_t  currentRank; // 8
 		std::uint8_t  padding9;    // 9
 		std::uint16_t paddingA;    // A
 		std::uint32_t paddingC;    // C

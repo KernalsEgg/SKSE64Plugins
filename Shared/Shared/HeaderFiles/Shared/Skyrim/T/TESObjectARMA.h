@@ -36,10 +36,10 @@ namespace Skyrim
 		virtual void Unknown13(TESForm*) override; // 13
 
 		// Member variables
-		std::int8_t         priorities[Utility::ToUnderlying(Sex::kTotal)];             // 40
+		std::uint8_t        priorities[Utility::ToUnderlying(Sex::kTotal)];             // 40
 		bool                weightSlider[Utility::ToUnderlying(Sex::kTotal)];           // 42
-		std::int8_t         unused[Utility::ToUnderlying(Sex::kTotal)];                 // 44
-		std::int8_t         detectionSoundValue;                                        // 46
+		std::uint8_t        unused[Utility::ToUnderlying(Sex::kTotal)];                 // 44
+		std::uint8_t        detectionSoundValue;                                        // 46
 		std::uint8_t        padding47;                                                  // 47
 		float               weaponAdjust;                                               // 48
 		std::uint32_t       padding4C;                                                  // 4C

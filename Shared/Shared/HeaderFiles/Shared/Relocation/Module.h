@@ -50,6 +50,6 @@ namespace Relocation
 	protected:
 		void SetProductVersion(const std::filesystem::path& path);
 
-		Version productVersion_{ Version(0, 0, 0, 0) };
+		Version productVersion_{ Version({}, {}, {}, {}) };
 	};
 }

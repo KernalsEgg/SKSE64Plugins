@@ -100,7 +100,7 @@ namespace Skyrim
 		std::uint64_t                             unknown68;                      // 68
 		std::uint64_t                             unknown70;                      // 70
 		TESTexture                                noiseTextureLayers[4];          // 78, Noise Properties
-		std::int8_t                               opacity;                        // B8, Water Properties
+		std::uint8_t                              opacity;                        // B8, Water Properties
 		Utility::Enumeration<Flags, std::uint8_t> waterFormFlags;                 // B9
 		std::uint8_t                              paddingBA;                      // BA
 		std::uint32_t                             paddingBC;                      // BC

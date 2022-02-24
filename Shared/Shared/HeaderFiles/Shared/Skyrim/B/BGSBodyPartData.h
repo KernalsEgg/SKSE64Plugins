@@ -59,14 +59,14 @@ namespace Skyrim
 			Utility::Enumeration<ActorValue, std::uint8_t>   actorValue;                     // 7F
 			std::uint8_t                                     toHitChance;                    // 80
 			std::uint8_t                                     explodableExplosionChance;      // 81
-			std::int8_t                                      explodableGenericDebrisCount;   // 82
+			std::uint8_t                                     explodableGenericDebrisCount;   // 82
 			std::uint8_t                                     padding83;                      // 83
 			std::uint32_t                                    padding84;                      // 84
 			BGSDebris*                                       explodableGenericDebris;        // 88
 			BGSExplosion*                                    explodableExplosion;            // 90
 			float                                            trackingMaximumAngle;           // 98
 			float                                            explodableGenericDebrisScale;   // 9C
-			std::int8_t                                      severableGenericDebrisCount;    // A0
+			std::uint8_t                                     severableGenericDebrisCount;    // A0
 			std::uint8_t                                     paddingA1;                      // A1
 			std::uint16_t                                    paddingA2;                      // A2
 			std::uint32_t                                    paddingA4;                      // A4
@@ -78,8 +78,8 @@ namespace Skyrim
 			std::uint32_t                                    paddingD4;                      // D4
 			BGSImpactDataSet*                                severableBloodSpurt;            // D8
 			BGSImpactDataSet*                                explodableBloodSpurt;           // E0
-			std::int8_t                                      severableDecalCount;            // E8
-			std::int8_t                                      explodableDecalCount;           // E9
+			std::uint8_t                                     severableDecalCount;            // E8
+			std::uint8_t                                     explodableDecalCount;           // E9
 			std::uint16_t                                    paddingEA;                      // EA
 			float                                            explodableLimbReplacementScale; // EC
 		};

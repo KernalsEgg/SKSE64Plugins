@@ -39,8 +39,8 @@ namespace Skyrim
 
 		// Member variables
 		bool                    trait;       // 50
-		std::int8_t             level;       // 51
-		std::int8_t             rankCount;   // 52
+		std::uint8_t            level;       // 51
+		std::uint8_t            rankCount;   // 52
 		bool                    playable;    // 53
 		bool                    hidden;      // 54
 		std::uint8_t            padding55;   // 55

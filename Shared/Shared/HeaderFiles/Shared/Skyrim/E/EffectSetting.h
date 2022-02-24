@@ -91,8 +91,8 @@ namespace Skyrim
 		std::uint32_t                                                 padding94;                   // 94
 		TESEffectShader*                                              hitShader;                   // 98
 		TESEffectShader*                                              enchantShader;               // A0
-		std::int32_t                                                  minimumSkillLevel;           // A8
-		std::int32_t                                                  spellmakingArea;             // AC
+		std::uint32_t                                                 minimumSkillLevel;           // A8
+		std::uint32_t                                                 spellmakingArea;             // AC
 		float                                                         spellmakingCastingTime;      // B0
 		float                                                         taperCurve;                  // B4
 		float                                                         taperDuration;               // B8

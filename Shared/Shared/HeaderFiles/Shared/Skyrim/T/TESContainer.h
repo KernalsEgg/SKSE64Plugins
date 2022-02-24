@@ -16,7 +16,7 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		std::int32_t        count;              // 0
+		std::uint32_t       count;              // 0
 		std::uint32_t       padding4;           // 4
 		TESBoundObject*     object;             // 8
 		ContainerItemExtra* containerItemExtra; // 10

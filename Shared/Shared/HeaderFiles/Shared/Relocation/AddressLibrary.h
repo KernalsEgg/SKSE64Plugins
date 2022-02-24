@@ -34,7 +34,7 @@ namespace Relocation
 			void Read(std::ifstream& inputFileStream, const Version& productVersion);
 
 			std::int32_t format;
-			Version      productVersion{ Version(0, 0, 0, 0) };
+			Version      productVersion{ Version({}, {}, {}, {}) };
 			std::int32_t filenameLength;
 			std::string  filename;
 			std::int32_t pointerSize;

@@ -26,12 +26,12 @@ namespace Utility
 			{
 			}
 
-			std::uint8_t call{ 0xFF };      // 0
-			std::uint8_t modRm{ 0x15 };     // 1
-			std::int32_t relative32{ 0x2 }; // 2
-			std::uint8_t jump{ 0xEB };      // 6
-			std::int8_t  relative8{ 0x8 };  // 7
-			std::int64_t absolute64;        // 8
+			std::uint8_t  call{ 0xFF };      // 0
+			std::uint8_t  modRm{ 0x15 };     // 1
+			std::int32_t  relative32{ 0x2 }; // 2
+			std::uint8_t  jump{ 0xEB };      // 6
+			std::int8_t   relative8{ 0x8 };  // 7
+			std::uint64_t absolute64;        // 8
 		};
 		static_assert(offsetof(AbsoluteCall, call) == 0x0);
 		static_assert(offsetof(AbsoluteCall, modRm) == 0x1);
@@ -58,10 +58,10 @@ namespace Utility
 			{
 			}
 
-			std::uint8_t jump{ 0xFF };      // 0
-			std::uint8_t modRm{ 0x25 };     // 1
-			std::int32_t relative32{ 0x0 }; // 2
-			std::int64_t absolute64;        // 6
+			std::uint8_t  jump{ 0xFF };      // 0
+			std::uint8_t  modRm{ 0x25 };     // 1
+			std::int32_t  relative32{ 0x0 }; // 2
+			std::uint64_t absolute64;        // 6
 		};
 		static_assert(offsetof(AbsoluteJump, jump) == 0x0);
 		static_assert(offsetof(AbsoluteJump, modRm) == 0x1);

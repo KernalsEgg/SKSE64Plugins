@@ -164,7 +164,7 @@ namespace Skyrim
 			float         sightFOV;        // 0, Game Data
 			std::uint32_t unknown16C;      // 4
 			FiringRumble  firingRumble;    // 8, Rumble
-			std::int8_t   projectileCount; // 18, Game Data
+			std::uint8_t  projectileCount; // 18, Game Data
 			std::uint8_t  padding181;      // 19
 			std::uint16_t padding182;      // 1A
 		};
