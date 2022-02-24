@@ -70,10 +70,10 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			float        strength; // 0
-			float        distance; // 4
-			float        range;    // 8
-			std::int32_t unknownC; // C
+			float         strength; // 0
+			float         distance; // 4
+			float         range;    // 8
+			std::uint32_t unknownC; // C
 		};
 		static_assert(offsetof(DepthOfField, strength) == 0x0);
 		static_assert(offsetof(DepthOfField, distance) == 0x4);

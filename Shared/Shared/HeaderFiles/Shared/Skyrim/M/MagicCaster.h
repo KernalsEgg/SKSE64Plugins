@@ -44,14 +44,14 @@ namespace Skyrim
 		virtual void Unknown1C(MagicCaster*);                                                                                                                               // 1C
 
 		// Member variables
-		std::int64_t unknown8;  // 8
-		std::int64_t unknown10; // 10
-		std::int64_t unknown18; // 18
-		std::int64_t unknown20; // 20
-		std::int64_t unknown28; // 28
-		std::int64_t unknown30; // 30
-		std::int64_t unknown38; // 38
-		std::int64_t unknown40; // 40
+		std::uint64_t unknown8;  // 8
+		std::uint64_t unknown10; // 10
+		std::uint64_t unknown18; // 18
+		std::uint64_t unknown20; // 20
+		std::uint64_t unknown28; // 28
+		std::uint64_t unknown30; // 30
+		std::uint64_t unknown38; // 38
+		std::uint64_t unknown40; // 40
 	};
 	static_assert(sizeof(MagicCaster) == 0x48);
 }

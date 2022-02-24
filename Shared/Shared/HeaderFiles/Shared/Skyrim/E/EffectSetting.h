@@ -78,17 +78,17 @@ namespace Skyrim
 		bool IsHostile();
 
 		// Member variables
-		std::int64_t                                                  unknown58;                   // 58
-		std::int64_t                                                  unknown60;                   // 60
+		std::uint64_t                                                 unknown58;                   // 58
+		std::uint64_t                                                 unknown60;                   // 60
 		Utility::Enumeration<Flags, std::uint32_t>                    effectSettingFlags;          // 68
 		float                                                         baseCost;                    // 6C
-		std::int64_t                                                  unknown70;                   // 70
+		std::uint64_t                                                 unknown70;                   // 70
 		Utility::Enumeration<ActorValue, std::uint32_t>               magicSkill;                  // 78
 		Utility::Enumeration<ActorValue, std::uint32_t>               resistanceActorValue;        // 7C
-		std::int64_t                                                  unknown80;                   // 80
+		std::uint64_t                                                 unknown80;                   // 80
 		TESObjectLIGH*                                                castingLight;                // 88
 		float                                                         taperWeight;                 // 90
-		std::int32_t                                                  padding94;                   // 94
+		std::uint32_t                                                 padding94;                   // 94
 		TESEffectShader*                                              hitShader;                   // 98
 		TESEffectShader*                                              enchantShader;               // A0
 		std::int32_t                                                  minimumSkillLevel;           // A8
@@ -98,20 +98,20 @@ namespace Skyrim
 		float                                                         taperDuration;               // B8
 		float                                                         secondAVWeight;              // BC
 		Utility::Enumeration<EffectArchetype, std::uint32_t>          effectArchetype;             // C0
-		std::int32_t                                                  unknownC4;                   // C4
+		std::uint32_t                                                 unknownC4;                   // C4
 		BGSProjectile*                                                projectile;                  // C8
 		BGSExplosion*                                                 explosion;                   // D0
 		Utility::Enumeration<MagicSystem::CastingType, std::uint32_t> castingType;                 // D8
 		Utility::Enumeration<MagicSystem::Delivery, std::uint32_t>    delivery;                    // DC
-		std::int64_t                                                  unknownE0;                   // E0
+		std::uint64_t                                                 unknownE0;                   // E0
 		BGSArtObject*                                                 castingArt;                  // E8
 		BGSArtObject*                                                 hitEffectArt;                // F0
 		BGSImpactDataSet*                                             impactDataSet;               // F8
 		float                                                         skillUsageMultiplier;        // 100
-		std::int32_t                                                  padding104;                  // 104
-		std::int64_t                                                  unknown108;                  // 108
+		std::uint32_t                                                 padding104;                  // 104
+		std::uint64_t                                                 unknown108;                  // 108
 		float                                                         dualCastingScale;            // 110
-		std::int32_t                                                  padding114;                  // 114
+		std::uint32_t                                                 padding114;                  // 114
 		BGSArtObject*                                                 enchantArt;                  // 118
 		BGSReferenceEffect*                                           hitVisualEffects;            // 120
 		BGSReferenceEffect*                                           enchantVisualEffects;        // 128
@@ -121,13 +121,13 @@ namespace Skyrim
 		Utility::Enumeration<SoundLevel, std::uint32_t>               castingSoundLevel;           // 148
 		float                                                         scriptEffectAIDataScore;     // 14C
 		float                                                         scriptEffectAIDataDelayTime; // 150
-		std::int32_t                                                  padding154;                  // 154
+		std::uint32_t                                                 padding154;                  // 154
 		BSSimpleList<EffectSetting*>                                  counterEffects;              // 158
-		std::int64_t                                                  unknown168;                  // 168
-		std::int64_t                                                  unknown170;                  // 170
-		std::int64_t                                                  unknown178;                  // 178
+		std::uint64_t                                                 unknown168;                  // 168
+		std::uint64_t                                                 unknown170;                  // 170
+		std::uint64_t                                                 unknown178;                  // 178
 		BSFixedString                                                 magicItemDescription;        // 180
-		std::int64_t                                                  unknown188;                  // 188
+		std::uint64_t                                                 unknown188;                  // 188
 		TESCondition                                                  conditions;                  // 190
 	};
 	static_assert(offsetof(EffectSetting, effectSettingFlags) == 0x68);

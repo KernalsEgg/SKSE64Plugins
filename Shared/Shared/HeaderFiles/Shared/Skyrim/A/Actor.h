@@ -359,60 +359,60 @@ namespace Skyrim
 
 		// Member variables
 		Utility::Enumeration<BoolBits, std::uint32_t>  boolBits;                                                // E0
-		std::int32_t                                   unknownE4;                                               // E4
-		std::int64_t                                   unknownE8;                                               // E8
+		std::uint32_t                                  unknownE4;                                               // E4
+		std::uint64_t                                  unknownE8;                                               // E8
 		ActorProcess*                                  currentProcess;                                          // F0
-		std::int64_t                                   unknownF8;                                               // F8
-		std::int64_t                                   unknown100;                                              // 100
-		std::int64_t                                   unknown108;                                              // 108
-		std::int64_t                                   unknown110;                                              // 110
-		std::int64_t                                   unknown118;                                              // 118
-		std::int64_t                                   unknown120;                                              // 120
-		std::int64_t                                   unknown128;                                              // 128
-		std::int64_t                                   unknown130;                                              // 130
-		std::int64_t                                   unknown138;                                              // 138
-		std::int64_t                                   unknown140;                                              // 140
-		std::int64_t                                   unknown148;                                              // 148
-		std::int64_t                                   unknown150;                                              // 150
-		std::int64_t                                   unknown158;                                              // 158
-		std::int64_t                                   unknown160;                                              // 160
-		std::int64_t                                   unknown168;                                              // 168
-		std::int64_t                                   unknown170;                                              // 170
-		std::int64_t                                   unknown178;                                              // 178
-		std::int64_t                                   unknown180;                                              // 180
-		std::int64_t                                   unknown188;                                              // 188
-		std::int64_t                                   unknown190;                                              // 190
-		std::int64_t                                   unknown198;                                              // 198
+		std::uint64_t                                  unknownF8;                                               // F8
+		std::uint64_t                                  unknown100;                                              // 100
+		std::uint64_t                                  unknown108;                                              // 108
+		std::uint64_t                                  unknown110;                                              // 110
+		std::uint64_t                                  unknown118;                                              // 118
+		std::uint64_t                                  unknown120;                                              // 120
+		std::uint64_t                                  unknown128;                                              // 128
+		std::uint64_t                                  unknown130;                                              // 130
+		std::uint64_t                                  unknown138;                                              // 138
+		std::uint64_t                                  unknown140;                                              // 140
+		std::uint64_t                                  unknown148;                                              // 148
+		std::uint64_t                                  unknown150;                                              // 150
+		std::uint64_t                                  unknown158;                                              // 158
+		std::uint64_t                                  unknown160;                                              // 160
+		std::uint64_t                                  unknown168;                                              // 168
+		std::uint64_t                                  unknown170;                                              // 170
+		std::uint64_t                                  unknown178;                                              // 178
+		std::uint64_t                                  unknown180;                                              // 180
+		std::uint64_t                                  unknown188;                                              // 188
+		std::uint64_t                                  unknown190;                                              // 190
+		std::uint64_t                                  unknown198;                                              // 198
 		ActorMagicCaster*                              magicCasters[Utility::ToUnderlying(SlotType::kTotal)];   // 1A0
 		MagicItem*                                     selectedSpells[Utility::ToUnderlying(SlotType::kTotal)]; // 1C0
 		TESForm*                                       selectedPower;                                           // 1E0
-		std::int64_t                                   unknown1E8;                                              // 1E8
-		std::int64_t                                   unknown1F0;                                              // 1F0
+		std::uint64_t                                  unknown1E8;                                              // 1E8
+		std::uint64_t                                  unknown1F0;                                              // 1F0
 		float                                          equippedWeight;                                          // 1F8
 		Utility::Enumeration<BoolFlags, std::uint32_t> boolFlags;                                               // 1FC
-		std::int64_t                                   unknown200;                                              // 200
-		std::int64_t                                   unknown208;                                              // 208
-		std::int64_t                                   unknown210;                                              // 210
-		std::int64_t                                   unknown218;                                              // 218
-		std::int64_t                                   unknown220;                                              // 220
-		std::int64_t                                   unknown228;                                              // 228
-		std::int64_t                                   unknown230;                                              // 230
-		std::int64_t                                   unknown238;                                              // 238
-		std::int64_t                                   unknown240;                                              // 240
-		std::int64_t                                   unknown248;                                              // 248
-		std::int64_t                                   unknown250;                                              // 250
+		std::uint64_t                                  unknown200;                                              // 200
+		std::uint64_t                                  unknown208;                                              // 208
+		std::uint64_t                                  unknown210;                                              // 210
+		std::uint64_t                                  unknown218;                                              // 218
+		std::uint64_t                                  unknown220;                                              // 220
+		std::uint64_t                                  unknown228;                                              // 228
+		std::uint64_t                                  unknown230;                                              // 230
+		std::uint64_t                                  unknown238;                                              // 238
+		std::uint64_t                                  unknown240;                                              // 240
+		std::uint64_t                                  unknown248;                                              // 248
+		std::uint64_t                                  unknown250;                                              // 250
 		float                                          lastUpdate;                                              // 258
-		std::int32_t                                   unknown25C;                                              // 25C
-		std::int64_t                                   unknown260;                                              // 260
-		std::int64_t                                   unknown268;                                              // 268
-		std::int64_t                                   unknown270;                                              // 270
-		std::int64_t                                   unknown278;                                              // 278
-		std::int64_t                                   unknown280;                                              // 280
-		std::int64_t                                   unknown288;                                              // 288
-		std::int64_t                                   unknown290;                                              // 290
-		std::int64_t                                   unknown298;                                              // 298
-		std::int64_t                                   unknown2A0;                                              // 2A0
-		std::int64_t                                   unknown2A8;                                              // 2A8
+		std::uint32_t                                  unknown25C;                                              // 25C
+		std::uint64_t                                  unknown260;                                              // 260
+		std::uint64_t                                  unknown268;                                              // 268
+		std::uint64_t                                  unknown270;                                              // 270
+		std::uint64_t                                  unknown278;                                              // 278
+		std::uint64_t                                  unknown280;                                              // 280
+		std::uint64_t                                  unknown288;                                              // 288
+		std::uint64_t                                  unknown290;                                              // 290
+		std::uint64_t                                  unknown298;                                              // 298
+		std::uint64_t                                  unknown2A0;                                              // 2A0
+		std::uint64_t                                  unknown2A8;                                              // 2A8
 	};
 	static_assert(offsetof(Actor, boolBits) == 0xE0);
 	static_assert(offsetof(Actor, currentProcess) == 0xF0);

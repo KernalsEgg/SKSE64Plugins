@@ -32,7 +32,7 @@ namespace Skyrim
 
 		// Member variables
 		Utility::Enumeration<ArtType, std::uint32_t> artType;   // 68
-		std::int32_t                                 padding6C; // 6C
+		std::uint32_t                                padding6C; // 6C
 	};
 	static_assert(offsetof(BGSArtObject, artType) == 0x68);
 	static_assert(sizeof(BGSArtObject) == 0x70);

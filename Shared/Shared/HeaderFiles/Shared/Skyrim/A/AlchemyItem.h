@@ -48,7 +48,7 @@ namespace Skyrim
 			Utility::Enumeration<Flags, std::uint32_t> alchemyItemFlags; // 4
 			SpellItem*                                 addiction;        // 8
 			float                                      addictionChance;  // 10
-			std::int32_t                               padding14;        // 14
+			std::uint32_t                              padding14;        // 14
 			BGSSoundDescriptorForm*                    useSound;         // 18
 		};
 		static_assert(offsetof(Data, potionValue) == 0x0);

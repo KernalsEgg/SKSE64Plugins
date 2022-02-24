@@ -28,7 +28,7 @@ namespace Skyrim
 		virtual void          Unknown34(NiAVObject*) override; // 34
 
 		// Member variables
-		std::int64_t unknown128; // 128
+		std::uint64_t unknown128; // 128
 	};
 	static_assert(sizeof(NiBillboardNode) == 0x130);
 }

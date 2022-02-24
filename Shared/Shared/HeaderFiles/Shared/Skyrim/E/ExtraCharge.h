@@ -20,8 +20,8 @@ namespace Skyrim
 		virtual bool          IsNotEqual(const BSExtraData* right) const override; // 2
 
 		// Member variables
-		float        charge;    // 10
-		std::int32_t padding14; // 14
+		float         charge;    // 10
+		std::uint32_t padding14; // 14
 	};
 	static_assert(offsetof(ExtraCharge, charge) == 0x10);
 	static_assert(sizeof(ExtraCharge) == 0x18);

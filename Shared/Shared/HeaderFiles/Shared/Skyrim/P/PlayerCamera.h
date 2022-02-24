@@ -31,29 +31,29 @@ namespace Skyrim
 		virtual void Unknown1(TESCamera*) override; // 1
 
 		// Member variables
-		std::int8_t                                                                padding39;                                             // 39
-		std::int16_t                                                               padding3A;                                             // 3A
+		std::uint8_t                                                               padding39;                                             // 39
+		std::uint16_t                                                              padding3A;                                             // 3A
 		ActorHandle                                                                cameraTarget;                                          // 3C
 		BSTSmallArray<TESCameraState*, Utility::ToUnderlying(CameraState::kTotal)> temporaryReturnStates;                                 // 40
-		std::int64_t                                                               unknownB8[Utility::ToUnderlying(CameraState::kTotal)]; // B8
-		std::int64_t                                                               unknown120;                                            // 120
+		std::uint64_t                                                              unknownB8[Utility::ToUnderlying(CameraState::kTotal)]; // B8
+		std::uint64_t                                                              unknown120;                                            // 120
 		NiPointer<bhkRigidBody>                                                    rigidBody;                                             // 128
-		std::int32_t                                                               unknown130;                                            // 130
+		std::uint32_t                                                              unknown130;                                            // 130
 		mutable BSSpinLock                                                         lock;                                                  // 134
 		float                                                                      worldFOV;                                              // 13C
 		float                                                                      firstPersonFOV;                                        // 140
 		NiPoint3                                                                   position;                                              // 144
 		float                                                                      idleTimer;                                             // 150
 		float                                                                      yaw;                                                   // 154, Radians
-		std::int32_t                                                               unknown158;                                            // 158
-		std::int32_t                                                               unknown15C;                                            // 15C
+		std::uint32_t                                                              unknown158;                                            // 158
+		std::uint32_t                                                              unknown15C;                                            // 15C
 		bool                                                                       allowAutomaticVanityMode;                              // 160
 		bool                                                                       bowZoomedIn;                                           // 161
 		bool                                                                       weaponSheathed;                                        // 162
 		bool                                                                       updated;                                               // 163
-		std::int8_t                                                                unknown164;                                            // 164
-		std::int8_t                                                                padding165;                                            // 165
-		std::int16_t                                                               padding166;                                            // 166
+		std::uint8_t                                                               unknown164;                                            // 164
+		std::uint8_t                                                               padding165;                                            // 165
+		std::uint16_t                                                              padding166;                                            // 166
 	};
 	static_assert(offsetof(PlayerCamera, cameraTarget) == 0x3C);
 	static_assert(offsetof(PlayerCamera, temporaryReturnStates) == 0x40);

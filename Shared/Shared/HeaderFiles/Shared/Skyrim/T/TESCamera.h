@@ -24,11 +24,11 @@ namespace Skyrim
 		BSTPoint3<float>  translationInput; // 10
 		float             zoomInput;        // 1C
 		NiPointer<NiNode> cameraRoot;       // 20
-		std::int64_t      unknown28;        // 28
+		std::uint64_t     unknown28;        // 28
 		bool              enabled;          // 30
-		std::int8_t       padding31;        // 31
-		std::int16_t      padding32;        // 32
-		std::int32_t      padding34;        // 34
+		std::uint8_t      padding31;        // 31
+		std::uint16_t     padding32;        // 32
+		std::uint32_t     padding34;        // 34
 	};
 	static_assert(offsetof(TESCamera, rotationInput) == 0x8);
 	static_assert(offsetof(TESCamera, translationInput) == 0x10);

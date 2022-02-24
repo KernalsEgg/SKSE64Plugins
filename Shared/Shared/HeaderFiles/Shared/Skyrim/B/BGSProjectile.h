@@ -84,13 +84,13 @@ namespace Skyrim
 		float                                           tracerChance;            // A0
 		float                                           explosionProximity;      // A4
 		float                                           explosionTimer;          // A8
-		std::int32_t                                    paddingAC;               // AC
+		std::uint32_t                                   paddingAC;               // AC
 		BGSExplosion*                                   explosion;               // B0
 		BGSSoundDescriptorForm*                         sound;                   // B8
 		float                                           muzzleFlashDuration;     // C0
 		float                                           fadeDuration;            // C4
 		float                                           impactForce;             // C8
-		std::int32_t                                    paddingCC;               // CC
+		std::uint32_t                                   paddingCC;               // CC
 		BGSSoundDescriptorForm*                         explosionCountdownSound; // D0
 		BGSSoundDescriptorForm*                         disableSound;            // D8
 		TESObjectWEAP*                                  defaultWeaponSource;     // E0
@@ -102,7 +102,7 @@ namespace Skyrim
 		BGSCollisionLayer*                              collisionLayer;          // 100
 		TESModel                                        muzzleFlashModel;        // 108
 		Utility::Enumeration<SoundLevel, std::uint32_t> detectionSoundLevel;     // 130
-		std::int32_t                                    padding134;              // 134
+		std::uint32_t                                   padding134;              // 134
 	};
 	static_assert(offsetof(BGSProjectile, projectileFlags) == 0x80);
 	static_assert(offsetof(BGSProjectile, projectileType) == 0x82);

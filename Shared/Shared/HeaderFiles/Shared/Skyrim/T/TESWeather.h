@@ -148,8 +148,8 @@ namespace Skyrim
 		float                                     cloudAlpha[Utility::ToUnderlying(Layer::kTotal)][Utility::ToUnderlying(Time::kTotal)];  // 460, General, Cloud Textures
 		std::uint32_t                             disabledCloudLayers;                                                                    // 660, General, Cloud Textures (bitfield)
 		std::int8_t                               windSpeed;                                                                              // 664, General
-		std::int8_t                               unknown665;                                                                             // 665
-		std::int8_t                               unknown666;                                                                             // 666
+		std::uint8_t                              unknown665;                                                                             // 665
+		std::uint8_t                              unknown666;                                                                             // 666
 		std::int8_t                               transDelta;                                                                             // 667, General
 		std::int8_t                               sunGlare;                                                                               // 668, General
 		std::int8_t                               sunDamage;                                                                              // 669, General
@@ -164,13 +164,13 @@ namespace Skyrim
 		std::int8_t                               visualEffectEnd;                                                                        // 674, Effects, Visual Effect
 		std::int8_t                               windDirection;                                                                          // 675, General
 		std::int8_t                               windDirectionRange;                                                                     // 676, General
-		std::int8_t                               unknown677;                                                                             // 677
+		std::uint8_t                              unknown677;                                                                             // 677
 		FogDistance                               fogDistance;                                                                            // 678, General, Fog Distance
 		Color                                     colors[Utility::ToUnderlying(Type::kTotal)][Utility::ToUnderlying(Time::kTotal)];       // 698
 		BSSimpleList<Sound*>                      sounds;                                                                                 // 7A8
 		BSTArray<TESObjectSTAT*>                  skyStatics;                                                                             // 7B8, Effects
 		std::uint32_t                             cloudLayerCount;                                                                        // 7D0
-		std::int32_t                              padding7D4;                                                                             // 7D4
+		std::uint32_t                             padding7D4;                                                                             // 7D4
 		TESImageSpace*                            imageSpaces[Utility::ToUnderlying(Time::kTotal)];                                       // 7D8, General
 		DirectionalAmbientLighting                directionalAmbient[Utility::ToUnderlying(Time::kTotal)];                                // 7F8, General
 		TESModel                                  aurora;                                                                                 // 878, Effects

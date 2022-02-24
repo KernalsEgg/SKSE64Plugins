@@ -182,10 +182,10 @@ namespace Skyrim
 				};
 
 				// Member variables
-				std::int64_t unknown0;  // 0
-				std::int64_t unknown8;  // 8
-				std::int64_t unknown10; // 10
-				std::int64_t unknown18; // 18
+				std::uint64_t unknown0;  // 0
+				std::uint64_t unknown8;  // 8
+				std::uint64_t unknown10; // 10
+				std::uint64_t unknown18; // 18
 			};
 			static_assert(sizeof(Morph) == 0x20);
 
@@ -218,8 +218,8 @@ namespace Skyrim
 					// Member variables
 					std::uint16_t                                index;         // 0
 					Utility::Enumeration<MaskType, std::uint8_t> maskType;      // 2
-					std::int8_t                                  padding3;      // 3
-					std::int32_t                                 padding4;      // 4
+					std::uint8_t                                 padding3;      // 3
+					std::uint32_t                                padding4;      // 4
 					TESTexture                                   texture;       // 8
 					BGSColorForm*                                defaultPreset; // 18
 				};
@@ -287,7 +287,7 @@ namespace Skyrim
 		// Member variables
 		TESModel                                             skeletons[Utility::ToUnderlying(Sex::kTotal)];                               // 98, Body Data
 		SkillBonus                                           skillBonuses[TESRace::kSkillBonusCount];                                     // E8, General Data
-		std::int16_t                                         paddingF6;                                                                   // F6
+		std::uint16_t                                        paddingF6;                                                                   // F6
 		float                                                heights[Utility::ToUnderlying(Sex::kTotal)];                                 // F8, Body Data
 		float                                                weights[Utility::ToUnderlying(Sex::kTotal)];                                 // 100, Body Data
 		Utility::Enumeration<Flags, std::uint32_t>           raceFlags;                                                                   // 108
@@ -317,9 +317,9 @@ namespace Skyrim
 		NiPoint3                                             mountOffsets;                                                                // 168, General Data, Mount Data
 		NiPoint3                                             dismountOffsets;                                                             // 174
 		NiPoint3                                             mountCameraOffsets;                                                          // 180
-		std::int32_t                                         unknown18C;                                                                  // 18C
-		std::int32_t                                         unknown190;                                                                  // 190
-		std::int32_t                                         padding194;                                                                  // 194
+		std::uint32_t                                        unknown18C;                                                                  // 18C
+		std::uint32_t                                        unknown190;                                                                  // 190
+		std::uint32_t                                        padding194;                                                                  // 194
 		BGSTextureModel                                      bodyTextures[Utility::ToUnderlying(Sex::kTotal)];                            // 198, Body Data
 		BGSBehaviorGraphModel                                behaviorGraphs[Utility::ToUnderlying(Sex::kTotal)];                          // 1E8, Body Data
 		BSFixedString                                        behaviorGraphRootNames[Utility::ToUnderlying(Sex::kTotal)];                  // 238
@@ -327,16 +327,16 @@ namespace Skyrim
 		BGSVoiceType*                                        defaultVoiceTypes[Utility::ToUnderlying(Sex::kTotal)];                       // 258, Body Data
 		BGSBodyPartData*                                     bodyPartData;                                                                // 268, Body Data
 		TESObjectARMO*                                       decapitateArmor[Utility::ToUnderlying(Sex::kTotal)];                         // 270, Body Data
-		std::int64_t                                         unknown280;                                                                  // 280
-		std::int64_t                                         unknown288;                                                                  // 288
-		std::int64_t                                         unknown290;                                                                  // 290
-		std::int64_t                                         unknown298;                                                                  // 298
-		std::int64_t                                         unknown2A0;                                                                  // 2A0
-		std::int64_t                                         unknown2A8;                                                                  // 2A8
-		std::int64_t                                         unknown2B0;                                                                  // 2B0
-		std::int64_t                                         unknown2B8;                                                                  // 2B8
-		std::int64_t                                         unknown2C0;                                                                  // 2C0
-		std::int64_t                                         unknown2C8;                                                                  // 2C8
+		std::uint64_t                                        unknown280;                                                                  // 280
+		std::uint64_t                                        unknown288;                                                                  // 288
+		std::uint64_t                                        unknown290;                                                                  // 290
+		std::uint64_t                                        unknown298;                                                                  // 298
+		std::uint64_t                                        unknown2A0;                                                                  // 2A0
+		std::uint64_t                                        unknown2A8;                                                                  // 2A8
+		std::uint64_t                                        unknown2B0;                                                                  // 2B0
+		std::uint64_t                                        unknown2B8;                                                                  // 2B8
+		std::uint64_t                                        unknown2C0;                                                                  // 2C0
+		std::uint64_t                                        unknown2C8;                                                                  // 2C8
 		AttackAnimationArrayMap*                             attacks[Utility::ToUnderlying(Sex::kTotal)];                                 // 2D0, Attack Data
 		BSFixedString                                        editorID;                                                                    // 2E0
 		BGSMaterialType*                                     impactMaterialType;                                                          // 2E8, Blood, When we are hit
@@ -347,12 +347,12 @@ namespace Skyrim
 		BSFixedString                                        bipedObjectNames[Utility::ToUnderlying(BipedObjectSlot::kCreationKitTotal)]; // 310
 		BSTArray<BGSEquipSlot*>                              equipSlots;                                                                  // 410, Combat Data, Equipment Restrictions
 		Utility::Enumeration<EquipTypes, std::uint32_t>      equipTypes;                                                                  // 428, Combat Data, Equipment Restrictions
-		std::int32_t                                         unknown42C;                                                                  // 42C
+		std::uint32_t                                        unknown42C;                                                                  // 42C
 		BGSEquipSlot*                                        unarmedEquipSlot;                                                            // 430, Combat Data
 		CopiedData                                           copiedData;                                                                  // 438, General Data
-		std::int64_t                                         unknown448;                                                                  // 448
-		std::int64_t                                         unknown450;                                                                  // 450
-		std::int64_t                                         unknown458;                                                                  // 458
+		std::uint64_t                                        unknown448;                                                                  // 448
+		std::uint64_t                                        unknown450;                                                                  // 450
+		std::uint64_t                                        unknown458;                                                                  // 458
 		BSTArray<BSFixedString>                              phonemeTargets;                                                              // 460, Phoneme Mapping
 		BGSMovementType*                                     baseMovementDefaults[Utility::ToUnderlying(MoveType::kTotal)];               // 478, Move Data
 		CharacterGenerationData*                             characterGenerationData[Utility::ToUnderlying(Sex::kTotal)];                 // 4A8

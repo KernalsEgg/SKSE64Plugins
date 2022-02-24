@@ -40,8 +40,8 @@ namespace Skyrim
 
 	private:
 		// Member variables
-		std::int32_t absoluteCurrentPosition_;                                                                                                                                // 8
-		std::int32_t paddingC_;                                                                                                                                               // C
+		std::uint32_t absoluteCurrentPosition_;                                                                                                                               // 8
+		std::uint32_t paddingC_;                                                                                                                                              // C
 		std::uint32_t (*readFunction_)(NiBinaryStream* binaryStream, void* buffer, std::uint32_t length, std::uint32_t* componentSizes, std::uint32_t componentCount);        // 10, SkyrimSE.exe + 0xC767B0 (69647)
 		std::uint32_t (*writeFunction_)(NiBinaryStream* binaryStream, const void* buffer, std::uint32_t length, std::uint32_t* componentSizes, std::uint32_t componentCount); // 18, SkyrimSE.exe + 0xC76820 (69648)
 	};

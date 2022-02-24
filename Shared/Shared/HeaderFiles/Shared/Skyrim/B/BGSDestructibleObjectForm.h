@@ -30,14 +30,14 @@ namespace Skyrim
 
 		// Member variables
 		std::int8_t                               modelDamageStage;             // 0
-		std::int8_t                               healthPercentage;             // 1
+		std::uint8_t                              healthPercentage;             // 1
 		Utility::Enumeration<Flags, std::uint8_t> destructibleObjectStageFlags; // 2
-		std::int8_t                               padding3;                     // 3
+		std::uint8_t                              padding3;                     // 3
 		std::uint32_t                             selfDamagePerSecond;          // 4
 		BGSExplosion*                             explosion;                    // 8
 		BGSDebris*                                debris;                       // 10
 		std::uint32_t                             debrisCount;                  // 18
-		std::int32_t                              padding1C;                    // 1C
+		std::uint32_t                             padding1C;                    // 1C
 		TESModelTextureSwap*                      replacementModel;             // 20
 	};
 	static_assert(offsetof(DestructibleObjectStage, modelDamageStage) == 0x0);
@@ -64,10 +64,10 @@ namespace Skyrim
 		std::uint32_t                             health;                         // 0
 		std::int8_t                               stageCount;                     // 4
 		Utility::Enumeration<Flags, std::uint8_t> destructibleObjectDataFlags;    // 5
-		std::int16_t                              padding6;                       // 6
+		std::uint16_t                             padding6;                       // 6
 		DestructibleObjectStage**                 stages;                         // 8
 		volatile std::int32_t                     replacementModelReferenceCount; // 10
-		std::int32_t                              padding14;                      // 14
+		std::uint32_t                             padding14;                      // 14
 		NiPointer<QueuedFile>                     preloadedReplacementModels;     // 18
 	};
 	static_assert(offsetof(DestructibleObjectData, health) == 0x0);

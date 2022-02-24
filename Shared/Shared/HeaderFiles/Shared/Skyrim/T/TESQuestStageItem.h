@@ -19,7 +19,7 @@ namespace Skyrim
 		TESCondition         conditions;       // 0
 		TESQuest*            nextQuest;        // 8
 		BGSLocalizedStringDL logEntry;         // 10
-		std::int32_t         unknown14;        // 14
+		std::uint32_t        unknown14;        // 14
 		TESQuest*            owningQuest;      // 18
 		TESQuestStage*       owningQuestStage; // 20
 	};

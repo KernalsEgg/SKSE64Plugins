@@ -34,7 +34,7 @@ namespace Skyrim
 		// Member variables
 		BSFixedString                              associationTypeLabels[Utility::ToUnderlying(AssociationType::kTotal)][Utility::ToUnderlying(Sex::kTotal)]; // 20
 		Utility::Enumeration<Flags, std::uint32_t> associationTypeFlags;                                                                                      // 40
-		std::int32_t                               padding44;                                                                                                 // 44
+		std::uint32_t                              padding44;                                                                                                 // 44
 	};
 	static_assert(offsetof(BGSAssociationType, associationTypeLabels) == 0x20);
 	static_assert(offsetof(BGSAssociationType, associationTypeFlags) == 0x40);

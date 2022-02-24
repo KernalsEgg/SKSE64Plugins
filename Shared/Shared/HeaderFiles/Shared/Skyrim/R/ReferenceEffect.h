@@ -50,8 +50,8 @@ namespace Skyrim
 		ObjectReferenceHandle      facingTarget;  // 3C
 		bool                       finished;      // 40
 		bool                       ownController; // 41
-		std::int16_t               padding42;     // 42
-		std::int32_t               padding44;     // 44
+		std::uint16_t              padding42;     // 42
+		std::uint32_t              padding44;     // 44
 	};
 	static_assert(offsetof(ReferenceEffect, controller) == 0x30);
 	static_assert(offsetof(ReferenceEffect, target) == 0x38);

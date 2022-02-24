@@ -37,7 +37,7 @@ namespace Skyrim
 			NiColor                                    singlePassColor;             // 20
 			std::int32_t                               singlePass;                  // 2C
 			Utility::Enumeration<Flags, std::uint32_t> materialObjectFlags;         // 30
-			std::int32_t                               padding34;                   // 34
+			std::uint32_t                              padding34;                   // 34
 		};
 		static_assert(offsetof(DirectionalMaterialData, falloffScale) == 0x0);
 		static_assert(offsetof(DirectionalMaterialData, falloffBias) == 0x4);

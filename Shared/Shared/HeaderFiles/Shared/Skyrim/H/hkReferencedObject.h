@@ -33,7 +33,7 @@ namespace Skyrim
 		// Member variables
 		std::uint16_t                 sizeAndFlags;   // 8
 		volatile mutable std::int16_t referenceCount; // A
-		std::int32_t                  paddingC;       // C
+		std::uint32_t                 paddingC;       // C
 	};
 	static_assert(offsetof(hkReferencedObject, sizeAndFlags) == 0x8);
 	static_assert(offsetof(hkReferencedObject, referenceCount) == 0xA);

@@ -40,7 +40,7 @@ namespace Skyrim
 		std::uint32_t                              index;               // 30
 		Color                                      debugColor;          // 34
 		Utility::Enumeration<Flags, std::uint32_t> collisionLayerFlags; // 38
-		std::int32_t                               padding3C;           // 3C
+		std::uint32_t                              padding3C;           // 3C
 		BSFixedString                              name;                // 40
 		BSTArray<BGSCollisionLayer*>               collidesWith;        // 48
 	};

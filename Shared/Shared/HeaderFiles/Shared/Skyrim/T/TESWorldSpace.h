@@ -248,61 +248,61 @@ namespace Skyrim
 		BGSTerrainManager*                                            terrainManager;             // 90
 		ClimateData                                                   climateData;                // 98
 		Utility::Enumeration<Flags, std::uint8_t>                     worldSpaceFlags;            // A0
-		std::int8_t                                                   unknownA1;                  // A1
+		std::uint8_t                                                  unknownA1;                  // A1
 		Utility::Enumeration<UseFlags, std::uint16_t>                 useFlags;                   // A2
 		CenterCell                                                    centerCell;                 // A4
 		BSTHashMap<std::uint32_t, BSTArray<NiPointer<TESObjectREFR>>> fixedPersistentReferences;  // A8
 		BSTArray<NiPointer<TESObjectREFR>>                            mobilePersistentReferences; // D8
-		std::int64_t                                                  unknownF0;                  // F0
+		std::uint64_t                                                 unknownF0;                  // F0
 		TESObjectCELL*                                                skyCell;                    // F8
 		BSTHashMap<FormID, BGSLocation*>                              locations;                  // 100
-		std::int64_t                                                  unknown130;                 // 130
-		std::int64_t                                                  unknown138;                 // 138
-		std::int64_t                                                  unknown140;                 // 140
-		std::int64_t                                                  unknown148;                 // 148
-		std::int64_t                                                  unknown150;                 // 150
+		std::uint64_t                                                 unknown130;                 // 130
+		std::uint64_t                                                 unknown138;                 // 138
+		std::uint64_t                                                 unknown140;                 // 140
+		std::uint64_t                                                 unknown148;                 // 148
+		std::uint64_t                                                 unknown150;                 // 150
 		TESWorldSpace*                                                parentWorldspace;           // 158
 		BGSLightingTemplate*                                          interiorLighting;           // 160
 		WaterData                                                     waterData;                  // 168
 		LODData                                                       lodData;                    // 170
-		std::int32_t                                                  padding17C;                 // 17C
-		std::int64_t                                                  unknown180;                 // 180
+		std::uint32_t                                                 padding17C;                 // 17C
+		std::uint64_t                                                 unknown180;                 // 180
 		WorldMapData                                                  worldMapData;               // 188
 		WorldMapOffsetData                                            worldMapOffsetData;         // 1A4
-		std::int32_t                                                  padding1B4;                 // 1B4
+		std::uint32_t                                                 padding1B4;                 // 1B4
 		BGSMusicType*                                                 music;                      // 1B8
 		NiPoint2                                                      minimumCoordinates;         // 1C0
 		NiPoint2                                                      maximumCoordinates;         // 1C8
-		std::int64_t                                                  unknown1D0;                 // 1D0
-		std::int64_t                                                  unknown1D8;                 // 1D8
-		std::int64_t                                                  unknown1E0;                 // 1E0
-		std::int64_t                                                  unknown1E8;                 // 1E8
-		std::int64_t                                                  unknown1F0;                 // 1F0
-		std::int64_t                                                  unknown1F8;                 // 1F8
+		std::uint64_t                                                 unknown1D0;                 // 1D0
+		std::uint64_t                                                 unknown1D8;                 // 1D8
+		std::uint64_t                                                 unknown1E0;                 // 1E0
+		std::uint64_t                                                 unknown1E8;                 // 1E8
+		std::uint64_t                                                 unknown1F0;                 // 1F0
+		std::uint64_t                                                 unknown1F8;                 // 1F8
 		BSString                                                      editorID;                   // 200
 		LandData                                                      landData;                   // 210
 		float                                                         distantLODMultiplier;       // 218
-		std::int32_t                                                  padding21C;                 // 21C
+		std::uint32_t                                                 padding21C;                 // 21C
 		BGSEncounterZone*                                             encounterZone;              // 220
 		BGSLocation*                                                  location;                   // 228
 		TESTexture                                                    canopyShadow;               // 230
 		TESTexture                                                    waterEnvironmentMap;        // 240
 		BGSLargeRefData                                               largeRefData;               // 250
-		std::int64_t                                                  unknown2E0;                 // 2E0
-		std::int64_t                                                  unknown2E8;                 // 2E8
-		std::int64_t                                                  unknown2F0;                 // 2F0
-		std::int64_t                                                  unknown2F8;                 // 2F8
-		std::int64_t                                                  unknown300;                 // 300
-		std::int64_t                                                  unknown308;                 // 308
-		std::int64_t                                                  unknown310;                 // 310
-		std::int64_t                                                  unknown318;                 // 318
-		std::int64_t                                                  unknown320;                 // 320
-		std::int64_t                                                  unknown328;                 // 328
-		std::int64_t                                                  unknown330;                 // 330
-		std::int64_t                                                  unknown338;                 // 338
-		std::int64_t                                                  unknown340;                 // 340
-		std::int64_t                                                  unknown348;                 // 348
-		std::int64_t                                                  unknown350;                 // 350
+		std::uint64_t                                                 unknown2E0;                 // 2E0
+		std::uint64_t                                                 unknown2E8;                 // 2E8
+		std::uint64_t                                                 unknown2F0;                 // 2F0
+		std::uint64_t                                                 unknown2F8;                 // 2F8
+		std::uint64_t                                                 unknown300;                 // 300
+		std::uint64_t                                                 unknown308;                 // 308
+		std::uint64_t                                                 unknown310;                 // 310
+		std::uint64_t                                                 unknown318;                 // 318
+		std::uint64_t                                                 unknown320;                 // 320
+		std::uint64_t                                                 unknown328;                 // 328
+		std::uint64_t                                                 unknown330;                 // 330
+		std::uint64_t                                                 unknown338;                 // 338
+		std::uint64_t                                                 unknown340;                 // 340
+		std::uint64_t                                                 unknown348;                 // 348
+		std::uint64_t                                                 unknown350;                 // 350
 	};
 	static_assert(offsetof(TESWorldSpace, cells) == 0x58);
 	static_assert(offsetof(TESWorldSpace, persistentCell) == 0x88);

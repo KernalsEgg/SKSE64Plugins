@@ -40,9 +40,9 @@ namespace Skyrim
 		bool                weightSlider[Utility::ToUnderlying(Sex::kTotal)];           // 42
 		std::int8_t         unused[Utility::ToUnderlying(Sex::kTotal)];                 // 44
 		std::int8_t         detectionSoundValue;                                        // 46
-		std::int8_t         padding47;                                                  // 47
+		std::uint8_t        padding47;                                                  // 47
 		float               weaponAdjust;                                               // 48
-		std::int32_t        padding4C;                                                  // 4C
+		std::uint32_t       padding4C;                                                  // 4C
 		TESModelTextureSwap bipedModels[Utility::ToUnderlying(Sex::kTotal)];            // 50
 		TESModelTextureSwap firstPersonBipedModels[Utility::ToUnderlying(Sex::kTotal)]; // C0
 		BGSTextureSet*      skinTextures[Utility::ToUnderlying(Sex::kTotal)];           // 130

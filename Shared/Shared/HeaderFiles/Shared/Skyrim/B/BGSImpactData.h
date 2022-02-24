@@ -53,14 +53,14 @@ namespace Skyrim
 		Utility::Enumeration<SoundLevel, std::uint32_t>  impactSoundLevel;    // 58
 		Utility::Enumeration<Flags, std::uint8_t>        impactDataFlags;     // 5C
 		Utility::Enumeration<ImpactResult, std::uint8_t> effectImpactResult;  // 5D
-		std::int16_t                                     padding5E;           // 5E
+		std::uint16_t                                    padding5E;           // 5E
 		BGSTextureSet*                                   textureSet;          // 60
 		BGSTextureSet*                                   secondaryTextureSet; // 68
 		BGSSoundDescriptorForm*                          impactSound1;        // 70
 		BGSSoundDescriptorForm*                          impactSound2;        // 78
 		BGSHazard*                                       effectHazard;        // 80
 		DecalData                                        decalData;           // 88
-		std::int32_t                                     paddingAC;           // AC
+		std::uint32_t                                    paddingAC;           // AC
 	};
 	static_assert(offsetof(BGSImpactData, effectDuration) == 0x48);
 	static_assert(offsetof(BGSImpactData, effectOrientation) == 0x4C);

@@ -25,10 +25,10 @@ namespace Skyrim
 		float          magnitude;  // 0
 		std::uint32_t  area;       // 4
 		std::uint32_t  duration;   // 8
-		std::int32_t   paddingC;   // C
+		std::uint32_t  paddingC;   // C
 		EffectSetting* baseEffect; // 10
 		float          cost;       // 18
-		std::int32_t   padding1C;  // 1C
+		std::uint32_t  padding1C;  // 1C
 		TESCondition   conditions; // 20
 	};
 	static_assert(offsetof(Effect, magnitude) == 0x0);

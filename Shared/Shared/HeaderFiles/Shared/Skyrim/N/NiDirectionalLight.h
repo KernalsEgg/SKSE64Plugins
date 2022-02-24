@@ -26,9 +26,9 @@ namespace Skyrim
 		virtual void          Unknown30(NiAVObject*) override; // 30
 
 		// Member variables
-		std::int64_t unknown140; // 140
-		std::int64_t unknown148; // 148
-		std::int64_t unknown150; // 150
+		std::uint64_t unknown140; // 140
+		std::uint64_t unknown148; // 148
+		std::uint64_t unknown150; // 150
 	};
 	static_assert(sizeof(NiDirectionalLight) == 0x158);
 }

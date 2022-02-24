@@ -31,9 +31,9 @@ namespace Skyrim
 		FormID                                    source;        // 10
 		FormID                                    projectile;    // 14
 		Utility::Enumeration<Flags, std::uint8_t> hitEventFlags; // 18
-		std::int8_t                               padding19;     // 19
-		std::int16_t                              padding1A;     // 1A
-		std::int32_t                              padding1C;     // 1C
+		std::uint8_t                              padding19;     // 19
+		std::uint16_t                             padding1A;     // 1A
+		std::uint32_t                             padding1C;     // 1C
 	};
 	static_assert(offsetof(TESHitEvent, target) == 0x0);
 	static_assert(offsetof(TESHitEvent, cause) == 0x8);

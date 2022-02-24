@@ -28,21 +28,21 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		std::int64_t          unknown0;  // 0
-		std::int64_t          unknown8;  // 8
-		std::int64_t          unknown10; // 10
-		std::int64_t          unknown18; // 18
-		std::int64_t          unknown20; // 20
-		std::int64_t          unknown28; // 28
-		std::int64_t          unknown30; // 30
-		std::int64_t          unknown38; // 38
-		std::int64_t          unknown40; // 40
-		std::int64_t          unknown48; // 48
-		std::int64_t          unknown50; // 50
-		std::int64_t          unknown58; // 58
-		std::int64_t          unknown60; // 60
+		std::uint64_t         unknown0;  // 0
+		std::uint64_t         unknown8;  // 8
+		std::uint64_t         unknown10; // 10
+		std::uint64_t         unknown18; // 18
+		std::uint64_t         unknown20; // 20
+		std::uint64_t         unknown28; // 28
+		std::uint64_t         unknown30; // 30
+		std::uint64_t         unknown38; // 38
+		std::uint64_t         unknown40; // 40
+		std::uint64_t         unknown48; // 48
+		std::uint64_t         unknown50; // 50
+		std::uint64_t         unknown58; // 58
+		std::uint64_t         unknown60; // 60
 		NiPointer<NiAVObject> current3D; // 68
-		std::int64_t          unknown70; // 70
+		std::uint64_t         unknown70; // 70
 	};
 	static_assert(offsetof(LoadedReferenceData, current3D) == 0x68);
 	static_assert(sizeof(LoadedReferenceData) == 0x78);
@@ -223,8 +223,8 @@ namespace Skyrim
 		TESObjectCELL*       parentCell;          // 60
 		LoadedReferenceData* loadedReferenceData; // 68
 		ExtraDataList        extraDataList;       // 70
-		std::int64_t         unknown88;           // 88
-		std::int64_t         unknown90;           // 90
+		std::uint64_t        unknown88;           // 88
+		std::uint64_t        unknown90;           // 90
 	};
 	static_assert(offsetof(TESObjectREFR, baseObject) == 0x40);
 	static_assert(offsetof(TESObjectREFR, rotation) == 0x48);

@@ -25,8 +25,8 @@ namespace Skyrim
 
 		// Member variables
 		std::uint16_t attackDamage; // 8
-		std::int16_t  paddingA;     // A
-		std::int32_t  paddingC;     // C
+		std::uint16_t paddingA;     // A
+		std::uint32_t paddingC;     // C
 	};
 	static_assert(offsetof(TESAttackDamageForm, attackDamage) == 0x8);
 	static_assert(sizeof(TESAttackDamageForm) == 0x10);

@@ -23,11 +23,11 @@ namespace Skyrim
 		virtual void Unknown9(SettingCollection<T>*) override; // 9
 
 		// Member variables
-		std::int64_t unknown118; // 118
-		std::int64_t unknown120; // 120
-		std::int64_t unknown128; // 128
-		std::int64_t unknown130; // 130
-		std::int64_t unknown138; // 138
+		std::uint64_t unknown118; // 118
+		std::uint64_t unknown120; // 120
+		std::uint64_t unknown128; // 128
+		std::uint64_t unknown130; // 130
+		std::uint64_t unknown138; // 138
 	};
 	static_assert(sizeof(SettingCollectionMap<void*>) == 0x140);
 }

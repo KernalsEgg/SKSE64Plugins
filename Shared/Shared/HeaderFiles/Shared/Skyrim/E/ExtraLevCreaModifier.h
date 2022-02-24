@@ -32,7 +32,7 @@ namespace Skyrim
 
 		// Member variables
 		Utility::Enumeration<LeveledCreatureModifier, std::uint32_t> leveledCreatureModifier; // 10
-		std::int32_t                                                 padding14;               // 14
+		std::uint32_t                                                padding14;               // 14
 	};
 	static_assert(offsetof(ExtraLevCreaModifier, leveledCreatureModifier) == 0x10);
 	static_assert(sizeof(ExtraLevCreaModifier) == 0x18);

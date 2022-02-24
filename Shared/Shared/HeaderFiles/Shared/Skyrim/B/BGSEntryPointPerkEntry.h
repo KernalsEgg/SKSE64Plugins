@@ -25,17 +25,17 @@ namespace Skyrim
 		virtual ~BGSEntryPointPerkEntry() override; // 3
 
 		// Override (BGSPerkEntry)
-		virtual bool     EvaluateConditions(std::int32_t argumentCount, void* arguments) const override; // 0
-		virtual Function GetFunction() const override;                                                   // 1
-		virtual void*    GetFunctionData() const override;                                               // 2
-		virtual Type     GetType() const override;                                                       // 4
-		virtual void     Unknown5(BGSPerkEntry*) override;                                               // 5
-		virtual void     Unknown6(BGSPerkEntry*) override;                                               // 6
-		virtual void     Unknown7(BGSPerkEntry*) override;                                               // 7
-		virtual void     Unknown8(BGSPerkEntry*) override;                                               // 8
-		virtual void     Unknown9(BGSPerkEntry*) override;                                               // 9
-		virtual void     ApplyPerkEntry(Actor* perkOwner) override;                                      // A
-		virtual void     RemovePerkEntry(Actor* perkOwner) override;                                     // B
+		virtual bool     EvaluateConditions(std::uint32_t argumentCount, void* arguments) const override; // 0
+		virtual Function GetFunction() const override;                                                    // 1
+		virtual void*    GetFunctionData() const override;                                                // 2
+		virtual Type     GetType() const override;                                                        // 4
+		virtual void     Unknown5(BGSPerkEntry*) override;                                                // 5
+		virtual void     Unknown6(BGSPerkEntry*) override;                                                // 6
+		virtual void     Unknown7(BGSPerkEntry*) override;                                                // 7
+		virtual void     Unknown8(BGSPerkEntry*) override;                                                // 8
+		virtual void     Unknown9(BGSPerkEntry*) override;                                                // 9
+		virtual void     ApplyPerkEntry(Actor* perkOwner) override;                                       // A
+		virtual void     RemovePerkEntry(Actor* perkOwner) override;                                      // B
 
 		// Non-member functions
 		template <class... Arguments>
@@ -50,8 +50,8 @@ namespace Skyrim
 		Utility::Enumeration<EntryPoint, std::uint8_t> entryPoint;    // 10
 		Utility::Enumeration<Function, std::uint8_t>   function;      // 11
 		std::uint8_t                                   argumentCount; // 12
-		std::int8_t                                    unknown13;     // 13
-		std::int32_t                                   unknown14;     // 14
+		std::uint8_t                                   unknown13;     // 13
+		std::uint32_t                                  unknown14;     // 14
 		BGSEntryPointFunctionData*                     functionData;  // 18
 		SimpleArray<TESCondition>                      conditions;    // 20
 		BGSPerk*                                       perk;          // 28

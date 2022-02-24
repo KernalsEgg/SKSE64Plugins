@@ -39,8 +39,8 @@ namespace Skyrim
 		float GetWeight() const;
 
 		// Member variables
-		std::int64_t unknown20; // 20
-		std::int64_t unknown28; // 28
+		std::uint64_t unknown20; // 20
+		std::uint64_t unknown28; // 28
 	};
 	static_assert(sizeof(TESBoundObject) == 0x30);
 }

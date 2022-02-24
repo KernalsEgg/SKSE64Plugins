@@ -24,8 +24,8 @@ namespace Skyrim
 		virtual void Unknown13(SimpleAnimationGraphManagerHolder*); // 13
 
 		// Member variables
-		std::int64_t unknown8;  // 8
-		std::int64_t unknown10; // 10
+		std::uint64_t unknown8;  // 8
+		std::uint64_t unknown10; // 10
 	};
 	static_assert(sizeof(SimpleAnimationGraphManagerHolder) == 0x18);
 }

@@ -23,9 +23,9 @@ namespace Skyrim
 		float                              currentInventoryWeight;  // 10
 		float                              previousInventoryWeight; // 14
 		bool                               changed;                 // 18
-		std::int8_t                        padding19;               // 19
-		std::int16_t                       padding1A;               // 1A
-		std::int32_t                       padding1C;               // 1C
+		std::uint8_t                       padding19;               // 19
+		std::uint16_t                      padding1A;               // 1A
+		std::uint32_t                      padding1C;               // 1C
 	};
 	static_assert(offsetof(InventoryChanges, inventoryEntryDataList) == 0x0);
 	static_assert(offsetof(InventoryChanges, owner) == 0x8);

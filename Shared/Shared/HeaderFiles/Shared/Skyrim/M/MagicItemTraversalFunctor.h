@@ -23,7 +23,7 @@ namespace Skyrim
 		virtual ReturnType Traverse(Effect* effect) = 0; // 1
 
 		// Member variables
-		std::int64_t unknown8; // 8
+		std::uint64_t unknown8; // 8
 	};
 	static_assert(sizeof(MagicItemTraversalFunctor) == 0x10);
 }

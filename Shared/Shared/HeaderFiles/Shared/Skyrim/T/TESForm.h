@@ -89,13 +89,13 @@ namespace Skyrim
 		std::uint16_t    GetMaximumCharge(ExtraDataList* extraDataList) const;
 
 		// Member variables
-		std::int64_t                                 unknown8;  // 8
-		std::int32_t                                 unknown10; // 10
+		std::uint64_t                                unknown8;  // 8
+		std::uint32_t                                unknown10; // 10
 		FormID                                       formID;    // 14
-		std::int16_t                                 unknown18; // 18
+		std::uint16_t                                unknown18; // 18
 		Utility::Enumeration<FormType, std::uint8_t> formType;  // 1A
-		std::int8_t                                  unknown1B; // 1B
-		std::int32_t                                 unknown1C; // 1C
+		std::uint8_t                                 unknown1B; // 1B
+		std::uint32_t                                unknown1C; // 1C
 	};
 	static_assert(offsetof(TESForm, formID) == 0x14);
 	static_assert(offsetof(TESForm, formType) == 0x1A);

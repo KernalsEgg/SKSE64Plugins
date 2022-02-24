@@ -24,12 +24,12 @@ namespace Skyrim
 		virtual void          Unknown1C(NiObject*) override; // 1C
 
 		// Member variables
-		std::int64_t unknown110; // 110
-		std::int64_t unknown118; // 118
-		std::int64_t unknown120; // 120
-		std::int64_t unknown128; // 128
-		std::int64_t unknown130; // 130
-		std::int64_t unknown138; // 138
+		std::uint64_t unknown110; // 110
+		std::uint64_t unknown118; // 118
+		std::uint64_t unknown120; // 120
+		std::uint64_t unknown128; // 128
+		std::uint64_t unknown130; // 130
+		std::uint64_t unknown138; // 138
 	};
 	static_assert(sizeof(NiLight) == 0x140);
 }

@@ -28,9 +28,9 @@ namespace Skyrim
 
 		// Member variables
 		BSFixedString name;      // 10
-		std::int64_t  unknown18; // 18
-		std::int64_t  unknown20; // 20
-		std::int64_t  unknown28; // 28
+		std::uint64_t unknown18; // 18
+		std::uint64_t unknown20; // 20
+		std::uint64_t unknown28; // 28
 	};
 	static_assert(offsetof(NiObjectNET, name) == 0x10);
 	static_assert(sizeof(NiObjectNET) == 0x30);

@@ -24,7 +24,7 @@ namespace Skyrim
 			NiPointer<NiCamera>            camera;         // 40
 			NiPointer<BSShaderAccumulator> accumulator;    // 48
 			BSCullingProcess*              cullingProcess; // 50
-			std::int64_t                   padding58;      // 58
+			std::uint64_t                  padding58;      // 58
 		};
 		static_assert(offsetof(OcclusionMapData, projection) == 0x0);
 		static_assert(offsetof(OcclusionMapData, camera) == 0x40);
@@ -42,7 +42,7 @@ namespace Skyrim
 		float                 previousCubeSize;        // 80
 		float                 currentParticleDensity;  // 84
 		float                 previousParticleDensity; // 88
-		std::int32_t          padding8C;               // 8C
+		std::uint32_t         padding8C;               // 8C
 	};
 	static_assert(offsetof(Precipitation, occlusionMapData) == 0x10);
 	static_assert(offsetof(Precipitation, currentPrecipitation) == 0x70);

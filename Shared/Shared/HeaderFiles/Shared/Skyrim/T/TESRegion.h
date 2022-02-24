@@ -27,12 +27,12 @@ namespace Skyrim
 		virtual void Unknown3B(TESRegion*); // 3B
 
 		// Member variables
-		std::int64_t   unknown20;      // 20
-		std::int64_t   unknown28;      // 28
+		std::uint64_t  unknown20;      // 20
+		std::uint64_t  unknown28;      // 28
 		TESWorldSpace* worldSpace;     // 30
 		TESWeather*    currentWeather; // 38
-		std::int64_t   unknown40;      // 40
-		std::int64_t   unknown48;      // 48
+		std::uint64_t  unknown40;      // 40
+		std::uint64_t  unknown48;      // 48
 	};
 	static_assert(offsetof(TESRegion, worldSpace) == 0x30);
 	static_assert(offsetof(TESRegion, currentWeather) == 0x38);

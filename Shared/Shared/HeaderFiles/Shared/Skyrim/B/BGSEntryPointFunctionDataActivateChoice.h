@@ -41,8 +41,8 @@ namespace Skyrim
 		BGSPerk*                                   perk;                // 10
 		SpellItem*                                 applySpell;          // 18
 		Utility::Enumeration<Flags, std::uint16_t> activateChoiceFlags; // 20
-		std::int16_t                               unknown22;           // 22
-		std::int32_t                               padding24;           // 24
+		std::uint16_t                              unknown22;           // 22
+		std::uint32_t                              padding24;           // 24
 	};
 	static_assert(offsetof(BGSEntryPointFunctionDataActivateChoice, buttonLabel) == 0x8);
 	static_assert(offsetof(BGSEntryPointFunctionDataActivateChoice, perk) == 0x10);

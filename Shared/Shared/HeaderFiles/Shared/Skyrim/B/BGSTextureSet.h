@@ -47,9 +47,9 @@ namespace Skyrim
 		TESTexture                                 textures[Utility::ToUnderlying(TextureMap::kTotal)];   // 40
 		DecalData*                                 decalData;                                             // C0
 		Utility::Enumeration<Flags, std::uint16_t> textureSetFlags;                                       // C8
-		std::int16_t                               paddingCA;                                             // CA
+		std::uint16_t                              paddingCA;                                             // CA
 		BSResource::ID                             textureIDs[Utility::ToUnderlying(TextureMap::kTotal)]; // CC
-		std::int32_t                               padding12C;                                            // 12C
+		std::uint32_t                              padding12C;                                            // 12C
 	};
 	static_assert(offsetof(BGSTextureSet, textures) == 0x40);
 	static_assert(offsetof(BGSTextureSet, decalData) == 0xC0);

@@ -35,7 +35,7 @@ namespace Skyrim
 			Utility::Enumeration<MagicSystem::Delivery, std::uint32_t>    delivery;             // 10
 			Utility::Enumeration<MagicSystem::SpellType, std::uint32_t>   type;                 // 14
 			float                                                         chargeTime;           // 18
-			std::int32_t                                                  padding1C;            // 1C
+			std::uint32_t                                                 padding1C;            // 1C
 			EnchantmentItem*                                              baseEnchantment;      // 20
 			BGSListForm*                                                  wornRestrictions;     // 28
 		};

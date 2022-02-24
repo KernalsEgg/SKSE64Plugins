@@ -60,10 +60,10 @@ namespace Skyrim
 		TESNPC*                                               relationshipNPC[Utility::ToUnderlying(AssociationType::kTotal)]; // 20
 		BGSAssociationType*                                   associationType;                                                 // 30
 		Utility::Enumeration<RelationshipLevel, std::uint8_t> relationshipLevel;                                               // 38
-		std::int8_t                                           unknown39;                                                       // 39
-		std::int8_t                                           unknown3A;                                                       // 3A
+		std::uint8_t                                          unknown39;                                                       // 39
+		std::uint8_t                                          unknown3A;                                                       // 3A
 		Utility::Enumeration<Flags, std::uint8_t>             relationshipFlags;                                               // 3B
-		std::int32_t                                          padding3C;                                                       // 3C
+		std::uint32_t                                         padding3C;                                                       // 3C
 	};
 	static_assert(offsetof(BGSRelationship, relationshipNPC) == 0x20);
 	static_assert(offsetof(BGSRelationship, associationType) == 0x30);

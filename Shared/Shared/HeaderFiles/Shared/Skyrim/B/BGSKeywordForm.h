@@ -29,7 +29,7 @@ namespace Skyrim
 		// Member variables
 		BGSKeyword**  keywords;     // 8
 		std::uint32_t keywordCount; // 10
-		std::int32_t  padding14;    // 14
+		std::uint32_t padding14;    // 14
 	};
 	static_assert(offsetof(BGSKeywordForm, keywords) == 0x8);
 	static_assert(offsetof(BGSKeywordForm, keywordCount) == 0x10);

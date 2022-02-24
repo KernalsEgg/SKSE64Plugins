@@ -59,12 +59,12 @@ namespace Skyrim
 
 		// Member variables
 		RefAttachTechniqueInput                    attachTechniqueInput;      // 68
-		std::int64_t                               unknownB0;                 // B0
+		std::uint64_t                              unknownB0;                 // B0
 		BGSArtObject*                              artObject;                 // B8
-		std::int64_t                               unknownC0;                 // C0
+		std::uint64_t                              unknownC0;                 // C0
 		NiPointer<NiAVObject>                      artObject3D;               // C8
 		Utility::Enumeration<Flags, std::uint32_t> modelReferenceEffectFlags; // D0
-		std::int32_t                               unknownD4;                 // D4
+		std::uint32_t                              unknownD4;                 // D4
 	};
 	static_assert(offsetof(ModelReferenceEffect, attachTechniqueInput) == 0x68);
 	static_assert(offsetof(ModelReferenceEffect, artObject) == 0xB8);

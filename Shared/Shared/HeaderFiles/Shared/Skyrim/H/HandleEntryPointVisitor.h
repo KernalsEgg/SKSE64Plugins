@@ -21,14 +21,14 @@ namespace Skyrim
 
 		// Member variables
 		Utility::Enumeration<BGSEntryPointFunctionData::ResultType, std::uint32_t> resultType;    // 8
-		std::int32_t                                                               paddingC;      // C
+		std::uint32_t                                                              paddingC;      // C
 		void*                                                                      arguments;     // 10
 		void*                                                                      results;       // 18
 		Actor*                                                                     perkOwner;     // 20
-		std::int8_t                                                                argumentCount; // 28
-		std::int8_t                                                                resultCount;   // 29
-		std::int16_t                                                               padding2A;     // 2A
-		std::int32_t                                                               padding2C;     // 2C
+		std::uint8_t                                                               argumentCount; // 28
+		std::uint8_t                                                               resultCount;   // 29
+		std::uint16_t                                                              padding2A;     // 2A
+		std::uint32_t                                                              padding2C;     // 2C
 	};
 	static_assert(offsetof(HandleEntryPointVisitor, resultType) == 0x8);
 	static_assert(offsetof(HandleEntryPointVisitor, arguments) == 0x10);

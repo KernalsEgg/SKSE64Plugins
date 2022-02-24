@@ -32,7 +32,7 @@ namespace Skyrim
 		float                                     parallaxScale;  // 18
 		std::uint8_t                              parallaxPasses; // 1C
 		Utility::Enumeration<Flags, std::uint8_t> decalDataFlags; // 1D
-		std::int16_t                              padding1E;      // 1E
+		std::uint16_t                             padding1E;      // 1E
 		Color                                     color;          // 20
 	};
 	static_assert(offsetof(DecalData, minimumWidth) == 0x0);

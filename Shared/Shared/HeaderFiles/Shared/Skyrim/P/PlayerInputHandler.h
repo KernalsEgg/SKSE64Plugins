@@ -17,10 +17,10 @@ namespace Skyrim
 		virtual void Unknown4(PlayerInputHandler*);     // 4
 
 		// Member variables
-		bool         handleInputEvents; // 8
-		std::int8_t  padding9;          // 9
-		std::int16_t paddingA;          // A
-		std::int32_t paddingC;          // C
+		bool          handleInputEvents; // 8
+		std::uint8_t  padding9;          // 9
+		std::uint16_t paddingA;          // A
+		std::uint32_t paddingC;          // C
 	};
 	static_assert(offsetof(PlayerInputHandler, handleInputEvents) == 0x8);
 	static_assert(sizeof(PlayerInputHandler) == 0x10);

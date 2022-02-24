@@ -29,7 +29,7 @@ namespace Skyrim
 		BSTArray<TESForm*> forms;              // 20
 		BSTArray<FormID>*  temporaryForms;     // 38, Added by scripts
 		std::uint32_t      temporaryFormCount; // 40
-		std::int32_t       padding44;          // 44
+		std::uint32_t      padding44;          // 44
 	};
 	static_assert(offsetof(BGSListForm, forms) == 0x20);
 	static_assert(offsetof(BGSListForm, temporaryForms) == 0x38);

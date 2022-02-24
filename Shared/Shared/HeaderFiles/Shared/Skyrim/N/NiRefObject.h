@@ -21,7 +21,7 @@ namespace Skyrim
 	protected:
 		// Member variables
 		volatile std::uint32_t referenceCount_; // 8
-		std::int32_t           paddingC_;       // C
+		std::uint32_t          paddingC_;       // C
 	};
 	static_assert(sizeof(NiRefObject) == 0x10);
 }

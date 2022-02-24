@@ -152,8 +152,8 @@ namespace Skyrim
 
 	private:
 		// Member variables
-		std::int64_t      padding0_;  // 0
-		std::int32_t      padding8_;  // 8
+		std::uint64_t     padding0_;  // 0
+		std::uint32_t     padding8_;  // 8
 		size_type         capacity_;  // C, total number of entries (always a power of 2)
 		size_type         free_;      // 10, number of free entries
 		size_type         good_;      // 14, last free index
@@ -188,7 +188,7 @@ namespace Skyrim
 
 	private:
 		// Member variables
-		std::int64_t  padding0_; // 0 (20)
+		std::uint64_t padding0_; // 0 (20)
 		std::uint8_t* entries_;  // 8 (28)
 	};
 

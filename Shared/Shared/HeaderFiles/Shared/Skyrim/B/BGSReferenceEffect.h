@@ -38,7 +38,7 @@ namespace Skyrim
 		BGSArtObject*                              effectArt;            // 20
 		TESEffectShader*                           shader;               // 28
 		Utility::Enumeration<Flags, std::uint32_t> referenceEffectFlags; // 30
-		std::int32_t                               padding14;            // 34
+		std::uint32_t                              padding14;            // 34
 	};
 	static_assert(offsetof(BGSReferenceEffect, effectArt) == 0x20);
 	static_assert(offsetof(BGSReferenceEffect, shader) == 0x28);

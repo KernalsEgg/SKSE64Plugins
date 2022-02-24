@@ -35,8 +35,8 @@ namespace Skyrim
 		NiPointer<NiDirectionalLight>  cloudLight;        // 40
 		float                          sunGlareScale;     // 48
 		bool                           occlusionTest;     // 4C
-		std::int8_t                    padding4D;         // 4D
-		std::int16_t                   padding4E;         // 4E
+		std::uint8_t                   padding4D;         // 4D
+		std::uint16_t                  padding4E;         // 4E
 		NiPointer<BSShaderAccumulator> sunAccumulator;    // 50
 	};
 	static_assert(offsetof(Sun, sunNode) == 0x10);

@@ -43,14 +43,14 @@ namespace Skyrim
 		virtual void Unknown8(IMenu*); // 8
 
 		// Member variables
-		std::int64_t                               unknown10;     // 10
+		std::uint64_t                              unknown10;     // 10
 		std::int8_t                                depthPriority; // 18
-		std::int8_t                                padding19;     // 19
-		std::int16_t                               padding1A;     // 1A
+		std::uint8_t                               padding19;     // 19
+		std::uint16_t                              padding1A;     // 1A
 		Utility::Enumeration<Flags, std::uint32_t> menuFlags;     // 1C
-		std::int32_t                               unknown20;     // 20
-		std::int32_t                               padding24;     // 24
-		std::int64_t                               unknown28;     // 28
+		std::uint32_t                              unknown20;     // 20
+		std::uint32_t                              padding24;     // 24
+		std::uint64_t                              unknown28;     // 28
 	};
 	static_assert(offsetof(IMenu, depthPriority) == 0x18);
 	static_assert(offsetof(IMenu, menuFlags) == 0x1C);

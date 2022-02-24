@@ -63,9 +63,9 @@ namespace Skyrim
 		}
 
 		// Member variables
-		std::int8_t                       padding1;                                            // 1
-		std::int16_t                      padding2;                                            // 2
-		std::int32_t                      padding4;                                            // 4
+		std::uint8_t                      padding1;                                            // 1
+		std::uint16_t                     padding2;                                            // 2
+		std::uint32_t                     padding4;                                            // 4
 		TESObjectList*                    objectList;                                          // 8
 		BSTArray<TESForm*>                formArrays[Utility::ToUnderlying(FormType::kTotal)]; // 10
 		TESRegionList*                    regionList;                                          // D00
@@ -73,14 +73,14 @@ namespace Skyrim
 		NiTPrimitiveArray<BGSAddonNode*>  addonNodes;                                          // D20
 		NiTList<TESForm*>                 badForms;                                            // D38
 		FormID                            nextFormID;                                          // D50
-		std::int32_t                      paddingD54;                                          // D54
+		std::uint32_t                     paddingD54;                                          // D54
 		TESFile*                          activeFile;                                          // D58
 		BSSimpleList<TESFile*>            files;                                               // D60
 		TESFileCollection                 compiledFileCollection;                              // D70
-		std::int64_t                      unknownDA0;                                          // DA0
-		std::int64_t                      unknownDA8;                                          // DA8
-		std::int64_t                      unknownDB0;                                          // DB0
-		std::int64_t                      unknownDB8;                                          // DB8
+		std::uint64_t                     unknownDA0;                                          // DA0
+		std::uint64_t                     unknownDA8;                                          // DA8
+		std::uint64_t                     unknownDB0;                                          // DB0
+		std::uint64_t                     unknownDB8;                                          // DB8
 	};
 	static_assert(offsetof(TESDataHandler, objectList) == 0x8);
 	static_assert(offsetof(TESDataHandler, formArrays) == 0x10);

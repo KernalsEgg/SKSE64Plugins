@@ -28,10 +28,10 @@ namespace Skyrim
 		virtual void Unknown2A(NiTexture*); // 2A
 
 		// Member variables
-		std::int64_t  unknown10; // 10
-		std::int64_t  unknown18; // 18
+		std::uint64_t unknown10; // 10
+		std::uint64_t unknown18; // 18
 		BSFixedString name;      // 20
-		std::int64_t  unknown28; // 28
+		std::uint64_t unknown28; // 28
 		NiTexture*    previous;  // 30
 		NiTexture*    next;      // 38
 	};

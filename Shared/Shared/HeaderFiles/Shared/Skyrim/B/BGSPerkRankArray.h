@@ -14,11 +14,11 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		BGSPerk*     perk;        // 0
-		std::int8_t  currentRank; // 8
-		std::int8_t  padding9;    // 9
-		std::int16_t paddingA;    // A
-		std::int32_t paddingC;    // C
+		BGSPerk*      perk;        // 0
+		std::int8_t   currentRank; // 8
+		std::uint8_t  padding9;    // 9
+		std::uint16_t paddingA;    // A
+		std::uint32_t paddingC;    // C
 	};
 	static_assert(offsetof(PerkRank, perk) == 0x0);
 	static_assert(offsetof(PerkRank, currentRank) == 0x8);
@@ -39,7 +39,7 @@ namespace Skyrim
 		// Member variables
 		PerkRank*     perkRanks;     // 8
 		std::uint32_t perkRankCount; // 10
-		std::int32_t  padding14;     // 14
+		std::uint32_t padding14;     // 14
 	};
 	static_assert(offsetof(BGSPerkRankArray, perkRanks) == 0x8);
 	static_assert(offsetof(BGSPerkRankArray, perkRankCount) == 0x10);

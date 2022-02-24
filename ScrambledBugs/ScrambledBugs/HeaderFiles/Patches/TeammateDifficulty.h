@@ -17,6 +17,6 @@ namespace ScrambledBugs::Patches
 
 	private:
 		static float GetDifficultyMultiplier(Utility::Enumeration<Skyrim::Difficulty, std::uint32_t> difficulty, bool toPlayer);
-		static float MultiplyDamage(Skyrim::Actor* actor, float damage, float decreaseDamageOnly);
+		static float MultiplyDamage(Skyrim::Actor* actor, float damage, float onlyDecreaseDamage);
 	};
 }

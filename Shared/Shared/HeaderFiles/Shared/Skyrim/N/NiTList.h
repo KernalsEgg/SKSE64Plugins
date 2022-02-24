@@ -28,9 +28,9 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		NiTListItem<T>* head;    // 0
-		NiTListItem<T>* tail;    // 8
-		std::int64_t    unknown; // 10
+		NiTListItem<T>* head;      // 0
+		NiTListItem<T>* tail;      // 8
+		std::uint64_t   unknown10; // 10
 	};
 	static_assert(sizeof(NiTListBase<void, void*>) == 0x18);
 

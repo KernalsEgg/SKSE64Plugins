@@ -25,11 +25,11 @@ namespace ScrambledBugs::Patches
 		return difficultyMultiplier->multipliers[difficulty.underlying()].value.floatingPoint;
 	}
 
-	float TeammateDifficulty::MultiplyDamage(Skyrim::Actor* actor, float damage, float decreaseDamageOnly)
+	float TeammateDifficulty::MultiplyDamage(Skyrim::Actor* actor, float damage, float onlyDecreaseDamage)
 	{
 		auto player               = Skyrim::PlayerCharacter::GetSingleton();
 		auto difficultyMultiplier = TeammateDifficulty::GetDifficultyMultiplier(player->difficulty, actor == player || (actor && actor->IsPlayerTeammate()));
 
-		return std::abs(decreaseDamageOnly) <= 0.0001F || difficultyMultiplier < 1.0F ? difficultyMultiplier * damage : damage;
+		return std::abs(onlyDecreaseDamage) <= 0.0001F || difficultyMultiplier < 1.0F ? difficultyMultiplier * damage : damage;
 	}
 }

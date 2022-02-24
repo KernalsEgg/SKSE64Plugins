@@ -43,7 +43,7 @@ namespace Skyrim
 		public:
 			// Member variables
 			float              maximumAngle;        // 0
-			std::int32_t       padding4;            // 4
+			std::uint32_t      padding4;            // 4
 			BGSMaterialObject* directionalMaterial; // 8
 		};
 		static_assert(offsetof(DirectionalMaterial, maximumAngle) == 0x0);
@@ -62,7 +62,7 @@ namespace Skyrim
 
 		// Member variables
 		DirectionalMaterial directionalMaterial; // 68
-		std::int64_t        unknown10;           // 78
+		std::uint64_t       unknown10;           // 78
 	};
 	static_assert(offsetof(TESObjectSTAT, directionalMaterial) == 0x68);
 	static_assert(sizeof(TESObjectSTAT) == 0x80);

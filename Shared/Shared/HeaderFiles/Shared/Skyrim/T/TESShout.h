@@ -47,7 +47,7 @@ namespace Skyrim
 			TESWordOfPower* word;         // 0
 			SpellItem*      spell;        // 8
 			float           recoveryTime; // 10
-			std::int32_t    padding14;    // 14
+			std::uint32_t   padding14;    // 14
 		};
 		static_assert(offsetof(Word, word) == 0x0);
 		static_assert(offsetof(Word, spell) == 0x8);

@@ -64,7 +64,7 @@ namespace Skyrim
 
 		// Member variables
 		std::uint32_t            armorRating;   // 200, Creation Kit value multiplied by 100
-		std::int32_t             padding204;    // 204
+		std::uint32_t            padding204;    // 204
 		BSTArray<TESObjectARMA*> armorAddons;   // 208
 		TESObjectARMO*           templateArmor; // 220
 	};

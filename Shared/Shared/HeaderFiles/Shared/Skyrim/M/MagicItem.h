@@ -27,13 +27,13 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			Effect*      costliestEffect; // 0
-			ActorValue   skill;           // 8
-			float        experience;      // C
-			bool         custom;          // 10
-			std::int8_t  padding11;       // 11
-			std::int16_t padding12;       // 12
-			std::int32_t padding14;       // 14
+			Effect*       costliestEffect; // 0
+			ActorValue    skill;           // 8
+			float         experience;      // C
+			bool          custom;          // 10
+			std::uint8_t  padding11;       // 11
+			std::uint16_t padding12;       // 12
+			std::uint32_t padding14;       // 14
 		};
 		static_assert(offsetof(SkillUsageData, costliestEffect) == 0x0);
 		static_assert(offsetof(SkillUsageData, skill) == 0x8);
@@ -95,10 +95,10 @@ namespace Skyrim
 		// Member variables
 		BSTArray<Effect*> effects;      // 58
 		std::int32_t      hostileCount; // 70
-		std::int32_t      padding74;    // 74
-		std::int64_t      unknown78;    // 78
-		std::int64_t      unknown80;    // 80
-		std::int64_t      unknown88;    // 88
+		std::uint32_t     padding74;    // 74
+		std::uint64_t     unknown78;    // 78
+		std::uint64_t     unknown80;    // 80
+		std::uint64_t     unknown88;    // 88
 	};
 	static_assert(offsetof(MagicItem, effects) == 0x58);
 	static_assert(offsetof(MagicItem, hostileCount) == 0x70);

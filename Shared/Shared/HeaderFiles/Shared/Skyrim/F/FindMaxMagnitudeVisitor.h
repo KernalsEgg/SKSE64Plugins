@@ -23,7 +23,7 @@ namespace Skyrim
 		// Member variables
 		ActiveEffect* finishedActiveEffect; // 8
 		float         maximumMagnitude;     // 10
-		std::int32_t  padding14;            // 14
+		std::uint32_t padding14;            // 14
 	};
 	static_assert(offsetof(FindMaxMagnitudeVisitor, finishedActiveEffect) == 0x8);
 	static_assert(offsetof(FindMaxMagnitudeVisitor, maximumMagnitude) == 0x10);

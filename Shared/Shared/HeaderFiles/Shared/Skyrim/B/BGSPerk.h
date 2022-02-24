@@ -43,8 +43,8 @@ namespace Skyrim
 		std::int8_t             rankCount;   // 52
 		bool                    playable;    // 53
 		bool                    hidden;      // 54
-		std::int8_t             padding55;   // 55
-		std::int16_t            padding56;   // 56
+		std::uint8_t            padding55;   // 55
+		std::uint16_t           padding56;   // 56
 		TESCondition            conditions;  // 58
 		BSTArray<BGSPerkEntry*> perkEntries; // 60
 		BGSPerk*                nextPerk;    // 78

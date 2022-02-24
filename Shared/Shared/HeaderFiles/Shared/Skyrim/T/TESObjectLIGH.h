@@ -85,10 +85,10 @@ namespace Skyrim
 		float                                      flickerIntensityAmplitude; // 100
 		float                                      flickerMovementAmplitude;  // 104
 		float                                      colorFade;                 // 108
-		std::int32_t                               padding10C;                // 10C
+		std::uint32_t                              padding10C;                // 10C
 		BGSSoundDescriptorForm*                    sound;                     // 110
 		NiColor                                    emittanceColor;            // 118
-		std::int32_t                               padding124;                // 124
+		std::uint32_t                              padding124;                // 124
 		BGSLensFlare*                              lensFlare;                 // 128
 	};
 	static_assert(offsetof(TESObjectLIGH, time) == 0xE0);

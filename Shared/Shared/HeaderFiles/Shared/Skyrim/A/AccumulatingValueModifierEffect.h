@@ -26,10 +26,10 @@ namespace Skyrim
 		virtual void Unknown1F(ValueModifierEffect*) override; // 1F
 
 		// Member variables
-		float        currentMagnitude; // 98
-		float        maximumMagnitude; // 9C
-		float        holdDuration;     // A0, The duration for which your ward power will not accumulate after being hit (fMagicAccumulatingModifierEffectHoldDuration)
-		std::int32_t paddingA4;        // A4
+		float         currentMagnitude; // 98
+		float         maximumMagnitude; // 9C
+		float         holdDuration;     // A0, The duration for which your ward power will not accumulate after being hit (fMagicAccumulatingModifierEffectHoldDuration)
+		std::uint32_t paddingA4;        // A4
 	};
 	static_assert(offsetof(AccumulatingValueModifierEffect, currentMagnitude) == 0x98);
 	static_assert(offsetof(AccumulatingValueModifierEffect, maximumMagnitude) == 0x9C);

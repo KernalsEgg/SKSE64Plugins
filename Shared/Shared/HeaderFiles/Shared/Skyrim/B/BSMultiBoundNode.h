@@ -36,8 +36,8 @@ namespace Skyrim
 		virtual void Unknown41(BSMultiBoundNode*); // 41
 
 		// Member variables
-		std::int64_t unknown128; // 128
-		std::int64_t unknown130; // 130
+		std::uint64_t unknown128; // 128
+		std::uint64_t unknown130; // 130
 	};
 	static_assert(sizeof(BSMultiBoundNode) == 0x138);
 }

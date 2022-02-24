@@ -27,8 +27,8 @@ namespace Skyrim
 
 		// Member variables
 		TESObjectCELL** cells;     // 18
-		std::int64_t    unknown20; // 20
-		std::int64_t    unknown28; // 28
+		std::uint64_t   unknown20; // 20
+		std::uint64_t   unknown28; // 28
 	};
 	static_assert(offsetof(GridCellArray, cells) == 0x18);
 	static_assert(sizeof(GridCellArray) == 0x30);

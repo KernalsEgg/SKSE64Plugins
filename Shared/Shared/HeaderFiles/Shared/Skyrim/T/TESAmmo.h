@@ -70,8 +70,8 @@ namespace Skyrim
 		// Member variables
 		BGSProjectile*                            projectile;  // 110
 		Utility::Enumeration<Flags, std::uint8_t> ammoFlags;   // 118
-		std::int8_t                               padding119;  // 119
-		std::int16_t                              padding11A;  // 11A
+		std::uint8_t                              padding119;  // 119
+		std::uint16_t                             padding11A;  // 11A
 		float                                     damage;      // 11C
 		BSFixedString                             description; // 120
 	};

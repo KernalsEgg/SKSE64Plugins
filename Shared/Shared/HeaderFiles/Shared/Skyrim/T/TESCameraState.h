@@ -28,10 +28,10 @@ namespace Skyrim
 		virtual void Unknown8(TESCameraState*); // 8
 
 		// Member variables
-		std::int32_t                                     paddingC;    // C
+		std::uint32_t                                    paddingC;    // C
 		TESCamera*                                       camera;      // 10
 		Utility::Enumeration<CameraState, std::uint32_t> cameraState; // 18
-		std::int32_t                                     padding1C;
+		std::uint32_t                                    padding1C;
 	};
 	static_assert(offsetof(TESCameraState, camera) == 0x10);
 	static_assert(offsetof(TESCameraState, cameraState) == 0x18);

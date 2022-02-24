@@ -81,8 +81,8 @@ namespace Skyrim
 
 		// Member variables
 		Utility::Enumeration<Flags, std::uint8_t> containerFlags; // B9
-		std::int16_t                              paddingBA;      // BA
-		std::int32_t                              paddingBC;      // BC
+		std::uint16_t                             paddingBA;      // BA
+		std::uint32_t                             paddingBC;      // BC
 		Sounds                                    sounds;         // C0
 	};
 	static_assert(offsetof(TESObjectCONT, containerFlags) == 0xB9);

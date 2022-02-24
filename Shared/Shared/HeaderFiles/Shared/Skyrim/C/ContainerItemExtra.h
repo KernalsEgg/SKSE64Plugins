@@ -22,10 +22,10 @@ namespace Skyrim
 		static_assert(sizeof(Conditional) == 0x8);
 
 		// Member variables
-		TESForm*     owner;            // 0, NPC or Faction
-		Conditional  conditional;      // 8
-		float        healthPercentage; // 10
-		std::int32_t padding14;        // 14
+		TESForm*      owner;            // 0, NPC or Faction
+		Conditional   conditional;      // 8
+		float         healthPercentage; // 10
+		std::uint32_t padding14;        // 14
 	};
 	static_assert(offsetof(ContainerItemExtra, owner) == 0x0);
 	static_assert(offsetof(ContainerItemExtra, conditional) == 0x8);

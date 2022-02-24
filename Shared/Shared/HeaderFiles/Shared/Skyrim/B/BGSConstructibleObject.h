@@ -31,8 +31,8 @@ namespace Skyrim
 		TESForm*      createdObject;      // 40
 		BGSKeyword*   workbenchKeyword;   // 48
 		std::uint16_t createdObjectCount; // 50
-		std::int16_t  padding52;          // 52
-		std::int32_t  padding54;          // 54
+		std::uint16_t padding52;          // 52
+		std::uint32_t padding54;          // 54
 	};
 	static_assert(offsetof(BGSConstructibleObject, requiredItemList) == 0x20);
 	static_assert(offsetof(BGSConstructibleObject, matchConditions) == 0x38);

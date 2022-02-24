@@ -60,8 +60,8 @@ namespace Skyrim
 
 		// Member variables
 		Utility::Enumeration<Flags, std::uint8_t> headPartFlags;            // 68
-		std::int8_t                               padding69;                // 69
-		std::int16_t                              padding6A;                // 6A
+		std::uint8_t                              padding69;                // 69
+		std::uint16_t                             padding6A;                // 6A
 		Utility::Enumeration<Type, std::uint32_t> type;                     // 6C
 		BSTArray<BGSHeadPart*>                    extraParts;               // 70
 		BGSTextureSet*                            textureSet;               // 88

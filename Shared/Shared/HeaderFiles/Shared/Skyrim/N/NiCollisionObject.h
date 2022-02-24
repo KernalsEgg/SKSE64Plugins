@@ -31,7 +31,7 @@ namespace Skyrim
 		virtual void Unknown29(NiCollisionObject*);     // 29
 
 		// Member variables
-		std::int64_t unknown10; // 10
+		std::uint64_t unknown10; // 10
 	};
 	static_assert(sizeof(NiCollisionObject) == 0x18);
 }

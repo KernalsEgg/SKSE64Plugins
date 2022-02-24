@@ -114,7 +114,7 @@ namespace Skyrim
 			std::uint32_t                            range;     // 8
 			bool                                     useTarget; // C
 			Utility::Enumeration<Mode, std::uint8_t> mode;      // D
-			std::int16_t                             paddingE;  // E
+			std::uint16_t                            paddingE;  // E
 		};
 		static_assert(offsetof(DepthOfField, strength) == 0x0);
 		static_assert(offsetof(DepthOfField, distance) == 0x4);
@@ -277,8 +277,8 @@ namespace Skyrim
 
 		// Member variables
 		bool                 animatable;           // 20
-		std::int8_t          padding21;            // 21
-		std::int16_t         padding22;            // 22
+		std::uint8_t         padding21;            // 21
+		std::uint16_t        padding22;            // 22
 		float                duration;             // 24
 		HDR                  hdr;                  // 28
 		Bloom                bloom;                // 98
@@ -290,15 +290,15 @@ namespace Skyrim
 		std::uint32_t        radialBlurRampUp;     // E0
 		std::uint32_t        radialBlurStart;      // E4
 		bool                 radialBlurUseTarget;  // E8
-		std::int8_t          paddingE9;            // E9
-		std::int16_t         paddingEA;            // EA
+		std::uint8_t         paddingE9;            // E9
+		std::uint16_t        paddingEA;            // EA
 		NiPoint2             radialBlurCenter;     // EC
 		DepthOfField         depthOfField;         // F4
 		std::uint32_t        radialBlurRampDown;   // 104
 		std::uint32_t        radialBlurDownStart;  // 108
 		Color                cinematicFade;        // 10C, std::uint32_t in CommonLibSSE
 		FullScreenMotionBlur fullScreenMotionBlur; // 110
-		std::int32_t         padding114;           // 114
+		std::uint32_t        padding114;           // 114
 		Interpolators        interpolators;        // 118
 		BSString             editorID;             // 2D0
 	};

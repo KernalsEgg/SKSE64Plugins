@@ -28,7 +28,7 @@ namespace Skyrim
 		// Member variables
 		std::uint16_t triangleCount; // 158
 		std::uint16_t vertexCount;   // 15A
-		std::int32_t  padding15C;    // 15C
+		std::uint32_t padding15C;    // 15C
 	};
 	static_assert(offsetof(BSTriShape, triangleCount) == 0x158);
 	static_assert(offsetof(BSTriShape, vertexCount) == 0x15A);

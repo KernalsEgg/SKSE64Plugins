@@ -34,12 +34,12 @@ namespace Skyrim
 
 		// Member variables
 		std::uint32_t                             addonNodeIndex;          // 68
-		std::int32_t                              padding6C;               // 6C
+		std::uint32_t                             padding6C;               // 6C
 		BGSSoundDescriptorForm*                   sound;                   // 70
 		std::uint16_t                             masterParticleSystemCap; // 78
 		Utility::Enumeration<Flags, std::uint8_t> addonNodeFlags;          // 7A
-		std::int8_t                               padding7B;               // 7B
-		std::int32_t                              padding7C;               // 7C
+		std::uint8_t                              padding7B;               // 7B
+		std::uint32_t                             padding7C;               // 7C
 	};
 	static_assert(offsetof(BGSAddonNode, addonNodeIndex) == 0x68);
 	static_assert(offsetof(BGSAddonNode, sound) == 0x70);

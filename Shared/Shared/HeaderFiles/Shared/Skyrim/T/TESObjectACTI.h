@@ -88,8 +88,8 @@ namespace Skyrim
 		Sounds                                     sounds;         // A8
 		TESWaterForm*                              waterType;      // B8
 		Utility::Enumeration<Flags, std::uint16_t> activatorFlags; // C0
-		std::int16_t                               paddingC2;      // C2
-		std::int32_t                               paddingC4;      // C4
+		std::uint16_t                              paddingC2;      // C2
+		std::uint32_t                              paddingC4;      // C4
 	};
 	static_assert(offsetof(TESObjectACTI, sounds) == 0xA8);
 	static_assert(offsetof(TESObjectACTI, waterType) == 0xB8);

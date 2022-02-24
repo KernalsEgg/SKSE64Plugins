@@ -119,8 +119,8 @@ namespace Skyrim
 			std::uint16_t index;                  // 4
 			std::uint16_t faceTintingColorPreset; // 6
 			std::uint16_t interpolationValue;     // 8
-			std::int16_t  paddingA;               // A
-			std::int32_t  paddingC;               // C
+			std::uint16_t paddingA;               // A
+			std::uint32_t paddingC;               // C
 		};
 		static_assert(offsetof(FaceTintLayer, faceTintingColor) == 0x0);
 		static_assert(offsetof(FaceTintLayer, index) == 0x4);
@@ -168,14 +168,14 @@ namespace Skyrim
 		std::uint16_t                                  calculatedHealth;          // 1B4, Stats
 		std::uint16_t                                  calculatedMagicka;         // 1B6, Stats
 		std::uint16_t                                  calculatedStamina;         // 1B8, Stats
-		std::int16_t                                   padding1BA;                // 1BA
+		std::uint16_t                                  padding1BA;                // 1BA
 		float                                          farAwayModelDistance;      // 1BC, Traits, Far Away Model
 		TESClass*                                      npcClass;                  // 1C0, Stats
 		FaceGenerationColor*                           faceGenerationColor;       // 1C8, Character Gen Parts
 		BGSListForm*                                   giftFilter;                // 1D0, AI Data, AI Attributes
 		TESCombatStyle*                                combatStyle;               // 1D8, AI Data, AI Attributes
 		std::uint32_t                                  fileOffset;                // 1E0
-		std::int32_t                                   padding1E4;                // 1E4
+		std::uint32_t                                  padding1E4;                // 1E4
 		TESRace*                                       originalRace;              // 1E8, Traits
 		TESNPC*                                        faceGenerationNPC;         // 1F0 (Traits template NPC)
 		float                                          height;                    // 1F8, Traits
@@ -189,13 +189,13 @@ namespace Skyrim
 		TESFaction*                                    assignedCrimeFaction;      // 230, Factions
 		BGSHeadPart**                                  headParts;                 // 238, Character Gen Parts
 		std::int8_t                                    headPartCount;             // 240, Character Gen Parts
-		std::int8_t                                    unknown241;                // 241
-		std::int16_t                                   unknown242;                // 242
-		std::int8_t                                    unknown244;                // 244
+		std::uint8_t                                   unknown241;                // 241
+		std::uint16_t                                  unknown242;                // 242
+		std::uint8_t                                   unknown244;                // 244
 		Utility::Enumeration<SoundLevel, std::uint8_t> soundLevel;                // 245, Sounds
 		Color                                          faceTintingColor;          // 246, Character Gen Parts, Face Tinting Color
-		std::int16_t                                   padding24A;                // 24A
-		std::int32_t                                   padding24C;                // 24C
+		std::uint16_t                                  padding24A;                // 24A
+		std::uint32_t                                  padding24C;                // 24C
 		BSTArray<BGSRelationship*>*                    relationships;             // 250
 		CharacterGenerationMorphs*                     characterGenerationMorphs; // 258
 		BSTArray<FaceTintLayer*>*                      faceTintLayers;            // 260, Character Gen Parts

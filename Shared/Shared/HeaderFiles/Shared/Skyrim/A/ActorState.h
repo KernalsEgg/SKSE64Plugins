@@ -16,7 +16,7 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			std::int32_t unknown0; // 0
+			std::uint32_t unknown0; // 0
 		};
 		static_assert(sizeof(ActorState1) == 0x4);
 
@@ -24,7 +24,7 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			std::int32_t unknown0; // 0
+			std::uint32_t unknown0; // 0
 		};
 		static_assert(sizeof(ActorState2) == 0x4);
 

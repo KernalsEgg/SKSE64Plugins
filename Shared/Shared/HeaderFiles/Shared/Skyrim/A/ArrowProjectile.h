@@ -35,8 +35,8 @@ namespace Skyrim
 		virtual void UnknownC3(MissileProjectile*) override; // C3
 
 		// Member variables
-		std::int64_t unknown1E0; // 1E0
-		AlchemyItem* poison;     // 1E8
+		std::uint64_t unknown1E0; // 1E0
+		AlchemyItem*  poison;     // 1E8
 	};
 	static_assert(offsetof(ArrowProjectile, poison) == 0x1E8);
 	static_assert(sizeof(ArrowProjectile) == 0x1F0);

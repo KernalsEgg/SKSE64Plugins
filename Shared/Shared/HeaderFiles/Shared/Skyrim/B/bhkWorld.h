@@ -34,7 +34,7 @@ namespace Skyrim
 		virtual void Unknown36(bhkWorld*); // 36
 
 		// Member variables
-		std::int8_t unknown20[0xC600 - 0x20]; // 20
+		std::uint8_t unknown20[0xC600 - 0x20]; // 20
 	};
 	static_assert(sizeof(bhkWorld) == 0xC600);
 }

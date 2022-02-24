@@ -35,7 +35,7 @@ namespace Skyrim
 		std::uint32_t*  addonNodes;     // 18
 		std::uint16_t   textureCount;   // 20
 		std::uint16_t   addonNodeCount; // 22
-		std::int32_t    padding24;      // 24
+		std::uint32_t   padding24;      // 24
 	};
 	static_assert(offsetof(TESModel, modelPath) == 0x8);
 	static_assert(offsetof(TESModel, textureIDs) == 0x10);

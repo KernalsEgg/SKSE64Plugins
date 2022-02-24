@@ -71,7 +71,7 @@ namespace Skyrim
 		float                                           verticalOffsetMultiplier; // D8
 		Utility::Enumeration<Flags, std::uint32_t>      explosionFlags;           // DC
 		Utility::Enumeration<SoundLevel, std::uint32_t> soundLevel;               // E0
-		std::int32_t                                    paddingE4;                // E4
+		std::uint32_t                                   paddingE4;                // E4
 	};
 	static_assert(offsetof(BGSExplosion, light) == 0x98);
 	static_assert(offsetof(BGSExplosion, sound1) == 0xA0);

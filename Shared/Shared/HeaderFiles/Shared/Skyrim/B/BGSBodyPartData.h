@@ -55,32 +55,32 @@ namespace Skyrim
 			float                                            damageMultiplier;               // 78
 			Utility::Enumeration<Flags, std::uint8_t>        bodyPartFlags;                  // 7C
 			Utility::Enumeration<BodyPartType, std::uint8_t> partType;                       // 7D
-			std::int8_t                                      healthPercentage;               // 7E
+			std::uint8_t                                     healthPercentage;               // 7E
 			Utility::Enumeration<ActorValue, std::uint8_t>   actorValue;                     // 7F
-			std::int8_t                                      toHitChance;                    // 80
-			std::int8_t                                      explodableExplosionChance;      // 81
+			std::uint8_t                                     toHitChance;                    // 80
+			std::uint8_t                                     explodableExplosionChance;      // 81
 			std::int8_t                                      explodableGenericDebrisCount;   // 82
-			std::int8_t                                      padding83;                      // 83
-			std::int32_t                                     padding84;                      // 84
+			std::uint8_t                                     padding83;                      // 83
+			std::uint32_t                                    padding84;                      // 84
 			BGSDebris*                                       explodableGenericDebris;        // 88
 			BGSExplosion*                                    explodableExplosion;            // 90
 			float                                            trackingMaximumAngle;           // 98
 			float                                            explodableGenericDebrisScale;   // 9C
 			std::int8_t                                      severableGenericDebrisCount;    // A0
-			std::int8_t                                      paddingA1;                      // A1
-			std::int16_t                                     paddingA2;                      // A2
-			std::int32_t                                     paddingA4;                      // A4
+			std::uint8_t                                     paddingA1;                      // A1
+			std::uint16_t                                    paddingA2;                      // A2
+			std::uint32_t                                    paddingA4;                      // A4
 			BGSDebris*                                       severableGenericDebris;         // A8
 			BGSExplosion*                                    severableExplosion;             // B0
 			float                                            severableGenericDebrisScale;    // B8
 			NiPoint3                                         goreEffectsLocalTranslate;      // BC
 			NiPoint3                                         goreEffectsLocalRotate;         // C8
-			std::int32_t                                     paddingD4;                      // D4
+			std::uint32_t                                    paddingD4;                      // D4
 			BGSImpactDataSet*                                severableBloodSpurt;            // D8
 			BGSImpactDataSet*                                explodableBloodSpurt;           // E0
 			std::int8_t                                      severableDecalCount;            // E8
 			std::int8_t                                      explodableDecalCount;           // E9
-			std::int16_t                                     paddingEA;                      // EA
+			std::uint16_t                                    paddingEA;                      // EA
 			float                                            explodableLimbReplacementScale; // EC
 		};
 		static_assert(offsetof(BodyPart, partNode) == 0x0);

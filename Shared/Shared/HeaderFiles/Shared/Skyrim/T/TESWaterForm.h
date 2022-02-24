@@ -92,47 +92,47 @@ namespace Skyrim
 		virtual void Unknown37(TESForm*) override; // 37
 
 		// Member variables
-		std::int64_t                              unknown40;                      // 40
-		std::int64_t                              unknown48;                      // 48
-		std::int64_t                              unknown50;                      // 50
-		std::int64_t                              unknown58;                      // 58
-		std::int64_t                              unknown60;                      // 60
-		std::int64_t                              unknown68;                      // 68
-		std::int64_t                              unknown70;                      // 70
+		std::uint64_t                             unknown40;                      // 40
+		std::uint64_t                             unknown48;                      // 48
+		std::uint64_t                             unknown50;                      // 50
+		std::uint64_t                             unknown58;                      // 58
+		std::uint64_t                             unknown60;                      // 60
+		std::uint64_t                             unknown68;                      // 68
+		std::uint64_t                             unknown70;                      // 70
 		TESTexture                                noiseTextureLayers[4];          // 78, Noise Properties
 		std::int8_t                               opacity;                        // B8, Water Properties
 		Utility::Enumeration<Flags, std::uint8_t> waterFormFlags;                 // B9
-		std::int8_t                               paddingBA;                      // BA
-		std::int32_t                              paddingBC;                      // BC
+		std::uint8_t                              paddingBA;                      // BA
+		std::uint32_t                             paddingBC;                      // BC
 		BGSMaterialType*                          material;                       // C0, Water Properties
 		BGSSoundDescriptorForm*                   openSound;                      // C8, Water Properties
-		std::int64_t                              unknownD0;                      // D0
-		std::int64_t                              unknownD8;                      // D8
+		std::uint64_t                             unknownD0;                      // D0
+		std::uint64_t                             unknownD8;                      // D8
 		float                                     sunSpecularPower;               // E0, Specular Properties
 		float                                     reflectivityAmount;             // E4, Water Properties
 		float                                     fresnelAmount;                  // E8, Water Properties
-		std::int32_t                              unknownEC;                      // EC
+		std::uint32_t                             unknownEC;                      // EC
 		float                                     aboveWaterFogDistanceNearPlane; // F0, Fog Properties
 		float                                     aboveWaterFogDistanceFarPlane;  // F4, Fog Properties
 		ColorProperties                           colorProperties;                // F8
-		std::int32_t                              unknown104;                     // 104
-		std::int64_t                              unknown108;                     // 108
-		std::int64_t                              unknown110;                     // 110
+		std::uint32_t                             unknown104;                     // 104
+		std::uint64_t                             unknown108;                     // 108
+		std::uint64_t                             unknown110;                     // 110
 		DisplacementSimulator                     displacementSimulator;          // 118, Water Properties
-		std::int32_t                              unknown12C;                     // 12C
+		std::uint32_t                             unknown12C;                     // 12C
 		float                                     noiseFalloff;                   // 130, Noise Properties
 		float                                     windDirectionLayers[3];         // 134, Noise Properties
 		float                                     windSpeedLayers[3];             // 140, Noise Properties
-		std::int32_t                              unknown14C;                     // 14C
-		std::int32_t                              unknown150;                     // 150
+		std::uint32_t                             unknown14C;                     // 14C
+		std::uint32_t                             unknown150;                     // 150
 		float                                     aboveWaterFogAmount;            // 154, Fog Properties
-		std::int32_t                              unknown158;                     // 158
+		std::uint32_t                             unknown158;                     // 158
 		float                                     underWaterFogAmount;            // 15C, Fog Properties
 		float                                     underWaterFogDistanceNearPlane; // 160, Fog Properties
 		float                                     underWaterFogDistanceFarPlane;  // 164, Fog Properties
 		float                                     refractionMagnitude;            // 168, Water Properties
 		float                                     specularPower;                  // 16C, Specular Properties
-		std::int32_t                              unknown170;                     // 170
+		std::uint32_t                             unknown170;                     // 170
 		float                                     specularRadius;                 // 174, Specular Properties
 		float                                     specularBrightness;             // 178, Specular Properties
 		float                                     uvScaleLayers[3];               // 17C, Noise Properties
@@ -143,20 +143,20 @@ namespace Skyrim
 		DepthProperties                           depthProperties;                // 1A0
 		float                                     sunSparklePower;                // 1B0, Specular Properties
 		float                                     flowmapScale;                   // 1B4, Noise Properties
-		std::int64_t                              unknown1B8;                     // 1B8
-		std::int64_t                              unknown1C0;                     // 1C0
-		std::int64_t                              unknown1C8;                     // 1C8
-		std::int64_t                              unknown1D0;                     // 1D0
-		std::int64_t                              unknown1D8;                     // 1D8
-		std::int64_t                              unknown1E0;                     // 1E0
-		std::int64_t                              unknown1E8;                     // 1E8
-		std::int64_t                              unknown1F0;                     // 1F0
+		std::uint64_t                             unknown1B8;                     // 1B8
+		std::uint64_t                             unknown1C0;                     // 1C0
+		std::uint64_t                             unknown1C8;                     // 1C8
+		std::uint64_t                             unknown1D0;                     // 1D0
+		std::uint64_t                             unknown1D8;                     // 1D8
+		std::uint64_t                             unknown1E0;                     // 1E0
+		std::uint64_t                             unknown1E8;                     // 1E8
+		std::uint64_t                             unknown1F0;                     // 1F0
 		SpellItem*                                spellEffect;                    // 1F8
 		NiPointer<NiTexture>                      noiseTextureDataLayers[4];      // 200, Noise Properties
-		std::int64_t                              unknown220;                     // 220
-		std::int64_t                              unknown228;                     // 228
-		std::int64_t                              unknown230;                     // 230
-		std::int64_t                              unknown238;                     // 238
+		std::uint64_t                             unknown220;                     // 220
+		std::uint64_t                             unknown228;                     // 228
+		std::uint64_t                             unknown230;                     // 230
+		std::uint64_t                             unknown238;                     // 238
 		TESImageSpace*                            imageSpaceModifier;             // 240
 		NiPoint3                                  linearVelocity;                 // 248, Water Properties
 		NiPoint3                                  angularVelocity;                // 254, Water Properties

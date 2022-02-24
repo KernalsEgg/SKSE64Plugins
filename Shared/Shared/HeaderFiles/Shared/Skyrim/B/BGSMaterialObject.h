@@ -27,9 +27,9 @@ namespace Skyrim
 		virtual void Unknown1(BSMaterialObject*) override; // 1
 
 		// Member variables
-		std::int64_t unknownA0; // A0
-		std::int64_t unknownA8; // A8
-		std::int64_t unknownB0; // B0
+		std::uint64_t unknownA0; // A0
+		std::uint64_t unknownA8; // A8
+		std::uint64_t unknownB0; // B0
 	};
 	static_assert(sizeof(BGSMaterialObject) == 0xB8);
 }

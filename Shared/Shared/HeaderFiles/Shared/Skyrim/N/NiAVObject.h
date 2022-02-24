@@ -60,7 +60,7 @@ namespace Skyrim
 
 		// Member variables
 		NiNode*                                    parentNode;             // 30
-		std::int64_t                               unknown38;              // 38
+		std::uint64_t                              unknown38;              // 38
 		NiPointer<NiCollisionObject>               collisionObject;        // 40
 		NiTransform                                localTransform;         // 48
 		NiTransform                                worldTransform;         // 7C
@@ -68,8 +68,8 @@ namespace Skyrim
 		NiBound                                    worldBound;             // E4
 		Utility::Enumeration<Flags, std::uint32_t> avObjectFlags;          // F4
 		TESObjectREFR*                             owner;                  // F8
-		std::int64_t                               unknown100;             // 100
-		std::int64_t                               unknown108;             // 108
+		std::uint64_t                              unknown100;             // 100
+		std::uint64_t                              unknown108;             // 108
 	};
 	static_assert(offsetof(NiAVObject, parentNode) == 0x30);
 	static_assert(offsetof(NiAVObject, collisionObject) == 0x40);

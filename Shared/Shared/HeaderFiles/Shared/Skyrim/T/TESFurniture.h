@@ -52,7 +52,7 @@ namespace Skyrim
 
 			// Member variables
 			std::uint32_t                                    index;               // 0
-			std::int16_t                                     unknown4;            // 4
+			std::uint16_t                                    unknown4;            // 4
 			Utility::Enumeration<EntryPoints, std::uint16_t> disabledEntryPoints; // 6
 			BGSKeyword*                                      keyword;             // 8
 		};
@@ -101,7 +101,7 @@ namespace Skyrim
 		// Member variables
 		BSTArray<Marker>                           activeMarkers;   // C8, Active markers are added only if they either have a keyword or disabled entry point(s), or unknown4 is set
 		WorkbenchData                              workbenchData;   // E0
-		std::int16_t                               paddingE2;       // E2
+		std::uint16_t                              paddingE2;       // E2
 		Utility::Enumeration<Flags, std::uint32_t> furnitureFlags;  // E4
 		SpellItem*                                 associatedSpell; // E8
 	};

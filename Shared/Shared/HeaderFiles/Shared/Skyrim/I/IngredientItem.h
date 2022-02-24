@@ -77,9 +77,9 @@ namespace Skyrim
 		virtual BGSKeyword* GetDefaultKeyword() const override; // 5
 
 		// Member variables
-		Data         ingredientItemData; // 130
-		std::int32_t unknown138;         // 138
-		std::int32_t padding13C;         // 13C
+		Data          ingredientItemData; // 130
+		std::uint32_t unknown138;         // 138
+		std::uint32_t padding13C;         // 13C
 	};
 	static_assert(offsetof(IngredientItem, ingredientItemData) == 0x130);
 	static_assert(sizeof(IngredientItem) == 0x140);

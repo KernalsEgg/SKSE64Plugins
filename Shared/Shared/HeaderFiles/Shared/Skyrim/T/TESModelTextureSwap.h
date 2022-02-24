@@ -21,7 +21,7 @@ namespace Skyrim
 			// Member variables
 			BGSTextureSet* newTexture; // 0
 			std::uint32_t  index3D;    // 8
-			std::int32_t   paddingC;   // C
+			std::uint32_t  paddingC;   // C
 			BSFixedString  name3D;     // 10
 		};
 		static_assert(offsetof(AlternateTexture, newTexture) == 0x0);
@@ -41,7 +41,7 @@ namespace Skyrim
 		// Member variables
 		AlternateTexture* alternateTextures;     // 28
 		std::uint32_t     alternateTextureCount; // 30
-		std::int32_t      padding34;             // 34
+		std::uint32_t     padding34;             // 34
 	};
 	static_assert(offsetof(TESModelTextureSwap, alternateTextures) == 0x28);
 	static_assert(offsetof(TESModelTextureSwap, alternateTextureCount) == 0x30);

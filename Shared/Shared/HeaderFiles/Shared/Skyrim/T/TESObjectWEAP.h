@@ -161,12 +161,12 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			float        sightFOV;        // 0, Game Data
-			std::int32_t unknown16C;      // 4
-			FiringRumble firingRumble;    // 8, Rumble
-			std::int8_t  projectileCount; // 18, Game Data
-			std::int8_t  padding181;      // 19
-			std::int16_t padding182;      // 1A
+			float         sightFOV;        // 0, Game Data
+			std::uint32_t unknown16C;      // 4
+			FiringRumble  firingRumble;    // 8, Rumble
+			std::int8_t   projectileCount; // 18, Game Data
+			std::uint8_t  padding181;      // 19
+			std::uint16_t padding182;      // 1A
 		};
 		static_assert(offsetof(RangedData, sightFOV) == 0x0);
 		static_assert(offsetof(RangedData, firingRumble) == 0x8);
@@ -211,7 +211,7 @@ namespace Skyrim
 		float                                               reach;                        // 174, Game Data
 		Range                                               range;                        // 178, Game Data
 		float                                               animationAttackMultiplier;    // 180, Art and Sound, Animation
-		std::int32_t                                        unknown184;                   // 184
+		std::uint32_t                                       unknown184;                   // 184
 		float                                               stagger;                      // 188, Game Data
 		Utility::Enumeration<OnHit, std::uint32_t>          onHit;                        // 18C, Game Data
 		Utility::Enumeration<ActorValue, std::uint32_t>     skill;                        // 190
@@ -222,15 +222,15 @@ namespace Skyrim
 		Utility::Enumeration<ActorValue, std::uint8_t>      embeddedWeaponActorValue;     // 19C, Game Data, Embedded Weapon (Unused)
 		Utility::Enumeration<AnimationType, std::uint8_t>   animationType;                // 19D, Art and Sound, Anim Type
 		Utility::Enumeration<Flags, std::uint8_t>           weaponFlags;                  // 19E
-		std::int8_t                                         padding19F;                   // 19F
+		std::uint8_t                                        padding19F;                   // 19F
 		float                                               criticalPercentageMultiplier; // 1A0, Game Data
-		std::int32_t                                        padding1A4;                   // 1A4
+		std::uint32_t                                       padding1A4;                   // 1A4
 		SpellItem*                                          criticalEffect;               // 1A8, Game Data
 		std::uint16_t                                       criticalDamage;               // 1B0, Game Data
 		Utility::Enumeration<CriticalFlags, std::uint8_t>   criticalFlags;                // 1B2, Game Data
-		std::int8_t                                         padding1B3;                   // 1B3
-		std::int32_t                                        padding1B4;                   // 1B4
-		std::int64_t                                        unknown1B8;                   // 1B8
+		std::uint8_t                                        padding1B3;                   // 1B3
+		std::uint32_t                                       padding1B4;                   // 1B4
+		std::uint64_t                                       unknown1B8;                   // 1B8
 		BGSSoundDescriptorForm*                             attackSound;                  // 1C0, Art and Sound
 		BGSSoundDescriptorForm*                             attackSound2D;                // 1C8, Art and Sound
 		BGSSoundDescriptorForm*                             attackLoop;                   // 1D0, Art and Sound
@@ -243,7 +243,7 @@ namespace Skyrim
 		TESObjectWEAP*                                      templateWeapon;               // 208
 		BSFixedString                                       embeddedWeaponNode;           // 210, Game Data, Embedded Weapon
 		Utility::Enumeration<SoundLevel, std::uint32_t>     detectionSoundLevel;          // 218, Art and Sound
-		std::int32_t                                        padding21C;                   // 21C
+		std::uint32_t                                       padding21C;                   // 21C
 	};
 	static_assert(offsetof(TESObjectWEAP, rangedData) == 0x168);
 	static_assert(offsetof(TESObjectWEAP, speed) == 0x170);

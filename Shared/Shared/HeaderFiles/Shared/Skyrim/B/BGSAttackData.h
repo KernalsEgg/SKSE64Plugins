@@ -44,7 +44,7 @@ namespace Skyrim
 		float                                      knockdown;         // 40
 		float                                      recoveryTime;      // 44
 		float                                      staminaMultiplier; // 48
-		std::int32_t                               padding4C;         // 4C
+		std::uint32_t                              padding4C;         // 4C
 	};
 	static_assert(offsetof(BGSAttackData, event) == 0x10);
 	static_assert(offsetof(BGSAttackData, damageMultiplier) == 0x18);

@@ -21,9 +21,9 @@ namespace Skyrim
 		virtual void Unknown8(GridArray*) = 0; // 8
 
 		// Member variables
-		std::int64_t  unknown8;  // 8
+		std::uint64_t unknown8;  // 8
 		std::uint32_t size;      // 10, uGridsToLoad
-		std::int32_t  padding14; // 14
+		std::uint32_t padding14; // 14
 	};
 	static_assert(offsetof(GridArray, size) == 0x10);
 	static_assert(sizeof(GridArray) == 0x18);

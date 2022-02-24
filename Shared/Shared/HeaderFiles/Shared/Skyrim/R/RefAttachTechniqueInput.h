@@ -23,10 +23,10 @@ namespace Skyrim
 		virtual void Unknown1(BSAttachTechniques::AttachTechniqueInput*) override; // 1
 
 		// Member variables
-		std::int64_t  unknown20;  // 20
+		std::uint64_t unknown20;  // 20
 		TESRace*      race;       // 28
 		bhkWorld*     havokWorld; // 30
-		std::int64_t  unknown38;  // 38
+		std::uint64_t unknown38;  // 38
 		BSFixedString nodeName;   // 40
 	};
 	static_assert(offsetof(RefAttachTechniqueInput, race) == 0x28);

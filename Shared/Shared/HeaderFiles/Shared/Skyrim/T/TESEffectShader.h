@@ -48,10 +48,10 @@ namespace Skyrim
 		virtual void Unknown13(TESForm*) override; // 13
 
 		// Member variables
-		std::int32_t                               unknown20;                                  // 20
-		D3DBLEND                                   membraneShaderSourceBlendMode;              // 24
-		D3DBLENDOP                                 membraneShaderBlendOperation;               // 28
-		D3DCMPFUNC                                 membraneShaderZTestFunction;                // 2C
+		std::uint32_t                              unknown20;                                  // 20
+		::D3DBLEND                                 membraneShaderSourceBlendMode;              // 24
+		::D3DBLENDOP                               membraneShaderBlendOperation;               // 28
+		::D3DCMPFUNC                               membraneShaderZTestFunction;                // 2C
 		Color                                      fillTextureEffectColorKey1;                 // 30
 		float                                      fillTextureEffectAlphaFadeInTime;           // 34
 		float                                      fillTextureEffectFullAlphaTime;             // 38
@@ -71,11 +71,11 @@ namespace Skyrim
 		float                                      edgeEffectAlphaPulseFrequency;              // 70
 		float                                      fillTextureEffectFullAlphaRatio;            // 74
 		float                                      edgeEffectFullAlphaRatio;                   // 78
-		D3DBLEND                                   membraneShaderDestBlendMode;                // 7C
-		D3DBLEND                                   particleShaderSourceBlendMode;              // 80
-		D3DBLENDOP                                 particleShaderBlendOperation;               // 84
-		D3DCMPFUNC                                 particleShaderZTestFunction;                // 88
-		D3DBLEND                                   particleShaderDestBlendMode;                // 8C
+		::D3DBLEND                                 membraneShaderDestBlendMode;                // 7C
+		::D3DBLEND                                 particleShaderSourceBlendMode;              // 80
+		::D3DBLENDOP                               particleShaderBlendOperation;               // 84
+		::D3DCMPFUNC                               particleShaderZTestFunction;                // 88
+		::D3DBLEND                                 particleShaderDestBlendMode;                // 8C
 		float                                      particleShaderParticleBirthRampUpTime;      // 90
 		float                                      particleShaderFullParticleBirthTime;        // 94
 		float                                      particleShaderParticleBirthRampDownTime;    // 98
@@ -109,13 +109,13 @@ namespace Skyrim
 		float                                      particleShaderInitialRotationRange;         // 108
 		float                                      particleShaderRotationSpeed;                // 10C
 		float                                      particleShaderRotationSpeedRange;           // 110
-		std::int32_t                               padding114;                                 // 114
+		std::uint32_t                              padding114;                                 // 114
 		BGSDebris*                                 addonModels;                                // 118
 		float                                      holesAlphaTestAnimationStartTime;           // 120
 		float                                      holesAlphaTestAnimationEndTime;             // 124
 		float                                      holesAlphaTestAnimationStartVal;            // 128
 		float                                      holesAlphaTestAnimationEndVal;              // 12C
-		std::int64_t                               unknown130;                                 // 130
+		std::uint64_t                              unknown130;                                 // 130
 		float                                      particleShaderExplosionWindSpeed;           // 138
 		float                                      particleShaderTextureCountU;                // 13C
 		float                                      particleShaderTextureCountV;                // 140
@@ -125,7 +125,7 @@ namespace Skyrim
 		float                                      addonModelsScaleEnd;                        // 150
 		float                                      addonModelsScaleInTime;                     // 154
 		float                                      addonModelsScaleOutTime;                    // 158
-		std::int32_t                               padding15C;                                 // 15C
+		std::uint32_t                              padding15C;                                 // 15C
 		BGSSoundDescriptorForm*                    ambientSound;                               // 160
 		Color                                      fillTextureEffectColorKey2;                 // 168
 		Color                                      fillTextureEffectColorKey3;                 // 16C
@@ -154,8 +154,8 @@ namespace Skyrim
 		TESTexture                                 holesTexture;                               // 1E0
 		TESTexture                                 fillTextureEffectPaletteTexture;            // 1F0
 		TESTexture                                 particleShaderPaletteTexture;               // 200
-		std::int64_t                               unknown210;                                 // 210
-		std::int64_t                               unknown218;                                 // 218
+		std::uint64_t                              unknown210;                                 // 210
+		std::uint64_t                              unknown218;                                 // 218
 	};
 	static_assert(offsetof(TESEffectShader, membraneShaderSourceBlendMode) == 0x24);
 	static_assert(offsetof(TESEffectShader, membraneShaderBlendOperation) == 0x28);

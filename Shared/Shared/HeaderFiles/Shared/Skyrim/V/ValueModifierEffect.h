@@ -42,7 +42,7 @@ namespace Skyrim
 
 		// Member variables
 		Utility::Enumeration<ActorValue, std::uint32_t> actorValue; // 90
-		std::int32_t                                    unknown94;  // 94
+		std::uint32_t                                   unknown94;  // 94
 	};
 	static_assert(offsetof(ValueModifierEffect, actorValue) == 0x90);
 	static_assert(sizeof(ValueModifierEffect) == 0x98);

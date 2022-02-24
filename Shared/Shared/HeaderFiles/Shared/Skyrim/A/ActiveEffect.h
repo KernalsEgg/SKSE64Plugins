@@ -85,19 +85,19 @@ namespace Skyrim
 		bool                 ShouldDisplace() const;
 
 		// Member variables
-		std::int64_t                                                    unknown8;          // 8
-		std::int64_t                                                    unknown10;         // 10
-		std::int64_t                                                    unknown18;         // 18
-		std::int64_t                                                    unknown20;         // 20
-		std::int64_t                                                    unknown28;         // 28
-		std::int32_t                                                    unknown30;         // 30
+		std::uint64_t                                                   unknown8;          // 8
+		std::uint64_t                                                   unknown10;         // 10
+		std::uint64_t                                                   unknown18;         // 18
+		std::uint64_t                                                   unknown20;         // 20
+		std::uint64_t                                                   unknown28;         // 28
+		std::uint32_t                                                   unknown30;         // 30
 		ActorHandle                                                     caster;            // 34
-		std::int64_t                                                    unknown38;         // 38
+		std::uint64_t                                                   unknown38;         // 38
 		MagicItem*                                                      spell;             // 40
 		Effect*                                                         effect;            // 48
 		MagicTarget*                                                    magicTarget;       // 50
 		TESBoundObject*                                                 source;            // 58
-		std::int64_t                                                    unknown60;         // 60
+		std::uint64_t                                                   unknown60;         // 60
 		MagicItem*                                                      displacementSpell; // 68
 		float                                                           elapsedTime;       // 70
 		float                                                           duration;          // 74
@@ -105,9 +105,9 @@ namespace Skyrim
 		Utility::Enumeration<Flags, std::uint32_t>                      activeEffectFlags; // 7C
 		Utility::Enumeration<Conditions, std::uint32_t>                 conditions;        // 80
 		std::uint16_t                                                   uniqueID;          // 84
-		std::int16_t                                                    padding86;         // 86
+		std::uint16_t                                                   padding86;         // 86
 		Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource;     // 88
-		std::int32_t                                                    padding8C;         // 8C
+		std::uint32_t                                                   padding8C;         // 8C
 	};
 	static_assert(offsetof(ActiveEffect, caster) == 0x34);
 	static_assert(offsetof(ActiveEffect, spell) == 0x40);

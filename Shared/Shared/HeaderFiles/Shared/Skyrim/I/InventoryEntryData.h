@@ -23,7 +23,7 @@ namespace Skyrim
 		TESBoundObject*               item;           // 0
 		BSSimpleList<ExtraDataList*>* extraDataLists; // 8
 		std::int32_t                  itemCountDelta; // 10
-		std::int32_t                  padding14;      // 14
+		std::uint32_t                 padding14;      // 14
 	};
 	static_assert(offsetof(InventoryEntryData, item) == 0x0);
 	static_assert(offsetof(InventoryEntryData, extraDataLists) == 0x8);

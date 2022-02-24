@@ -17,7 +17,7 @@ namespace Skyrim
 	public:
 		// Member variables
 		std::int32_t        count;              // 0
-		std::int32_t        padding4;           // 4
+		std::uint32_t       padding4;           // 4
 		TESBoundObject*     object;             // 8
 		ContainerItemExtra* containerItemExtra; // 10
 	};
@@ -79,9 +79,9 @@ namespace Skyrim
 
 	private:
 		// Member variables
-		value_type*  containerObjects_;     // 8
-		size_type    containerObjectCount_; // 10
-		std::int32_t padding14_;            // 14
+		value_type*   containerObjects_;     // 8
+		size_type     containerObjectCount_; // 10
+		std::uint32_t padding14_;            // 14
 	};
 	static_assert(sizeof(TESContainer) == 0x18);
 }

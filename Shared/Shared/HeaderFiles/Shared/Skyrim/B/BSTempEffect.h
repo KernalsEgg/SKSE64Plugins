@@ -61,14 +61,14 @@ namespace Skyrim
 
 		// Member variables
 		float          lifetime;    // 10
-		std::int32_t   padding14;   // 14
+		std::uint32_t  padding14;   // 14
 		TESObjectCELL* parentCell;  // 18
 		float          age;         // 20
 		bool           initialized; // 24
-		std::int8_t    padding25;   // 25
-		std::int16_t   padding26;   // 26
+		std::uint8_t   padding25;   // 25
+		std::uint16_t  padding26;   // 26
 		std::uint32_t  effectID;    // 28
-		std::int32_t   padding2C;   // 2C
+		std::uint32_t  padding2C;   // 2C
 	};
 	static_assert(offsetof(BSTempEffect, lifetime) == 0x10);
 	static_assert(offsetof(BSTempEffect, parentCell) == 0x18);

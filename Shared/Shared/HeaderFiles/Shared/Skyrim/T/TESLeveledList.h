@@ -22,7 +22,7 @@ namespace Skyrim
 		TESForm*            object;             // 0
 		std::uint16_t       count;              // 8
 		std::uint16_t       level;              // A
-		std::int32_t        paddingC;           // C
+		std::uint32_t       paddingC;           // C
 		ContainerItemExtra* containerItemExtra; // 10
 	};
 	static_assert(offsetof(LeveledObject, object) == 0x0);
@@ -61,12 +61,12 @@ namespace Skyrim
 
 		// Member variables
 		SimpleArray<LeveledObject>                leveledObjects;     // 8
-		std::int8_t                               chanceNone;         // 10
+		std::uint8_t                              chanceNone;         // 10
 		Utility::Enumeration<Flags, std::uint8_t> leveledListFlags;   // 11
 		std::uint8_t                              leveledObjectCount; // 12
-		std::int8_t                               padding13;          // 13
-		std::int32_t                              padding14;          // 14
-		std::int64_t                              unknown18;          // 18
+		std::uint8_t                              padding13;          // 13
+		std::uint32_t                             padding14;          // 14
+		std::uint64_t                             unknown18;          // 18
 		TESGlobal*                                useGlobal;          // 20
 	};
 	static_assert(offsetof(TESLeveledList, leveledObjects) == 0x8);

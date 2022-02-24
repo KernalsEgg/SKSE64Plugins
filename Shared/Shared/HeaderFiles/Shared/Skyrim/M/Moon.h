@@ -44,11 +44,11 @@ namespace Skyrim
 		NiPointer<BSTriShape> moon;                                                    // 20
 		NiPointer<BSTriShape> moonShadow;                                              // 28
 		BSString              moonPhaseTextures[Utility::ToUnderlying(Phase::kTotal)]; // 30
-		std::int64_t          unknownB0;                                               // B0
-		std::int64_t          unknownB8;                                               // B8
-		std::int64_t          unknownC0;                                               // C0
-		std::int64_t          unknownC8;                                               // C8
-		std::int64_t          unknownD0;                                               // D0
+		std::uint64_t         unknownB0;                                               // B0
+		std::uint64_t         unknownB8;                                               // B8
+		std::uint64_t         unknownC0;                                               // C0
+		std::uint64_t         unknownC8;                                               // C8
+		std::uint64_t         unknownD0;                                               // D0
 	};
 	static_assert(offsetof(Moon, moonNode) == 0x10);
 	static_assert(offsetof(Moon, moonShadowNode) == 0x18);

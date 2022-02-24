@@ -32,15 +32,15 @@ namespace Skyrim
 
 		// Member variables
 		NiPointer<BSGeometry> clouds[Utility::ToUnderlying(Layer::kTotal)];             // 10
-		std::int64_t          unknown110[Utility::ToUnderlying(Layer::kTotal)];         // 110
+		std::uint64_t         unknown110[Utility::ToUnderlying(Layer::kTotal)];         // 110
 		NiPointer<NiTexture>  transitionTextures[Utility::ToUnderlying(Layer::kTotal)]; // 210
 		NiColor               colors[Utility::ToUnderlying(Layer::kTotal)];             // 310
 		float                 alphas[Utility::ToUnderlying(Layer::kTotal)];             // 490
 		std::uint16_t         layerCount;                                               // 510
 		bool                  forceUpdate;                                              // 512
-		std::int8_t           unknown513;                                               // 513
-		std::int32_t          padding514;                                               // 514
-		std::int64_t          unknown518;                                               // 518
+		std::uint8_t          unknown513;                                               // 513
+		std::uint32_t         padding514;                                               // 514
+		std::uint64_t         unknown518;                                               // 518
 	};
 	static_assert(offsetof(Clouds, clouds) == 0x10);
 	static_assert(offsetof(Clouds, transitionTextures) == 0x210);

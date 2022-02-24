@@ -57,10 +57,10 @@ namespace Skyrim
 		static constexpr auto       MAXIMUM = static_cast<size_type>(N);
 
 		// Member variables
-		pointer      data_;     // 0
-		size_type    size_;     // 8
-		size_type    capacity_; // A
-		std::int32_t paddingC;  // C
+		pointer       data_;     // 0
+		size_type     size_;     // 8
+		size_type     capacity_; // A
+		std::uint32_t paddingC;  // C
 	};
 
 	using BSString = BSStringT<char, static_cast<std::uint32_t>(-1), DynamicMemoryManagementPol>;

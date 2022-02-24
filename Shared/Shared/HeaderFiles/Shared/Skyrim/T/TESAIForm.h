@@ -90,7 +90,7 @@ namespace Skyrim
 				AggroRadiusBehavior aggroRadiusBehavior;         // 4
 				std::uint8_t        noSlowApproach: 1;           // A (A, 0)
 				std::uint8_t        paddingABit1  : 7;           // A (A, 1)
-				std::int8_t         paddingB;                    // B
+				std::uint8_t        paddingB;                    // B
 			};
 			static_assert(offsetof(AIAttributes, aggroRadiusBehavior) == 0x4);
 			static_assert(sizeof(AIAttributes) == 0xC);

@@ -61,7 +61,7 @@ namespace Skyrim
 				std::uint16_t assault;         // 4
 				std::uint16_t trespass;        // 6
 				std::uint16_t pickpocket;      // 8
-				std::int16_t  paddingA;        // A
+				std::uint16_t paddingA;        // A
 				float         stealMultiplier; // C
 				std::uint16_t escape;          // 10
 				std::uint16_t werewolf;        // 12
@@ -85,7 +85,7 @@ namespace Skyrim
 			BGSListForm*   sharedCrimeFactionList;   // 20
 			BGSOutfit*     jailOutfit;               // 28
 			CrimeGold      crimeGold;                // 30
-			std::int32_t   padding44;                // 44
+			std::uint32_t  padding44;                // 44
 		};
 		static_assert(offsetof(TrackCrime, exteriorJailMarker) == 0x0);
 		static_assert(offsetof(TrackCrime, followerWaitMarker) == 0x8);
@@ -106,8 +106,8 @@ namespace Skyrim
 			bool             buysStolenItems;   // 8
 			bool             notSellBuy;        // 9
 			bool             buysOwnedItems;    // A
-			std::int8_t      paddingB;          // B
-			std::int32_t     paddingC;          // C
+			std::uint8_t     paddingB;          // B
+			std::uint32_t    paddingC;          // C
 			PackageLocation* location;          // 10
 			TESCondition*    vendorConditions;  // 18
 			BGSListForm*     vendorBuySellList; // 20
@@ -155,7 +155,7 @@ namespace Skyrim
 		// Member variables
 		BSTHashMap<const TESNPC*, std::uint32_t>*  crimeGold;             // 50
 		Utility::Enumeration<Flags, std::uint32_t> factionFlags;          // 58
-		std::int32_t                               padding5C;             // 5C
+		std::uint32_t                              padding5C;             // 5C
 		TrackCrime                                 trackCrime;            // 60
 		Vendor                                     vendor;                // A8
 		BSSimpleList<Rank*>                        ranks;                 // E0

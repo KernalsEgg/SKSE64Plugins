@@ -25,8 +25,8 @@ namespace Skyrim
 		EnchantmentItem* enchantment;     // 10
 		std::uint16_t    charge;          // 18
 		bool             removeOnUnequip; // 1A
-		std::int8_t      padding1B;       // 1B
-		std::int32_t     padding1C;       // 1C
+		std::uint8_t     padding1B;       // 1B
+		std::uint32_t    padding1C;       // 1C
 	};
 	static_assert(offsetof(ExtraEnchantment, enchantment) == 0x10);
 	static_assert(offsetof(ExtraEnchantment, charge) == 0x18);

@@ -26,7 +26,7 @@ namespace Skyrim
 			std::uint32_t spellCount;        // 18
 			std::uint32_t leveledSpellCount; // 1C
 			std::uint32_t shoutCount;        // 20
-			std::int32_t  padding24;         // 24
+			std::uint32_t padding24;         // 24
 		};
 		static_assert(offsetof(SpellList, spells) == 0x0);
 		static_assert(offsetof(SpellList, leveledSpells) == 0x8);

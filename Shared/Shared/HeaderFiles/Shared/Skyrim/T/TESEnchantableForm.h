@@ -31,7 +31,7 @@ namespace Skyrim
 		EnchantmentItem*                                              enchantment;       // 8
 		Utility::Enumeration<MagicSystem::CastingType, std::uint16_t> castingType;       // 10
 		std::uint16_t                                                 enchantmentAmount; // 12
-		std::int32_t                                                  padding14;         // 14
+		std::uint32_t                                                 padding14;         // 14
 	};
 	static_assert(offsetof(TESEnchantableForm, enchantment) == 0x8);
 	static_assert(offsetof(TESEnchantableForm, castingType) == 0x10);

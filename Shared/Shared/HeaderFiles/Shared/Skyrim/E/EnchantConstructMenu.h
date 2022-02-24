@@ -51,8 +51,8 @@ namespace Skyrim
 				Utility::Enumeration<Type, std::uint32_t> type;      // C
 				bool                                      equipped;  // 10
 				bool                                      enabled;   // 11
-				std::int16_t                              padding12; // 12
-				std::int32_t                              padding14; // 14
+				std::uint16_t                             padding12; // 12
+				std::uint32_t                             padding14; // 14
 			};
 			static_assert(offsetof(CategoryListEntry, type) == 0xC);
 			static_assert(offsetof(CategoryListEntry, equipped) == 0x10);
@@ -98,10 +98,10 @@ namespace Skyrim
 				EnchantmentEntry*                             enchantmentEntry; // 30
 				EnchantmentItem*                              enchantment;      // 38
 				Utility::Enumeration<FormType, std::uint32_t> formType;         // 40
-				std::int32_t                                  padding44;        // 44
+				std::uint32_t                                 padding44;        // 44
 				TESBoundObject*                               item;             // 48
 				float                                         effectiveness;    // 50
-				std::int32_t                                  padding54;        // 54
+				std::uint32_t                                 padding54;        // 54
 			};
 			static_assert(offsetof(CreateEffectFunctor, effects) == 0x10);
 			static_assert(offsetof(CreateEffectFunctor, costliestEffect) == 0x28);
@@ -122,30 +122,30 @@ namespace Skyrim
 			virtual void Unknown7(CraftingSubMenu*) override;                              // 7
 
 			// Member variables
-			std::int64_t                unknown100;          // 100
-			std::int64_t                unknown108;          // 108
-			std::int64_t                unknown110;          // 110
-			std::int64_t                unknown118;          // 118
-			std::int64_t                unknown120;          // 120
-			std::int64_t                unknown128;          // 128
-			std::int64_t                unknown130;          // 130
-			std::int64_t                unknown138;          // 138
-			std::int64_t                unknown140;          // 140
-			std::int64_t                unknown148;          // 148
-			std::int64_t                unknown150;          // 150
-			std::int64_t                unknown158;          // 158
-			std::int64_t                unknown160;          // 160
-			std::int64_t                unknown168;          // 168
-			std::int64_t                unknown170;          // 170
-			std::int64_t                unknown178;          // 178
+			std::uint64_t               unknown100;          // 100
+			std::uint64_t               unknown108;          // 108
+			std::uint64_t               unknown110;          // 110
+			std::uint64_t               unknown118;          // 118
+			std::uint64_t               unknown120;          // 120
+			std::uint64_t               unknown128;          // 128
+			std::uint64_t               unknown130;          // 130
+			std::uint64_t               unknown138;          // 138
+			std::uint64_t               unknown140;          // 140
+			std::uint64_t               unknown148;          // 148
+			std::uint64_t               unknown150;          // 150
+			std::uint64_t               unknown158;          // 158
+			std::uint64_t               unknown160;          // 160
+			std::uint64_t               unknown168;          // 168
+			std::uint64_t               unknown170;          // 170
+			std::uint64_t               unknown178;          // 178
 			BSTArray<EnchantmentEntry*> enchantmentEntries;  // 180
-			std::int64_t                unknown198;          // 198
-			std::int64_t                unknown1A0;          // 1A0
+			std::uint64_t               unknown198;          // 198
+			std::uint64_t               unknown1A0;          // 1A0
 			CreateEffectFunctor         createEffectFunctor; // 1A8
-			std::int64_t                unknown200;          // 200
-			std::int64_t                unknown208;          // 208
-			std::int64_t                unknown210;          // 210
-			std::int64_t                unknown218;          // 218
+			std::uint64_t               unknown200;          // 200
+			std::uint64_t               unknown208;          // 208
+			std::uint64_t               unknown210;          // 210
+			std::uint64_t               unknown218;          // 218
 		};
 		static_assert(offsetof(EnchantConstructMenu, enchantmentEntries) == 0x180);
 		static_assert(offsetof(EnchantConstructMenu, createEffectFunctor) == 0x1A8);

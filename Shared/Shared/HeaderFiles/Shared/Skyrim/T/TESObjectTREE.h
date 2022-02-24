@@ -34,16 +34,16 @@ namespace Skyrim
 		virtual void Unknown52(TESBoundObject*) override; // 52
 
 		// Member variables
-		float        trunkFlexibility;  // 88
-		float        branchFlexibility; // 8C
-		std::int64_t unknown90;         // 90
-		std::int64_t unknown98;         // 98
-		std::int64_t unknownA0;         // A0
-		std::int64_t unknownA8;         // A8
-		float        leafAmplitude;     // B0
-		float        leafFrequency;     // B4
-		std::int64_t unknownB8;         // B8
-		std::int64_t unknownC0;         // C0
+		float         trunkFlexibility;  // 88
+		float         branchFlexibility; // 8C
+		std::uint64_t unknown90;         // 90
+		std::uint64_t unknown98;         // 98
+		std::uint64_t unknownA0;         // A0
+		std::uint64_t unknownA8;         // A8
+		float         leafAmplitude;     // B0
+		float         leafFrequency;     // B4
+		std::uint64_t unknownB8;         // B8
+		std::uint64_t unknownC0;         // C0
 	};
 	static_assert(offsetof(TESObjectTREE, trunkFlexibility) == 0x88);
 	static_assert(offsetof(TESObjectTREE, branchFlexibility) == 0x8C);

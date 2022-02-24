@@ -26,7 +26,7 @@ namespace Skyrim
 			// Member variables
 			NiPointer<NiNode> attachRoot;    // 8
 			NiPointer<NiNode> artObjectRoot; // 10
-			std::int64_t      unknown18;     // 18
+			std::uint64_t     unknown18;     // 18
 		};
 		static_assert(offsetof(AttachTechniqueInput, attachRoot) == 0x8);
 		static_assert(offsetof(AttachTechniqueInput, artObjectRoot) == 0x10);

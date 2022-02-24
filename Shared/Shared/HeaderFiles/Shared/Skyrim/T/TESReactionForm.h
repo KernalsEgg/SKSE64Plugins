@@ -42,9 +42,9 @@ namespace Skyrim
 		// Member variables
 		BSSimpleList<GroupCombatReaction*>           groupCombatReaction; // 8
 		Utility::Enumeration<FormType, std::uint8_t> groupFormType;       // 18
-		std::int8_t                                  padding19;           // 19
-		std::int16_t                                 padding1A;           // 1A
-		std::int32_t                                 padding1C;           // 1C
+		std::uint8_t                                 padding19;           // 19
+		std::uint16_t                                padding1A;           // 1A
+		std::uint32_t                                padding1C;           // 1C
 	};
 	static_assert(offsetof(TESReactionForm, groupCombatReaction) == 0x8);
 	static_assert(offsetof(TESReactionForm, groupFormType) == 0x18);

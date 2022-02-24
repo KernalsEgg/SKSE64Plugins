@@ -46,9 +46,9 @@ namespace Skyrim
 		BSTArray<BSTEventSink<T>*> pendingUnregisters; // 30
 		mutable BSSpinLock         lock;               // 48
 		bool                       notifying;          // 50
-		std::int8_t                padding51;          // 51
-		std::int16_t               padding52;          // 52
-		std::int32_t               padding54;          // 54
+		std::uint8_t               padding51;          // 51
+		std::uint16_t              padding52;          // 52
+		std::uint32_t              padding54;          // 54
 	};
 	static_assert(offsetof(BSTEventSource<void>, eventSinks) == 0x0);
 	static_assert(offsetof(BSTEventSource<void>, pendingRegisters) == 0x18);

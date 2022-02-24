@@ -34,7 +34,7 @@ namespace Skyrim
 		virtual void UnknownC3(MissileProjectile*); // C3
 
 		// Member variables
-		std::int64_t unknown1D8; // 1D8
+		std::uint64_t unknown1D8; // 1D8
 	};
 	static_assert(sizeof(MissileProjectile) == 0x1E0);
 }

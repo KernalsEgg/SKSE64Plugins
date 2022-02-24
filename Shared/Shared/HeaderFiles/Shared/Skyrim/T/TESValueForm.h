@@ -21,8 +21,8 @@ namespace Skyrim
 		virtual void Unknown3(BaseFormComponent*) override; // 3
 
 		// Member variables
-		std::int32_t value;    // 8
-		std::int32_t paddingC; // C
+		std::int32_t  value;    // 8
+		std::uint32_t paddingC; // C
 	};
 	static_assert(offsetof(TESValueForm, value) == 0x8);
 	static_assert(sizeof(TESValueForm) == 0x10);

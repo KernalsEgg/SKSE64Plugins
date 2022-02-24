@@ -33,15 +33,15 @@ namespace Skyrim
 		virtual void Unknown12(TESForm*) override; // 12
 
 		// Member variables
-		std::int32_t                              unknown50;                                                  // 50
+		std::uint32_t                             unknown50;                                                  // 50
 		Utility::Enumeration<Skill, std::uint8_t> trainingSkill;                                              // 54
 		std::uint8_t                              trainingValue;                                              // 55
 		std::uint8_t                              skillWeights[Utility::ToUnderlying(Skill::kTotal)];         // 56
 		float                                     bleedoutDefault;                                            // 68
 		std::uint32_t                             voicePoints;                                                // 6C
 		std::uint8_t                              attributeWeights[Utility::ToUnderlying(Attribute::kTotal)]; // 70
-		std::int8_t                               padding73;                                                  // 73
-		std::int32_t                              padding74;                                                  // 74
+		std::uint8_t                              padding73;                                                  // 73
+		std::uint32_t                             padding74;                                                  // 74
 	};
 	static_assert(offsetof(TESClass, trainingSkill) == 0x54);
 	static_assert(offsetof(TESClass, trainingValue) == 0x55);

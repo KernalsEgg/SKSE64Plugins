@@ -32,9 +32,9 @@ namespace Skyrim
 
 		// Member variables
 		Utility::Enumeration<Flags, std::uint8_t> voiceTypeFlags; // 20
-		std::int8_t                               padding21;      // 21
-		std::int16_t                              padding22;      // 22
-		std::int32_t                              padding24;      // 24
+		std::uint8_t                              padding21;      // 21
+		std::uint16_t                             padding22;      // 22
+		std::uint32_t                             padding24;      // 24
 		BSString                                  editorID;       // 28
 	};
 	static_assert(offsetof(BGSVoiceType, voiceTypeFlags) == 0x20);

@@ -26,11 +26,11 @@ namespace Skyrim
 		virtual void Unknown7(NiFile*); // 7
 
 		// Member variables
-		std::int64_t unknown20; // 20
-		std::int64_t unknown28; // 28
-		std::int64_t unknown30; // 30
-		std::int64_t unknown38; // 38
-		std::int64_t unknown40; // 40
+		std::uint64_t unknown20; // 20
+		std::uint64_t unknown28; // 28
+		std::uint64_t unknown30; // 30
+		std::uint64_t unknown38; // 38
+		std::uint64_t unknown40; // 40
 	};
 	static_assert(sizeof(NiFile) == 0x48);
 }

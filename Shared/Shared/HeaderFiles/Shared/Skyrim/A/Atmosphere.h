@@ -28,9 +28,9 @@ namespace Skyrim
 		// Member variables
 		NiPointer<BSTriShape>    atmosphere; // 10
 		NiPointer<BSFogProperty> fog;        // 18
-		std::int64_t             unknown20;  // 20
-		std::int64_t             unknown28;  // 28
-		std::int64_t             unknown30;  // 30
+		std::uint64_t            unknown20;  // 20
+		std::uint64_t            unknown28;  // 28
+		std::uint64_t            unknown30;  // 30
 	};
 	static_assert(offsetof(Atmosphere, atmosphere) == 0x10);
 	static_assert(offsetof(Atmosphere, fog) == 0x18);

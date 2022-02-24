@@ -18,7 +18,7 @@ namespace Skyrim
 	protected:
 		// Member variables
 		volatile std::uint32_t referenceCount_; // 8
-		std::int32_t           paddingC;        // C
+		std::uint32_t          paddingC;        // C
 	};
 	static_assert(sizeof(GRefCountImplCore) == 0x10);
 }

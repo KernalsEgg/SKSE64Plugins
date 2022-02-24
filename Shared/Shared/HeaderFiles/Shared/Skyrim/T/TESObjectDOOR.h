@@ -60,14 +60,14 @@ namespace Skyrim
 		virtual void HandleOpen(TESObjectREFR* target, TESObjectREFR* activator) override; // 1
 
 		// Member variables
-		std::int64_t                              unknown90;       // 90
+		std::uint64_t                             unknown90;       // 90
 		BGSSoundDescriptorForm*                   open;            // 98
 		BGSSoundDescriptorForm*                   close;           // A0
 		BGSSoundDescriptorForm*                   loop;            // A8
 		Utility::Enumeration<Flags, std::uint8_t> doorFlags;       // B0
-		std::int8_t                               paddingB1;       // B1
-		std::int16_t                              paddingB2;       // B2
-		std::int32_t                              paddingB4;       // B4
+		std::uint8_t                              paddingB1;       // B1
+		std::uint16_t                             paddingB2;       // B2
+		std::uint32_t                             paddingB4;       // B4
 		BSTArray<TESForm*>                        randomTeleports; // B8
 	};
 	static_assert(offsetof(TESObjectDOOR, open) == 0x98);

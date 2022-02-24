@@ -25,7 +25,7 @@ namespace Skyrim
 		// Member variables
 		NiPointer<NiNode> starsNode; // 10
 		float             alpha;     // 18
-		std::int32_t      padding1C; // 1C
+		std::uint32_t     padding1C; // 1C
 	};
 	static_assert(offsetof(Stars, starsNode) == 0x10);
 	static_assert(offsetof(Stars, alpha) == 0x18);

@@ -33,7 +33,7 @@ namespace Skyrim
 		// Member variables
 		BSTArray<BGSEquipSlot*>                    slotParents;    // 20
 		Utility::Enumeration<Flags, std::uint32_t> equipSlotFlags; // 38
-		std::int32_t                               padding3C;      // 3C
+		std::uint32_t                              padding3C;      // 3C
 	};
 	static_assert(offsetof(BGSEquipSlot, slotParents) == 0x20);
 	static_assert(offsetof(BGSEquipSlot, equipSlotFlags) == 0x38);

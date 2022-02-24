@@ -36,24 +36,24 @@ namespace Skyrim
 		virtual void Unknown4(PlayerInputHandler*) override; // 4
 
 		// Member variables
-		NiPoint3     lastPosition;             // 30
-		NiPoint3     lastFrameSpringVelocity;  // 3C
-		NiPoint3     dampingOffset;            // 48
-		std::int32_t padding54;                // 54
-		NiAVObject*  firstPersonCameraObject;  // 58
-		NiNode*      firstPersonCameraFOVNode; // 60
-		float        sittingRotation;          // 68
-		std::int32_t unknown6C;                // 6C
-		std::int32_t unknown70;                // 70
-		float        currentPitchOffset;       // 74
-		float        targetPitchOffset;        // 78
-		std::int32_t unknown7C;                // 7C
-		std::int32_t unknown80;                // 80
-		bool         cameraOverride;           // 84
-		bool         cameraPitchOverride;      // 85
-		std::int8_t  unknown86;                // 86
-		std::int8_t  padding87;                // 87
-		std::int64_t unknown88;                // 88
+		NiPoint3      lastPosition;             // 30
+		NiPoint3      lastFrameSpringVelocity;  // 3C
+		NiPoint3      dampingOffset;            // 48
+		std::uint32_t padding54;                // 54
+		NiAVObject*   firstPersonCameraObject;  // 58
+		NiNode*       firstPersonCameraFOVNode; // 60
+		float         sittingRotation;          // 68
+		std::uint32_t unknown6C;                // 6C
+		std::uint32_t unknown70;                // 70
+		float         currentPitchOffset;       // 74
+		float         targetPitchOffset;        // 78
+		std::uint32_t unknown7C;                // 7C
+		std::uint32_t unknown80;                // 80
+		bool          cameraOverride;           // 84
+		bool          cameraPitchOverride;      // 85
+		std::uint8_t  unknown86;                // 86
+		std::uint8_t  padding87;                // 87
+		std::uint64_t unknown88;                // 88
 	};
 	static_assert(offsetof(FirstPersonState, lastPosition) == 0x30);
 	static_assert(offsetof(FirstPersonState, lastFrameSpringVelocity) == 0x3C);

@@ -33,10 +33,10 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			TESWeather*  weatherType; // 0
-			std::int32_t chance;      // 8
-			std::int32_t paddingC;    // C
-			TESGlobal*   global;      // 10
+			TESWeather*   weatherType; // 0
+			std::uint32_t chance;      // 8
+			std::uint32_t paddingC;    // C
+			TESGlobal*    global;      // 10
 		};
 		static_assert(offsetof(WeatherType, weatherType) == 0x0);
 		static_assert(offsetof(WeatherType, chance) == 0x8);
@@ -61,8 +61,8 @@ namespace Skyrim
 		std::uint8_t                              sunsetEnd;    // 7B
 		std::uint8_t                              volatility;   // 7C
 		Utility::Enumeration<Moons, std::uint8_t> moons;        // 7D
-		std::int8_t                               padding7E;    // 7E
-		std::int8_t                               padding7F;    // 7F
+		std::uint8_t                              padding7E;    // 7E
+		std::uint8_t                              padding7F;    // 7F
 	};
 	static_assert(offsetof(TESClimate, nightSky) == 0x20);
 	static_assert(offsetof(TESClimate, weatherTypes) == 0x48);

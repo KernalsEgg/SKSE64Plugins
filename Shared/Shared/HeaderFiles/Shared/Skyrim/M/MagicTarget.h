@@ -55,8 +55,8 @@ namespace Skyrim
 		void   VisitActiveEffects(ForEachActiveEffectVisitor* visitor);
 
 		// Member variables
-		std::int64_t unknown8;  // 8
-		std::int64_t unknown10; // 10
+		std::uint64_t unknown8;  // 8
+		std::uint64_t unknown10; // 10
 	};
 	static_assert(sizeof(MagicTarget) == 0x18);
 }
