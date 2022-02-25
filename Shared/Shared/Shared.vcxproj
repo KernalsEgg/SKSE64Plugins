@@ -99,6 +99,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSTextureSet.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSVoiceType.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSVolumetricLighting.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkCharacterController.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkConstraint.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkEntity.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkRefObject.h" />
@@ -110,6 +111,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BodyPartType.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAnimationGraphEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAtomic.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSBound.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSCoreTypes.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSExtraData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSFile.h" />
@@ -180,8 +182,17 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HandleEntryPointVisitor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HighProcessData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkBaseObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkBaseTypes.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCharacterContext.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCharacterState.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCharacterStateManager.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCharacterStateType.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpSurfaceInfo.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkReferencedObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkRefPtr.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkStepInfo.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkVector4.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkVector4Comparison.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IAnimationGraphManagerHolder.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ICellAttachDetachEventSource.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ID.h" />
@@ -212,6 +223,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiCollisionObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiColor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiDirectionalLight.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiExtraData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiFile.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiLight.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiMatrix33.h" />
@@ -364,7 +376,6 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSStringPool.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\Events.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\Effect.cpp" />
-    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EffectSetting.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\EnchantmentItem.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\ExtraDataList.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindAppropriateDisplaceEffect.cpp" />

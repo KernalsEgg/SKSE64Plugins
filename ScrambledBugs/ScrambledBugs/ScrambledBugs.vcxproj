@@ -49,6 +49,7 @@
     <ClInclude Include="HeaderFiles\Patches\ReflectDamage.h" />
     <ClInclude Include="HeaderFiles\Patches\ScrollExperience.h" />
     <ClInclude Include="HeaderFiles\Patches\StaffExperience.h" />
+    <ClInclude Include="HeaderFiles\Patches\SteepSlopes.h" />
     <ClInclude Include="HeaderFiles\Patches\TeammateDifficulty.h" />
     <ClInclude Include="HeaderFiles\Patches\UnderfilledSoulGems.h" />
     <ClInclude Include="HeaderFiles\Patterns.h" />
@@ -86,6 +87,7 @@
     <ClCompile Include="SourceFiles\Patches\ReflectDamage.cpp" />
     <ClCompile Include="SourceFiles\Patches\ScrollExperience.cpp" />
     <ClCompile Include="SourceFiles\Patches\StaffExperience.cpp" />
+    <ClCompile Include="SourceFiles\Patches\SteepSlopes.cpp" />
     <ClCompile Include="SourceFiles\Patches\TeammateDifficulty.cpp" />
     <ClCompile Include="SourceFiles\Patches\UnderfilledSoulGems.cpp" />
     <ClCompile Include="SourceFiles\Patterns.cpp" />

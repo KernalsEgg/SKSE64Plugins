@@ -212,7 +212,7 @@ namespace Skyrim
 		virtual void         UnknownA1(TESObjectREFR*);                                                                     // A1
 
 		// Member functions
-		TESContainer*     GetContainer();
+		TESContainer*     GetContainer() const;
 		InventoryChanges* GetInventoryChanges();
 		const char*       GetReferenceName() const;
 

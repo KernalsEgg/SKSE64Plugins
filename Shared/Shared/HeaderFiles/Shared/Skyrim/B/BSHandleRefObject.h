@@ -24,9 +24,9 @@ namespace Skyrim
 
 		// Member functions
 		void          DecrementReferenceCount();
-		std::uint32_t GetMaskedReferenceCount();
+		std::uint32_t GetMaskedReferenceCount() const;
 		void          IncrementReferenceCount();
-		bool          IsHandleValid();
+		bool          IsHandleValid() const;
 	};
 	static_assert(sizeof(BSHandleRefObject) == 0x10);
 }

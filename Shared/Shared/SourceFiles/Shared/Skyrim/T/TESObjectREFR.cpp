@@ -15,7 +15,7 @@
 namespace Skyrim
 {
 	/// <summary>SkyrimSE.exe + 0x28E390 (VID 19276)</summary>
-	TESContainer* TESObjectREFR::GetContainer()
+	TESContainer* TESObjectREFR::GetContainer() const
 	{
 		auto baseObject = this->baseObject;
 

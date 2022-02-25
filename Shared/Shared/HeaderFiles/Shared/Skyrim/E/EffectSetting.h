@@ -74,9 +74,6 @@ namespace Skyrim
 		// Override (BGSKeywordForm)
 		virtual bool HasKeyword(const BGSKeyword* keyword) const override; // 4
 
-		// Member functions
-		bool IsHostile();
-
 		// Member variables
 		std::uint64_t                                                 unknown58;                   // 58
 		std::uint64_t                                                 unknown60;                   // 60

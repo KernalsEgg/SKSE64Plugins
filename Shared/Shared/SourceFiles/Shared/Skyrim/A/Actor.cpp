@@ -27,6 +27,13 @@ namespace Skyrim
 		return function(this, actorValueModifier, actorValue);
 	}
 
+	bhkCharacterController* Actor::GetCharacterController() const
+	{
+		auto currentProcess = this->currentProcess;
+
+		return currentProcess ? currentProcess->GetCharacterController() : nullptr;
+	}
+
 	float Actor::GetMaximumWardPower() const
 	{
 		auto currentProcess = this->currentProcess;

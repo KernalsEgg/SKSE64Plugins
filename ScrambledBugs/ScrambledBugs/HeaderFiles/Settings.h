@@ -66,6 +66,7 @@ namespace ScrambledBugs
 			bool            reflectDamage{ false };
 			bool            scrollExperience{ false };
 			bool            staffExperience{ false };
+			bool            steepSlopes{ false };
 			bool            teammateDifficulty{ false };
 			bool            underfilledSoulGems{ false };
 		};

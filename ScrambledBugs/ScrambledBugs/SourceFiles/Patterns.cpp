@@ -393,6 +393,17 @@ namespace ScrambledBugs::Patterns
 			}
 		}
 
+		namespace SteepSlopes
+		{
+			bool GetScale()
+			{
+				return Relocation::AddressLibrary::MatchPattern(
+					Addresses::Patches::SteepSlopes::GetScale, // 0x5
+					0xE8ui8, std::optional<std::int32_t>{}     // call TESObjectREFR::GetScale
+				);
+			}
+		}
+
 		namespace UnderfilledSoulGems
 		{
 			bool CompareSoulLevelValue()

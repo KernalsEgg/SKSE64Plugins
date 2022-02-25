@@ -38,6 +38,7 @@
 		"reflectDamage":						true,	/* Reflect any amount of damage. */
 		"scrollExperience":						true,	/* Earn experience when using scrolls. */
 		"staffExperience":						true,	/* Earn experience when using staves. */
+		"steepSlopes":							true,	/* Move slower on slopes than on flat surfaces. */
 		"teammateDifficulty":					true,	/* Teammates use the same difficulty multipliers as the player. */
 		"underfilledSoulGems":					true	/* Trap only souls of the appropriate size in soul gems. */
 	}

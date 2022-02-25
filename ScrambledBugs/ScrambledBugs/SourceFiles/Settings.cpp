@@ -204,6 +204,11 @@ namespace ScrambledBugs
 			patches.at("staffExperience").get_to(this->staffExperience);
 		}
 
+		if (patches.contains("steepSlopes"))
+		{
+			patches.at("steepSlopes").get_to(this->steepSlopes);
+		}
+
 		if (patches.contains("teammateDifficulty"))
 		{
 			patches.at("teammateDifficulty").get_to(this->teammateDifficulty);
@@ -234,6 +239,7 @@ namespace ScrambledBugs
 		patches["reflectDamage"]                     = this->reflectDamage;
 		patches["scrollExperience"]                  = this->scrollExperience;
 		patches["staffExperience"]                   = this->staffExperience;
+		patches["steepSlopes"]                       = this->steepSlopes;
 		patches["teammateDifficulty"]                = this->teammateDifficulty;
 		patches["underfilledSoulGems"]               = this->underfilledSoulGems;
 

@@ -16,10 +16,8 @@ namespace Skyrim
 		}
 	}
 
-	std::uint32_t BSHandleRefObject::GetMaskedReferenceCount()
+	std::uint32_t BSHandleRefObject::GetMaskedReferenceCount() const
 	{
-		this->IncrementReferenceCount();
-
 		return this->referenceCount_ & BSHandleRefObject::kReferenceCountMask;
 	}
 
@@ -30,7 +28,7 @@ namespace Skyrim
 		++referenceCount;
 	}
 
-	bool BSHandleRefObject::IsHandleValid()
+	bool BSHandleRefObject::IsHandleValid() const
 	{
 		return this->referenceCount_ & BSHandleRefObject::kValidHandle;
 	}

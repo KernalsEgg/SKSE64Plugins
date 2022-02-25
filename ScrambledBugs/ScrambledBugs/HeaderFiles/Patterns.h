@@ -121,6 +121,11 @@ namespace ScrambledBugs::Patterns
 			bool CompareReflectDamage();
 		}
 
+		namespace SteepSlopes
+		{
+			bool GetScale();
+		}
+
 		namespace UnderfilledSoulGems
 		{
 			bool CompareSoulLevelValue();

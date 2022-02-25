@@ -27,7 +27,7 @@ namespace BugFixesSSE::Fixes
 		return activeEffectConditionUpdateInterval > 0.0001F ? activeEffectConditionUpdateInterval : 1.0F;
 	}
 
-	void MagicEffectConditions::UpdateConditions(Skyrim::ActiveEffect* activeEffect, float frameTime, bool forceUpdate)
+	void MagicEffectConditions::UpdateConditions(Skyrim::ActiveEffect* activeEffect, float deltaTime, bool forceUpdate)
 	{
 		// activeEffect != nullptr
 
@@ -42,7 +42,7 @@ namespace BugFixesSSE::Fixes
 			{
 				if (activeEffect->elapsedTime <= 0.0F)
 				{
-					reinterpret_cast<float&>(activeEffect->padding8C) = frameTime;
+					reinterpret_cast<float&>(activeEffect->padding8C) = deltaTime;
 
 					return;
 				}
@@ -51,13 +51,13 @@ namespace BugFixesSSE::Fixes
 
 				if (reinterpret_cast<float&>(activeEffect->padding8C) > 0.0F && reinterpret_cast<float&>(activeEffect->padding8C) < activeEffectConditionUpdateInterval)
 				{
-					reinterpret_cast<float&>(activeEffect->padding8C) += frameTime;
+					reinterpret_cast<float&>(activeEffect->padding8C) += deltaTime;
 
 					return;
 				}
 			}
 
-			reinterpret_cast<float&>(activeEffect->padding8C) = frameTime;
+			reinterpret_cast<float&>(activeEffect->padding8C) = deltaTime;
 
 			auto subject = activeEffect->magicTarget->GetMagicTargetOwner();
 			auto target  = activeEffect->caster.get().get();

@@ -42,7 +42,7 @@ namespace Skyrim
 		virtual void Unknown3E(ReferenceEffect*); // 3E
 
 		// Member functions
-		Actor* GetTargetActor();
+		Actor* GetTargetActor() const;
 
 		// Member variables
 		ReferenceEffectController* controller;    // 30

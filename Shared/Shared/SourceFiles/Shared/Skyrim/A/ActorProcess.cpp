@@ -8,6 +8,13 @@
 
 namespace Skyrim
 {
+	bhkCharacterController* ActorProcess::GetCharacterController() const
+	{
+		auto middleHighProcessData = this->middleHighProcessData;
+
+		return middleHighProcessData ? middleHighProcessData->characterController.get() : nullptr;
+	}
+
 	ObjectReferenceHandle ActorProcess::GetCurrentFurniture() const
 	{
 		auto middleHighProcessData = this->middleHighProcessData;

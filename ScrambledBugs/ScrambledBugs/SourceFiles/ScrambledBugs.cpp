@@ -29,6 +29,7 @@
 #include "Patches/ReflectDamage.h"
 #include "Patches/ScrollExperience.h"
 #include "Patches/StaffExperience.h"
+#include "Patches/SteepSlopes.h"
 #include "Patches/TeammateDifficulty.h"
 #include "Patches/UnderfilledSoulGems.h"
 #include "Serialization.h"
@@ -188,6 +189,11 @@ void Settings()
 	if (settings.patches.staffExperience)
 	{
 		settings.patches.staffExperience = ScrambledBugs::Patches::StaffExperience::Patch();
+	}
+
+	if (settings.patches.steepSlopes)
+	{
+		settings.patches.steepSlopes = ScrambledBugs::Patches::SteepSlopes::Patch();
 	}
 
 	if (settings.patches.teammateDifficulty)

@@ -17,7 +17,7 @@ namespace Skyrim
 		std::uint32_t GetArea() const;
 		std::uint32_t GetDuration() const;
 		float         GetMagnitude() const;
-		bool          IsHostile();
+		bool          IsHostile() const;
 		bool          SetDuration(std::uint32_t duration);
 		bool          SetMagnitude(float magnitude);
 

@@ -10,7 +10,7 @@
 
 namespace Skyrim
 {
-	Actor* ReferenceEffect::GetTargetActor()
+	Actor* ReferenceEffect::GetTargetActor() const
 	{
 		auto target = this->target.get().get();
 

@@ -241,6 +241,12 @@ namespace ScrambledBugs::Addresses
 			inline const std::uintptr_t CompareReflectDamage{ Relocation::AddressLibrary::GetSingleton().GetAddress(42842) + 0x544 };
 		}
 
+		namespace SteepSlopes
+		{
+			/// <summary>Actor::SetMaximumMovementSpeed (SkyrimSE.exe + 0x60EEF0)</summary>
+			inline const std::uintptr_t GetScale{ Relocation::AddressLibrary::GetSingleton().GetAddress(37013) + 0x1A };
+		}
+
 		namespace TeammateDifficulty
 		{
 			/// <summary>Actor::MultiplyDamage (SkyrimSE.exe + 0x5E4800)</summary>

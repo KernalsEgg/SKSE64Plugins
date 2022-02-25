@@ -378,6 +378,9 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSVolumetricLighting.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkCharacterController.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkConstraint.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
@@ -409,6 +412,9 @@
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAtomic.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSBound.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSCoreTypes.h">
@@ -621,10 +627,37 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkBaseObject.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkBaseTypes.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCharacterContext.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCharacterState.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCharacterStateManager.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCharacterStateType.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpSurfaceInfo.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkReferencedObject.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkRefPtr.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkStepInfo.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkVector4.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkVector4Comparison.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IAnimationGraphManagerHolder.h">
@@ -715,6 +748,9 @@
       <Filter>Header Files\Shared\Skyrim\N</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiDirectionalLight.h">
+      <Filter>Header Files\Shared\Skyrim\N</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiExtraData.h">
       <Filter>Header Files\Shared\Skyrim\N</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiFile.h">
@@ -1158,9 +1194,6 @@
       <Filter>Source Files\Shared\Skyrim\B</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\Effect.cpp">
-      <Filter>Source Files\Shared\Skyrim\E</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EffectSetting.cpp">
       <Filter>Source Files\Shared\Skyrim\E</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\EnchantmentItem.cpp">

@@ -8,6 +8,7 @@
 
 namespace Skyrim
 {
+	class bhkCharacterController;
 	class HighProcessData;
 	class MiddleHighProcessData;
 
@@ -23,7 +24,8 @@ namespace Skyrim
 	{
 	public:
 		// Member functions
-		ObjectReferenceHandle GetCurrentFurniture() const;
+		bhkCharacterController* GetCharacterController() const;
+		ObjectReferenceHandle   GetCurrentFurniture() const;
 
 		// Member variables
 		MiddleLowProcessData*  middleLowProcessData;  // 0

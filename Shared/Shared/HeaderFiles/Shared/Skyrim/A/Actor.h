@@ -18,11 +18,13 @@ namespace Skyrim
 {
 	class ActorMagicCaster;
 	class ActorProcess;
-	class BSTransformDeltaEvent;
-	class bhkCharacterMoveFinishEvent;
+	class bhkCharacterController;
 	class MagicItem;
 	class SpellItem;
 	class TESForm;
+
+	struct BSTransformDeltaEvent;
+	struct bhkCharacterMoveFinishEvent;
 
 	class Actor :
 		public TESObjectREFR,                             // 0
@@ -345,17 +347,18 @@ namespace Skyrim
 		virtual void Unknown127(Actor*);    // 127
 
 		// Member functions
-		bool  AddSpell(SpellItem* spell);
-		float GetActorValueModifier(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue) const;
-		float GetMaximumWardPower() const;
-		bool  GetMount(NiPointer<Actor>& mount);
-		bool  GetMovementActor(NiPointer<Actor>& movementActor);
-		bool  IsOnMount() const;
-		bool  IsPlayerTeammate() const;
-		void  ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float previousValue, float difference, Actor* source);
-		void  RemoveActorValueModifiers(Utility::Enumeration<ActorValue, std::uint32_t> actorValue);
-		void  RevertSelectedSpell(Utility::Enumeration<SlotType, std::uint32_t> slotType, MagicItem* selectedSpell);
-		void  SetMaximumWardPower(float maximumWardPower);
+		bool                    AddSpell(SpellItem* spell);
+		float                   GetActorValueModifier(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue) const;
+		bhkCharacterController* GetCharacterController() const;
+		float                   GetMaximumWardPower() const;
+		bool                    GetMount(NiPointer<Actor>& mount);
+		bool                    GetMovementActor(NiPointer<Actor>& movementActor);
+		bool                    IsOnMount() const;
+		bool                    IsPlayerTeammate() const;
+		void                    ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float previousValue, float difference, Actor* source);
+		void                    RemoveActorValueModifiers(Utility::Enumeration<ActorValue, std::uint32_t> actorValue);
+		void                    RevertSelectedSpell(Utility::Enumeration<SlotType, std::uint32_t> slotType, MagicItem* selectedSpell);
+		void                    SetMaximumWardPower(float maximumWardPower);
 
 		// Member variables
 		Utility::Enumeration<BoolBits, std::uint32_t>  boolBits;                                                // E0

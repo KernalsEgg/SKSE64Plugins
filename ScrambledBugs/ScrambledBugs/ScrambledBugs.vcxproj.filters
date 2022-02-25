@@ -123,6 +123,9 @@
     <ClInclude Include="HeaderFiles\Patches\StaffExperience.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Patches\SteepSlopes.h">
+      <Filter>Header Files\Patches</Filter>
+    </ClInclude>
     <ClInclude Include="HeaderFiles\Patches\TeammateDifficulty.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
@@ -228,6 +231,9 @@
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Patches\StaffExperience.cpp">
+      <Filter>Source Files\Patches</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Patches\SteepSlopes.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Patches\TeammateDifficulty.cpp">

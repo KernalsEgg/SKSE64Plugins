@@ -9,7 +9,7 @@
 
 namespace Skyrim
 {
-	class CellAttachDetachEvent;
+	struct CellAttachDetachEvent;
 
 	class ICellAttachDetachEventSource :
 		public BSTSingletonExplicit<ICellAttachDetachEventSource>, // 0

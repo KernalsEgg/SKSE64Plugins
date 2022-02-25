@@ -25,9 +25,9 @@ namespace Skyrim
 		return this->baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoMagnitude) ? 0.0F : this->magnitude;
 	}
 
-	bool Effect::IsHostile()
+	bool Effect::IsHostile() const
 	{
-		return this->baseEffect->IsHostile();
+		return this->baseEffect->effectSettingFlags.all(EffectSetting::Flags::kHostile);
 	}
 
 	bool Effect::SetDuration(std::uint32_t duration)
