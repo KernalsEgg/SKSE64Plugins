@@ -7,7 +7,7 @@
 		"harvestedFlags":						true,	/* Save whether flora and trees are harvested when they respawn. */
 		"hitEffectRaceCondition":				true,	/* Eliminate a race condition that can prevent hit effects from being applied when an actors mesh is loaded after their magic effects are updated. */
 		"impactEffectCrash":					true,	/* Prevent a crash that occurs when you load a save in which an impact effect has been placed that has a now uninstalled texture set. */
-		"killCamera":							true,	/* Do not fire the Apply Combat Hit Spell perk entry point when the kill camera simulates the trajectory of an arrow. */
+		"killCamera":							true,	/* Prevent firing the Apply Combat Hit Spell perk entry point when the kill camera simulates the trajectory of an arrow. */
 		"magicEffectFlags":						true,	/* Flags are respected when scaling the duration and magnitude of a magic effect with its effectiveness. */
 		"modArmorWeightPerkEntryPoint":			true,	/* Modify the weight of only worn armor with the Mod Armor Weight perk entry point. */
 		"quickShot":							true,	/* Account for the Quick Shot perk when calculating the power of an arrow fired by the player. */
@@ -22,7 +22,6 @@
 		"alreadyCaughtPickpocketing":			true,	/* Pickpocket an actor even if they have already caught you. */
 		"attachHitEffectArt":					true,	/* Always attach hit effect art to actors. */
 		"cloakHitEffects":						true,	/* Each of a cloaking spells effects can apply hit effects. */
-		"enchantmentValue":						true,	/* Automatically calculate the value of player created enchantments. */
 		"equipBestAmmo":						true,	/* Automatically equip your best playable arrows or bolts when you equip a bow or crossbow. */
 		"improveMultipleEnchantmentEffects":	true,	/* Your skill in enchanting improves each of an enchantments effects. */
 		"leveledCharacters":					true,	/* Very hard leveled characters can be the same level as hard leveled characters. */
