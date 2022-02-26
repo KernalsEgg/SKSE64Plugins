@@ -56,9 +56,9 @@ namespace Skyrim
 
 		// Member variables
 		std::uint64_t                                              padding68;                // 68
-		hkVector4                                                  forwardDirection;         // 70
+		hkVector4                                                  direction;                // 70
 		hkStepInfo                                                 stepInformation;          // 80
-		hkVector4                                                  velocity;                 // 90
+		hkVector4                                                  havokVelocity;            // 90
 		std::uint64_t                                              unknownA0;                // A0
 		std::uint64_t                                              unknownA8;                // A8
 		hkVector4                                                  velocityModifier;         // B0
@@ -75,8 +75,7 @@ namespace Skyrim
 		hkVector4                                                  supportNormal;            // 110
 		BSBound                                                    collisionBound;           // 120
 		BSBound                                                    bumperCollisionBound;     // 150
-		std::uint64_t                                              unknown180;               // 180
-		std::uint64_t                                              unknown188;               // 188
+		hkVector4                                                  velocity;                 // 180
 		bhkICharOrientationController*                             orientationController;    // 190
 		std::uint64_t                                              padding198;               // 198
 		hkpSurfaceInfo                                             surfaceInformation;       // 1A0
@@ -122,13 +121,14 @@ namespace Skyrim
 		std::uint64_t                                              unknown320;               // 320
 		std::uint64_t                                              unknown328;               // 328
 	};
-	static_assert(offsetof(bhkCharacterController, forwardDirection) == 0x70);
+	static_assert(offsetof(bhkCharacterController, direction) == 0x70);
 	static_assert(offsetof(bhkCharacterController, stepInformation) == 0x80);
-	static_assert(offsetof(bhkCharacterController, velocity) == 0x90);
+	static_assert(offsetof(bhkCharacterController, havokVelocity) == 0x90);
 	static_assert(offsetof(bhkCharacterController, velocityModifier) == 0xB0);
 	static_assert(offsetof(bhkCharacterController, supportNormal) == 0x110);
 	static_assert(offsetof(bhkCharacterController, collisionBound) == 0x120);
 	static_assert(offsetof(bhkCharacterController, bumperCollisionBound) == 0x150);
+	static_assert(offsetof(bhkCharacterController, velocity) == 0x180);
 	static_assert(offsetof(bhkCharacterController, orientationController) == 0x190);
 	static_assert(offsetof(bhkCharacterController, surfaceInformation) == 0x1A0);
 	static_assert(offsetof(bhkCharacterController, context) == 0x1E0);

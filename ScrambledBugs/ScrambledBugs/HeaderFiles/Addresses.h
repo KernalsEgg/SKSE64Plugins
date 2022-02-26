@@ -63,8 +63,8 @@ namespace ScrambledBugs::Addresses
 
 		namespace ModArmorWeightPerkEntryPoint
 		{
-			/// <summary>InventoryChanges::UpdateInventoryWeight (SkyrimSE.exe + 0x1E9130)</summary>
-			inline const std::uintptr_t UpdateInventoryWeight{ Relocation::AddressLibrary::GetSingleton().GetAddress(15883) + 0x0 };
+			/// <summary>InventoryChanges::GetInventoryWeight (SkyrimSE.exe + 0x1E9130)</summary>
+			inline const std::uintptr_t GetInventoryWeight{ Relocation::AddressLibrary::GetSingleton().GetAddress(15883) + 0x0 };
 		}
 
 		namespace QuickShot

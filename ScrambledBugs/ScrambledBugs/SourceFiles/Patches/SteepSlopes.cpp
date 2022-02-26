@@ -27,15 +27,22 @@ namespace ScrambledBugs::Patches
 
 	float SteepSlopes::GetScale(Skyrim::Actor* actor)
 	{
+		// actor != nullptr
+
 		auto characterController = actor->GetCharacterController();
 
-		if (characterController)
+		if (characterController && characterController->context.currentState == Skyrim::hkpCharacterStateType::kOnGround)
 		{
-			auto supportNormalZ = std::abs(characterController->supportNormal.quad.m128_f32[2]);
+			auto surfaceInformation = characterController->surfaceInformation;
 
-			if (supportNormalZ > 0.0F)
+			if (surfaceInformation.supportedState == Skyrim::hkpSurfaceInfo::SupportedState::kSupported)
 			{
-				return supportNormalZ * SteepSlopes::getScale_(actor);
+				auto surfaceNormalZ = surfaceInformation.surfaceNormal.quad.m128_f32[2];
+
+				if (surfaceNormalZ != 0.0F)
+				{
+					return std::abs(surfaceNormalZ) * SteepSlopes::getScale_(actor);
+				}
 			}
 		}
 

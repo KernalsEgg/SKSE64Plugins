@@ -13,7 +13,7 @@ namespace ScrambledBugs::Fixes
 {
 	bool ModArmorWeightPerkEntryPoint::Fix()
 	{
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::ModArmorWeightPerkEntryPoint::UpdateInventoryWeight, reinterpret_cast<std::uintptr_t>(std::addressof(ModArmorWeightPerkEntryPoint::UpdateInventoryWeight)));
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::ModArmorWeightPerkEntryPoint::GetInventoryWeight, reinterpret_cast<std::uintptr_t>(std::addressof(ModArmorWeightPerkEntryPoint::GetInventoryWeight)));
 
 		ModArmorWeightPerkEntryPoint::applyPerkEntry_ = reinterpret_cast<decltype(ModArmorWeightPerkEntryPoint::applyPerkEntry_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xA));
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(ModArmorWeightPerkEntryPoint::ApplyPerkEntry)));
@@ -57,7 +57,7 @@ namespace ScrambledBugs::Fixes
 		return nullptr;
 	}
 
-	float ModArmorWeightPerkEntryPoint::UpdateInventoryWeight(Skyrim::InventoryChanges* inventoryChanges)
+	float ModArmorWeightPerkEntryPoint::GetInventoryWeight(Skyrim::InventoryChanges* inventoryChanges)
 	{
 		// inventoryChanges != nullptr
 

@@ -20,7 +20,7 @@ namespace ScrambledBugs::Fixes
 	private:
 		static void                        ApplyPerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner);
 		static Skyrim::InventoryEntryData* GetInventoryEntryData(Skyrim::InventoryChanges* inventoryChanges, Skyrim::TESBoundObject* item);
-		static float                       UpdateInventoryWeight(Skyrim::InventoryChanges* inventoryChanges);
+		static float                       GetInventoryWeight(Skyrim::InventoryChanges* inventoryChanges);
 		static void                        RemovePerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner);
 
 		static decltype(&ModArmorWeightPerkEntryPoint::ApplyPerkEntry)  applyPerkEntry_;
