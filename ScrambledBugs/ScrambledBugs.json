@@ -6,7 +6,7 @@
 		"enchantmentCost":						true,	/* Save the overridden cost of player created enchantments. */
 		"harvestedFlags":						true,	/* Save whether flora and trees are harvested when they respawn. */
 		"hitEffectRaceCondition":				true,	/* Eliminate a race condition that can prevent hit effects from being applied when an actors mesh is loaded after their magic effects are updated. */
-		"impactEffectCrash":					true,	/* Prevent a crash that occurs when you load a save in which an impact effect has been placed that has a now uninstalled texture set. */
+		"impactEffectCrash":					true,	/* Prevent a crash that occurs when you load a save game in which an impact effect has been placed that uses a now uninstalled texture set. */
 		"killCamera":							true,	/* Prevent firing the Apply Combat Hit Spell perk entry point when the kill camera simulates the trajectory of an arrow. */
 		"magicEffectFlags":						true,	/* Flags are respected when scaling the duration and magnitude of a magic effect with its effectiveness. */
 		"modArmorWeightPerkEntryPoint":			true,	/* Modify the weight of only worn armor with the Mod Armor Weight perk entry point. */
@@ -18,27 +18,27 @@
 	},
 	"patches":
 	{
-		"accumulatingMagnitude":				true,	/* The maximum magnitude of accumulating magnitude magic effects scales with effectiveness instead of the rate of accumulation. */
-		"alreadyCaughtPickpocketing":			true,	/* Pickpocket an actor even if they have already caught you. */
-		"attachHitEffectArt":					true,	/* Always attach hit effect art to actors. */
-		"cloakHitEffects":						true,	/* Each of a cloaking spells effects can apply hit effects. */
-		"equipBestAmmo":						true,	/* Automatically equip your best playable arrows or bolts when you equip a bow or crossbow. */
+		"accumulatingMagnitude":				false,	/* The maximum magnitude of accumulating magnitude magic effects scales with effectiveness instead of the rate of accumulation. */
+		"alreadyCaughtPickpocketing":			false,	/* Pickpocket an actor even if they have already caught you. */
+		"attachHitEffectArt":					false,	/* Always attach hit effect art to actors. */
+		"cloakHitEffects":						false,	/* Each of a cloaking spells effects can apply hit effects. */
+		"equipBestAmmo":						false,	/* Automatically equip your best playable arrows or bolts when you equip a bow or crossbow. */
 		"improveMultipleEnchantmentEffects":	true,	/* Your skill in enchanting improves each of an enchantments effects. */
-		"leveledCharacters":					true,	/* Very hard leveled characters can be the same level as hard leveled characters. */
+		"leveledCharacters":					false,	/* Very hard leveled characters can be the same level as hard leveled characters. */
 		"lockpickingExperience":				true,	/* Earn experience each time you pick a lock. */
 		"pausedGameHitEffects":					true,	/* Apply any number of hit effects to the player while the game is paused. */
 		"perkEntryPoints":
 		{
-			"applyMultipleSpells":				true,	/* Apply any number of spells at once using perk entry points. */
+			"applyMultipleSpells":				false,	/* Apply any number of spells at once using perk entry points. */
 			"castSpells":						true	/* Spells applied by perk entry points are cast by the source on the target. */
 		},
-		"poisonResistance":						true,	/* Poisons are not always resisted by poison resistance. */
-		"powerAttackStamina":					true,	/* Power attacks and bashes can only be performed with the required stamina. */
+		"poisonResistance":						false,	/* Poisons are not always resisted by poison resistance. */
+		"powerAttackStamina":					false,	/* Power attacks and bashes can only be performed with the required stamina. */
 		"reflectDamage":						true,	/* Reflect any amount of damage. */
-		"scrollExperience":						true,	/* Earn experience when using scrolls. */
-		"staffExperience":						true,	/* Earn experience when using staves. */
-		"steepSlopes":							true,	/* Move slower on slopes than on flat surfaces. */
-		"teammateDifficulty":					true,	/* Teammates use the same difficulty multipliers as the player. */
-		"underfilledSoulGems":					true	/* Trap only souls of the appropriate size in soul gems. */
+		"scrollExperience":						false,	/* Earn experience when using scrolls. */
+		"staffExperience":						false,	/* Earn experience when using staves. */
+		"steepSlopes":							false,	/* Move slower on slopes than on flat surfaces. */
+		"teammateDifficulty":					false,	/* Teammates use the same difficulty multipliers as the player. */
+		"underfilledSoulGems":					false	/* Trap only souls of the appropriate size in soul gems. */
 	}
 }
