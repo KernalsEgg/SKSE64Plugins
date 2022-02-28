@@ -35,3 +35,4 @@ I would also like to thank the regulars on the SkyrimRE Discord server for their
 * [shadeMe](https://www.nexusmods.com/oblivion/users/644634)
 * [sheson](https://www.nexusmods.com/skyrimspecialedition/users/3155782)
 * [Ultra](https://www.nexusmods.com/skyrimspecialedition/users/99600268)
+* [Vermunds](https://www.nexusmods.com/skyrimspecialedition/users/26327049)
