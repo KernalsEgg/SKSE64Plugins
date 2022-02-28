@@ -20,6 +20,7 @@ I would also like to thank the regulars on the SkyrimRE Discord server for their
 * [Al](https://github.com/Al12rs)
 * [AnyOldName3](https://www.nexusmods.com/morrowind/users/5699344)
 * [DavidJCobb](https://www.nexusmods.com/skyrim/users/9663214)
+* [Ershin](https://www.nexusmods.com/skyrimspecialedition/users/2749008)
 * [i860](https://github.com/clayne)
 * [Infernio](https://github.com/Infernio)
 * [Karandra](https://www.nexusmods.com/skyrimspecialedition/users/2734453)
