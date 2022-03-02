@@ -69,13 +69,13 @@ namespace Utility::Log
 		void Log(Level level, Message message, const Arguments&... arguments)
 		{
 			this->outputFileStream_
-				<< std::format("[{:%F %T}] [{}] {}({},{}): {}",
-					   std::chrono::zoned_time{ std::chrono::current_zone(), std::chrono::system_clock::now() },
+				<< fmt::format("[{:%F %T}] [{}] {}({},{}): {}",
+					   std::chrono::system_clock::now(),
 					   Levels[Utility::ToUnderlying(level)],
 					   std::filesystem::path(message.sourceLocation.file_name()).filename().string(),
 					   message.sourceLocation.line(),
 					   message.sourceLocation.column(),
-					   std::format(message.stringView, arguments...))
+					   fmt::format(message.stringView, arguments...))
 				<< std::endl;
 		}
 

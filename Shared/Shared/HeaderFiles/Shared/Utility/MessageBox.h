@@ -14,11 +14,11 @@ namespace Utility::MessageBox
 	{
 		::MessageBoxA(
 			nullptr,
-			std::format("{}({},{}): {}",
+			fmt::format("{}({},{}): {}",
 				std::filesystem::path(message.sourceLocation.file_name()).filename().string(),
 				message.sourceLocation.line(),
 				message.sourceLocation.column(),
-				std::format(message.stringView, arguments...))
+				fmt::format(message.stringView, arguments...))
 				.c_str(),
 			Relocation::Plugin::GetSingleton().GetPath().filename().string().c_str(),
 			MB_OK | MB_ICONERROR);

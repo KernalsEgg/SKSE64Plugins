@@ -25,7 +25,6 @@
 #include <cstdint>         // Fixed width integer types
 #include <exception>       // std::terminate
 #include <filesystem>      // std::filesystem::path
-#include <format>          // std::format
 #include <fstream>         // std::ifstream, std::ofstream
 #include <functional>      // std::equal_to, std::function
 #include <ios>             // std::ios
@@ -42,5 +41,8 @@
 #include <type_traits>     // Type traits
 #include <utility>         // std::forward, std::move
 #include <vector>          // std::vector
+
+#include <fmt/chrono.h> // std::chrono::time_point
+#include <fmt/format.h> // fmt::format
 
 using namespace std::literals;

@@ -71,7 +71,7 @@ namespace Relocation
 
 		for (const auto& element : this->span_)
 		{
-			outputFileStream << std::format("{}\t0x{:X}", element.identifier, element.offset) << std::endl;
+			outputFileStream << fmt::format("{}\t0x{:X}", element.identifier, element.offset) << std::endl;
 		}
 	}
 
@@ -107,7 +107,7 @@ namespace Relocation
 		inputFileStreamPath /= "Data";
 		inputFileStreamPath /= "SKSE";
 		inputFileStreamPath /= "Plugins";
-		inputFileStreamPath /= std::format("version-{}-{}-{}-{}.bin", productVersion.major, productVersion.minor, productVersion.revision, productVersion.build);
+		inputFileStreamPath /= fmt::format("version-{}-{}-{}-{}.bin", productVersion.major, productVersion.minor, productVersion.revision, productVersion.build);
 
 		std::ifstream inputFileStream(inputFileStreamPath, std::ios::in | std::ios::binary);
 
@@ -122,7 +122,7 @@ namespace Relocation
 		header.Read(inputFileStream, productVersion);
 
 		auto fileMappingSize = static_cast<std::size_t>(sizeof(Element) * header.addressCount);
-		auto fileMappingName = std::format("Shared-AddressLibrary-1-{}", inputFileStreamPath.stem().string());
+		auto fileMappingName = fmt::format("Shared-AddressLibrary-1-{}", inputFileStreamPath.stem().string());
 
 		if (!this->fileMapping_.Open(fileMappingName))
 		{
