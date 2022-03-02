@@ -13,7 +13,7 @@ namespace ScrambledBugs::Fixes
 	class WeaponCharge
 	{
 	public:
-		static bool Fix();
+		static void Fix(bool& weaponCharge);
 
 	private:
 		static void UpdateWeaponEnchantments(Skyrim::Actor* actor, Skyrim::TESBoundObject* item, Skyrim::ExtraDataList* extraDataList, bool leftHand);

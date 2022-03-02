@@ -14,12 +14,12 @@ namespace Skyrim
 		struct ArchiveStreamOpenedEvent;
 	}
 
+	struct PositionPlayerEvent;
+
 	class GridCellArray;
 	class Sky;
 	class TESObjectCELL;
 	class TESWorldSpace;
-
-	struct PositionPlayerEvent;
 
 	class TES :
 		public ICellAttachDetachEventSource,                       // 0

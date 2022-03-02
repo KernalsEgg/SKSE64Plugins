@@ -12,11 +12,13 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool KillCamera::Fix()
+	void KillCamera::Fix(bool& killCamera)
 	{
 		if (!Patterns::Fixes::KillCamera::HasWeapon())
 		{
-			return false;
+			killCamera = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Fixes::KillCamera::HasWeapon + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation5);
@@ -28,7 +30,5 @@ namespace ScrambledBugs::Fixes
 			0xF7ui8, 0x87ui8, 0x1CCui32, 0x100ui32, // test [rdi+1CC], 100
 			0xC3ui8                                 // ret
 		);
-
-		return true;
 	}
 }

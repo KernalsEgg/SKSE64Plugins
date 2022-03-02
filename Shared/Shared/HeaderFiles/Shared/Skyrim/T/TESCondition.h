@@ -6,9 +6,9 @@
 
 namespace Skyrim
 {
-	class TESObjectREFR;
-
 	struct TESConditionItem;
+
+	class TESObjectREFR;
 
 	class TESCondition
 	{

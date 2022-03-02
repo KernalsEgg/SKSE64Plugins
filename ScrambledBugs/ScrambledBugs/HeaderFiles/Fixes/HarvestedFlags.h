@@ -11,7 +11,7 @@ namespace ScrambledBugs::Fixes
 	class HarvestedFlags
 	{
 	public:
-		static bool Fix();
+		static void Fix(bool& harvestedFlags);
 
 	private:
 		static void SetHarvestedFlag(Skyrim::TESObjectREFR* reference, bool harvested);

@@ -13,7 +13,7 @@ namespace ScrambledBugs::Patches
 	class ImproveMultipleEnchantmentEffects
 	{
 	public:
-		static bool Patch();
+		static void Patch(bool& improveMultipleEnchantmentEffects);
 
 	private:
 		static Skyrim::MagicItemTraversalFunctor::ReturnType Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::Effect* effect);

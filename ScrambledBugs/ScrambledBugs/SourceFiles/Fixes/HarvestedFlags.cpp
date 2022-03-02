@@ -13,17 +13,17 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool HarvestedFlags::Fix()
+	void HarvestedFlags::Fix(bool& harvestedFlags)
 	{
 		if (!Patterns::Fixes::HarvestedFlags::RemoveHarvestedFlag())
 		{
-			return false;
+			harvestedFlags = false;
+
+			return;
 		}
 
 		HarvestedFlags::setHarvestedFlag_ = reinterpret_cast<decltype(HarvestedFlags::setHarvestedFlag_)>(Utility::Memory::ReadRelativeCall(Addresses::Fixes::HarvestedFlags::RemoveHarvestedFlag));
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Fixes::HarvestedFlags::RemoveHarvestedFlag, reinterpret_cast<std::uintptr_t>(std::addressof(HarvestedFlags::SetHarvestedFlag)));
-
-		return true;
 	}
 
 	void HarvestedFlags::SetHarvestedFlag(Skyrim::TESObjectREFR* reference, bool harvested)

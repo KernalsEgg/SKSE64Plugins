@@ -13,11 +13,9 @@
 
 namespace BugFixesSSE::Fixes
 {
-	bool MagicEffectConditions::Fix()
+	void MagicEffectConditions::Fix(bool& magicEffectConditions)
 	{
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::MagicEffectConditions::UpdateConditions, reinterpret_cast<std::uintptr_t>(std::addressof(MagicEffectConditions::UpdateConditions)));
-
-		return true;
 	}
 
 	float MagicEffectConditions::ActiveEffectConditionUpdateInterval()

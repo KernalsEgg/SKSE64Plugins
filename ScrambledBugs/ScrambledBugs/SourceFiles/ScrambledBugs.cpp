@@ -28,10 +28,10 @@
 #include "Patches/PowerAttackStamina.h"
 #include "Patches/ReflectDamage.h"
 #include "Patches/ScrollExperience.h"
+#include "Patches/SoulGems.h"
 #include "Patches/StaffExperience.h"
 #include "Patches/SteepSlopes.h"
 #include "Patches/TeammateDifficulty.h"
-#include "Patches/UnderfilledSoulGems.h"
 #include "Serialization.h"
 #include "Settings.h"
 #include "Shared/Relocation/Module.h"
@@ -47,163 +47,165 @@ void Settings()
 
 	Utility::Log::Information("Initializing...\n{}", settings.Serialize().dump(1, '\t'));
 
+	// Fixes
 	if (settings.fixes.activateFurniture)
 	{
-		settings.fixes.activateFurniture = ScrambledBugs::Fixes::ActivateFurniture::Fix();
+		ScrambledBugs::Fixes::ActivateFurniture::Fix(settings.fixes.activateFurniture);
 	}
 
 	if (settings.fixes.actorValuePercentage)
 	{
-		settings.fixes.actorValuePercentage = ScrambledBugs::Fixes::ActorValuePercentage::Fix();
+		ScrambledBugs::Fixes::ActorValuePercentage::Fix(settings.fixes.actorValuePercentage);
 	}
 
 	if (settings.fixes.enchantmentCost)
 	{
-		settings.fixes.enchantmentCost = ScrambledBugs::Fixes::EnchantmentCost::Fix();
+		ScrambledBugs::Fixes::EnchantmentCost::Fix(settings.fixes.enchantmentCost);
 	}
 
 	if (settings.fixes.harvestedFlags)
 	{
-		settings.fixes.harvestedFlags = ScrambledBugs::Fixes::HarvestedFlags::Fix();
+		ScrambledBugs::Fixes::HarvestedFlags::Fix(settings.fixes.harvestedFlags);
 	}
 
 	if (settings.fixes.hitEffectRaceCondition)
 	{
-		settings.fixes.hitEffectRaceCondition = ScrambledBugs::Fixes::HitEffectRaceCondition::Fix();
+		ScrambledBugs::Fixes::HitEffectRaceCondition::Fix(settings.fixes.hitEffectRaceCondition);
 	}
 
 	if (settings.fixes.impactEffectCrash)
 	{
-		settings.fixes.impactEffectCrash = ScrambledBugs::Fixes::ImpactEffectCrash::Fix();
+		ScrambledBugs::Fixes::ImpactEffectCrash::Fix(settings.fixes.impactEffectCrash);
 	}
 
 	if (settings.fixes.killCamera)
 	{
-		settings.fixes.killCamera = ScrambledBugs::Fixes::KillCamera::Fix();
+		ScrambledBugs::Fixes::KillCamera::Fix(settings.fixes.killCamera);
 	}
 
 	if (settings.fixes.magicEffectFlags)
 	{
-		settings.fixes.magicEffectFlags = ScrambledBugs::Fixes::MagicEffectFlags::Fix();
+		ScrambledBugs::Fixes::MagicEffectFlags::Fix(settings.fixes.magicEffectFlags);
 	}
 
 	if (settings.fixes.modArmorWeightPerkEntryPoint)
 	{
-		settings.fixes.modArmorWeightPerkEntryPoint = ScrambledBugs::Fixes::ModArmorWeightPerkEntryPoint::Fix();
+		ScrambledBugs::Fixes::ModArmorWeightPerkEntryPoint::Fix(settings.fixes.modArmorWeightPerkEntryPoint);
 	}
 
 	if (settings.fixes.quickShot && settings.fixes.quickShotPlaybackSpeed > 0.0F)
 	{
-		settings.fixes.quickShot = ScrambledBugs::Fixes::QuickShot::Fix(settings.fixes.quickShotPlaybackSpeed);
+		ScrambledBugs::Fixes::QuickShot::Fix(settings.fixes.quickShot, settings.fixes.quickShotPlaybackSpeed);
 	}
 
 	if (settings.fixes.terrainDecals)
 	{
-		settings.fixes.terrainDecals = ScrambledBugs::Fixes::TerrainDecals::Fix();
+		ScrambledBugs::Fixes::TerrainDecals::Fix(settings.fixes.terrainDecals);
 	}
 
 	if (settings.fixes.trainingMenu)
 	{
-		settings.fixes.trainingMenu = ScrambledBugs::Fixes::TrainingMenu::Fix();
+		ScrambledBugs::Fixes::TrainingMenu::Fix(settings.fixes.trainingMenu);
 	}
 
 	if (settings.fixes.weaponCharge)
 	{
-		settings.fixes.weaponCharge = ScrambledBugs::Fixes::WeaponCharge::Fix();
+		ScrambledBugs::Fixes::WeaponCharge::Fix(settings.fixes.weaponCharge);
 	}
 
+	// Patches
 	if (settings.patches.accumulatingMagnitude)
 	{
-		settings.patches.accumulatingMagnitude = ScrambledBugs::Patches::AccumulatingMagnitude::Patch();
+		ScrambledBugs::Patches::AccumulatingMagnitude::Patch(settings.patches.accumulatingMagnitude);
 	}
 
 	if (settings.patches.alreadyCaughtPickpocketing)
 	{
-		settings.patches.alreadyCaughtPickpocketing = ScrambledBugs::Patches::AlreadyCaughtPickpocketing::Patch();
+		ScrambledBugs::Patches::AlreadyCaughtPickpocketing::Patch(settings.patches.alreadyCaughtPickpocketing);
 	}
 
 	if (settings.patches.attachHitEffectArt)
 	{
-		settings.patches.attachHitEffectArt = ScrambledBugs::Patches::AttachHitEffectArt::Patch();
+		ScrambledBugs::Patches::AttachHitEffectArt::Patch(settings.patches.attachHitEffectArt);
 	}
 
 	if (settings.patches.cloakHitEffects)
 	{
-		settings.patches.cloakHitEffects = ScrambledBugs::Patches::CloakHitEffects::Patch();
+		ScrambledBugs::Patches::CloakHitEffects::Patch(settings.patches.cloakHitEffects);
 	}
 
 	if (settings.patches.equipBestAmmo)
 	{
-		settings.patches.equipBestAmmo = ScrambledBugs::Patches::EquipBestAmmo::Patch();
+		ScrambledBugs::Patches::EquipBestAmmo::Patch(settings.patches.equipBestAmmo);
 	}
 
 	if (settings.patches.improveMultipleEnchantmentEffects)
 	{
-		settings.patches.improveMultipleEnchantmentEffects = ScrambledBugs::Patches::ImproveMultipleEnchantmentEffects::Patch();
+		ScrambledBugs::Patches::ImproveMultipleEnchantmentEffects::Patch(settings.patches.improveMultipleEnchantmentEffects);
 	}
 
 	if (settings.patches.leveledCharacters)
 	{
-		settings.patches.leveledCharacters = ScrambledBugs::Patches::LeveledCharacters::Patch();
+		ScrambledBugs::Patches::LeveledCharacters::Patch(settings.patches.leveledCharacters);
 	}
 
 	if (settings.patches.lockpickingExperience)
 	{
-		settings.patches.lockpickingExperience = ScrambledBugs::Patches::LockpickingExperience::Patch();
+		ScrambledBugs::Patches::LockpickingExperience::Patch(settings.patches.lockpickingExperience);
 	}
 
 	if (settings.patches.pausedGameHitEffects)
 	{
-		settings.patches.pausedGameHitEffects = ScrambledBugs::Patches::PausedGameHitEffects::Patch();
+		ScrambledBugs::Patches::PausedGameHitEffects::Patch(settings.patches.pausedGameHitEffects);
 	}
 
 	if (settings.patches.perkEntryPoints.applyMultipleSpells)
 	{
-		settings.patches.perkEntryPoints.applyMultipleSpells = ScrambledBugs::Patches::PerkEntryPoints::ApplyMultipleSpells::Patch(settings.patches.perkEntryPoints.castSpells);
+		ScrambledBugs::Patches::PerkEntryPoints::ApplyMultipleSpells::Patch(settings.patches.perkEntryPoints.applyMultipleSpells, settings.patches.perkEntryPoints.castSpells);
 	}
 	else if (settings.patches.perkEntryPoints.castSpells)
 	{
-		settings.patches.perkEntryPoints.castSpells = ScrambledBugs::Patches::PerkEntryPoints::CastSpells::Patch();
+		ScrambledBugs::Patches::PerkEntryPoints::CastSpells::Patch(settings.patches.perkEntryPoints.castSpells);
 	}
 
 	if (settings.patches.poisonResistance)
 	{
-		settings.patches.poisonResistance = ScrambledBugs::Patches::PoisonResistance::Patch();
+		ScrambledBugs::Patches::PoisonResistance::Patch(settings.patches.poisonResistance);
 	}
 
 	if (settings.patches.powerAttackStamina)
 	{
-		settings.patches.powerAttackStamina = ScrambledBugs::Patches::PowerAttackStamina::Patch();
+		ScrambledBugs::Patches::PowerAttackStamina::Patch(settings.patches.powerAttackStamina);
 	}
 
 	if (settings.patches.reflectDamage)
 	{
-		settings.patches.reflectDamage = ScrambledBugs::Patches::ReflectDamage::Patch();
+		ScrambledBugs::Patches::ReflectDamage::Patch(settings.patches.reflectDamage);
 	}
 
 	if (settings.patches.scrollExperience)
 	{
-		settings.patches.scrollExperience = ScrambledBugs::Patches::ScrollExperience::Patch();
+		ScrambledBugs::Patches::ScrollExperience::Patch(settings.patches.scrollExperience);
+	}
+
+	if (settings.patches.blackSoulGems || settings.patches.underfilledSoulGems)
+	{
+		ScrambledBugs::Patches::SoulGems::Patch(settings.patches.blackSoulGems, settings.patches.underfilledSoulGems);
 	}
 
 	if (settings.patches.staffExperience)
 	{
-		settings.patches.staffExperience = ScrambledBugs::Patches::StaffExperience::Patch();
+		ScrambledBugs::Patches::StaffExperience::Patch(settings.patches.staffExperience);
 	}
 
 	if (settings.patches.steepSlopes)
 	{
-		settings.patches.steepSlopes = ScrambledBugs::Patches::SteepSlopes::Patch();
+		ScrambledBugs::Patches::SteepSlopes::Patch(settings.patches.steepSlopes);
 	}
 
 	if (settings.patches.teammateDifficulty)
 	{
-		settings.patches.teammateDifficulty = ScrambledBugs::Patches::TeammateDifficulty::Patch();
-	}
-
-	if (settings.patches.underfilledSoulGems)
-	{
-		settings.patches.underfilledSoulGems = ScrambledBugs::Patches::UnderfilledSoulGems::Patch();
+		ScrambledBugs::Patches::TeammateDifficulty::Patch(settings.patches.teammateDifficulty);
 	}
 
 	Utility::Log::Information("Initialized.\n{}", settings.Serialize().dump(1, '\t'));
@@ -217,7 +219,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 	pluginInfo->infoVersion = SKSE::PluginInfo::kVersion;
 	pluginInfo->name        = name.c_str();
-	pluginInfo->version     = 15;
+	pluginInfo->version     = 16;
 
 	if (queryInterface->IsEditor())
 	{

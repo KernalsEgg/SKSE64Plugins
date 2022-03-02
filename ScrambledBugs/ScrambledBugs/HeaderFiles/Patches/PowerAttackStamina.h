@@ -12,7 +12,7 @@ namespace ScrambledBugs::Patches
 	class PowerAttackStamina
 	{
 	public:
-		static bool Patch();
+		static void Patch(bool& powerAttackStamina);
 
 	private:
 		static float HasAttackStaminaActor(Skyrim::ActorValueOwner* actorValueOwner, Skyrim::BGSAttackData* attackData);

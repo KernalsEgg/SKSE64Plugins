@@ -16,9 +16,9 @@
 
 namespace Skyrim
 {
-	class bhkICharOrientationController;
-
 	struct bhkCharacterMoveFinishEvent;
+
+	class bhkICharOrientationController;
 
 	class bhkCharacterController :
 		public NiRefObject,                                // 0

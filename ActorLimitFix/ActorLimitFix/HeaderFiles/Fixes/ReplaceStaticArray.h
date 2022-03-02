@@ -15,7 +15,7 @@ namespace ActorLimitFix::Fixes
 	class ReplaceStaticArray
 	{
 	public:
-		static bool Fix();
+		static void Fix(bool& replaceStaticArray);
 
 	private:
 		struct ActorDistance

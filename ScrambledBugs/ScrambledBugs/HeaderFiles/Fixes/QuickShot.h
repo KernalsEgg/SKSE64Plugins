@@ -9,11 +9,11 @@ namespace ScrambledBugs::Fixes
 	class QuickShot
 	{
 	public:
-		static bool Fix(float playbackSpeed);
+		static void Fix(bool& quickShot, float& quickShotPlaybackSpeed);
 
 	private:
 		static float GetArrowPower(float drawTime, float bowSpeed);
 
-		static float playbackSpeed_;
+		static float quickShotPlaybackSpeed_;
 	};
 }

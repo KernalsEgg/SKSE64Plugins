@@ -9,6 +9,6 @@ namespace ScrambledBugs::Fixes
 	class TerrainDecals
 	{
 	public:
-		static bool Fix();
+		static void Fix(bool& terrainDecals);
 	};
 }

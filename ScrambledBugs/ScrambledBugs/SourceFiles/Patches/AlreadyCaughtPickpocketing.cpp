@@ -11,17 +11,17 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool AlreadyCaughtPickpocketing::Patch()
+	void AlreadyCaughtPickpocketing::Patch(bool& alreadyCaughtPickpocketing)
 	{
 		if (!Patterns::Patches::AlreadyCaughtPickpocketing::AttackOnSight() ||
 			!Patterns::Patches::AlreadyCaughtPickpocketing::HasBeenPickpocketed())
 		{
-			return false;
+			alreadyCaughtPickpocketing = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Patches::AlreadyCaughtPickpocketing::AttackOnSight, Utility::Assembly::NoOperation2);
 		Utility::Memory::SafeWrite(Addresses::Patches::AlreadyCaughtPickpocketing::HasBeenPickpocketed, Utility::Assembly::NoOperation2);
-
-		return true;
 	}
 }

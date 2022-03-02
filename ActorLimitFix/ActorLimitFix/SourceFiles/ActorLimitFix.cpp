@@ -19,7 +19,7 @@ void Settings()
 
 	if (settings.fixes.replaceStaticArray)
 	{
-		settings.fixes.replaceStaticArray = ActorLimitFix::Fixes::ReplaceStaticArray::Fix();
+		ActorLimitFix::Fixes::ReplaceStaticArray::Fix(settings.fixes.replaceStaticArray);
 	}
 
 	ActorLimitFix::Fixes::MorphLimit::Fix(settings.fixes.morphLimit, settings.fixes.replaceStaticArray);

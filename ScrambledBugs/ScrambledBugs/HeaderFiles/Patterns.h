@@ -125,10 +125,5 @@ namespace ScrambledBugs::Patterns
 		{
 			bool GetScale();
 		}
-
-		namespace UnderfilledSoulGems
-		{
-			bool CompareSoulLevelValue();
-		}
 	}
 }

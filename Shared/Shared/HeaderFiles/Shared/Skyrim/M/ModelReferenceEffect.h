@@ -13,10 +13,10 @@
 
 namespace Skyrim
 {
+	struct BSAnimationGraphEvent;
+
 	class BGSArtObject;
 	class NiAVObject;
-
-	struct BSAnimationGraphEvent;
 
 	class ModelReferenceEffect :
 		public ReferenceEffect,                    // 0

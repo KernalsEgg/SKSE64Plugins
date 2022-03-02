@@ -11,15 +11,15 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool ReflectDamage::Patch()
+	void ReflectDamage::Patch(bool& reflectDamage)
 	{
 		if (!Patterns::Patches::ReflectDamage::CompareReflectDamage())
 		{
-			return false;
+			reflectDamage = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Patches::ReflectDamage::CompareReflectDamage, Utility::Assembly::NoOperation2);
-
-		return true;
 	}
 }

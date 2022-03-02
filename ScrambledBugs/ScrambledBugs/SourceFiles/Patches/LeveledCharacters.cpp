@@ -9,11 +9,9 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool LeveledCharacters::Patch()
+	void LeveledCharacters::Patch(bool& leveledCharacters)
 	{
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Patches::LeveledCharacters::GetLeveledCreatureModifier, reinterpret_cast<std::uintptr_t>(std::addressof(LeveledCharacters::GetLeveledCreatureModifier)));
-
-		return true;
 	}
 
 	std::uint32_t LeveledCharacters::GetLeveledCreatureModifier(Skyrim::ExtraLevCreaModifier* extraLeveledCreatureModifier)

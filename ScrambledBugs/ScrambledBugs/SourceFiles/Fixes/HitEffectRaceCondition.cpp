@@ -11,11 +11,9 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool HitEffectRaceCondition::Fix()
+	void HitEffectRaceCondition::Fix(bool& hitEffectRaceCondition)
 	{
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::HitEffectRaceCondition::ShouldUpdate, reinterpret_cast<std::uintptr_t>(std::addressof(HitEffectRaceCondition::ShouldUpdate)));
-
-		return true;
 	}
 
 	bool HitEffectRaceCondition::ShouldUpdate(Skyrim::ActiveEffect* activeEffect)

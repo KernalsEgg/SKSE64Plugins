@@ -16,7 +16,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 	class ApplyMultipleSpells
 	{
 	public:
-		static bool Patch(bool castSpells);
+		static void Patch(bool& applyMultipleSpells, bool& castSpells);
 
 	private:
 		static void ApplyBashingSpell(Utility::Enumeration<Skyrim::BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Skyrim::Actor* perkOwner, Skyrim::Actor* target, Skyrim::SpellItem** result);

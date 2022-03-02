@@ -12,13 +12,15 @@
 
 namespace BugFixesSSE::Fixes::SpeechExperience
 {
-	bool ItemStacks::Fix()
+	void ItemStacks::Fix(bool& itemStacks)
 	{
 		if (!Patterns::Fixes::SpeechExperience::ItemStacks::Buy() ||
 			!Patterns::Fixes::SpeechExperience::ItemStacks::GetItemCount() ||
 			!Patterns::Fixes::SpeechExperience::ItemStacks::Sell())
 		{
-			return false;
+			itemStacks = false;
+
+			return;
 		}
 
 		Utility::Trampoline::GetSingleton().RelativeCallBranch(Addresses::Fixes::SpeechExperience::ItemStacks::Buy,
@@ -40,7 +42,5 @@ namespace BugFixesSSE::Fixes::SpeechExperience
 			0x48ui8, 0x83ui8, 0xC4ui8, 0x28ui8,                                                                                       // add rsp, 28
 			0xC3ui8                                                                                                                   // ret
 		);
-
-		return true;
 	}
 }

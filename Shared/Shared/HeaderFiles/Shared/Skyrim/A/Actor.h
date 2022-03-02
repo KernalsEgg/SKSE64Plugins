@@ -9,6 +9,7 @@
 #include "Shared/Skyrim/I/IPostAnimationChannelUpdateFunctor.h"
 #include "Shared/Skyrim/M/MagicTarget.h"
 #include "Shared/Skyrim/N/NiPointer.h"
+#include "Shared/Skyrim/S/SoulLevel.h"
 #include "Shared/Skyrim/T/TESObjectREFR.h"
 #include "Shared/Utility/Convert.h"
 
@@ -16,15 +17,15 @@
 
 namespace Skyrim
 {
+	struct BSTransformDeltaEvent;
+	struct bhkCharacterMoveFinishEvent;
+
 	class ActorMagicCaster;
 	class ActorProcess;
 	class bhkCharacterController;
 	class MagicItem;
 	class SpellItem;
 	class TESForm;
-
-	struct BSTransformDeltaEvent;
-	struct bhkCharacterMoveFinishEvent;
 
 	class Actor :
 		public TESObjectREFR,                             // 0
@@ -211,140 +212,140 @@ namespace Skyrim
 		virtual void Unknown1(IPostAnimationChannelUpdateFunctor*) override; // 1
 
 		// Add
-		virtual void UnknownA2(Actor*);     // A2
-		virtual void UnknownA3(Actor*);     // A3
-		virtual void UnknownA4(Actor*);     // A4
-		virtual void UnknownA5(Actor*);     // A5
-		virtual void UnknownA6(Actor*);     // A6
-		virtual void UnknownA7(Actor*);     // A7
-		virtual void UnknownA8(Actor*);     // A8
-		virtual void UnknownA9(Actor*);     // A9
-		virtual void UnknownAA(Actor*);     // AA
-		virtual void UnknownAB(Actor*);     // AB
-		virtual void UnknownAC(Actor*);     // AC
-		virtual void UnknownAD(Actor*);     // AD
-		virtual void UnknownAE(Actor*);     // AE
-		virtual void UnknownAF(Actor*);     // AF
-		virtual void UnknownB0(Actor*);     // B0
-		virtual void UnknownB1(Actor*);     // B1
-		virtual void UnknownB2(Actor*);     // B2
-		virtual void UnknownB3(Actor*);     // B3
-		virtual void UnknownB4(Actor*);     // B4
-		virtual void UnknownB5(Actor*);     // B5
-		virtual void UnknownB6(Actor*);     // B6
-		virtual void UnknownB7(Actor*);     // B7
-		virtual void UnknownB8(Actor*);     // B8
-		virtual void UnknownB9(Actor*);     // B9
-		virtual void UnknownBA(Actor*);     // BA
-		virtual void UnknownBB(Actor*);     // BB
-		virtual void UnknownBC(Actor*);     // BC
-		virtual void UnknownBD(Actor*);     // BD
-		virtual void UnknownBE(Actor*);     // BE
-		virtual void UnknownBF(Actor*);     // BF
-		virtual void UnknownC0(Actor*);     // C0
-		virtual void UnknownC1(Actor*);     // C1
-		virtual void UnknownC2(Actor*);     // C2
-		virtual void UnknownC3(Actor*);     // C3
-		virtual void UnknownC4(Actor*);     // C4
-		virtual void UnknownC5(Actor*);     // C5
-		virtual void UnknownC6(Actor*) = 0; // C6
-		virtual void UnknownC7(Actor*);     // C7
-		virtual void UnknownC8(Actor*);     // C8
-		virtual void UnknownC9(Actor*);     // C9
-		virtual void UnknownCA(Actor*);     // CA
-		virtual void UnknownCB(Actor*);     // CB
-		virtual void UnknownCC(Actor*);     // CC
-		virtual void UnknownCD(Actor*);     // CD
-		virtual void UnknownCE(Actor*);     // CE
-		virtual void UnknownCF(Actor*);     // CF
-		virtual void UnknownD0(Actor*);     // D0
-		virtual void UnknownD1(Actor*);     // D1
-		virtual void UnknownD2(Actor*);     // D2
-		virtual void UnknownD3(Actor*);     // D3
-		virtual void UnknownD4(Actor*);     // D4
-		virtual void UnknownD5(Actor*);     // D5
-		virtual void UnknownD6(Actor*);     // D6
-		virtual void UnknownD7(Actor*);     // D7
-		virtual void UnknownD8(Actor*);     // D8
-		virtual void UnknownD9(Actor*);     // D9
-		virtual void UnknownDA(Actor*);     // DA
-		virtual void UnknownDB(Actor*);     // DB
-		virtual void UnknownDC(Actor*);     // DC
-		virtual void UnknownDD(Actor*);     // DD
-		virtual void UnknownDE(Actor*);     // DE
-		virtual void UnknownDF(Actor*);     // DF
-		virtual void UnknownE0(Actor*);     // E0
-		virtual void UnknownE1(Actor*);     // E1
-		virtual void UnknownE2(Actor*);     // E2
-		virtual void UnknownE3(Actor*);     // E3
-		virtual void UnknownE4(Actor*);     // E4
-		virtual void UnknownE5(Actor*);     // E5
-		virtual void UnknownE6(Actor*);     // E6
-		virtual void UnknownE7(Actor*);     // E7
-		virtual void UnknownE8(Actor*);     // E8
-		virtual void UnknownE9(Actor*);     // E9
-		virtual void UnknownEA(Actor*);     // EA
-		virtual void UnknownEB(Actor*);     // EB
-		virtual void UnknownEC(Actor*);     // EC
-		virtual void UnknownED(Actor*);     // ED
-		virtual void UnknownEE(Actor*);     // EE
-		virtual void UnknownEF(Actor*);     // EF
-		virtual void UnknownF0(Actor*);     // F0
-		virtual void UnknownF1(Actor*);     // F1
-		virtual void UnknownF2(Actor*);     // F2
-		virtual void UnknownF3(Actor*);     // F3
-		virtual void UnknownF4(Actor*);     // F4
-		virtual void UnknownF5(Actor*);     // F5
-		virtual void UnknownF6(Actor*);     // F6
-		virtual void UnknownF7(Actor*);     // F7
-		virtual void UnknownF8(Actor*);     // F8
-		virtual void UnknownF9(Actor*);     // F9
-		virtual void UnknownFA(Actor*);     // FA
-		virtual void UnknownFB(Actor*);     // FB
-		virtual void UnknownFC(Actor*);     // FC
-		virtual void UnknownFD(Actor*);     // FD
-		virtual void UnknownFE(Actor*);     // FE
-		virtual void UnknownFF(Actor*);     // FF
-		virtual void Unknown100(Actor*);    // 100
-		virtual void Unknown101(Actor*);    // 101
-		virtual void Unknown102(Actor*);    // 102
-		virtual void Unknown103(Actor*);    // 103
-		virtual void Unknown104(Actor*);    // 104
-		virtual void Unknown105(Actor*);    // 105
-		virtual void Unknown106(Actor*);    // 106
-		virtual void Unknown107(Actor*);    // 107
-		virtual void Unknown108(Actor*);    // 108
-		virtual void Unknown109(Actor*);    // 109
-		virtual void Unknown10A(Actor*);    // 10A
-		virtual void Unknown10B(Actor*);    // 10B
-		virtual void Unknown10C(Actor*);    // 10C
-		virtual void Unknown10D(Actor*);    // 10D
-		virtual void Unknown10E(Actor*);    // 10E
-		virtual void Unknown10F(Actor*);    // 10F
-		virtual void Unknown110(Actor*);    // 110
-		virtual void Unknown111(Actor*);    // 111
-		virtual void Unknown112(Actor*);    // 112
-		virtual void Unknown113(Actor*);    // 113
-		virtual void Unknown114(Actor*);    // 114
-		virtual void Unknown115(Actor*);    // 115
-		virtual void Unknown116(Actor*);    // 116
-		virtual void Unknown117(Actor*);    // 117
-		virtual void Unknown118(Actor*);    // 118
-		virtual void Unknown119(Actor*);    // 119
-		virtual void Unknown11A(Actor*);    // 11A
-		virtual void Unknown11B(Actor*);    // 11B
-		virtual void Unknown11C(Actor*);    // 11C
-		virtual void Unknown11D(Actor*);    // 11D
-		virtual void Unknown11E(Actor*);    // 11E
-		virtual void Unknown11F(Actor*);    // 11F
-		virtual void Unknown120(Actor*);    // 120
-		virtual void Unknown121(Actor*);    // 121
-		virtual void Unknown122(Actor*);    // 122
-		virtual void Unknown123(Actor*);    // 123
-		virtual void Unknown124(Actor*);    // 124
-		virtual void Unknown125(Actor*);    // 125
-		virtual void Unknown126(Actor*);    // 126
-		virtual void Unknown127(Actor*);    // 127
+		virtual void UnknownA2(Actor*);      // A2
+		virtual void UnknownA3(Actor*);      // A3
+		virtual void UnknownA4(Actor*);      // A4
+		virtual void UnknownA5(Actor*);      // A5
+		virtual void UnknownA6(Actor*);      // A6
+		virtual void UnknownA7(Actor*);      // A7
+		virtual void UnknownA8(Actor*);      // A8
+		virtual void UnknownA9(Actor*);      // A9
+		virtual void UnknownAA(Actor*);      // AA
+		virtual void UnknownAB(Actor*);      // AB
+		virtual void UnknownAC(Actor*);      // AC
+		virtual void UnknownAD(Actor*);      // AD
+		virtual void UnknownAE(Actor*);      // AE
+		virtual void UnknownAF(Actor*);      // AF
+		virtual void UnknownB0(Actor*);      // B0
+		virtual void UnknownB1(Actor*);      // B1
+		virtual void UnknownB2(Actor*);      // B2
+		virtual void UnknownB3(Actor*);      // B3
+		virtual void UnknownB4(Actor*);      // B4
+		virtual void UnknownB5(Actor*);      // B5
+		virtual void UnknownB6(Actor*);      // B6
+		virtual void UnknownB7(Actor*);      // B7
+		virtual void UnknownB8(Actor*);      // B8
+		virtual void UnknownB9(Actor*);      // B9
+		virtual void UnknownBA(Actor*);      // BA
+		virtual void UnknownBB(Actor*);      // BB
+		virtual void UnknownBC(Actor*);      // BC
+		virtual void UnknownBD(Actor*);      // BD
+		virtual void UnknownBE(Actor*);      // BE
+		virtual void UnknownBF(Actor*);      // BF
+		virtual void UnknownC0(Actor*);      // C0
+		virtual void UnknownC1(Actor*);      // C1
+		virtual void UnknownC2(Actor*);      // C2
+		virtual void UnknownC3(Actor*);      // C3
+		virtual void UnknownC4(Actor*);      // C4
+		virtual void UnknownC5(Actor*);      // C5
+		virtual void UnknownC6(Actor*) = 0;  // C6
+		virtual void UnknownC7(Actor*);      // C7
+		virtual void UnknownC8(Actor*);      // C8
+		virtual void UnknownC9(Actor*);      // C9
+		virtual void UnknownCA(Actor*);      // CA
+		virtual void UnknownCB(Actor*);      // CB
+		virtual void UnknownCC(Actor*);      // CC
+		virtual void UnknownCD(Actor*);      // CD
+		virtual void UnknownCE(Actor*);      // CE
+		virtual void UnknownCF(Actor*);      // CF
+		virtual void UnknownD0(Actor*);      // D0
+		virtual void UnknownD1(Actor*);      // D1
+		virtual void UnknownD2(Actor*);      // D2
+		virtual void UnknownD3(Actor*);      // D3
+		virtual void UnknownD4(Actor*);      // D4
+		virtual void UnknownD5(Actor*);      // D5
+		virtual void UnknownD6(Actor*);      // D6
+		virtual void UnknownD7(Actor*);      // D7
+		virtual void UnknownD8(Actor*);      // D8
+		virtual void UnknownD9(Actor*);      // D9
+		virtual void UnknownDA(Actor*);      // DA
+		virtual void UnknownDB(Actor*);      // DB
+		virtual void UnknownDC(Actor*);      // DC
+		virtual void UnknownDD(Actor*);      // DD
+		virtual void UnknownDE(Actor*);      // DE
+		virtual void UnknownDF(Actor*);      // DF
+		virtual void UnknownE0(Actor*);      // E0
+		virtual void UnknownE1(Actor*);      // E1
+		virtual void UnknownE2(Actor*);      // E2
+		virtual void UnknownE3(Actor*);      // E3
+		virtual void UnknownE4(Actor*);      // E4
+		virtual void UnknownE5(Actor*);      // E5
+		virtual void UnknownE6(Actor*);      // E6
+		virtual void UnknownE7(Actor*);      // E7
+		virtual void UnknownE8(Actor*);      // E8
+		virtual void UnknownE9(Actor*);      // E9
+		virtual void UnknownEA(Actor*);      // EA
+		virtual void UnknownEB(Actor*);      // EB
+		virtual void UnknownEC(Actor*);      // EC
+		virtual void UnknownED(Actor*);      // ED
+		virtual void UnknownEE(Actor*);      // EE
+		virtual void UnknownEF(Actor*);      // EF
+		virtual void UnknownF0(Actor*);      // F0
+		virtual void UnknownF1(Actor*);      // F1
+		virtual void UnknownF2(Actor*);      // F2
+		virtual void UnknownF3(Actor*);      // F3
+		virtual void UnknownF4(Actor*);      // F4
+		virtual void UnknownF5(Actor*);      // F5
+		virtual void UnknownF6(Actor*);      // F6
+		virtual void UnknownF7(Actor*);      // F7
+		virtual void UnknownF8(Actor*);      // F8
+		virtual void UnknownF9(Actor*);      // F9
+		virtual void UnknownFA(Actor*);      // FA
+		virtual void UnknownFB(Actor*);      // FB
+		virtual void UnknownFC(Actor*);      // FC
+		virtual void UnknownFD(Actor*);      // FD
+		virtual void UnknownFE(Actor*);      // FE
+		virtual void UnknownFF(Actor*);      // FF
+		virtual void Unknown100(Actor*);     // 100
+		virtual void Unknown101(Actor*);     // 101
+		virtual void Unknown102(Actor*);     // 102
+		virtual void Unknown103(Actor*);     // 103
+		virtual void Unknown104(Actor*);     // 104
+		virtual void Unknown105(Actor*);     // 105
+		virtual void Unknown106(Actor*);     // 106
+		virtual void Unknown107(Actor*);     // 107
+		virtual void Unknown108(Actor*);     // 108
+		virtual void Unknown109(Actor*);     // 109
+		virtual void Unknown10A(Actor*);     // 10A
+		virtual void Unknown10B(Actor*);     // 10B
+		virtual void Unknown10C(Actor*);     // 10C
+		virtual void Unknown10D(Actor*);     // 10D
+		virtual void Unknown10E(Actor*);     // 10E
+		virtual void Unknown10F(Actor*);     // 10F
+		virtual void Unknown110(Actor*);     // 110
+		virtual void Unknown111(Actor*);     // 111
+		virtual void Unknown112(Actor*);     // 112
+		virtual void Unknown113(Actor*);     // 113
+		virtual void Unknown114(Actor*);     // 114
+		virtual bool UpdateIsUndead() const; // 115
+		virtual bool UpdateIsNPC() const;    // 116
+		virtual void Unknown117(Actor*);     // 117
+		virtual void Unknown118(Actor*);     // 118
+		virtual void Unknown119(Actor*);     // 119
+		virtual void Unknown11A(Actor*);     // 11A
+		virtual void Unknown11B(Actor*);     // 11B
+		virtual void Unknown11C(Actor*);     // 11C
+		virtual void Unknown11D(Actor*);     // 11D
+		virtual void Unknown11E(Actor*);     // 11E
+		virtual void Unknown11F(Actor*);     // 11F
+		virtual void Unknown120(Actor*);     // 120
+		virtual void Unknown121(Actor*);     // 121
+		virtual void Unknown122(Actor*);     // 122
+		virtual void Unknown123(Actor*);     // 123
+		virtual void Unknown124(Actor*);     // 124
+		virtual void Unknown125(Actor*);     // 125
+		virtual void Unknown126(Actor*);     // 126
+		virtual void Unknown127(Actor*);     // 127
 
 		// Member functions
 		bool                    AddSpell(SpellItem* spell);
@@ -353,6 +354,8 @@ namespace Skyrim
 		float                   GetMaximumWardPower() const;
 		bool                    GetMount(NiPointer<Actor>& mount);
 		bool                    GetMovementActor(NiPointer<Actor>& movementActor);
+		SoulLevel               GetSoulLevel() const;
+		bool                    IsNPC() const;
 		bool                    IsOnMount() const;
 		bool                    IsPlayerTeammate() const;
 		void                    ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float previousValue, float difference, Actor* source);

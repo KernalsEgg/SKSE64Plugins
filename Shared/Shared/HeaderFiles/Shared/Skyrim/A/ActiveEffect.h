@@ -10,13 +10,13 @@
 
 namespace Skyrim
 {
+	struct Effect;
+
 	class Actor;
 	class EffectSetting;
 	class MagicItem;
 	class MagicTarget;
 	class TESBoundObject;
-
-	struct Effect;
 
 	class ActiveEffect
 	{

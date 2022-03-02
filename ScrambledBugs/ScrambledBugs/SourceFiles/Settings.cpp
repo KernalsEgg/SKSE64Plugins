@@ -144,6 +144,11 @@ namespace ScrambledBugs
 			patches.at("attachHitEffectArt").get_to(this->attachHitEffectArt);
 		}
 
+		if (patches.contains("blackSoulGems"))
+		{
+			patches.at("blackSoulGems").get_to(this->blackSoulGems);
+		}
+
 		if (patches.contains("cloakHitEffects"))
 		{
 			patches.at("cloakHitEffects").get_to(this->cloakHitEffects);
@@ -227,6 +232,7 @@ namespace ScrambledBugs
 		patches["accumulatingMagnitude"]             = this->accumulatingMagnitude;
 		patches["alreadyCaughtPickpocketing"]        = this->alreadyCaughtPickpocketing;
 		patches["attachHitEffectArt"]                = this->attachHitEffectArt;
+		patches["blackSoulGems"]                     = this->blackSoulGems;
 		patches["cloakHitEffects"]                   = this->cloakHitEffects;
 		patches["equipBestAmmo"]                     = this->equipBestAmmo;
 		patches["improveMultipleEnchantmentEffects"] = this->improveMultipleEnchantmentEffects;

@@ -11,12 +11,14 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool ImpactEffectCrash::Fix()
+	void ImpactEffectCrash::Fix(bool& impactEffectCrash)
 	{
 		if (!Patterns::Fixes::ImpactEffectCrash::DecalApplier() ||
 			!Patterns::Fixes::ImpactEffectCrash::MainUpdate())
 		{
-			return false;
+			impactEffectCrash = false;
+
+			return;
 		}
 
 		ImpactEffectCrash::decalApplier_ = reinterpret_cast<decltype(ImpactEffectCrash::decalApplier_)>(Utility::Memory::ReadRelativeCall(Addresses::Fixes::ImpactEffectCrash::DecalApplier));
@@ -24,8 +26,6 @@ namespace ScrambledBugs::Fixes
 
 		ImpactEffectCrash::mainUpdate_ = reinterpret_cast<decltype(ImpactEffectCrash::mainUpdate_)>(Utility::Memory::ReadRelativeCall(Addresses::Fixes::ImpactEffectCrash::MainUpdate));
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Fixes::ImpactEffectCrash::MainUpdate, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::MainUpdate)));
-
-		return true;
 	}
 
 	bool ImpactEffectCrash::DecalApplier(Skyrim::BSTempEffectSimpleDecal* tempEffectSimpleDecal)

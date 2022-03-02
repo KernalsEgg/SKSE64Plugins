@@ -14,7 +14,7 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool AttachHitEffectArt::Patch()
+	void AttachHitEffectArt::Patch(bool& attachHitEffectArt)
 	{
 		if (!Patterns::Patches::AttachHitEffectArt::AddNoHitEffectArtFlag() ||
 			!Patterns::Patches::AttachHitEffectArt::Attach() ||
@@ -22,7 +22,9 @@ namespace ScrambledBugs::Patches
 			!Patterns::Patches::AttachHitEffectArt::IsPlayerAttach() ||
 			!Patterns::Patches::AttachHitEffectArt::IsPlayerUpdatePosition())
 		{
-			return false;
+			attachHitEffectArt = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPerspectiveChange, Utility::Assembly::NoOperation2);
@@ -37,8 +39,6 @@ namespace ScrambledBugs::Patches
 
 		AttachHitEffectArt::attach_ = reinterpret_cast<decltype(AttachHitEffectArt::attach_)>(Utility::Memory::ReadRelativeCall(Addresses::Patches::AttachHitEffectArt::Attach));
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Patches::AttachHitEffectArt::Attach, reinterpret_cast<std::uintptr_t>(std::addressof(AttachHitEffectArt::Attach)));
-
-		return true;
 	}
 
 	void AttachHitEffectArt::Attach(Skyrim::ModelReferenceEffect* modelReferenceEffect)

@@ -12,7 +12,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 	class CastSpells
 	{
 	public:
-		static bool Patch();
+		static void Patch(bool& castSpells);
 
 	private:
 		static void ApplySpell(Skyrim::Actor* target, Skyrim::SpellItem* spell, Skyrim::Actor* caster);

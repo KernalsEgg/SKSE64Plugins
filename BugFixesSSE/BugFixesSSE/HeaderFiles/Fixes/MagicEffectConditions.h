@@ -11,7 +11,7 @@ namespace BugFixesSSE::Fixes
 	class MagicEffectConditions
 	{
 	public:
-		static bool Fix();
+		static void Fix(bool& magicEffectConditions);
 
 	private:
 		static float ActiveEffectConditionUpdateInterval();

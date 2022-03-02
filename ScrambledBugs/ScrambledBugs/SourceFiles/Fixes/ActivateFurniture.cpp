@@ -10,12 +10,10 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool ActivateFurniture::Fix()
+	void ActivateFurniture::Fix(bool& activateFurniture)
 	{
 		ActivateFurniture::activate_ = reinterpret_cast<decltype(ActivateFurniture::activate_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::TESFurniture::VirtualFunctionTable, 0x37));
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::TESFurniture::VirtualFunctionTable, 0x37, reinterpret_cast<std::uintptr_t>(std::addressof(ActivateFurniture::Activate)));
-
-		return true;
 	}
 
 	bool ActivateFurniture::Activate(Skyrim::TESFurniture* furniture, Skyrim::TESObjectREFR* target, Skyrim::TESObjectREFR* activator, bool pathingTo, Skyrim::TESBoundObject* item, std::int32_t itemCount)

@@ -4,6 +4,7 @@
 
 #include "Shared/Skyrim/B/BSAtomic.h"
 #include "Shared/Skyrim/E/ExtraDataType.h"
+#include "Shared/Skyrim/S/SoulLevel.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -87,8 +88,10 @@ namespace Skyrim
 
 		// Member functions
 		float              GetCharge() const;
+		std::int16_t       GetCount() const;
 		BSExtraData*       GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType);
 		const BSExtraData* GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
+		SoulLevel          GetSoulLevel() const;
 		bool               HasType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
 		bool               IsQuestItem() const;
 		bool               IsWorn() const;

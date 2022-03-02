@@ -10,11 +10,9 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool MagicEffectFlags::Fix()
+	void MagicEffectFlags::Fix(bool& magicEffectFlags)
 	{
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::MagicEffectFlags::SetEffectiveness, reinterpret_cast<std::uintptr_t>(std::addressof(MagicEffectFlags::SetEffectiveness)));
-
-		return true;
 	}
 
 	void MagicEffectFlags::SetEffectiveness(Skyrim::ActiveEffect* activeEffect, float effectiveness)

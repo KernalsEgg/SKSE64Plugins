@@ -67,6 +67,32 @@ namespace Skyrim
 		return function(this, movementActor);
 	}
 
+	SoulLevel Actor::GetSoulLevel() const
+	{
+		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::GetSoulLevel)>::type>(Addresses::Actor::GetSoulLevel) };
+
+		return function(this);
+	}
+
+	bool Actor::IsNPC() const
+	{
+		auto currentProcess = this->currentProcess;
+
+		if (!currentProcess)
+		{
+			return this->UpdateIsNPC();
+		}
+
+		auto cachedValues = currentProcess->cachedValues;
+
+		if (!cachedValues)
+		{
+			return this->UpdateIsNPC();
+		}
+
+		return cachedValues->flags.all(CachedValues::Flags::kNPC) ? cachedValues->booleanValues.all(CachedValues::BooleanValues::kNPC) : this->UpdateIsNPC();
+	}
+
 	bool Actor::IsOnMount() const
 	{
 		if (this->boolFlags.all(BoolFlags::kIsMount))

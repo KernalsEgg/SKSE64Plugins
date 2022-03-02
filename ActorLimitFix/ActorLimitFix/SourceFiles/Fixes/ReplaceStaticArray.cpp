@@ -12,7 +12,7 @@
 
 namespace ActorLimitFix::Fixes
 {
-	bool ReplaceStaticArray::Fix()
+	void ReplaceStaticArray::Fix(bool& replaceStaticArray)
 	{
 		if (!Patterns::ReplaceStaticArray::GetStaticArrayCapacityCommentOnPlayerAction() ||
 			!Patterns::ReplaceStaticArray::GetStaticArrayCapacityContains() ||
@@ -26,7 +26,9 @@ namespace ActorLimitFix::Fixes
 			!Patterns::ReplaceStaticArray::GetStaticArrayInsert() ||
 			!Patterns::ReplaceStaticArray::HasCapacityInsert())
 		{
-			return false;
+			replaceStaticArray = false;
+
+			return;
 		}
 
 		// CommentOnPlayerAction
@@ -81,8 +83,6 @@ namespace ActorLimitFix::Fixes
 			0x81ui8, 0x04ui8, 0x24ui8, 0xEDui32, // add [rsp], ED
 			0xC3ui8                              // ret
 		);
-
-		return true;
 	}
 
 	ReplaceStaticArray::ActorDistance ReplaceStaticArray::actorDistanceArray_[0x400]{}; // 2 * 0x200

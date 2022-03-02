@@ -51,7 +51,7 @@
     <ClInclude Include="HeaderFiles\Patches\StaffExperience.h" />
     <ClInclude Include="HeaderFiles\Patches\SteepSlopes.h" />
     <ClInclude Include="HeaderFiles\Patches\TeammateDifficulty.h" />
-    <ClInclude Include="HeaderFiles\Patches\UnderfilledSoulGems.h" />
+    <ClInclude Include="HeaderFiles\Patches\SoulGems.h" />
     <ClInclude Include="HeaderFiles\Patterns.h" />
     <ClInclude Include="HeaderFiles\PCH.h" />
     <ClInclude Include="HeaderFiles\Serialization.h" />
@@ -89,7 +89,7 @@
     <ClCompile Include="SourceFiles\Patches\StaffExperience.cpp" />
     <ClCompile Include="SourceFiles\Patches\SteepSlopes.cpp" />
     <ClCompile Include="SourceFiles\Patches\TeammateDifficulty.cpp" />
-    <ClCompile Include="SourceFiles\Patches\UnderfilledSoulGems.cpp" />
+    <ClCompile Include="SourceFiles\Patches\SoulGems.cpp" />
     <ClCompile Include="SourceFiles\Patterns.cpp" />
     <ClCompile Include="SourceFiles\PCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>

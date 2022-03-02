@@ -552,6 +552,9 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraCharge.h">
       <Filter>Header Files\Shared\Skyrim\E</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraCount.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraDataList.h">
       <Filter>Header Files\Shared\Skyrim\E</Filter>
     </ClInclude>
@@ -562,6 +565,9 @@
       <Filter>Header Files\Shared\Skyrim\E</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraLevCreaModifier.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraSoul.h">
       <Filter>Header Files\Shared\Skyrim\E</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWorn.h">
@@ -882,6 +888,9 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SkyObject.h">
       <Filter>Header Files\Shared\Skyrim\S</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SoulLevel.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SoundLevel.h">
       <Filter>Header Files\Shared\Skyrim\S</Filter>
     </ClInclude>
@@ -1044,6 +1053,9 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectLIGH.h">
       <Filter>Header Files\Shared\Skyrim\T</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectMISC.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectREFR.h">
       <Filter>Header Files\Shared\Skyrim\T</Filter>
     </ClInclude>
@@ -1075,6 +1087,9 @@
       <Filter>Header Files\Shared\Skyrim\T</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESShout.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESSoulGem.h">
       <Filter>Header Files\Shared\Skyrim\T</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESSpellList.h">
@@ -1275,6 +1290,9 @@
       <Filter>Source Files\Shared\Skyrim\T</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectREFR.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESSoulGem.cpp">
       <Filter>Source Files\Shared\Skyrim\T</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\U\UI.cpp">

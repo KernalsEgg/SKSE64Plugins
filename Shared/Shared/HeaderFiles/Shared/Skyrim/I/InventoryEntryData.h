@@ -21,7 +21,7 @@ namespace Skyrim
 
 		// Member variables
 		TESBoundObject*               item;           // 0
-		BSSimpleList<ExtraDataList*>* extraDataLists; // 8
+		BSSimpleList<ExtraDataList*>* extraDataLists; // 8, Each item in the stack has a separate ExtraDataList
 		std::int32_t                  itemCountDelta; // 10
 		std::uint32_t                 padding14;      // 14
 	};

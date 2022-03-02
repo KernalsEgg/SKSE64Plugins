@@ -158,10 +158,12 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EnchantConstructMenu.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EnchantmentItem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraCharge.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraCount.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraDataList.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraDataType.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraEnchantment.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraLevCreaModifier.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraSoul.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWorn.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWornLeft.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FactionRank.h" />
@@ -267,6 +269,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Sky.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SkyEffectController.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SkyObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SoulLevel.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SoundLevel.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SpellItem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Stars.h" />
@@ -321,6 +324,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectCONT.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectDOOR.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectLIGH.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectMISC.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectREFR.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectSTAT.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectTREE.h" />
@@ -332,6 +336,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESReactionForm.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESRegion.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESShout.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESSoulGem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESSpellList.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESTexture.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESTexture1024.h" />
@@ -402,6 +407,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESDataHandler.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESForm.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectREFR.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESSoulGem.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\U\UI.cpp" />
     <ClCompile Include="SourceFiles\Shared\Utility\Log.cpp" />
     <ClCompile Include="SourceFiles\Shared\Utility\Memory.cpp" />

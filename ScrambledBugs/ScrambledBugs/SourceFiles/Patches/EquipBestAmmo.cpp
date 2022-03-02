@@ -12,7 +12,7 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool EquipBestAmmo::Patch()
+	void EquipBestAmmo::Patch(bool& equipBestAmmo)
 	{
 		if (!Patterns::Patches::EquipBestAmmo::CompareDamageContainer() ||
 			!Patterns::Patches::EquipBestAmmo::CompareDamageInventoryChanges() ||
@@ -20,7 +20,9 @@ namespace ScrambledBugs::Patches
 			!Patterns::Patches::EquipBestAmmo::IsBoltContainer() ||
 			!Patterns::Patches::EquipBestAmmo::IsBoltInventoryChanges())
 		{
-			return false;
+			equipBestAmmo = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Patches::EquipBestAmmo::InitializeDamage + 0x4, static_cast<std::int32_t>(Addresses::Patches::EquipBestAmmo::FloatMinimumValue - (Addresses::Patches::EquipBestAmmo::InitializeDamage + 0x8))); // movss xmm6, -std::numeric_limits<float>::max()
@@ -45,7 +47,5 @@ namespace ScrambledBugs::Patches
 			0xF6ui8, 0x85ui8, 0x118ui32, 0x02ui8, // test byte ptr [rbp+118], 2
 			0xC3ui8                               // ret
 		);
-
-		return true;
 	}
 }

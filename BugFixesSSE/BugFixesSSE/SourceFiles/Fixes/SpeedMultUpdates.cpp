@@ -11,15 +11,15 @@
 
 namespace BugFixesSSE::Fixes
 {
-	bool SpeedMultUpdates::Fix()
+	void SpeedMultUpdates::Fix(bool& speedMultUpdates)
 	{
 		if (!Patterns::Fixes::SpeedMultUpdates::SpeedMultSink())
 		{
-			return false;
+			speedMultUpdates = false;
+
+			return;
 		}
 
 		reinterpret_cast<std::uintptr_t*>(Addresses::Fixes::SpeedMultUpdates::ActorValueSinks)[Utility::ToUnderlying(Skyrim::ActorValue::kSpeedMult)] = Addresses::Fixes::SpeedMultUpdates::SpeedMultSink;
-
-		return true;
 	}
 }

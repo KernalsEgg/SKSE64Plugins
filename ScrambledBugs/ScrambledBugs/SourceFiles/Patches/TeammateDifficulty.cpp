@@ -11,11 +11,9 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool TeammateDifficulty::Patch()
+	void TeammateDifficulty::Patch(bool& teammateDifficulty)
 	{
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Patches::TeammateDifficulty::MultiplyDamage, reinterpret_cast<std::uintptr_t>(std::addressof(TeammateDifficulty::MultiplyDamage)));
-
-		return true;
 	}
 
 	float TeammateDifficulty::GetDifficultyMultiplier(Utility::Enumeration<Skyrim::Difficulty, std::uint32_t> difficulty, bool toPlayer)

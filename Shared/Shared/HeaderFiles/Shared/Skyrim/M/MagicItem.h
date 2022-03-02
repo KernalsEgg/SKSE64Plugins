@@ -13,9 +13,9 @@
 
 namespace Skyrim
 {
-	class Actor;
-
 	struct Effect;
+
+	class Actor;
 
 	class MagicItem :
 		public TESBoundObject, // 0

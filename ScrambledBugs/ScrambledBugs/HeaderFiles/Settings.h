@@ -54,6 +54,7 @@ namespace ScrambledBugs
 			bool            accumulatingMagnitude{ false };
 			bool            alreadyCaughtPickpocketing{ false };
 			bool            attachHitEffectArt{ false };
+			bool            blackSoulGems{ false };
 			bool            cloakHitEffects{ false };
 			bool            equipBestAmmo{ false };
 			bool            improveMultipleEnchantmentEffects{ false };

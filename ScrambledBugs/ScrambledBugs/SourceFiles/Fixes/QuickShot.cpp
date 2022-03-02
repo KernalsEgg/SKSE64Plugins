@@ -12,13 +12,11 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool QuickShot::Fix(float playbackSpeed)
+	void QuickShot::Fix(bool& quickShot, float& quickShotPlaybackSpeed)
 	{
-		QuickShot::playbackSpeed_ = playbackSpeed;
+		QuickShot::quickShotPlaybackSpeed_ = quickShotPlaybackSpeed;
 
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::QuickShot::GetArrowPower, reinterpret_cast<std::uintptr_t>(std::addressof(QuickShot::GetArrowPower)));
-
-		return true;
 	}
 
 	float QuickShot::GetArrowPower(float drawTime, float bowSpeed)
@@ -34,7 +32,7 @@ namespace ScrambledBugs::Fixes
 		auto arrowBowMinimumTime = Skyrim::GameSettingCollection::ArrowBowMinimumTime()->value.floatingPoint;
 
 		float pullTime = player->GetAnimationVariableBool(Skyrim::BSFixedString("bPerkQuickDraw"), perkQuickDraw) && perkQuickDraw ?
-                             drawTime - (arrowBowMinimumTime / QuickShot::playbackSpeed_) :
+                             drawTime - (arrowBowMinimumTime / QuickShot::quickShotPlaybackSpeed_) :
                              drawTime - arrowBowMinimumTime;
 
 		if (pullTime <= 0.0F)
@@ -57,5 +55,5 @@ namespace ScrambledBugs::Fixes
 		}
 	}
 
-	float QuickShot::playbackSpeed_{ 0.0F };
+	float QuickShot::quickShotPlaybackSpeed_{ 0.0F };
 }

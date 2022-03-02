@@ -12,17 +12,17 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool SteepSlopes::Patch()
+	void SteepSlopes::Patch(bool& steepSlopes)
 	{
 		if (!Patterns::Patches::SteepSlopes::GetScale())
 		{
-			return false;
+			steepSlopes = false;
+
+			return;
 		}
 
 		SteepSlopes::getScale_ = reinterpret_cast<decltype(SteepSlopes::getScale_)>(Utility::Memory::ReadRelativeCall(Addresses::Patches::SteepSlopes::GetScale));
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Patches::SteepSlopes::GetScale, reinterpret_cast<std::uintptr_t>(std::addressof(SteepSlopes::GetScale)));
-
-		return true;
 	}
 
 	float SteepSlopes::GetScale(Skyrim::Actor* actor)

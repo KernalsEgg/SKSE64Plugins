@@ -10,10 +10,10 @@
 
 namespace Skyrim
 {
+	struct ContainerItemExtra;
+
 	class TESForm;
 	class TESGlobal;
-
-	struct ContainerItemExtra;
 
 	struct LeveledObject
 	{

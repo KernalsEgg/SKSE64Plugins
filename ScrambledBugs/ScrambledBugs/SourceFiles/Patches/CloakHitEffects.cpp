@@ -10,15 +10,15 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool CloakHitEffects::Patch()
+	void CloakHitEffects::Patch(bool& cloakHitEffects)
 	{
 		if (!Patterns::Patches::CloakHitEffects::IsNotCostliestEffect())
 		{
-			return false;
+			cloakHitEffects = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Patches::CloakHitEffects::IsNotCostliestEffect, 0xEBui8, std::optional<std::uint8_t>{});
-
-		return true;
 	}
 }

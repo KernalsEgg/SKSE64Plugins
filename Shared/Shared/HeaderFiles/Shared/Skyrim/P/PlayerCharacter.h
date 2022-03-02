@@ -19,6 +19,16 @@
 
 namespace Skyrim
 {
+	struct BGSActorCellEvent;
+	struct BGSActorDeathEvent;
+	struct MenuModeChangeEvent;
+	struct MenuOpenCloseEvent;
+	struct PerkRank;
+	struct PositionPlayerEvent;
+	struct TESQuestStageItem;
+	struct TESTrackedStatsEvent;
+	struct UserEventEnabledEvent;
+
 	class AlchemyItem;
 	class BGSLocation;
 	class BGSPerk;
@@ -29,16 +39,6 @@ namespace Skyrim
 	class TESFaction;
 	class TESRace;
 	class TintMask;
-
-	struct BGSActorCellEvent;
-	struct BGSActorDeathEvent;
-	struct MenuModeChangeEvent;
-	struct MenuOpenCloseEvent;
-	struct PerkRank;
-	struct PositionPlayerEvent;
-	struct TESQuestStageItem;
-	struct TESTrackedStatsEvent;
-	struct UserEventEnabledEvent;
 
 	struct CrimeGold
 	{

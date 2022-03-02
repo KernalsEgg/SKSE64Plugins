@@ -10,15 +10,15 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool TrainingMenu::Fix()
+	void TrainingMenu::Fix(bool& trainingMenu)
 	{
 		if (!Patterns::Fixes::TrainingMenu::GetPermanentActorValue())
 		{
-			return false;
+			trainingMenu = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Fixes::TrainingMenu::GetPermanentActorValue, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 0x18ui8);
-
-		return true;
 	}
 }

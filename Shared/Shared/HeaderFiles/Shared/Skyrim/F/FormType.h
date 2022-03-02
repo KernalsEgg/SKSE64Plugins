@@ -19,6 +19,7 @@ namespace Skyrim
 		kFurniture   = 0x28,
 		kWeapon      = 0x29,
 		kNPC         = 0x2B,
+		kSoulGem     = 0x34,
 		kCell        = 0x3C,
 		kActor       = 0x3E,
 		kTotal       = 0x8A

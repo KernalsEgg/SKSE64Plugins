@@ -403,16 +403,5 @@ namespace ScrambledBugs::Patterns
 				);
 			}
 		}
-
-		namespace UnderfilledSoulGems
-		{
-			bool CompareSoulLevelValue()
-			{
-				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::UnderfilledSoulGems::CompareSoulLevelValue, // 0x2
-					0x72ui8, 0x2Eui8                                                // jb 2E
-				);
-			}
-		}
 	}
 }

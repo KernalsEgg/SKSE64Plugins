@@ -17,7 +17,7 @@ namespace ScrambledBugs::Patches
 	class AccumulatingMagnitude
 	{
 	public:
-		static bool Patch();
+		static void Patch(bool& accumulatingMagnitude);
 
 	private:
 		static Skyrim::AccumulatingValueModifierEffect*                    Constructor(Skyrim::AccumulatingValueModifierEffect* accumulatingValueModifierEffect, Skyrim::Actor* caster, Skyrim::MagicItem* spell, Skyrim::Effect* effect);

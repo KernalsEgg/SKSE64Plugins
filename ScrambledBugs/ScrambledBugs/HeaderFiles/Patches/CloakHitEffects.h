@@ -9,6 +9,6 @@ namespace ScrambledBugs::Patches
 	class CloakHitEffects
 	{
 	public:
-		static bool Patch();
+		static void Patch(bool& cloakHitEffects);
 	};
 }

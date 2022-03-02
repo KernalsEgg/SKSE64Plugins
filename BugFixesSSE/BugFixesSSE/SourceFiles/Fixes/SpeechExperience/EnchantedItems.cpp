@@ -11,17 +11,17 @@
 
 namespace BugFixesSSE::Fixes::SpeechExperience
 {
-	bool EnchantedItems::Fix()
+	void EnchantedItems::Fix(bool& enchantedItems)
 	{
 		if (!Patterns::Fixes::SpeechExperience::ItemStacks::Buy() ||
 			!Patterns::Fixes::SpeechExperience::ItemStacks::Sell())
 		{
-			return false;
+			enchantedItems = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWriteRelativeCall(Addresses::Fixes::SpeechExperience::ItemStacks::Buy, Skyrim::Addresses::InventoryEntryData::GetValue);
 		Utility::Memory::SafeWriteRelativeCall(Addresses::Fixes::SpeechExperience::ItemStacks::Sell, Skyrim::Addresses::InventoryEntryData::GetValue);
-
-		return true;
 	}
 }

@@ -11,7 +11,7 @@ namespace ScrambledBugs::Patches
 	class LeveledCharacters
 	{
 	public:
-		static bool Patch();
+		static void Patch(bool& leveledCharacters);
 
 	private:
 		static std::uint32_t GetLeveledCreatureModifier(Skyrim::ExtraLevCreaModifier* extraLeveledCreatureModifier);

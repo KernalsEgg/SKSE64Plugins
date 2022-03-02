@@ -3,6 +3,8 @@
 #include "Shared/PCH.h"
 
 #include "Shared/Skyrim/B/BSPointerHandle.h"
+#include "Shared/Skyrim/B/BSTArray.h"
+#include "Shared/Utility/Enumeration.h"
 
 
 
@@ -11,6 +13,53 @@ namespace Skyrim
 	class bhkCharacterController;
 	class HighProcessData;
 	class MiddleHighProcessData;
+
+	struct CachedValue
+	{
+	public:
+		// Member variables
+		bool          dirty;    // 0
+		std::uint8_t  padding1; // 1
+		std::uint16_t padding2; // 2
+		float         value;    // 4
+	};
+	static_assert(offsetof(CachedValue, dirty) == 0x0);
+	static_assert(offsetof(CachedValue, value) == 0x4);
+	static_assert(sizeof(CachedValue) == 0x8);
+
+	struct CachedValues
+	{
+	public:
+		enum class BooleanValues : std::uint32_t
+		{
+			kNPC    = 1U << 1,
+			kUndead = 1U << 2
+		};
+		static_assert(sizeof(BooleanValues) == 0x4);
+
+		enum class Flags : std::uint32_t
+		{
+			kNPC    = 1U << 25,
+			kUndead = 1U << 26
+		};
+		static_assert(sizeof(Flags) == 0x4);
+
+		// Member variables
+		std::uint64_t                                      unknown0;             // 0
+		std::uint64_t                                      unknown8;             // 8
+		std::uint64_t                                      unknown10;            // 10
+		std::uint64_t                                      unknown18;            // 18
+		std::uint64_t                                      unknown20;            // 20
+		Utility::Enumeration<BooleanValues, std::uint32_t> booleanValues;        // 28
+		Utility::Enumeration<Flags, std::uint32_t>         flags;                // 2C
+		BSTArray<CachedValue>                              actorValues;          // 30
+		BSTArray<CachedValue>                              permanentActorValues; // 48
+	};
+	static_assert(offsetof(CachedValues, booleanValues) == 0x28);
+	static_assert(offsetof(CachedValues, flags) == 0x2C);
+	static_assert(offsetof(CachedValues, actorValues) == 0x30);
+	static_assert(offsetof(CachedValues, permanentActorValues) == 0x48);
+	static_assert(sizeof(CachedValues) == 0x60);
 
 	class MiddleLowProcessData
 	{
@@ -38,7 +87,7 @@ namespace Skyrim
 		std::uint64_t          unknown38;             // 38
 		std::uint64_t          unknown40;             // 40
 		std::uint64_t          unknown48;             // 48
-		std::uint64_t          unknown50;             // 50
+		CachedValues*          cachedValues;          // 50
 		std::uint64_t          unknown58;             // 58
 		std::uint64_t          unknown60;             // 60
 		std::uint64_t          unknown68;             // 68
@@ -72,5 +121,6 @@ namespace Skyrim
 	static_assert(offsetof(ActorProcess, middleLowProcessData) == 0x0);
 	static_assert(offsetof(ActorProcess, middleHighProcessData) == 0x8);
 	static_assert(offsetof(ActorProcess, highProcessData) == 0x10);
+	static_assert(offsetof(ActorProcess, cachedValues) == 0x50);
 	static_assert(sizeof(ActorProcess) == 0x140);
 }

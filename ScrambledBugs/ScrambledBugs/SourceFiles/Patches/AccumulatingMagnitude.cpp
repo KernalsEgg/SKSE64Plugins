@@ -17,11 +17,13 @@ namespace ScrambledBugs::Patches
 	Swap the maximum magnitude and the accumulation rate (magnitude) of AccumulatingValueModifierEffects
 	The maximum magnitude of AccumulatingValueModifierEffects therefore scales with effectiveness instead of the accumulation rate
 	*/
-	bool AccumulatingMagnitude::Patch()
+	void AccumulatingMagnitude::Patch(bool& accumulatingMagnitude)
 	{
 		if (!Patterns::Patches::AccumulatingMagnitude::Constructor())
 		{
-			return false;
+			accumulatingMagnitude = false;
+
+			return;
 		}
 
 		AccumulatingMagnitude::constructor_ = reinterpret_cast<decltype(AccumulatingMagnitude::constructor_)>(Utility::Memory::ReadRelativeCall(Addresses::Patches::AccumulatingMagnitude::Constructor));
@@ -29,8 +31,6 @@ namespace ScrambledBugs::Patches
 
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::AccumulatingValueModifierEffect::VirtualFunctionTable, 0x1D, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::UpdateActorValue)));
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::FindMaxMagnitudeVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::Visit)));
-
-		return true;
 	}
 
 	Skyrim::AccumulatingValueModifierEffect* AccumulatingMagnitude::Constructor(Skyrim::AccumulatingValueModifierEffect* accumulatingValueModifierEffect, Skyrim::Actor* caster, Skyrim::MagicItem* spell, Skyrim::Effect* effect)

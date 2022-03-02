@@ -11,11 +11,9 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool WeaponCharge::Fix()
+	void WeaponCharge::Fix(bool& weaponCharge)
 	{
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::WeaponCharge::UpdateWeaponEnchantments, reinterpret_cast<std::uintptr_t>(std::addressof(WeaponCharge::UpdateWeaponEnchantments)));
-
-		return true;
 	}
 
 	void WeaponCharge::UpdateWeaponEnchantments(Skyrim::Actor* actor, Skyrim::TESBoundObject* item, Skyrim::ExtraDataList* extraDataList, bool leftHand)

@@ -11,7 +11,7 @@ namespace ScrambledBugs::Fixes
 	class MagicEffectFlags
 	{
 	public:
-		static bool Fix();
+		static void Fix(bool& magicEffectFlags);
 
 	private:
 		static void SetEffectiveness(Skyrim::ActiveEffect* activeEffect, float effectiveness);

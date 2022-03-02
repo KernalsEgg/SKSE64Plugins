@@ -9,6 +9,6 @@ namespace ScrambledBugs::Patches
 	class AlreadyCaughtPickpocketing
 	{
 	public:
-		static bool Patch();
+		static void Patch(bool& alreadyCaughtPickpocketing);
 	};
 }

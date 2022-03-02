@@ -13,11 +13,9 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool ImproveMultipleEnchantmentEffects::Patch()
+	void ImproveMultipleEnchantmentEffects::Patch(bool& improveMultipleEnchantmentEffects)
 	{
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(ImproveMultipleEnchantmentEffects::Traverse)));
-
-		return true;
 	}
 
 	/// <summary>SkyrimSE.exe + 0x868A00 (VID 50366)</summary>

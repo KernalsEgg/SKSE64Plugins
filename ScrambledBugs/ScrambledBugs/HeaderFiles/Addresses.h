@@ -252,11 +252,5 @@ namespace ScrambledBugs::Addresses
 			/// <summary>Actor::MultiplyDamage (SkyrimSE.exe + 0x5E4800)</summary>
 			inline const std::uintptr_t MultiplyDamage{ Relocation::AddressLibrary::GetSingleton().GetAddress(36506) + 0x0 };
 		}
-
-		namespace UnderfilledSoulGems
-		{
-			/// <summary>SkyrimSE.exe + 0x1E5050</summary>
-			inline const std::uintptr_t CompareSoulLevelValue{ Relocation::AddressLibrary::GetSingleton().GetAddress(15854) + 0xE6 };
-		}
 	}
 }

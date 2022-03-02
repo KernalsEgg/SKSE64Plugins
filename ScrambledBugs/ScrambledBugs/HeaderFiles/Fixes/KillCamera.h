@@ -9,6 +9,6 @@ namespace ScrambledBugs::Fixes
 	class KillCamera
 	{
 	public:
-		static bool Fix();
+		static void Fix(bool& killCamera);
 	};
 }

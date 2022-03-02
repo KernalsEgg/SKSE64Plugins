@@ -17,6 +17,8 @@
 
 namespace Skyrim
 {
+	struct MenuOpenCloseEvent;
+
 	class BGSColorForm;
 	class BGSHeadPart;
 	class BGSListForm;
@@ -27,8 +29,6 @@ namespace Skyrim
 	class TESFaction;
 	class TESObjectARMO;
 	class TESRace;
-
-	struct MenuOpenCloseEvent;
 
 	class TESNPC :
 		public TESActorBase,              // 0

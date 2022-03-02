@@ -10,15 +10,15 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool TerrainDecals::Fix()
+	void TerrainDecals::Fix(bool& terrainDecals)
 	{
 		if (!Patterns::Fixes::TerrainDecals::UnloadCellMopp())
 		{
-			return false;
+			terrainDecals = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Fixes::TerrainDecals::UnloadCellMopp, 0xC3ui8, 0xCCui8, 0xCCui8, 0xCCui8, 0xCCui8);
-
-		return true;
 	}
 }

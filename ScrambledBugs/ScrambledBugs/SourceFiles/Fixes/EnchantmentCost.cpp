@@ -10,16 +10,16 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool EnchantmentCost::Fix()
+	void EnchantmentCost::Fix(bool& enchantmentCost)
 	{
 		if (!Patterns::Fixes::EnchantmentCost::Unequal())
 		{
-			return false;
+			enchantmentCost = false;
+
+			return;
 		}
 
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Fixes::EnchantmentCost::Unequal, reinterpret_cast<std::uintptr_t>(std::addressof(EnchantmentCost::Unequal)));
-
-		return true;
 	}
 
 	bool EnchantmentCost::Unequal(Skyrim::Effect* left, Skyrim::Effect* right)

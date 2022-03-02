@@ -10,13 +10,11 @@
 
 namespace ScrambledBugs::Fixes
 {
-	bool ActorValuePercentage::Fix()
+	void ActorValuePercentage::Fix(bool& actorValuePercentage)
 	{
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::ActorValuePercentage::GetActorValuePercentage, reinterpret_cast<std::uintptr_t>(std::addressof(ActorValuePercentage::GetActorValuePercentage)));
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::ActorValuePercentage::GetHealthPercentage, reinterpret_cast<std::uintptr_t>(std::addressof(ActorValuePercentage::GetHealthPercentage)));
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::ActorValuePercentage::GetStaminaPercentage, reinterpret_cast<std::uintptr_t>(std::addressof(ActorValuePercentage::GetStaminaPercentage)));
-
-		return true;
 	}
 
 	float ActorValuePercentage::GetActorValuePercentage(Skyrim::Actor* actor, Utility::Enumeration<Skyrim::ActorValue, std::uint32_t> actorValue)

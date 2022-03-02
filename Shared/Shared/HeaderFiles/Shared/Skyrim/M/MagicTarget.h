@@ -6,8 +6,7 @@
 
 namespace Skyrim
 {
-	template <class T>
-	class BSSimpleList;
+	struct Effect;
 
 	class ActiveEffect;
 	class Actor;
@@ -15,7 +14,8 @@ namespace Skyrim
 	class TESBoundObject;
 	class TESObjectREFR;
 
-	struct Effect;
+	template <class T>
+	class BSSimpleList;
 
 	class MagicTarget
 	{

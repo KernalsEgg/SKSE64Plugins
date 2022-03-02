@@ -120,6 +120,9 @@
     <ClInclude Include="HeaderFiles\Patches\ScrollExperience.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Patches\SoulGems.h">
+      <Filter>Header Files\Patches</Filter>
+    </ClInclude>
     <ClInclude Include="HeaderFiles\Patches\StaffExperience.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
@@ -127,9 +130,6 @@
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Patches\TeammateDifficulty.h">
-      <Filter>Header Files\Patches</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\UnderfilledSoulGems.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Patterns.h">
@@ -230,6 +230,9 @@
     <ClCompile Include="SourceFiles\Patches\ScrollExperience.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
+    <ClCompile Include="SourceFiles\Patches\SoulGems.cpp">
+      <Filter>Source Files\Patches</Filter>
+    </ClCompile>
     <ClCompile Include="SourceFiles\Patches\StaffExperience.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
@@ -237,9 +240,6 @@
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Patches\TeammateDifficulty.cpp">
-      <Filter>Source Files\Patches</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\UnderfilledSoulGems.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Patterns.cpp">

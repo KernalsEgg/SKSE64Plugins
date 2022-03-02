@@ -9,6 +9,6 @@ namespace ScrambledBugs::Patches
 	class PausedGameHitEffects
 	{
 	public:
-		static bool Patch();
+		static void Patch(bool& pausedGameHitEffects);
 	};
 }

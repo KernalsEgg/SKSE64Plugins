@@ -12,7 +12,7 @@
 
 namespace ScrambledBugs::Patches::PerkEntryPoints
 {
-	bool ApplyMultipleSpells::Patch(bool castSpells)
+	void ApplyMultipleSpells::Patch(bool& applyMultipleSpells, bool& castSpells)
 	{
 		if (!Patterns::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyBashingSpell() ||
 			!Patterns::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyCombatHitSpell() ||
@@ -21,7 +21,10 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			!Patterns::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplySneakingSpell() ||
 			!Patterns::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyWeaponSwingSpell())
 		{
-			return false;
+			applyMultipleSpells = false;
+			castSpells          = false;
+
+			return;
 		}
 
 		ApplyMultipleSpells::castSpells_ = castSpells;
@@ -41,8 +44,6 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyReanimateSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplyMultipleSpells::ApplyReanimateSpell)));
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplySneakingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplyMultipleSpells::ApplySneakingSpell)));
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyWeaponSwingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplyMultipleSpells::ApplyWeaponSwingSpell)));
-
-		return true;
 	}
 
 	void ApplyMultipleSpells::SelectSpell(Skyrim::Actor* perkOwner, Utility::Enumeration<Skyrim::BGSEntryPointFunctionData::ResultType, std::uint32_t> resultType, std::uint8_t resultCount, void** results, Skyrim::BGSEntryPointFunctionData* entryPointFunctionData)

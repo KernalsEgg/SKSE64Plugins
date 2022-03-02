@@ -20,23 +20,23 @@ void Settings()
 
 	if (settings.fixes.magicEffectConditions)
 	{
-		settings.fixes.magicEffectConditions = BugFixesSSE::Fixes::MagicEffectConditions::Fix();
+		BugFixesSSE::Fixes::MagicEffectConditions::Fix(settings.fixes.magicEffectConditions);
 	}
 
 	if (settings.fixes.speechExperience.enchantedItems)
 	{
-		settings.fixes.speechExperience.enchantedItems = BugFixesSSE::Fixes::SpeechExperience::EnchantedItems::Fix();
+		BugFixesSSE::Fixes::SpeechExperience::EnchantedItems::Fix(settings.fixes.speechExperience.enchantedItems);
 	}
 
 	// Must be installed after BugFixesSSE::Fixes::Speechcraft::EnchantedItems
 	if (settings.fixes.speechExperience.itemStacks)
 	{
-		settings.fixes.speechExperience.itemStacks = BugFixesSSE::Fixes::SpeechExperience::ItemStacks::Fix();
+		BugFixesSSE::Fixes::SpeechExperience::ItemStacks::Fix(settings.fixes.speechExperience.itemStacks);
 	}
 
 	if (settings.fixes.speedMultUpdates)
 	{
-		settings.fixes.speedMultUpdates = BugFixesSSE::Fixes::SpeedMultUpdates::Fix();
+		BugFixesSSE::Fixes::SpeedMultUpdates::Fix(settings.fixes.speedMultUpdates);
 	}
 
 	Utility::Log::Information("Initialized.\n{}", settings.Serialize().dump(1, '\t'));

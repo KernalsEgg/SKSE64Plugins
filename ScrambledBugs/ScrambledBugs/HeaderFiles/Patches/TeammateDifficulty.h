@@ -13,7 +13,7 @@ namespace ScrambledBugs::Patches
 	class TeammateDifficulty
 	{
 	public:
-		static bool Patch();
+		static void Patch(bool& teammateDifficulty);
 
 	private:
 		static float GetDifficultyMultiplier(Utility::Enumeration<Skyrim::Difficulty, std::uint32_t> difficulty, bool toPlayer);

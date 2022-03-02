@@ -11,7 +11,7 @@ namespace ScrambledBugs::Patches
 	class AttachHitEffectArt
 	{
 	public:
-		static bool Patch();
+		static void Patch(bool& attachHitEffectArt);
 
 	private:
 		static void Attach(Skyrim::ModelReferenceEffect* modelReferenceEffect);

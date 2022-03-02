@@ -28,6 +28,9 @@ namespace Skyrim::Addresses
 		/// <summary>SkyrimSE.exe + 0x62F170</summary>
 		inline const std::uintptr_t GetMovementActor{ Relocation::AddressLibrary::GetSingleton().GetAddress(37762) };
 
+		/// <summary>SkyrimSE.exe + 0x6348A0</summary>
+		inline const std::uintptr_t GetSoulLevel{ Relocation::AddressLibrary::GetSingleton().GetAddress(37862) };
+
 		/// <summary>SkyrimSE.exe + 0x1656058</summary>
 		inline const std::uintptr_t MagicTargetVirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(260542) };
 
@@ -200,6 +203,15 @@ namespace Skyrim::Addresses
 		inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(259694) };
 	}
 
+	namespace InventoryChanges
+	{
+		namespace FindBestSoulGemVisitor
+		{
+			/// <summary>SkyrimSE.exe + 0x1658668</summary>
+			inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(260831) };
+		}
+	}
+
 	namespace InventoryEntryData
 	{
 		/// <summary>SkyrimSE.exe + 0x1D66E0</summary>
@@ -303,6 +315,12 @@ namespace Skyrim::Addresses
 
 		/// <summary>SkyrimSE.exe + 0x296460</summary>
 		inline const std::uintptr_t GetReferenceName{ Relocation::AddressLibrary::GetSingleton().GetAddress(19355) };
+	}
+
+	namespace TESSoulGem
+	{
+		/// <summary>SkyrimSE.exe + 0x237A90</summary>
+		inline const std::uintptr_t GetSoulLevelValue{ Relocation::AddressLibrary::GetSingleton().GetAddress(17753) };
 	}
 
 	namespace UI

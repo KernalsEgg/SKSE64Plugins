@@ -15,13 +15,13 @@
 
 namespace Skyrim
 {
+	struct TESObjectList;
+
 	class BGSAddonNode;
 	class TESFile;
 	class TESForm;
 	class TESObjectCELL;
 	class TESRegionList;
-
-	struct TESObjectList;
 
 	struct TESFileCollection
 	{

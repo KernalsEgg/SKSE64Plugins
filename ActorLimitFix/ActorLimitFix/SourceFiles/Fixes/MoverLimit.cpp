@@ -10,17 +10,15 @@
 
 namespace ActorLimitFix::Fixes
 {
-	bool MoverLimit::Fix(std::uint32_t moverLimit)
+	void MoverLimit::Fix(std::uint32_t& moverLimit)
 	{
 		if (!Patterns::MoverLimit::CompareMoverLimit() ||
 			!Patterns::MoverLimit::GetMoverLimit())
 		{
-			return false;
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::MoverLimit::GetMoverLimit, std::optional<std::uint8_t>{}, moverLimit);
 		Utility::Memory::SafeWrite(Addresses::MoverLimit::CompareMoverLimit, std::optional<std::uint8_t>{}, moverLimit);
-
-		return true;
 	}
 }

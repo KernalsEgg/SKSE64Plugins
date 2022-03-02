@@ -10,9 +10,9 @@
 // Based on std::vector
 namespace Skyrim
 {
-	class ScrapHeap;
-
 	struct Effect;
+
+	class ScrapHeap;
 
 	class BSTArrayBase
 	{

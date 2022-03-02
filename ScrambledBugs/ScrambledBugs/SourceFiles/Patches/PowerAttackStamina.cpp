@@ -12,14 +12,16 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool PowerAttackStamina::Patch()
+	void PowerAttackStamina::Patch(bool& powerAttackStamina)
 	{
 		if (!Patterns::Patches::PowerAttackStamina::GetAttackStaminaActor() ||
 			!Patterns::Patches::PowerAttackStamina::GetAttackStaminaPlayerCharacter() ||
 			!Patterns::Patches::PowerAttackStamina::HasStaminaActor() ||
 			!Patterns::Patches::PowerAttackStamina::HasStaminaPlayerCharacter())
 		{
-			return false;
+			powerAttackStamina = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Patches::PowerAttackStamina::HasStaminaActor, Utility::Assembly::NoOperation2);
@@ -30,8 +32,6 @@ namespace ScrambledBugs::Patches
 
 		PowerAttackStamina::getAttackStaminaPlayerCharacter_ = reinterpret_cast<decltype(PowerAttackStamina::getAttackStaminaPlayerCharacter_)>(Utility::Memory::ReadRelativeCall(Addresses::Patches::PowerAttackStamina::GetAttackStaminaPlayerCharacter));
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Patches::PowerAttackStamina::GetAttackStaminaPlayerCharacter, reinterpret_cast<std::uintptr_t>(std::addressof(PowerAttackStamina::HasAttackStaminaPlayerCharacter)));
-
-		return true;
 	}
 
 	float PowerAttackStamina::HasAttackStaminaActor(Skyrim::ActorValueOwner* actorValueOwner, Skyrim::BGSAttackData* attackData)

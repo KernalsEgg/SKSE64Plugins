@@ -11,15 +11,15 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool LockpickingExperience::Patch()
+	void LockpickingExperience::Patch(bool& lockpickingExperience)
 	{
 		if (!Patterns::Patches::LockpickingExperience::HasNotBeenUnlocked())
 		{
-			return false;
+			lockpickingExperience = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Patches::LockpickingExperience::HasNotBeenUnlocked, Utility::Assembly::NoOperation2);
-
-		return true;
 	}
 }

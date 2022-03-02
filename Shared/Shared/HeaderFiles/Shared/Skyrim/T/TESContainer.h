@@ -8,9 +8,9 @@
 
 namespace Skyrim
 {
-	class TESBoundObject;
-
 	struct ContainerItemExtra;
+
+	class TESBoundObject;
 
 	struct ContainerObject
 	{

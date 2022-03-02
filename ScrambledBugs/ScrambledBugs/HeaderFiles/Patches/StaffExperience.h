@@ -12,7 +12,7 @@ namespace ScrambledBugs::Patches
 	class StaffExperience
 	{
 	public:
-		static bool Patch();
+		static void Patch(bool& staffExperience);
 
 	private:
 		static bool GetSkillUsageData(Skyrim::EnchantmentItem* enchantment, Skyrim::MagicItem::SkillUsageData& skillUsageData);

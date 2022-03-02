@@ -11,15 +11,15 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool PausedGameHitEffects::Patch()
+	void PausedGameHitEffects::Patch(bool& pausedGameHitEffects)
 	{
 		if (!Patterns::Patches::PausedGameHitEffects::ApplyHitEffects())
 		{
-			return false;
+			pausedGameHitEffects = false;
+
+			return;
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Patches::PausedGameHitEffects::ApplyHitEffects, Utility::Assembly::NoOperation2);
-
-		return true;
 	}
 }

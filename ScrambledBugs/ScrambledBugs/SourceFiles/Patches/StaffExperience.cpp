@@ -9,14 +9,12 @@
 
 namespace ScrambledBugs::Patches
 {
-	bool StaffExperience::Patch()
+	void StaffExperience::Patch(bool& staffExperience)
 	{
 		StaffExperience::getSkillUsageDataEnchantmentItem_ = reinterpret_cast<decltype(StaffExperience::getSkillUsageDataEnchantmentItem_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::EnchantmentItem::VirtualFunctionTable, 0x60));
 		StaffExperience::getSkillUsageDataSpellItem_       = reinterpret_cast<decltype(StaffExperience::getSkillUsageDataSpellItem_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::SpellItem::VirtualFunctionTable, 0x60));
 
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::EnchantmentItem::VirtualFunctionTable, 0x60, reinterpret_cast<std::uintptr_t>(std::addressof(StaffExperience::GetSkillUsageData)));
-
-		return true;
 	}
 
 	bool StaffExperience::GetSkillUsageData(Skyrim::EnchantmentItem* enchantment, Skyrim::MagicItem::SkillUsageData& skillUsageData)

@@ -9,6 +9,6 @@ namespace BugFixesSSE::Fixes::SpeechExperience
 	class EnchantedItems
 	{
 	public:
-		static bool Fix();
+		static void Fix(bool& enchantedItems);
 	};
 }
