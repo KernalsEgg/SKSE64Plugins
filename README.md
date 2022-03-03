@@ -1,13 +1,13 @@
 ## Build Dependencies
 ### Actor Limit Fix
-* [fmt](https://github.com/fmtlib/fmt)
-* [JSON for Modern C++](https://github.com/nlohmann/json)
+* [fmt 8.1.1](https://github.com/fmtlib/fmt)
+* [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
 ### Bug Fixes SSE
-* [fmt](https://github.com/fmtlib/fmt)
-* [JSON for Modern C++](https://github.com/nlohmann/json)
+* [fmt 8.1.1](https://github.com/fmtlib/fmt)
+* [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
 ### Scrambled Bugs
-* [fmt](https://github.com/fmtlib/fmt)
-* [JSON for Modern C++](https://github.com/nlohmann/json)
+* [fmt 8.1.1](https://github.com/fmtlib/fmt)
+* [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
 
 ## End-User Dependencies
 * [SKSE64](https://github.com/ianpatt/skse64)
