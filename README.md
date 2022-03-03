@@ -1,9 +1,12 @@
 ## Build Dependencies
 ### Actor Limit Fix
+* [fmt](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++](https://github.com/nlohmann/json)
 ### Bug Fixes SSE
+* [fmt](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++](https://github.com/nlohmann/json)
 ### Scrambled Bugs
+* [fmt](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++](https://github.com/nlohmann/json)
 
 ## End-User Dependencies
