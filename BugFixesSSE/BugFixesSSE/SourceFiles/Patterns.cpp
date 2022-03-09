@@ -4,8 +4,6 @@
 
 #include "Addresses.h"
 #include "Shared/Relocation/AddressLibrary.h"
-#include "Shared/Skyrim/A/ActorValue.h"
-#include "Shared/Utility/Convert.h"
 
 
 
@@ -13,6 +11,18 @@ namespace BugFixesSSE::Patterns
 {
 	namespace Fixes
 	{
+		namespace MovementSpeed
+		{
+			bool CompareMovementType()
+			{
+				return Relocation::AddressLibrary::MatchPattern(
+					Addresses::Fixes::MovementSpeed::CompareMovementType, // 5 + 5 = 0xA
+					0x48ui8, 0x8Bui8, 0x44ui8, 0x24ui8, 0x30ui8,          // mov rax, [rsp+30]
+					0x48ui8, 0x39ui8, 0x44ui8, 0x24ui8, 0x70ui8           // cmp [rsp+70], rax
+				);
+			}
+		}
+
 		namespace SpeechExperience
 		{
 			namespace ItemStacks
@@ -40,17 +50,6 @@ namespace BugFixesSSE::Patterns
 						0xE8ui8, std::optional<std::int32_t>{}                // call InventoryEntryData::GetBaseValue
 					);
 				}
-			}
-		}
-
-		namespace SpeedMultUpdates
-		{
-			bool SpeedMultSink()
-			{
-				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Fixes::SpeedMultUpdates::ActorValueSinks + (sizeof(std::uintptr_t) * Utility::ToUnderlying(Skyrim::ActorValue::kSpeedMult)), // 0x8
-					nullptr                                                                                                                                 // nullptr
-				);
 			}
 		}
 	}

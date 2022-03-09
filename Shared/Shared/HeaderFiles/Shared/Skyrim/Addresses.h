@@ -180,6 +180,21 @@ namespace Skyrim::Addresses
 
 		/// <summary>SkyrimSE.exe + 0x1DE34A0</summary>
 		inline const std::uintptr_t PlayerMaximumResistance{ Relocation::AddressLibrary::GetSingleton().GetAddress(505721) };
+
+		/// <summary>SkyrimSE.exe + 0x1DE18C8</summary>
+		inline const std::uintptr_t PowerAttackStaminaPenalty{ Relocation::AddressLibrary::GetSingleton().GetAddress(505283) };
+
+		/// <summary>SkyrimSE.exe + 0x1DE1898</summary>
+		inline const std::uintptr_t StaminaAttackWeaponBase{ Relocation::AddressLibrary::GetSingleton().GetAddress(505279) };
+
+		/// <summary>SkyrimSE.exe + 0x1DE18B0</summary>
+		inline const std::uintptr_t StaminaAttackWeaponMultiplier{ Relocation::AddressLibrary::GetSingleton().GetAddress(505281) };
+
+		/// <summary>SkyrimSE.exe + 0x1DE1580</summary>
+		inline const std::uintptr_t StaminaBashBase{ Relocation::AddressLibrary::GetSingleton().GetAddress(505217) };
+
+		/// <summary>SkyrimSE.exe + 0x1DE1598</summary>
+		inline const std::uintptr_t StaminaPowerBashBase{ Relocation::AddressLibrary::GetSingleton().GetAddress(505219) };
 	}
 
 	namespace hkReferencedObject
@@ -315,6 +330,12 @@ namespace Skyrim::Addresses
 
 		/// <summary>SkyrimSE.exe + 0x296460</summary>
 		inline const std::uintptr_t GetReferenceName{ Relocation::AddressLibrary::GetSingleton().GetAddress(19355) };
+	}
+
+	namespace TESObjectWEAP
+	{
+		/// <summary>SkyrimSE.exe + 0x2EFF868</summary>
+		inline const std::uintptr_t UnarmedWeapon{ Relocation::AddressLibrary::GetSingleton().GetAddress(514923) };
 	}
 
 	namespace TESSoulGem

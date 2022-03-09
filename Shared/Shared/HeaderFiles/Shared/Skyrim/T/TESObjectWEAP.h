@@ -205,6 +205,9 @@ namespace Skyrim
 		// Override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override; // 5
 
+		// Non-member functions
+		static TESObjectWEAP* GetUnarmedWeapon();
+
 		// Member variables
 		RangedData*                                         rangedData;                   // 168
 		float                                               speed;                        // 170, Game Data

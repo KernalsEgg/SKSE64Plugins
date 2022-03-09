@@ -39,14 +39,14 @@ namespace BugFixesSSE
 			fixes.at("magicEffectConditions").get_to(this->magicEffectConditions);
 		}
 
+		if (fixes.contains("movementSpeed"))
+		{
+			fixes.at("movementSpeed").get_to(this->movementSpeed);
+		}
+
 		if (fixes.contains("speechExperience"))
 		{
 			this->speechExperience.Deserialize(fixes.at("speechExperience"));
-		}
-
-		if (fixes.contains("speedMultUpdates"))
-		{
-			fixes.at("speedMultUpdates").get_to(this->speedMultUpdates);
 		}
 	}
 
@@ -55,8 +55,8 @@ namespace BugFixesSSE
 		json fixes;
 
 		fixes["magicEffectConditions"] = this->magicEffectConditions;
+		fixes["movementSpeed"]         = this->movementSpeed;
 		fixes["speechExperience"]      = this->speechExperience.Serialize();
-		fixes["speedMultUpdates"]      = this->speedMultUpdates;
 
 		return fixes;
 	}
@@ -69,7 +69,7 @@ namespace BugFixesSSE
 		}
 		catch (const json::exception& exception)
 		{
-			Utility::Log::Error(exception.what());
+			Utility::Log::Error("{}", exception.what());
 		}
 	}
 

@@ -41,15 +41,16 @@ namespace Skyrim
 
 		enum class EntryPoint : std::uint32_t
 		{
-			kModSpellMagnitude      = 29,
-			kModSpellDuration       = 30,
-			kModArmorWeight         = 32,
-			kApplyCombatHitSpell    = 51,
-			kApplyBashingSpell      = 52,
-			kApplyReanimateSpell    = 53,
-			kApplyWeaponSwingSpell  = 67,
-			kApplySneakingSpell     = 69,
-			kModifyEnchantmentPower = 77
+			kModifyPowerAttackStamina = 27,
+			kModifySpellMagnitude     = 29,
+			kModifySpellDuration      = 30,
+			kModifyArmorWeight        = 32,
+			kApplyCombatHitSpell      = 51,
+			kApplyBashingSpell        = 52,
+			kApplyReanimateSpell      = 53,
+			kApplyWeaponSwingSpell    = 67,
+			kApplySneakingSpell       = 69,
+			kModifyEnchantmentPower   = 77
 		};
 		static_assert(sizeof(EntryPoint) == 0x4);
 

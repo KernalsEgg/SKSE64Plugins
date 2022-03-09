@@ -26,7 +26,7 @@ namespace ScrambledBugs::Fixes
 	{
 		ModArmorWeightPerkEntryPoint::applyPerkEntry_(entryPointPerkEntry, perkOwner);
 
-		if (entryPointPerkEntry->entryPoint == Skyrim::BGSPerkEntry::EntryPoint::kModArmorWeight)
+		if (entryPointPerkEntry->entryPoint == Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight)
 		{
 			auto inventoryChanges = perkOwner->GetInventoryChanges();
 
@@ -105,7 +105,7 @@ namespace ScrambledBugs::Fixes
 										{
 											auto armorWeight = itemWeight;
 
-											Skyrim::BGSEntryPointPerkEntry::HandleEntryPoint(Skyrim::BGSPerkEntry::EntryPoint::kModArmorWeight, ownerActor, item, std::addressof(armorWeight));
+											Skyrim::BGSEntryPointPerkEntry::HandleEntryPoint(Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight, ownerActor, item, std::addressof(armorWeight));
 
 											inventoryWeight += armorWeight;
 											--itemCount;
@@ -158,7 +158,7 @@ namespace ScrambledBugs::Fixes
 									{
 										auto armorWeight = itemWeight;
 
-										Skyrim::BGSEntryPointPerkEntry::HandleEntryPoint(Skyrim::BGSPerkEntry::EntryPoint::kModArmorWeight, ownerActor, item, std::addressof(armorWeight));
+										Skyrim::BGSEntryPointPerkEntry::HandleEntryPoint(Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight, ownerActor, item, std::addressof(armorWeight));
 
 										inventoryWeight += armorWeight;
 										--itemCount;
@@ -187,7 +187,7 @@ namespace ScrambledBugs::Fixes
 	{
 		ModArmorWeightPerkEntryPoint::removePerkEntry_(entryPointPerkEntry, perkOwner);
 
-		if (entryPointPerkEntry->entryPoint == Skyrim::BGSPerkEntry::EntryPoint::kModArmorWeight)
+		if (entryPointPerkEntry->entryPoint == Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight)
 		{
 			auto inventoryChanges = perkOwner->GetInventoryChanges();
 

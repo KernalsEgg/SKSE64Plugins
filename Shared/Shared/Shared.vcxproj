@@ -407,6 +407,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESDataHandler.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESForm.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectREFR.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectWEAP.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESSoulGem.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\U\UI.cpp" />
     <ClCompile Include="SourceFiles\Shared\Utility\Log.cpp" />

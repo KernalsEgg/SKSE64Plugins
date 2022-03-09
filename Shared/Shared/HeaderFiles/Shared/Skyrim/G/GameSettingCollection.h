@@ -44,6 +44,11 @@ namespace Skyrim
 		static DifficultyMultipliers*           DifficultyMultiplierHealthByPlayer();
 		static DifficultyMultipliers*           DifficultyMultiplierHealthToPlayer();
 		static SettingT<GameSettingCollection>* PlayerMaximumResistance();
+		static SettingT<GameSettingCollection>* PowerAttackStaminaPenalty();
+		static SettingT<GameSettingCollection>* StaminaAttackWeaponBase();
+		static SettingT<GameSettingCollection>* StaminaAttackWeaponMultiplier();
+		static SettingT<GameSettingCollection>* StaminaBashBase();
+		static SettingT<GameSettingCollection>* StaminaPowerBashBase();
 	};
 	static_assert(sizeof(GameSettingCollection) == 0x140);
 }

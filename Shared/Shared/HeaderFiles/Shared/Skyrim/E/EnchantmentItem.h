@@ -24,7 +24,7 @@ namespace Skyrim
 		};
 		static_assert(sizeof(Flags) == 0x4);
 
-		class Data
+		struct Data
 		{
 		public:
 			// Member variables

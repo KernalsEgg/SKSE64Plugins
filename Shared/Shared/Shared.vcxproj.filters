@@ -1292,6 +1292,9 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectREFR.cpp">
       <Filter>Source Files\Shared\Skyrim\T</Filter>
     </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectWEAP.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESSoulGem.cpp">
       <Filter>Source Files\Shared\Skyrim\T</Filter>
     </ClCompile>

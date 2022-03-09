@@ -6,7 +6,10 @@
 #include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/E/ExtraDataType.h"
+#include "Shared/Skyrim/I/InventoryEntryData.h"
 #include "Shared/Skyrim/M/MiddleHighProcessData.h"
+#include "Shared/Skyrim/T/TESBoundObject.h"
+#include "Shared/Skyrim/T/TESObjectWEAP.h"
 #include "Shared/Utility/TypeTraits.h"
 
 
@@ -32,6 +35,25 @@ namespace Skyrim
 		auto currentProcess = this->currentProcess;
 
 		return currentProcess ? currentProcess->GetCharacterController() : nullptr;
+	}
+
+	TESObjectWEAP* Actor::GetEquippedWeapon(bool leftHand) const
+	{
+		auto currentProcess = this->currentProcess;
+
+		if (!currentProcess)
+		{
+			return nullptr;
+		}
+
+		auto inventoryEntryData = currentProcess->GetEquippedWeapon(leftHand);
+
+		if (!inventoryEntryData)
+		{
+			return nullptr;
+		}
+
+		return static_cast<TESObjectWEAP*>(inventoryEntryData->item);
 	}
 
 	float Actor::GetMaximumWardPower() const

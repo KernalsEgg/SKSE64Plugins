@@ -10,6 +10,7 @@
 namespace Skyrim
 {
 	class bhkCharacterController;
+	class InventoryEntryData;
 
 	class MiddleHighProcessData
 	{
@@ -84,7 +85,7 @@ namespace Skyrim
 		std::uint32_t                     unknown20C;          // 20C
 		std::uint64_t                     unknown210;          // 210
 		std::uint64_t                     unknown218;          // 218
-		std::uint64_t                     unknown220;          // 220
+		InventoryEntryData*               leftHand;            // 220
 		std::uint64_t                     unknown228;          // 228
 		std::uint64_t                     unknown230;          // 230
 		std::uint64_t                     unknown238;          // 238
@@ -92,7 +93,7 @@ namespace Skyrim
 		std::uint64_t                     unknown248;          // 248
 		NiPointer<bhkCharacterController> characterController; // 250
 		std::uint64_t                     unknown258;          // 258
-		std::uint64_t                     unknown260;          // 260
+		InventoryEntryData*               rightHand;           // 260
 		std::uint64_t                     unknown268;          // 268
 		std::uint64_t                     unknown270;          // 270
 		std::uint64_t                     unknown278;          // 278
@@ -122,7 +123,9 @@ namespace Skyrim
 		std::uint64_t                     unknown330;          // 330
 	};
 	static_assert(offsetof(MiddleHighProcessData, currentFurniture) == 0x208);
+	static_assert(offsetof(MiddleHighProcessData, leftHand) == 0x220);
 	static_assert(offsetof(MiddleHighProcessData, characterController) == 0x250);
+	static_assert(offsetof(MiddleHighProcessData, rightHand) == 0x260);
 	static_assert(offsetof(MiddleHighProcessData, maximumWardPower) == 0x2BC);
 	static_assert(sizeof(MiddleHighProcessData) == 0x338);
 }

@@ -33,14 +33,14 @@
     <ClInclude Include="HeaderFiles\Fixes\MagicEffectConditions.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Fixes\MovementSpeed.h">
+      <Filter>Header Files\Fixes</Filter>
+    </ClInclude>
     <ClInclude Include="HeaderFiles\Fixes\SpeechExperience\EnchantedItems.h">
       <Filter>Header Files\Fixes\SpeechExperience</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Fixes\SpeechExperience\ItemStacks.h">
       <Filter>Header Files\Fixes\SpeechExperience</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\SpeedMultUpdates.h">
-      <Filter>Header Files\Fixes</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Patterns.h">
       <Filter>Header Files</Filter>
@@ -59,14 +59,14 @@
     <ClCompile Include="SourceFiles\Fixes\MagicEffectConditions.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
+    <ClCompile Include="SourceFiles\Fixes\MovementSpeed.cpp">
+      <Filter>Source Files\Fixes</Filter>
+    </ClCompile>
     <ClCompile Include="SourceFiles\Fixes\SpeechExperience\EnchantedItems.cpp">
       <Filter>Source Files\Fixes\SpeechExperience</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Fixes\SpeechExperience\ItemStacks.cpp">
       <Filter>Source Files\Fixes\SpeechExperience</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\SpeedMultUpdates.cpp">
-      <Filter>Source Files\Fixes</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Patterns.cpp">
       <Filter>Source Files</Filter>

@@ -36,7 +36,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 	pluginInfo->infoVersion = SKSE::PluginInfo::kVersion;
 	pluginInfo->name        = name.c_str();
-	pluginInfo->version     = 4;
+	pluginInfo->version     = 5;
 
 	if (queryInterface->IsEditor())
 	{

@@ -23,7 +23,7 @@
     <ClInclude Include="HeaderFiles\Fixes\MagicEffectConditions.h" />
     <ClInclude Include="HeaderFiles\Fixes\SpeechExperience\EnchantedItems.h" />
     <ClInclude Include="HeaderFiles\Fixes\SpeechExperience\ItemStacks.h" />
-    <ClInclude Include="HeaderFiles\Fixes\SpeedMultUpdates.h" />
+    <ClInclude Include="HeaderFiles\Fixes\MovementSpeed.h" />
     <ClInclude Include="HeaderFiles\Patterns.h" />
     <ClInclude Include="HeaderFiles\PCH.h" />
     <ClInclude Include="HeaderFiles\Settings.h" />
@@ -33,7 +33,7 @@
     <ClCompile Include="SourceFiles\Fixes\MagicEffectConditions.cpp" />
     <ClCompile Include="SourceFiles\Fixes\SpeechExperience\EnchantedItems.cpp" />
     <ClCompile Include="SourceFiles\Fixes\SpeechExperience\ItemStacks.cpp" />
-    <ClCompile Include="SourceFiles\Fixes\SpeedMultUpdates.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\MovementSpeed.cpp" />
     <ClCompile Include="SourceFiles\Patterns.cpp" />
     <ClCompile Include="SourceFiles\PCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>

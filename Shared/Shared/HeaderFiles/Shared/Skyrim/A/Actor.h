@@ -26,6 +26,7 @@ namespace Skyrim
 	class MagicItem;
 	class SpellItem;
 	class TESForm;
+	class TESObjectWEAP;
 
 	class Actor :
 		public TESObjectREFR,                             // 0
@@ -351,6 +352,7 @@ namespace Skyrim
 		bool                    AddSpell(SpellItem* spell);
 		float                   GetActorValueModifier(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue) const;
 		bhkCharacterController* GetCharacterController() const;
+		TESObjectWEAP*          GetEquippedWeapon(bool leftHand) const;
 		float                   GetMaximumWardPower() const;
 		bool                    GetMount(NiPointer<Actor>& mount);
 		bool                    GetMovementActor(NiPointer<Actor>& movementActor);

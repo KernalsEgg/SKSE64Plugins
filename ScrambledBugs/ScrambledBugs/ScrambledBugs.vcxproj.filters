@@ -57,6 +57,9 @@
     <ClInclude Include="HeaderFiles\Fixes\KillCamera.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Fixes\LeftHandPowerAttacks.h">
+      <Filter>Header Files\Fixes</Filter>
+    </ClInclude>
     <ClInclude Include="HeaderFiles\Fixes\MagicEffectFlags.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
@@ -165,6 +168,9 @@
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Fixes\KillCamera.cpp">
+      <Filter>Source Files\Fixes</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Fixes\LeftHandPowerAttacks.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Fixes\MagicEffectFlags.cpp">

@@ -8,6 +8,7 @@
 		"hitEffectRaceCondition":				true,	/* Eliminate a race condition that can prevent hit effects from being applied when an actors mesh is loaded after their magic effects are updated. */
 		"impactEffectCrash":					true,	/* Prevent a crash that occurs when you load a save game in which an impact effect has been placed that uses a now uninstalled texture set. */
 		"killCamera":							true,	/* Prevent firing the Apply Combat Hit Spell perk entry point when the kill camera simulates the trajectory of an arrow. */
+		"leftHandPowerAttacks":					true,	/* Calculate the stamina required to perform a left hand power attack using the weapon in your left hand. */
 		"magicEffectFlags":						true,	/* Flags are respected when scaling the duration and magnitude of a magic effect with its effectiveness. */
 		"modArmorWeightPerkEntryPoint":			true,	/* Modify the weight of only worn armor with the Mod Armor Weight perk entry point. */
 		"quickShot":							true,	/* Account for the Quick Shot perk when calculating the power of an arrow fired by the player. */

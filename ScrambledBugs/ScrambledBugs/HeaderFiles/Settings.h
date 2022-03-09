@@ -26,6 +26,7 @@ namespace ScrambledBugs
 			bool  hitEffectRaceCondition{ false };
 			bool  impactEffectCrash{ false };
 			bool  killCamera{ false };
+			bool  leftHandPowerAttacks{ false };
 			bool  magicEffectFlags{ false };
 			bool  modArmorWeightPerkEntryPoint{ false };
 			bool  quickShot{ false };

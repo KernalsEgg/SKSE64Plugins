@@ -6,9 +6,9 @@
 
 namespace BugFixesSSE::Fixes
 {
-	class SpeedMultUpdates
+	class MovementSpeed
 	{
 	public:
-		static void Fix(bool& speedMultUpdates);
+		static void Fix(bool& movementSpeed);
 	};
 }

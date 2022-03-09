@@ -56,4 +56,39 @@ namespace Skyrim
 
 		return singleton;
 	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::PowerAttackStaminaPenalty()
+	{
+		auto singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PowerAttackStaminaPenalty) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::StaminaAttackWeaponBase()
+	{
+		auto singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::StaminaAttackWeaponBase) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::StaminaAttackWeaponMultiplier()
+	{
+		auto singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::StaminaAttackWeaponMultiplier) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::StaminaBashBase()
+	{
+		auto singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::StaminaBashBase) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::StaminaPowerBashBase()
+	{
+		auto singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::StaminaPowerBashBase) };
+
+		return singleton;
+	}
 }

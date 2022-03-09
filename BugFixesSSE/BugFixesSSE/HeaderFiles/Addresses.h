@@ -16,6 +16,12 @@ namespace BugFixesSSE::Addresses
 			inline const std::uintptr_t UpdateConditions{ Relocation::AddressLibrary::GetSingleton().GetAddress(33287) + 0x0 };
 		}
 
+		namespace MovementSpeed
+		{
+			/// <summary>Actor::UpdateMovementSpeed (SkyrimSE.exe + 0x60E540)</summary>
+			inline const std::uintptr_t CompareMovementType{ Relocation::AddressLibrary::GetSingleton().GetAddress(36991) + 0xA8 };
+		}
+
 		namespace SpeechExperience
 		{
 			namespace ItemStacks
@@ -29,15 +35,6 @@ namespace BugFixesSSE::Addresses
 				/// <summary>SkyrimSE.exe + 0x8528D0</summary>
 				inline const std::uintptr_t Sell{ Relocation::AddressLibrary::GetSingleton().GetAddress(50007) + 0x1BE };
 			}
-		}
-
-		namespace SpeedMultUpdates
-		{
-			/// <summary>SkyrimSE.exe + 0x2F39A40</summary>
-			inline const std::uintptr_t ActorValueSinks{ Relocation::AddressLibrary::GetSingleton().GetAddress(517376) };
-
-			/// <summary>SkyrimSE.exe + 0x622760</summary>
-			inline const std::uintptr_t SpeedMultSink{ Relocation::AddressLibrary::GetSingleton().GetAddress(37542) };
 		}
 	}
 }

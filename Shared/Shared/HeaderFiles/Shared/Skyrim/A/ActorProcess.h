@@ -13,6 +13,7 @@ namespace Skyrim
 	class bhkCharacterController;
 	class HighProcessData;
 	class MiddleHighProcessData;
+	class InventoryEntryData;
 
 	struct CachedValue
 	{
@@ -75,6 +76,7 @@ namespace Skyrim
 		// Member functions
 		bhkCharacterController* GetCharacterController() const;
 		ObjectReferenceHandle   GetCurrentFurniture() const;
+		InventoryEntryData*     GetEquippedWeapon(bool leftHand) const;
 
 		// Member variables
 		MiddleLowProcessData*  middleLowProcessData;  // 0

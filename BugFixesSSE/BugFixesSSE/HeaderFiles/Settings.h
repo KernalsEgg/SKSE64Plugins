@@ -30,8 +30,8 @@ namespace BugFixesSSE
 			json Serialize() const;
 
 			bool             magicEffectConditions{ false };
+			bool             movementSpeed{ false };
 			SpeechExperience speechExperience;
-			bool             speedMultUpdates{ false };
 		};
 
 		Settings()                = delete;

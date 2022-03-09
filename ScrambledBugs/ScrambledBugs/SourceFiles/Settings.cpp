@@ -46,6 +46,11 @@ namespace ScrambledBugs
 			fixes.at("killCamera").get_to(this->killCamera);
 		}
 
+		if (fixes.contains("leftHandPowerAttacks"))
+		{
+			fixes.at("leftHandPowerAttacks").get_to(this->leftHandPowerAttacks);
+		}
+
 		if (fixes.contains("magicEffectFlags"))
 		{
 			fixes.at("magicEffectFlags").get_to(this->magicEffectFlags);
@@ -93,6 +98,7 @@ namespace ScrambledBugs
 		fixes["hitEffectRaceCondition"]       = this->hitEffectRaceCondition;
 		fixes["impactEffectCrash"]            = this->impactEffectCrash;
 		fixes["killCamera"]                   = this->killCamera;
+		fixes["leftHandPowerAttacks"]         = this->leftHandPowerAttacks;
 		fixes["magicEffectFlags"]             = this->magicEffectFlags;
 		fixes["modArmorWeightPerkEntryPoint"] = this->modArmorWeightPerkEntryPoint;
 		fixes["quickShot"]                    = this->quickShot;
@@ -260,7 +266,7 @@ namespace ScrambledBugs
 		}
 		catch (const json::exception& exception)
 		{
-			Utility::Log::Error(exception.what());
+			Utility::Log::Error("{}", exception.what());
 		}
 	}
 

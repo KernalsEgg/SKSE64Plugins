@@ -8,6 +8,11 @@ namespace BugFixesSSE::Patterns
 {
 	namespace Fixes
 	{
+		namespace MovementSpeed
+		{
+			bool CompareMovementType();
+		}
+
 		namespace SpeechExperience
 		{
 			namespace ItemStacks
@@ -16,11 +21,6 @@ namespace BugFixesSSE::Patterns
 				bool GetItemCount();
 				bool Sell();
 			}
-		}
-
-		namespace SpeedMultUpdates
-		{
-			bool SpeedMultSink();
 		}
 	}
 }

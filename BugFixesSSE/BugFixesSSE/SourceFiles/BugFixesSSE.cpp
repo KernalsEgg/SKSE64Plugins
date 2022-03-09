@@ -1,9 +1,9 @@
 #include "PCH.h"
 
 #include "Fixes/MagicEffectConditions.h"
+#include "Fixes/MovementSpeed.h"
 #include "Fixes/SpeechExperience/EnchantedItems.h"
 #include "Fixes/SpeechExperience/ItemStacks.h"
-#include "Fixes/SpeedMultUpdates.h"
 #include "Settings.h"
 #include "Shared/Relocation/Module.h"
 #include "Shared/SKSE/Interfaces.h"
@@ -23,6 +23,11 @@ void Settings()
 		BugFixesSSE::Fixes::MagicEffectConditions::Fix(settings.fixes.magicEffectConditions);
 	}
 
+	if (settings.fixes.movementSpeed)
+	{
+		BugFixesSSE::Fixes::MovementSpeed::Fix(settings.fixes.movementSpeed);
+	}
+
 	if (settings.fixes.speechExperience.enchantedItems)
 	{
 		BugFixesSSE::Fixes::SpeechExperience::EnchantedItems::Fix(settings.fixes.speechExperience.enchantedItems);
@@ -32,11 +37,6 @@ void Settings()
 	if (settings.fixes.speechExperience.itemStacks)
 	{
 		BugFixesSSE::Fixes::SpeechExperience::ItemStacks::Fix(settings.fixes.speechExperience.itemStacks);
-	}
-
-	if (settings.fixes.speedMultUpdates)
-	{
-		BugFixesSSE::Fixes::SpeedMultUpdates::Fix(settings.fixes.speedMultUpdates);
 	}
 
 	Utility::Log::Information("Initialized.\n{}", settings.Serialize().dump(1, '\t'));
@@ -50,7 +50,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 	pluginInfo->infoVersion = SKSE::PluginInfo::kVersion;
 	pluginInfo->name        = name.c_str();
-	pluginInfo->version     = 5;
+	pluginInfo->version     = 6;
 
 	if (queryInterface->IsEditor())
 	{

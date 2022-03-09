@@ -7,6 +7,7 @@
 #include "Fixes/HitEffectRaceCondition.h"
 #include "Fixes/ImpactEffectCrash.h"
 #include "Fixes/KillCamera.h"
+#include "Fixes/LeftHandPowerAttacks.h"
 #include "Fixes/MagicEffectFlags.h"
 #include "Fixes/ModArmorWeightPerkEntryPoint.h"
 #include "Fixes/QuickShot.h"
@@ -81,6 +82,11 @@ void Settings()
 	if (settings.fixes.killCamera)
 	{
 		ScrambledBugs::Fixes::KillCamera::Fix(settings.fixes.killCamera);
+	}
+
+	if (settings.fixes.leftHandPowerAttacks)
+	{
+		ScrambledBugs::Fixes::LeftHandPowerAttacks::Fix(settings.fixes.leftHandPowerAttacks);
 	}
 
 	if (settings.fixes.magicEffectFlags)
@@ -219,7 +225,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 	pluginInfo->infoVersion = SKSE::PluginInfo::kVersion;
 	pluginInfo->name        = name.c_str();
-	pluginInfo->version     = 16;
+	pluginInfo->version     = 17;
 
 	if (queryInterface->IsEditor())
 	{

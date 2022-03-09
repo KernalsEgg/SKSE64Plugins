@@ -46,7 +46,7 @@ namespace ActorLimitFix
 		}
 		catch (const json::exception& exception)
 		{
-			Utility::Log::Error(exception.what());
+			Utility::Log::Error("{}", exception.what());
 		}
 	}
 

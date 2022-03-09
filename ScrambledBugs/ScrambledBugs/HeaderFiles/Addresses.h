@@ -55,6 +55,12 @@ namespace ScrambledBugs::Addresses
 			inline const std::uintptr_t HasWeapon{ Relocation::AddressLibrary::GetSingleton().GetAddress(42547) + 0x261 };
 		}
 
+		namespace LeftHandPowerAttacks
+		{
+			/// <summary>ActorValueOwner::GetAttackStamina (SkyrimSE.exe + 0x3BEC90)</summary>
+			inline const std::uintptr_t GetAttackStamina{ Relocation::AddressLibrary::GetSingleton().GetAddress(25863) + 0x0 };
+		}
+
 		namespace MagicEffectFlags
 		{
 			/// <summary>ActiveEffect::SetEffectiveness (SkyrimSE.exe + 0x540360)</summary>

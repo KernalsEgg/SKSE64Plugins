@@ -27,6 +27,7 @@
     <ClInclude Include="HeaderFiles\Fixes\HitEffectRaceCondition.h" />
     <ClInclude Include="HeaderFiles\Fixes\ImpactEffectCrash.h" />
     <ClInclude Include="HeaderFiles\Fixes\KillCamera.h" />
+    <ClInclude Include="HeaderFiles\Fixes\LeftHandPowerAttacks.h" />
     <ClInclude Include="HeaderFiles\Fixes\MagicEffectFlags.h" />
     <ClInclude Include="HeaderFiles\Fixes\ModArmorWeightPerkEntryPoint.h" />
     <ClInclude Include="HeaderFiles\Fixes\QuickShot.h" />
@@ -65,6 +66,7 @@
     <ClCompile Include="SourceFiles\Fixes\HitEffectRaceCondition.cpp" />
     <ClCompile Include="SourceFiles\Fixes\ImpactEffectCrash.cpp" />
     <ClCompile Include="SourceFiles\Fixes\KillCamera.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\LeftHandPowerAttacks.cpp" />
     <ClCompile Include="SourceFiles\Fixes\MagicEffectFlags.cpp" />
     <ClCompile Include="SourceFiles\Fixes\ModArmorWeightPerkEntryPoint.cpp" />
     <ClCompile Include="SourceFiles\Fixes\QuickShot.cpp" />
