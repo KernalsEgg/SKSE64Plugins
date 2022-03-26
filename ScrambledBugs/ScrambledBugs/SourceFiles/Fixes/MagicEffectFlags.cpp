@@ -68,7 +68,7 @@ namespace ScrambledBugs::Fixes
 	{
 		auto magicItem = activeEffect->magicItem;
 
-		if (magicItem->ShouldSetEffectiveness() && (requiresHostility || activeEffect->effect->IsHostile()))
+		if (magicItem->ShouldSetEffectiveness() && (!requiresHostility || activeEffect->effect->IsHostile()))
 		{
 			MagicEffectFlags::SetEffectivenessImplementation(activeEffect, effectiveness);
 		}

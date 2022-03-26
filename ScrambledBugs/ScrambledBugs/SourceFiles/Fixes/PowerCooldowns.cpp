@@ -18,6 +18,9 @@ namespace ScrambledBugs::Fixes
 
 	void PowerCooldowns::SavePowerCooldowns(Skyrim::Actor* actor, Skyrim::BGSSaveFormBuffer* saveFormBuffer)
 	{
+		// actor != nullptr
+		// saveFormBuffer != nullptr
+
 		std::uint32_t powerCooldownCount{ 0U };
 		auto          powerCooldowns = actor->powerCooldowns;
 
