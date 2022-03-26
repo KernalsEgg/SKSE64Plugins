@@ -31,7 +31,7 @@ namespace Skyrim
 			kApplyingSounds        = 1U << 6,
 			kHasConditions         = 1U << 7,
 			kRecover               = 1U << 9,
-			kDualCasting           = 1U << 12,
+			kDualCasted            = 1U << 12,
 			kInactive              = 1U << 15,
 			kAppliedEffects        = 1U << 16,
 			kRemovedEffects        = 1U << 17,
@@ -93,7 +93,7 @@ namespace Skyrim
 		std::uint32_t                                                   unknown30;         // 30
 		ActorHandle                                                     caster;            // 34
 		std::uint64_t                                                   unknown38;         // 38
-		MagicItem*                                                      spell;             // 40
+		MagicItem*                                                      magicItem;         // 40
 		Effect*                                                         effect;            // 48
 		MagicTarget*                                                    magicTarget;       // 50
 		TESBoundObject*                                                 source;            // 58
@@ -110,7 +110,7 @@ namespace Skyrim
 		std::uint32_t                                                   padding8C;         // 8C
 	};
 	static_assert(offsetof(ActiveEffect, caster) == 0x34);
-	static_assert(offsetof(ActiveEffect, spell) == 0x40);
+	static_assert(offsetof(ActiveEffect, magicItem) == 0x40);
 	static_assert(offsetof(ActiveEffect, effect) == 0x48);
 	static_assert(offsetof(ActiveEffect, magicTarget) == 0x50);
 	static_assert(offsetof(ActiveEffect, source) == 0x58);

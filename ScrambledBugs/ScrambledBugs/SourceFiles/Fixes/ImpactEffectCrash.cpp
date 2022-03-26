@@ -30,12 +30,30 @@ namespace ScrambledBugs::Fixes
 
 	bool ImpactEffectCrash::DecalApplier(Skyrim::BSTempEffectSimpleDecal* tempEffectSimpleDecal)
 	{
-		return tempEffectSimpleDecal->textureSet ? ImpactEffectCrash::decalApplier_(tempEffectSimpleDecal) : false;
+		if (tempEffectSimpleDecal->textureSet)
+		{
+			return ImpactEffectCrash::decalApplier_(tempEffectSimpleDecal);
+		}
+		else
+		{
+			tempEffectSimpleDecal->state = 7;
+
+			return false;
+		}
 	}
 
 	bool ImpactEffectCrash::MainUpdate(Skyrim::BSTempEffectSimpleDecal* tempEffectSimpleDecal)
 	{
-		return tempEffectSimpleDecal->textureSet ? ImpactEffectCrash::mainUpdate_(tempEffectSimpleDecal) : false;
+		if (tempEffectSimpleDecal->textureSet)
+		{
+			return ImpactEffectCrash::mainUpdate_(tempEffectSimpleDecal);
+		}
+		else
+		{
+			tempEffectSimpleDecal->state = 7;
+
+			return false;
+		}
 	}
 
 	decltype(&ImpactEffectCrash::DecalApplier) ImpactEffectCrash::decalApplier_;

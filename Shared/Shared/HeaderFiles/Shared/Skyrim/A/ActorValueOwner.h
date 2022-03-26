@@ -22,6 +22,9 @@ namespace Skyrim
 		virtual void  RestoreActorValue(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float value); // 6
 		virtual void  SetActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float value);                                                                                 // 7
 		virtual void  Unknown8(ActorValueOwner*);                                                                                                                                             // 8
+
+		// Member functions
+		float GetDualCastingEffectiveness(float cost) const;
 	};
 	static_assert(sizeof(ActorValueOwner) == 0x8);
 }

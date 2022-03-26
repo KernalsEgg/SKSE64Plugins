@@ -91,6 +91,7 @@ namespace Skyrim
 		float      GetCost(Actor* caster) const;
 		ActorValue GetCostActorValue(bool rightHand) const;
 		bool       ShouldAddSpell() const;
+		bool       ShouldSetEffectiveness() const;
 
 		// Member variables
 		BSTArray<Effect*> effects;      // 58

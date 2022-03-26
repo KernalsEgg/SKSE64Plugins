@@ -2,7 +2,6 @@
 
 #include "Shared/PCH.h"
 
-#include "Shared/Skyrim/D/Difficulty.h"
 #include "Shared/Skyrim/S/SettingCollectionMap.h"
 #include "Shared/Skyrim/S/SettingT.h"
 #include "Shared/Utility/Convert.h"
@@ -15,15 +14,6 @@ namespace Skyrim
 		public SettingCollectionMap<Setting>
 	{
 	public:
-		struct DifficultyMultipliers
-		{
-		public:
-			// Member variables
-			SettingT<GameSettingCollection> multipliers[Utility::ToUnderlying(Difficulty::kTotal)];
-		};
-		static_assert(offsetof(DifficultyMultipliers, multipliers) == 0x0);
-		static_assert(sizeof(DifficultyMultipliers) == 0x90);
-
 		// Override
 		virtual ~GameSettingCollection() override; // 0
 
@@ -41,8 +31,6 @@ namespace Skyrim
 		static SettingT<GameSettingCollection>* ArrowBowMinimumTime();
 		static SettingT<GameSettingCollection>* ArrowMinimumPower();
 		static SettingT<GameSettingCollection>* BowDrawTime();
-		static DifficultyMultipliers*           DifficultyMultiplierHealthByPlayer();
-		static DifficultyMultipliers*           DifficultyMultiplierHealthToPlayer();
 		static SettingT<GameSettingCollection>* PlayerMaximumResistance();
 		static SettingT<GameSettingCollection>* PowerAttackStaminaPenalty();
 		static SettingT<GameSettingCollection>* StaminaAttackWeaponBase();

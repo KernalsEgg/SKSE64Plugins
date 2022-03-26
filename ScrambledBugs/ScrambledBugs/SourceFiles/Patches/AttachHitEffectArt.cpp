@@ -4,7 +4,6 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Skyrim/A/Actor.h"
 #include "Shared/Skyrim/R/ReferenceEffectController.h"
 #include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
@@ -17,7 +16,7 @@ namespace ScrambledBugs::Patches
 	void AttachHitEffectArt::Patch(bool& attachHitEffectArt)
 	{
 		if (!Patterns::Patches::AttachHitEffectArt::AddNoHitEffectArtFlag() ||
-			!Patterns::Patches::AttachHitEffectArt::Attach() ||
+			!Patterns::Patches::AttachHitEffectArt::GetTargetActor() ||
 			!Patterns::Patches::AttachHitEffectArt::IsPerspectiveChange() ||
 			!Patterns::Patches::AttachHitEffectArt::IsPlayerAttach() ||
 			!Patterns::Patches::AttachHitEffectArt::IsPlayerUpdatePosition())
@@ -29,7 +28,7 @@ namespace ScrambledBugs::Patches
 
 		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPerspectiveChange, Utility::Assembly::NoOperation2);
 		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerAttach, Utility::Assembly::NoOperation2);
-		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, Utility::Assembly::NoOperation2);
+		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, Utility::Assembly::NoOperation6);
 
 		Utility::Memory::SafeWrite(
 			Addresses::Patches::AttachHitEffectArt::AddNoHitEffectArtFlag,
@@ -37,34 +36,23 @@ namespace ScrambledBugs::Patches
 			Utility::Assembly::NoOperation2         // nop
 		);
 
-		AttachHitEffectArt::attach_ = reinterpret_cast<decltype(AttachHitEffectArt::attach_)>(Utility::Memory::ReadRelativeCall(Addresses::Patches::AttachHitEffectArt::Attach));
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Patches::AttachHitEffectArt::Attach, reinterpret_cast<std::uintptr_t>(std::addressof(AttachHitEffectArt::Attach)));
+		AttachHitEffectArt::getTargetActor_ = reinterpret_cast<decltype(AttachHitEffectArt::getTargetActor_)>(Utility::Memory::ReadRelativeCall(Addresses::Patches::AttachHitEffectArt::GetTargetActor));
+		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Patches::AttachHitEffectArt::GetTargetActor, reinterpret_cast<std::uintptr_t>(std::addressof(AttachHitEffectArt::GetTargetActor)));
 	}
 
-	void AttachHitEffectArt::Attach(Skyrim::ModelReferenceEffect* modelReferenceEffect)
+	Skyrim::Actor* AttachHitEffectArt::GetTargetActor(Skyrim::ModelReferenceEffect* modelReferenceEffect)
 	{
 		// modelReferenceEffect != nullptr
+		// modelReferenceEffect->controller != nullptr
 
-		if (modelReferenceEffect->modelReferenceEffectFlags.none(Skyrim::ModelReferenceEffect::Flags::kInitialized))
-		{
-			return;
-		}
-
-		auto controller = modelReferenceEffect->controller;
-
-		if (!controller)
-		{
-			return;
-		}
-
-		auto targetActor = modelReferenceEffect->GetTargetActor();
+		auto targetActor = AttachHitEffectArt::getTargetActor_(modelReferenceEffect);
 
 		if (!targetActor)
 		{
-			return;
+			return nullptr;
 		}
 
-		auto attachObject = controller->GetAttachRoot();
+		auto attachObject = modelReferenceEffect->controller->GetAttachRoot();
 
 		if (!attachObject)
 		{
@@ -83,11 +71,8 @@ namespace ScrambledBugs::Patches
 			}
 		}
 
-		if (attachRoot != modelReferenceEffect->attachTechniqueInput.attachRoot.get())
-		{
-			AttachHitEffectArt::attach_(modelReferenceEffect);
-		}
+		return attachRoot != modelReferenceEffect->attachTechniqueInput.attachRoot.get() ? targetActor : nullptr;
 	}
 
-	decltype(&AttachHitEffectArt::Attach) AttachHitEffectArt::attach_{ nullptr };
+	decltype(&AttachHitEffectArt::GetTargetActor) AttachHitEffectArt::getTargetActor_{ nullptr };
 }

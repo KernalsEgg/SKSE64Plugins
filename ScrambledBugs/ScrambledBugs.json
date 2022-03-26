@@ -11,6 +11,7 @@
 		"leftHandPowerAttacks":					true,	/* Calculate the stamina required to perform a left hand power attack using the weapon in your left hand. */
 		"magicEffectFlags":						true,	/* Flags are respected when scaling the duration and magnitude of a magic effect with its effectiveness. */
 		"modArmorWeightPerkEntryPoint":			true,	/* Modify the weight of only worn armor with the Mod Armor Weight perk entry point. */
+		"powerCooldowns":						true,	/* Save all power cooldowns. */
 		"quickShot":							true,	/* Account for the Quick Shot perk when calculating the power of an arrow fired by the player. */
 		"quickShotPlaybackSpeed":				2.0,	/* The playback speed of the nocking animation when you have the Quick Shot perk. */
 		"terrainDecals":						true,	/* Apply decals to terrain in cells that have been partially unloaded. */
@@ -39,8 +40,7 @@
 		"reflectDamage":						true,	/* Reflect any amount of damage. */
 		"scrollExperience":						false,	/* Earn experience when using scrolls. */
 		"staffExperience":						false,	/* Earn experience when using staves. */
-		"steepSlopes":							false,	/* Move slower on slopes than on flat surfaces. */
-		"teammateDifficulty":					false,	/* Teammates use the same difficulty multipliers as the player. */
+		"steepSlopes":							false,	/* Move slower on slopes than on flat surfaces. Requires the Movement Speed fix in Bug Fixes SSE. */
 		"underfilledSoulGems":					false	/* Trap only souls of the appropriate size in soul gems. */
 	}
 }

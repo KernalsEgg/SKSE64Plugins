@@ -13,11 +13,11 @@ namespace ScrambledBugs::Patterns
 	{
 		namespace EnchantmentCost
 		{
-			bool Unequal()
+			bool NotEqual()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Fixes::EnchantmentCost::Unequal, // 0x5
-					0xE8ui8, std::optional<std::int32_t>{}      // call Effect::Unequal
+					Addresses::Fixes::EnchantmentCost::NotEqual, // 0x5
+					0xE8ui8, std::optional<std::int32_t>{}       // call Effect::NotEqual
 				);
 			}
 		}
@@ -57,10 +57,9 @@ namespace ScrambledBugs::Patterns
 			bool HasWeapon()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Fixes::KillCamera::HasWeapon, // 7 + 3 + 2 = 0xC
-					0x4Cui8, 0x8Bui8, 0x87ui8, 0x1B0ui32,    // mov r8, [rdi+1B0]
-					0x4Dui8, 0x85ui8, 0xC0ui8,               // test r8, r8
-					0x74ui8, 0x3Fui8                         // jz 3F
+					Addresses::Fixes::KillCamera::HasWeapon, // 7 + 3 = 0xA
+					0x4Cui8, 0x8Bui8, 0x86ui8, 0x1B0ui32,    // mov r8, [rsi+1B0]
+					0x4Dui8, 0x85ui8, 0xC0ui8                // test r8, r8
 				);
 			}
 		}
@@ -71,7 +70,7 @@ namespace ScrambledBugs::Patterns
 			{
 				return Relocation::AddressLibrary::MatchPattern(
 					Addresses::Fixes::TerrainDecals::UnloadCellMopp, // 0x5
-					0xE9ui8, std::optional<std::int32_t>{}           // jmp
+					0xE8ui8, std::optional<std::int32_t>{}           // call TESObjectCell::UnloadCellMopp
 				);
 			}
 		}
@@ -90,24 +89,13 @@ namespace ScrambledBugs::Patterns
 
 	namespace Patches
 	{
-		namespace AccumulatingMagnitude
-		{
-			bool Constructor()
-			{
-				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::AccumulatingMagnitude::Constructor, // 0x5
-					0xE8ui8, std::optional<std::int32_t>{}                  // call AccumulatingValueModifierEffect::Constructor
-				);
-			}
-		}
-
 		namespace AlreadyCaughtPickpocketing
 		{
 			bool AttackOnSight()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
 					Addresses::Patches::AlreadyCaughtPickpocketing::AttackOnSight, // 0x2
-					0x75ui8, 0x2Eui8                                               // jne 2E
+					0x75ui8, 0x30ui8                                               // jne 30
 				);
 			}
 
@@ -115,7 +103,7 @@ namespace ScrambledBugs::Patterns
 			{
 				return Relocation::AddressLibrary::MatchPattern(
 					Addresses::Patches::AlreadyCaughtPickpocketing::HasBeenPickpocketed, // 0x2
-					0x75ui8, 0x12ui8                                                     // jne 12
+					0x75ui8, 0x14ui8                                                     // jne 14
 				);
 			}
 		}
@@ -131,11 +119,11 @@ namespace ScrambledBugs::Patterns
 				);
 			}
 
-			bool Attach()
+			bool GetTargetActor()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::AttachHitEffectArt::Attach, // 0x5
-					0xE8ui8, std::optional<std::int32_t>{}          // call ModelReferenceEffect::Attach
+					Addresses::Patches::AttachHitEffectArt::GetTargetActor, // 0x5
+					0xE8ui8, std::optional<std::int32_t>{}                  // call ModelReferenceEffect::GetTargetActor
 				);
 			}
 
@@ -143,7 +131,7 @@ namespace ScrambledBugs::Patterns
 			{
 				return Relocation::AddressLibrary::MatchPattern(
 					Addresses::Patches::AttachHitEffectArt::IsPerspectiveChange, // 0x2
-					0x74ui8, 0x08ui8                                             // je 8
+					0x74ui8, 0x6Fui8                                             // je 6F
 				);
 			}
 
@@ -151,15 +139,15 @@ namespace ScrambledBugs::Patterns
 			{
 				return Relocation::AddressLibrary::MatchPattern(
 					Addresses::Patches::AttachHitEffectArt::IsPlayerAttach, // 0x2
-					0x75ui8, 0x55ui8                                        // jne 55
+					0x75ui8, 0x4Bui8                                        // jne 4B
 				);
 			}
 
 			bool IsPlayerUpdatePosition()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, // 0x2
-					0x75ui8, 0x3Bui8                                                // jne 3B
+					Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, // 0x6
+					0x0Fui8, 0x85ui8, 0xA8ui32                                      // jne A8
 				);
 			}
 		}
@@ -188,7 +176,7 @@ namespace ScrambledBugs::Patterns
 			bool CompareDamageInventoryChanges()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::EquipBestAmmo::CompareDamageInventoryChanges, // 3 + 2 = 0x5
+					Addresses::Patches::EquipBestAmmo::CompareDamageInventoryChanges, // 0x2
 					0x73ui8, 0x10ui8                                                  // jnb 10
 				);
 			}
@@ -204,26 +192,24 @@ namespace ScrambledBugs::Patterns
 			bool IsBoltContainer()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::EquipBestAmmo::IsBoltContainer, // 8 + 3 + 2 + 2 + 3 + 2 = 0x14
+					Addresses::Patches::EquipBestAmmo::IsBoltContainer, // 8 + 3 + 2 + 2 + 3 = 0x12
 					0x41ui8, 0x0Fui8, 0xB6ui8, 0x80ui8, 0x118ui32,      // movzx eax, byte ptr [r8+118]
 					0xC0ui8, 0xE8ui8, 0x02ui8,                          // shr al, 2
 					0xF6ui8, 0xD0ui8,                                   // not al
 					0x24ui8, 0x01ui8,                                   // and al, 1
-					0x40ui8, 0x3Aui8, 0xC7ui8,                          // cmp al, dil
-					0x75ui8, 0x60ui8                                    // jne 60
+					0x40ui8, 0x3Aui8, 0xC7ui8                           // cmp al, dil
 				);
 			}
 
 			bool IsBoltInventoryChanges()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::EquipBestAmmo::IsBoltInventoryChanges, // 7 + 3 + 2 + 2 + 3 + 2 = 0x13
+					Addresses::Patches::EquipBestAmmo::IsBoltInventoryChanges, // 7 + 3 + 2 + 2 + 3 = 0x11
 					0x0Fui8, 0xB6ui8, 0x85ui8, 0x118ui32,                      // movzx eax, byte ptr [rbp+118]
 					0xC0ui8, 0xE8ui8, 0x02ui8,                                 // shr al, 2
 					0xF6ui8, 0xD0ui8,                                          // not al
 					0x24ui8, 0x01ui8,                                          // and al, 1
-					0x40ui8, 0x3Aui8, 0xC7ui8,                                 // cmp al, dil
-					0x75ui8, 0x7Eui8                                           // jne 7E
+					0x40ui8, 0x3Aui8, 0xC7ui8                                  // cmp al, dil
 				);
 			}
 		}
@@ -241,11 +227,11 @@ namespace ScrambledBugs::Patterns
 
 		namespace PausedGameHitEffects
 		{
-			bool ApplyHitEffects()
+			bool ShouldApplyHitEffects()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::PausedGameHitEffects::ApplyHitEffects, // 0x2
-					0x74ui8, 0x3Fui8                                           // je 3F
+					Addresses::Patches::PausedGameHitEffects::ShouldApplyHitEffects, // 0x6
+					0x0Fui8, 0x84ui8, 0x114ui32                                      // je 114
 				);
 			}
 		}
@@ -387,8 +373,8 @@ namespace ScrambledBugs::Patterns
 			bool CompareReflectDamage()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::ReflectDamage::CompareReflectDamage, // 0x2
-					0x77ui8, 0x03ui8                                         // ja 3
+					Addresses::Patches::ReflectDamage::CompareReflectDamage,          // 0x8
+					0xF3ui8, 0x0Fui8, 0x5Dui8, 0x05ui8, std::optional<std::int32_t>{} // minss xmm0, 100.0F
 				);
 			}
 		}

@@ -13,13 +13,13 @@ namespace ScrambledBugs::Patches
 {
 	void PausedGameHitEffects::Patch(bool& pausedGameHitEffects)
 	{
-		if (!Patterns::Patches::PausedGameHitEffects::ApplyHitEffects())
+		if (!Patterns::Patches::PausedGameHitEffects::ShouldApplyHitEffects())
 		{
 			pausedGameHitEffects = false;
 
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::PausedGameHitEffects::ApplyHitEffects, Utility::Assembly::NoOperation2);
+		Utility::Memory::SafeWrite(Addresses::Patches::PausedGameHitEffects::ShouldApplyHitEffects, Utility::Assembly::NoOperation6);
 	}
 }

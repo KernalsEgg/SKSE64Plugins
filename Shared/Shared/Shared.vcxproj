@@ -92,6 +92,8 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSProjectile.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSReferenceEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSRelationship.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSSaveFormBuffer.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSSaveGameBuffer.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSShaderParticleGeometryData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSSkinForm.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSSoundDescriptorForm.h" />
@@ -247,6 +249,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerCamera.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerCharacter.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerInputHandler.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PowerCooldown.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\Precipitation.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\ProcessLists.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\Projectile.h" />
@@ -373,7 +376,9 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActiveEffect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\Actor.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorProcess.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorValueOwner.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\AttachTechniqueInput.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSSaveGameBuffer.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSAtomic.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSFixedString.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSHandleRefObject.cpp" />

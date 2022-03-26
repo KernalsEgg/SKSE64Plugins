@@ -6,6 +6,7 @@
 #include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/E/ExtraDataType.h"
+#include "Shared/Skyrim/H/HighProcessData.h"
 #include "Shared/Skyrim/I/InventoryEntryData.h"
 #include "Shared/Skyrim/M/MiddleHighProcessData.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
@@ -96,6 +97,20 @@ namespace Skyrim
 		return function(this);
 	}
 
+	bool Actor::IsDualCasting() const
+	{
+		auto currentProcess = this->currentProcess;
+
+		if (!currentProcess)
+		{
+			return false;
+		}
+
+		auto highProcessData = currentProcess->highProcessData;
+
+		return highProcessData && highProcessData->dualCasting;
+	}
+
 	bool Actor::IsNPC() const
 	{
 		auto currentProcess = this->currentProcess;
@@ -130,11 +145,11 @@ namespace Skyrim
 		return this->boolBits.all(BoolBits::kPlayerTeammate);
 	}
 
-	void Actor::ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float previousValue, float difference, Actor* source)
+	void Actor::ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float previousValue, float deltaValue, Actor* source)
 	{
 		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::ModifyActorValue)>::type>(Addresses::Actor::ModifyActorValue) };
 
-		function(this, actorValue, previousValue, difference, source);
+		function(this, actorValue, previousValue, deltaValue, source);
 	}
 
 	void Actor::RemoveActorValueModifiers(Utility::Enumeration<ActorValue, std::uint32_t> actorValue)

@@ -30,6 +30,7 @@
     <ClInclude Include="HeaderFiles\Fixes\LeftHandPowerAttacks.h" />
     <ClInclude Include="HeaderFiles\Fixes\MagicEffectFlags.h" />
     <ClInclude Include="HeaderFiles\Fixes\ModArmorWeightPerkEntryPoint.h" />
+    <ClInclude Include="HeaderFiles\Fixes\PowerCooldowns.h" />
     <ClInclude Include="HeaderFiles\Fixes\QuickShot.h" />
     <ClInclude Include="HeaderFiles\Fixes\TerrainDecals.h" />
     <ClInclude Include="HeaderFiles\Fixes\TrainingMenu.h" />
@@ -51,7 +52,6 @@
     <ClInclude Include="HeaderFiles\Patches\ScrollExperience.h" />
     <ClInclude Include="HeaderFiles\Patches\StaffExperience.h" />
     <ClInclude Include="HeaderFiles\Patches\SteepSlopes.h" />
-    <ClInclude Include="HeaderFiles\Patches\TeammateDifficulty.h" />
     <ClInclude Include="HeaderFiles\Patches\SoulGems.h" />
     <ClInclude Include="HeaderFiles\Patterns.h" />
     <ClInclude Include="HeaderFiles\PCH.h" />
@@ -69,6 +69,7 @@
     <ClCompile Include="SourceFiles\Fixes\LeftHandPowerAttacks.cpp" />
     <ClCompile Include="SourceFiles\Fixes\MagicEffectFlags.cpp" />
     <ClCompile Include="SourceFiles\Fixes\ModArmorWeightPerkEntryPoint.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\PowerCooldowns.cpp" />
     <ClCompile Include="SourceFiles\Fixes\QuickShot.cpp" />
     <ClCompile Include="SourceFiles\Fixes\TerrainDecals.cpp" />
     <ClCompile Include="SourceFiles\Fixes\TrainingMenu.cpp" />
@@ -90,7 +91,6 @@
     <ClCompile Include="SourceFiles\Patches\ScrollExperience.cpp" />
     <ClCompile Include="SourceFiles\Patches\StaffExperience.cpp" />
     <ClCompile Include="SourceFiles\Patches\SteepSlopes.cpp" />
-    <ClCompile Include="SourceFiles\Patches\TeammateDifficulty.cpp" />
     <ClCompile Include="SourceFiles\Patches\SoulGems.cpp" />
     <ClCompile Include="SourceFiles\Patterns.cpp" />
     <ClCompile Include="SourceFiles\PCH.cpp">

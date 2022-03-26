@@ -36,20 +36,6 @@ namespace Skyrim
 		return singleton;
 	}
 
-	GameSettingCollection::DifficultyMultipliers* GameSettingCollection::DifficultyMultiplierHealthByPlayer()
-	{
-		auto singleton{ reinterpret_cast<DifficultyMultipliers**>(Addresses::GameSettingCollection::DifficultyMultiplierHealthByPlayer) };
-
-		return *singleton;
-	}
-
-	GameSettingCollection::DifficultyMultipliers* GameSettingCollection::DifficultyMultiplierHealthToPlayer()
-	{
-		auto singleton{ reinterpret_cast<DifficultyMultipliers**>(Addresses::GameSettingCollection::DifficultyMultiplierHealthToPlayer) };
-
-		return *singleton;
-	}
-
 	SettingT<GameSettingCollection>* GameSettingCollection::PlayerMaximumResistance()
 	{
 		auto singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PlayerMaximumResistance) };

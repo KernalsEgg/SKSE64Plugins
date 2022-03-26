@@ -19,6 +19,7 @@ namespace Skyrim
 {
 	struct BSTransformDeltaEvent;
 	struct bhkCharacterMoveFinishEvent;
+	struct PowerCooldown;
 
 	class ActorMagicCaster;
 	class ActorProcess;
@@ -357,10 +358,11 @@ namespace Skyrim
 		bool                    GetMount(NiPointer<Actor>& mount);
 		bool                    GetMovementActor(NiPointer<Actor>& movementActor);
 		SoulLevel               GetSoulLevel() const;
+		bool                    IsDualCasting() const;
 		bool                    IsNPC() const;
 		bool                    IsOnMount() const;
 		bool                    IsPlayerTeammate() const;
-		void                    ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float previousValue, float difference, Actor* source);
+		void                    ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float previousValue, float deltaValue, Actor* source);
 		void                    RemoveActorValueModifiers(Utility::Enumeration<ActorValue, std::uint32_t> actorValue);
 		void                    RevertSelectedSpell(Utility::Enumeration<SlotType, std::uint32_t> slotType, MagicItem* selectedSpell);
 		void                    SetMaximumWardPower(float maximumWardPower);
@@ -387,7 +389,7 @@ namespace Skyrim
 		std::uint64_t                                  unknown168;                                              // 168
 		std::uint64_t                                  unknown170;                                              // 170
 		std::uint64_t                                  unknown178;                                              // 178
-		std::uint64_t                                  unknown180;                                              // 180
+		PowerCooldown*                                 powerCooldowns;                                          // 180
 		std::uint64_t                                  unknown188;                                              // 188
 		std::uint64_t                                  unknown190;                                              // 190
 		std::uint64_t                                  unknown198;                                              // 198
@@ -424,6 +426,7 @@ namespace Skyrim
 	};
 	static_assert(offsetof(Actor, boolBits) == 0xE0);
 	static_assert(offsetof(Actor, currentProcess) == 0xF0);
+	static_assert(offsetof(Actor, powerCooldowns) == 0x180);
 	static_assert(offsetof(Actor, magicCasters) == 0x1A0);
 	static_assert(offsetof(Actor, selectedSpells) == 0x1C0);
 	static_assert(offsetof(Actor, selectedPower) == 0x1E0);

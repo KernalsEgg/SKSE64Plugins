@@ -1164,6 +1164,15 @@
     <ClInclude Include="HeaderFiles\Shared\Utility\TypeTraits.h">
       <Filter>Header Files\Shared\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSSaveGameBuffer.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSSaveFormBuffer.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PowerCooldown.h">
+      <Filter>Header Files\Shared\Skyrim\P</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">
@@ -1309,6 +1318,12 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Utility\Trampoline.cpp">
       <Filter>Source Files\Shared\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorValueOwner.cpp">
+      <Filter>Source Files\Shared\Skyrim\A</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSSaveGameBuffer.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -144,11 +144,15 @@ namespace Skyrim
 		std::uint64_t         unknown440;       // 440
 		std::uint64_t         unknown448;       // 448
 		std::uint64_t         unknown450;       // 450
-		std::uint64_t         unknown458;       // 458
+		std::uint32_t         unknown458;       // 458
+		std::uint16_t         unknown45C;       // 45C
+		std::uint8_t          unknown45E;       // 45E
+		bool                  dualCasting;      // 45F
 		std::uint64_t         unknown460;       // 460
 		std::uint64_t         unknown468;       // 468
 		std::uint64_t         unknown470;       // 470
 	};
 	static_assert(offsetof(HighProcessData, movementTypeData) == 0xF0);
+	static_assert(offsetof(HighProcessData, dualCasting) == 0x45F);
 	static_assert(sizeof(HighProcessData) == 0x478);
 }

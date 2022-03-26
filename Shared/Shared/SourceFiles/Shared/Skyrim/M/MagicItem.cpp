@@ -59,4 +59,28 @@ namespace Skyrim
 			}
 		}
 	}
+
+	bool MagicItem::ShouldSetEffectiveness() const
+	{
+		auto spellType = this->GetSpellType();
+
+		switch (spellType)
+		{
+			case MagicSystem::SpellType::kDisease:
+			case MagicSystem::SpellType::kAbility:
+			case MagicSystem::SpellType::kIngredient:
+			case MagicSystem::SpellType::kAddiction:
+			{
+				return false;
+			}
+			case MagicSystem::SpellType::kEnchantment:
+			{
+				return this->GetCastingType() != MagicSystem::CastingType::kConstantEffect;
+			}
+			default:
+			{
+				return true;
+			}
+		}
+	}
 }

@@ -5,7 +5,6 @@
 #include "Fixes/SpeechExperience/EnchantedItems.h"
 #include "Fixes/SpeechExperience/ItemStacks.h"
 #include "Settings.h"
-#include "Shared/Relocation/Module.h"
 #include "Shared/SKSE/Interfaces.h"
 #include "Shared/Utility/Log.h"
 #include "Shared/Utility/Trampoline.h"
@@ -44,37 +43,12 @@ void Settings()
 	Utility::Trampoline::GetSingleton().Commit();
 }
 
-extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* queryInterface, SKSE::PluginInfo* pluginInfo)
-{
-	static std::string name = Relocation::Plugin::GetSingleton().GetPath().stem().string();
-
-	pluginInfo->infoVersion = SKSE::PluginInfo::kVersion;
-	pluginInfo->name        = name.c_str();
-	pluginInfo->version     = 6;
-
-	if (queryInterface->IsEditor())
-	{
-		Utility::Log::Critical("Loading in editor.");
-
-		return false;
-	}
-
-	auto runtimeVersion = queryInterface->RuntimeVersion();
-
-	if (runtimeVersion < Relocation::Version(1, 5, 39, 0))
-	{
-		Utility::Log::Critical(
-			"Unsupported runtime version, {}.{}.{}.{}.",
-			runtimeVersion.major,
-			runtimeVersion.minor,
-			runtimeVersion.revision,
-			runtimeVersion.build);
-
-		return false;
-	}
-
-	return true;
-}
+extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
+	.pluginVersion  = 7,
+	.pluginName     = "Bug Fixes SSE",
+	.author         = "meh321 and KernalsEgg",
+	.addressLibrary = true
+};
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {

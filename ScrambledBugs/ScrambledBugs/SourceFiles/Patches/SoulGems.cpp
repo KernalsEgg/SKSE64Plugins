@@ -9,8 +9,6 @@
 #include "Shared/Utility/Enumeration.h"
 #include "Shared/Utility/Memory.h"
 
-#include "Shared/Utility/Log.h"
-
 
 
 namespace ScrambledBugs::Patches

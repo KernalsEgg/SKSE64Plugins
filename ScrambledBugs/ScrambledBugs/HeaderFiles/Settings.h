@@ -29,6 +29,7 @@ namespace ScrambledBugs
 			bool  leftHandPowerAttacks{ false };
 			bool  magicEffectFlags{ false };
 			bool  modArmorWeightPerkEntryPoint{ false };
+			bool  powerCooldowns{ false };
 			bool  quickShot{ false };
 			float quickShotPlaybackSpeed{ 0.0F };
 			bool  terrainDecals{ false };
@@ -69,7 +70,6 @@ namespace ScrambledBugs
 			bool            scrollExperience{ false };
 			bool            staffExperience{ false };
 			bool            steepSlopes{ false };
-			bool            teammateDifficulty{ false };
 			bool            underfilledSoulGems{ false };
 		};
 

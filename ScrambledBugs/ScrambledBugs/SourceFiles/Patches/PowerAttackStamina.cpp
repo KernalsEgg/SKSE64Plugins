@@ -45,7 +45,7 @@ namespace ScrambledBugs::Patches
 
 		auto stamina = actorValueOwner->GetActorValue(Skyrim::ActorValue::kStamina);
 
-		return stamina >= attackStamina ? 0.0F : attackStamina; // true/false
+		return stamina >= attackStamina ? 0.0F : attackStamina; // true, false
 	}
 
 	float PowerAttackStamina::HasAttackStaminaPlayerCharacter(Skyrim::ActorValueOwner* actorValueOwner, Skyrim::BGSAttackData* attackData)
@@ -59,7 +59,7 @@ namespace ScrambledBugs::Patches
 
 		auto stamina = actorValueOwner->GetActorValue(Skyrim::ActorValue::kStamina);
 
-		return stamina >= attackStamina ? 0.0F : attackStamina; // true/false
+		return stamina >= attackStamina ? 0.0F : attackStamina; // true, false
 	}
 
 	decltype(&PowerAttackStamina::HasAttackStaminaActor)           PowerAttackStamina::getAttackStaminaActor_;

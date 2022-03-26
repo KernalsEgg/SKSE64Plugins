@@ -29,7 +29,8 @@ namespace Skyrim
 		std::uint64_t  unknown38;           // 38
 		std::uint64_t  unknown40;           // 40
 		std::uint64_t  unknown48;           // 48
-		std::uint64_t  unknown50;           // 50
+		std::uint32_t  state;               // 50
+		std::uint32_t  unknown54;           // 54
 		BGSTextureSet* textureSet;          // 58
 		BGSTextureSet* secondaryTextureSet; // 60
 		std::uint64_t  unknown68;           // 68
@@ -86,6 +87,7 @@ namespace Skyrim
 		std::uint32_t  unknown1D4;          // 1D4
 		std::uint64_t  unknown1D8;          // 1D8
 	};
+	static_assert(offsetof(BSTempEffectSimpleDecal, state) == 0x50);
 	static_assert(offsetof(BSTempEffectSimpleDecal, textureSet) == 0x58);
 	static_assert(offsetof(BSTempEffectSimpleDecal, secondaryTextureSet) == 0x60);
 	static_assert(offsetof(BSTempEffectSimpleDecal, width) == 0x1AC);

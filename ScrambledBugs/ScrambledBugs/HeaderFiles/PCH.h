@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>  // std::max, std::min
 #include <cmath>      // std::abs, std::floor, std::round
 #include <cstddef>    // offsetof
 #include <cstdint>    // Fixed width integer types

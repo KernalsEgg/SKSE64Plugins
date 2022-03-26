@@ -132,9 +132,6 @@
     <ClInclude Include="HeaderFiles\Patches\SteepSlopes.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\TeammateDifficulty.h">
-      <Filter>Header Files\Patches</Filter>
-    </ClInclude>
     <ClInclude Include="HeaderFiles\Patterns.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -146,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="HeaderFiles\Settings.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Fixes\PowerCooldowns.h">
+      <Filter>Header Files\Fixes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -245,9 +245,6 @@
     <ClCompile Include="SourceFiles\Patches\SteepSlopes.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\TeammateDifficulty.cpp">
-      <Filter>Source Files\Patches</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFiles\Patterns.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -262,6 +259,9 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Settings.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Fixes\PowerCooldowns.cpp">
+      <Filter>Source Files\Fixes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

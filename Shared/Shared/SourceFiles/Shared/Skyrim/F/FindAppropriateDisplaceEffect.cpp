@@ -15,9 +15,9 @@ namespace Skyrim
 	{
 		if (activeEffect && activeEffect->activeEffectFlags.none(ActiveEffect::Flags::kInactive))
 		{
-			auto spell = activeEffect->spell;
+			auto magicItem = activeEffect->magicItem;
 
-			if (spell == this->displacementSpell || (spell->GetSpellType() == MagicSystem::SpellType::kPotion && static_cast<AlchemyItem*>(spell)->alchemyItemData.addiction == this->addiction))
+			if (magicItem == this->displacementSpell || (magicItem->GetSpellType() == MagicSystem::SpellType::kPotion && static_cast<AlchemyItem*>(magicItem)->alchemyItemData.addiction == this->addiction))
 			{
 				this->displace = true;
 

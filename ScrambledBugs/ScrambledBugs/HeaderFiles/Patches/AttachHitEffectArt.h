@@ -2,6 +2,7 @@
 
 #include "PCH.h"
 
+#include "Shared/Skyrim/A/Actor.h"
 #include "Shared/Skyrim/M/ModelReferenceEffect.h"
 
 
@@ -14,8 +15,8 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& attachHitEffectArt);
 
 	private:
-		static void Attach(Skyrim::ModelReferenceEffect* modelReferenceEffect);
+		static Skyrim::Actor* GetTargetActor(Skyrim::ModelReferenceEffect* modelReferenceEffect);
 
-		static decltype(&AttachHitEffectArt::Attach) attach_;
+		static decltype(&AttachHitEffectArt::GetTargetActor) getTargetActor_;
 	};
 }

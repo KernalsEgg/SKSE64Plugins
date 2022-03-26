@@ -13,7 +13,7 @@ namespace Relocation
 	{
 		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->format)), sizeof(std::int32_t));
 
-		if (this->format != 1)
+		if (this->format != 2)
 		{
 			Utility::MessageBox::Error("Unexpected format encountered, {}. Expected {}.", this->format, 1);
 		}
@@ -107,7 +107,7 @@ namespace Relocation
 		inputFileStreamPath /= "Data";
 		inputFileStreamPath /= "SKSE";
 		inputFileStreamPath /= "Plugins";
-		inputFileStreamPath /= fmt::format("version-{}-{}-{}-{}.bin", productVersion.major, productVersion.minor, productVersion.revision, productVersion.build);
+		inputFileStreamPath /= fmt::format("versionlib-{}-{}-{}-{}.bin", productVersion.major, productVersion.minor, productVersion.revision, productVersion.build);
 
 		std::ifstream inputFileStream(inputFileStreamPath, std::ios::in | std::ios::binary);
 

@@ -10,7 +10,7 @@ namespace ScrambledBugs::Patterns
 	{
 		namespace EnchantmentCost
 		{
-			bool Unequal();
+			bool NotEqual();
 		}
 
 		namespace HarvestedFlags
@@ -42,11 +42,6 @@ namespace ScrambledBugs::Patterns
 
 	namespace Patches
 	{
-		namespace AccumulatingMagnitude
-		{
-			bool Constructor();
-		}
-
 		namespace AlreadyCaughtPickpocketing
 		{
 			bool AttackOnSight();
@@ -56,7 +51,7 @@ namespace ScrambledBugs::Patterns
 		namespace AttachHitEffectArt
 		{
 			bool AddNoHitEffectArtFlag();
-			bool Attach();
+			bool GetTargetActor();
 			bool IsPerspectiveChange();
 			bool IsPlayerAttach();
 			bool IsPlayerUpdatePosition();
@@ -83,7 +78,7 @@ namespace ScrambledBugs::Patterns
 
 		namespace PausedGameHitEffects
 		{
-			bool ApplyHitEffects();
+			bool ShouldApplyHitEffects();
 		}
 
 		namespace PerkEntryPoints

@@ -27,14 +27,19 @@ namespace ScrambledBugs::Fixes
 			return false;
 		}
 
-		auto spell = activeEffect->spell;
+		auto magicItem = activeEffect->magicItem;
 
-		if (!spell || !spell->ShouldAddSpell())
+		if (!magicItem || !magicItem->ShouldAddSpell())
 		{
 			return true;
 		}
 
 		if (activeEffect->GetBaseEffect()->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kRecover))
+		{
+			return true;
+		}
+
+		if (activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kHasConditions))
 		{
 			return true;
 		}
@@ -50,11 +55,6 @@ namespace ScrambledBugs::Fixes
 		}
 
 		if (activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kApplyingSounds))
-		{
-			return true;
-		}
-
-		if (activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kHasConditions))
 		{
 			return true;
 		}

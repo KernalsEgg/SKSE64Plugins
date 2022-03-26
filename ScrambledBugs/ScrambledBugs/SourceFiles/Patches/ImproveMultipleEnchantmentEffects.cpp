@@ -18,7 +18,6 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(ImproveMultipleEnchantmentEffects::Traverse)));
 	}
 
-	/// <summary>SkyrimSE.exe + 0x868A00 (VID 50366)</summary>
 	Skyrim::MagicItemTraversalFunctor::ReturnType ImproveMultipleEnchantmentEffects::Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::Effect* effect)
 	{
 		auto index = createEffectFunctor->effects.AddEffect(effect);

@@ -78,7 +78,7 @@ namespace Skyrim
 
 		FindAppropriateDisplaceEffect findAppropriateDisplaceEffect;
 		findAppropriateDisplaceEffect.displacementSpell = this->displacementSpell;
-		findAppropriateDisplaceEffect.addiction         = static_cast<SpellItem*>(this->spell);
+		findAppropriateDisplaceEffect.addiction         = static_cast<SpellItem*>(this->magicItem);
 		findAppropriateDisplaceEffect.displace          = false;
 
 		magicTarget->VisitActiveEffects(std::addressof(findAppropriateDisplaceEffect));

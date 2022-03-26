@@ -27,10 +27,14 @@ namespace SKSE
 			kVersion = 1
 		};
 
-		std::uint32_t infoVersion;
-		const char*   name;
-		std::uint32_t version;
+		std::uint32_t infoVersion; // 0
+		const char*   name;        // 8
+		std::uint32_t version;     // 10
 	};
+	static_assert(offsetof(PluginInfo, infoVersion) == 0x0);
+	static_assert(offsetof(PluginInfo, name) == 0x8);
+	static_assert(offsetof(PluginInfo, version) == 0x10);
+	static_assert(sizeof(PluginInfo) == 0x18);
 
 	class Interface
 	{
@@ -76,10 +80,11 @@ namespace SKSE
 		std::uint32_t editorVersion_;
 		std::uint32_t isEditor_;
 		void* (*queryInterface_)(std::uint32_t id);
-		PluginHandle (*getPluginHandle_)(); // Call in SKSEPlugin_Query or SKSEPlugin_Load
+		PluginHandle (*getPluginHandle_)(); // Call in SKSEPlugin_Load
 		std::uint32_t (*getReleaseIndex_)();
 		const PluginInfo* (*getPluginInfo_)(const char* name); // Call after PostLoad event
 	};
+	static_assert(sizeof(Interface) == 0x30);
 
 	class SerializationInterface
 	{
@@ -165,6 +170,7 @@ namespace SKSE
 		bool (*resolveHandle_)(Skyrim::VMHandle oldHandle, Skyrim::VMHandle* newHandle);
 		bool (*resolveFormID_)(std::uint32_t oldFormID, std::uint32_t* newFormID);
 	};
+	static_assert(sizeof(SerializationInterface) == 0x68);
 
 	class TaskDelegate
 	{
@@ -246,6 +252,7 @@ namespace SKSE
 		void (*addTask_)(void*);
 		void (*addUITask_)(void*);
 	};
+	static_assert(sizeof(TaskInterface) == 0x18);
 
 	class MessagingInterface
 	{
@@ -276,6 +283,7 @@ namespace SKSE
 			kActionEvent             = 3,
 			kNiNodeUpdateEvent       = 4
 		};
+		static_assert(sizeof(Dispatcher) == 0x4);
 
 		struct Message
 		{
@@ -285,6 +293,11 @@ namespace SKSE
 			std::uint32_t dataLength;
 			void*         data;
 		};
+		static_assert(offsetof(Message, sender) == 0x0);
+		static_assert(offsetof(Message, type) == 0x8);
+		static_assert(offsetof(Message, dataLength) == 0xC);
+		static_assert(offsetof(Message, data) == 0x10);
+		static_assert(sizeof(Message) == 0x18);
 
 		using EventCallback = void(Message* message);
 
@@ -306,6 +319,39 @@ namespace SKSE
 		bool (*dispatch_)(PluginHandle sender, std::uint32_t messageType, void* data, std::uint32_t dataLength, const char* receiver);
 		void* (*getEventDispatcher_)(Dispatcher dispatcher);
 	};
+	static_assert(sizeof(MessagingInterface) == 0x20);
+
+	struct PluginVersionData
+	{
+	public:
+		enum
+		{
+			kVersion = 1
+		};
+
+		const std::uint32_t dataVersion{ PluginVersionData::kVersion }; // 0
+		std::uint32_t       pluginVersion{ 0 };                         // 4
+		char                pluginName[256]{};                          // 8
+		char                author[256]{};                              // 108
+		char                supportEmail[256]{};                        // 208
+		bool                addressLibrary   : 1 { false };             // 308 (0, 0)
+		bool                signatureScanning: 1 { false };             // 308 (0, 1)
+		std::uint8_t        padding308Bit2   : 6 { 0 };                 // 308 (0, 2)
+		std::uint8_t        padding309{ 0 };                            // 309
+		std::uint16_t       padding30A{ 0 };                            // 30A
+		std::uint32_t       compatibleVersions[16]{};                   // 30C
+		std::uint32_t       minimumSKSEVersion{ 0 };                    // 34C
+	};
+	static_assert(offsetof(PluginVersionData, dataVersion) == 0x0);
+	static_assert(offsetof(PluginVersionData, pluginVersion) == 0x4);
+	static_assert(offsetof(PluginVersionData, pluginName) == 0x8);
+	static_assert(offsetof(PluginVersionData, author) == 0x108);
+	static_assert(offsetof(PluginVersionData, supportEmail) == 0x208);
+	static_assert(offsetof(PluginVersionData, padding309) == 0x309);
+	static_assert(offsetof(PluginVersionData, padding30A) == 0x30A);
+	static_assert(offsetof(PluginVersionData, compatibleVersions) == 0x30C);
+	static_assert(offsetof(PluginVersionData, minimumSKSEVersion) == 0x34C);
+	static_assert(sizeof(PluginVersionData) == 0x350);
 
 	class Cache
 	{

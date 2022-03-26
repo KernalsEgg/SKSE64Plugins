@@ -16,13 +16,13 @@ namespace ActorLimitFix::Patterns
 	{
 		bool GetStaticArrayCapacityCommentOnPlayerAction();
 		bool GetStaticArrayCapacityContains();
+		bool GetStaticArrayCapacityContainsInline();
 		bool GetStaticArrayCapacityCopy();
-		bool GetStaticArrayCapacityErase();
 		bool GetStaticArrayCapacityInsert();
 		bool GetStaticArrayCommentOnPlayerAction();
 		bool GetStaticArrayContains();
+		bool GetStaticArrayContainsInline();
 		bool GetStaticArrayCopy();
-		bool GetStaticArrayErase();
 		bool GetStaticArrayInsert();
 		bool HasCapacityInsert();
 	}

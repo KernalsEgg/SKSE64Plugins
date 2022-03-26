@@ -33,7 +33,7 @@ namespace ScrambledBugs::Patches
 
 		if (characterController && characterController->context.currentState == Skyrim::hkpCharacterStateType::kOnGround)
 		{
-			auto surfaceInformation = characterController->surfaceInformation;
+			auto& surfaceInformation = characterController->surfaceInformation;
 
 			if (surfaceInformation.supportedState == Skyrim::hkpSurfaceInfo::SupportedState::kSupported)
 			{

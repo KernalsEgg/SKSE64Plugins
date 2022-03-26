@@ -10,6 +10,7 @@
 #include "Fixes/LeftHandPowerAttacks.h"
 #include "Fixes/MagicEffectFlags.h"
 #include "Fixes/ModArmorWeightPerkEntryPoint.h"
+#include "Fixes/PowerCooldowns.h"
 #include "Fixes/QuickShot.h"
 #include "Fixes/TerrainDecals.h"
 #include "Fixes/TrainingMenu.h"
@@ -32,10 +33,8 @@
 #include "Patches/SoulGems.h"
 #include "Patches/StaffExperience.h"
 #include "Patches/SteepSlopes.h"
-#include "Patches/TeammateDifficulty.h"
 #include "Serialization.h"
 #include "Settings.h"
-#include "Shared/Relocation/Module.h"
 #include "Shared/SKSE/Interfaces.h"
 #include "Shared/Utility/Log.h"
 #include "Shared/Utility/Trampoline.h"
@@ -97,6 +96,11 @@ void Settings()
 	if (settings.fixes.modArmorWeightPerkEntryPoint)
 	{
 		ScrambledBugs::Fixes::ModArmorWeightPerkEntryPoint::Fix(settings.fixes.modArmorWeightPerkEntryPoint);
+	}
+
+	if (settings.fixes.powerCooldowns)
+	{
+		ScrambledBugs::Fixes::PowerCooldowns::Fix(settings.fixes.powerCooldowns);
 	}
 
 	if (settings.fixes.quickShot && settings.fixes.quickShotPlaybackSpeed > 0.0F)
@@ -209,47 +213,17 @@ void Settings()
 		ScrambledBugs::Patches::SteepSlopes::Patch(settings.patches.steepSlopes);
 	}
 
-	if (settings.patches.teammateDifficulty)
-	{
-		ScrambledBugs::Patches::TeammateDifficulty::Patch(settings.patches.teammateDifficulty);
-	}
-
 	Utility::Log::Information("Initialized.\n{}", settings.Serialize().dump(1, '\t'));
 
 	Utility::Trampoline::GetSingleton().Commit();
 }
 
-extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* queryInterface, SKSE::PluginInfo* pluginInfo)
-{
-	static std::string name = Relocation::Plugin::GetSingleton().GetPath().stem().string();
-
-	pluginInfo->infoVersion = SKSE::PluginInfo::kVersion;
-	pluginInfo->name        = name.c_str();
-	pluginInfo->version     = 17;
-
-	if (queryInterface->IsEditor())
-	{
-		Utility::Log::Critical("Loading in editor.");
-
-		return false;
-	}
-
-	auto runtimeVersion = queryInterface->RuntimeVersion();
-
-	if (runtimeVersion < Relocation::Version(1, 5, 39, 0))
-	{
-		Utility::Log::Critical(
-			"Unsupported runtime version, {}.{}.{}.{}.",
-			runtimeVersion.major,
-			runtimeVersion.minor,
-			runtimeVersion.revision,
-			runtimeVersion.build);
-
-		return false;
-	}
-
-	return true;
-}
+extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
+	.pluginVersion  = 18,
+	.pluginName     = "Scrambled Bugs",
+	.author         = "KernalsEgg",
+	.addressLibrary = true
+};
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {

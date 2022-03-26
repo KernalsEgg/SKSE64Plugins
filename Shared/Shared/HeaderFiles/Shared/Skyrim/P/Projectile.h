@@ -14,15 +14,8 @@ namespace Skyrim
 	public:
 		enum class Flags : std::uint32_t
 		{
-			kNone                  = 0,
-			IsHitscan1             = 1U << 0, // SkyrimSE.exe + 0x747910 (VID 42867) + 0x81
-			IsHitscanHasNoTracers  = 1U << 1, // SkyrimSE.exe + 0x747910 (VID 42867) + 0xBF
-			IsHitscan2             = 1U << 3, // SkyrimSE.exe + 0x747910 (VID 42867) + 0x88
-			HasTracers             = 1U << 4, // SkyrimSE.exe + 0x747910 (VID 42867) + 0x6D
-			IsHitscanHasTracers    = 1U << 5, // SkyrimSE.exe + 0x747910 (VID 42867) + 0xA7
-			HasGravity             = 1U << 6, // SkyrimSE.exe + 0x747910 (VID 42867) + 0xD8
-			Is3DLoaded             = 1U << 8, // SkyrimSE.exe + 0x754820 (VID 43030) + 0xD3
-			IsArrowQuiver3DHandled = 1U << 26 // SkyrimSE.exe + 0x732390 (VID 42546) + 0x49
+			kNone       = 0,
+			kIs3DLoaded = 1U << 8, // 1.5.97.0: SkyrimSE.exe + 0x754820 + 0xD3 (43030), 1.6.318.0: SkyrimSE.exe + 0x7821A0 + 0x1D7 (44222)
 		};
 		static_assert(sizeof(Flags) == 0x4);
 
@@ -118,7 +111,7 @@ namespace Skyrim
 		std::uint64_t                              unknown180;            // 180
 		std::uint64_t                              unknown188;            // 188
 		std::uint64_t                              unknown190;            // 190
-		float                                      damage;                // 198, SkyrimSE.exe + 0x74A950 (VID 42920) + 0x332
+		float                                      damage;                // 198
 		std::uint32_t                              unknown19C;            // 19C
 		std::uint64_t                              unknown1A0;            // 1A0
 		std::uint64_t                              unknown1A8;            // 1A8
@@ -127,8 +120,8 @@ namespace Skyrim
 		std::uint64_t                              unknown1C0;            // 1C0
 		std::uint32_t                              unknown1C8;            // 1C8
 		Utility::Enumeration<Flags, std::uint32_t> projectileFlags;       // 1CC
-		bool                                       startedQueuingFiles;   // 1D0, SkyrimSE.exe + 0x754DC0 (VID 43035) + 0x1CB
-		bool                                       finishedQueueingFiles; // 1D1, SkyrimSE.exe + 0x754FF0 (VID 43036) + 0x5
+		bool                                       startedQueuingFiles;   // 1D0, 1.5.97.0: SkyrimSE.exe + 0x754DC0 + 0x1CB (43035), 1.6.318.0: SkyrimSE.exe + 0x782B00 + 0x1C7 (44227)
+		bool                                       finishedQueueingFiles; // 1D1, 1.5.97.0: SkyrimSE.exe + 0x754FF0 + 0x5 (43036), 1.6.318.0: SkyrimSE.exe + 0x782D20 + 0x5 (44228)
 		std::uint16_t                              unknown1D2;            // 1D2
 		std::uint32_t                              unknown1D4;            // 1D4
 	};

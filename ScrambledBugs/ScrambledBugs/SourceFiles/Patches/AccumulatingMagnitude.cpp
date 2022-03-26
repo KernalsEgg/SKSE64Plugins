@@ -6,8 +6,8 @@
 #include "Patterns.h"
 #include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/E/EffectSetting.h"
+#include "Shared/Utility/Convert.h"
 #include "Shared/Utility/Memory.h"
-#include "Shared/Utility/Trampoline.h"
 
 
 
@@ -19,25 +19,19 @@ namespace ScrambledBugs::Patches
 	*/
 	void AccumulatingMagnitude::Patch(bool& accumulatingMagnitude)
 	{
-		if (!Patterns::Patches::AccumulatingMagnitude::Constructor())
-		{
-			accumulatingMagnitude = false;
-
-			return;
-		}
-
-		AccumulatingMagnitude::constructor_ = reinterpret_cast<decltype(AccumulatingMagnitude::constructor_)>(Utility::Memory::ReadRelativeCall(Addresses::Patches::AccumulatingMagnitude::Constructor));
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Patches::AccumulatingMagnitude::Constructor, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::Constructor)));
+		auto accumulatingValueModifierEffectAllocate                                                            = Addresses::Patches::AccumulatingMagnitude::ActiveEffectAllocateFunctions + sizeof(std::uintptr_t) * Utility::ToUnderlying(Skyrim::EffectArchetype::kAccumulateMagnitude);
+		AccumulatingMagnitude::allocate_                                                                        = *reinterpret_cast<decltype(AccumulatingMagnitude::allocate_)*>(accumulatingValueModifierEffectAllocate);
+		*reinterpret_cast<decltype(AccumulatingMagnitude::allocate_)*>(accumulatingValueModifierEffectAllocate) = std::addressof(AccumulatingMagnitude::Allocate);
 
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::AccumulatingValueModifierEffect::VirtualFunctionTable, 0x1D, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::UpdateActorValue)));
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::FindMaxMagnitudeVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::Visit)));
 	}
 
-	Skyrim::AccumulatingValueModifierEffect* AccumulatingMagnitude::Constructor(Skyrim::AccumulatingValueModifierEffect* accumulatingValueModifierEffect, Skyrim::Actor* caster, Skyrim::MagicItem* spell, Skyrim::Effect* effect)
+	Skyrim::AccumulatingValueModifierEffect* AccumulatingMagnitude::Allocate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::Effect* effect)
 	{
 		// accumulatingValueModifierEffect != nullptr
 
-		accumulatingValueModifierEffect = AccumulatingMagnitude::constructor_(accumulatingValueModifierEffect, caster, spell, effect);
+		auto accumulatingValueModifierEffect = AccumulatingMagnitude::allocate_(caster, magicItem, effect);
 
 		// Swap the accumulation rate and the maximum magnitude
 		std::swap(accumulatingValueModifierEffect->magnitude, accumulatingValueModifierEffect->maximumMagnitude);
@@ -142,5 +136,5 @@ namespace ScrambledBugs::Patches
 		return Skyrim::MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
 	}
 
-	decltype(&AccumulatingMagnitude::Constructor) AccumulatingMagnitude::constructor_{ nullptr };
+	decltype(&AccumulatingMagnitude::Allocate) AccumulatingMagnitude::allocate_{ nullptr };
 }

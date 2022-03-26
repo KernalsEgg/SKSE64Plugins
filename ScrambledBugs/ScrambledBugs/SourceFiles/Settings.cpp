@@ -61,6 +61,11 @@ namespace ScrambledBugs
 			fixes.at("modArmorWeightPerkEntryPoint").get_to(this->modArmorWeightPerkEntryPoint);
 		}
 
+		if (fixes.contains("powerCooldowns"))
+		{
+			fixes.at("powerCooldowns").get_to(this->powerCooldowns);
+		}
+
 		if (fixes.contains("quickShot"))
 		{
 			fixes.at("quickShot").get_to(this->quickShot);
@@ -101,6 +106,7 @@ namespace ScrambledBugs
 		fixes["leftHandPowerAttacks"]         = this->leftHandPowerAttacks;
 		fixes["magicEffectFlags"]             = this->magicEffectFlags;
 		fixes["modArmorWeightPerkEntryPoint"] = this->modArmorWeightPerkEntryPoint;
+		fixes["powerCooldowns"]               = this->powerCooldowns;
 		fixes["quickShot"]                    = this->quickShot;
 		fixes["quickShotPlaybackSpeed"]       = this->quickShotPlaybackSpeed;
 		fixes["terrainDecals"]                = this->terrainDecals;
@@ -220,11 +226,6 @@ namespace ScrambledBugs
 			patches.at("steepSlopes").get_to(this->steepSlopes);
 		}
 
-		if (patches.contains("teammateDifficulty"))
-		{
-			patches.at("teammateDifficulty").get_to(this->teammateDifficulty);
-		}
-
 		if (patches.contains("underfilledSoulGems"))
 		{
 			patches.at("underfilledSoulGems").get_to(this->underfilledSoulGems);
@@ -252,7 +253,6 @@ namespace ScrambledBugs
 		patches["scrollExperience"]                  = this->scrollExperience;
 		patches["staffExperience"]                   = this->staffExperience;
 		patches["steepSlopes"]                       = this->steepSlopes;
-		patches["teammateDifficulty"]                = this->teammateDifficulty;
 		patches["underfilledSoulGems"]               = this->underfilledSoulGems;
 
 		return patches;

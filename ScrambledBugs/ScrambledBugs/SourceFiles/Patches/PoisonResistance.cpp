@@ -43,25 +43,25 @@ namespace ScrambledBugs::Patches
 
 		auto actor = static_cast<Skyrim::Actor*>(magicTarget);
 
-		float magicResistance{ 0.0F };
+		float defaultResistance{ 0.0F };
 
-		float effectResistance{ 0.0F };
-		auto  effectResistanceActorValue = effect->baseEffect->resistanceActorValue;
+		float resistance{ 0.0F };
+		auto  resistanceActorValue = effect->baseEffect->resistanceActorValue;
 
 		if (isPoison || spellType == Skyrim::MagicSystem::SpellType::kPoison)
 		{
-			if (effectResistanceActorValue != Skyrim::ActorValue::kNone)
+			if (resistanceActorValue != Skyrim::ActorValue::kNone)
 			{
-				effectResistance = actor->GetActorValue(effectResistanceActorValue);
+				resistance = actor->GetActorValue(resistanceActorValue);
 			}
 		}
 		else
 		{
-			magicResistance = actor->GetActorValue(Skyrim::ActorValue::kMagicResist);
+			defaultResistance = actor->GetActorValue(Skyrim::ActorValue::kMagicResist);
 
-			if (effectResistanceActorValue != Skyrim::ActorValue::kNone && effectResistanceActorValue != Skyrim::ActorValue::kMagicResist)
+			if (resistanceActorValue != Skyrim::ActorValue::kNone && resistanceActorValue != Skyrim::ActorValue::kMagicResist)
 			{
-				effectResistance = actor->GetActorValue(effectResistanceActorValue);
+				resistance = actor->GetActorValue(resistanceActorValue);
 			}
 		}
 
@@ -69,17 +69,17 @@ namespace ScrambledBugs::Patches
 		{
 			auto playerMaximumResistance = Skyrim::GameSettingCollection::PlayerMaximumResistance()->value.floatingPoint;
 
-			if (magicResistance > playerMaximumResistance)
+			if (defaultResistance > playerMaximumResistance)
 			{
-				magicResistance = playerMaximumResistance;
+				defaultResistance = playerMaximumResistance;
 			}
 
-			if (effectResistance > playerMaximumResistance)
+			if (resistance > playerMaximumResistance)
 			{
-				effectResistance = playerMaximumResistance;
+				resistance = playerMaximumResistance;
 			}
 		}
 
-		return magicResistance >= 100.0F || effectResistance >= 100.0F ? 0.0F : (1.0F - (magicResistance / 100.0F)) * (1.0F - (effectResistance / 100.0F));
+		return defaultResistance >= 100.0F || resistance >= 100.0F ? 0.0F : (1.0F - (defaultResistance / 100.0F)) * (1.0F - (resistance / 100.0F));
 	}
 }

@@ -15,9 +15,9 @@ namespace Skyrim
 		class iterator
 		{
 		public:
-			using value_type        = T;
-			using pointer           = std::conditional_t<std::is_const_v<U>, const value_type*, value_type*>;
-			using reference         = std::conditional_t<std::is_const_v<U>, const value_type&, value_type&>;
+			using value_type        = std::conditional_t<std::is_const_v<U>, const T, T>;
+			using pointer           = value_type*;
+			using reference         = value_type&;
 			using iterator_category = std::forward_iterator_tag;
 
 			constexpr iterator() noexcept                = default;

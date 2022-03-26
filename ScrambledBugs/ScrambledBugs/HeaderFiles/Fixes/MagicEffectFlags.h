@@ -14,6 +14,8 @@ namespace ScrambledBugs::Fixes
 		static void Fix(bool& magicEffectFlags);
 
 	private:
-		static void SetEffectiveness(Skyrim::ActiveEffect* activeEffect, float effectiveness);
+		static void ResetElapsedTime(Skyrim::ActiveEffect* activeEffect);
+		static void SetEffectiveness(Skyrim::ActiveEffect* activeEffect, float effectiveness, bool requiresHostility);
+		static void SetEffectivenessImplementation(Skyrim::ActiveEffect* activeEffect, float effectiveness);
 	};
 }

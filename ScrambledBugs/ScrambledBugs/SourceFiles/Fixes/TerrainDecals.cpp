@@ -4,6 +4,7 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
+#include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -19,6 +20,6 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Fixes::TerrainDecals::UnloadCellMopp, 0xC3ui8, 0xCCui8, 0xCCui8, 0xCCui8, 0xCCui8);
+		Utility::Memory::SafeWrite(Addresses::Fixes::TerrainDecals::UnloadCellMopp, Utility::Assembly::NoOperation5);
 	}
 }
