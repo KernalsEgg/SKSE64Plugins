@@ -113,6 +113,8 @@ namespace ScrambledBugs::Serialization
 					}
 
 					EnchantmentCost::Deserialize(serializationInterface);
+
+					break;
 				}
 				default:
 				{
