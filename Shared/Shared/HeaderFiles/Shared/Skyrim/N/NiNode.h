@@ -2,6 +2,7 @@
 
 #include "Shared/PCH.h"
 
+#include "Shared/Skyrim/B/BGSDecalManager.h"
 #include "Shared/Skyrim/N/NiAVObject.h"
 #include "Shared/Skyrim/N/NiPointer.h"
 #include "Shared/Skyrim/N/NiTArray.h"
@@ -49,6 +50,9 @@ namespace Skyrim
 		virtual void Unknown3B(NiNode*); // 3B
 		virtual void Unknown3C(NiNode*); // 3C
 		virtual void Unknown3D(NiNode*); // 3D
+
+		// Member functions
+		std::uint32_t ApplyDecal(const BGSDecalManager::ApplicationData& applicationData);
 
 		// Member variables
 		NiTObjectArray<NiPointer<NiAVObject>> children; // 110

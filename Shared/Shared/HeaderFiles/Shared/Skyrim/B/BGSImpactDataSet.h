@@ -29,6 +29,9 @@ namespace Skyrim
 		// Override (BGSPreloadable)
 		virtual void Unknown4(BGSPreloadable*) override; // 4
 
+		// Member functions
+		BGSImpactData* GetImpactData(BGSMaterialType* materialType) const;
+
 		// Member variables
 		BSTHashMap<const BGSMaterialType*, BGSImpactData*> impacts; // 28
 	};

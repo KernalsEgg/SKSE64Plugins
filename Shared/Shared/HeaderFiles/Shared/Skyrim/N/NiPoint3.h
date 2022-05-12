@@ -77,6 +77,10 @@ namespace Skyrim
 			return *this;
 		}
 
+		// Member functions
+		float Magnitude() const;
+		void  Normalize();
+
 		// Member variables
 		float x{ 0.0F }; // 0
 		float y{ 0.0F }; // 4

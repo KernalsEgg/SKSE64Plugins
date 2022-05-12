@@ -35,24 +35,24 @@ namespace Skyrim
 		virtual ~bhkCharacterController() override; // 0
 
 		// Add
-		virtual void Unknown2(bhkCharacterController*)  = 0; // 2
-		virtual void Unknown3(bhkCharacterController*)  = 0; // 3
-		virtual void Unknown4(bhkCharacterController*)  = 0; // 4
-		virtual void Unknown5(bhkCharacterController*)  = 0; // 5
-		virtual void Unknown6(bhkCharacterController*)  = 0; // 6
-		virtual void Unknown7(bhkCharacterController*)  = 0; // 7
-		virtual void Unknown8(bhkCharacterController*)  = 0; // 8
-		virtual void Unknown9(bhkCharacterController*)  = 0; // 9
-		virtual void UnknownA(bhkCharacterController*)  = 0; // A
-		virtual void UnknownB(bhkCharacterController*)  = 0; // B
-		virtual void UnknownC(bhkCharacterController*)  = 0; // C
-		virtual void UnknownD(bhkCharacterController*)  = 0; // D
-		virtual void UnknownE(bhkCharacterController*)  = 0; // E
-		virtual void UnknownF(bhkCharacterController*)  = 0; // F
-		virtual void Unknown10(bhkCharacterController*) = 0; // 10
-		virtual void Unknown11(bhkCharacterController*) = 0; // 11
-		virtual void Unknown12(bhkCharacterController*) = 0; // 12
-		virtual void Unknown13(bhkCharacterController*) = 0; // 13
+		virtual void Unknown2(bhkCharacterController*)                                              = 0; // 2
+		virtual void Unknown3(bhkCharacterController*)                                              = 0; // 3
+		virtual void Unknown4(bhkCharacterController*)                                              = 0; // 4
+		virtual void Unknown5(bhkCharacterController*)                                              = 0; // 5
+		virtual void Unknown6(bhkCharacterController*)                                              = 0; // 6
+		virtual void Unknown7(bhkCharacterController*)                                              = 0; // 7
+		virtual void GetCollisionFilterInformation(std::uint32_t& collisionFilterInformation) const = 0; // 8
+		virtual void Unknown9(bhkCharacterController*)                                              = 0; // 9
+		virtual void UnknownA(bhkCharacterController*)                                              = 0; // A
+		virtual void UnknownB(bhkCharacterController*)                                              = 0; // B
+		virtual void UnknownC(bhkCharacterController*)                                              = 0; // C
+		virtual void UnknownD(bhkCharacterController*)                                              = 0; // D
+		virtual void UnknownE(bhkCharacterController*)                                              = 0; // E
+		virtual void UnknownF(bhkCharacterController*)                                              = 0; // F
+		virtual void Unknown10(bhkCharacterController*)                                             = 0; // 10
+		virtual void Unknown11(bhkCharacterController*)                                             = 0; // 11
+		virtual void Unknown12(bhkCharacterController*)                                             = 0; // 12
+		virtual void Unknown13(bhkCharacterController*)                                             = 0; // 13
 
 		// Member variables
 		std::uint64_t                                              padding68;                // 68

@@ -18,7 +18,7 @@
 #include <algorithm>       // std::lower_bound, std::sort
 #include <atomic>          // std::atomic_ref, std::atomic_size_t
 #include <chrono>          // std::chrono
-#include <cmath>           // std::abs, std::pow
+#include <cmath>           // std::abs, std::cos, std::pow, std::sin, std::sqrt
 #include <compare>         // std::strong_ordering
 #include <concepts>        // std::same_as
 #include <cstddef>         // offsetof, std::nullptr_t, std::size_t

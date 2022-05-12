@@ -118,7 +118,7 @@ namespace Skyrim
 			requires(std::is_convertible_v<Y*, element_type*>)
 		void reset(Y* pointer)
 		{
-			if (this->pointer_ != pointer)
+			if (pointer != this->pointer_)
 			{
 				this->Detach();
 				this->pointer_ = pointer;
@@ -136,6 +136,7 @@ namespace Skyrim
 		explicit constexpr operator bool() const noexcept { return this->pointer_; }
 
 	private:
+		// Member functions
 		void Attach()
 		{
 			if (this->pointer_)

@@ -19,6 +19,9 @@ namespace Skyrim
 		virtual void Unknown7(SettingCollection<Setting>*) override; // 7
 		virtual void Unknown8(SettingCollection<Setting>*) override; // 8
 		virtual void Unknown9(SettingCollection<Setting>*) override; // 9
+
+		// Non-member functions
+		static SettingT<INIPrefSettingCollection>* Decals();
 	};
 	static_assert(sizeof(INIPrefSettingCollection) == 0x128);
 }

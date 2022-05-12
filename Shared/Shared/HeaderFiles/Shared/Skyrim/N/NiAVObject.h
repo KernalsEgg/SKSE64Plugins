@@ -12,6 +12,7 @@
 
 namespace Skyrim
 {
+	class bhkCollisionObject;
 	class BSFixedString;
 	class NiCollisionObject;
 	class NiNode;
@@ -57,6 +58,10 @@ namespace Skyrim
 		virtual void        Unknown32(NiAVObject*);                       // 32
 		virtual void        Unknown33(NiAVObject*);                       // 33
 		virtual void        Unknown34(NiAVObject*);                       // 34
+
+		// Member functions
+		NiAVObject*         GetBoneFromName(const BSFixedString& name, bool allNames);
+		bhkCollisionObject* GetCollisionObject() const;
 
 		// Member variables
 		NiNode*                                    parentNode;             // 30

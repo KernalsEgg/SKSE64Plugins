@@ -2,6 +2,8 @@
 
 #include "Shared/Skyrim/P/PlayerCharacter.h"
 
+#include "Shared/Skyrim/Addresses.h"
+
 
 
 namespace Skyrim

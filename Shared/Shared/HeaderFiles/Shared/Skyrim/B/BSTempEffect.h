@@ -21,7 +21,7 @@ namespace Skyrim
 		virtual const NiRTTI* GetRTTI() const override;      // 2
 		virtual NiNode*       AsNode() override;             // 3
 		virtual void          Unknown4(NiObject*) override;  // 4
-		virtual void          Unknown5(NiObject*) override;  // 5
+		virtual BSFadeNode*   AsFadeNode() override;         // 5
 		virtual void          Unknown6(NiObject*) override;  // 6
 		virtual void          Unknown7(NiObject*) override;  // 7
 		virtual void          Unknown8(NiObject*) override;  // 8

@@ -8,6 +8,13 @@
 
 namespace Skyrim
 {
+	SettingT<INISettingCollection>* INISettingCollection::ForceAllDecals()
+	{
+		auto singleton{ reinterpret_cast<SettingT<INISettingCollection>*>(Addresses::INISettingCollection::ForceAllDecals) };
+
+		return singleton;
+	}
+
 	SettingT<INISettingCollection>* INISettingCollection::NumberActorsAllowedToMorph()
 	{
 		auto singleton{ reinterpret_cast<SettingT<INISettingCollection>*>(Addresses::INISettingCollection::NumberActorsAllowedToMorph) };

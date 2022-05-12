@@ -78,7 +78,7 @@ namespace Skyrim
 		virtual void UnknownF(TESForm*) override;         // F
 		virtual void Unknown13(TESForm*) override;        // 13
 		virtual void Unknown22(TESForm*) override;        // 22
-		virtual void Unknown2A(TESForm*) override;        // 2A
+		virtual bool IsWater() const override;            // 2A
 		virtual void Unknown37(TESForm*) override;        // 37
 		virtual void Unknown3D(TESObject*) override;      // 3D
 		virtual void Unknown4C(TESBoundObject*) override; // 4C

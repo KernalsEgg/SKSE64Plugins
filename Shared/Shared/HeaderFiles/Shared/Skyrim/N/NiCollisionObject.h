@@ -8,6 +8,8 @@
 
 namespace Skyrim
 {
+	class NiAVObject;
+
 	class NiCollisionObject :
 		public NiObject // 0
 	{
@@ -31,7 +33,8 @@ namespace Skyrim
 		virtual void Unknown29(NiCollisionObject*);     // 29
 
 		// Member variables
-		std::uint64_t unknown10; // 10
+		NiAVObject* sceneObject; // 10
 	};
+	static_assert(offsetof(NiCollisionObject, sceneObject) == 0x10);
 	static_assert(sizeof(NiCollisionObject) == 0x18);
 }

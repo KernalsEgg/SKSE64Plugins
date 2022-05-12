@@ -1173,6 +1173,117 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PowerCooldown.h">
       <Filter>Header Files\Shared\Skyrim\P</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSImpactManager.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSFootstepManager.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSFootstepEvent.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpRayHitCollector.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpWorldRayCastInput.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpShapeRayCastCollectorOutput.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpShape.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpShapeType.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpShapeRayCastOutput.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpWorldRayCastOutput.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkArray.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorldRayCastInput.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpClosestRayHitCollector.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCdBody.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCollidable.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpBroadPhaseHandle.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpTypedBroadPhaseHandle.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkCollisionObject.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkNiCollisionObject.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpWorldObject.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpLinkedCollidable.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkMultiThreadCheck.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkStringPtr.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkSimpleProperty.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpRayCollidableFilter.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpRayShapeCollectionFilter.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpShapeCollectionFilter.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCollidableCollidableFilter.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCollisionFilter.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkEnum.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpGroupFilter.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkShape.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkShapeCollection.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSFadeNode.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDecalManager.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSSoundHandle.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDecalGroup.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">
@@ -1324,6 +1435,72 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSSaveGameBuffer.cpp">
       <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSFootstepManager.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpClosestRayHitCollector.cpp">
+      <Filter>Source Files\Shared\Skyrim\H</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpRayHitCollector.cpp">
+      <Filter>Source Files\Shared\Skyrim\H</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectCELL.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\bhkWorld.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiAVObject.cpp">
+      <Filter>Source Files\Shared\Skyrim\N</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\bhkNiCollisionObject.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiPoint3.cpp">
+      <Filter>Source Files\Shared\Skyrim\N</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiMatrix33.cpp">
+      <Filter>Source Files\Shared\Skyrim\N</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkStringPtr.cpp">
+      <Filter>Source Files\Shared\Skyrim\H</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpCollidable.cpp">
+      <Filter>Source Files\Shared\Skyrim\H</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkSimpleProperty.cpp">
+      <Filter>Source Files\Shared\Skyrim\H</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpWorldObject.cpp">
+      <Filter>Source Files\Shared\Skyrim\H</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\bhkWorldObject.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\bhkShape.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpGroupFilter.cpp">
+      <Filter>Source Files\Shared\Skyrim\H</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSMaterialType.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSImpactDataSet.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSImpactManager.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDecalManager.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\INIPrefSettingCollection.cpp">
+      <Filter>Source Files\Shared\Skyrim\I</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiNode.cpp">
+      <Filter>Source Files\Shared\Skyrim\N</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

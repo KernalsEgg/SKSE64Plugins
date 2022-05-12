@@ -2,6 +2,8 @@
 
 #include "Shared/PCH.h"
 
+#include "Shared/Skyrim/H/hkBaseTypes.h"
+
 
 
 namespace Skyrim
@@ -33,6 +35,10 @@ namespace Skyrim
 			kXYZW = 15
 		};
 		static_assert(sizeof(Mask) == 0x4);
+
+		// Member variables
+		hkQuadReal mask; // 0
 	};
-	static_assert(std::is_empty_v<hkVector4Comparison>);
+	static_assert(offsetof(hkVector4Comparison, mask) == 0x0);
+	static_assert(sizeof(hkVector4Comparison) == 0x10);
 }

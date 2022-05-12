@@ -17,6 +17,7 @@ namespace Skyrim
 	struct PositionPlayerEvent;
 
 	class GridCellArray;
+	class NiPoint3;
 	class Sky;
 	class TESObjectCELL;
 	class TESWorldSpace;
@@ -38,6 +39,10 @@ namespace Skyrim
 
 		// Non-member functions
 		static TES* GetSingleton();
+
+		// Member functions
+		TESObjectCELL* GetCell(const NiPoint3& position) const;
+		std::uint32_t  GetMaterialID(const NiPoint3& position) const;
 
 		// Member variables
 		std::uint64_t  unknown70;    // 70

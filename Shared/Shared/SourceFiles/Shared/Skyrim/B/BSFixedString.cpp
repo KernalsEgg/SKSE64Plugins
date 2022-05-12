@@ -23,6 +23,11 @@ namespace Skyrim
 		}
 	}
 
+	BSFixedString::~BSFixedString()
+	{
+		this->Release();
+	}
+
 	BSFixedString& BSFixedString::operator=(const BSFixedString& right)
 	{
 		if (this != std::addressof(right))
@@ -30,6 +35,18 @@ namespace Skyrim
 			this->Release();
 			this->data_ = right.data_;
 			this->Acquire();
+		}
+
+		return *this;
+	}
+
+	BSFixedString& BSFixedString::operator=(BSFixedString&& right)
+	{
+		if (this != std::addressof(right))
+		{
+			this->Release();
+			this->data_ = right.data_;
+			right.data_ = nullptr;
 		}
 
 		return *this;
@@ -62,5 +79,10 @@ namespace Skyrim
 		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSFixedString::Initialize)>::type>(Addresses::BSFixedString::Initialize) };
 
 		return function(this, string);
+	}
+
+	void BSFixedString::Release()
+	{
+		BSStringPool::Entry::Release(this->data_);
 	}
 }

@@ -8,6 +8,7 @@
 
 namespace Skyrim
 {
+	class BSFadeNode;
 	class NiNode;
 	class NiRTTI;
 
@@ -22,7 +23,7 @@ namespace Skyrim
 		virtual const NiRTTI* GetRTTI() const;      // 2
 		virtual NiNode*       AsNode();             // 3
 		virtual void          Unknown4(NiObject*);  // 4
-		virtual void          Unknown5(NiObject*);  // 5
+		virtual BSFadeNode*   AsFadeNode();         // 5
 		virtual void          Unknown6(NiObject*);  // 6
 		virtual void          Unknown7(NiObject*);  // 7
 		virtual void          Unknown8(NiObject*);  // 8

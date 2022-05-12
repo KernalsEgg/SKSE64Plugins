@@ -8,6 +8,8 @@
 
 namespace Skyrim
 {
+	struct hkSimplePropertyValue;
+
 	class hkpWorld;
 
 	class bhkWorldObject :
@@ -30,6 +32,10 @@ namespace Skyrim
 
 		// Add
 		virtual void Unknown32(bhkWorldObject*); // 32
+
+		// Member functions
+		hkSimplePropertyValue GetProperty(std::uint32_t key);
+		bool                  HasProperty(std::uint32_t key) const;
 
 		// Member variables
 		hkpWorld* world; // 20

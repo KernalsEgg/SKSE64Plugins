@@ -8,21 +8,24 @@
 
 namespace Skyrim
 {
+	class hkClass;
+	class hkStatisticsCollector;
+
 	class hkReferencedObject :
 		public hkBaseObject // 0
 	{
 	public:
 		enum
 		{
-			kSizeMask = 0x7FFF
+			kMemorySizeMask = 0x7FFF
 		};
 
 		// Override
 		virtual ~hkReferencedObject() override; // 0
 
 		// Add
-		virtual void Unknown1(hkReferencedObject*); // 1
-		virtual void Unknown2(hkReferencedObject*); // 2
+		virtual const hkClass* GetClassType() const;                                                                                     // 1
+		virtual void           CalculateContentStatistics(hkStatisticsCollector* collector, const hkClass* referencedObjectClass) const; // 2
 
 		// Member functions
 		void          AddReference() const;
@@ -31,11 +34,11 @@ namespace Skyrim
 		void          RemoveReference() const;
 
 		// Member variables
-		std::uint16_t                 sizeAndFlags;   // 8
-		volatile mutable std::int16_t referenceCount; // A
-		std::uint32_t                 paddingC;       // C
+		std::uint16_t                 memorySizeAndFlags; // 8
+		volatile mutable std::int16_t referenceCount;     // A
+		std::uint32_t                 paddingC;           // C
 	};
-	static_assert(offsetof(hkReferencedObject, sizeAndFlags) == 0x8);
+	static_assert(offsetof(hkReferencedObject, memorySizeAndFlags) == 0x8);
 	static_assert(offsetof(hkReferencedObject, referenceCount) == 0xA);
 	static_assert(sizeof(hkReferencedObject) == 0x10);
 }

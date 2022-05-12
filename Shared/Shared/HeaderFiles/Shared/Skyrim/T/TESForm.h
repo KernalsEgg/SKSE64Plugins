@@ -3,6 +3,7 @@
 #include "Shared/PCH.h"
 
 #include "Shared/Skyrim/B/BSCoreTypes.h"
+#include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Skyrim/B/BaseFormComponent.h"
 #include "Shared/Skyrim/F/FormType.h"
 #include "Shared/Utility/Enumeration.h"
@@ -13,6 +14,23 @@ namespace Skyrim
 {
 	class EnchantmentItem;
 	class ExtraDataList;
+	class TESFile;
+
+	class TESFileArray :
+		public BSStaticArray<TESFile*> // 0
+	{
+	public:
+	};
+	static_assert(sizeof(TESFileArray) == 0x10);
+
+	class TESFileContainer
+	{
+	public:
+		// Member variables
+		TESFileArray* fileArray; // 0
+	};
+	static_assert(offsetof(TESFileContainer, fileArray) == 0x0);
+	static_assert(sizeof(TESFileContainer) == 0x8);
 
 	class TESForm :
 		public BaseFormComponent // 0
@@ -65,7 +83,7 @@ namespace Skyrim
 		virtual bool        IsBoundObject() const;                    // 27
 		virtual void        Unknown28(TESForm*);                      // 28
 		virtual void        Unknown29(TESForm*);                      // 29
-		virtual void        Unknown2A(TESForm*);                      // 2A
+		virtual bool        IsWater() const;                          // 2A
 		virtual void        Unknown2B(TESForm*);                      // 2B
 		virtual void        Unknown2C(TESForm*);                      // 2C
 		virtual void        Unknown2D(TESForm*);                      // 2D
@@ -85,11 +103,12 @@ namespace Skyrim
 
 		// Member functions
 		EnchantmentItem* GetEnchantment(ExtraDataList* extraDataList);
+		TESFile*         GetFile(std::int32_t index = -1) const;
 		const char*      GetFormName() const;
 		std::uint16_t    GetMaximumCharge(ExtraDataList* extraDataList) const;
 
 		// Member variables
-		std::uint64_t                                unknown8;    // 8
+		TESFileContainer                             sourceFiles; // 8
 		std::uint32_t                                recordFlags; // 10
 		FormID                                       formID;      // 14
 		std::uint16_t                                unknown18;   // 18
@@ -97,6 +116,7 @@ namespace Skyrim
 		std::uint8_t                                 unknown1B;   // 1B
 		std::uint32_t                                unknown1C;   // 1C
 	};
+	static_assert(offsetof(TESForm, sourceFiles) == 0x8);
 	static_assert(offsetof(TESForm, recordFlags) == 0x10);
 	static_assert(offsetof(TESForm, formID) == 0x14);
 	static_assert(offsetof(TESForm, formType) == 0x1A);

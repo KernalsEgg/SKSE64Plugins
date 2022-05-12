@@ -36,10 +36,10 @@ namespace Skyrim
 			}
 		}
 
-		~BSFixedString() { this->Release(); }
+		~BSFixedString();
 
-		BSFixedString&           operator=(const BSFixedString& right);
-		constexpr BSFixedString& operator=(BSFixedString&&) noexcept = default;
+		BSFixedString& operator=(const BSFixedString& right);
+		BSFixedString& operator=(BSFixedString&& right);
 
 		BSFixedString& operator=(const_pointer string);
 
@@ -48,6 +48,7 @@ namespace Skyrim
 		BSFixedString& operator=(const T& string)
 		{
 			auto stringView = static_cast<std::basic_string_view<value_type>>(string);
+
 			this->Release();
 
 			if (!stringView.empty())
@@ -67,9 +68,18 @@ namespace Skyrim
 		constexpr const_pointer data() const noexcept
 		{
 			auto proxy = this->GetProxy();
-			auto data  = proxy ? proxy->data() : nullptr;
 
-			return data ? data : BSFixedString::EMPTY;
+			if (proxy)
+			{
+				auto data = proxy->data();
+
+				if (data)
+				{
+					return data;
+				}
+			}
+
+			return BSFixedString::EMPTY;
 		}
 
 		constexpr operator std::basic_string_view<value_type>() const { return { this->data(), this->size() }; }
@@ -103,7 +113,7 @@ namespace Skyrim
 
 		// Member functions
 		BSFixedString* Initialize(const_pointer string);
-		void           Release() { BSStringPool::Entry::Release(this->data_); }
+		void           Release();
 
 		// Member variables
 		const_pointer data_{ nullptr }; // 0

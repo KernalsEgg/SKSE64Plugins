@@ -12,7 +12,7 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		hkQuadReal quad; // 0
+		hkQuadReal quad{}; // 0
 	};
 	static_assert(offsetof(hkVector4, quad) == 0x0);
 	static_assert(sizeof(hkVector4) == 0x10);

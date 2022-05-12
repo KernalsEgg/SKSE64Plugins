@@ -17,7 +17,11 @@ namespace Skyrim
 {
 	class BGSEncounterZone;
 	class BGSTerrainVisibilityData;
+	class bhkWorld;
+	class BSTempEffectParticle;
+	class NiAVObject;
 	class NiNode;
+	class NiPoint3;
 	class TESObjectREFR;
 	class TESWorldSpace;
 
@@ -226,6 +230,10 @@ namespace Skyrim
 		virtual bool        SetEditorID(const char* editorID) override; // 33
 		virtual void        Unknown34(TESForm*) override;               // 34
 		virtual void        Unknown36(TESForm*) override;               // 36
+
+		// Member functions
+		BSTempEffectParticle* CreateTemporaryEffectParticle(float duration, const char* model, const NiPoint3& normal, const NiPoint3& position, float scale, std::uint32_t flags, NiAVObject* target3D);
+		bhkWorld*             GetHavokWorld() const;
 
 		// Member variables
 		std::uint64_t                              unknown30;      // 30

@@ -23,6 +23,7 @@ namespace Skyrim
 		virtual void Unknown6(SettingCollection*) override;   // 6
 
 		// Non-member functions
+		static SettingT<INISettingCollection>* ForceAllDecals();
 		static SettingT<INISettingCollection>* NumberActorsAllowedToMorph();
 	};
 	static_assert(sizeof(INISettingCollection) == 0x128);

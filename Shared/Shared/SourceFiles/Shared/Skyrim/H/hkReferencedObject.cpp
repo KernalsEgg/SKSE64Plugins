@@ -18,7 +18,7 @@ namespace Skyrim
 
 	std::uint16_t hkReferencedObject::GetSize() const
 	{
-		return this->sizeAndFlags & hkReferencedObject::kSizeMask;
+		return this->memorySizeAndFlags & hkReferencedObject::kMemorySizeMask;
 	}
 
 	std::int16_t hkReferencedObject::GetReferenceCount() const

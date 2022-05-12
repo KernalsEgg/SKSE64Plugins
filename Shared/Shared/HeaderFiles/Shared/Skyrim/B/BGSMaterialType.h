@@ -33,6 +33,9 @@ namespace Skyrim
 		virtual void Unknown6(TESForm*) override;  // 6
 		virtual void Unknown13(TESForm*) override; // 13
 
+		// Non-member functions
+		static BGSMaterialType* GetMaterialTypeFromMaterialID(std::uint32_t materialID);
+
 		// Member variables
 		BGSMaterialType*                           parentMaterial;     // 20
 		BSFixedString                              materialName;       // 28

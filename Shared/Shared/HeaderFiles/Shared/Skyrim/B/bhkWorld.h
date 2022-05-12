@@ -3,6 +3,7 @@
 #include "Shared/PCH.h"
 
 #include "Shared/Skyrim/B/bhkSerializable.h"
+#include "Shared/Skyrim/B/bhkWorldRayCastInput.h"
 
 
 
@@ -27,11 +28,15 @@ namespace Skyrim
 		virtual void          Unknown2F(bhkSerializable*) override; // 2F
 
 		// Add
-		virtual void Unknown32(bhkWorld*); // 32
-		virtual void Unknown33(bhkWorld*); // 33
-		virtual void Unknown34(bhkWorld*); // 34
-		virtual void Unknown35(bhkWorld*); // 35
-		virtual void Unknown36(bhkWorld*); // 36
+		virtual void Unknown32(bhkWorld*);                 // 32
+		virtual bool CastRay(bhkWorldRayCastInput& input); // 33
+		virtual void Unknown34(bhkWorld*);                 // 34
+		virtual void Unknown35(bhkWorld*);                 // 35
+		virtual void Unknown36(bhkWorld*);                 // 36
+
+		// Non-member functions
+		static float GetScale();
+		static float GetScaleInverse();
 
 		// Member variables
 		std::uint8_t unknown20[0xC600 - 0x20]; // 20

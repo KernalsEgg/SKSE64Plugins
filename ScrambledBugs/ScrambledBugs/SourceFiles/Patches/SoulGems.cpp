@@ -64,7 +64,7 @@ namespace ScrambledBugs::Patches
 						auto target      = findBestSoulGemVisitor->target;
 						auto targetIsNPC = target->IsNPC();
 
-						auto soulGemCanHoldNPCSoul = Utility::Enumeration<Skyrim::TESSoulGem::RecordFlags>(soulGem->recordFlags).all(Skyrim::TESSoulGem::RecordFlags::kCanHoldNPCSoul);
+						auto soulGemCanHoldNPCSoul = Utility::Enumeration<Skyrim::TESSoulGem::RecordFlags, std::uint32_t>(soulGem->recordFlags).all(Skyrim::TESSoulGem::RecordFlags::kCanHoldNPCSoul);
 
 						if (SoulGems::blackSoulGems_ ? (targetIsNPC && soulGemCanHoldNPCSoul) || (!targetIsNPC && !soulGemCanHoldNPCSoul) : !targetIsNPC || soulGemCanHoldNPCSoul)
 						{
@@ -78,7 +78,7 @@ namespace ScrambledBugs::Patches
                                                                      std::make_optional(Skyrim::TESSoulGem::GetSoulLevelValue(bestSoulGem->capacity.get())) :
                                                                      std::nullopt;
 								auto bestSoulGemCanHoldNPCSoul = bestSoulGem ?
-                                                                     std::make_optional(Utility::Enumeration<Skyrim::TESSoulGem::RecordFlags>(bestSoulGem->recordFlags).all(Skyrim::TESSoulGem::RecordFlags::kCanHoldNPCSoul)) :
+                                                                     std::make_optional(Utility::Enumeration<Skyrim::TESSoulGem::RecordFlags, std::uint32_t>(bestSoulGem->recordFlags).all(Skyrim::TESSoulGem::RecordFlags::kCanHoldNPCSoul)) :
                                                                      std::nullopt;
 
 								if (!bestSoulGem || bestSoulGemSoulLevelValue.value() > soulGemSoulLevelValue ||

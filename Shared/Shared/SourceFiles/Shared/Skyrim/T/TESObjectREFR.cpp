@@ -14,6 +14,13 @@
 
 namespace Skyrim
 {
+	TESObjectREFR* TESObjectREFR::GetReferenceFrom3D(NiAVObject* avObject)
+	{
+		auto function{ reinterpret_cast<decltype(&TESObjectREFR::GetReferenceFrom3D)>(Addresses::TESObjectREFR::GetReferenceFrom3D) };
+
+		return function(avObject);
+	}
+
 	TESContainer* TESObjectREFR::GetContainer() const
 	{
 		auto baseObject = this->baseObject;
@@ -48,5 +55,20 @@ namespace Skyrim
 		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::GetReferenceName)>::type>(Addresses::TESObjectREFR::GetReferenceName) };
 
 		return function(this);
+	}
+
+	bool TESObjectREFR::ShouldApplyDecal() const
+	{
+		if (this->IsWater())
+		{
+			return false;
+		}
+
+		if (this->baseObject->formType == FormType::kNPC || this->baseObject->formType == FormType::kProjectile)
+		{
+			return false;
+		}
+
+		return true;
 	}
 }

@@ -1,0 +1,818 @@
+[{
+	"conditions": { "formID": "0xED2F", "filename": "Trails.esp" }, /* TRAILS_COBJ_AtronachFrost */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD61", "filename": "Trails.esp" }, /* TRAILS_IPDS_AtronachFrost_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD62", "filename": "Trails.esp" }, /* TRAILS_IPDS_AtronachFrost_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Lft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Lft ]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED30", "filename": "Trails.esp" }, /* TRAILS_COBJ_Bear */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD63", "filename": "Trails.esp" }, /* TRAILS_IPDS_Bear_BackLeft */
+			"rayCast": { "origin": { "nodeName": "NPC LLegBall1" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD64", "filename": "Trails.esp" }, /* TRAILS_IPDS_Bear_BackRight */
+			"rayCast": { "origin": { "nodeName": "NPC RLegBall1" } } /* Right */
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD65", "filename": "Trails.esp" }, /* TRAILS_IPDS_Bear_FrontLeft */
+			"rayCast": { "origin": { "nodeName": "NPC LArmBall1" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD66", "filename": "Trails.esp" }, /* TRAILS_IPDS_Bear_FrontRight */
+			"rayCast": { "origin": { "nodeName": "NPC RArmBall1" } } /* Right */
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED31", "filename": "Trails.esp" }, /* TRAILS_COBJ_Bristleback */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD77", "filename": "Trails.esp" }, /* TRAILS_IPDS_Goat_BackLeft */
+			"rayCast": { "origin": { "nodeName": "Boar_LBackLegAnkle" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD78", "filename": "Trails.esp" }, /* TRAILS_IPDS_Goat_BackRight */
+			"rayCast": { "origin": { "nodeName": "Boar_RBackLegAnkle" } } /* Right */
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD77", "filename": "Trails.esp" }, /* TRAILS_IPDS_Goat_BackLeft */
+			"rayCast": { "origin": { "nodeName": "Boar_LFrontLegHoof_1" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD78", "filename": "Trails.esp" }, /* TRAILS_IPDS_Goat_BackRight */
+			"rayCast": { "origin": { "nodeName": "Boar_RFrontLeg_Hoof_1" } } /* Right */
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED32", "filename": "Trails.esp" }, /* TRAILS_COBJ_Cow */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD67", "filename": "Trails.esp" }, /* TRAILS_IPDS_Cow_BackLeft */
+			"rayCast": { "origin": { "nodeName": "LRearHoof" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD68", "filename": "Trails.esp" }, /* TRAILS_IPDS_Cow_BackRight */
+			"rayCast": { "origin": { "nodeName": "RRearHoof" } } /* Right */
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD67", "filename": "Trails.esp" }, /* TRAILS_IPDS_Cow_BackLeft */
+			"rayCast": { "origin": { "nodeName": "L_FrontHoof" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD68", "filename": "Trails.esp" }, /* TRAILS_IPDS_Cow_BackRight */
+			"rayCast": { "origin": { "nodeName": "R_FrontHoof" } } /* Right */
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED33", "filename": "Trails.esp" }, /* TRAILS_COBJ_Deer */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD69", "filename": "Trails.esp" }, /* TRAILS_IPDS_Deer_BackLeft */
+			"rayCast": { "origin": { "nodeName": "ElkLRearHoof" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD6A", "filename": "Trails.esp" }, /* TRAILS_IPDS_Deer_BackRight */
+			"rayCast": { "origin": { "nodeName": "ElkRRearHoof" } } /* Right */
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD69", "filename": "Trails.esp" }, /* TRAILS_IPDS_Deer_BackLeft */
+			"rayCast": { "origin": { "nodeName": "ElkLFrontHoof" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD6A", "filename": "Trails.esp" }, /* TRAILS_IPDS_Deer_BackRight */
+			"rayCast": { "origin": { "nodeName": "ElkRFrontHoof" } } /* Right */
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED34", "filename": "Trails.esp" }, /* TRAILS_COBJ_Dog */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD6B", "filename": "Trails.esp" }, /* TRAILS_IPDS_Dog_BackLeft */
+			"rayCast": { "origin": { "nodeName": "Canine_LBackLegToe" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD6C", "filename": "Trails.esp" }, /* TRAILS_IPDS_Dog_BackRight */
+			"rayCast": { "origin": { "nodeName": "Canine_RBackLegToe" } } /* Right */
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD6B", "filename": "Trails.esp" }, /* TRAILS_IPDS_Dog_BackLeft */
+			"rayCast": { "origin": { "nodeName": "Canine_LFrontLegToe" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD6C", "filename": "Trails.esp" }, /* TRAILS_IPDS_Dog_BackRight */
+			"rayCast": { "origin": { "nodeName": "Canine_RFrontLegToe" } } /* Right */
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED35", "filename": "Trails.esp" }, /* TRAILS_COBJ_Draugr */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD6D", "filename": "Trails.esp" }, /* TRAILS_IPDS_Draugr_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [LLft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [LLft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD6E", "filename": "Trails.esp" }, /* TRAILS_IPDS_Draugr_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Rft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Rft ]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED36", "filename": "Trails.esp" }, /* TRAILS_COBJ_Falmer */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD6F", "filename": "Trails.esp" }, /* TRAILS_IPDS_Falmer_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD70", "filename": "Trails.esp" }, /* TRAILS_IPDS_Falmer_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED37", "filename": "Trails.esp" }, /* TRAILS_COBJ_Fox */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD71", "filename": "Trails.esp" }, /* TRAILS_IPDS_Fox_BackLeft */
+			"rayCast": { "origin": { "nodeName": "Canine_LBackLegToe" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD72", "filename": "Trails.esp" }, /* TRAILS_IPDS_Fox_BackRight */
+			"rayCast": { "origin": { "nodeName": "Canine_RBackLegToe" } } /* Right */
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD71", "filename": "Trails.esp" }, /* TRAILS_IPDS_Fox_BackLeft */
+			"rayCast": { "origin": { "nodeName": "Canine_LFrontLegToe" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD72", "filename": "Trails.esp" }, /* TRAILS_IPDS_Fox_BackRight */
+			"rayCast": { "origin": { "nodeName": "Canine_RFrontLegToe" } } /* Right */
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED38", "filename": "Trails.esp" }, /* TRAILS_COBJ_Gargoyle */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD73", "filename": "Trails.esp" }, /* TRAILS_IPDS_Gargoyle_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Toe0 [LToe]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD74", "filename": "Trails.esp" }, /* TRAILS_IPDS_Gargoyle_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Rft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Toe0 [RToe]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED39", "filename": "Trails.esp" }, /* TRAILS_COBJ_Giant */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD75", "filename": "Trails.esp" }, /* TRAILS_IPDS_Giant_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Rft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Rft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD76", "filename": "Trails.esp" }, /* TRAILS_IPDS_Giant_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Rft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Rft ]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED3A", "filename": "Trails.esp" }, /* TRAILS_COBJ_Goat */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD77", "filename": "Trails.esp" }, /* TRAILS_IPDS_Goat_BackLeft */
+			"rayCast": { "origin": { "nodeName": "Goat_LBackLegToe" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD78", "filename": "Trails.esp" }, /* TRAILS_IPDS_Goat_BackRight */
+			"rayCast": { "origin": { "nodeName": "Goat_RBackLegToe" } } /* Right */
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD77", "filename": "Trails.esp" }, /* TRAILS_IPDS_Goat_BackLeft */
+			"rayCast": { "origin": { "nodeName": "Goat_LFrontLegToe" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD78", "filename": "Trails.esp" }, /* TRAILS_IPDS_Goat_BackRight */
+			"rayCast": { "origin": { "nodeName": "Goat_RFrontLegToe" } } /* Right */
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED3B", "filename": "Trails.esp" }, /* TRAILS_COBJ_Hagraven */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD79", "filename": "Trails.esp" }, /* TRAILS_IPDS_Hagraven_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Toe0 [LToe]Tip" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD7A", "filename": "Trails.esp" }, /* TRAILS_IPDS_Hagraven_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Lft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Toe0 [RToe]Tip" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED3C", "filename": "Trails.esp" }, /* TRAILS_COBJ_Horse */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD7B", "filename": "Trails.esp" }, /* TRAILS_IPDS_Horse_BackLeft */
+			"rayCast": { "origin": { "nodeName": "HorseLRearHoof" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD7C", "filename": "Trails.esp" }, /* TRAILS_IPDS_Horse_BackRight */
+			"rayCast": { "origin": { "nodeName": "HorseRRearHoof" } } /* Right */
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD7B", "filename": "Trails.esp" }, /* TRAILS_IPDS_Horse_BackLeft */
+			"rayCast": { "origin": { "nodeName": "HorseLFrontHoof" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD7C", "filename": "Trails.esp" }, /* TRAILS_IPDS_Horse_BackRight */
+			"rayCast": { "origin": { "nodeName": "HorseFrontRLegFrontHoof" } } /* Right */
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED3D", "filename": "Trails.esp" }, /* TRAILS_COBJ_Lurker */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD7D", "filename": "Trails.esp" }, /* TRAILS_IPDS_Lurker_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Rft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Rft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD7E", "filename": "Trails.esp" }, /* TRAILS_IPDS_Lurker_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Rft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Rft ]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED3E", "filename": "Trails.esp" }, /* TRAILS_COBJ_Mammoth */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD7F", "filename": "Trails.esp" }, /* TRAILS_IPDS_Mammoth_BackLeft */
+			"rayCast": { "origin": { "nodeName": "Mammoth Back L Foot" }, "ray": { "z": -96.0 } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD80", "filename": "Trails.esp" }, /* TRAILS_IPDS_Mammoth_BackRight */
+			"rayCast": { "origin": { "nodeName": "Mammoth Back R Foot" }, "ray": { "z": -96.0 } } /* Right */
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD7F", "filename": "Trails.esp" }, /* TRAILS_IPDS_Mammoth_BackLeft */
+			"rayCast": { "origin": { "nodeName": "Mammoth Front L Foot" }, "ray": { "z": -128.0 } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD80", "filename": "Trails.esp" }, /* TRAILS_IPDS_Mammoth_BackRight */
+			"rayCast": { "origin": { "nodeName": "Mammoth Front R Foot" }, "ray": { "z": -128.0 } } /* Right */
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED3F", "filename": "Trails.esp" }, /* TRAILS_COBJ_Nord */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft", "FootScuffLeft", "FootSprintLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD81", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Thigh [LThg]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight", "FootScuffRight", "FootSprintRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD82", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Thigh [RThg]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Rft ]" } }
+		}]
+	},
+	{
+		"tags": [ "JumpDown", "JumpUp" ], /* Jump */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD81", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Thigh [LThg]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } }, /* Left */
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		},
+		{
+			"impactEffect": { "formID": "0xD82", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Thigh [RThg]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } }, /* Right */
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Rft ]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0x13E49", "filename": "Trails.esp" }, /* TRAILS_COBJ_Nord_Player_FirstPerson */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft", "FootScuffLeft", "FootSprintLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD81", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Left */
+			"decal": { "rotation": { "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L UpperArm [LUar]" }, "ray": { "z": -192.0 } }
+		}]
+	},
+	{
+		"tags": [ "FootRight", "FootScuffRight", "FootSprintRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD82", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Right */
+			"decal": { "rotation": { "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R UpperArm [RUar]" }, "ray": { "z": -192.0 } }
+		}]
+	},
+	{
+		"tags": [ "JumpDown", "JumpUp" ], /* Jump */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD81", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Left */
+			"decal": { "rotation": { "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } }, /* Left */
+			"rayCast": { "origin": { "nodeName": "NPC L UpperArm [LUar]" }, "ray": { "z": -192.0 } }
+		},
+		{
+			"impactEffect": { "formID": "0xD82", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Right */
+			"decal": { "rotation": { "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } }, /* Right */
+			"rayCast": { "origin": { "nodeName": "NPC R UpperArm [RUar]" }, "ray": { "z": -192.0 } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0x13E4A", "filename": "Trails.esp" }, /* TRAILS_COBJ_Nord_Player_ThirdPerson */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft", "FootScuffLeft", "FootSprintLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD81", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Thigh [LThg]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight", "FootScuffRight", "FootSprintRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD82", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Thigh [RThg]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Rft ]" } }
+		}]
+	},
+	{
+		"tags": [ "JumpDown", "JumpUp" ], /* Jump */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD81", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Thigh [LThg]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } }, /* Left */
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		},
+		{
+			"impactEffect": { "formID": "0xD82", "filename": "Trails.esp" }, /* TRAILS_IPDS_Nord_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Thigh [RThg]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } }, /* Right */
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Rft ]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED40", "filename": "Trails.esp" }, /* TRAILS_COBJ_Riekling */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD83", "filename": "Trails.esp" }, /* TRAILS_IPDS_Riekling_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD84", "filename": "Trails.esp" }, /* TRAILS_IPDS_Riekling_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED41", "filename": "Trails.esp" }, /* TRAILS_COBJ_SabreCat */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD85", "filename": "Trails.esp" }, /* TRAILS_IPDS_SabreCat_BackLeft */
+			"rayCast": { "origin": { "nodeName": "Sabrecat_LeftToe0[LT00]" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD86", "filename": "Trails.esp" }, /* TRAILS_IPDS_SabreCat_BackRight */
+			"rayCast": { "origin": { "nodeName": "Sabrecat_RightToe0[RT00]" } } /* Right */
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD87", "filename": "Trails.esp" }, /* TRAILS_IPDS_SabreCat_FrontLeft */
+			"rayCast": { "origin": { "nodeName": "Sabrecat_LeftHand[LHnd]" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD88", "filename": "Trails.esp" }, /* TRAILS_IPDS_SabreCat_FrontRight */
+			"rayCast": { "origin": { "nodeName": "Sabrecat_RightHand[RHnd]" } } /* Right */
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED42", "filename": "Trails.esp" }, /* TRAILS_COBJ_Skeever */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD89", "filename": "Trails.esp" }, /* TRAILS_IPDS_Skeever_BackLeft */
+			"rayCast": { "origin": { "nodeName": "LLegAnkle" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD8A", "filename": "Trails.esp" }, /* TRAILS_IPDS_Skeever_BackRight */
+			"rayCast": { "origin": { "nodeName": "RLegAnkle" } } /* Right */
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD8B", "filename": "Trails.esp" }, /* TRAILS_IPDS_Skeever_FrontLeft */
+			"rayCast": { "origin": { "nodeName": "LArm_Palm" } } /* Left */
+		},
+		{
+			"impactEffect": { "formID": "0xD8C", "filename": "Trails.esp" }, /* TRAILS_IPDS_Skeever_FrontRight */
+			"rayCast": { "origin": { "nodeName": "RArm_Palm" } } /* Right */
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED43", "filename": "Trails.esp" }, /* TRAILS_COBJ_Skeleton */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD8D", "filename": "Trails.esp" }, /* TRAILS_IPDS_Skeleton_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [LLft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [LLft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD8E", "filename": "Trails.esp" }, /* TRAILS_IPDS_Skeleton_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Rft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Rft ]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED44", "filename": "Trails.esp" }, /* TRAILS_COBJ_Spriggan */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD8F", "filename": "Trails.esp" }, /* TRAILS_IPDS_Spriggan_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Toe0 [LToe]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD90", "filename": "Trails.esp" }, /* TRAILS_IPDS_Spriggan_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Rft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Toe0 [RToe]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED45", "filename": "Trails.esp" }, /* TRAILS_COBJ_Troll */
+	"footsteps":
+	[{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD91", "filename": "Trails.esp" }, /* TRAILS_IPDS_Troll_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } }, /* Left */
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		},
+		{
+			"impactEffect": { "formID": "0xD92", "filename": "Trails.esp" }, /* TRAILS_IPDS_Troll_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Rft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } }, /* Right */
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Rft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD91", "filename": "Trails.esp" }, /* TRAILS_IPDS_Troll_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Hand [LHnd]" } }, /* Left */
+			"rayCast": { "origin": { "nodeName": "NPC L Hand [LHnd]" } }
+		},
+		{
+			"impactEffect": { "formID": "0xD92", "filename": "Trails.esp" }, /* TRAILS_IPDS_Troll_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Hand [RHnd]" } }, /* Right */
+			"rayCast": { "origin": { "nodeName": "NPC R Hand [RHnd]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED46", "filename": "Trails.esp" }, /* TRAILS_COBJ_VampireLord */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD93", "filename": "Trails.esp" }, /* TRAILS_IPDS_VampireLord_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD94", "filename": "Trails.esp" }, /* TRAILS_IPDS_VampireLord_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Rft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Rft ]" } }
+		}]
+	},
+	{
+		"tags": [ "JumpDown", "JumpUp" ], /* Jump */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD93", "filename": "Trails.esp" }, /* TRAILS_IPDS_VampireLord_Left */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } }, /* Left */
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		},
+		{
+			"impactEffect": { "formID": "0xD94", "filename": "Trails.esp" }, /* TRAILS_IPDS_VampireLord_Right */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Rft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } }, /* Right */
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Rft ]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED47", "filename": "Trails.esp" }, /* TRAILS_COBJ_Werebear */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD95", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werebear_BackLeft */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD96", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werebear_BackRight */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Lft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Lft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD95", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werebear_BackLeft */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } }, /* Left */
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		},
+		{
+			"impactEffect": { "formID": "0xD96", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werebear_BackRight */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Lft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } }, /* Right */
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Lft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD97", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werebear_FrontLeft */
+			"decal": { "rotation": { "nodeName": "NPC L Hand [RHnd]" } }, /* Left */
+			"rayCast": { "origin": { "nodeName": "NPC L Hand [RHnd]" } }
+		},
+		{
+			"impactEffect": { "formID": "0xD98", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werebear_FrontRight */
+			"decal": { "rotation": { "nodeName": "NPC R Hand [RHnd]" } }, /* Right */
+			"rayCast": { "origin": { "nodeName": "NPC R Hand [RHnd]" } }
+		}]
+	}]
+},
+{
+	"conditions": { "formID": "0xED48", "filename": "Trails.esp" }, /* TRAILS_COBJ_Werewolf */
+	"footsteps":
+	[{
+		"tags": [ "FootLeft" ], /* Left */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD99", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werewolf_BackLeft */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootRight" ], /* Right */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD9A", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werewolf_BackRight */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Lft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } },
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Lft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootBack" ], /* Back */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD99", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werewolf_BackLeft */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } }, /* Left */
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		},
+		{
+			"impactEffect": { "formID": "0xD9A", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werewolf_BackRight */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Lft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } }, /* Right */
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Lft ]" } }
+		}]
+	},
+	{
+		"tags": [ "FootFront" ], /* Front */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD9B", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werewolf_FrontLeft */
+			"decal": { "rotation": { "nodeName": "NPC L Hand [RHnd]" } }, /* Left */
+			"rayCast": { "origin": { "nodeName": "NPC L Hand [RHnd]" } }
+		},
+		{
+			"impactEffect": { "formID": "0xD9C", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werewolf_FrontRight */
+			"decal": { "rotation": { "nodeName": "NPC R Hand [RHnd]" } }, /* Right */
+			"rayCast": { "origin": { "nodeName": "NPC R Hand [RHnd]" } }
+		}]
+	},
+	{
+		"tags": [ "JumpDown", "JumpUp" ], /* Jump */
+		"arguments":
+		[{
+			"impactEffect": { "formID": "0xD99", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werewolf_BackLeft */
+			"decal": { "rotation": { "nodeName": "NPC L Foot [Lft ]", "offset": { "minimum": { "z": -10.0 }, "maximum": { "z": 0.0 } } } }, /* Left */
+			"rayCast": { "origin": { "nodeName": "NPC L Foot [Lft ]" } }
+		},
+		{
+			"impactEffect": { "formID": "0xD9A", "filename": "Trails.esp" }, /* TRAILS_IPDS_Werewolf_BackRight */
+			"decal": { "rotation": { "nodeName": "NPC R Foot [Lft ]", "offset": { "minimum": { "z": 0.0 }, "maximum": { "z": 10.0 } } } }, /* Right */
+			"rayCast": { "origin": { "nodeName": "NPC R Foot [Lft ]" } }
+		}]
+	}]
+}]

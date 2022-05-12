@@ -2,13 +2,11 @@
 
 #include "Shared/PCH.h"
 
-#include "Shared/Skyrim/B/BSAnimationGraphEvent.h"
 #include "Shared/Skyrim/B/BSHandleRefObject.h"
 #include "Shared/Skyrim/B/BSTEventSink.h"
 #include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/I/IAnimationGraphManagerHolder.h"
 #include "Shared/Skyrim/M/MagicSystem.h"
-#include "Shared/Skyrim/N/NiAVObject.h"
 #include "Shared/Skyrim/N/NiPoint3.h"
 #include "Shared/Skyrim/N/NiPointer.h"
 #include "Shared/Skyrim/T/TESForm.h"
@@ -17,9 +15,12 @@
 
 namespace Skyrim
 {
+	struct BSAnimationGraphEvent;
+
 	class InventoryChanges;
 	class MagicCaster;
 	class MagicTarget;
+	class NiAVObject;
 	class TESBoundObject;
 	class TESContainer;
 	class TESObjectCELL;
@@ -87,7 +88,7 @@ namespace Skyrim
 		virtual void        Unknown22(TESForm*) override; // 22
 		virtual void        Unknown23(TESForm*) override; // 23
 		virtual void        Unknown24(TESForm*) override; // 24
-		virtual void        Unknown2A(TESForm*) override; // 2A
+		virtual bool        IsWater() const override;     // 2A
 		virtual void        Unknown2B(TESForm*) override; // 2B
 		virtual void        Unknown2C(TESForm*) override; // 2C
 		virtual void        Unknown30(TESForm*) override; // 30
@@ -159,8 +160,8 @@ namespace Skyrim
 		virtual void         Unknown6C(TESObjectREFR*);                                                                     // 6C
 		virtual void         Unknown6D(TESObjectREFR*);                                                                     // 6D
 		virtual void         Unknown6E(TESObjectREFR*);                                                                     // 6E
-		virtual void         Unknown6F(TESObjectREFR*);                                                                     // 6F
-		virtual void         Unknown70(TESObjectREFR*);                                                                     // 70
+		virtual NiAVObject*  Get3D(bool firstPerson) const;                                                                 // 6F
+		virtual NiAVObject*  GetThirdPerson3D() const;                                                                      // 70
 		virtual void         Unknown71(TESObjectREFR*);                                                                     // 71
 		virtual void         Unknown72(TESObjectREFR*);                                                                     // 72
 		virtual void         Unknown73(TESObjectREFR*);                                                                     // 73
@@ -211,10 +212,14 @@ namespace Skyrim
 		virtual void         UnknownA0(TESObjectREFR*);                                                                     // A0
 		virtual void         UnknownA1(TESObjectREFR*);                                                                     // A1
 
+		// Non-member functions
+		static TESObjectREFR* GetReferenceFrom3D(NiAVObject* avObject);
+
 		// Member functions
 		TESContainer*     GetContainer() const;
 		InventoryChanges* GetInventoryChanges();
 		const char*       GetReferenceName() const;
+		bool              ShouldApplyDecal() const;
 
 		// Member variables
 		TESBoundObject*      baseObject;          // 40
