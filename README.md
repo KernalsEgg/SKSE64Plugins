@@ -8,6 +8,9 @@
 ### Scrambled Bugs
 * [fmt 8.1.1](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
+### Trails
+* [fmt 8.1.1](https://github.com/fmtlib/fmt)
+* [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
 
 ## End-User Dependencies
 * [SKSE64](https://github.com/ianpatt/skse64)
