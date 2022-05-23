@@ -13,7 +13,7 @@ namespace Relocation
 	{
 		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->format)), sizeof(std::int32_t));
 
-		if (this->format != 2)
+		if (this->format != (Executable::GetSingleton().IsSpecialEdition() ? 1 : 2))
 		{
 			Utility::MessageBox::Error("Unexpected format encountered, {}. Expected {}.", this->format, 1);
 		}
@@ -101,13 +101,28 @@ namespace Relocation
 		return Executable::GetSingleton().GetAddress() + iterator->offset;
 	}
 
+	std::uintptr_t AddressLibrary::GetAddress(std::uint64_t specialEditionIdentifier, std::uint64_t anniversaryEditionIdentifier) const
+	{
+		return Executable::GetSingleton().IsSpecialEdition() ? this->GetAddress(specialEditionIdentifier) : this->GetAddress(anniversaryEditionIdentifier);
+	}
+
+	std::uintptr_t AddressLibrary::GetAddress(std::uint64_t specialEditionIdentifier, std::ptrdiff_t specialEditionOffset, std::uint64_t anniversaryEditionIdentifier, std::ptrdiff_t anniversaryEditionOffset) const
+	{
+		return Executable::GetSingleton().IsSpecialEdition() ? this->GetAddress(specialEditionIdentifier) + specialEditionOffset : this->GetAddress(anniversaryEditionIdentifier) + anniversaryEditionOffset;
+	}
+
 	void AddressLibrary::Load(const Version& productVersion)
 	{
 		std::filesystem::path inputFileStreamPath = Executable::GetSingleton().GetPath().parent_path();
 		inputFileStreamPath /= "Data";
 		inputFileStreamPath /= "SKSE";
 		inputFileStreamPath /= "Plugins";
-		inputFileStreamPath /= fmt::format("versionlib-{}-{}-{}-{}.bin", productVersion.major, productVersion.minor, productVersion.revision, productVersion.build);
+		inputFileStreamPath /= fmt::format(
+			Executable::GetSingleton().IsSpecialEdition() ? "version-{}-{}-{}-{}.bin" : "versionlib-{}-{}-{}-{}.bin",
+			productVersion.major,
+			productVersion.minor,
+			productVersion.revision,
+			productVersion.build);
 
 		std::ifstream inputFileStream(inputFileStreamPath, std::ios::in | std::ios::binary);
 
@@ -186,7 +201,7 @@ namespace Relocation
 
 					break;
 				}
-				case ReadType::kAddOne:
+				case ReadType::kAdd1:
 				{
 					identifier = previousIdentifier + 1;
 
@@ -265,7 +280,7 @@ namespace Relocation
 
 					break;
 				}
-				case ReadType::kAddOne:
+				case ReadType::kAdd1:
 				{
 					offset = temporaryOffset + 1;
 

@@ -9,264 +9,264 @@
 
 namespace ScrambledBugs
 {
-	void Settings::Fixes::Deserialize(const json& fixes)
+	void Settings::Fixes::Deserialize(const nlohmann::json& jsonFixes)
 	{
-		if (fixes.contains("activateFurniture"))
+		if (jsonFixes.contains("activateFurniture"))
 		{
-			fixes.at("activateFurniture").get_to(this->activateFurniture);
+			jsonFixes.at("activateFurniture").get_to(this->activateFurniture);
 		}
 
-		if (fixes.contains("actorValuePercentage"))
+		if (jsonFixes.contains("actorValuePercentage"))
 		{
-			fixes.at("actorValuePercentage").get_to(this->actorValuePercentage);
+			jsonFixes.at("actorValuePercentage").get_to(this->actorValuePercentage);
 		}
 
-		if (fixes.contains("enchantmentCost"))
+		if (jsonFixes.contains("enchantmentCost"))
 		{
-			fixes.at("enchantmentCost").get_to(this->enchantmentCost);
+			jsonFixes.at("enchantmentCost").get_to(this->enchantmentCost);
 		}
 
-		if (fixes.contains("harvestedFlags"))
+		if (jsonFixes.contains("harvestedFlags"))
 		{
-			fixes.at("harvestedFlags").get_to(this->harvestedFlags);
+			jsonFixes.at("harvestedFlags").get_to(this->harvestedFlags);
 		}
 
-		if (fixes.contains("hitEffectRaceCondition"))
+		if (jsonFixes.contains("hitEffectRaceCondition"))
 		{
-			fixes.at("hitEffectRaceCondition").get_to(this->hitEffectRaceCondition);
+			jsonFixes.at("hitEffectRaceCondition").get_to(this->hitEffectRaceCondition);
 		}
 
-		if (fixes.contains("impactEffectCrash"))
+		if (jsonFixes.contains("impactEffectCrash"))
 		{
-			fixes.at("impactEffectCrash").get_to(this->impactEffectCrash);
+			jsonFixes.at("impactEffectCrash").get_to(this->impactEffectCrash);
 		}
 
-		if (fixes.contains("killCamera"))
+		if (jsonFixes.contains("killCamera"))
 		{
-			fixes.at("killCamera").get_to(this->killCamera);
+			jsonFixes.at("killCamera").get_to(this->killCamera);
 		}
 
-		if (fixes.contains("leftHandPowerAttacks"))
+		if (jsonFixes.contains("leftHandPowerAttacks"))
 		{
-			fixes.at("leftHandPowerAttacks").get_to(this->leftHandPowerAttacks);
+			jsonFixes.at("leftHandPowerAttacks").get_to(this->leftHandPowerAttacks);
 		}
 
-		if (fixes.contains("magicEffectFlags"))
+		if (jsonFixes.contains("magicEffectFlags"))
 		{
-			fixes.at("magicEffectFlags").get_to(this->magicEffectFlags);
+			jsonFixes.at("magicEffectFlags").get_to(this->magicEffectFlags);
 		}
 
-		if (fixes.contains("modArmorWeightPerkEntryPoint"))
+		if (jsonFixes.contains("modArmorWeightPerkEntryPoint"))
 		{
-			fixes.at("modArmorWeightPerkEntryPoint").get_to(this->modArmorWeightPerkEntryPoint);
+			jsonFixes.at("modArmorWeightPerkEntryPoint").get_to(this->modArmorWeightPerkEntryPoint);
 		}
 
-		if (fixes.contains("powerCooldowns"))
+		if (jsonFixes.contains("powerCooldowns"))
 		{
-			fixes.at("powerCooldowns").get_to(this->powerCooldowns);
+			jsonFixes.at("powerCooldowns").get_to(this->powerCooldowns);
 		}
 
-		if (fixes.contains("quickShot"))
+		if (jsonFixes.contains("quickShot"))
 		{
-			fixes.at("quickShot").get_to(this->quickShot);
+			jsonFixes.at("quickShot").get_to(this->quickShot);
 		}
 
-		if (fixes.contains("quickShotPlaybackSpeed"))
+		if (jsonFixes.contains("quickShotPlaybackSpeed"))
 		{
-			fixes.at("quickShotPlaybackSpeed").get_to(this->quickShotPlaybackSpeed);
+			jsonFixes.at("quickShotPlaybackSpeed").get_to(this->quickShotPlaybackSpeed);
 		}
 
-		if (fixes.contains("terrainDecals"))
+		if (jsonFixes.contains("terrainDecals"))
 		{
-			fixes.at("terrainDecals").get_to(this->terrainDecals);
+			jsonFixes.at("terrainDecals").get_to(this->terrainDecals);
 		}
 
-		if (fixes.contains("trainingMenu"))
+		if (jsonFixes.contains("trainingMenu"))
 		{
-			fixes.at("trainingMenu").get_to(this->trainingMenu);
+			jsonFixes.at("trainingMenu").get_to(this->trainingMenu);
 		}
 
-		if (fixes.contains("weaponCharge"))
+		if (jsonFixes.contains("weaponCharge"))
 		{
-			fixes.at("weaponCharge").get_to(this->weaponCharge);
+			jsonFixes.at("weaponCharge").get_to(this->weaponCharge);
 		}
 	}
 
-	json Settings::Fixes::Serialize() const
+	nlohmann::json Settings::Fixes::Serialize() const
 	{
-		json fixes;
+		nlohmann::json jsonFixes;
 
-		fixes["activateFurniture"]            = this->activateFurniture;
-		fixes["actorValuePercentage"]         = this->actorValuePercentage;
-		fixes["enchantmentCost"]              = this->enchantmentCost;
-		fixes["harvestedFlags"]               = this->harvestedFlags;
-		fixes["hitEffectRaceCondition"]       = this->hitEffectRaceCondition;
-		fixes["impactEffectCrash"]            = this->impactEffectCrash;
-		fixes["killCamera"]                   = this->killCamera;
-		fixes["leftHandPowerAttacks"]         = this->leftHandPowerAttacks;
-		fixes["magicEffectFlags"]             = this->magicEffectFlags;
-		fixes["modArmorWeightPerkEntryPoint"] = this->modArmorWeightPerkEntryPoint;
-		fixes["powerCooldowns"]               = this->powerCooldowns;
-		fixes["quickShot"]                    = this->quickShot;
-		fixes["quickShotPlaybackSpeed"]       = this->quickShotPlaybackSpeed;
-		fixes["terrainDecals"]                = this->terrainDecals;
-		fixes["trainingMenu"]                 = this->trainingMenu;
-		fixes["weaponCharge"]                 = this->weaponCharge;
+		jsonFixes["activateFurniture"]            = this->activateFurniture;
+		jsonFixes["actorValuePercentage"]         = this->actorValuePercentage;
+		jsonFixes["enchantmentCost"]              = this->enchantmentCost;
+		jsonFixes["harvestedFlags"]               = this->harvestedFlags;
+		jsonFixes["hitEffectRaceCondition"]       = this->hitEffectRaceCondition;
+		jsonFixes["impactEffectCrash"]            = this->impactEffectCrash;
+		jsonFixes["killCamera"]                   = this->killCamera;
+		jsonFixes["leftHandPowerAttacks"]         = this->leftHandPowerAttacks;
+		jsonFixes["magicEffectFlags"]             = this->magicEffectFlags;
+		jsonFixes["modArmorWeightPerkEntryPoint"] = this->modArmorWeightPerkEntryPoint;
+		jsonFixes["powerCooldowns"]               = this->powerCooldowns;
+		jsonFixes["quickShot"]                    = this->quickShot;
+		jsonFixes["quickShotPlaybackSpeed"]       = this->quickShotPlaybackSpeed;
+		jsonFixes["terrainDecals"]                = this->terrainDecals;
+		jsonFixes["trainingMenu"]                 = this->trainingMenu;
+		jsonFixes["weaponCharge"]                 = this->weaponCharge;
 
-		return fixes;
+		return jsonFixes;
 	}
 
-	void Settings::Patches::PerkEntryPoints::Deserialize(const json& perkEntryPoints)
+	void Settings::Patches::PerkEntryPoints::Deserialize(const nlohmann::json& jsonPerkEntryPoints)
 	{
-		if (perkEntryPoints.contains("applyMultipleSpells"))
+		if (jsonPerkEntryPoints.contains("applyMultipleSpells"))
 		{
-			perkEntryPoints.at("applyMultipleSpells").get_to(this->applyMultipleSpells);
+			jsonPerkEntryPoints.at("applyMultipleSpells").get_to(this->applyMultipleSpells);
 		}
 
-		if (perkEntryPoints.contains("castSpells"))
+		if (jsonPerkEntryPoints.contains("castSpells"))
 		{
-			perkEntryPoints.at("castSpells").get_to(this->castSpells);
-		}
-	}
-
-	json Settings::Patches::PerkEntryPoints::Serialize() const
-	{
-		json perkEntryPoints;
-
-		perkEntryPoints["applyMultipleSpells"] = this->applyMultipleSpells;
-		perkEntryPoints["castSpells"]          = this->castSpells;
-
-		return perkEntryPoints;
-	}
-
-	void Settings::Patches::Deserialize(const json& patches)
-	{
-		if (patches.contains("accumulatingMagnitude"))
-		{
-			patches.at("accumulatingMagnitude").get_to(this->accumulatingMagnitude);
-		}
-
-		if (patches.contains("alreadyCaughtPickpocketing"))
-		{
-			patches.at("alreadyCaughtPickpocketing").get_to(this->alreadyCaughtPickpocketing);
-		}
-
-		if (patches.contains("attachHitEffectArt"))
-		{
-			patches.at("attachHitEffectArt").get_to(this->attachHitEffectArt);
-		}
-
-		if (patches.contains("blackSoulGems"))
-		{
-			patches.at("blackSoulGems").get_to(this->blackSoulGems);
-		}
-
-		if (patches.contains("cloakHitEffects"))
-		{
-			patches.at("cloakHitEffects").get_to(this->cloakHitEffects);
-		}
-
-		if (patches.contains("equipBestAmmo"))
-		{
-			patches.at("equipBestAmmo").get_to(this->equipBestAmmo);
-		}
-
-		if (patches.contains("improveMultipleEnchantmentEffects"))
-		{
-			patches.at("improveMultipleEnchantmentEffects").get_to(this->improveMultipleEnchantmentEffects);
-		}
-
-		if (patches.contains("leveledCharacters"))
-		{
-			patches.at("leveledCharacters").get_to(this->leveledCharacters);
-		}
-
-		if (patches.contains("lockpickingExperience"))
-		{
-			patches.at("lockpickingExperience").get_to(this->lockpickingExperience);
-		}
-
-		if (patches.contains("pausedGameHitEffects"))
-		{
-			patches.at("pausedGameHitEffects").get_to(this->pausedGameHitEffects);
-		}
-
-		if (patches.contains("perkEntryPoints"))
-		{
-			this->perkEntryPoints.Deserialize(patches.at("perkEntryPoints"));
-		}
-
-		if (patches.contains("poisonResistance"))
-		{
-			patches.at("poisonResistance").get_to(this->poisonResistance);
-		}
-
-		if (patches.contains("powerAttackStamina"))
-		{
-			patches.at("powerAttackStamina").get_to(this->powerAttackStamina);
-		}
-
-		if (patches.contains("reflectDamage"))
-		{
-			patches.at("reflectDamage").get_to(this->reflectDamage);
-		}
-
-		if (patches.contains("scrollExperience"))
-		{
-			patches.at("scrollExperience").get_to(this->scrollExperience);
-		}
-
-		if (patches.contains("staffExperience"))
-		{
-			patches.at("staffExperience").get_to(this->staffExperience);
-		}
-
-		if (patches.contains("steepSlopes"))
-		{
-			patches.at("steepSlopes").get_to(this->steepSlopes);
-		}
-
-		if (patches.contains("underfilledSoulGems"))
-		{
-			patches.at("underfilledSoulGems").get_to(this->underfilledSoulGems);
+			jsonPerkEntryPoints.at("castSpells").get_to(this->castSpells);
 		}
 	}
 
-	json Settings::Patches::Serialize() const
+	nlohmann::json Settings::Patches::PerkEntryPoints::Serialize() const
 	{
-		json patches;
+		nlohmann::json jsonPerkEntryPoints;
 
-		patches["accumulatingMagnitude"]             = this->accumulatingMagnitude;
-		patches["alreadyCaughtPickpocketing"]        = this->alreadyCaughtPickpocketing;
-		patches["attachHitEffectArt"]                = this->attachHitEffectArt;
-		patches["blackSoulGems"]                     = this->blackSoulGems;
-		patches["cloakHitEffects"]                   = this->cloakHitEffects;
-		patches["equipBestAmmo"]                     = this->equipBestAmmo;
-		patches["improveMultipleEnchantmentEffects"] = this->improveMultipleEnchantmentEffects;
-		patches["leveledCharacters"]                 = this->leveledCharacters;
-		patches["lockpickingExperience"]             = this->lockpickingExperience;
-		patches["pausedGameHitEffects"]              = this->pausedGameHitEffects;
-		patches["perkEntryPoints"]                   = this->perkEntryPoints.Serialize();
-		patches["poisonResistance"]                  = this->poisonResistance;
-		patches["powerAttackStamina"]                = this->powerAttackStamina;
-		patches["reflectDamage"]                     = this->reflectDamage;
-		patches["scrollExperience"]                  = this->scrollExperience;
-		patches["staffExperience"]                   = this->staffExperience;
-		patches["steepSlopes"]                       = this->steepSlopes;
-		patches["underfilledSoulGems"]               = this->underfilledSoulGems;
+		jsonPerkEntryPoints["applyMultipleSpells"] = this->applyMultipleSpells;
+		jsonPerkEntryPoints["castSpells"]          = this->castSpells;
 
-		return patches;
+		return jsonPerkEntryPoints;
+	}
+
+	void Settings::Patches::Deserialize(const nlohmann::json& jsonPatches)
+	{
+		if (jsonPatches.contains("accumulatingMagnitude"))
+		{
+			jsonPatches.at("accumulatingMagnitude").get_to(this->accumulatingMagnitude);
+		}
+
+		if (jsonPatches.contains("alreadyCaughtPickpocketing"))
+		{
+			jsonPatches.at("alreadyCaughtPickpocketing").get_to(this->alreadyCaughtPickpocketing);
+		}
+
+		if (jsonPatches.contains("attachHitEffectArt"))
+		{
+			jsonPatches.at("attachHitEffectArt").get_to(this->attachHitEffectArt);
+		}
+
+		if (jsonPatches.contains("blackSoulGems"))
+		{
+			jsonPatches.at("blackSoulGems").get_to(this->blackSoulGems);
+		}
+
+		if (jsonPatches.contains("cloakHitEffects"))
+		{
+			jsonPatches.at("cloakHitEffects").get_to(this->cloakHitEffects);
+		}
+
+		if (jsonPatches.contains("equipBestAmmo"))
+		{
+			jsonPatches.at("equipBestAmmo").get_to(this->equipBestAmmo);
+		}
+
+		if (jsonPatches.contains("improveMultipleEnchantmentEffects"))
+		{
+			jsonPatches.at("improveMultipleEnchantmentEffects").get_to(this->improveMultipleEnchantmentEffects);
+		}
+
+		if (jsonPatches.contains("leveledCharacters"))
+		{
+			jsonPatches.at("leveledCharacters").get_to(this->leveledCharacters);
+		}
+
+		if (jsonPatches.contains("lockpickingExperience"))
+		{
+			jsonPatches.at("lockpickingExperience").get_to(this->lockpickingExperience);
+		}
+
+		if (jsonPatches.contains("pausedGameHitEffects"))
+		{
+			jsonPatches.at("pausedGameHitEffects").get_to(this->pausedGameHitEffects);
+		}
+
+		if (jsonPatches.contains("perkEntryPoints"))
+		{
+			this->perkEntryPoints.Deserialize(jsonPatches.at("perkEntryPoints"));
+		}
+
+		if (jsonPatches.contains("poisonResistance"))
+		{
+			jsonPatches.at("poisonResistance").get_to(this->poisonResistance);
+		}
+
+		if (jsonPatches.contains("powerAttackStamina"))
+		{
+			jsonPatches.at("powerAttackStamina").get_to(this->powerAttackStamina);
+		}
+
+		if (jsonPatches.contains("reflectDamage"))
+		{
+			jsonPatches.at("reflectDamage").get_to(this->reflectDamage);
+		}
+
+		if (jsonPatches.contains("scrollExperience"))
+		{
+			jsonPatches.at("scrollExperience").get_to(this->scrollExperience);
+		}
+
+		if (jsonPatches.contains("staffExperience"))
+		{
+			jsonPatches.at("staffExperience").get_to(this->staffExperience);
+		}
+
+		if (jsonPatches.contains("steepSlopes"))
+		{
+			jsonPatches.at("steepSlopes").get_to(this->steepSlopes);
+		}
+
+		if (jsonPatches.contains("underfilledSoulGems"))
+		{
+			jsonPatches.at("underfilledSoulGems").get_to(this->underfilledSoulGems);
+		}
+	}
+
+	nlohmann::json Settings::Patches::Serialize() const
+	{
+		nlohmann::json jsonPatches;
+
+		jsonPatches["accumulatingMagnitude"]             = this->accumulatingMagnitude;
+		jsonPatches["alreadyCaughtPickpocketing"]        = this->alreadyCaughtPickpocketing;
+		jsonPatches["attachHitEffectArt"]                = this->attachHitEffectArt;
+		jsonPatches["blackSoulGems"]                     = this->blackSoulGems;
+		jsonPatches["cloakHitEffects"]                   = this->cloakHitEffects;
+		jsonPatches["equipBestAmmo"]                     = this->equipBestAmmo;
+		jsonPatches["improveMultipleEnchantmentEffects"] = this->improveMultipleEnchantmentEffects;
+		jsonPatches["leveledCharacters"]                 = this->leveledCharacters;
+		jsonPatches["lockpickingExperience"]             = this->lockpickingExperience;
+		jsonPatches["pausedGameHitEffects"]              = this->pausedGameHitEffects;
+		jsonPatches["perkEntryPoints"]                   = this->perkEntryPoints.Serialize();
+		jsonPatches["poisonResistance"]                  = this->poisonResistance;
+		jsonPatches["powerAttackStamina"]                = this->powerAttackStamina;
+		jsonPatches["reflectDamage"]                     = this->reflectDamage;
+		jsonPatches["scrollExperience"]                  = this->scrollExperience;
+		jsonPatches["staffExperience"]                   = this->staffExperience;
+		jsonPatches["steepSlopes"]                       = this->steepSlopes;
+		jsonPatches["underfilledSoulGems"]               = this->underfilledSoulGems;
+
+		return jsonPatches;
 	}
 
 	Settings::Settings(const std::filesystem::path& path)
 	{
 		try
 		{
-			this->Deserialize(json::parse(std::ifstream(path), nullptr, true, true));
+			this->Deserialize(nlohmann::json::parse(std::ifstream(path), nullptr, true, true));
 		}
-		catch (const json::exception& exception)
+		catch (const nlohmann::json::exception& jsonException)
 		{
-			Utility::Log::Error("{}", exception.what());
+			Utility::Log::Error("{}", jsonException.what());
 		}
 	}
 
@@ -277,26 +277,26 @@ namespace ScrambledBugs
 		return singleton;
 	}
 
-	void Settings::Deserialize(const json& settings)
+	void Settings::Deserialize(const nlohmann::json& jsonSettings)
 	{
-		if (settings.contains("fixes"))
+		if (jsonSettings.contains("fixes"))
 		{
-			this->fixes.Deserialize(settings.at("fixes"));
+			this->fixes.Deserialize(jsonSettings.at("fixes"));
 		}
 
-		if (settings.contains("patches"))
+		if (jsonSettings.contains("patches"))
 		{
-			this->patches.Deserialize(settings.at("patches"));
+			this->patches.Deserialize(jsonSettings.at("patches"));
 		}
 	}
 
-	json Settings::Serialize() const
+	nlohmann::json Settings::Serialize() const
 	{
-		json settings;
+		nlohmann::json jsonSettings;
 
-		settings["fixes"]   = this->fixes.Serialize();
-		settings["patches"] = this->patches.Serialize();
+		jsonSettings["fixes"]   = this->fixes.Serialize();
+		jsonSettings["patches"] = this->patches.Serialize();
 
-		return settings;
+		return jsonSettings;
 	}
 }

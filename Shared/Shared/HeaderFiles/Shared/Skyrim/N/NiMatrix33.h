@@ -12,8 +12,10 @@ namespace Skyrim
 	{
 	public:
 		// Member functions
-		void EulerAnglesToRotationMatrix(float x, float y, float z);
-		bool RotationMatrixToEulerAngles(float& x, float& y, float& z) const;
+		void EulerAnglesToRotationMatrixXYZ(float x, float y, float z);
+		void EulerAnglesToRotationMatrixZXY(float z, float x, float y);
+		bool RotationMatrixToEulerAnglesXYZ(float& x, float& y, float& z) const;
+		bool RotationMatrixToEulerAnglesZXY(float& z, float& x, float& y) const;
 
 		// Member variables
 		float elements[3][3]; // 0

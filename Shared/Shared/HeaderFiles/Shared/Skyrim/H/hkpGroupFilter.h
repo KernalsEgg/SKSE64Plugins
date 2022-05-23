@@ -18,7 +18,7 @@ namespace Skyrim
 			kUseCollidableFilterInformation = 0xFFFFFFFF
 		};
 
-		enum SystemGroup : std::uint16_t
+		enum class SystemGroup : std::uint16_t
 		{
 			kTerrain = 1
 		};

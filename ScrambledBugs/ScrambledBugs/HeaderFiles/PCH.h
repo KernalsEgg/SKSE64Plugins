@@ -13,3 +13,5 @@
 #include <vector>     // std::vector
 
 using namespace std::literals;
+
+#include <nlohmann/json.hpp>

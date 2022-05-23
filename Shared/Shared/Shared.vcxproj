@@ -131,7 +131,9 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSFixedString.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSGeometry.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSHandleRefObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSInputDeviceManager.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSIntrusiveRefCounted.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSInvMarker.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSISoundDescriptor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSLensFlareRenderData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSMaterialObject.h" />
@@ -155,14 +157,17 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTSingleton.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTTuple.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSVolumetricLightingRenderData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\ButtonEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CameraState.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Character.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CharEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Clouds.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Color.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CombatReaction.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ContainerItemExtra.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CraftingSubMenu.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DecalData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DeviceConnectEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\Difficulty.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DirectionalAmbientLighting.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\Events.h" />
@@ -237,6 +242,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IAnimationGraphManagerHolder.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ICellAttachDetachEventSource.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ID.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IDEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMenu.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMovementInterface.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMovementState.h" />
@@ -245,18 +251,24 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\INIPrefSettingCollection.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\INISettingCollection.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InitTESThread.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InputDevice.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InputEvent.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\Inventory3DManager.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InventoryChanges.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InventoryEntryData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IPostAnimationChannelUpdateFunctor.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\K\KinectEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicCaster.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicItem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicItemTraversalFunctor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicSystem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicTarget.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MenuEventHandler.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MiddleHighProcessData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MissileProjectile.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\ModelReferenceEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\Moon.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MouseMoveEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiAVObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBillboardNode.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBinaryStream.h" />
@@ -388,6 +400,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWeightForm.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWordOfPower.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWorldSpace.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\ThumbstickEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UI.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\V\ValueModifierEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\Assembly.h" />
@@ -401,6 +414,7 @@
     <ClInclude Include="HeaderFiles\Shared\Utility\MessageBox.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\Trampoline.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\TypeTraits.h" />
+    <ClInclude Include="SourceFiles\Shared\Skyrim\I\InterfaceStrings.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">
@@ -428,6 +442,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSAtomic.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSFixedString.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSHandleRefObject.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSInputDeviceManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSIntrusiveRefCounted.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSStringPool.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\Events.cpp" />

@@ -136,6 +136,9 @@
     <Filter Include="Source Files\Shared\Utility">
       <UniqueIdentifier>{3dc289dd-4db0-4ea5-985d-200492225836}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\K">
+      <UniqueIdentifier>{e65bf8a2-9b59-4dd6-8985-7ab2bf32ac57}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HeaderFiles\Shared\PCH.h">
@@ -1284,6 +1287,48 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDecalGroup.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InputEvent.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InputDevice.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IDEvent.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\ThumbstickEvent.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MouseMoveEvent.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\K\KinectEvent.h">
+      <Filter>Header Files\Shared\Skyrim\K</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DeviceConnectEvent.h">
+      <Filter>Header Files\Shared\Skyrim\D</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CharEvent.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\ButtonEvent.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSInputDeviceManager.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFiles\Shared\Skyrim\I\InterfaceStrings.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MenuEventHandler.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\Inventory3DManager.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSInvMarker.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">
@@ -1501,6 +1546,9 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiNode.cpp">
       <Filter>Source Files\Shared\Skyrim\N</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSInputDeviceManager.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -21,8 +21,10 @@ namespace Trails::Events
 		FootstepEventSink& operator=(const FootstepEventSink&) = delete;
 		FootstepEventSink& operator=(FootstepEventSink&&) = delete;
 
+		// Override
+		virtual ~FootstepEventSink() override = default; // 0
+
 		// Override (BSTEventSink<BGSFootstepEvent>)
-		virtual ~FootstepEventSink() override = default;                                                                                                                           // 0
 		virtual Skyrim::BSEventNotifyControl ProcessEvent(const Skyrim::BGSFootstepEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::BGSFootstepEvent>* eventSource) override; // 1
 
 		// Non-member functions

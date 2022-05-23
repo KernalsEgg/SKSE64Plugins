@@ -305,9 +305,9 @@ namespace Trails
 
 					Utility::Log::Information("Deserialized {}.", filename);
 				}
-				catch (const nlohmann::json::exception& exception)
+				catch (const nlohmann::json::exception& jsonException)
 				{
-					Utility::Log::Error("{}", exception.what());
+					Utility::Log::Error("{}", jsonException.what());
 
 					throw;
 				}

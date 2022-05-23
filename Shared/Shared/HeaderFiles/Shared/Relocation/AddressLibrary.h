@@ -18,7 +18,7 @@ namespace Relocation
 		enum class ReadType : std::uint8_t
 		{
 			kSetUInt64      = 0,
-			kAddOne         = 1,
+			kAdd1           = 1,
 			kAddUInt8       = 2,
 			kSubtractUInt8  = 3,
 			kAddUInt16      = 4,
@@ -79,6 +79,8 @@ namespace Relocation
 
 		void           Dump(const std::filesystem::path& path) const;
 		std::uintptr_t GetAddress(std::uint64_t identifier) const;
+		std::uintptr_t GetAddress(std::uint64_t specialEditionIdentifier, std::uint64_t anniversaryEditionIdentifier) const;
+		std::uintptr_t GetAddress(std::uint64_t specialEditionIdentifier, std::ptrdiff_t specialEditionOffset, std::uint64_t anniversaryEditionIdentifier, std::ptrdiff_t anniversaryEditionOffset) const;
 		void           Load(const Version& productVersion);
 		void           Read(std::ifstream& inputFileStream, const Header& header);
 

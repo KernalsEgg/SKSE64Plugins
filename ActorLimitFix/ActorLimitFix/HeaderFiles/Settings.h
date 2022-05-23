@@ -2,22 +2,18 @@
 
 #include "PCH.h"
 
-#include <nlohmann/json.hpp>
-
 
 
 namespace ActorLimitFix
 {
-	using json = nlohmann::json;
-
 	class Settings
 	{
 	public:
 		class Fixes
 		{
 		public:
-			void Deserialize(const json& fixes);
-			json Serialize() const;
+			void           Deserialize(const nlohmann::json& jsonFixes);
+			nlohmann::json Serialize() const;
 
 			std::uint32_t morphLimit{ 0x80 };
 			std::uint32_t moverLimit{ 0x100 };
@@ -37,8 +33,8 @@ namespace ActorLimitFix
 
 		static Settings& GetSingleton();
 
-		void Deserialize(const json& settings);
-		json Serialize() const;
+		void           Deserialize(const nlohmann::json& jsonSettings);
+		nlohmann::json Serialize() const;
 
 		Fixes fixes;
 	};

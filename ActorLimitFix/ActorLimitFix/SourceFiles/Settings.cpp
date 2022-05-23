@@ -9,44 +9,44 @@
 
 namespace ActorLimitFix
 {
-	void Settings::Fixes::Deserialize(const json& fixes)
+	void Settings::Fixes::Deserialize(const nlohmann::json& jsonFixes)
 	{
-		if (fixes.contains("morphLimit"))
+		if (jsonFixes.contains("morphLimit"))
 		{
-			fixes.at("morphLimit").get_to(this->morphLimit);
+			jsonFixes.at("morphLimit").get_to(this->morphLimit);
 		}
 
-		if (fixes.contains("moverLimit"))
+		if (jsonFixes.contains("moverLimit"))
 		{
-			fixes.at("moverLimit").get_to(this->moverLimit);
+			jsonFixes.at("moverLimit").get_to(this->moverLimit);
 		}
 
-		if (fixes.contains("replaceStaticArray"))
+		if (jsonFixes.contains("replaceStaticArray"))
 		{
-			fixes.at("replaceStaticArray").get_to(this->replaceStaticArray);
+			jsonFixes.at("replaceStaticArray").get_to(this->replaceStaticArray);
 		}
 	}
 
-	json Settings::Fixes::Serialize() const
+	nlohmann::json Settings::Fixes::Serialize() const
 	{
-		json fixes;
+		nlohmann::json jsonFixes;
 
-		fixes["morphLimit"]         = this->morphLimit;
-		fixes["moverLimit"]         = this->moverLimit;
-		fixes["replaceStaticArray"] = this->replaceStaticArray;
+		jsonFixes["morphLimit"]         = this->morphLimit;
+		jsonFixes["moverLimit"]         = this->moverLimit;
+		jsonFixes["replaceStaticArray"] = this->replaceStaticArray;
 
-		return fixes;
+		return jsonFixes;
 	}
 
 	Settings::Settings(const std::filesystem::path& path)
 	{
 		try
 		{
-			this->Deserialize(json::parse(std::ifstream(path), nullptr, true, true));
+			this->Deserialize(nlohmann::json::parse(std::ifstream(path), nullptr, true, true));
 		}
-		catch (const json::exception& exception)
+		catch (const nlohmann::json::exception& jsonException)
 		{
-			Utility::Log::Error("{}", exception.what());
+			Utility::Log::Error("{}", jsonException.what());
 		}
 	}
 
@@ -57,20 +57,20 @@ namespace ActorLimitFix
 		return singleton;
 	}
 
-	void Settings::Deserialize(const json& settings)
+	void Settings::Deserialize(const nlohmann::json& jsonSettings)
 	{
-		if (settings.contains("fixes"))
+		if (jsonSettings.contains("fixes"))
 		{
-			this->fixes.Deserialize(settings.at("fixes"));
+			this->fixes.Deserialize(jsonSettings.at("fixes"));
 		}
 	}
 
-	json Settings::Serialize() const
+	nlohmann::json Settings::Serialize() const
 	{
-		json settings;
+		nlohmann::json jsonSettings;
 
-		settings["fixes"] = this->fixes.Serialize();
+		jsonSettings["fixes"] = this->fixes.Serialize();
 
-		return settings;
+		return jsonSettings;
 	}
 }

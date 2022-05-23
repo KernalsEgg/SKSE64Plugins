@@ -10,3 +10,5 @@
 #include <string>     // std::string
 
 using namespace std::literals;
+
+#include <nlohmann/json.hpp>

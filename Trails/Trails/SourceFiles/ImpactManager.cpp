@@ -32,7 +32,7 @@
 #include "Shared/Skyrim/N/NiPointer.h"
 #include "Shared/Skyrim/T/TES.h"
 #include "Shared/Skyrim/T/TESObjectCELL.h"
-#include "Shared/Utility/Enumeration.h"
+#include "Shared/Utility/Convert.h"
 
 
 
@@ -91,7 +91,7 @@ namespace Trails
 
 			if (rotationNode)
 			{
-				rotationNode->worldTransform.rotation.RotationMatrixToEulerAngles(eulerAngles.z, eulerAngles.x, eulerAngles.y);
+				rotationNode->worldTransform.rotation.RotationMatrixToEulerAnglesZXY(eulerAngles.z, eulerAngles.x, eulerAngles.y);
 			}
 			else
 			{
@@ -100,7 +100,7 @@ namespace Trails
 
 			Skyrim::NiMatrix33 rotationMatrix;
 
-			rotationMatrix.EulerAnglesToRotationMatrix(rayCast.rotation.rotate.z ? eulerAngles.z : 0.0F, rayCast.rotation.rotate.x ? eulerAngles.x : 0.0F, rayCast.rotation.rotate.y ? eulerAngles.y : 0.0F);
+			rotationMatrix.EulerAnglesToRotationMatrixZXY(rayCast.rotation.rotate.z ? eulerAngles.z : 0.0F, rayCast.rotation.rotate.x ? eulerAngles.x : 0.0F, rayCast.rotation.rotate.y ? eulerAngles.y : 0.0F);
 
 			originOffset = rotationMatrix * originOffset;
 			ray          = rotationMatrix * ray;
@@ -174,13 +174,13 @@ namespace Trails
 		std::uint32_t       materialID{ 0U };
 		Skyrim::NiAVObject* target3D{ nullptr };
 
-		auto terrain = Skyrim::hkpGroupFilter::GetSystemGroupFromFilterInformation(rootCollidable->broadPhaseHandle.collisionFilterInformation) == Skyrim::hkpGroupFilter::SystemGroup::kTerrain;
+		auto terrain = Skyrim::hkpGroupFilter::GetSystemGroupFromFilterInformation(rootCollidable->broadPhaseHandle.collisionFilterInformation) == Utility::ToUnderlying(Skyrim::hkpGroupFilter::SystemGroup::kTerrain);
 
 		if (terrain)
 		{
 			materialID = Skyrim::TES::GetSingleton()->GetMaterialID(position);
 
-			if (Utility::Enumeration<Skyrim::hkpWorldObject::BroadPhaseType, std::int8_t>(rootCollidable->broadPhaseHandle.type) == Skyrim::hkpWorldObject::BroadPhaseType::kEntity)
+			if (rootCollidable->broadPhaseHandle.type == Utility::ToUnderlying(Skyrim::hkpWorldObject::BroadPhaseType::kEntity))
 			{
 				auto owner = rootCollidable->GetOwner<Skyrim::hkpWorldObject>();
 
@@ -310,7 +310,7 @@ namespace Trails
 
 			if (rotationNode)
 			{
-				rotationNode->worldTransform.rotation.RotationMatrixToEulerAngles(eulerAngles.z, eulerAngles.x, eulerAngles.y);
+				rotationNode->worldTransform.rotation.RotationMatrixToEulerAnglesZXY(eulerAngles.z, eulerAngles.x, eulerAngles.y);
 			}
 			else
 			{
@@ -347,7 +347,7 @@ namespace Trails
 				eulerAngles.z += zDistribution(randomNumberGenerator);
 			}
 
-			creationData.rotation.EulerAnglesToRotationMatrix(decal.rotation.rotate.z ? eulerAngles.z : 0.0F, decal.rotation.rotate.x ? eulerAngles.x : 0.0F, decal.rotation.rotate.y ? eulerAngles.y : 0.0F);
+			creationData.rotation.EulerAnglesToRotationMatrixZXY(decal.rotation.rotate.z ? eulerAngles.z : 0.0F, decal.rotation.rotate.x ? eulerAngles.x : 0.0F, decal.rotation.rotate.y ? eulerAngles.y : 0.0F);
 		}
 
 		if (!target)

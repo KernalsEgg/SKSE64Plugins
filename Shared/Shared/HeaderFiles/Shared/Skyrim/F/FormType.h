@@ -13,6 +13,7 @@ namespace Skyrim
 		kScroll              = 0x17,
 		kArmor               = 0x1A,
 		kContainer           = 0x1C,
+		kLight               = 0x1F,
 		kStatic              = 0x22,
 		kTree                = 0x26,
 		kFlora               = 0x27,

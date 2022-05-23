@@ -46,6 +46,7 @@ namespace Relocation
 		static const Executable& GetSingleton();
 
 		const Version& GetProductVersion() const { return this->productVersion_; }
+		bool           IsSpecialEdition() const { return this->productVersion_ <= Version(1, 5, 97, 0); }
 
 	protected:
 		void SetProductVersion(const std::filesystem::path& path);

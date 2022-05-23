@@ -80,7 +80,7 @@ namespace SKSE
 		std::uint32_t editorVersion_;
 		std::uint32_t isEditor_;
 		void* (*queryInterface_)(std::uint32_t id);
-		PluginHandle (*getPluginHandle_)(); // Call in SKSEPlugin_Load
+		PluginHandle (*getPluginHandle_)(); // Call in SKSEPlugin_Query or SKSEPlugin_Load
 		std::uint32_t (*getReleaseIndex_)();
 		const PluginInfo* (*getPluginInfo_)(const char* name); // Call after PostLoad event
 	};

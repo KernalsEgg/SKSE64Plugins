@@ -4,6 +4,8 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
+#include "Shared/Skyrim/N/NiAVObject.h"
+#include "Shared/Skyrim/N/NiNode.h"
 #include "Shared/Skyrim/R/ReferenceEffectController.h"
 #include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"

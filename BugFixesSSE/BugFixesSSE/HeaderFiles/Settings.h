@@ -2,14 +2,10 @@
 
 #include "PCH.h"
 
-#include <nlohmann/json.hpp>
-
 
 
 namespace BugFixesSSE
 {
-	using json = nlohmann::json;
-
 	class Settings
 	{
 	public:
@@ -19,15 +15,15 @@ namespace BugFixesSSE
 			class SpeechExperience
 			{
 			public:
-				void Deserialize(const json& speechExperience);
-				json Serialize() const;
+				void           Deserialize(const nlohmann::json& jsonSpeechExperience);
+				nlohmann::json Serialize() const;
 
 				bool enchantedItems{ false };
 				bool itemStacks{ false };
 			};
 
-			void Deserialize(const json& fixes);
-			json Serialize() const;
+			void           Deserialize(const nlohmann::json& jsonFixes);
+			nlohmann::json Serialize() const;
 
 			bool             magicEffectConditions{ false };
 			bool             movementSpeed{ false };
@@ -47,8 +43,8 @@ namespace BugFixesSSE
 
 		static Settings& GetSingleton();
 
-		void Deserialize(const json& settings);
-		json Serialize() const;
+		void           Deserialize(const nlohmann::json& jsonSettings);
+		nlohmann::json Serialize() const;
 
 		Fixes fixes;
 	};

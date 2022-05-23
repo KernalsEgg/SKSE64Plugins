@@ -68,7 +68,9 @@ namespace Utility::Log
 		template <class... Arguments>
 		void Log(Level level, Message message, const Arguments&... arguments)
 		{
-			this->outputFileStream_
+			std::stringstream stringstream;
+
+			stringstream
 				<< fmt::format("[{:%F %T}] [{}] {}({},{}): {}",
 					   std::chrono::system_clock::now(),
 					   Levels[Utility::ToUnderlying(level)],
@@ -77,6 +79,8 @@ namespace Utility::Log
 					   message.sourceLocation.column(),
 					   fmt::format(message.stringView, arguments...))
 				<< std::endl;
+
+			this->outputFileStream_ << stringstream.rdbuf() << std::flush;
 		}
 
 		std::ofstream outputFileStream_;
