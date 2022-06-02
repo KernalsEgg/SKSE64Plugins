@@ -43,6 +43,9 @@ namespace Skyrim
 		virtual bool ProcessThumbstick(ThumbstickEvent* thumbstickEvent) override; // 3
 		virtual bool ProcessMouseMove(MouseMoveEvent* mouseMoveEvent) override;    // 4
 
+		// Non-member functions
+		static Inventory3DManager* GetSingleton();
+
 		// Member variables
 		std::uint8_t                           padding11;             // 11
 		std::uint16_t                          padding12;             // 12

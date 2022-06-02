@@ -1,6 +1,6 @@
 #include "PCH.h"
 
-#include "Events.h"
+#include "Hooks.h"
 #include "Shared/SKSE/Interfaces.h"
 #include "Shared/Utility/Log.h"
 
@@ -47,7 +47,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	SKSE::Cache::GetSingleton().Initialize(loadInterface);
 
-	LogInventoryItemRotation::Events::Register();
+	LogInventoryItemRotation::Hooks::Install();
 
 	return true;
 }

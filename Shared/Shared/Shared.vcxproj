@@ -243,6 +243,8 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ICellAttachDetachEventSource.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ID.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IDEvent.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMemoryStore.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMemoryStoreBase.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMenu.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMovementInterface.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMovementState.h" />
@@ -263,6 +265,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicItemTraversalFunctor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicSystem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicTarget.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MemoryManager.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MenuEventHandler.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MiddleHighProcessData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MissileProjectile.h" />
@@ -306,6 +309,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffectController.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RegSettingCollection.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrapHeap.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScriptEventSourceHolder.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrollItem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SetEventData.h" />
@@ -462,10 +466,12 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkStringPtr.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\I\INIPrefSettingCollection.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\I\INISettingCollection.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\Inventory3DManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\I\InventoryChanges.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\I\InventoryEntryData.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\MagicItem.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\MagicTarget.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\M\MemoryManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiAVObject.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiBinaryStream.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiMatrix33.cpp" />
@@ -475,6 +481,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\PersistentFormManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\PlayerCharacter.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\R\ReferenceEffect.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScrapHeap.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScriptEventSourceHolder.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\Sky.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\SpellItem.cpp" />

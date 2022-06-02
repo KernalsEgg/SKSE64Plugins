@@ -1329,6 +1329,18 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSInvMarker.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MemoryManager.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMemoryStoreBase.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMemoryStore.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrapHeap.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">
@@ -1549,6 +1561,15 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSInputDeviceManager.cpp">
       <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\Inventory3DManager.cpp">
+      <Filter>Source Files\Shared\Skyrim\I</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScrapHeap.cpp">
+      <Filter>Source Files\Shared\Skyrim\S</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\M\MemoryManager.cpp">
+      <Filter>Source Files\Shared\Skyrim\M</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

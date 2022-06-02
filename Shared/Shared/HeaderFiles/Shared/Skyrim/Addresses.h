@@ -292,8 +292,8 @@ namespace Skyrim::Addresses
 
 	namespace Inventory3DManager
 	{
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x16B3AC8, 1.6.318.0: SkyrimSE.exe + 0x17A6978</summary>
-		inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(268974, 215473) };
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F27180, 1.6.318.0: SkyrimSE.exe + 0x2FC1C50</summary>
+		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(517051, 403559) };
 	}
 
 	namespace InventoryChanges
@@ -315,6 +315,24 @@ namespace Skyrim::Addresses
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x101A30, 1.6.318.0: SkyrimSE.exe + 0x10BCB0</summary>
 		inline const std::uintptr_t GetCost{ Relocation::AddressLibrary::GetSingleton().GetAddress(11213, 11321) };
+	}
+
+	namespace MemoryManager
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xC02260, 1.6.318.0: SkyrimSE.exe + 0xC26F00</summary>
+		inline const std::uintptr_t Allocate{ Relocation::AddressLibrary::GetSingleton().GetAddress(66859, 68115) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xC02560, 1.6.318.0: SkyrimSE.exe + 0xC27350</summary>
+		inline const std::uintptr_t Deallocate{ Relocation::AddressLibrary::GetSingleton().GetAddress(66861, 68117) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xFCFE0, 1.6.318.0: SkyrimSE.exe + 0x106EC0</summary>
+		inline const std::uintptr_t GetSingleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(11045, 11141) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xC01800, 1.6.318.0: SkyrimSE.exe + 0xC264A0</summary>
+		inline const std::uintptr_t GetThreadScrapHeap{ Relocation::AddressLibrary::GetSingleton().GetAddress(66841, 68088) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xC024B0, 1.6.318.0: SkyrimSE.exe + 0xC27150</summary>
+		inline const std::uintptr_t Reallocate{ Relocation::AddressLibrary::GetSingleton().GetAddress(66860, 68116) };
 	}
 
 	namespace NiAVObject
@@ -360,6 +378,15 @@ namespace Skyrim::Addresses
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F26EF8, 1.6.318.0: SkyrimSE.exe + 0x2FC19C8</summary>
 		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(517014, 403521) };
+	}
+
+	namespace ScrapHeap
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xC034A0, 1.6.318.0: SkyrimSE.exe + 0xC28310</summary>
+		inline const std::uintptr_t Allocate{ Relocation::AddressLibrary::GetSingleton().GetAddress(66884, 68144) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xC03AC0, 1.6.318.0: SkyrimSE.exe + 0xC28910</summary>
+		inline const std::uintptr_t Deallocate{ Relocation::AddressLibrary::GetSingleton().GetAddress(66885, 68146) };
 	}
 
 	namespace ScriptEventSourceHolder
