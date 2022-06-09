@@ -111,6 +111,13 @@ namespace Skyrim
 		return highProcessData && highProcessData->dualCasting;
 	}
 
+	TESObjectREFR::Height Actor::IsInViewCone(TESObjectREFR* target, float viewCone) const
+	{
+		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::IsInViewCone)>::type>(Addresses::Actor::IsInViewCone) };
+
+		return function(this, target, viewCone);
+	}
+
 	bool Actor::IsNPC() const
 	{
 		auto currentProcess = this->currentProcess;
@@ -157,6 +164,13 @@ namespace Skyrim
 		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::RemoveActorValueModifiers)>::type>(Addresses::Actor::RemoveActorValueModifiers) };
 
 		function(this, actorValue);
+	}
+
+	void Actor::RemoveBasePerks()
+	{
+		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::RemoveBasePerks)>::type>(Addresses::Actor::RemoveBasePerks) };
+
+		function(this);
 	}
 
 	void Actor::RevertSelectedSpell(Utility::Enumeration<SlotType, std::uint32_t> slotType, MagicItem* selectedSpell)

@@ -16,7 +16,7 @@ namespace ScrambledBugs::Fixes
 		static void Fix(bool& activateFurniture);
 
 	private:
-		static bool Activate(Skyrim::TESFurniture* furniture, Skyrim::TESObjectREFR* target, Skyrim::TESObjectREFR* activator, bool pathingTo, Skyrim::TESBoundObject* item, std::int32_t itemCount);
+		static bool Activate(Skyrim::TESFurniture* furniture, Skyrim::TESObjectREFR* target, Skyrim::TESObjectREFR* activator, bool deferred, Skyrim::TESBoundObject* item, std::int32_t itemCount);
 
 		static decltype(&ActivateFurniture::Activate) activate_;
 	};

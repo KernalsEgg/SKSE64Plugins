@@ -25,6 +25,9 @@ namespace Skyrim
 		virtual void Unknown7(GridArray*) override; // 7
 		virtual void Unknown8(GridArray*) override; // 8
 
+		// Member functions
+		TESObjectCELL* GetCell(std::uint32_t x, std::uint32_t y) const;
+
 		// Member variables
 		TESObjectCELL** cells;     // 18
 		std::uint64_t   unknown20; // 20

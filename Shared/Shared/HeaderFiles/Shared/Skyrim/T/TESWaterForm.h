@@ -85,11 +85,11 @@ namespace Skyrim
 		virtual ~TESWaterForm() override; // 0
 
 		// Override (TESForm)
-		virtual void Unknown4(TESForm*) override;  // 4
-		virtual void Unknown6(TESForm*) override;  // 6
-		virtual void Unknown13(TESForm*) override; // 13
-		virtual void Unknown1B(TESForm*) override; // 1B
-		virtual void Unknown37(TESForm*) override; // 37
+		virtual void Unknown4(TESForm*) override;                                                                                                     // 4
+		virtual void Unknown6(TESForm*) override;                                                                                                     // 6
+		virtual void Unknown13(TESForm*) override;                                                                                                    // 13
+		virtual void Unknown1B(TESForm*) override;                                                                                                    // 1B
+		virtual bool Activate(TESObjectREFR* target, TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount) override; // 37
 
 		// Member variables
 		std::uint64_t                             unknown40;                      // 40

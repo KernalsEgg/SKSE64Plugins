@@ -132,25 +132,25 @@ namespace Skyrim
 		virtual ~TESNPC() override; // 0
 
 		// Override (TESActorBase)
-		virtual void            Unknown4(TESForm*) override;                          // 4
-		virtual void            Unknown5(TESForm*) override;                          // 5
-		virtual void            Unknown6(TESForm*) override;                          // 6
-		virtual void            UnknownC(TESForm*) override;                          // C
-		virtual void            UnknownE(TESForm*) override;                          // E
-		virtual void            UnknownF(TESForm*) override;                          // F
-		virtual void            Unknown12(TESForm*) override;                         // 12
-		virtual void            Unknown13(TESForm*) override;                         // 13
-		virtual void            Unknown2E(TESForm*) override;                         // 2E
-		virtual void            Unknown2F(TESForm*) override;                         // 2F
-		virtual void            Unknown37(TESForm*) override;                         // 37
-		virtual void            Unknown41(TESObject*) override;                       // 41
-		virtual void            Unknown48(TESBoundObject*) override;                  // 48
-		virtual void            Unknown49(TESBoundObject*) override;                  // 49
-		virtual void            Unknown4A(TESBoundObject*) override;                  // 4A
-		virtual void            Unknown4C(TESBoundObject*) override;                  // 4C
-		virtual void            Unknown4D(TESBoundObject*) override;                  // 4D
-		virtual TESCombatStyle* GetCombatStyle() override;                            // 54
-		virtual void            SetCombatStyle(TESCombatStyle* combatStyle) override; // 55
+		virtual void            Unknown4(TESForm*) override;                                                                                                     // 4
+		virtual void            Unknown5(TESForm*) override;                                                                                                     // 5
+		virtual void            Unknown6(TESForm*) override;                                                                                                     // 6
+		virtual void            UnknownC(TESForm*) override;                                                                                                     // C
+		virtual void            UnknownE(TESForm*) override;                                                                                                     // E
+		virtual void            UnknownF(TESForm*) override;                                                                                                     // F
+		virtual void            Unknown12(TESForm*) override;                                                                                                    // 12
+		virtual void            Unknown13(TESForm*) override;                                                                                                    // 13
+		virtual void            Unknown2E(TESForm*) override;                                                                                                    // 2E
+		virtual void            Unknown2F(TESForm*) override;                                                                                                    // 2F
+		virtual bool            Activate(TESObjectREFR* target, TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount) override; // 37
+		virtual void            Unknown41(TESObject*) override;                                                                                                  // 41
+		virtual void            Unknown48(TESBoundObject*) override;                                                                                             // 48
+		virtual void            Unknown49(TESBoundObject*) override;                                                                                             // 49
+		virtual void            Unknown4A(TESBoundObject*) override;                                                                                             // 4A
+		virtual void            Unknown4C(TESBoundObject*) override;                                                                                             // 4C
+		virtual void            Unknown4D(TESBoundObject*) override;                                                                                             // 4D
+		virtual TESCombatStyle* GetCombatStyle() override;                                                                                                       // 54
+		virtual void            SetCombatStyle(TESCombatStyle* combatStyle) override;                                                                            // 55
 
 		// Override (TESActorBaseData)
 		virtual void Unknown4(TESActorBaseData*) override; // 4

@@ -7,18 +7,50 @@
 #include "Shared/Skyrim/T/TESBoundObject.h"
 #include "Shared/Skyrim/T/TESContainer.h"
 #include "Shared/Skyrim/T/TESNPC.h"
+#include "Shared/Skyrim/T/TESObjectCELL.h"
 #include "Shared/Skyrim/T/TESObjectCONT.h"
+#include "Shared/Skyrim/T/TESWorldSpace.h"
+#include "Shared/Utility/Enumeration.h"
 #include "Shared/Utility/TypeTraits.h"
 
 
 
 namespace Skyrim
 {
+	bool TESObjectREFR::Activate(TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount, bool defaultProcessingOnly)
+	{
+		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::Activate)>::type>(Addresses::TESObjectREFR::Activate) };
+
+		return function(this, activator, deferred, item, itemCount, defaultProcessingOnly);
+	}
+
 	TESObjectREFR* TESObjectREFR::GetReferenceFrom3D(NiAVObject* avObject)
 	{
 		auto function{ reinterpret_cast<decltype(&TESObjectREFR::GetReferenceFrom3D)>(Addresses::TESObjectREFR::GetReferenceFrom3D) };
 
 		return function(avObject);
+	}
+
+	float TESObjectREFR::GetDistanceSquared(TESObjectREFR* target) const
+	{
+		return ((target->position.x - this->position.x) * (target->position.x - this->position.x)) +
+		       ((target->position.y - this->position.y) * (target->position.y - this->position.y)) +
+		       ((target->position.z - this->position.z) * (target->position.z - this->position.z));
+	}
+
+	float TESObjectREFR::GetDistanceSquared(TESObjectREFR* target, bool ignoreDisabled, bool ignoreWorldSpace) const
+	{
+		if (target &&
+			(Utility::Enumeration<TESObjectREFR::RecordFlags, std::uint32_t>(target->recordFlags).none(TESObjectREFR::RecordFlags::kDisabled) || ignoreDisabled) &&
+			(Utility::Enumeration<TESObjectREFR::RecordFlags, std::uint32_t>(target->recordFlags).none(TESObjectREFR::RecordFlags::kDeleted)) &&
+			(ignoreWorldSpace || this->SameWorldSpace(target, true)))
+		{
+			return this->GetDistanceSquared(target);
+		}
+		else
+		{
+			return std::numeric_limits<float>::max();
+		}
 	}
 
 	TESContainer* TESObjectREFR::GetContainer() const
@@ -55,6 +87,86 @@ namespace Skyrim
 		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::GetReferenceName)>::type>(Addresses::TESObjectREFR::GetReferenceName) };
 
 		return function(this);
+	}
+
+	bool TESObjectREFR::Is3DLoaded() const
+	{
+		return this->GetThirdPerson3D() != nullptr;
+	}
+
+	bool TESObjectREFR::SameWorldSpace(TESObjectREFR* target, bool compareParentWorldSpace) const
+	{
+		auto parentCell       = this->parentCell;
+		auto targetParentCell = target->parentCell;
+
+		if ((parentCell && parentCell->cellFlags.all(TESObjectCELL::Flags::kInteriorCell)) ||
+			(targetParentCell && targetParentCell->cellFlags.all(TESObjectCELL::Flags::kInteriorCell)))
+		{
+			return parentCell == targetParentCell;
+		}
+
+		TESWorldSpace* worldSpace{ nullptr };
+		TESWorldSpace* targetWorldSpace{ nullptr };
+
+		if (parentCell)
+		{
+			if (parentCell->cellFlags.none(TESObjectCELL::Flags::kInteriorCell))
+			{
+				worldSpace = parentCell->worldSpace;
+			}
+		}
+		else
+		{
+			auto persistentCell = this->GetPersistentCell();
+
+			if (persistentCell && persistentCell->cellFlags.none(TESObjectCELL::Flags::kInteriorCell))
+			{
+				worldSpace = persistentCell->worldSpace;
+			}
+		}
+
+		if (targetParentCell)
+		{
+			if (!targetParentCell->cellFlags.none(TESObjectCELL::Flags::kInteriorCell))
+			{
+				targetWorldSpace = targetParentCell->worldSpace;
+			}
+		}
+		else
+		{
+			auto targetPersistentCell = target->GetPersistentCell();
+
+			if (targetPersistentCell && targetPersistentCell->cellFlags.none(TESObjectCELL::Flags::kInteriorCell))
+			{
+				targetWorldSpace = targetPersistentCell->worldSpace;
+			}
+		}
+
+		if (worldSpace == targetWorldSpace)
+		{
+			return true;
+		}
+
+		if (!compareParentWorldSpace || !worldSpace || !targetWorldSpace)
+		{
+			return false;
+		}
+
+		auto parentWorldSpace = worldSpace->parentWorldSpace;
+
+		if (parentWorldSpace && worldSpace->useFlags.all(TESWorldSpace::UseFlags::kUseLandData))
+		{
+			worldSpace = parentWorldSpace;
+		}
+
+		auto targetParentWorldSpace = targetWorldSpace->parentWorldSpace;
+
+		if (targetParentWorldSpace && targetWorldSpace->useFlags.all(TESWorldSpace::UseFlags::kUseLandData))
+		{
+			targetWorldSpace = targetParentWorldSpace;
+		}
+
+		return worldSpace == targetWorldSpace;
 	}
 
 	bool TESObjectREFR::ShouldApplyDecal() const

@@ -13,6 +13,7 @@
 
 namespace Skyrim
 {
+	class Actor;
 	class BGSPerkEntry;
 
 	class BGSPerk :
@@ -36,6 +37,9 @@ namespace Skyrim
 		virtual void Unknown5(TESForm*) override;  // 5
 		virtual void Unknown6(TESForm*) override;  // 6
 		virtual void Unknown13(TESForm*) override; // 13
+
+		// Member functions
+		void ApplyPerk(Actor* perkOwner, std::uint8_t removeRank, std::uint8_t applyRank) const;
 
 		// Member variables
 		bool                    trait;       // 50

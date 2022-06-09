@@ -16,7 +16,7 @@ namespace ScrambledBugs::Fixes
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::TESFurniture::VirtualFunctionTable, 0x37, reinterpret_cast<std::uintptr_t>(std::addressof(ActivateFurniture::Activate)));
 	}
 
-	bool ActivateFurniture::Activate(Skyrim::TESFurniture* furniture, Skyrim::TESObjectREFR* target, Skyrim::TESObjectREFR* activator, bool pathingTo, Skyrim::TESBoundObject* item, std::int32_t itemCount)
+	bool ActivateFurniture::Activate(Skyrim::TESFurniture* furniture, Skyrim::TESObjectREFR* target, Skyrim::TESObjectREFR* activator, bool deferred, Skyrim::TESBoundObject* item, std::int32_t itemCount)
 	{
 		if (activator)
 		{
@@ -28,7 +28,7 @@ namespace ScrambledBugs::Fixes
 			}
 		}
 
-		return ActivateFurniture::activate_(furniture, target, activator, pathingTo, item, itemCount);
+		return ActivateFurniture::activate_(furniture, target, activator, deferred, item, itemCount);
 	}
 
 	decltype(&ActivateFurniture::Activate) ActivateFurniture::activate_{ nullptr };

@@ -261,7 +261,7 @@ namespace Skyrim
 		std::uint64_t                                                 unknown140;                 // 140
 		std::uint64_t                                                 unknown148;                 // 148
 		std::uint64_t                                                 unknown150;                 // 150
-		TESWorldSpace*                                                parentWorldspace;           // 158
+		TESWorldSpace*                                                parentWorldSpace;           // 158
 		BGSLightingTemplate*                                          interiorLighting;           // 160
 		WaterData                                                     waterData;                  // 168
 		LODData                                                       lodData;                    // 170
@@ -315,7 +315,7 @@ namespace Skyrim
 	static_assert(offsetof(TESWorldSpace, mobilePersistentReferences) == 0xD8);
 	static_assert(offsetof(TESWorldSpace, skyCell) == 0xF8);
 	static_assert(offsetof(TESWorldSpace, locations) == 0x100);
-	static_assert(offsetof(TESWorldSpace, parentWorldspace) == 0x158);
+	static_assert(offsetof(TESWorldSpace, parentWorldSpace) == 0x158);
 	static_assert(offsetof(TESWorldSpace, interiorLighting) == 0x160);
 	static_assert(offsetof(TESWorldSpace, waterData) == 0x168);
 	static_assert(offsetof(TESWorldSpace, lodData) == 0x170);

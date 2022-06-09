@@ -67,12 +67,12 @@ namespace Skyrim
 		virtual ~TESObjectCONT() override; // 0
 
 		// Override (TESBoundAnimObject)
-		virtual void Unknown4(TESForm*) override;         // 4
-		virtual void Unknown6(TESForm*) override;         // 6
-		virtual void Unknown13(TESForm*) override;        // 13
-		virtual void Unknown37(TESForm*) override;        // 37
-		virtual void Unknown4C(TESBoundObject*) override; // 4C
-		virtual void Unknown4D(TESBoundObject*) override; // 4D
+		virtual void Unknown4(TESForm*) override;                                                                                                     // 4
+		virtual void Unknown6(TESForm*) override;                                                                                                     // 6
+		virtual void Unknown13(TESForm*) override;                                                                                                    // 13
+		virtual bool Activate(TESObjectREFR* target, TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount) override; // 37
+		virtual void Unknown4C(TESBoundObject*) override;                                                                                             // 4C
+		virtual void Unknown4D(TESBoundObject*) override;                                                                                             // 4D
 
 		// Override (BGSOpenCloseForm)
 		virtual void HandleOpen(TESObjectREFR* target, TESObjectREFR* activator) override;  // 1

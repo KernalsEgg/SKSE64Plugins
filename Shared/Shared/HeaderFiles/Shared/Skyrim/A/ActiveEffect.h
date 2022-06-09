@@ -49,31 +49,31 @@ namespace Skyrim
 		static_assert(sizeof(Conditions) == 0x4);
 
 		// Add
-		virtual void Unknown0(ActiveEffect*);  // 0
-		virtual void Unknown1(ActiveEffect*);  // 1
-		virtual void Unknown2(ActiveEffect*);  // 2
-		virtual void Unknown3(ActiveEffect*);  // 3
-		virtual void Unknown4(ActiveEffect*);  // 4
-		virtual void Unknown5(ActiveEffect*);  // 5
-		virtual void Unknown6(ActiveEffect*);  // 6
-		virtual void Unknown7(ActiveEffect*);  // 7
-		virtual void Unknown8(ActiveEffect*);  // 8
-		virtual void Unknown9(ActiveEffect*);  // 9
-		virtual void UnknownA(ActiveEffect*);  // A
-		virtual void UnknownB(ActiveEffect*);  // B
-		virtual void UnknownC(ActiveEffect*);  // C
-		virtual void UnknownD(ActiveEffect*);  // D
-		virtual void UnknownE(ActiveEffect*);  // E
-		virtual void UnknownF(ActiveEffect*);  // F
-		virtual void Unknown10(ActiveEffect*); // 10
-		virtual void Unknown11(ActiveEffect*); // 11
-		virtual void Unknown12(ActiveEffect*); // 12
-		virtual ~ActiveEffect();               // 13
-		virtual void Unknown14(ActiveEffect*); // 14
-		virtual void Unknown15(ActiveEffect*); // 15
-		virtual void Unknown16(ActiveEffect*); // 16
-		virtual void Unknown17(ActiveEffect*); // 17
-		virtual void Unknown18(ActiveEffect*); // 18
+		virtual void Unknown0(ActiveEffect*);        // 0
+		virtual void Unknown1(ActiveEffect*);        // 1
+		virtual void Unknown2(ActiveEffect*);        // 2
+		virtual void Unknown3(ActiveEffect*);        // 3
+		virtual void Update(float elapsedTimeDelta); // 4
+		virtual void Unknown5(ActiveEffect*);        // 5
+		virtual void Unknown6(ActiveEffect*);        // 6
+		virtual void Unknown7(ActiveEffect*);        // 7
+		virtual void Unknown8(ActiveEffect*);        // 8
+		virtual void Unknown9(ActiveEffect*);        // 9
+		virtual void UnknownA(ActiveEffect*);        // A
+		virtual void UnknownB(ActiveEffect*);        // B
+		virtual void UnknownC(ActiveEffect*);        // C
+		virtual void UnknownD(ActiveEffect*);        // D
+		virtual void UnknownE(ActiveEffect*);        // E
+		virtual void UnknownF(ActiveEffect*);        // F
+		virtual void Unknown10(ActiveEffect*);       // 10
+		virtual void Unknown11(ActiveEffect*);       // 11
+		virtual void Unknown12(ActiveEffect*);       // 12
+		virtual ~ActiveEffect();                     // 13
+		virtual void Start();                        // 14
+		virtual void Finish();                       // 15
+		virtual void Unknown16(ActiveEffect*);       // 16
+		virtual void Unknown17(ActiveEffect*);       // 17
+		virtual void Unknown18(ActiveEffect*);       // 18
 
 		// Non-member function
 		static float GetCurrentMagnitude(float magnitude, float remainingTime, float taperDuration, float taperWeight, float taperCurve);

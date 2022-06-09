@@ -190,7 +190,7 @@ namespace Skyrim
 		virtual void        UnknownFC(Actor*) override;             // FC
 		virtual void        UnknownFD(Actor*) override;             // FD
 		virtual void        UnknownFE(Actor*) override;             // FE
-		virtual void        Unknown101(Actor*) override;            // 101
+		virtual void        ApplyBasePerks() override;              // 101
 		virtual void        Unknown102(Actor*) override;            // 102
 		virtual void        Unknown103(Actor*) override;            // 103
 		virtual void        Unknown105(Actor*) override;            // 105
@@ -273,7 +273,7 @@ namespace Skyrim
 		std::uint64_t                                                unknown498;               // 498
 		std::uint64_t                                                unknown4A0;               // 4A0
 		std::uint64_t                                                unknown4A8;               // 4A8
-		BSTArray<PerkRank*>                                          addedPerks;               // 4B0
+		BSTArray<PerkRank*>                                          addedPerkRanks;           // 4B0
 		BSTArray<BGSPerk*>                                           perks;                    // 4C8
 		BSTArray<BGSPerk*>                                           standingStonePerks;       // 4E0
 		BSTArray<ObjectReferenceHandle>                              currentMapMarkers;        // 4F8
@@ -510,7 +510,7 @@ namespace Skyrim
 	static_assert(offsetof(PlayerCharacter, crimeGold) == 0x3E0);
 	static_assert(offsetof(PlayerCharacter, stolenItemValue) == 0x410);
 	static_assert(offsetof(PlayerCharacter, commandedActorWaitMarker) == 0x440);
-	static_assert(offsetof(PlayerCharacter, addedPerks) == 0x4B0);
+	static_assert(offsetof(PlayerCharacter, addedPerkRanks) == 0x4B0);
 	static_assert(offsetof(PlayerCharacter, perks) == 0x4C8);
 	static_assert(offsetof(PlayerCharacter, standingStonePerks) == 0x4E0);
 	static_assert(offsetof(PlayerCharacter, currentMapMarkers) == 0x4F8);

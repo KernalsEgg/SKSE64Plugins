@@ -22,4 +22,9 @@ namespace Skyrim
 
 		return function(this);
 	}
+
+	bool TESObjectCELL::IsAttached() const
+	{
+		return this->cellState == TESObjectCELL::State::kAttached;
+	}
 }

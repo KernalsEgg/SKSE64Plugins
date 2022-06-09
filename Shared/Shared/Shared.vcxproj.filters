@@ -1341,6 +1341,12 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrapHeap.h">
       <Filter>Header Files\Shared\Skyrim\S</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScriptEffect.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConcussionEffect.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">
@@ -1570,6 +1576,12 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\MemoryManager.cpp">
       <Filter>Source Files\Shared\Skyrim\M</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GridCellArray.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSPerk.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

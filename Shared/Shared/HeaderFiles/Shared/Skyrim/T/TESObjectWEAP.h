@@ -188,16 +188,16 @@ namespace Skyrim
 		virtual ~TESObjectWEAP() override; // 0
 
 		// Override (TESBoundObject)
-		virtual void Unknown4(TESForm*) override;  // 4
-		virtual void Unknown5(TESForm*) override;  // 5
-		virtual void Unknown6(TESForm*) override;  // 6
-		virtual void UnknownE(TESForm*) override;  // E
-		virtual void UnknownF(TESForm*) override;  // F
-		virtual void Unknown13(TESForm*) override; // 13
-		virtual void Unknown14(TESForm*) override; // 14
-		virtual bool IsPlayable() const override;  // 19
-		virtual void Unknown37(TESForm*) override; // 37
-		virtual void Unknown39(TESForm*) override; // 39
+		virtual void Unknown4(TESForm*) override;                                                                                                     // 4
+		virtual void Unknown5(TESForm*) override;                                                                                                     // 5
+		virtual void Unknown6(TESForm*) override;                                                                                                     // 6
+		virtual void UnknownE(TESForm*) override;                                                                                                     // E
+		virtual void UnknownF(TESForm*) override;                                                                                                     // F
+		virtual void Unknown13(TESForm*) override;                                                                                                    // 13
+		virtual void Unknown14(TESForm*) override;                                                                                                    // 14
+		virtual bool IsPlayable() const override;                                                                                                     // 19
+		virtual bool Activate(TESObjectREFR* target, TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount) override; // 37
+		virtual void Unknown39(TESForm*) override;                                                                                                    // 39
 
 		// Override (BGSPreloadable)
 		virtual void Unknown4(BGSPreloadable*) override; // 4

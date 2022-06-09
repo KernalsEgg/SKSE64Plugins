@@ -22,16 +22,16 @@ namespace Skyrim
 		virtual ~TESObjectTREE() override; // 0
 
 		// Override (TESBoundObject)
-		virtual void Unknown4(TESForm*) override;         // 4
-		virtual void Unknown6(TESForm*) override;         // 6
-		virtual void Unknown13(TESForm*) override;        // 13
-		virtual void Unknown37(TESForm*) override;        // 37
-		virtual void Unknown44(TESObject*) override;      // 44
-		virtual void Unknown4C(TESBoundObject*) override; // 4C
-		virtual void Unknown4F(TESBoundObject*) override; // 4F
-		virtual void Unknown50(TESBoundObject*) override; // 50
-		virtual void Unknown51(TESBoundObject*) override; // 51
-		virtual void Unknown52(TESBoundObject*) override; // 52
+		virtual void Unknown4(TESForm*) override;                                                                                                     // 4
+		virtual void Unknown6(TESForm*) override;                                                                                                     // 6
+		virtual void Unknown13(TESForm*) override;                                                                                                    // 13
+		virtual bool Activate(TESObjectREFR* target, TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount) override; // 37
+		virtual void Unknown44(TESObject*) override;                                                                                                  // 44
+		virtual void Unknown4C(TESBoundObject*) override;                                                                                             // 4C
+		virtual void Unknown4F(TESBoundObject*) override;                                                                                             // 4F
+		virtual void Unknown50(TESBoundObject*) override;                                                                                             // 50
+		virtual void Unknown51(TESBoundObject*) override;                                                                                             // 51
+		virtual void Unknown52(TESBoundObject*) override;                                                                                             // 52
 
 		// Member variables
 		float         trunkFlexibility;  // 88

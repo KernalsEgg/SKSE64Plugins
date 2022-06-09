@@ -20,15 +20,15 @@ namespace Skyrim
 		virtual ~ValueModifierEffect() override; // 13
 
 		// Override (ActiveEffect)
-		virtual void Unknown1(ActiveEffect*) override;  // 1
-		virtual void Unknown4(ActiveEffect*) override;  // 4
-		virtual void Unknown6(ActiveEffect*) override;  // 6
-		virtual void Unknown11(ActiveEffect*) override; // 11
-		virtual void Unknown12(ActiveEffect*) override; // 12
-		virtual void Unknown14(ActiveEffect*) override; // 14
-		virtual void Unknown15(ActiveEffect*) override; // 15
-		virtual void Unknown17(ActiveEffect*) override; // 17
-		virtual void Unknown18(ActiveEffect*) override; // 18
+		virtual void Unknown1(ActiveEffect*) override;        // 1
+		virtual void Update(float elapsedTimeDelta) override; // 4
+		virtual void Unknown6(ActiveEffect*) override;        // 6
+		virtual void Unknown11(ActiveEffect*) override;       // 11
+		virtual void Unknown12(ActiveEffect*) override;       // 12
+		virtual void Start() override;                        // 14
+		virtual void Finish() override;                       // 15
+		virtual void Unknown17(ActiveEffect*) override;       // 17
+		virtual void Unknown18(ActiveEffect*) override;       // 18
 
 		// Add
 		virtual void Unknown19(ValueModifierEffect*);                                                                              // 19

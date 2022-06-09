@@ -164,6 +164,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Clouds.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Color.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CombatReaction.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConcussionEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ContainerItemExtra.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CraftingSubMenu.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DecalData.h" />
@@ -310,6 +311,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffectController.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RegSettingCollection.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrapHeap.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScriptEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScriptEventSourceHolder.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrollItem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SetEventData.h" />
@@ -438,6 +440,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSImpactDataSet.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSImpactManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSMaterialType.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSPerk.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSSaveGameBuffer.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\bhkNiCollisionObject.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\bhkShape.cpp" />
@@ -456,6 +459,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindAppropriateDisplaceEffect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindMaxMagnitudeVisitor.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GameSettingCollection.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GridCellArray.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpClosestRayHitCollector.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpCollidable.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpGroupFilter.cpp" />

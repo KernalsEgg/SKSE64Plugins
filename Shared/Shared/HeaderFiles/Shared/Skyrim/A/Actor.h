@@ -134,7 +134,7 @@ namespace Skyrim
 		virtual void         Unknown95(TESObjectREFR*) override;                                                                     // 95
 		virtual void         Unknown96(TESObjectREFR*) override;                                                                     // 96
 		virtual void         Unknown98(TESObjectREFR*) override;                                                                     // 98
-		virtual void         Unknown99(TESObjectREFR*) override;                                                                     // 99
+		virtual bool         IsDead(bool nonEssential) const override;                                                               // 99
 		virtual void         Unknown9C(TESObjectREFR*) override;                                                                     // 9C
 		virtual void         Unknown9D(TESObjectREFR*) override;                                                                     // 9D
 		virtual void         Unknown9E(TESObjectREFR*) override;                                                                     // 9E
@@ -309,7 +309,7 @@ namespace Skyrim
 		virtual void UnknownFE(Actor*);      // FE
 		virtual void UnknownFF(Actor*);      // FF
 		virtual void Unknown100(Actor*);     // 100
-		virtual void Unknown101(Actor*);     // 101
+		virtual void ApplyBasePerks();       // 101
 		virtual void Unknown102(Actor*);     // 102
 		virtual void Unknown103(Actor*);     // 103
 		virtual void Unknown104(Actor*);     // 104
@@ -359,11 +359,13 @@ namespace Skyrim
 		bool                    GetMovementActor(NiPointer<Actor>& movementActor);
 		SoulLevel               GetSoulLevel() const;
 		bool                    IsDualCasting() const;
+		TESObjectREFR::Height   IsInViewCone(TESObjectREFR* target, float viewCone) const;
 		bool                    IsNPC() const;
 		bool                    IsOnMount() const;
 		bool                    IsPlayerTeammate() const;
 		void                    ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float previousValue, float deltaValue, Actor* source);
 		void                    RemoveActorValueModifiers(Utility::Enumeration<ActorValue, std::uint32_t> actorValue);
+		void                    RemoveBasePerks();
 		void                    RevertSelectedSpell(Utility::Enumeration<SlotType, std::uint32_t> slotType, MagicItem* selectedSpell);
 		void                    SetMaximumWardPower(float maximumWardPower);
 

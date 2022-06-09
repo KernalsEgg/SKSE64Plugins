@@ -18,8 +18,8 @@ namespace Skyrim
 		// Override (ValueModifierEffect)
 		virtual void Unknown8(ActiveEffect*) override;         // 8
 		virtual void Unknown9(ActiveEffect*) override;         // 9
-		virtual void Unknown14(ActiveEffect*) override;        // 14
-		virtual void Unknown15(ActiveEffect*) override;        // 15
+		virtual void Start() override;                         // 14
+		virtual void Finish() override;                        // 15
 		virtual void Unknown1A(ValueModifierEffect*) override; // 1A
 		virtual void Unknown1C(ValueModifierEffect*) override; // 1C
 		virtual void Unknown1D(ValueModifierEffect*) override; // 1D

@@ -210,6 +210,12 @@ namespace Skyrim
 		};
 		static_assert(sizeof(Flags) == 0x2);
 
+		enum class State : std::uint8_t
+		{
+			kAttached = 7
+		};
+		static_assert(sizeof(State) == 0x1);
+
 		// Override
 		virtual ~TESObjectCELL() override; // 0
 
@@ -234,13 +240,16 @@ namespace Skyrim
 		// Member functions
 		BSTempEffectParticle* CreateTemporaryEffectParticle(float duration, const char* model, const NiPoint3& normal, const NiPoint3& position, float scale, std::uint32_t flags, NiAVObject* target3D);
 		bhkWorld*             GetHavokWorld() const;
+		bool                  IsAttached() const;
 
 		// Member variables
 		std::uint64_t                              unknown30;      // 30
 		std::uint64_t                              unknown38;      // 38
 		Utility::Enumeration<Flags, std::uint16_t> cellFlags;      // 40
 		std::uint16_t                              unknown42;      // 42
-		std::uint32_t                              unknown44;      // 44
+		Utility::Enumeration<State, std::uint8_t>  cellState;      // 44
+		std::uint8_t                               unknown45;      // 45
+		std::uint16_t                              unknown46;      // 46
 		std::uint64_t                              unknown48;      // 48
 		std::uint64_t                              unknown50;      // 50
 		std::uint64_t                              unknown58;      // 58
@@ -269,6 +278,7 @@ namespace Skyrim
 		std::uint64_t                              unknown138;     // 138
 	};
 	static_assert(offsetof(TESObjectCELL, cellFlags) == 0x40);
+	static_assert(offsetof(TESObjectCELL, cellState) == 0x44);
 	static_assert(offsetof(TESObjectCELL, cellData) == 0x60);
 	static_assert(offsetof(TESObjectCELL, references) == 0x80);
 	static_assert(offsetof(TESObjectCELL, lock) == 0x118);
