@@ -23,11 +23,11 @@ namespace Skyrim
 		return function(this, size, alignment, aligned);
 	}
 
-	void MemoryManager::Deallocate(void* memory, bool aligned)
+	void MemoryManager::Deallocate(void* pointer, bool aligned)
 	{
 		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&MemoryManager::Deallocate)>::type>(Addresses::MemoryManager::Deallocate) };
 
-		function(this, memory, aligned);
+		function(this, pointer, aligned);
 	}
 
 	ScrapHeap* MemoryManager::GetThreadScrapHeap()
@@ -37,10 +37,10 @@ namespace Skyrim
 		return function(this);
 	}
 
-	void* MemoryManager::Reallocate(void* memory, std::size_t size, std::uint32_t alignment, bool aligned)
+	void* MemoryManager::Reallocate(void* pointer, std::size_t size, std::uint32_t alignment, bool aligned)
 	{
 		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&MemoryManager::Reallocate)>::type>(Addresses::MemoryManager::Reallocate) };
 
-		return function(this, memory, size, alignment, aligned);
+		return function(this, pointer, size, alignment, aligned);
 	}
 }

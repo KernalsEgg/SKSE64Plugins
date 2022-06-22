@@ -9,6 +9,7 @@ namespace Skyrim
 	enum class FormType
 	{
 		kNone                = 0,
+		kScript              = 0x13,
 		kEnchantment         = 0x15,
 		kScroll              = 0x17,
 		kArmor               = 0x1A,

@@ -35,8 +35,8 @@ namespace Relocation
 
 			std::int32_t format;
 			Version      productVersion{ Version({}, {}, {}, {}) };
-			std::int32_t filenameLength;
-			std::string  filename;
+			std::int32_t fileNameLength;
+			std::string  fileName;
 			std::int32_t pointerSize;
 			std::int32_t addressCount;
 		};

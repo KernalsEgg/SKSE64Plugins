@@ -41,6 +41,8 @@ namespace ActorBasePerkFix
 
 	void Hooks::ApplyBasePerksActorImplementation(Skyrim::Actor* actor)
 	{
+		actor->RemoveBasePerks();
+
 		auto currentProcess = actor->currentProcess;
 
 		if (!currentProcess)
@@ -54,8 +56,6 @@ namespace ActorBasePerkFix
 		{
 			return;
 		}
-
-		actor->RemoveBasePerks();
 
 		auto npc = static_cast<Skyrim::TESNPC*>(actor->baseObject);
 

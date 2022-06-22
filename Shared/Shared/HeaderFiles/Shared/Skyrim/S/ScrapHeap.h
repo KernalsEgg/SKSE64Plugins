@@ -53,7 +53,7 @@ namespace Skyrim
 		virtual ~ScrapHeap() override; // 0
 
 		// Override (IMemoryStore)
-		virtual std::size_t Size(const void* memory) const override;                                           // 1
+		virtual std::size_t Size(const void* pointer) const override;                                          // 1
 		virtual void        GetMemoryStatistics(MemoryStatistics* memoryStatistics) override;                  // 2
 		virtual bool        ContainsBlockImplementation(const void* block) const override;                     // 3
 		virtual void*       AllocateAlignedImplementation(std::size_t size, std::uint32_t alignment) override; // 4
@@ -61,7 +61,7 @@ namespace Skyrim
 
 		// Member functions
 		void* Allocate(std::size_t size, std::size_t alignment);
-		void  Deallocate(void* memory);
+		void  Deallocate(void* pointer);
 
 		// Member variables
 		FreeBlock*    freeSmallBlocks[6];  // 8

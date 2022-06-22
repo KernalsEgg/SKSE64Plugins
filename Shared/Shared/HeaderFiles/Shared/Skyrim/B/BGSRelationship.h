@@ -49,7 +49,7 @@ namespace Skyrim
 		virtual ~BGSRelationship() override; // 0
 
 		// Override (TESForm)
-		virtual void Unknown4(TESForm*) override;  // 4
+		virtual void InitializeData() override;    // 4
 		virtual void Unknown6(TESForm*) override;  // 6
 		virtual void UnknownE(TESForm*) override;  // E
 		virtual void UnknownF(TESForm*) override;  // F

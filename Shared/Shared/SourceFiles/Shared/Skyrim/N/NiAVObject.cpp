@@ -9,11 +9,11 @@
 
 namespace Skyrim
 {
-	NiAVObject* NiAVObject::GetBoneFromName(const BSFixedString& name, bool allNames)
+	NiAVObject* NiAVObject::GetBoneFromName(const BSFixedString& name, bool objects)
 	{
 		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&NiAVObject::GetBoneFromName)>::type>(Addresses::NiAVObject::GetBoneFromName) };
 
-		return function(this, name, allNames);
+		return function(this, name, objects);
 	}
 
 	bhkCollisionObject* NiAVObject::GetCollisionObject() const

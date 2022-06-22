@@ -209,6 +209,12 @@ namespace Skyrim::Addresses
 		inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(257699, 205885) };
 	}
 
+	namespace Console
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F4C31C, 1.6.318.0: SkyrimSE.exe + 0x2FE6FE4</summary>
+		inline const std::uintptr_t SelectedReferenceHandle{ Relocation::AddressLibrary::GetSingleton().GetAddress(519394, 405935) };
+	}
+
 	namespace CraftingSubMenus
 	{
 		namespace EnchantConstructMenu
@@ -293,6 +299,12 @@ namespace Skyrim::Addresses
 		inline const std::uintptr_t RemoveReference{ Relocation::AddressLibrary::GetSingleton().GetAddress(56607, 57011) };
 	}
 
+	namespace IFormFactory
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x191B70, 1.6.318.0: SkyrimSE.exe + 0x19C630</summary>
+		inline const std::uintptr_t GetFormFactoryFromFormType{ Relocation::AddressLibrary::GetSingleton().GetAddress(14432, 14587) };
+	}
+
 	namespace INIPrefSettingCollection
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DB3230, 1.6.318.0: SkyrimSE.exe + 0x1E472A0</summary>
@@ -312,6 +324,12 @@ namespace Skyrim::Addresses
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x164D900, 1.6.318.0: SkyrimSE.exe + 0x1744760</summary>
 		inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(259694, 207137) };
+	}
+
+	namespace InterfaceStrings
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1EC0A78, 1.6.318.0: SkyrimSE.exe + 0x1F5B278</summary>
+		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(514286, 400446) };
 	}
 
 	namespace Inventory3DManager
@@ -416,6 +434,15 @@ namespace Skyrim::Addresses
 		inline const std::uintptr_t Deallocate{ Relocation::AddressLibrary::GetSingleton().GetAddress(66885, 68146) };
 	}
 
+	namespace Script
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2E75F0, 1.6.318.0: SkyrimSE.exe + 0x2FBA00</summary>
+		inline const std::uintptr_t CompileAndRun{ Relocation::AddressLibrary::GetSingleton().GetAddress(21416, 21890) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2E6ED0, 1.6.318.0: SkyrimSE.exe + 0x2FB2E0</summary>
+		inline const std::uintptr_t SetCommand{ Relocation::AddressLibrary::GetSingleton().GetAddress(21409, 21883) };
+	}
+
 	namespace ScriptEventSourceHolder
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x186790, 1.6.318.0: SkyrimSE.exe + 0x1941C0</summary>
@@ -511,8 +538,8 @@ namespace Skyrim::Addresses
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2945E0, 1.6.318.0: SkyrimSE.exe + 0x2A6CB0</summary>
 		inline const std::uintptr_t GetReferenceFrom3D{ Relocation::AddressLibrary::GetSingleton().GetAddress(19323, 19750) };
 
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x296460, 1.6.318.0: SkyrimSE.exe + 0x2A8B00</summary>
-		inline const std::uintptr_t GetReferenceName{ Relocation::AddressLibrary::GetSingleton().GetAddress(19355, 19782) };
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2961F0, 1.6.318.0: SkyrimSE.exe + 0x2A88A0</summary>
+		inline const std::uintptr_t GetReferenceName{ Relocation::AddressLibrary::GetSingleton().GetAddress(19354, 19781) };
 	}
 
 	namespace TESObjectWEAP
@@ -529,10 +556,19 @@ namespace Skyrim::Addresses
 
 	namespace UI
 	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xEBE150, 1.6.318.0: SkyrimSE.exe + 0xF044A0</summary>
+		inline const std::uintptr_t IsMenuOpen{ Relocation::AddressLibrary::GetSingleton().GetAddress(79937, 82074) };
+
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x8DA3D0, 1.6.318.0: SkyrimSE.exe + 0x909870</summary>
 		inline const std::uintptr_t Notification{ Relocation::AddressLibrary::GetSingleton().GetAddress(52050, 52933) };
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1EBEB20, 1.6.318.0: SkyrimSE.exe + 0x1F59320</summary>
 		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(514178, 400327) };
+	}
+
+	namespace UserEvents
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F25250, 1.6.318.0: SkyrimSE.exe + 0x2FBF640</summary>
+		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(516458, 402638) };
 	}
 }

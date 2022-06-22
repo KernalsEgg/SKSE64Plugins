@@ -164,7 +164,10 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Clouds.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Color.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CombatReaction.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CommandTable.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConcreteFormFactory.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConcussionEffect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Console.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ContainerItemExtra.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CraftingSubMenu.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DecalData.h" />
@@ -244,6 +247,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ICellAttachDetachEventSource.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ID.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IDEvent.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IFormFactory.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMemoryStore.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMemoryStoreBase.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMenu.h" />
@@ -256,6 +260,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InitTESThread.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InputDevice.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InputEvent.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InterfaceStrings.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\Inventory3DManager.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InventoryChanges.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InventoryEntryData.h" />
@@ -311,6 +316,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffectController.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RegSettingCollection.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrapHeap.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Script.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScriptEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScriptEventSourceHolder.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrollItem.h" />
@@ -366,6 +372,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLeveledList.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLevItem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLevSpell.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLoadGameEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESMagicCasterForm.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESMagicTargetForm.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESModel.h" />
@@ -408,6 +415,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESWorldSpace.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\ThumbstickEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UI.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UserEvents.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\V\ValueModifierEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\Assembly.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\Convert.h" />
@@ -420,7 +428,6 @@
     <ClInclude Include="HeaderFiles\Shared\Utility\MessageBox.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\Trampoline.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\TypeTraits.h" />
-    <ClInclude Include="SourceFiles\Shared\Skyrim\I\InterfaceStrings.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">
@@ -452,6 +459,9 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSInputDeviceManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSIntrusiveRefCounted.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSStringPool.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\ButtonEvent.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\C\CommandTable.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\C\Console.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\Events.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\Effect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\EnchantmentItem.cpp" />
@@ -468,8 +478,10 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkReferencedObject.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkSimpleProperty.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkStringPtr.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\IFormFactory.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\I\INIPrefSettingCollection.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\I\INISettingCollection.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\InterfaceStrings.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\I\Inventory3DManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\I\InventoryChanges.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\I\InventoryEntryData.cpp" />
@@ -486,6 +498,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\PlayerCharacter.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\R\ReferenceEffect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScrapHeap.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\Script.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScriptEventSourceHolder.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\Sky.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\SpellItem.cpp" />
@@ -500,6 +513,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectWEAP.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESSoulGem.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\U\UI.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\U\UserEvents.cpp" />
     <ClCompile Include="SourceFiles\Shared\Utility\Log.cpp" />
     <ClCompile Include="SourceFiles\Shared\Utility\Memory.cpp" />
     <ClCompile Include="SourceFiles\Shared\Utility\Trampoline.cpp" />

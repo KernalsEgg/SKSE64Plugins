@@ -60,7 +60,7 @@ namespace Skyrim
 		virtual void        Unknown34(NiAVObject*);                       // 34
 
 		// Member functions
-		NiAVObject*         GetBoneFromName(const BSFixedString& name, bool allNames);
+		NiAVObject*         GetBoneFromName(const BSFixedString& name, bool objects);
 		bhkCollisionObject* GetCollisionObject() const;
 
 		// Member variables

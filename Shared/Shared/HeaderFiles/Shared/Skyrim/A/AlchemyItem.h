@@ -62,8 +62,8 @@ namespace Skyrim
 		virtual ~AlchemyItem() override; // 0
 
 		// Override (MagicItem)
-		virtual void                     Unknown4(TESForm*) override;     // 4
-		virtual void                     Unknown5(TESForm*) override;     // 5
+		virtual void                     InitializeData() override;       // 4
+		virtual void                     ClearData() override;            // 5
 		virtual void                     Unknown13(TESForm*) override;    // 13
 		virtual MagicSystem::SpellType   GetSpellType() const override;   // 53
 		virtual MagicSystem::CastingType GetCastingType() const override; // 55

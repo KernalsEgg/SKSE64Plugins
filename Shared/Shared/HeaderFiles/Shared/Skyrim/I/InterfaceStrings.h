@@ -13,6 +13,9 @@ namespace Skyrim
 		public BSTSingletonSDM<InterfaceStrings> // 0
 	{
 	public:
+		// Non-member functions
+		static InterfaceStrings* GetSingleton();
+
 		// Member variables
 		std::uint8_t  padding1;                // 1
 		std::uint16_t padding2;                // 2

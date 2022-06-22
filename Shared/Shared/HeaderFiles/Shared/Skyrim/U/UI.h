@@ -3,6 +3,7 @@
 #include "Shared/PCH.h"
 
 #include "Shared/Skyrim/B/BSAtomic.h"
+#include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/B/BSTEventSource.h"
 #include "Shared/Skyrim/B/BSTSingleton.h"
 
@@ -25,6 +26,8 @@ namespace Skyrim
 		static void Notification(const char* notification, const char* sound, bool queueOnce);
 
 		// Member functions
+		bool IsMenuOpen(const BSFixedString& menuName) const;
+
 		template <class T>
 		BSTEventSource<T>* GetEventSource()
 		{

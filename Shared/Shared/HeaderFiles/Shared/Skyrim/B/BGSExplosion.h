@@ -48,7 +48,7 @@ namespace Skyrim
 		virtual ~BGSExplosion() override; // 0
 
 		// Override (TESBoundObject)
-		virtual void Unknown4(TESForm*) override;    // 4
+		virtual void InitializeData() override;      // 4
 		virtual void Unknown6(TESForm*) override;    // 6
 		virtual void Unknown13(TESForm*) override;   // 13
 		virtual void Unknown40(TESObject*) override; // 40

@@ -37,16 +37,16 @@ namespace Relocation
 				productVersion.build);
 		}
 
-		const auto& executableFilename = Executable::GetSingleton().GetPath().filename();
-		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->filenameLength)), sizeof(std::int32_t));
+		const auto& executableFileName = Executable::GetSingleton().GetPath().filename();
+		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->fileNameLength)), sizeof(std::int32_t));
 
-		std::vector<char> filename(this->filenameLength);
-		inputFileStream.read(filename.data(), filename.size());
-		this->filename = std::string(filename.data(), filename.size());
+		std::vector<char> fileName(this->fileNameLength);
+		inputFileStream.read(fileName.data(), fileName.size());
+		this->fileName = std::string(fileName.data(), fileName.size());
 
-		if (_stricmp(this->filename.c_str(), executableFilename.string().c_str()) != 0)
+		if (_stricmp(this->fileName.c_str(), executableFileName.string().c_str()) != 0)
 		{
-			Utility::MessageBox::Error("Unexpected filename encountered, {}. Expected {}.", this->filename, executableFilename.string());
+			Utility::MessageBox::Error("Unexpected file name encountered, {}. Expected {}.", this->fileName, executableFileName.string());
 		}
 
 		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->pointerSize)), sizeof(std::int32_t));

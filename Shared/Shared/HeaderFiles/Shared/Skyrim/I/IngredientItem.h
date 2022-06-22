@@ -51,8 +51,8 @@ namespace Skyrim
 		virtual ~IngredientItem() override; // 0
 
 		// Override (MagicItem)
-		virtual void                     Unknown4(TESForm*) override;                                                 // 4
-		virtual void                     Unknown5(TESForm*) override;                                                 // 5
+		virtual void                     InitializeData() override;                                                   // 4
+		virtual void                     ClearData() override;                                                        // 5
 		virtual void                     UnknownE(TESForm*) override;                                                 // E
 		virtual void                     UnknownF(TESForm*) override;                                                 // F
 		virtual void                     Unknown12(TESForm*) override;                                                // 12

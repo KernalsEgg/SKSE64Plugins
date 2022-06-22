@@ -5,6 +5,9 @@
 ### Bug Fixes SSE
 * [fmt 8.1.1](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
+### Console Command Companion
+* [fmt 8.1.1](https://github.com/fmtlib/fmt)
+* [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
 ### Log Inventory Item Rotation
 * [fmt 8.1.1](https://github.com/fmtlib/fmt)
 ### Scrambled Bugs
@@ -25,6 +28,7 @@
 
 I would also like to thank the regulars on the SkyrimRE Discord server for their help over time, including:
 * [aers](https://www.nexusmods.com/skyrimspecialedition/users/2025634)
+* [Ahzaab] (https://www.nexusmods.com/skyrimspecialedition/users/368196)
 * [Al](https://github.com/Al12rs)
 * [AnyOldName3](https://www.nexusmods.com/morrowind/users/5699344)
 * [DavidJCobb](https://www.nexusmods.com/skyrim/users/9663214)

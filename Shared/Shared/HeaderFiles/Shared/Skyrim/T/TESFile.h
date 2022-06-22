@@ -33,7 +33,7 @@ namespace Skyrim
 		std::uint64_t                                    unknown40;             // 40
 		std::uint64_t                                    unknown48;             // 48
 		std::uint64_t                                    unknown50;             // 50
-		char                                             filename[MAX_PATH];    // 58
+		char                                             fileName[MAX_PATH];    // 58
 		char                                             path[MAX_PATH];        // 15C
 		std::uint64_t                                    unknown260;            // 260
 		std::uint64_t                                    unknown268;            // 268
@@ -77,7 +77,7 @@ namespace Skyrim
 		std::uint64_t                                    unknown4B8;            // 4B8
 		std::uint64_t                                    unknown4C0;            // 4C0
 	};
-	static_assert(offsetof(TESFile, filename) == 0x58);
+	static_assert(offsetof(TESFile, fileName) == 0x58);
 	static_assert(offsetof(TESFile, path) == 0x15C);
 	static_assert(offsetof(TESFile, fileData) == 0x2EC);
 	static_assert(offsetof(TESFile, recordFlags) == 0x438);

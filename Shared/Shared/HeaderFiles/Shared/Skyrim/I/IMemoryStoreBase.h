@@ -31,7 +31,7 @@ namespace Skyrim
 	public:
 		// Add
 		virtual ~IMemoryStoreBase();                                                     // 0
-		virtual std::size_t Size(const void* memory) const                          = 0; // 1
+		virtual std::size_t Size(const void* pointer) const                         = 0; // 1
 		virtual void        GetMemoryStatistics(MemoryStatistics* memoryStatistics) = 0; // 2
 		virtual bool        ContainsBlockImplementation(const void* block) const    = 0; // 3
 	};

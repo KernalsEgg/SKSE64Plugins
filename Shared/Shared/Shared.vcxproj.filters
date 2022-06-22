@@ -139,6 +139,9 @@
     <Filter Include="Header Files\Shared\Skyrim\K">
       <UniqueIdentifier>{e65bf8a2-9b59-4dd6-8985-7ab2bf32ac57}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\C">
+      <UniqueIdentifier>{7e0a6c4e-b6ef-4388-b627-6dbada75968a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HeaderFiles\Shared\PCH.h">
@@ -574,9 +577,6 @@
       <Filter>Header Files\Shared\Skyrim\E</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWorn.h">
-      <Filter>Header Files\Shared\Skyrim\E</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWornLeft.h">
       <Filter>Header Files\Shared\Skyrim\E</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\Events.h">
@@ -1317,9 +1317,6 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSInputDeviceManager.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
-    <ClInclude Include="SourceFiles\Shared\Skyrim\I\InterfaceStrings.h">
-      <Filter>Header Files\Shared\Skyrim\I</Filter>
-    </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MenuEventHandler.h">
       <Filter>Header Files\Shared\Skyrim\M</Filter>
     </ClInclude>
@@ -1346,6 +1343,33 @@
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConcussionEffect.h">
       <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IFormFactory.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InterfaceStrings.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConcreteFormFactory.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Script.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CommandTable.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Console.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWornLeft.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UserEvents.h">
+      <Filter>Header Files\Shared\Skyrim\U</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLoadGameEvent.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1582,6 +1606,27 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSPerk.cpp">
       <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\IFormFactory.cpp">
+      <Filter>Source Files\Shared\Skyrim\I</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\C\CommandTable.cpp">
+      <Filter>Source Files\Shared\Skyrim\C</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\Script.cpp">
+      <Filter>Source Files\Shared\Skyrim\S</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\U\UserEvents.cpp">
+      <Filter>Source Files\Shared\Skyrim\U</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\ButtonEvent.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\InterfaceStrings.cpp">
+      <Filter>Source Files\Shared\Skyrim\I</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\C\Console.cpp">
+      <Filter>Source Files\Shared\Skyrim\C</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

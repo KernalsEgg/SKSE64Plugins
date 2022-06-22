@@ -1,0 +1,96 @@
+{
+	"log": true,
+	"events":
+	{
+		"initialize":
+		{
+			"consoleCommands":
+			[
+				"CenterOnCell Riverwood",
+				"RunConsoleBatch Initialize"
+			]
+		},
+		"loadGame":
+		{
+			"consoleCommands":
+			[
+				"RunConsoleBatch LoadGame"
+			]
+		},
+		"button":
+		{
+			"pressed":
+			[{
+				"inputDevice": 1, /* Mouse */
+				"idCode": 3, /* Mouse 4 */
+				"consoleCommands":
+				[
+					"Player.ModActorValue SpeedMult -300.0"
+				]
+			},
+			{
+				"inputDevice": 1, /* Mouse */
+				"idCode": 4, /* Mouse 5 */
+				"consoleCommands":
+				[
+					"Player.ModActorValue SpeedMult 300.0"
+				]
+			},
+			{
+				"inputDevice": 0, /* Keyboard */
+				"idCode": 80, /* Number Pad 2 */
+				"consoleCommands":
+				[
+					"SetGameSetting fJumpHeightMin 76.0"
+				]
+			},
+			{
+				"inputDevice": 0, /* Keyboard */
+				"idCode": 72, /* Number Pad 8 */
+				"consoleCommands":
+				[
+					"SetGameSetting fJumpHeightMin 532.0"
+				]
+			},
+			{
+				"inputDevice": 0, /* Keyboard */
+				"idCode": 156, /* Number Pad Enter */
+				"consoleCommands":
+				[
+					"ToggleGodMode"
+				]
+			},
+			{
+				"inputDevice": 0, /* Keyboard */
+				"idCode": 58, /* Caps Lock */
+				"consoleCommands":
+				[
+					"ToggleFlyCam 1"
+				]
+			},
+			{
+				"userEvent": "Shout",
+				"consoleCommands":
+				[
+					"SetGlobalTimeMultiplier 0.25"
+				]
+			}],
+			"released":
+			[{
+				"inputDevice": 0, /* Keyboard */
+				"idCode": 58, /* Caps Lock */
+				"consoleCommands":
+				[
+					"ToggleFlyCam 1"
+				]
+			},
+			{
+				"userEvent": "Shout",
+				"consoleCommands":
+				[
+					"SetGlobalTimeMultiplier 1"
+				]
+			}]
+		}
+	}
+}

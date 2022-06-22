@@ -89,8 +89,8 @@ namespace Skyrim
 		virtual ~TESFurniture() override; // 0
 
 		// Override (TESObjectACTI)
-		virtual void Unknown4(TESForm*) override;                                                                                                     // 4
-		virtual void Unknown5(TESForm*) override;                                                                                                     // 5
+		virtual void InitializeData() override;                                                                                                       // 4
+		virtual void ClearData() override;                                                                                                            // 5
 		virtual void Unknown6(TESForm*) override;                                                                                                     // 6
 		virtual void Unknown13(TESForm*) override;                                                                                                    // 13
 		virtual bool Activate(TESObjectREFR* target, TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount) override; // 37

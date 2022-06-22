@@ -37,18 +37,18 @@ namespace Trails
 			template <class T>
 			T* GetForm(Skyrim::FormType formType) const
 			{
-				auto form = Skyrim::TESDataHandler::GetSingleton()->GetFormFromFile<T>(this->GetFormID(), this->filename);
+				auto form = Skyrim::TESDataHandler::GetSingleton()->GetFormFromFile<T>(this->GetFormID(), this->fileName);
 
 				if (!form)
 				{
-					Utility::Log::Warning("Form ID: {}, Filename: {}. Form not found.", this->formID, this->filename);
+					Utility::Log::Warning("Form ID: {}, File Name: {}. Form not found.", this->formID, this->fileName);
 
 					return nullptr;
 				}
 
 				if (form->formType != formType)
 				{
-					Utility::Log::Warning("Form ID: {}, Filename: {}. Incorrect form type.", this->formID, this->filename);
+					Utility::Log::Warning("Form ID: {}, File Name: {}. Incorrect form type.", this->formID, this->fileName);
 
 					return nullptr;
 				}
@@ -57,12 +57,12 @@ namespace Trails
 			}
 
 		private:
-			void SetFilename(Skyrim::TESForm* form);
+			void SetFileName(Skyrim::TESForm* form);
 			void SetFormID(Skyrim::TESForm* form);
 
 		public:
 			std::string formID{};
-			std::string filename{};
+			std::string fileName{};
 		};
 
 		template <class T>

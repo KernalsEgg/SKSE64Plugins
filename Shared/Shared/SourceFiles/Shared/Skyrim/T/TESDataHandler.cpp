@@ -23,11 +23,11 @@ namespace Skyrim
 		return *singleton;
 	}
 
-	const TESFile* TESDataHandler::GetFile(std::string_view filename) const
+	const TESFile* TESDataHandler::GetFile(std::string_view fileName) const
 	{
 		for (auto file : this->files)
 		{
-			if (_stricmp(file->filename, filename.data()) == 0)
+			if (_stricmp(file->fileName, fileName.data()) == 0)
 			{
 				return file;
 			}
@@ -36,18 +36,18 @@ namespace Skyrim
 		return nullptr;
 	}
 
-	std::optional<std::uint8_t> TESDataHandler::GetFileIndex(std::string_view filename) const
+	std::optional<std::uint8_t> TESDataHandler::GetFileIndex(std::string_view fileName) const
 	{
-		auto file = this->GetFile(filename);
+		auto file = this->GetFile(fileName);
 
 		return file ? std::make_optional(file->compileIndex) : std::nullopt;
 	}
 
-	const TESFile* TESDataHandler::GetLoadedFile(std::string_view filename) const
+	const TESFile* TESDataHandler::GetLoadedFile(std::string_view fileName) const
 	{
 		for (auto file : this->compiledFileCollection.files)
 		{
-			if (_stricmp(file->filename, filename.data()) == 0)
+			if (_stricmp(file->fileName, fileName.data()) == 0)
 			{
 				return file;
 			}
@@ -69,18 +69,18 @@ namespace Skyrim
 		return nullptr;
 	}
 
-	std::optional<std::uint8_t> TESDataHandler::GetLoadedFileIndex(std::string_view filename) const
+	std::optional<std::uint8_t> TESDataHandler::GetLoadedFileIndex(std::string_view fileName) const
 	{
-		auto file = this->GetLoadedFile(filename);
+		auto file = this->GetLoadedFile(fileName);
 
 		return file ? std::make_optional(file->compileIndex) : std::nullopt;
 	}
 
-	const TESFile* TESDataHandler::GetLoadedLightFile(std::string_view filename) const
+	const TESFile* TESDataHandler::GetLoadedLightFile(std::string_view fileName) const
 	{
 		for (auto smallFile : this->compiledFileCollection.smallFiles)
 		{
-			if (_stricmp(smallFile->filename, filename.data()) == 0)
+			if (_stricmp(smallFile->fileName, fileName.data()) == 0)
 			{
 				return smallFile;
 			}
@@ -102,16 +102,16 @@ namespace Skyrim
 		return nullptr;
 	}
 
-	std::optional<std::uint8_t> TESDataHandler::GetLoadedLightFileIndex(std::string_view filename) const
+	std::optional<std::uint8_t> TESDataHandler::GetLoadedLightFileIndex(std::string_view fileName) const
 	{
-		auto smallFile = this->GetLoadedLightFile(filename);
+		auto smallFile = this->GetLoadedLightFile(fileName);
 
 		return smallFile ? std::make_optional(smallFile->compileIndex) : std::nullopt;
 	}
 
-	TESForm* TESDataHandler::GetFormFromFile(FormID formID, std::string_view filename) const
+	TESForm* TESDataHandler::GetFormFromFile(FormID formID, std::string_view fileName) const
 	{
-		auto file = this->GetFile(filename);
+		auto file = this->GetFile(fileName);
 
 		if (!file || file->compileIndex == 0xFF)
 		{

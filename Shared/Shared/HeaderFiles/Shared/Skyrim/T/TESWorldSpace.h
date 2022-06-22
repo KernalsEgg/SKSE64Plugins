@@ -230,8 +230,8 @@ namespace Skyrim
 		virtual ~TESWorldSpace() override; // 0
 
 		// Override (TESForm)
-		virtual void        Unknown4(TESForm*) override;                // 4
-		virtual void        Unknown5(TESForm*) override;                // 5
+		virtual void        InitializeData() override;                  // 4
+		virtual void        ClearData() override;                       // 5
 		virtual void        Unknown6(TESForm*) override;                // 6
 		virtual void        Unknown7(TESForm*) override;                // 7
 		virtual void        Unknown9(TESForm*) override;                // 9

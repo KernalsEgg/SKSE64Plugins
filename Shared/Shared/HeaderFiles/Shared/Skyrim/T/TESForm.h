@@ -47,8 +47,8 @@ namespace Skyrim
 		virtual void Unknown3(BaseFormComponent*) override; // 3
 
 		// Add
-		virtual void        Unknown4(TESForm*);                                                                                                     // 4
-		virtual void        Unknown5(TESForm*);                                                                                                     // 5
+		virtual void        InitializeData();                                                                                                       // 4
+		virtual void        ClearData();                                                                                                            // 5
 		virtual void        Unknown6(TESForm*);                                                                                                     // 6
 		virtual void        Unknown7(TESForm*);                                                                                                     // 7
 		virtual void        Unknown8(TESForm*);                                                                                                     // 8

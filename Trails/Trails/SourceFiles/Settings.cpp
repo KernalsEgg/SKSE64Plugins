@@ -12,13 +12,13 @@ namespace Trails
 	Settings::Form::Form(Skyrim::TESForm* form)
 	{
 		this->SetFormID(form);
-		this->SetFilename(form);
+		this->SetFileName(form);
 	}
 
 	Settings::Form& Settings::Form::Deserialize(const nlohmann::json& jsonForm)
 	{
 		jsonForm.at("formID").get_to(this->formID);
-		jsonForm.at("filename").get_to(this->filename);
+		jsonForm.at("fileName").get_to(this->fileName);
 
 		return *this;
 	}
@@ -28,7 +28,7 @@ namespace Trails
 		nlohmann::json jsonForm;
 
 		jsonForm["formID"]   = this->formID;
-		jsonForm["filename"] = this->filename;
+		jsonForm["fileName"] = this->fileName;
 
 		return jsonForm;
 	}
@@ -41,17 +41,17 @@ namespace Trails
 		}
 		catch (const std::exception& exception)
 		{
-			Utility::Log::Error("Form ID: {}, Filename: {}. {}.", this->formID, this->filename, exception.what());
+			Utility::Log::Error("Form ID: {}, File Name: {}. {}.", this->formID, this->fileName, exception.what());
 
 			throw;
 		}
 	}
 
-	void Settings::Form::SetFilename(Skyrim::TESForm* form)
+	void Settings::Form::SetFileName(Skyrim::TESForm* form)
 	{
 		if (!form)
 		{
-			this->filename = {};
+			this->fileName = {};
 
 			return;
 		}
@@ -60,12 +60,12 @@ namespace Trails
 
 		if (!file)
 		{
-			this->filename = {};
+			this->fileName = {};
 
 			return;
 		}
 
-		this->filename = file->filename;
+		this->fileName = file->fileName;
 	}
 
 	void Settings::Form::SetFormID(Skyrim::TESForm* form)
@@ -290,11 +290,11 @@ namespace Trails
 					continue;
 				}
 
-				auto filename = path.filename().string();
+				auto fileName = path.filename().string();
 
 				try
 				{
-					Utility::Log::Information("Deserializing {}...", filename);
+					Utility::Log::Information("Deserializing {}...", fileName);
 
 					auto localSettings = Settings().Deserialize(nlohmann::json::parse(std::ifstream(path), nullptr, true, true));
 
@@ -303,7 +303,7 @@ namespace Trails
 						globalFootsteps[localFootsteps.first].insert(globalFootsteps[localFootsteps.first].end(), localFootsteps.second.begin(), localFootsteps.second.end());
 					}
 
-					Utility::Log::Information("Deserialized {}.", filename);
+					Utility::Log::Information("Deserialized {}.", fileName);
 				}
 				catch (const nlohmann::json::exception& jsonException)
 				{

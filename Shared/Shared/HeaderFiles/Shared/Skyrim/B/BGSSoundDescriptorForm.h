@@ -20,7 +20,7 @@ namespace Skyrim
 		virtual ~BGSSoundDescriptorForm() override; // 0
 
 		// Override (TESForm)
-		virtual void Unknown5(TESForm*) override;                // 5
+		virtual void ClearData() override;                       // 5
 		virtual void Unknown6(TESForm*) override;                // 6
 		virtual void Unknown13(TESForm*) override;               // 13
 		virtual bool SetEditorID(const char* editorID) override; // 33

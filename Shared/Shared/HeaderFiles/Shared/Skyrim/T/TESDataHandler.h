@@ -43,23 +43,23 @@ namespace Skyrim
 		static TESDataHandler* GetSingleton();
 
 		// Member functions
-		const TESFile*              GetFile(std::string_view filename) const;
-		std::optional<std::uint8_t> GetFileIndex(std::string_view filename) const;
+		const TESFile*              GetFile(std::string_view fileName) const;
+		std::optional<std::uint8_t> GetFileIndex(std::string_view fileName) const;
 
-		const TESFile*              GetLoadedFile(std::string_view filename) const;
+		const TESFile*              GetLoadedFile(std::string_view fileName) const;
 		const TESFile*              GetLoadedFile(std::uint8_t index) const;
-		std::optional<std::uint8_t> GetLoadedFileIndex(std::string_view filename) const;
+		std::optional<std::uint8_t> GetLoadedFileIndex(std::string_view fileName) const;
 
-		const TESFile*              GetLoadedLightFile(std::string_view filename) const;
+		const TESFile*              GetLoadedLightFile(std::string_view fileName) const;
 		const TESFile*              GetLoadedLightFile(std::uint16_t index) const;
-		std::optional<std::uint8_t> GetLoadedLightFileIndex(std::string_view filename) const;
+		std::optional<std::uint8_t> GetLoadedLightFileIndex(std::string_view fileName) const;
 
-		TESForm* GetFormFromFile(FormID formID, std::string_view filename) const;
+		TESForm* GetFormFromFile(FormID formID, std::string_view fileName) const;
 
 		template <class T>
-		T* GetFormFromFile(FormID formID, std::string_view filename) const
+		T* GetFormFromFile(FormID formID, std::string_view fileName) const
 		{
-			return static_cast<T*>(this->GetFormFromFile(formID, filename));
+			return static_cast<T*>(this->GetFormFromFile(formID, fileName));
 		}
 
 		// Member variables

@@ -31,6 +31,7 @@
 #include <iterator>        // std::forward_iterator_tag
 #include <limits>          // std::numeric_limits
 #include <memory>          // std::addressof
+#include <new>             // Dynamic memory management
 #include <optional>        // std::optional
 #include <ostream>         // std::endl, std::flush
 #include <source_location> // std::source_location

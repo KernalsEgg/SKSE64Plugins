@@ -132,8 +132,8 @@ namespace Skyrim
 		virtual ~TESNPC() override; // 0
 
 		// Override (TESActorBase)
-		virtual void            Unknown4(TESForm*) override;                                                                                                     // 4
-		virtual void            Unknown5(TESForm*) override;                                                                                                     // 5
+		virtual void            InitializeData() override;                                                                                                       // 4
+		virtual void            ClearData() override;                                                                                                            // 5
 		virtual void            Unknown6(TESForm*) override;                                                                                                     // 6
 		virtual void            UnknownC(TESForm*) override;                                                                                                     // C
 		virtual void            UnknownE(TESForm*) override;                                                                                                     // E

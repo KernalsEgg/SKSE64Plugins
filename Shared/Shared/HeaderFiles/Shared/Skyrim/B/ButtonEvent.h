@@ -15,6 +15,10 @@ namespace Skyrim
 		// Override
 		virtual ~ButtonEvent() override; // 0
 
+		// Member functions
+		bool IsPressed() const;
+		bool IsReleased() const;
+
 		// Member variables
 		float value;        // 28
 		float holdDuration; // 2C

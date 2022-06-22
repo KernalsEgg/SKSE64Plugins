@@ -39,11 +39,11 @@ namespace Skyrim
 		std::uint64_t unknown50;          // 50
 		std::uint64_t unknown58;          // 58
 		std::uint32_t unknown60;          // 60
-		char          filename[MAX_PATH]; // 64
+		char          fileName[MAX_PATH]; // 64
 		std::uint64_t unknown168;         // 168
 		std::uint64_t unknown170;         // 170
 		std::uint64_t unknown178;         // 178
 	};
-	static_assert(offsetof(BSFile, filename) == 0x64);
+	static_assert(offsetof(BSFile, fileName) == 0x64);
 	static_assert(sizeof(BSFile) == 0x180);
 }

@@ -24,7 +24,7 @@ namespace Skyrim
 		virtual ~TESSoulGem() override; // 0
 
 		// Override (TESObjectMISC)
-		virtual void Unknown4(TESForm*) override;        // 4
+		virtual void InitializeData() override;          // 4
 		virtual void Unknown54(TESObjectMISC*) override; // 54
 		virtual void Unknown55(TESObjectMISC*) override; // 55
 

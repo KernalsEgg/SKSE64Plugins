@@ -16,10 +16,10 @@ namespace Skyrim
 		return function(this, size, alignment);
 	}
 
-	void ScrapHeap::Deallocate(void* memory)
+	void ScrapHeap::Deallocate(void* pointer)
 	{
 		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&ScrapHeap::Deallocate)>::type>(Addresses::ScrapHeap::Deallocate) };
 
-		function(this, memory);
+		function(this, pointer);
 	}
 }
