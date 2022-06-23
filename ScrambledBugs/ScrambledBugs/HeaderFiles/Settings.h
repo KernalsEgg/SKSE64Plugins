@@ -12,7 +12,7 @@ namespace ScrambledBugs
 		class Fixes
 		{
 		public:
-			void           Deserialize(const nlohmann::json& jsonFixes);
+			Fixes&         Deserialize(const nlohmann::json& jsonFixes);
 			nlohmann::json Serialize() const;
 
 			bool  activateFurniture{ false };
@@ -39,14 +39,14 @@ namespace ScrambledBugs
 			class PerkEntryPoints
 			{
 			public:
-				void           Deserialize(const nlohmann::json& jsonPerkEntryPoints);
-				nlohmann::json Serialize() const;
+				PerkEntryPoints& Deserialize(const nlohmann::json& jsonPerkEntryPoints);
+				nlohmann::json   Serialize() const;
 
 				bool applyMultipleSpells{ false };
 				bool castSpells{ false };
 			};
 
-			void           Deserialize(const nlohmann::json& jsonPatches);
+			Patches&       Deserialize(const nlohmann::json& jsonPatches);
 			nlohmann::json Serialize() const;
 
 			bool            accumulatingMagnitude{ false };
@@ -82,7 +82,7 @@ namespace ScrambledBugs
 
 		static Settings& GetSingleton();
 
-		void           Deserialize(const nlohmann::json& jsonSettings);
+		Settings&      Deserialize(const nlohmann::json& jsonSettings);
 		nlohmann::json Serialize() const;
 
 		Fixes   fixes;

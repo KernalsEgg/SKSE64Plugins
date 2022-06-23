@@ -6,7 +6,6 @@
 #include "Shared/SKSE/Interfaces.h"
 #include "Shared/Skyrim/B/ButtonEvent.h"
 #include "Shared/Skyrim/S/Script.h"
-#include "Shared/Skyrim/U/UserEvents.h"
 #include "Shared/Utility/Log.h"
 
 

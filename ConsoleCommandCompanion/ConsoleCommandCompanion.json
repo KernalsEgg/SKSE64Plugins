@@ -1,66 +1,26 @@
 {
-	"log": true,
+	"log": true, /* Logs when a button is pressed or released along with their ID code, input device, and user event to make binding console commands to buttons straightforward. */
 	"events":
 	{
-		"initialize":
+		"initialize": /* Run when the main menu is opened after launching the game. */
 		{
 			"consoleCommands":
 			[
-				"CenterOnCell Riverwood",
+				"CenterOnCell Riverwood", /* The CenterOnCell console command cannot be run from a batch file. */
 				"RunConsoleBatch Initialize"
 			]
 		},
-		"loadGame":
+		"loadGame": /* Run when loading a save game. */
 		{
 			"consoleCommands":
 			[
 				"RunConsoleBatch LoadGame"
 			]
 		},
-		"button":
+		"button": /* You can optionally specify a buttons ID code, input device, and user event. */
 		{
-			"pressed":
+			"pressed": /* Run when a button is pressed. */
 			[{
-				"inputDevice": 1, /* Mouse */
-				"idCode": 3, /* Mouse 4 */
-				"consoleCommands":
-				[
-					"Player.ModActorValue SpeedMult -300.0"
-				]
-			},
-			{
-				"inputDevice": 1, /* Mouse */
-				"idCode": 4, /* Mouse 5 */
-				"consoleCommands":
-				[
-					"Player.ModActorValue SpeedMult 300.0"
-				]
-			},
-			{
-				"inputDevice": 0, /* Keyboard */
-				"idCode": 80, /* Number Pad 2 */
-				"consoleCommands":
-				[
-					"SetGameSetting fJumpHeightMin 76.0"
-				]
-			},
-			{
-				"inputDevice": 0, /* Keyboard */
-				"idCode": 72, /* Number Pad 8 */
-				"consoleCommands":
-				[
-					"SetGameSetting fJumpHeightMin 532.0"
-				]
-			},
-			{
-				"inputDevice": 0, /* Keyboard */
-				"idCode": 156, /* Number Pad Enter */
-				"consoleCommands":
-				[
-					"ToggleGodMode"
-				]
-			},
-			{
 				"inputDevice": 0, /* Keyboard */
 				"idCode": 58, /* Caps Lock */
 				"consoleCommands":
@@ -75,7 +35,7 @@
 					"SetGlobalTimeMultiplier 0.25"
 				]
 			}],
-			"released":
+			"released": /* Run when a button is released. */
 			[{
 				"inputDevice": 0, /* Keyboard */
 				"idCode": 58, /* Caps Lock */

@@ -9,7 +9,7 @@
 
 namespace ScrambledBugs
 {
-	void Settings::Fixes::Deserialize(const nlohmann::json& jsonFixes)
+	Settings::Fixes& Settings::Fixes::Deserialize(const nlohmann::json& jsonFixes)
 	{
 		if (jsonFixes.contains("activateFurniture"))
 		{
@@ -90,6 +90,8 @@ namespace ScrambledBugs
 		{
 			jsonFixes.at("weaponCharge").get_to(this->weaponCharge);
 		}
+
+		return *this;
 	}
 
 	nlohmann::json Settings::Fixes::Serialize() const
@@ -116,7 +118,7 @@ namespace ScrambledBugs
 		return jsonFixes;
 	}
 
-	void Settings::Patches::PerkEntryPoints::Deserialize(const nlohmann::json& jsonPerkEntryPoints)
+	Settings::Patches::PerkEntryPoints& Settings::Patches::PerkEntryPoints::Deserialize(const nlohmann::json& jsonPerkEntryPoints)
 	{
 		if (jsonPerkEntryPoints.contains("applyMultipleSpells"))
 		{
@@ -127,6 +129,8 @@ namespace ScrambledBugs
 		{
 			jsonPerkEntryPoints.at("castSpells").get_to(this->castSpells);
 		}
+
+		return *this;
 	}
 
 	nlohmann::json Settings::Patches::PerkEntryPoints::Serialize() const
@@ -139,7 +143,7 @@ namespace ScrambledBugs
 		return jsonPerkEntryPoints;
 	}
 
-	void Settings::Patches::Deserialize(const nlohmann::json& jsonPatches)
+	Settings::Patches& Settings::Patches::Deserialize(const nlohmann::json& jsonPatches)
 	{
 		if (jsonPatches.contains("accumulatingMagnitude"))
 		{
@@ -230,6 +234,8 @@ namespace ScrambledBugs
 		{
 			jsonPatches.at("underfilledSoulGems").get_to(this->underfilledSoulGems);
 		}
+
+		return *this;
 	}
 
 	nlohmann::json Settings::Patches::Serialize() const
@@ -277,7 +283,7 @@ namespace ScrambledBugs
 		return singleton;
 	}
 
-	void Settings::Deserialize(const nlohmann::json& jsonSettings)
+	Settings& Settings::Deserialize(const nlohmann::json& jsonSettings)
 	{
 		if (jsonSettings.contains("fixes"))
 		{
@@ -288,6 +294,8 @@ namespace ScrambledBugs
 		{
 			this->patches.Deserialize(jsonSettings.at("patches"));
 		}
+
+		return *this;
 	}
 
 	nlohmann::json Settings::Serialize() const

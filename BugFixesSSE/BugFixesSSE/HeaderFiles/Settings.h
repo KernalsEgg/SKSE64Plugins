@@ -15,14 +15,14 @@ namespace BugFixesSSE
 			class SpeechExperience
 			{
 			public:
-				void           Deserialize(const nlohmann::json& jsonSpeechExperience);
-				nlohmann::json Serialize() const;
+				SpeechExperience& Deserialize(const nlohmann::json& jsonSpeechExperience);
+				nlohmann::json    Serialize() const;
 
 				bool enchantedItems{ false };
 				bool itemStacks{ false };
 			};
 
-			void           Deserialize(const nlohmann::json& jsonFixes);
+			Fixes&         Deserialize(const nlohmann::json& jsonFixes);
 			nlohmann::json Serialize() const;
 
 			bool             magicEffectConditions{ false };
@@ -43,7 +43,7 @@ namespace BugFixesSSE
 
 		static Settings& GetSingleton();
 
-		void           Deserialize(const nlohmann::json& jsonSettings);
+		Settings&      Deserialize(const nlohmann::json& jsonSettings);
 		nlohmann::json Serialize() const;
 
 		Fixes fixes;

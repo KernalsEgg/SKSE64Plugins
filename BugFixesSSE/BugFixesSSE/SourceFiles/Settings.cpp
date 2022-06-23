@@ -9,7 +9,7 @@
 
 namespace BugFixesSSE
 {
-	void Settings::Fixes::SpeechExperience::Deserialize(const nlohmann::json& jsonSpeechExperience)
+	Settings::Fixes::SpeechExperience& Settings::Fixes::SpeechExperience::Deserialize(const nlohmann::json& jsonSpeechExperience)
 	{
 		if (jsonSpeechExperience.contains("enchantedItems"))
 		{
@@ -20,6 +20,8 @@ namespace BugFixesSSE
 		{
 			jsonSpeechExperience.at("itemStacks").get_to(this->itemStacks);
 		}
+
+		return *this;
 	}
 
 	nlohmann::json Settings::Fixes::SpeechExperience::Serialize() const
@@ -32,7 +34,7 @@ namespace BugFixesSSE
 		return jsonSpeechExperience;
 	}
 
-	void Settings::Fixes::Deserialize(const nlohmann::json& jsonFixes)
+	Settings::Fixes& Settings::Fixes::Deserialize(const nlohmann::json& jsonFixes)
 	{
 		if (jsonFixes.contains("magicEffectConditions"))
 		{
@@ -48,6 +50,8 @@ namespace BugFixesSSE
 		{
 			this->speechExperience.Deserialize(jsonFixes.at("speechExperience"));
 		}
+
+		return *this;
 	}
 
 	nlohmann::json Settings::Fixes::Serialize() const
@@ -80,12 +84,14 @@ namespace BugFixesSSE
 		return singleton;
 	}
 
-	void Settings::Deserialize(const nlohmann::json& jsonSettings)
+	Settings& Settings::Deserialize(const nlohmann::json& jsonSettings)
 	{
 		if (jsonSettings.contains("fixes"))
 		{
 			this->fixes.Deserialize(jsonSettings.at("fixes"));
 		}
+
+		return *this;
 	}
 
 	nlohmann::json Settings::Serialize() const

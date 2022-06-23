@@ -12,7 +12,7 @@ namespace ActorLimitFix
 		class Fixes
 		{
 		public:
-			void           Deserialize(const nlohmann::json& jsonFixes);
+			Fixes&         Deserialize(const nlohmann::json& jsonFixes);
 			nlohmann::json Serialize() const;
 
 			std::uint32_t morphLimit{ 0x80 };
@@ -33,7 +33,7 @@ namespace ActorLimitFix
 
 		static Settings& GetSingleton();
 
-		void           Deserialize(const nlohmann::json& jsonSettings);
+		Settings&      Deserialize(const nlohmann::json& jsonSettings);
 		nlohmann::json Serialize() const;
 
 		Fixes fixes;

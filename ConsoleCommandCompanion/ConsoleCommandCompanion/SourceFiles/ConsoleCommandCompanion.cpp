@@ -77,6 +77,8 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	SKSE::Cache::GetSingleton().Initialize(loadInterface);
 
+	Utility::Log::Information("Initializing...");
+
 	auto patched = ConsoleCommandCompanion::Patches::Install();
 
 	if (patched.has_value())
@@ -89,9 +91,9 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 		}
 	}
 
-	Utility::Log::Information("Initialized.\n{}", ConsoleCommandCompanion::Settings::GetSingleton().Serialize().dump(1, '\t'));
-
 	Skyrim::Events::InitializeThread::GetSingleton().After().AddEventSink(OnInitializeThread);
+
+	Utility::Log::Information("Initialized.\n{}", ConsoleCommandCompanion::Settings::GetSingleton().Serialize().dump(1, '\t'));
 
 	return true;
 }
