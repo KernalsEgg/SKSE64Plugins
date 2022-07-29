@@ -104,8 +104,8 @@ namespace Skyrim
 		}
 
 		// Member variables
-		first_type  first;  // 0
-		second_type second; // ?
+		first_type  first{};  // 0
+		second_type second{}; // ?
 	};
 
 	// Non-member functions

@@ -2,18 +2,14 @@
 
 #include "Shared/PCH.h"
 
-#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/B/BSAtomic.h"
 #include "Shared/Skyrim/B/BSTArray.h"
-#include "Shared/Utility/TypeTraits.h"
+#include "Shared/Skyrim/B/BSTEventSink.h"
 
 
 
 namespace Skyrim
 {
-	template <class T>
-	class BSTEventSink;
-
 	template <class T>
 	class BSTEventSource
 	{
@@ -21,23 +17,117 @@ namespace Skyrim
 		// Member functions
 		void AddEventSink(BSTEventSink<T>* eventSink)
 		{
-			auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSTEventSource<T>::AddEventSink)>::type>(Addresses::BSTEventSource::AddEventSink) };
+			if (!eventSink)
+			{
+				return;
+			}
 
-			function(this, eventSink);
+			BSSpinLockGuard lockGuard(this->lock);
+
+			if (this->notifying)
+			{
+				if (std::find(this->pendingRegisters.begin(), this->pendingRegisters.end(), eventSink) == this->pendingRegisters.end())
+				{
+					this->pendingRegisters.push_back(eventSink);
+				}
+			}
+			else
+			{
+				if (std::find(this->eventSinks.begin(), this->eventSinks.end(), eventSink) == this->eventSinks.end())
+				{
+					this->eventSinks.push_back(eventSink);
+				}
+			}
+
+			auto* iterator = std::find(this->pendingUnregisters.begin(), this->pendingUnregisters.end(), eventSink);
+
+			if (iterator != this->pendingUnregisters.end())
+			{
+				this->pendingUnregisters.erase(iterator);
+			}
 		}
 
 		void RemoveEventSink(BSTEventSink<T>* eventSink)
 		{
-			auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSTEventSource<T>::RemoveEventSink)>::type>(Addresses::BSTEventSource::RemoveEventSink) };
+			if (!eventSink)
+			{
+				return;
+			}
 
-			function(this, eventSink);
+			BSSpinLockGuard lockGuard(this->lock);
+
+			if (this->notifying)
+			{
+				if (std::find(this->pendingUnregisters.begin(), this->pendingUnregisters.end(), eventSink) == this->pendingUnregisters.end())
+				{
+					this->pendingUnregisters.push_back(eventSink);
+				}
+			}
+			else
+			{
+				auto* iterator = std::find(this->eventSinks.begin(), this->eventSinks.end(), eventSink);
+
+				if (iterator != this->eventSinks.end())
+				{
+					this->eventSinks.erase(iterator);
+				}
+			}
+
+			auto* iterator = std::find(this->pendingRegisters.begin(), this->pendingRegisters.end(), eventSink);
+
+			if (iterator != this->pendingRegisters.end())
+			{
+				this->pendingRegisters.erase(iterator);
+			}
 		}
 
-		void SendEvent(T* eventArguments)
+		void SendEvent(const T* eventArguments)
 		{
-			auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSTEventSource<T>::SendEvent)>::type>(Addresses::BSTEventSource::SendEvent) };
+			BSSpinLockGuard lockGuard(this->lock);
 
-			function(this, eventArguments);
+			auto notifying  = this->notifying;
+			this->notifying = true;
+
+			if (!notifying && !this->pendingRegisters.empty())
+			{
+				for (auto& eventSink : this->pendingRegisters)
+				{
+					if (std::find(this->eventSinks.begin(), this->eventSinks.end(), eventSink) == this->eventSinks.end())
+					{
+						this->eventSinks.push_back(eventSink);
+					}
+				}
+
+				this->pendingRegisters.clear();
+			}
+
+			for (auto& eventSink : this->eventSinks)
+			{
+				if (std::find(this->pendingUnregisters.begin(), this->pendingUnregisters.end(), eventSink) == this->pendingUnregisters.end())
+				{
+					if (eventSink->ProcessEvent(eventSink, this) == BSEventNotifyControl::kStop)
+					{
+						break;
+					}
+				}
+			}
+
+			this->notifying = notifying;
+
+			if (!notifying && !this->pendingUnregisters.empty())
+			{
+				for (auto& eventSink : this->pendingUnregisters)
+				{
+					auto* iterator = std::find(this->eventSinks.begin(), this->eventSinks.end(), eventSink);
+
+					if (iterator != this->eventSinks.end())
+					{
+						this->eventSinks.erase(iterator);
+					}
+				}
+
+				this->pendingUnregisters.clear();
+			}
 		}
 
 		// Member variables

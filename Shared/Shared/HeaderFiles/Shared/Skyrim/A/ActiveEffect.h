@@ -40,13 +40,13 @@ namespace Skyrim
 		};
 		static_assert(sizeof(Flags) == 0x4);
 
-		enum class Conditions : std::uint32_t
+		enum class ConditionStatus : std::uint32_t
 		{
-			kNotAvailable = static_cast<std::underlying_type_t<Conditions>>(-1),
+			kNotAvailable = static_cast<std::underlying_type_t<ConditionStatus>>(-1),
 			kFalse        = 0,
 			kTrue         = 1
 		};
-		static_assert(sizeof(Conditions) == 0x4);
+		static_assert(sizeof(ConditionStatus) == 0x4);
 
 		// Add
 		virtual void Unknown0(ActiveEffect*);        // 0
@@ -103,7 +103,7 @@ namespace Skyrim
 		float                                                           duration;          // 74
 		float                                                           magnitude;         // 78
 		Utility::Enumeration<Flags, std::uint32_t>                      activeEffectFlags; // 7C
-		Utility::Enumeration<Conditions, std::uint32_t>                 conditions;        // 80
+		Utility::Enumeration<ConditionStatus, std::uint32_t>            conditionStatus;   // 80
 		std::uint16_t                                                   uniqueID;          // 84
 		std::uint16_t                                                   padding86;         // 86
 		Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource;     // 88
@@ -119,7 +119,7 @@ namespace Skyrim
 	static_assert(offsetof(ActiveEffect, duration) == 0x74);
 	static_assert(offsetof(ActiveEffect, magnitude) == 0x78);
 	static_assert(offsetof(ActiveEffect, activeEffectFlags) == 0x7C);
-	static_assert(offsetof(ActiveEffect, conditions) == 0x80);
+	static_assert(offsetof(ActiveEffect, conditionStatus) == 0x80);
 	static_assert(offsetof(ActiveEffect, uniqueID) == 0x84);
 	static_assert(offsetof(ActiveEffect, castingSource) == 0x88);
 	static_assert(sizeof(ActiveEffect) == 0x90);

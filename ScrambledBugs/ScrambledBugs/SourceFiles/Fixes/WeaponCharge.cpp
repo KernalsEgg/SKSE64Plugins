@@ -23,7 +23,7 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		auto player = Skyrim::PlayerCharacter::GetSingleton();
+		auto* player = Skyrim::PlayerCharacter::GetSingleton();
 
 		if (actor == player)
 		{
@@ -37,7 +37,7 @@ namespace ScrambledBugs::Fixes
 			}
 		}
 
-		auto enchantment = item->GetEnchantment(extraDataList);
+		auto* enchantment = item->GetEnchantment(extraDataList);
 
 		if (!enchantment)
 		{

@@ -20,7 +20,12 @@ namespace Skyrim
 
 		constexpr BSFixedString() noexcept = default;
 		BSFixedString(const BSFixedString& right);
-		constexpr BSFixedString(BSFixedString&&) noexcept = default;
+
+		constexpr BSFixedString(BSFixedString&& right) noexcept :
+			data_(right.data_)
+		{
+			right.data_ = nullptr;
+		}
 
 		BSFixedString(const_pointer string);
 
@@ -67,11 +72,11 @@ namespace Skyrim
 
 		constexpr const_pointer data() const noexcept
 		{
-			auto proxy = this->GetProxy();
+			const auto* proxy = this->GetProxy();
 
 			if (proxy)
 			{
-				auto data = proxy->data();
+				const auto* data = proxy->data();
 
 				if (data)
 				{
@@ -88,7 +93,7 @@ namespace Skyrim
 
 		constexpr size_type size() const noexcept
 		{
-			auto proxy = this->GetProxy();
+			const auto* proxy = this->GetProxy();
 
 			return proxy ? proxy->size() : 0;
 		}

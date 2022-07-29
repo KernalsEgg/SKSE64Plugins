@@ -30,7 +30,8 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AccumulatingValueModifierEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActiveEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Actor.h" />
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorProcess.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorEquipManager.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AIProcess.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorState.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValue.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValueOwner.h" />
@@ -119,6 +120,8 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorld.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorldObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorldRayCastInput.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedAnim.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedObjectSlot.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BodyPartType.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAnimationGraphEvent.h" />
@@ -155,6 +158,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTPoint.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTriShape.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTSingleton.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTSmartPointer.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTTuple.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSVolumetricLightingRenderData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\ButtonEvent.h" />
@@ -185,6 +189,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraDataList.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraDataType.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraEnchantment.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraHealth.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraLevCreaModifier.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraSoul.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWorn.h" />
@@ -206,6 +211,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GridCellArray.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HandleEntryPointVisitor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HighProcessData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HitData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkArray.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkBaseObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkBaseTypes.h" />
@@ -432,6 +438,7 @@
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Relocation\AddressLibrary.cpp" />
     <ClCompile Include="SourceFiles\Shared\Relocation\FileMapping.cpp" />
@@ -439,7 +446,8 @@
     <ClCompile Include="SourceFiles\Shared\SKSE\Interfaces.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActiveEffect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\Actor.cpp" />
-    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorProcess.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorEquipManager.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\AIProcess.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorValueOwner.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\AttachTechniqueInput.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDecalManager.cpp" />
@@ -453,6 +461,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\bhkShape.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\bhkWorldObject.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\bhkWorld.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BipedAnim.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSAtomic.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSFixedString.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSHandleRefObject.cpp" />
@@ -544,6 +553,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -590,6 +600,9 @@
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgTriplet>x64-windows-static-md</VcpkgTriplet>
   </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <VcpkgTriplet>x64-windows-static-md</VcpkgTriplet>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -631,7 +644,12 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>Shared/PCH.h</PrecompiledHeaderFile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <SupportJustMyCode>true</SupportJustMyCode>
     </ClCompile>
     <Link>
       <SubSystem>

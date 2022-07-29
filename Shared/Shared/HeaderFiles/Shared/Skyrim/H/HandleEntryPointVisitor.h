@@ -17,7 +17,7 @@ namespace Skyrim
 	{
 	public:
 		// Override (PerkEntryVisitor)
-		virtual ReturnType Visit(BGSPerkEntry* perkEntry) override; // 0
+		virtual PerkEntryVisitor::ReturnType Visit(BGSPerkEntry* perkEntry) override; // 0
 
 		// Member variables
 		Utility::Enumeration<BGSEntryPointFunctionData::ResultType, std::uint32_t> resultType;    // 8

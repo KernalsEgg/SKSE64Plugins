@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	IFormFactory* IFormFactory::GetFormFactoryFromFormType(FormType formType)
 	{
-		auto function{ reinterpret_cast<decltype(&IFormFactory::GetFormFactoryFromFormType)>(Addresses::IFormFactory::GetFormFactoryFromFormType) };
+		auto* function{ reinterpret_cast<decltype(&IFormFactory::GetFormFactoryFromFormType)>(Addresses::IFormFactory::GetFormFactoryFromFormType) };
 
 		return function(formType);
 	}

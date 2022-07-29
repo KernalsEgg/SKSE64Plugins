@@ -3,6 +3,7 @@
 #include "Shared/PCH.h"
 
 #include "Shared/Skyrim/E/ExtraDataType.h"
+#include "Shared/Skyrim/M/MemoryManager.h"
 
 
 
@@ -11,6 +12,8 @@ namespace Skyrim
 	class BSExtraData
 	{
 	public:
+		SKYRIM_HEAP_OPERATORS();
+
 		// Add
 		virtual ~BSExtraData();                                           // 0
 		virtual ExtraDataType GetType() const = 0;                        // 1

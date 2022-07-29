@@ -4,6 +4,9 @@
 
 #include "Addresses.h"
 #include "Shared/Skyrim/Addresses.h"
+#include "Shared/Skyrim/B/BSSimpleList.h"
+#include "Shared/Skyrim/I/InventoryEntryData.h"
+#include "Shared/Skyrim/T/TESBoundObject.h"
 #include "Shared/Skyrim/T/TESContainer.h"
 #include "Shared/Utility/Memory.h"
 
@@ -28,31 +31,13 @@ namespace ScrambledBugs::Fixes
 
 		if (entryPointPerkEntry->entryPoint == Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight)
 		{
-			auto inventoryChanges = perkOwner->GetInventoryChanges();
+			auto* inventoryChanges = perkOwner->GetInventoryChanges();
 
 			if (inventoryChanges)
 			{
 				inventoryChanges->ResetWeight();
 			}
 		}
-	}
-
-	Skyrim::InventoryEntryData* ModArmorWeightPerkEntryPoint::GetInventoryEntryData(Skyrim::InventoryChanges* inventoryChanges, Skyrim::TESBoundObject* item)
-	{
-		auto inventoryEntryDataList = inventoryChanges->inventoryEntryDataList;
-
-		if (inventoryEntryDataList)
-		{
-			for (auto inventoryEntryData : *inventoryEntryDataList)
-			{
-				if (inventoryEntryData->item == item)
-				{
-					return inventoryEntryData;
-				}
-			}
-		}
-
-		return nullptr;
 	}
 
 	float ModArmorWeightPerkEntryPoint::GetInventoryWeight(Skyrim::InventoryChanges* inventoryChanges)
@@ -66,16 +51,16 @@ namespace ScrambledBugs::Fixes
 
 		float inventoryWeight{ 0.0F };
 
-		auto owner      = inventoryChanges->owner;
-		auto ownerActor = owner && owner->formType == Skyrim::FormType::kActor ? static_cast<Skyrim::Actor*>(owner) : nullptr;
-		auto container  = owner ? owner->GetContainer() : nullptr;
+		auto* owner      = inventoryChanges->owner;
+		auto* ownerActor = owner && owner->formType == Skyrim::FormType::kActor ? static_cast<Skyrim::Actor*>(owner) : nullptr;
+		auto* container  = owner ? owner->GetContainer() : nullptr;
 
 		// TESContainer
 		if (container)
 		{
-			for (auto containerObject : *container)
+			for (auto* containerObject : *container)
 			{
-				auto item = containerObject->object;
+				auto* item = containerObject->object;
 
 				if (item)
 				{
@@ -83,8 +68,8 @@ namespace ScrambledBugs::Fixes
 
 					if (itemWeight > 0.0F)
 					{
-						auto inventoryEntryData = ModArmorWeightPerkEntryPoint::GetInventoryEntryData(inventoryChanges, item);
-						auto itemCount          = containerObject->count;
+						auto* inventoryEntryData = inventoryChanges->GetInventoryEntryData(item);
+						auto  itemCount          = containerObject->count;
 
 						if (inventoryEntryData)
 						{
@@ -101,7 +86,7 @@ namespace ScrambledBugs::Fixes
 								{
 									if (item->formType == Skyrim::FormType::kArmor)
 									{
-										if (inventoryEntryData->IsWorn())
+										if (inventoryEntryData->IsWorn(true, false))
 										{
 											auto armorWeight = itemWeight;
 
@@ -122,13 +107,18 @@ namespace ScrambledBugs::Fixes
 		}
 
 		// InventoryChanges
-		auto inventoryEntryDataList = inventoryChanges->inventoryEntryDataList;
+		auto* inventoryEntryDataList = inventoryChanges->inventoryEntryDataList;
 
 		if (inventoryEntryDataList)
 		{
-			for (auto inventoryEntryData : *inventoryEntryDataList)
+			for (auto* inventoryEntryData : *inventoryEntryDataList)
 			{
-				auto item = inventoryEntryData->item;
+				if (!inventoryEntryData)
+				{
+					break;
+				}
+
+				auto* item = inventoryEntryData->item;
 
 				if (item)
 				{
@@ -154,7 +144,7 @@ namespace ScrambledBugs::Fixes
 							{
 								if (item->formType == Skyrim::FormType::kArmor)
 								{
-									if (inventoryEntryData->IsWorn())
+									if (inventoryEntryData->IsWorn(true, false))
 									{
 										auto armorWeight = itemWeight;
 
@@ -189,7 +179,7 @@ namespace ScrambledBugs::Fixes
 
 		if (entryPointPerkEntry->entryPoint == Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight)
 		{
-			auto inventoryChanges = perkOwner->GetInventoryChanges();
+			auto* inventoryChanges = perkOwner->GetInventoryChanges();
 
 			if (inventoryChanges)
 			{

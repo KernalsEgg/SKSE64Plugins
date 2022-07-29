@@ -2,28 +2,46 @@
 
 #include "Shared/PCH.h"
 
-#include "Shared/Skyrim/B/BSSimpleList.h"
+#include "Shared/Skyrim/M/MemoryManager.h"
 
 
 
 namespace Skyrim
 {
+	class Actor;
 	class ExtraDataList;
 	class TESBoundObject;
+
+	template <class T>
+	class BSSimpleList;
 
 	class InventoryEntryData
 	{
 	public:
+		SKYRIM_HEAP_OPERATORS();
+
+		InventoryEntryData() = default;
+		InventoryEntryData(const InventoryEntryData& right);
+		InventoryEntryData(InventoryEntryData&& right);
+
+		~InventoryEntryData();
+
+		InventoryEntryData& operator=(const InventoryEntryData& right);
+		InventoryEntryData& operator=(InventoryEntryData&& right);
+
 		// Member functions
-		std::int32_t GetValue() const;
-		bool         IsQuestItem() const;
-		bool         IsWorn() const;
+		float          GetHealth() const;
+		const char*    GetName() const;
+		std::int32_t   GetValue() const;
+		ExtraDataList* GetWornExtraDataList(bool leftHand) const;
+		bool           IsOwnedBy(Actor* actor, bool defaultOwnership);
+		bool           IsQuestItem() const;
+		bool           IsWorn(bool eitherHand, bool leftHand) const;
 
 		// Member variables
-		TESBoundObject*               item;           // 0
-		BSSimpleList<ExtraDataList*>* extraDataLists; // 8, Each item in the stack has a separate ExtraDataList
-		std::int32_t                  itemCountDelta; // 10
-		std::uint32_t                 padding14;      // 14
+		TESBoundObject*               item{ nullptr };           // 0
+		BSSimpleList<ExtraDataList*>* extraDataLists{ nullptr }; // 8, Each item in the stack has a separate ExtraDataList
+		std::int32_t                  itemCountDelta{ 0 };       // 10
 	};
 	static_assert(offsetof(InventoryEntryData, item) == 0x0);
 	static_assert(offsetof(InventoryEntryData, extraDataLists) == 0x8);

@@ -25,19 +25,20 @@ namespace Utility
 		static void           Free(std::uintptr_t allocationAddress);
 		static Trampoline&    GetSingleton();
 
-		void           Commit();
-		std::uintptr_t GetAddress() const { return this->address_; }
-		std::size_t    GetPosition() const { return this->position_; }
-		void           RelativeCall(std::uintptr_t address, std::uintptr_t function);
-		void           RelativeJump(std::uintptr_t address, std::uintptr_t function);
-		std::size_t    Reserve(std::size_t size);
+		void                         Commit();
+		std::uintptr_t               GetAddress() const { return this->address_; }
+		EventSource<std::uintptr_t>& GetEventSource() { return this->commit_; }
+		std::size_t                  GetPosition() const { return this->position_; }
+		void                         RelativeCall(std::uintptr_t address, std::uintptr_t function);
+		void                         RelativeJump(std::uintptr_t address, std::uintptr_t function);
+		std::size_t                  Reserve(std::size_t size);
 
 		template <class... Arguments>
 		void RelativeCallBranch(std::uintptr_t address, const Arguments&... arguments)
 		{
 			auto position = Trampoline::Reserve(Memory::SizeOf<Arguments...>::Implementation());
 
-			this->write_.AddEventSink(
+			this->commit_.AddEventSink(
 				[address, arguments..., position](std::uintptr_t trampolineAddress) -> void
 				{
 					Memory::SafeWrite(trampolineAddress + position, arguments...);
@@ -50,7 +51,7 @@ namespace Utility
 		{
 			auto position = Trampoline::Reserve(Memory::SizeOf<Arguments...>::Implementation());
 
-			this->write_.AddEventSink(
+			this->commit_.AddEventSink(
 				[address, arguments..., position](std::uintptr_t trampolineAddress) -> void
 				{
 					Memory::SafeWrite(trampolineAddress + position, arguments...);
@@ -61,6 +62,6 @@ namespace Utility
 	private:
 		std::uintptr_t              address_{ 0 };
 		volatile std::atomic_size_t position_{ 0 };
-		EventSource<std::uintptr_t> write_;
+		EventSource<std::uintptr_t> commit_;
 	};
 }

@@ -32,16 +32,16 @@ namespace ScrambledBugs::Patches
 			return 1.0F;
 		}
 
-		auto spellType = magicItem->GetSpellType();
-		auto potion    = spellType == Skyrim::MagicSystem::SpellType::kPotion ? static_cast<Skyrim::AlchemyItem*>(magicItem) : nullptr;
-		auto isPoison  = potion && potion->IsPoison();
+		auto  spellType = magicItem->GetSpellType();
+		auto* potion    = spellType == Skyrim::MagicSystem::SpellType::kPotion ? static_cast<Skyrim::AlchemyItem*>(magicItem) : nullptr;
+		auto  isPoison  = potion && potion->IsPoison();
 
 		if ((potion && !isPoison && !effect->IsHostile()) || (spellType == Skyrim::MagicSystem::SpellType::kIngredient && magicItem->IsFood()))
 		{
 			return 1.0F;
 		}
 
-		auto actor = static_cast<Skyrim::Actor*>(magicTarget);
+		auto* actor = static_cast<Skyrim::Actor*>(magicTarget);
 
 		float defaultResistance{ 0.0F };
 

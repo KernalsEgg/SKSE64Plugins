@@ -3,12 +3,12 @@
 #include "Shared/Skyrim/T/TESObjectREFR.h"
 
 #include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/F/FormType.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
 #include "Shared/Skyrim/T/TESContainer.h"
 #include "Shared/Skyrim/T/TESNPC.h"
 #include "Shared/Skyrim/T/TESObjectCELL.h"
 #include "Shared/Skyrim/T/TESObjectCONT.h"
+#include "Shared/Skyrim/T/TESRace.h"
 #include "Shared/Skyrim/T/TESWorldSpace.h"
 #include "Shared/Utility/Enumeration.h"
 #include "Shared/Utility/TypeTraits.h"
@@ -17,18 +17,40 @@
 
 namespace Skyrim
 {
+	TESObjectREFR* TESObjectREFR::GetReferenceFrom3D(NiAVObject* avObject)
+	{
+		auto* function{ reinterpret_cast<decltype(&TESObjectREFR::GetReferenceFrom3D)>(Addresses::TESObjectREFR::GetReferenceFrom3D) };
+
+		return function(avObject);
+	}
+
 	bool TESObjectREFR::Activate(TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount, bool defaultProcessingOnly)
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::Activate)>::type>(Addresses::TESObjectREFR::Activate) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::Activate)>::type>(Addresses::TESObjectREFR::Activate) };
 
 		return function(this, activator, deferred, item, itemCount, defaultProcessingOnly);
 	}
 
-	TESObjectREFR* TESObjectREFR::GetReferenceFrom3D(NiAVObject* avObject)
+	TESContainer* TESObjectREFR::GetContainer() const
 	{
-		auto function{ reinterpret_cast<decltype(&TESObjectREFR::GetReferenceFrom3D)>(Addresses::TESObjectREFR::GetReferenceFrom3D) };
+		auto* baseObject = this->baseObject;
 
-		return function(avObject);
+		if (baseObject)
+		{
+			switch (baseObject->formType.get())
+			{
+				case FormType::kContainer:
+				{
+					return static_cast<TESContainer*>(static_cast<TESObjectCONT*>(baseObject));
+				}
+				case FormType::kNPC:
+				{
+					return static_cast<TESContainer*>(static_cast<TESNPC*>(baseObject));
+				}
+			}
+		}
+
+		return nullptr;
 	}
 
 	float TESObjectREFR::GetDistanceSquared(TESObjectREFR* target) const
@@ -53,40 +75,32 @@ namespace Skyrim
 		}
 	}
 
-	TESContainer* TESObjectREFR::GetContainer() const
-	{
-		auto baseObject = this->baseObject;
-
-		if (baseObject)
-		{
-			switch (baseObject->formType.get())
-			{
-				case FormType::kContainer:
-				{
-					return static_cast<TESContainer*>(static_cast<TESObjectCONT*>(baseObject));
-				}
-				case FormType::kNPC:
-				{
-					return static_cast<TESContainer*>(static_cast<TESNPC*>(baseObject));
-				}
-			}
-		}
-
-		return nullptr;
-	}
-
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::GetInventoryChanges)>::type>(Addresses::TESObjectREFR::GetInventoryChanges) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::GetInventoryChanges)>::type>(Addresses::TESObjectREFR::GetInventoryChanges) };
 
 		return function(this);
 	}
 
 	const char* TESObjectREFR::GetReferenceName() const
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::GetReferenceName)>::type>(Addresses::TESObjectREFR::GetReferenceName) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::GetReferenceName)>::type>(Addresses::TESObjectREFR::GetReferenceName) };
 
 		return function(this);
+	}
+
+	Utility::Enumeration<BipedObjectSlot, std::uint32_t> TESObjectREFR::GetShieldObject() const
+	{
+		auto* baseObject = this->baseObject;
+
+		if (!baseObject || baseObject->formType != FormType::kNPC)
+		{
+			return BipedObjectSlot::kNone;
+		}
+
+		auto* race = static_cast<TESNPC*>(baseObject)->race;
+
+		return race ? race->shieldBipedObject : BipedObjectSlot::kNone;
 	}
 
 	bool TESObjectREFR::Is3DLoaded() const
@@ -96,8 +110,8 @@ namespace Skyrim
 
 	bool TESObjectREFR::SameWorldSpace(TESObjectREFR* target, bool compareParentWorldSpace) const
 	{
-		auto parentCell       = this->parentCell;
-		auto targetParentCell = target->parentCell;
+		auto* parentCell       = this->parentCell;
+		auto* targetParentCell = target->parentCell;
 
 		if ((parentCell && parentCell->cellFlags.all(TESObjectCELL::Flags::kInteriorCell)) ||
 			(targetParentCell && targetParentCell->cellFlags.all(TESObjectCELL::Flags::kInteriorCell)))
@@ -117,7 +131,7 @@ namespace Skyrim
 		}
 		else
 		{
-			auto persistentCell = this->GetPersistentCell();
+			auto* persistentCell = this->GetPersistentCell();
 
 			if (persistentCell && persistentCell->cellFlags.none(TESObjectCELL::Flags::kInteriorCell))
 			{
@@ -134,7 +148,7 @@ namespace Skyrim
 		}
 		else
 		{
-			auto targetPersistentCell = target->GetPersistentCell();
+			auto* targetPersistentCell = target->GetPersistentCell();
 
 			if (targetPersistentCell && targetPersistentCell->cellFlags.none(TESObjectCELL::Flags::kInteriorCell))
 			{
@@ -152,14 +166,14 @@ namespace Skyrim
 			return false;
 		}
 
-		auto parentWorldSpace = worldSpace->parentWorldSpace;
+		auto* parentWorldSpace = worldSpace->parentWorldSpace;
 
 		if (parentWorldSpace && worldSpace->useFlags.all(TESWorldSpace::UseFlags::kUseLandData))
 		{
 			worldSpace = parentWorldSpace;
 		}
 
-		auto targetParentWorldSpace = targetWorldSpace->parentWorldSpace;
+		auto* targetParentWorldSpace = targetWorldSpace->parentWorldSpace;
 
 		if (targetParentWorldSpace && targetWorldSpace->useFlags.all(TESWorldSpace::UseFlags::kUseLandData))
 		{

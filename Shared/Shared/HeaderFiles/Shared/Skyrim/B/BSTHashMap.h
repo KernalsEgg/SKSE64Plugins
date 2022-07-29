@@ -38,8 +38,6 @@ namespace Skyrim
 		struct entry_type
 		{
 		public:
-			using value_type = typename BSTScatterTable::value_type;
-
 			constexpr bool has_value() const noexcept { return this->next != nullptr; }
 
 			// Member variables
@@ -116,14 +114,14 @@ namespace Skyrim
 		// Iterators
 		constexpr iterator<value_type> begin() noexcept
 		{
-			auto head = this->get_entries();
+			auto* head = this->get_entries();
 
 			return iterator<value_type>(head, head + this->capacity_);
 		}
 
 		constexpr iterator<const value_type> begin() const noexcept
 		{
-			auto head = this->get_entries();
+			auto* head = this->get_entries();
 
 			return iterator<const value_type>(head, head + this->capacity_);
 		}
@@ -132,14 +130,14 @@ namespace Skyrim
 
 		constexpr iterator<value_type> end() noexcept
 		{
-			auto tail = this->get_entries() + this->capacity_;
+			auto* tail = this->get_entries() + this->capacity_;
 
 			return iterator<value_type>(tail, tail);
 		}
 
 		constexpr iterator<const value_type> end() const noexcept
 		{
-			auto tail = this->get_entries() + this->capacity_;
+			auto* tail = this->get_entries() + this->capacity_;
 
 			return iterator<const value_type>(tail, tail);
 		}
@@ -147,8 +145,11 @@ namespace Skyrim
 		constexpr iterator<const value_type> cend() const noexcept { return this->end(); }
 
 		// Capacity
-		constexpr bool      empty() const noexcept { return this->size() == 0; }
+		constexpr bool empty() const noexcept { return this->size() == 0; }
+
 		constexpr size_type size() const noexcept { return this->capacity_ - this->free_; }
+
+		constexpr size_type capacity() const noexcept { return this->capacity_; }
 
 	private:
 		// Member variables

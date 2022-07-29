@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	PersistentFormManager* PersistentFormManager::GetSingleton()
 	{
-		auto singleton{ reinterpret_cast<PersistentFormManager**>(Addresses::PersistentFormManager::Singleton) };
+		auto** singleton{ reinterpret_cast<PersistentFormManager**>(Addresses::PersistentFormManager::Singleton) };
 
 		return *singleton;
 	}

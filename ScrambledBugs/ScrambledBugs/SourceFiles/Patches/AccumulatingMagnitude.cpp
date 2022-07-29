@@ -31,7 +31,7 @@ namespace ScrambledBugs::Patches
 	{
 		// accumulatingValueModifierEffect != nullptr
 
-		auto accumulatingValueModifierEffect = AccumulatingMagnitude::allocate_(caster, magicItem, effect);
+		auto* accumulatingValueModifierEffect = AccumulatingMagnitude::allocate_(caster, magicItem, effect);
 
 		// Swap the accumulation rate and the maximum magnitude
 		std::swap(accumulatingValueModifierEffect->magnitude, accumulatingValueModifierEffect->maximumMagnitude);
@@ -57,11 +57,11 @@ namespace ScrambledBugs::Patches
 
 		if (accumulatingValueModifierEffect->holdDuration <= 0.0F)
 		{
-			auto magicTarget = accumulatingValueModifierEffect->magicTarget;
+			auto* magicTarget = accumulatingValueModifierEffect->magicTarget;
 
 			if (magicTarget)
 			{
-				auto magicTargetOwnerActor = magicTarget->GetMagicTargetOwnerActor();
+				auto* magicTargetOwnerActor = magicTarget->GetMagicTargetOwnerActor();
 
 				if (magicTargetOwnerActor)
 				{
@@ -118,7 +118,7 @@ namespace ScrambledBugs::Patches
 			return Skyrim::MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
 		}
 
-		auto accumulatingValueModifierEffect = static_cast<Skyrim::AccumulatingValueModifierEffect*>(activeEffect);
+		auto* accumulatingValueModifierEffect = static_cast<Skyrim::AccumulatingValueModifierEffect*>(activeEffect);
 
 		if (accumulatingValueModifierEffect->actorValue != Skyrim::ActorValue::kWardPower)
 		{

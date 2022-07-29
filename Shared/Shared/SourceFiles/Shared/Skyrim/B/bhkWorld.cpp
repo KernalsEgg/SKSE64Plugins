@@ -10,14 +10,14 @@ namespace Skyrim
 {
 	float bhkWorld::GetScale()
 	{
-		auto singleton{ reinterpret_cast<float*>(Addresses::bhkWorld::Scale) };
+		auto* singleton{ reinterpret_cast<float*>(Addresses::bhkWorld::Scale) };
 
 		return *singleton;
 	}
 
 	float bhkWorld::GetScaleInverse()
 	{
-		auto singleton{ reinterpret_cast<float*>(Addresses::bhkWorld::ScaleInverse) };
+		auto* singleton{ reinterpret_cast<float*>(Addresses::bhkWorld::ScaleInverse) };
 
 		return *singleton;
 	}

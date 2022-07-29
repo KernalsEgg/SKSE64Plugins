@@ -39,9 +39,9 @@ namespace ScrambledBugs::Fixes
 				return 0.0F;
 			}
 
-			auto actor                = static_cast<Skyrim::Actor*>(actorValueOwner);
-			auto equippedWeapon       = actor->GetEquippedWeapon(attackDataFlags.all(Skyrim::BGSAttackData::Flags::kLeftAttack));
-			auto equippedWeaponWeight = equippedWeapon ? equippedWeapon->weight : 1.0F;
+			auto* actor                = static_cast<Skyrim::Actor*>(actorValueOwner);
+			auto* equippedWeapon       = actor->GetEquippedWeapon(attackDataFlags.all(Skyrim::BGSAttackData::Flags::kLeftAttack));
+			auto  equippedWeaponWeight = equippedWeapon ? equippedWeapon->weight : 1.0F;
 
 			if (!equippedWeapon)
 			{

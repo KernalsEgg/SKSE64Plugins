@@ -2,6 +2,7 @@
 
 #include "Shared/Skyrim/H/hkpClosestRayHitCollector.h"
 
+#include "Shared/Skyrim/H/hkpCdBody.h"
 #include "Shared/Skyrim/H/hkpCollidable.h"
 
 
@@ -19,9 +20,9 @@ namespace Skyrim
 
 			hkpRayHitCollector::ShapeKeysFromCdBody(this->rayHit.shapeKeys, hkpShapeRayCastOutput::kMaximumHierarchyDepth, cdBody);
 
-			auto rootCollidable = std::addressof(cdBody);
+			const auto* rootCollidable = std::addressof(cdBody);
 
-			for (auto parent = rootCollidable->parent; parent; parent = parent->parent)
+			for (const auto* parent = rootCollidable->parent; parent; parent = parent->parent)
 			{
 				rootCollidable = parent;
 			}

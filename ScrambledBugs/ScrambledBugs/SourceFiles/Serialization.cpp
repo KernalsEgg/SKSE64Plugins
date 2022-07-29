@@ -24,7 +24,7 @@ namespace ScrambledBugs::Serialization
 			return false;
 		}
 
-		auto enchantment = static_cast<Skyrim::EnchantmentItem*>(Skyrim::TESDataHandler::GetForm(record.formID));
+		auto* enchantment = static_cast<Skyrim::EnchantmentItem*>(Skyrim::TESDataHandler::GetForm(record.formID));
 
 		if (!enchantment || enchantment->formType != Skyrim::FormType::kEnchantment)
 		{
@@ -33,7 +33,7 @@ namespace ScrambledBugs::Serialization
 			return false;
 		}
 
-		auto enchantmentItemData = static_cast<Skyrim::EnchantmentItem::Data*>(enchantment->GetData());
+		auto* enchantmentItemData = static_cast<Skyrim::EnchantmentItem::Data*>(enchantment->GetData());
 
 		if (!enchantmentItemData)
 		{
@@ -57,7 +57,7 @@ namespace ScrambledBugs::Serialization
 			return false;
 		}
 
-		auto enchantmentItemData = static_cast<Skyrim::EnchantmentItem::Data*>(enchantment->GetData());
+		auto* enchantmentItemData = static_cast<Skyrim::EnchantmentItem::Data*>(enchantment->GetData());
 
 		if (!enchantmentItemData)
 		{
@@ -80,9 +80,9 @@ namespace ScrambledBugs::Serialization
 	{
 		Utility::Log::Information("Loading...");
 
-		auto& settings = ScrambledBugs::Settings::GetSingleton();
+		const auto& settings = ScrambledBugs::Settings::GetSingleton();
 
-		auto                    persistentFormManager = Skyrim::PersistentFormManager::GetSingleton();
+		auto*                   persistentFormManager = Skyrim::PersistentFormManager::GetSingleton();
 		Skyrim::BSSpinLockGuard lockGuard(persistentFormManager->lock);
 
 		std::uint32_t type, version, length;
@@ -130,11 +130,11 @@ namespace ScrambledBugs::Serialization
 	{
 		Utility::Log::Information("Saving...");
 
-		auto& settings = ScrambledBugs::Settings::GetSingleton();
+		const auto& settings = ScrambledBugs::Settings::GetSingleton();
 
 		if (settings.fixes.enchantmentCost)
 		{
-			auto                    persistentFormManager = Skyrim::PersistentFormManager::GetSingleton();
+			auto*                   persistentFormManager = Skyrim::PersistentFormManager::GetSingleton();
 			Skyrim::BSSpinLockGuard lockGuard(persistentFormManager->lock);
 
 			for (const auto& armorEnchantment : persistentFormManager->armorEnchantments)

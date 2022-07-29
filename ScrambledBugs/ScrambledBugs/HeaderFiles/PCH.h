@@ -10,7 +10,6 @@
 #include <optional>   // std::optional
 #include <string>     // std::string
 #include <utility>    // std::swap
-#include <vector>     // std::vector
 
 using namespace std::literals;
 

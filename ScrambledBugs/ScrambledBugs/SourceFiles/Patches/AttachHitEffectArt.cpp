@@ -47,14 +47,14 @@ namespace ScrambledBugs::Patches
 		// modelReferenceEffect != nullptr
 		// modelReferenceEffect->controller != nullptr
 
-		auto targetActor = AttachHitEffectArt::getTargetActor_(modelReferenceEffect);
+		auto* targetActor = AttachHitEffectArt::getTargetActor_(modelReferenceEffect);
 
 		if (!targetActor)
 		{
 			return nullptr;
 		}
 
-		auto attachObject = modelReferenceEffect->controller->GetAttachRoot();
+		auto* attachObject = modelReferenceEffect->controller->GetAttachRoot();
 
 		if (!attachObject)
 		{

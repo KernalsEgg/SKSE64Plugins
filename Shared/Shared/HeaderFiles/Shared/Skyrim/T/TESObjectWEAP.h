@@ -214,7 +214,7 @@ namespace Skyrim
 		float                                               reach;                        // 174, Game Data
 		Range                                               range;                        // 178, Game Data
 		float                                               animationAttackMultiplier;    // 180, Art and Sound, Animation
-		std::uint32_t                                       unknown184;                   // 184
+		std::uint32_t                                       damageToWeaponMultiplier;     // 184
 		float                                               stagger;                      // 188, Game Data
 		Utility::Enumeration<OnHit, std::uint32_t>          onHit;                        // 18C, Game Data
 		Utility::Enumeration<ActorValue, std::uint32_t>     skill;                        // 190
@@ -253,6 +253,7 @@ namespace Skyrim
 	static_assert(offsetof(TESObjectWEAP, reach) == 0x174);
 	static_assert(offsetof(TESObjectWEAP, range) == 0x178);
 	static_assert(offsetof(TESObjectWEAP, animationAttackMultiplier) == 0x180);
+	static_assert(offsetof(TESObjectWEAP, damageToWeaponMultiplier) == 0x184);
 	static_assert(offsetof(TESObjectWEAP, stagger) == 0x188);
 	static_assert(offsetof(TESObjectWEAP, onHit) == 0x18C);
 	static_assert(offsetof(TESObjectWEAP, skill) == 0x190);

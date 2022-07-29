@@ -66,7 +66,7 @@ namespace Skyrim
 
 	void BSFixedString::Acquire()
 	{
-		auto proxy = this->GetProxy();
+		auto* proxy = this->GetProxy();
 
 		if (proxy)
 		{
@@ -76,7 +76,7 @@ namespace Skyrim
 
 	BSFixedString* BSFixedString::Initialize(const_pointer string)
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSFixedString::Initialize)>::type>(Addresses::BSFixedString::Initialize) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSFixedString::Initialize)>::type>(Addresses::BSFixedString::Initialize) };
 
 		return function(this, string);
 	}

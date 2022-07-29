@@ -12,8 +12,9 @@ namespace Skyrim
 {
 	class bhkCharacterController;
 	class HighProcessData;
-	class MiddleHighProcessData;
+	class HitData;
 	class InventoryEntryData;
+	class MiddleHighProcessData;
 
 	struct CachedValue
 	{
@@ -70,13 +71,17 @@ namespace Skyrim
 	};
 	static_assert(sizeof(MiddleLowProcessData) == 0x4);
 
-	class ActorProcess
+	class AIProcess
 	{
 	public:
 		// Member functions
 		bhkCharacterController* GetCharacterController() const;
 		ObjectReferenceHandle   GetCurrentFurniture() const;
-		InventoryEntryData*     GetEquippedWeapon(bool leftHand) const;
+		InventoryEntryData*     GetEquippedItem(bool leftHand) const;
+		HitData*                GetLastHitData() const;
+		float                   GetMaximumWardPower() const;
+		bool                    IsDualCasting() const;
+		void                    SetMaximumWardPower(float maximumWardPower);
 
 		// Member variables
 		MiddleLowProcessData*  middleLowProcessData;  // 0
@@ -120,9 +125,9 @@ namespace Skyrim
 		std::uint64_t          unknown130;            // 130
 		std::uint64_t          unknown138;            // 138
 	};
-	static_assert(offsetof(ActorProcess, middleLowProcessData) == 0x0);
-	static_assert(offsetof(ActorProcess, middleHighProcessData) == 0x8);
-	static_assert(offsetof(ActorProcess, highProcessData) == 0x10);
-	static_assert(offsetof(ActorProcess, cachedValues) == 0x50);
-	static_assert(sizeof(ActorProcess) == 0x140);
+	static_assert(offsetof(AIProcess, middleLowProcessData) == 0x0);
+	static_assert(offsetof(AIProcess, middleHighProcessData) == 0x8);
+	static_assert(offsetof(AIProcess, highProcessData) == 0x10);
+	static_assert(offsetof(AIProcess, cachedValues) == 0x50);
+	static_assert(sizeof(AIProcess) == 0x140);
 }

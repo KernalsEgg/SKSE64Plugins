@@ -20,9 +20,9 @@ namespace Skyrim
 	public:
 		enum class ForceCollideOntoPPUReasons
 		{
-			kUserRequest     = 1 << 0,
-			kShapeRequest    = 1 << 1,
-			kModifierRequest = 1 << 2,
+			kUserRequest     = 1U << 0,
+			kShapeRequest    = 1U << 1,
+			kModifierRequest = 1U << 2,
 			kShapeUnchecked  = 1U << 3
 		};
 

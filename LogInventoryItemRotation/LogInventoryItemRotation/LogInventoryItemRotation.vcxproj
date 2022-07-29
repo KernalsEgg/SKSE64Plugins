@@ -20,11 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HeaderFiles\Addresses.h" />
-    <ClInclude Include="HeaderFiles\Hooks.h" />
+    <ClInclude Include="HeaderFiles\Events.h" />
     <ClInclude Include="HeaderFiles\PCH.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceFiles\Hooks.cpp" />
+    <ClCompile Include="SourceFiles\Events.cpp" />
     <ClCompile Include="SourceFiles\PCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>

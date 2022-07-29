@@ -4,8 +4,6 @@
 
 #include "Shared/Skyrim/A/AccumulatingValueModifierEffect.h"
 #include "Shared/Skyrim/A/ActiveEffect.h"
-#include "Shared/Skyrim/A/ActorValue.h"
-#include "Shared/Skyrim/E/EffectArchetype.h"
 #include "Shared/Skyrim/E/EffectSetting.h"
 
 
@@ -29,7 +27,7 @@ namespace Skyrim
 			return MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
 		}
 
-		auto accumulatingValueModifierEffect = static_cast<AccumulatingValueModifierEffect*>(activeEffect);
+		auto* accumulatingValueModifierEffect = static_cast<AccumulatingValueModifierEffect*>(activeEffect);
 
 		if (accumulatingValueModifierEffect->actorValue != ActorValue::kWardPower)
 		{

@@ -4,7 +4,6 @@
 
 
 
-// Based on std::vector
 namespace Skyrim
 {
 	template <class T>
@@ -13,8 +12,6 @@ namespace Skyrim
 	template <class T>
 	class NiTMallocInterface;
 
-	// Sparse array with potentially null elements that should be skipped
-	// CommonLibSSE checks capacity instead of size to see whether it is empty, and iterates from 0 to size - 1 instead of from 0 to free index - 1
 	template <class T, class Allocator>
 	class NiTArray
 	{
@@ -25,33 +22,105 @@ namespace Skyrim
 		using const_pointer   = const value_type*;
 		using reference       = value_type&;
 		using const_reference = const value_type&;
-		using iterator        = pointer;
-		using const_iterator  = const_pointer;
+
+		template <class U>
+		class iterator
+		{
+		public:
+			using value_type        = U;
+			using pointer           = value_type*;
+			using reference         = value_type&;
+			using iterator_category = std::forward_iterator_tag;
+
+			constexpr iterator() noexcept                = default;
+			constexpr iterator(const iterator&) noexcept = default;
+			constexpr iterator(iterator&&) noexcept      = default;
+
+			constexpr ~iterator() noexcept = default;
+
+			constexpr iterator& operator=(const iterator&) noexcept = default;
+			constexpr iterator& operator=(iterator&&) noexcept = default;
+
+			constexpr iterator(pointer head, pointer tail) noexcept :
+				head_(head), tail_(tail)
+			{
+				if (this->head_ && this->tail_)
+				{
+					while (this->head_ != this->tail_ && !*(this->head_))
+					{
+						++this->head_;
+					}
+				}
+			}
+
+			constexpr reference operator*() const noexcept { return *(this->head_); }
+			constexpr pointer   operator->() const noexcept { return this->head_; }
+
+			friend constexpr bool operator==(const iterator& left, const iterator& right) noexcept { return left.head_ == right.head_; }
+			friend constexpr bool operator!=(const iterator& left, const iterator& right) noexcept { return !(left == right); }
+
+			constexpr iterator& operator++() noexcept
+			{
+				do
+				{
+					++this->head_;
+				} while (this->head_ != this->tail_ && !*(this->head_));
+
+				return *this;
+			}
+
+			constexpr iterator operator++(int) noexcept
+			{
+				iterator iterator{ *this };
+				++(*this);
+
+				return iterator;
+			}
+
+		private:
+			pointer head_{ nullptr };
+			pointer tail_{ nullptr };
+		};
 
 		// Add
 		virtual ~NiTArray(); // 0
 
 		// Iterators
-		constexpr iterator       begin() noexcept { return this->data(); }
-		constexpr const_iterator begin() const noexcept { return this->data(); }
-		constexpr const_iterator cbegin() const noexcept { return this->begin(); }
+		constexpr iterator<value_type> begin() noexcept
+		{
+			auto* head = this->data();
 
-		constexpr iterator       end() noexcept { return this->empty() ? nullptr : this->data() + this->freeIndex_; }
-		constexpr const_iterator end() const noexcept { return this->empty() ? nullptr : this->data() + this->freeIndex_; }
-		constexpr const_iterator cend() const noexcept { return this->end(); }
+			return iterator<value_type>(head, head + this->freeIndex_);
+		}
+
+		constexpr iterator<const value_type> begin() const noexcept
+		{
+			const auto* head = this->data();
+
+			return iterator<const value_type>(head, head + this->freeIndex_);
+		}
+
+		constexpr iterator<const value_type> cbegin() const noexcept { return this->begin(); }
+
+		constexpr iterator<value_type> end() noexcept
+		{
+			auto* tail = this->data() + this->freeIndex_;
+
+			return iterator<value_type>(tail, tail);
+		}
+
+		constexpr iterator<const value_type> end() const noexcept
+		{
+			const auto* tail = this->data() + this->freeIndex_;
+
+			return iterator<const value_type>(tail, tail);
+		}
+
+		constexpr iterator<const value_type> cend() const noexcept { return this->end(); }
 
 		// Element access
-		constexpr reference       operator[](size_type index) noexcept { return this->data()[index]; }
-		constexpr const_reference operator[](size_type index) const noexcept { return this->data()[index]; }
-
 		constexpr pointer       data() noexcept { return this->data_; }
 		constexpr const_pointer data() const noexcept { return this->data_; }
-
-		constexpr reference       front() noexcept { return operator[](0); }
-		constexpr const_reference front() const noexcept { return operator[](0); }
-
-		constexpr reference       back() noexcept { return operator[](this->freeIndex_ - 1); }
-		constexpr const_reference back() const noexcept { return operator[](this->freeIndex_ - 1); }
 
 		// Capacity
 		constexpr bool empty() const noexcept { return this->size() == 0; }
@@ -62,11 +131,11 @@ namespace Skyrim
 
 	private:
 		// Member variables
-		value_type* data_;       // 8
-		size_type   capacity_;   // 10
-		size_type   freeIndex_;  // 12
-		size_type   size_;       // 14
-		size_type   growthSize_; // 16
+		pointer   data_;       // 8
+		size_type capacity_;   // 10
+		size_type freeIndex_;  // 12
+		size_type size_;       // 14
+		size_type growthSize_; // 16
 	};
 	static_assert(sizeof(NiTArray<void*, void>) == 0x18);
 

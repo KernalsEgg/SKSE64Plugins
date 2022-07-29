@@ -58,6 +58,11 @@ namespace Relocation
 		this->Load(productVersion);
 	}
 
+	std::ptrdiff_t AddressLibrary::GetOffset(std::ptrdiff_t specialEditionOffset, std::ptrdiff_t anniversaryEditionOffset)
+	{
+		return Executable::GetSingleton().IsSpecialEdition() ? specialEditionOffset : anniversaryEditionOffset;
+	}
+
 	const AddressLibrary& AddressLibrary::GetSingleton()
 	{
 		static AddressLibrary singleton(Executable::GetSingleton().GetProductVersion());
@@ -104,11 +109,6 @@ namespace Relocation
 	std::uintptr_t AddressLibrary::GetAddress(std::uint64_t specialEditionIdentifier, std::uint64_t anniversaryEditionIdentifier) const
 	{
 		return Executable::GetSingleton().IsSpecialEdition() ? this->GetAddress(specialEditionIdentifier) : this->GetAddress(anniversaryEditionIdentifier);
-	}
-
-	std::uintptr_t AddressLibrary::GetAddress(std::uint64_t specialEditionIdentifier, std::ptrdiff_t specialEditionOffset, std::uint64_t anniversaryEditionIdentifier, std::ptrdiff_t anniversaryEditionOffset) const
-	{
-		return Executable::GetSingleton().IsSpecialEdition() ? this->GetAddress(specialEditionIdentifier) + specialEditionOffset : this->GetAddress(anniversaryEditionIdentifier) + anniversaryEditionOffset;
 	}
 
 	void AddressLibrary::Load(const Version& productVersion)

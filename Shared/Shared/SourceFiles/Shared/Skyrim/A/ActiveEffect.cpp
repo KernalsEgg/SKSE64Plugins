@@ -5,6 +5,7 @@
 #include "Shared/Skyrim/E/Effect.h"
 #include "Shared/Skyrim/E/EffectSetting.h"
 #include "Shared/Skyrim/F/FindAppropriateDisplaceEffect.h"
+#include "Shared/Skyrim/M/MagicItem.h"
 #include "Shared/Skyrim/M/MagicTarget.h"
 #include "Shared/Skyrim/S/SpellItem.h"
 
@@ -55,7 +56,7 @@ namespace Skyrim
 			return this->magnitude;
 		}
 
-		auto baseEffect = this->GetBaseEffect();
+		const auto* baseEffect = this->GetBaseEffect();
 
 		auto noDuration  = baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoDuration);
 		auto noMagnitude = baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoMagnitude);
@@ -69,7 +70,7 @@ namespace Skyrim
 
 	bool ActiveEffect::ShouldDisplace() const
 	{
-		auto magicTarget = this->magicTarget;
+		auto* magicTarget = this->magicTarget;
 
 		if (!magicTarget)
 		{

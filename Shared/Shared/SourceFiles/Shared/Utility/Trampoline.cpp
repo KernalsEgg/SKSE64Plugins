@@ -95,15 +95,15 @@ namespace Utility
 				MessageBox::Error("Failed to allocate 0x{:X} bytes of memory.", this->position_.load());
 			}
 
-			this->write_.SendEvent(this->address_);
+			this->commit_.SendEvent(this->address_);
 		}
 	}
 
 	void Trampoline::RelativeCall(std::uintptr_t address, std::uintptr_t function)
 	{
-		auto position = Trampoline::Reserve(sizeof(Assembly::AbsoluteJump));
+		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
 
-		this->write_.AddEventSink(
+		this->commit_.AddEventSink(
 			[address, function, position](std::uintptr_t trampolineAddress) -> void
 			{
 				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
@@ -113,9 +113,9 @@ namespace Utility
 
 	void Trampoline::RelativeJump(std::uintptr_t address, std::uintptr_t function)
 	{
-		auto position = Trampoline::Reserve(sizeof(Assembly::AbsoluteJump));
+		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
 
-		this->write_.AddEventSink(
+		this->commit_.AddEventSink(
 			[address, function, position](std::uintptr_t trampolineAddress) -> void
 			{
 				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);

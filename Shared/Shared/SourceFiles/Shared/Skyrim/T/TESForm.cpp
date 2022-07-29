@@ -11,14 +11,14 @@ namespace Skyrim
 {
 	EnchantmentItem* TESForm::GetEnchantment(ExtraDataList* extraDataList)
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESForm::GetEnchantment)>::type>(Addresses::TESForm::GetEnchantment) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESForm::GetEnchantment)>::type>(Addresses::TESForm::GetEnchantment) };
 
 		return function(this, extraDataList);
 	}
 
 	TESFile* TESForm::GetFile(std::int32_t index) const
 	{
-		auto fileArray = this->sourceFiles.fileArray;
+		auto* fileArray = this->sourceFiles.fileArray;
 
 		if (!fileArray || fileArray->empty())
 		{
@@ -30,14 +30,14 @@ namespace Skyrim
 
 	const char* TESForm::GetFormName() const
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESForm::GetFormName)>::type>(Addresses::TESForm::GetFormName) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESForm::GetFormName)>::type>(Addresses::TESForm::GetFormName) };
 
 		return function(this);
 	}
 
 	std::uint16_t TESForm::GetMaximumCharge(ExtraDataList* extraDataList) const
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESForm::GetMaximumCharge)>::type>(Addresses::TESForm::GetMaximumCharge) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESForm::GetMaximumCharge)>::type>(Addresses::TESForm::GetMaximumCharge) };
 
 		return function(this, extraDataList);
 	}

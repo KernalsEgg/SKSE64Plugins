@@ -62,6 +62,7 @@ namespace Relocation
 
 		explicit AddressLibrary(const Version& productVersion);
 
+		static std::ptrdiff_t        GetOffset(std::ptrdiff_t specialEditionOffset, std::ptrdiff_t anniversaryEditionOffset);
 		static const AddressLibrary& GetSingleton();
 
 		template <class... Arguments>
@@ -80,7 +81,6 @@ namespace Relocation
 		void           Dump(const std::filesystem::path& path) const;
 		std::uintptr_t GetAddress(std::uint64_t identifier) const;
 		std::uintptr_t GetAddress(std::uint64_t specialEditionIdentifier, std::uint64_t anniversaryEditionIdentifier) const;
-		std::uintptr_t GetAddress(std::uint64_t specialEditionIdentifier, std::ptrdiff_t specialEditionOffset, std::uint64_t anniversaryEditionIdentifier, std::ptrdiff_t anniversaryEditionOffset) const;
 		void           Load(const Version& productVersion);
 		void           Read(std::ifstream& inputFileStream, const Header& header);
 

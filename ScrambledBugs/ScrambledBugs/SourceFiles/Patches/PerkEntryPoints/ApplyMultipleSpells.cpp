@@ -5,6 +5,7 @@
 #include "Addresses.h"
 #include "Patterns.h"
 #include "Shared/Skyrim/B/BGSEntryPointFunctionDataSpellItem.h"
+#include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Utility/Memory.h"
 #include "Shared/Utility/Trampoline.h"
 
@@ -67,14 +68,14 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			return;
 		}
 
-		auto spell = static_cast<Skyrim::BGSEntryPointFunctionDataSpellItem*>(entryPointFunctionData)->spell;
+		auto* spell = static_cast<Skyrim::BGSEntryPointFunctionDataSpellItem*>(entryPointFunctionData)->spell;
 
 		if (!spell)
 		{
 			return;
 		}
 
-		auto spells = static_cast<std::vector<Skyrim::SpellItem*>*>(*results);
+		auto* spells = static_cast<Skyrim::BSTArray<Skyrim::SpellItem*>*>(*results);
 		spells->push_back(spell);
 	}
 
@@ -84,11 +85,11 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> bashingSpells;
+		Skyrim::BSTArray<Skyrim::SpellItem*> bashingSpells;
 
 		ApplyMultipleSpells::applyBashingSpell_(entryPoint, perkOwner, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(bashingSpells)));
 
-		for (auto bashingSpell : bashingSpells)
+		for (auto* bashingSpell : bashingSpells)
 		{
 			bashingSpell->Apply(target, ApplyMultipleSpells::castSpells_ ? perkOwner : target);
 		}
@@ -101,11 +102,11 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> combatHitSpells;
+		Skyrim::BSTArray<Skyrim::SpellItem*> combatHitSpells;
 
 		ApplyMultipleSpells::applyCombatHitSpell_(entryPoint, perkOwner, weapon, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(combatHitSpells)));
 
-		for (auto combatHitSpell : combatHitSpells)
+		for (auto* combatHitSpell : combatHitSpells)
 		{
 			combatHitSpell->Apply(target, ApplyMultipleSpells::castSpells_ ? perkOwner : target);
 		}
@@ -118,11 +119,11 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> combatHitSpells;
+		Skyrim::BSTArray<Skyrim::SpellItem*> combatHitSpells;
 
 		ApplyMultipleSpells::applyCombatHitSpellArrowProjectile_(entryPoint, perkOwner, weapon, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(combatHitSpells)));
 
-		for (auto combatHitSpell : combatHitSpells)
+		for (auto* combatHitSpell : combatHitSpells)
 		{
 			combatHitSpell->Apply(target, ApplyMultipleSpells::castSpells_ ? perkOwner : target);
 		}
@@ -135,11 +136,11 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> reanimateSpells;
+		Skyrim::BSTArray<Skyrim::SpellItem*> reanimateSpells;
 
 		ApplyMultipleSpells::applyReanimateSpell_(entryPoint, perkOwner, spell, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(reanimateSpells)));
 
-		for (auto reanimateSpell : reanimateSpells)
+		for (auto* reanimateSpell : reanimateSpells)
 		{
 			reanimateSpell->Apply(target, ApplyMultipleSpells::castSpells_ ? perkOwner : target);
 		}
@@ -150,11 +151,11 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// perkOwner != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> sneakingSpells;
+		Skyrim::BSTArray<Skyrim::SpellItem*> sneakingSpells;
 
 		ApplyMultipleSpells::applySneakingSpell_(entryPoint, perkOwner, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(sneakingSpells)));
 
-		for (auto sneakingSpell : sneakingSpells)
+		for (auto* sneakingSpell : sneakingSpells)
 		{
 			sneakingSpell->Apply(perkOwner, perkOwner);
 		}
@@ -167,11 +168,11 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// attackerWeapon != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> weaponSwingSpells;
+		Skyrim::BSTArray<Skyrim::SpellItem*> weaponSwingSpells;
 
 		ApplyMultipleSpells::applyWeaponSwingSpell_(entryPoint, perkOwner, attacker, attackerWeapon, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(weaponSwingSpells)));
 
-		for (auto weaponSwingSpell : weaponSwingSpells)
+		for (auto* weaponSwingSpell : weaponSwingSpells)
 		{
 			weaponSwingSpell->Apply(perkOwner, ApplyMultipleSpells::castSpells_ ? attacker : perkOwner);
 		}

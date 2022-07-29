@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	UserEvents* UserEvents::GetSingleton()
 	{
-		auto singleton{ reinterpret_cast<UserEvents**>(Addresses::UserEvents::Singleton) };
+		auto** singleton{ reinterpret_cast<UserEvents**>(Addresses::UserEvents::Singleton) };
 
 		return *singleton;
 	}

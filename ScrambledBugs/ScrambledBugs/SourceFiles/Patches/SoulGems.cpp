@@ -4,6 +4,7 @@
 
 #include "Shared/Skyrim/A/Actor.h"
 #include "Shared/Skyrim/Addresses.h"
+#include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/T/TESSoulGem.h"
 #include "Shared/Utility/Enumeration.h"
@@ -26,11 +27,11 @@ namespace ScrambledBugs::Patches
 		// findBestSoulGemVisitor != nullptr
 		// inventoryEntryData != nullptr
 
-		auto item = inventoryEntryData->item;
+		auto* item = inventoryEntryData->item;
 
 		if (item && item->formType == Skyrim::FormType::kSoulGem)
 		{
-			auto soulGem = static_cast<Skyrim::TESSoulGem*>(item);
+			auto* soulGem = static_cast<Skyrim::TESSoulGem*>(item);
 
 			if (soulGem->soul == Skyrim::SoulLevel::kNone)
 			{
@@ -38,12 +39,12 @@ namespace ScrambledBugs::Patches
 
 				if (soulGemCountDelta)
 				{
-					auto extraDataLists = inventoryEntryData->extraDataLists;
+					auto* extraDataLists = inventoryEntryData->extraDataLists;
 
 					// Check if there are any empty soul gems
 					if (extraDataLists)
 					{
-						for (auto extraDataList : *extraDataLists)
+						for (auto* extraDataList : *extraDataLists)
 						{
 							if (!extraDataList)
 							{
@@ -61,8 +62,8 @@ namespace ScrambledBugs::Patches
 
 					if (soulGemCountDelta > 0)
 					{
-						auto target      = findBestSoulGemVisitor->target;
-						auto targetIsNPC = target->IsNPC();
+						auto* target      = findBestSoulGemVisitor->target;
+						auto  targetIsNPC = target->IsNPC();
 
 						auto soulGemCanHoldNPCSoul = Utility::Enumeration<Skyrim::TESSoulGem::RecordFlags, std::uint32_t>(soulGem->recordFlags).all(Skyrim::TESSoulGem::RecordFlags::kCanHoldNPCSoul);
 
@@ -73,13 +74,13 @@ namespace ScrambledBugs::Patches
 
 							if (SoulGems::underfilledSoulGems_ ? soulGemSoulLevelValue == targetSoulLevelValue : soulGemSoulLevelValue >= targetSoulLevelValue)
 							{
-								auto bestSoulGem               = findBestSoulGemVisitor->bestSoulGem;
-								auto bestSoulGemSoulLevelValue = bestSoulGem ?
-                                                                     std::make_optional(Skyrim::TESSoulGem::GetSoulLevelValue(bestSoulGem->capacity.get())) :
-                                                                     std::nullopt;
-								auto bestSoulGemCanHoldNPCSoul = bestSoulGem ?
-                                                                     std::make_optional(Utility::Enumeration<Skyrim::TESSoulGem::RecordFlags, std::uint32_t>(bestSoulGem->recordFlags).all(Skyrim::TESSoulGem::RecordFlags::kCanHoldNPCSoul)) :
-                                                                     std::nullopt;
+								auto* bestSoulGem               = findBestSoulGemVisitor->bestSoulGem;
+								auto  bestSoulGemSoulLevelValue = bestSoulGem ?
+                                                                      std::make_optional(Skyrim::TESSoulGem::GetSoulLevelValue(bestSoulGem->capacity.get())) :
+                                                                      std::nullopt;
+								auto  bestSoulGemCanHoldNPCSoul = bestSoulGem ?
+                                                                      std::make_optional(Utility::Enumeration<Skyrim::TESSoulGem::RecordFlags, std::uint32_t>(bestSoulGem->recordFlags).all(Skyrim::TESSoulGem::RecordFlags::kCanHoldNPCSoul)) :
+                                                                      std::nullopt;
 
 								if (!bestSoulGem || bestSoulGemSoulLevelValue.value() > soulGemSoulLevelValue ||
 									(!targetIsNPC && bestSoulGemSoulLevelValue.value() == soulGemSoulLevelValue && bestSoulGemCanHoldNPCSoul.value() && !soulGemCanHoldNPCSoul))

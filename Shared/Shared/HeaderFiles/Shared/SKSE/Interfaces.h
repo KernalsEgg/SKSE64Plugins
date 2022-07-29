@@ -64,7 +64,7 @@ namespace SKSE
 		template <class T>
 		T* QueryInterface(std::uint32_t id) const
 		{
-			auto interface = static_cast<T*>(this->QueryInterface(id));
+			auto* interface = static_cast<T*>(this->QueryInterface(id));
 
 			if (interface && interface->Version() != T::kVersion)
 			{

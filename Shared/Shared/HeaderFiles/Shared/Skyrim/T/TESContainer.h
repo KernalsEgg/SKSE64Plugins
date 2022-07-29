@@ -52,8 +52,8 @@ namespace Skyrim
 		constexpr const_iterator begin() const noexcept { return this->data(); }
 		constexpr const_iterator cbegin() const noexcept { return this->begin(); }
 
-		constexpr iterator       end() noexcept { return this->empty() ? nullptr : this->data() + this->size(); }
-		constexpr const_iterator end() const noexcept { return this->empty() ? nullptr : this->data() + this->size(); }
+		constexpr iterator       end() noexcept { return this->data() + this->size(); }
+		constexpr const_iterator end() const noexcept { return this->data() + this->size(); }
 		constexpr const_iterator cend() const noexcept { return this->end(); }
 
 		// Element access
@@ -79,7 +79,7 @@ namespace Skyrim
 
 	private:
 		// Member variables
-		value_type*   containerObjects_;     // 8
+		pointer       containerObjects_;     // 8
 		size_type     containerObjectCount_; // 10
 		std::uint32_t padding14_;            // 14
 	};

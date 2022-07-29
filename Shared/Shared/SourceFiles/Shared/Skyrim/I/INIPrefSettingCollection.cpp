@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	SettingT<INIPrefSettingCollection>* INIPrefSettingCollection::Decals()
 	{
-		auto singleton{ reinterpret_cast<SettingT<INIPrefSettingCollection>*>(Addresses::INIPrefSettingCollection::Decals) };
+		auto* singleton{ reinterpret_cast<SettingT<INIPrefSettingCollection>*>(Addresses::INIPrefSettingCollection::Decals) };
 
 		return singleton;
 	}

@@ -83,7 +83,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 
 	if (patched.has_value())
 	{
-		Utility::Log::Information("Patched Bethesda.Net Login: {}", patched.value());
+		Utility::Log::Information("Patched Bethesda.net Login: {}", patched.value());
 
 		if (!patched.value())
 		{

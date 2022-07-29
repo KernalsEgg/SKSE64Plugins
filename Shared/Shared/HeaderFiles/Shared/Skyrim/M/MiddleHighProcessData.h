@@ -10,6 +10,7 @@
 namespace Skyrim
 {
 	class bhkCharacterController;
+	class HitData;
 	class InventoryEntryData;
 
 	class MiddleHighProcessData
@@ -66,7 +67,7 @@ namespace Skyrim
 		std::uint64_t                     unknown178;          // 178
 		std::uint64_t                     unknown180;          // 180
 		std::uint64_t                     unknown188;          // 188
-		std::uint64_t                     unknown190;          // 190
+		HitData*                          lastHitData;         // 190
 		std::uint64_t                     unknown198;          // 198
 		std::uint64_t                     unknown1A0;          // 1A0
 		std::uint64_t                     unknown1A8;          // 1A8
@@ -122,6 +123,7 @@ namespace Skyrim
 		std::uint64_t                     unknown328;          // 328
 		std::uint64_t                     unknown330;          // 330
 	};
+	static_assert(offsetof(MiddleHighProcessData, lastHitData) == 0x190);
 	static_assert(offsetof(MiddleHighProcessData, currentFurniture) == 0x208);
 	static_assert(offsetof(MiddleHighProcessData, leftHand) == 0x220);
 	static_assert(offsetof(MiddleHighProcessData, characterController) == 0x250);

@@ -37,7 +37,7 @@ namespace Trails
 			template <class T>
 			T* GetForm(Skyrim::FormType formType) const
 			{
-				auto form = Skyrim::TESDataHandler::GetSingleton()->GetFormFromFile<T>(this->GetFormID(), this->fileName);
+				auto* form = Skyrim::TESDataHandler::GetSingleton()->GetFormFromFile<T>(this->GetFormID(), this->fileName);
 
 				if (!form)
 				{
@@ -180,6 +180,7 @@ namespace Trails
 					nlohmann::json Serialize() const;
 
 					bool           force{ false };
+					bool           useLandColor{ true };
 					OffsetRotation rotation{ "", { false, false, true }, { { 0.0F, 0.0F, -10.0F }, { 0.0F, 0.0F, 10.0F } } };
 				};
 

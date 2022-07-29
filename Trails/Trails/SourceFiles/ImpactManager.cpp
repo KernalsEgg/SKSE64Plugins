@@ -34,6 +34,10 @@
 #include "Shared/Skyrim/T/TESObjectCELL.h"
 #include "Shared/Utility/Convert.h"
 
+// Remove
+#include "Shared/Skyrim/P/PlayerCharacter.h"
+#include "Shared/Utility/Log.h"
+
 
 
 namespace Trails
@@ -45,21 +49,21 @@ namespace Trails
 			return false;
 		}
 
-		auto impactEffect = arguments.impactEffect;
+		auto* impactEffect = arguments.impactEffect;
 
 		if (!impactEffect)
 		{
 			return false;
 		}
 
-		auto parentCell = source->parentCell;
+		auto* parentCell = source->parentCell;
 
 		if (!parentCell)
 		{
 			return false;
 		}
 
-		auto havokWorld = parentCell->GetHavokWorld();
+		auto* havokWorld = parentCell->GetHavokWorld();
 
 		if (!havokWorld)
 		{
@@ -67,11 +71,11 @@ namespace Trails
 		}
 
 		const auto& rayCast  = arguments.rayCast;
-		auto        source3D = source->GetThirdPerson3D();
+		auto*       source3D = source->GetThirdPerson3D();
 
-		auto originNodeName = rayCast.origin.nodeName;
-		auto originNode     = originNodeName.empty() || !source3D ? nullptr : source3D->GetBoneFromName(Skyrim::BSFixedString(originNodeName), true);
-		auto origin         = originNode ? originNode->worldTransform.translation : source->position;
+		auto  originNodeName = rayCast.origin.nodeName;
+		auto* originNode     = originNodeName.empty() || !source3D ? nullptr : source3D->GetBoneFromName(Skyrim::BSFixedString(originNodeName), true);
+		auto  origin         = originNode ? originNode->worldTransform.translation : source->position;
 
 		auto originOffset = Skyrim::NiPoint3(rayCast.origin.offset.x, rayCast.origin.offset.y, rayCast.origin.offset.z);
 		auto ray          = Skyrim::NiPoint3(rayCast.ray.x, rayCast.ray.y, rayCast.ray.z);
@@ -84,8 +88,8 @@ namespace Trails
 
 		if (rayCast.rotation.rotate.x || rayCast.rotation.rotate.y || rayCast.rotation.rotate.z)
 		{
-			auto rotationNodeName = rayCast.rotation.nodeName;
-			auto rotationNode     = rotationNodeName.empty() || !source3D ? nullptr : source3D->GetBoneFromName(Skyrim::BSFixedString(rotationNodeName), true);
+			auto  rotationNodeName = rayCast.rotation.nodeName;
+			auto* rotationNode     = rotationNodeName.empty() || !source3D ? nullptr : source3D->GetBoneFromName(Skyrim::BSFixedString(rotationNodeName), true);
 
 			Skyrim::NiPoint3 eulerAngles;
 
@@ -125,7 +129,7 @@ namespace Trails
 
 		if (source->formType == Skyrim::FormType::kActor)
 		{
-			auto characterController = static_cast<Skyrim::Actor*>(source)->GetCharacterController();
+			auto* characterController = static_cast<Skyrim::Actor*>(source)->GetCharacterController();
 
 			if (characterController)
 			{
@@ -136,15 +140,15 @@ namespace Trails
 		{
 			if (source3D)
 			{
-				auto collisionObject = source3D->GetCollisionObject();
+				auto* collisionObject = source3D->GetCollisionObject();
 
 				if (collisionObject)
 				{
-					auto rigidBody = collisionObject->GetRigidBody();
+					auto* rigidBody = collisionObject->GetRigidBody();
 
 					if (rigidBody)
 					{
-						auto referencedObject = static_cast<Skyrim::hkpWorldObject*>(rigidBody->referencedObject.get());
+						auto* referencedObject = static_cast<Skyrim::hkpWorldObject*>(rigidBody->referencedObject.get());
 
 						if (referencedObject)
 						{
@@ -161,7 +165,7 @@ namespace Trails
 		}
 
 		const auto& rayHit         = closestRayHitCollector.rayHit;
-		auto        rootCollidable = rayHit.rootCollidable;
+		const auto* rootCollidable = rayHit.rootCollidable;
 
 		if (!rootCollidable)
 		{
@@ -171,7 +175,7 @@ namespace Trails
 		auto position = origin + (ray * rayHit.hitFraction);
 		auto normal   = Skyrim::NiPoint3(rayHit.normal.quad.m128_f32[0], rayHit.normal.quad.m128_f32[1], rayHit.normal.quad.m128_f32[2]);
 
-		std::uint32_t       materialID{ 0U };
+		std::uint32_t       materialID{ 0 };
 		Skyrim::NiAVObject* target3D{ nullptr };
 
 		auto terrain = Skyrim::hkpGroupFilter::GetSystemGroupFromFilterInformation(rootCollidable->broadPhaseHandle.collisionFilterInformation) == Utility::ToUnderlying(Skyrim::hkpGroupFilter::SystemGroup::kTerrain);
@@ -182,19 +186,19 @@ namespace Trails
 
 			if (rootCollidable->broadPhaseHandle.type == Utility::ToUnderlying(Skyrim::hkpWorldObject::BroadPhaseType::kEntity))
 			{
-				auto owner = rootCollidable->GetOwner<Skyrim::hkpWorldObject>();
+				auto* owner = rootCollidable->GetOwner<Skyrim::hkpWorldObject>();
 
 				if (owner)
 				{
-					auto userData = reinterpret_cast<Skyrim::bhkWorldObject*>(owner->userData);
+					auto* userData = reinterpret_cast<Skyrim::bhkWorldObject*>(owner->userData);
 
 					if (userData)
 					{
-						auto property = static_cast<Skyrim::NiAVObject*>(userData->GetProperty(1).GetPointer());
+						auto* property = static_cast<Skyrim::NiAVObject*>(userData->GetProperty(1).GetPointer());
 
 						if (property)
 						{
-							auto parent = property->parentNode;
+							auto* parent = property->parentNode;
 
 							if (parent)
 							{
@@ -207,11 +211,11 @@ namespace Trails
 		}
 		else
 		{
-			auto shape = rootCollidable->shape;
+			const auto* shape = rootCollidable->shape;
 
 			if (shape)
 			{
-				auto userData = reinterpret_cast<Skyrim::bhkShape*>(shape->userData);
+				auto* userData = reinterpret_cast<Skyrim::bhkShape*>(shape->userData);
 
 				if (userData)
 				{
@@ -240,21 +244,26 @@ namespace Trails
 			return false;
 		}
 
-		auto materialType = Skyrim::BGSMaterialType::GetMaterialTypeFromMaterialID(materialID);
+		auto* materialType = Skyrim::BGSMaterialType::GetMaterialTypeFromMaterialID(materialID);
 
 		if (!materialType)
 		{
 			return false;
 		}
 
-		auto impactData = impactEffect->GetImpactData(materialType);
+		if (source == Skyrim::PlayerCharacter::GetSingleton())
+		{
+			Utility::Log::Information("Material: {}", materialType->materialName);
+		}
+
+		auto* impactData = impactEffect->GetImpactData(materialType);
 
 		if (!impactData)
 		{
 			return false;
 		}
 
-		parentCell->CreateTemporaryEffectParticle(impactData->effectDuration, impactData->GetModelPath(), normal, position, 1.0F, 0x7U, nullptr);
+		parentCell->CreateTemporaryEffectParticle(impactData->effectDuration, impactData->GetModelPath(), normal, position, 1.0F, 0x7, nullptr);
 
 		Skyrim::BGSImpactManager::GetSingleton()->PlaySound(Skyrim::BGSImpactManager::SoundData{
 			.impactData = impactData,
@@ -264,18 +273,18 @@ namespace Trails
 			.sound2     = nullptr,
 			.playSound1 = true,
 			.playSound2 = true,
-			.unknown2A  = 0U,
-			.unknown30  = 0UL,
+			.unknown2A  = 0,
+			.unknown30  = 0,
 		});
 
-		auto textureSet = impactData->textureSet;
+		auto* textureSet = impactData->textureSet;
 
 		if (!textureSet)
 		{
 			return true;
 		}
 
-		auto target = Skyrim::TESObjectREFR::GetReferenceFrom3D(target3D);
+		auto* target = Skyrim::TESObjectREFR::GetReferenceFrom3D(target3D);
 
 		if (!terrain && !(target && target->ShouldApplyDecal()))
 		{
@@ -303,8 +312,8 @@ namespace Trails
 
 		if (decal.rotation.rotate.x || decal.rotation.rotate.y || decal.rotation.rotate.z)
 		{
-			auto rotationNodeName = decal.rotation.nodeName;
-			auto rotationNode     = rotationNodeName.empty() || !source3D ? nullptr : source3D->GetBoneFromName(Skyrim::BSFixedString(rotationNodeName), true);
+			auto  rotationNodeName = decal.rotation.nodeName;
+			auto* rotationNode     = rotationNodeName.empty() || !source3D ? nullptr : source3D->GetBoneFromName(Skyrim::BSFixedString(rotationNodeName), true);
 
 			Skyrim::NiPoint3 eulerAngles;
 
@@ -360,8 +369,28 @@ namespace Trails
 		creationData.angleThreshold  = impactData->angleThreshold;
 		creationData.placementRadius = impactData->placementRadius;
 
-		auto color         = decalData.color;
-		creationData.color = Skyrim::NiColor(color.red / 255.0F, color.green / 255.0F, color.blue / 255.0F);
+		creationData.color = Skyrim::NiColor(
+			static_cast<float>(decalData.color.red) / 255.0F,
+			static_cast<float>(decalData.color.green) / 255.0F,
+			static_cast<float>(decalData.color.blue) / 255.0F);
+
+		if (terrain && decal.useLandColor)
+		{
+			Skyrim::NiColorA landColor;
+
+			if (Skyrim::TES::GetSingleton()->GetLandColor(position, landColor))
+			{
+				creationData.color = Skyrim::NiColor(
+					std::min(std::max(landColor.red, 0.0F), 1.0F),
+					std::min(std::max(landColor.green, 0.0F), 1.0F),
+					std::min(std::max(landColor.blue, 0.0F), 1.0F));
+
+				if (source == Skyrim::PlayerCharacter::GetSingleton())
+				{
+					Utility::Log::Information("Land Color: ({}, {}, {}, {})", landColor.red, landColor.green, landColor.blue, landColor.alpha);
+				}
+			}
+		}
 
 		auto decalDataFlags = decalData.decalDataFlags;
 
@@ -382,7 +411,7 @@ namespace Trails
 
 		creationData.parallaxPasses = decalData.parallaxPasses;
 
-		DecalManager::ApplyDecal(Skyrim::BGSDecalManager::GetSingleton(), creationData, decal.force, nullptr);
+		DecalManager::AddDecal(Skyrim::BGSDecalManager::GetSingleton(), creationData, decal.force, nullptr);
 
 		return true;
 	}

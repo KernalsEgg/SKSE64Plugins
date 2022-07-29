@@ -2,16 +2,19 @@
 
 #include "Shared/PCH.h"
 
-#include "Shared/Skyrim/B/BSSimpleList.h"
-
 
 
 namespace Skyrim
 {
 	class Actor;
+	class ExtraDataList;
 	class InventoryEntryData;
+	class TESBoundObject;
 	class TESObjectREFR;
 	class TESSoulGem;
+
+	template <class T>
+	class BSSimpleList;
 
 	class InventoryChanges
 	{
@@ -53,7 +56,9 @@ namespace Skyrim
 		static_assert(sizeof(FindBestSoulGemVisitor) == 0x18);
 
 		// Member functions
-		void ResetWeight();
+		InventoryEntryData* GetInventoryEntryData(TESBoundObject* item) const;
+		void                ImproveItem(TESBoundObject* item, ExtraDataList* extraDataList, float health) const;
+		void                ResetWeight();
 
 		// Member variables
 		BSSimpleList<InventoryEntryData*>* inventoryEntryDataList;  // 0

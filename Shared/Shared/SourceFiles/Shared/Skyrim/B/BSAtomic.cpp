@@ -84,28 +84,28 @@ namespace Skyrim
 
 	void BSReadWriteLock::ReadLock()
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSReadWriteLock::ReadLock)>::type>(Addresses::BSReadWriteLock::ReadLock) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSReadWriteLock::ReadLock)>::type>(Addresses::BSReadWriteLock::ReadLock) };
 
 		function(this);
 	}
 
 	void BSReadWriteLock::ReadUnlock()
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSReadWriteLock::ReadUnlock)>::type>(Addresses::BSReadWriteLock::ReadUnlock) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSReadWriteLock::ReadUnlock)>::type>(Addresses::BSReadWriteLock::ReadUnlock) };
 
 		function(this);
 	}
 
 	void BSReadWriteLock::WriteLock()
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSReadWriteLock::WriteLock)>::type>(Addresses::BSReadWriteLock::WriteLock) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSReadWriteLock::WriteLock)>::type>(Addresses::BSReadWriteLock::WriteLock) };
 
 		function(this);
 	}
 
 	void BSReadWriteLock::WriteUnlock()
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSReadWriteLock::WriteUnlock)>::type>(Addresses::BSReadWriteLock::WriteUnlock) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BSReadWriteLock::WriteUnlock)>::type>(Addresses::BSReadWriteLock::WriteUnlock) };
 
 		function(this);
 	}

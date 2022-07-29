@@ -13,9 +13,9 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		BSFixedString                 event;     // 0
-		BSTSmallArray<BSFixedString>* clips;     // 8
-		std::uint64_t                 unknown10; // 10
+		BSFixedString                    event;     // 0
+		BSTSmallArray<BSFixedString, 1>* clips;     // 8
+		std::uint64_t                    unknown10; // 10
 	};
 	static_assert(offsetof(SetEventData, event) == 0x0);
 	static_assert(offsetof(SetEventData, clips) == 0x8);

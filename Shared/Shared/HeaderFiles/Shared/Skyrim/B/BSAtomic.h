@@ -14,6 +14,15 @@ namespace Skyrim
 			kFastSpinCount = 10000
 		};
 
+		BSSpinLock()                  = default;
+		BSSpinLock(const BSSpinLock&) = delete;
+		BSSpinLock(BSSpinLock&&)      = delete;
+
+		~BSSpinLock() = default;
+
+		BSSpinLock& operator=(const BSSpinLock&) = delete;
+		BSSpinLock& operator=(BSSpinLock&&) = delete;
+
 		// Member functions
 		void Lock(std::uint32_t pauseAttempts = 0);
 		void Unlock();
@@ -48,6 +57,15 @@ namespace Skyrim
 	class BSReadWriteLock
 	{
 	public:
+		BSReadWriteLock()                       = default;
+		BSReadWriteLock(const BSReadWriteLock&) = delete;
+		BSReadWriteLock(BSReadWriteLock&&)      = delete;
+
+		~BSReadWriteLock() = default;
+
+		BSReadWriteLock& operator=(const BSReadWriteLock&) = delete;
+		BSReadWriteLock& operator=(BSReadWriteLock&&) = delete;
+
 		// Member functions
 		void ReadLock();
 		void ReadUnlock();

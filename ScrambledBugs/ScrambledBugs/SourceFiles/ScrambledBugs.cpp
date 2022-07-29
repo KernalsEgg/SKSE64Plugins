@@ -231,7 +231,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 
 	Settings();
 
-	auto serializationInterface = SKSE::Cache::GetSingleton().GetSerializationInterface();
+	const auto* serializationInterface = SKSE::Cache::GetSingleton().GetSerializationInterface();
 	serializationInterface->SetUniqueID(ScrambledBugs::Serialization::kUniqueID);
 	serializationInterface->SetSaveCallback(std::addressof(ScrambledBugs::Serialization::Save));
 	serializationInterface->SetLoadCallback(std::addressof(ScrambledBugs::Serialization::Load));

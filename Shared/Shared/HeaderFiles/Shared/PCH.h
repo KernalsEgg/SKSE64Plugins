@@ -15,14 +15,15 @@
 #include <d3d9types.h>
 #include <memoryapi.h>
 
-#include <algorithm>       // std::lower_bound, std::sort
+#include <algorithm>       // std::find, std::lower_bound, std::min, std::sort
 #include <atomic>          // std::atomic_ref, std::atomic_size_t
 #include <chrono>          // std::chrono
-#include <cmath>           // std::abs, std::pow, std::sqrt
+#include <cmath>           // std::abs, std::ceil, std::pow, std::sqrt
 #include <compare>         // std::strong_ordering
 #include <concepts>        // std::same_as
 #include <cstddef>         // offsetof, std::nullptr_t, std::ptrdiff_t, std::size_t
 #include <cstdint>         // Fixed width integer types
+#include <cstring>         // std::memcpy, std::memmove, std::memset
 #include <exception>       // std::terminate
 #include <filesystem>      // std::filesystem::path
 #include <fstream>         // std::ifstream, std::ofstream
@@ -30,7 +31,7 @@
 #include <ios>             // std::ios
 #include <iterator>        // std::forward_iterator_tag
 #include <limits>          // std::numeric_limits
-#include <memory>          // std::addressof
+#include <memory>          // std::addressof, std::construct_at, std::destroy_at
 #include <new>             // Dynamic memory management
 #include <optional>        // std::optional
 #include <ostream>         // std::endl, std::flush

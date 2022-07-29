@@ -41,7 +41,7 @@ namespace Skyrim
 		template <class... Arguments>
 		static void HandleEntryPoint(Utility::Enumeration<BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Actor* perkOwner, Arguments... arguments)
 		{
-			auto function{ reinterpret_cast<decltype(&BGSEntryPointPerkEntry::HandleEntryPoint<Arguments...>)>(Addresses::BGSEntryPointPerkEntry::HandleEntryPoint) };
+			auto* function{ reinterpret_cast<decltype(&BGSEntryPointPerkEntry::HandleEntryPoint<Arguments...>)>(Addresses::BGSEntryPointPerkEntry::HandleEntryPoint) };
 
 			function(entryPoint, perkOwner, arguments...);
 		}

@@ -19,19 +19,19 @@ namespace ConsoleCommandCompanion::Events
 			return Skyrim::BSEventNotifyControl::kContinue;
 		}
 
-		for (auto inputEvent = *eventArguments; inputEvent; inputEvent = inputEvent->next)
+		for (auto* inputEvent = *eventArguments; inputEvent; inputEvent = inputEvent->next)
 		{
 			switch (inputEvent->inputEventType.get())
 			{
 				case Skyrim::InputEvent::Type::kButton:
 				{
-					auto buttonEvent = static_cast<Skyrim::ButtonEvent*>(inputEvent);
+					auto* buttonEvent = static_cast<Skyrim::ButtonEvent*>(inputEvent);
 
 					if (buttonEvent->IsPressed())
 					{
 						if (Settings::GetSingleton().log)
 						{
-							Utility::Log::Information("Pressed, ID Code: {}, Input Device: {}, User Event: {}", buttonEvent->idCode, buttonEvent->inputDevice.underlying(), buttonEvent->GetUserEvent());
+							Utility::Log::Information("Pressed, ID Code: {}, Input Device: {}, User Event: \"{}\"", buttonEvent->idCode, buttonEvent->inputDevice.underlying(), buttonEvent->GetUserEvent());
 						}
 
 						for (const auto& pressed : Settings::GetSingleton().events.button.pressed)
@@ -65,7 +65,7 @@ namespace ConsoleCommandCompanion::Events
 					{
 						if (Settings::GetSingleton().log)
 						{
-							Utility::Log::Information("Released, ID Code: {}, Input Device: {}, User Event: {}", buttonEvent->idCode, buttonEvent->inputDevice.underlying(), buttonEvent->GetUserEvent());
+							Utility::Log::Information("Released, ID Code: {}, Input Device: {}, User Event: \"{}\"", buttonEvent->idCode, buttonEvent->inputDevice.underlying(), buttonEvent->GetUserEvent());
 						}
 
 						for (const auto& released : Settings::GetSingleton().events.button.released)

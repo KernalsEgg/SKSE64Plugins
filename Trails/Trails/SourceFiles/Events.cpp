@@ -23,7 +23,7 @@ namespace Trails::Events
 		SKSE::Cache::GetSingleton().GetTaskInterface()->AddTask(
 			[actorHandle, tag]()
 			{
-				auto actor = actorHandle.get().get();
+				auto* actor = actorHandle.get().get();
 
 				if (!actor)
 				{

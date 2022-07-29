@@ -21,7 +21,7 @@
     <ClInclude Include="HeaderFiles\Addresses.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Hooks.h">
+    <ClInclude Include="HeaderFiles\Events.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClCompile Include="SourceFiles\LogInventoryItemRotation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Hooks.cpp">
+    <ClCompile Include="SourceFiles\Events.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

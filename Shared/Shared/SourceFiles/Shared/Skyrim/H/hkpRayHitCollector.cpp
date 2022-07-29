@@ -14,7 +14,7 @@ namespace Skyrim
 		std::int32_t     shapeIndex{ 0 };
 		const hkpCdBody* shapes[hkpShapeRayCastOutput::kMaximumHierarchyDepth];
 
-		for (auto shape = std::addressof(cdBody); shape->parent; shape = shape->parent)
+		for (const auto* shape = std::addressof(cdBody); shape->parent; shape = shape->parent)
 		{
 			shapes[shapeIndex] = shape;
 

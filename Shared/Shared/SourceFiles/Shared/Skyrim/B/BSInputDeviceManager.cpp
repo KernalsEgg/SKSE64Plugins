@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	BSInputDeviceManager* BSInputDeviceManager::GetSingleton()
 	{
-		auto singleton{ reinterpret_cast<BSInputDeviceManager**>(Addresses::BSInputDeviceManager::Singleton) };
+		auto** singleton{ reinterpret_cast<BSInputDeviceManager**>(Addresses::BSInputDeviceManager::Singleton) };
 
 		return *singleton;
 	}

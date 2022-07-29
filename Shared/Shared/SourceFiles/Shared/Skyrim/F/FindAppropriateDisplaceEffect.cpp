@@ -5,7 +5,6 @@
 #include "Shared/Skyrim/A/ActiveEffect.h"
 #include "Shared/Skyrim/A/AlchemyItem.h"
 #include "Shared/Skyrim/M/MagicItem.h"
-#include "Shared/Skyrim/M/MagicSystem.h"
 
 
 
@@ -15,7 +14,7 @@ namespace Skyrim
 	{
 		if (activeEffect && activeEffect->activeEffectFlags.none(ActiveEffect::Flags::kInactive))
 		{
-			auto magicItem = activeEffect->magicItem;
+			auto* magicItem = activeEffect->magicItem;
 
 			if (magicItem == this->displacementSpell || (magicItem->GetSpellType() == MagicSystem::SpellType::kPotion && static_cast<AlchemyItem*>(magicItem)->alchemyItemData.addiction == this->addiction))
 			{

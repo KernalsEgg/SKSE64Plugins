@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	BGSDecalManager* BGSDecalManager::GetSingleton()
 	{
-		auto singleton{ reinterpret_cast<BGSDecalManager**>(Addresses::BGSDecalManager::Singleton) };
+		auto** singleton{ reinterpret_cast<BGSDecalManager**>(Addresses::BGSDecalManager::Singleton) };
 
 		return *singleton;
 	}

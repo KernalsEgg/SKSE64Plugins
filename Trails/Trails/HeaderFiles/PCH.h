@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>  // std::max, std::min
 #include <cstdint>    // Fixed width integer types
 #include <exception>  // std::exception
 #include <filesystem> // std::filesystem::directory_entry, std::filesystem::directory_iterator, std::filesystem::is_directory, std::filesystem::path

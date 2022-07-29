@@ -8,7 +8,7 @@ namespace Skyrim
 {
 	bool TESContainer::HasItem(TESBoundObject* item) const
 	{
-		for (auto containerObject : *this)
+		for (auto* containerObject : *this)
 		{
 			if (containerObject->object == item)
 			{

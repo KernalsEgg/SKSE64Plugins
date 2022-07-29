@@ -30,8 +30,8 @@ namespace Skyrim
 		constexpr const_iterator begin() const noexcept { return this->data(); }
 		constexpr const_iterator cbegin() const noexcept { return this->begin(); }
 
-		constexpr iterator       end() noexcept { return this->empty() ? nullptr : this->data() + this->size(); }
-		constexpr const_iterator end() const noexcept { return this->empty() ? nullptr : this->data() + this->size(); }
+		constexpr iterator       end() noexcept { return this->data() + this->size(); }
+		constexpr const_iterator end() const noexcept { return this->data() + this->size(); }
 		constexpr const_iterator cend() const noexcept { return this->end(); }
 
 		// Element access

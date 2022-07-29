@@ -210,7 +210,7 @@ namespace ScrambledBugs::Addresses
 				inline const std::uintptr_t ApplyWeaponSwingSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(38581) + 0xAE }; // Actor::WeaponSwing
 
 				/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DD3B20 (675819), 1.6.318.0: SkyrimSE.exe + 0x1E67C10</summary>
-				inline const std::uintptr_t SelectSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(369199) };
+				inline const std::uintptr_t SelectSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(369199) }; // BGSEntryPointFunction::SelectSpellFunction
 
 				/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DD3BB0 (502190), 1.6.318.0: SkyrimSE.exe + 0x1E67CA0</summary>
 				inline const std::uintptr_t SelectSpellResultCount{ Relocation::AddressLibrary::GetSingleton().GetAddress(369213) };

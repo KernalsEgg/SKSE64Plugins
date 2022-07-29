@@ -1,6 +1,6 @@
 #include "PCH.h"
 
-#include "Hooks.h"
+#include "Events.h"
 
 #include "Addresses.h"
 #include "Shared/Skyrim/I/Inventory3DManager.h"
@@ -15,12 +15,12 @@
 
 namespace LogInventoryItemRotation
 {
-	void Hooks::Install()
+	void Events::Register()
 	{
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::IMenu::StopMouseRotation, reinterpret_cast<std::uintptr_t>(std::addressof(Hooks::StopMouseRotation)));
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::IMenu::StopMouseRotation, reinterpret_cast<std::uintptr_t>(std::addressof(Events::StopMouseRotation)));
 	}
 
-	std::uint16_t Hooks::AdjustRotation(float radians)
+	std::uint16_t Events::AdjustRotation(float radians)
 	{
 		if (radians < 0.0F)
 		{
@@ -40,16 +40,16 @@ namespace LogInventoryItemRotation
 		return static_cast<std::uint16_t>(std::round(radians * 1000.0F));
 	}
 
-	bool& Hooks::MouseRotation()
+	bool& Events::MouseRotation()
 	{
 		return *reinterpret_cast<bool*>(Addresses::IMenu::MouseRotation);
 	}
 
-	void Hooks::StopMouseRotation(void* unused)
+	void Events::StopMouseRotation(void* unused)
 	{
-		if (Hooks::MouseRotation())
+		if (Events::MouseRotation())
 		{
-			auto inventory3DManager = Skyrim::Inventory3DManager::GetSingleton();
+			auto* inventory3DManager = Skyrim::Inventory3DManager::GetSingleton();
 
 			if (inventory3DManager)
 			{
@@ -68,9 +68,9 @@ namespace LogInventoryItemRotation
 						fmt::format(
 							"{}: ({}, {}, {})",
 							loadedInventoryModel.modelForm->GetFormName(),
-							Hooks::AdjustRotation(eulerAngles.x),
-							Hooks::AdjustRotation(eulerAngles.y),
-							Hooks::AdjustRotation(eulerAngles.z))
+							Events::AdjustRotation(eulerAngles.x),
+							Events::AdjustRotation(eulerAngles.y),
+							Events::AdjustRotation(eulerAngles.z))
 							.c_str(),
 						nullptr,
 						true);
@@ -78,13 +78,13 @@ namespace LogInventoryItemRotation
 					Utility::Log::Information(
 						"{}: ({}, {}, {})",
 						loadedInventoryModel.modelForm->GetFormName(),
-						Hooks::AdjustRotation(eulerAngles.x),
-						Hooks::AdjustRotation(eulerAngles.y),
-						Hooks::AdjustRotation(eulerAngles.z));
+						Events::AdjustRotation(eulerAngles.x),
+						Events::AdjustRotation(eulerAngles.y),
+						Events::AdjustRotation(eulerAngles.z));
 				}
 			}
 		}
 
-		Hooks::MouseRotation() = false;
+		Events::MouseRotation() = false;
 	}
 }

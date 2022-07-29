@@ -29,11 +29,11 @@ namespace ScrambledBugs::Patches
 	{
 		// actor != nullptr
 
-		auto characterController = actor->GetCharacterController();
+		auto* characterController = actor->GetCharacterController();
 
 		if (characterController && characterController->context.currentState == Skyrim::hkpCharacterStateType::kOnGround)
 		{
-			auto& surfaceInformation = characterController->surfaceInformation;
+			const auto& surfaceInformation = characterController->surfaceInformation;
 
 			if (surfaceInformation.supportedState == Skyrim::hkpSurfaceInfo::SupportedState::kSupported)
 			{

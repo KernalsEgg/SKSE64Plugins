@@ -47,7 +47,11 @@ namespace Skyrim
 		}
 
 		// 10
-		constexpr NiPointer(NiPointer&&) noexcept = default;
+		constexpr NiPointer(NiPointer&& right) noexcept :
+			pointer_(right.pointer_)
+		{
+			right.pointer_ = nullptr;
+		}
 
 		template <class Y>
 			requires(std::is_convertible_v<Y*, element_type*>)
@@ -58,7 +62,10 @@ namespace Skyrim
 		}
 
 		// Destructor
-		~NiPointer() { this->Detach(); }
+		~NiPointer()
+		{
+			this->Detach();
+		}
 
 		// Member functions
 		// 1
@@ -111,7 +118,10 @@ namespace Skyrim
 
 		// Modifiers
 		// 1
-		void reset() { this->Detach(); }
+		void reset()
+		{
+			this->Detach();
+		}
 
 		// 2
 		template <class Y>
@@ -127,13 +137,25 @@ namespace Skyrim
 		}
 
 		// Observers
-		constexpr element_type* get() const noexcept { return this->pointer_; }
+		constexpr element_type* get() const noexcept
+		{
+			return this->pointer_;
+		}
 
-		constexpr element_type& operator*() const noexcept { return *(this->pointer_); }
+		constexpr element_type& operator*() const noexcept
+		{
+			return *(this->pointer_);
+		}
 
-		constexpr element_type* operator->() const noexcept { return this->pointer_; }
+		constexpr element_type* operator->() const noexcept
+		{
+			return this->pointer_;
+		}
 
-		explicit constexpr operator bool() const noexcept { return this->pointer_; }
+		explicit constexpr operator bool() const noexcept
+		{
+			return this->pointer_;
+		}
 
 	private:
 		// Member functions
@@ -201,5 +223,4 @@ namespace Skyrim
 	{
 		return right;
 	}
-
 }

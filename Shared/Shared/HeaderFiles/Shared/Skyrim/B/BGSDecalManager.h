@@ -4,6 +4,7 @@
 
 #include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/B/BSTArray.h"
+#include "Shared/Skyrim/B/BSTSingleton.h"
 #include "Shared/Skyrim/N/NiColor.h"
 #include "Shared/Skyrim/N/NiMatrix33.h"
 #include "Shared/Skyrim/N/NiPoint3.h"
@@ -25,7 +26,8 @@ namespace Skyrim
 	class NiNode;
 	class TESObjectCELL;
 
-	class BGSDecalManager
+	class BGSDecalManager :
+		BSTSingletonSDM<BGSDecalManager> // 0
 	{
 	public:
 		struct CreationData
@@ -40,7 +42,7 @@ namespace Skyrim
 			NiNode*               clone{ nullptr };                                                 // 30
 			BGSTextureSet*        textureSet1{ nullptr };                                           // 38
 			BGSTextureSet*        textureSet2{ nullptr };                                           // 40
-			std::int32_t          unknown48{ -1 };                                                  // 48
+			std::uint32_t         unknown48{ static_cast<std::uint32_t>(-1) };                      // 48
 			float                 width{ 0.0F };                                                    // 4C
 			float                 height{ 0.0F };                                                   // 50
 			float                 depth{ 0.0F };                                                    // 54
@@ -54,20 +56,20 @@ namespace Skyrim
 			float                 angleThreshold{ 15.0F };                                          // 9C
 			float                 placementRadius{ 16.0F };                                         // A0
 			NiColor               color{ 1.0F, 1.0F, 1.0F };                                        // A4
-			std::uint32_t         unknownB0{ 0U };                                                  // B0
-			std::int8_t           subtextureIndex{ 0U };                                            // B4
+			std::uint32_t         unknownB0{ 0 };                                                   // B0
+			std::int8_t           subtextureIndex{ 0 };                                             // B4
 			bool                  permanent{ false };                                               // B5
-			std::uint8_t          unknownB6{ 1U };                                                  // B6
+			std::uint8_t          unknownB6{ 1 };                                                   // B6
 			bool                  parallax{ false };                                                // B7
 			bool                  alphaTesting{ true };                                             // B8
 			bool                  alphaBlending{ false };                                           // B9
-			std::uint8_t          parallaxPasses{ 0U };                                             // BA
-			std::uint8_t          unknownBB{ 0U };                                                  // BB
-			std::uint8_t          unknownBC{ 0U };                                                  // BC
+			std::uint8_t          parallaxPasses{ 0 };                                              // BA
+			std::uint8_t          unknownBB{ 0 };                                                   // BB
+			std::uint8_t          unknownBC{ 0 };                                                   // BC
 			bool                  twoSided{ false };                                                // BD
-			std::uint8_t          unknownBE{ 0U };                                                  // BE
-			std::uint8_t          unknownBF{ 0U };                                                  // BF
-			std::uint32_t         unknownC0{ 0U };                                                  // C0
+			std::uint8_t          unknownBE{ 0 };                                                   // BE
+			std::uint8_t          unknownBF{ 0 };                                                   // BF
+			std::uint32_t         unknownC0{ 0 };                                                   // C0
 			std::uint32_t         paddingC4;                                                        // C4
 		};
 		static_assert(offsetof(CreationData, position) == 0x0);
@@ -97,7 +99,7 @@ namespace Skyrim
 		static_assert(offsetof(CreationData, twoSided) == 0xBD);
 		static_assert(sizeof(CreationData) == 0xC8);
 
-		struct ApplicationData
+		struct AdditionData
 		{
 		public:
 			// Member variables
@@ -112,20 +114,21 @@ namespace Skyrim
 			std::uint32_t       unknown1C;                  // 1C
 			BGSDecalGroup*      decalGroup;                 // 20
 		};
-		static_assert(offsetof(ApplicationData, creationData) == 0x0);
-		static_assert(offsetof(ApplicationData, forceDecal) == 0x8);
-		static_assert(offsetof(ApplicationData, decalCount) == 0xC);
-		static_assert(offsetof(ApplicationData, skinDecalCount) == 0x10);
-		static_assert(offsetof(ApplicationData, skinDecalCountCurrentFrame) == 0x14);
-		static_assert(offsetof(ApplicationData, decalCountCurrentFrame) == 0x18);
-		static_assert(offsetof(ApplicationData, decalGroup) == 0x20);
-		static_assert(sizeof(ApplicationData) == 0x28);
+		static_assert(offsetof(AdditionData, creationData) == 0x0);
+		static_assert(offsetof(AdditionData, forceDecal) == 0x8);
+		static_assert(offsetof(AdditionData, decalCount) == 0xC);
+		static_assert(offsetof(AdditionData, skinDecalCount) == 0x10);
+		static_assert(offsetof(AdditionData, skinDecalCountCurrentFrame) == 0x14);
+		static_assert(offsetof(AdditionData, decalCountCurrentFrame) == 0x18);
+		static_assert(offsetof(AdditionData, decalGroup) == 0x20);
+		static_assert(sizeof(AdditionData) == 0x28);
 
 		// Non-member functions
 		static BGSDecalManager* GetSingleton();
 
 		// Member variables
-		std::uint32_t                        unknown0;                   // 0
+		std::uint8_t                         unknown1;                   // 0
+		std::uint16_t                        unknown2;                   // 2
 		std::uint32_t                        decalCountCurrentFrame;     // 4
 		std::uint32_t                        skinDecalCountCurrentFrame; // 8
 		std::uint32_t                        decalCount;                 // C

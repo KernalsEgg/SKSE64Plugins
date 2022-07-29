@@ -28,8 +28,10 @@ namespace ScrambledBugs::Patches
 			{
 				return 0;
 			}
+			default:
+			{
+				return -1;
+			}
 		}
-
-		return -1;
 	}
 }

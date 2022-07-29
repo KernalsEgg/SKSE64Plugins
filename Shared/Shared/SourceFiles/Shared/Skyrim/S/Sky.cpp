@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	Sky* Sky::GetSingleton()
 	{
-		auto function{ reinterpret_cast<decltype(&Sky::GetSingleton)>(Addresses::Sky::GetSingleton) };
+		auto* function{ reinterpret_cast<decltype(&Sky::GetSingleton)>(Addresses::Sky::GetSingleton) };
 
 		return function();
 	}

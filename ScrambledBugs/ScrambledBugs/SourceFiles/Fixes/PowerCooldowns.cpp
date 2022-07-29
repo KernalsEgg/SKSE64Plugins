@@ -3,6 +3,7 @@
 #include "Fixes/PowerCooldowns.h"
 
 #include "Addresses.h"
+#include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/P/PowerCooldown.h"
 #include "Shared/Skyrim/S/SpellItem.h"
 #include "Shared/Utility/Memory.h"
@@ -21,8 +22,8 @@ namespace ScrambledBugs::Fixes
 		// actor != nullptr
 		// saveFormBuffer != nullptr
 
-		std::uint32_t powerCooldownCount{ 0U };
-		auto          powerCooldowns = actor->powerCooldowns;
+		std::uint32_t powerCooldownCount{ 0 };
+		auto*         powerCooldowns = actor->powerCooldowns;
 
 		if (powerCooldowns)
 		{

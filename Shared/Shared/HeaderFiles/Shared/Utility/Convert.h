@@ -6,10 +6,10 @@
 
 namespace Utility
 {
-	template <class Enum>
-		requires(std::is_enum_v<Enum>)
-	constexpr std::underlying_type_t<Enum> ToUnderlying(Enum enumerator) noexcept
+	template <class Enumeration>
+		requires(std::is_enum_v<Enumeration>)
+	constexpr std::underlying_type_t<Enumeration> ToUnderlying(Enumeration enumeration) noexcept
 	{
-		return static_cast<std::underlying_type_t<Enum>>(enumerator);
+		return static_cast<std::underlying_type_t<Enumeration>>(enumeration);
 	}
 }

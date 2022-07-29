@@ -17,6 +17,7 @@ namespace Skyrim
 	struct PositionPlayerEvent;
 
 	class GridCellArray;
+	class NiColorA;
 	class NiPoint3;
 	class Sky;
 	class TESObjectCELL;
@@ -42,6 +43,7 @@ namespace Skyrim
 
 		// Member functions
 		TESObjectCELL* GetCell(const NiPoint3& position) const;
+		bool           GetLandColor(const NiPoint3& position, NiColorA& landColor) const;
 		std::uint32_t  GetMaterialID(const NiPoint3& position) const;
 
 		// Member variables

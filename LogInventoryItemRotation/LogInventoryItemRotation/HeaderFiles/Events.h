@@ -6,10 +6,10 @@
 
 namespace LogInventoryItemRotation
 {
-	class Hooks
+	class Events
 	{
 	public:
-		static void Install();
+		static void Register();
 
 	private:
 		static std::uint16_t AdjustRotation(float radians);

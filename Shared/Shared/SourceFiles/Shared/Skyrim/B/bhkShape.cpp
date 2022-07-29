@@ -12,7 +12,7 @@ namespace Skyrim
 	{
 		if (shapeKey != HK_INVALID_SHAPE_KEY)
 		{
-			auto shapeCollection = this->GetShapeCollection();
+			auto* shapeCollection = this->GetShapeCollection();
 
 			if (shapeCollection)
 			{

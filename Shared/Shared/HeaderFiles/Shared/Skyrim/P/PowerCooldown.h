@@ -8,7 +8,7 @@ namespace Skyrim
 {
 	class SpellItem;
 
-	struct PowerCooldown
+	class PowerCooldown
 	{
 	public:
 		template <class T>
@@ -29,20 +29,20 @@ namespace Skyrim
 			constexpr iterator& operator=(const iterator&) noexcept = default;
 			constexpr iterator& operator=(iterator&&) noexcept = default;
 
-			constexpr iterator(T* powerCooldown) noexcept :
-				node_(powerCooldown)
+			constexpr iterator(T* current) noexcept :
+				current_(current)
 			{
 			}
 
-			const reference operator*() const noexcept { return *this->node_; }
-			const pointer   operator->() const noexcept { return this->node_; }
+			const reference operator*() const noexcept { return *(this->current_); }
+			const pointer   operator->() const noexcept { return this->current_; }
 
-			friend constexpr bool operator==(const iterator& left, const iterator& right) noexcept { return left.node_ == right.node_; }
+			friend constexpr bool operator==(const iterator& left, const iterator& right) noexcept { return left.current_ == right.current_; }
 			friend constexpr bool operator!=(const iterator& left, const iterator& right) noexcept { return !(left == right); }
 
 			constexpr iterator& operator++() noexcept
 			{
-				this->node_ = this->node_->next;
+				this->current_ = this->current_->next;
 
 				return *this;
 			}
@@ -57,7 +57,7 @@ namespace Skyrim
 
 		private:
 			// Member variables
-			pointer node_{ nullptr };
+			pointer current_{ nullptr };
 		};
 
 		constexpr iterator<PowerCooldown>       begin() noexcept { return iterator<PowerCooldown>(this); }

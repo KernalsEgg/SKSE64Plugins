@@ -27,7 +27,7 @@ namespace ScrambledBugs::Fixes
 			return false;
 		}
 
-		auto magicItem = activeEffect->magicItem;
+		auto* magicItem = activeEffect->magicItem;
 
 		if (!magicItem || !magicItem->ShouldAddSpell())
 		{

@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	void BSStringPool::Entry::Release(const char*& string)
 	{
-		auto function{ reinterpret_cast<decltype(&BSStringPool::Entry::Release)>(Addresses::BSStringPool::Entry::Release) };
+		auto* function{ reinterpret_cast<decltype(&BSStringPool::Entry::Release)>(Addresses::BSStringPool::Entry::Release) };
 
 		function(string);
 	}

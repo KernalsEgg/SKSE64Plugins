@@ -6,6 +6,7 @@
 #include "Shared/Skyrim/B/BSExtraData.h"
 #include "Shared/Skyrim/E/ExtraCharge.h"
 #include "Shared/Skyrim/E/ExtraCount.h"
+#include "Shared/Skyrim/E/ExtraHealth.h"
 #include "Shared/Skyrim/E/ExtraSoul.h"
 #include "Shared/Utility/TypeTraits.h"
 
@@ -27,18 +28,44 @@ namespace Skyrim
 		return false;
 	}
 
+	ExtraDataList::~ExtraDataList()
+	{
+		auto* next = this->extraData_;
+
+		while (next)
+		{
+			auto* current = next;
+			next          = current->next;
+
+			delete current;
+		}
+
+		this->extraData_ = nullptr;
+
+		delete this->presenceBitField_;
+
+		this->presenceBitField_ = nullptr;
+	}
+
 	float ExtraDataList::GetCharge() const
 	{
-		auto extraCharge = this->GetType<ExtraCharge>(ExtraDataType::kCharge);
+		const auto* extraCharge = this->GetType<ExtraCharge>(ExtraDataType::kCharge);
 
 		return extraCharge ? extraCharge->charge : -1.0F;
 	}
 
 	std::int16_t ExtraDataList::GetCount() const
 	{
-		auto extraCount = this->GetType<ExtraCount>(ExtraDataType::kCount);
+		const auto* extraCount = this->GetType<ExtraCount>(ExtraDataType::kCount);
 
 		return extraCount ? extraCount->count : 1;
+	}
+
+	float ExtraDataList::GetHealth() const
+	{
+		const auto* extraHealth = this->GetType<ExtraHealth>(ExtraDataType::kHealth);
+
+		return extraHealth ? extraHealth->health : -1.0F;
 	}
 
 	BSExtraData* ExtraDataList::GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType)
@@ -50,7 +77,7 @@ namespace Skyrim
 			return nullptr;
 		}
 
-		for (auto extraData = this->extraData_; extraData; extraData = extraData->next)
+		for (auto* extraData = this->extraData_; extraData; extraData = extraData->next)
 		{
 			if (extraData->GetType() == extraDataType)
 			{
@@ -70,7 +97,7 @@ namespace Skyrim
 			return nullptr;
 		}
 
-		for (auto extraData = this->extraData_; extraData; extraData = extraData->next)
+		for (auto* extraData = this->extraData_; extraData; extraData = extraData->next)
 		{
 			if (extraData->GetType() == extraDataType)
 			{
@@ -83,7 +110,7 @@ namespace Skyrim
 
 	SoulLevel ExtraDataList::GetSoulLevel() const
 	{
-		auto extraSoul = this->GetType<ExtraSoul>(ExtraDataType::kSoul);
+		const auto* extraSoul = this->GetType<ExtraSoul>(ExtraDataType::kSoul);
 
 		return extraSoul ? extraSoul->soul.get() : SoulLevel::kNone;
 	}
@@ -97,13 +124,24 @@ namespace Skyrim
 
 	bool ExtraDataList::IsQuestItem() const
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&ExtraDataList::IsQuestItem)>::type>(Addresses::ExtraDataList::IsQuestItem) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&ExtraDataList::IsQuestItem)>::type>(Addresses::ExtraDataList::IsQuestItem) };
 
 		return function(this);
 	}
 
-	bool ExtraDataList::IsWorn() const
+	bool ExtraDataList::IsWorn(bool eitherHand, bool leftHand) const
 	{
-		return this->HasType(ExtraDataType::kWorn) || this->HasType(ExtraDataType::kWornLeft);
+		if (eitherHand)
+		{
+			return this->HasType(ExtraDataType::kWorn) || this->HasType(ExtraDataType::kWornLeft);
+		}
+		else if (leftHand)
+		{
+			return this->HasType(ExtraDataType::kWornLeft);
+		}
+		else
+		{
+			return this->HasType(ExtraDataType::kWorn);
+		}
 	}
 }

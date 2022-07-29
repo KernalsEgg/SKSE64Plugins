@@ -174,7 +174,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Actor.h">
       <Filter>Header Files\Shared\Skyrim\A</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorProcess.h">
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AIProcess.h">
       <Filter>Header Files\Shared\Skyrim\A</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorState.h">
@@ -1371,6 +1371,24 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESLoadGameEvent.h">
       <Filter>Header Files\Shared\Skyrim\T</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraHealth.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HitData.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedAnim.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedObject.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTSmartPointer.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorEquipManager.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">
@@ -1394,7 +1412,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\Actor.cpp">
       <Filter>Source Files\Shared\Skyrim\A</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorProcess.cpp">
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\AIProcess.cpp">
       <Filter>Source Files\Shared\Skyrim\A</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\AttachTechniqueInput.cpp">
@@ -1627,6 +1645,12 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\C\Console.cpp">
       <Filter>Source Files\Shared\Skyrim\C</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BipedAnim.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorEquipManager.cpp">
+      <Filter>Source Files\Shared\Skyrim\A</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

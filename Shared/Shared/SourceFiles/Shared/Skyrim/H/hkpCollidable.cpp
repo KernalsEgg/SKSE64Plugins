@@ -12,21 +12,21 @@ namespace Skyrim
 {
 	NiAVObject* hkpCollidable::Get3D() const
 	{
-		auto owner = this->GetOwner<hkpWorldObject>();
+		auto* owner = this->GetOwner<hkpWorldObject>();
 
 		if (!owner)
 		{
 			return nullptr;
 		}
 
-		auto property = static_cast<bhkCollisionObject*>(owner->GetProperty(2).GetPointer());
+		auto* property = static_cast<bhkCollisionObject*>(owner->GetProperty(2).GetPointer());
 
 		if (property)
 		{
 			return property->sceneObject;
 		}
 
-		auto userData = reinterpret_cast<bhkWorldObject*>(owner->userData);
+		auto* userData = reinterpret_cast<bhkWorldObject*>(owner->userData);
 
 		if (userData)
 		{

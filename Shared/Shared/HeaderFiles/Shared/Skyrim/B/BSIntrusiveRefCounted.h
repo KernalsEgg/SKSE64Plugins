@@ -2,6 +2,8 @@
 
 #include "Shared/PCH.h"
 
+#include "Shared/Skyrim/M/MemoryManager.h"
+
 
 
 namespace Skyrim
@@ -9,6 +11,8 @@ namespace Skyrim
 	struct BSIntrusiveRefCounted
 	{
 	public:
+		SKYRIM_HEAP_OPERATORS();
+
 		// Member functions
 		std::uint32_t DecrementReferenceCount() const;
 		std::uint32_t IncrementReferenceCount() const;

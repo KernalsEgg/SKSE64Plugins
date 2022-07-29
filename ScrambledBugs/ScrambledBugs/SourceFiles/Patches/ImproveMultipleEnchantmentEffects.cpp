@@ -20,7 +20,7 @@ namespace ScrambledBugs::Patches
 
 	Skyrim::MagicItemTraversalFunctor::ReturnType ImproveMultipleEnchantmentEffects::Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::Effect* effect)
 	{
-		auto index = createEffectFunctor->effects.AddEffect(effect);
+		auto& createdEffect = createEffectFunctor->effects.emplace_back(*effect);
 
 		auto magnitude = effect->GetMagnitude();
 		auto duration  = effect->GetDuration();
@@ -31,7 +31,7 @@ namespace ScrambledBugs::Patches
 
 		auto power = 1.0F;
 
-		auto enchantmentEntry = createEffectFunctor->enchantmentEntry;
+		auto* enchantmentEntry = createEffectFunctor->enchantmentEntry;
 
 		if (enchantmentEntry)
 		{
@@ -46,8 +46,8 @@ namespace ScrambledBugs::Patches
 				maximumPower = static_cast<float>(duration);
 			}
 
-			auto player          = Skyrim::PlayerCharacter::GetSingleton();
-			auto enchantingSkill = player->GetActorValue(Skyrim::ActorValue::kEnchanting);
+			auto* player          = Skyrim::PlayerCharacter::GetSingleton();
+			auto  enchantingSkill = player->GetActorValue(Skyrim::ActorValue::kEnchanting);
 
 			maximumPower = Skyrim::EnchantmentItem::ModifyPower(maximumPower, enchantingSkill);
 			Skyrim::BGSEntryPointPerkEntry::HandleEntryPoint(Skyrim::BGSPerkEntry::EntryPoint::kModifyEnchantmentPower, player, enchantmentEntry->enchantment, createEffectFunctor->item, std::addressof(maximumPower));
@@ -114,8 +114,8 @@ namespace ScrambledBugs::Patches
 			duration = static_cast<std::uint32_t>(std::round(power));
 		}
 
-		createEffectFunctor->effects[index].SetMagnitude(magnitude);
-		createEffectFunctor->effects[index].SetDuration(duration);
+		createdEffect.SetMagnitude(magnitude);
+		createdEffect.SetDuration(duration);
 
 		return Skyrim::MagicItemTraversalFunctor::ReturnType::kContinue;
 	}

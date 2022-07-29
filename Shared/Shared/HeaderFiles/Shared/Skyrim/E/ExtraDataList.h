@@ -4,6 +4,7 @@
 
 #include "Shared/Skyrim/B/BSAtomic.h"
 #include "Shared/Skyrim/E/ExtraDataType.h"
+#include "Shared/Skyrim/M/MemoryManager.h"
 #include "Shared/Skyrim/S/SoulLevel.h"
 #include "Shared/Utility/Enumeration.h"
 
@@ -17,9 +18,13 @@ namespace Skyrim
 	class ExtraDataList
 	{
 	public:
+		SKYRIM_HEAP_OPERATORS();
+
 		struct PresenceBitField
 		{
 		public:
+			SKYRIM_HEAP_OPERATORS();
+
 			// Member functions
 			bool HasType(std::uint32_t type) const;
 
@@ -47,20 +52,20 @@ namespace Skyrim
 			constexpr iterator& operator=(const iterator&) noexcept = default;
 			constexpr iterator& operator=(iterator&&) noexcept = default;
 
-			constexpr iterator(pointer node) noexcept :
-				node_(node)
+			constexpr iterator(pointer current) noexcept :
+				current_(current)
 			{
 			}
 
-			constexpr reference operator*() const noexcept { return *(this->node_); }
-			constexpr pointer   operator->() const noexcept { return this->node_; }
+			constexpr reference operator*() const noexcept { return *(this->current_); }
+			constexpr pointer   operator->() const noexcept { return this->current_; }
 
-			friend constexpr bool operator==(const iterator& left, const iterator& right) noexcept { return left.node_ == right.node_; }
+			friend constexpr bool operator==(const iterator& left, const iterator& right) noexcept { return left.current_ == right.current_; }
 			friend constexpr bool operator!=(const iterator& left, const iterator& right) noexcept { return !(left == right); }
 
 			constexpr iterator& operator++() noexcept
 			{
-				this->node_ = this->node_->next;
+				this->current_ = this->current_->next;
 
 				return *this;
 			}
@@ -74,8 +79,17 @@ namespace Skyrim
 			}
 
 		private:
-			pointer node_{ nullptr };
+			pointer current_{ nullptr };
 		};
+
+		ExtraDataList()                     = default;
+		ExtraDataList(const ExtraDataList&) = delete;
+		ExtraDataList(ExtraDataList&&)      = delete;
+
+		~ExtraDataList();
+
+		ExtraDataList& operator=(const ExtraDataList&) = delete;
+		ExtraDataList& operator=(ExtraDataList&&) = delete;
 
 		// Iterators
 		constexpr iterator<BSExtraData>       begin() noexcept { return iterator<BSExtraData>(this->extraData_); }
@@ -89,12 +103,13 @@ namespace Skyrim
 		// Member functions
 		float              GetCharge() const;
 		std::int16_t       GetCount() const;
+		float              GetHealth() const;
 		BSExtraData*       GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType);
 		const BSExtraData* GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
 		SoulLevel          GetSoulLevel() const;
 		bool               HasType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
 		bool               IsQuestItem() const;
-		bool               IsWorn() const;
+		bool               IsWorn(bool eitherHand, bool leftHand) const;
 
 		template <class T>
 		T* GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType)
@@ -110,9 +125,9 @@ namespace Skyrim
 
 	private:
 		// Member variables
-		BSExtraData*            extraData_;        // 0
-		PresenceBitField*       presenceBitField_; // 8
-		mutable BSReadWriteLock lock_;             // 10
+		BSExtraData*            extraData_{ nullptr };        // 0
+		PresenceBitField*       presenceBitField_{ nullptr }; // 8
+		mutable BSReadWriteLock lock_{};                      // 10
 	};
 	static_assert(sizeof(ExtraDataList) == 0x18);
 }

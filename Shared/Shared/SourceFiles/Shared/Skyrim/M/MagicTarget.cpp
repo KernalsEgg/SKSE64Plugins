@@ -4,6 +4,7 @@
 
 #include "Shared/Skyrim/A/Actor.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
+#include "Shared/Skyrim/T/TESObjectREFR.h"
 
 
 
@@ -16,18 +17,21 @@ namespace Skyrim
 
 	void MagicTarget::VisitActiveEffects(ForEachActiveEffectVisitor* visitor)
 	{
-		auto activeEffects = this->GetActiveEffects();
+		auto* activeEffects = this->GetActiveEffects();
 
-		if (!activeEffects)
+		if (activeEffects)
 		{
-			return;
-		}
-
-		for (auto activeEffect : *activeEffects)
-		{
-			if (visitor->Visit(activeEffect) != ForEachActiveEffectVisitor::ReturnType::kContinue)
+			for (auto* activeEffect : *activeEffects)
 			{
-				return;
+				if (!activeEffect)
+				{
+					break;
+				}
+
+				if (visitor->Visit(activeEffect) != ForEachActiveEffectVisitor::ReturnType::kContinue)
+				{
+					break;
+				}
 			}
 		}
 	}

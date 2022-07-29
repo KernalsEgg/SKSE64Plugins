@@ -29,7 +29,7 @@ namespace BugFixesSSE::Fixes
 	{
 		// activeEffect != nullptr
 
-		if (activeEffect->conditions == Skyrim::ActiveEffect::Conditions::kNotAvailable)
+		if (activeEffect->conditionStatus == Skyrim::ActiveEffect::ConditionStatus::kNotAvailable)
 		{
 			return;
 		}
@@ -57,16 +57,16 @@ namespace BugFixesSSE::Fixes
 
 			reinterpret_cast<float&>(activeEffect->padding8C) = elapsedTimeDelta;
 
-			auto subject = activeEffect->magicTarget->GetMagicTargetOwner();
-			auto target  = activeEffect->caster.get().get();
+			auto* subject = activeEffect->magicTarget->GetMagicTargetOwner();
+			auto* target  = activeEffect->caster.get().get();
 
-			activeEffect->conditions = activeEffect->effect->conditions.IsTrue(subject, target) && !activeEffect->ShouldDisplace() ?
-                                           Skyrim::ActiveEffect::Conditions::kTrue :
-                                           Skyrim::ActiveEffect::Conditions::kFalse;
+			activeEffect->conditionStatus = activeEffect->effect->conditions.IsTrue(subject, target) && !activeEffect->ShouldDisplace() ?
+                                                Skyrim::ActiveEffect::ConditionStatus::kTrue :
+                                                Skyrim::ActiveEffect::ConditionStatus::kFalse;
 		}
 		else
 		{
-			activeEffect->conditions = Skyrim::ActiveEffect::Conditions::kNotAvailable;
+			activeEffect->conditionStatus = Skyrim::ActiveEffect::ConditionStatus::kNotAvailable;
 		}
 	}
 }

@@ -8,25 +8,25 @@ namespace Skyrim
 {
 	hkSimplePropertyValue hkpWorldObject::GetProperty(std::uint32_t key)
 	{
-		for (std::int32_t index = 0; index < this->properties.size(); ++index)
+		for (const auto& property : this->properties)
 		{
-			if (this->properties[index].key == key)
+			if (property.key == key)
 			{
-				return this->properties[index].value;
+				return property.value;
 			}
 		}
 
 		hkSimplePropertyValue result;
-		result.data = 0UL;
+		result.data = 0;
 
 		return result;
 	}
 
 	bool hkpWorldObject::HasProperty(std::uint32_t key) const
 	{
-		for (std::int32_t index = 0; index < this->properties.size(); ++index)
+		for (const auto& property : this->properties)
 		{
-			if (this->properties[index].key == key)
+			if (property.key == key)
 			{
 				return true;
 			}

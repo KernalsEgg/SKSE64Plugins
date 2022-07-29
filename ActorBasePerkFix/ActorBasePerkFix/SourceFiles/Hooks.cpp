@@ -3,7 +3,7 @@
 #include "Hooks.h"
 
 #include "Shared/SKSE/Interfaces.h"
-#include "Shared/Skyrim/A/ActorProcess.h"
+#include "Shared/Skyrim/A/AIProcess.h"
 #include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/B/BGSPerk.h"
 #include "Shared/Skyrim/B/BSPointerHandle.h"
@@ -28,7 +28,7 @@ namespace ActorBasePerkFix
 		SKSE::Cache::GetSingleton().GetTaskInterface()->AddTask(
 			[actorHandle]()
 			{
-				auto actor = actorHandle.get().get();
+				auto* actor = actorHandle.get().get();
 
 				if (!actor)
 				{
@@ -43,48 +43,42 @@ namespace ActorBasePerkFix
 	{
 		actor->RemoveBasePerks();
 
-		auto currentProcess = actor->currentProcess;
+		auto* currentProcess = actor->currentProcess;
 
 		if (!currentProcess)
 		{
 			return;
 		}
 
-		auto middleHighProcessData = currentProcess->middleHighProcessData;
+		auto* middleHighProcessData = currentProcess->middleHighProcessData;
 
 		if (!middleHighProcessData)
 		{
 			return;
 		}
 
-		auto npc = static_cast<Skyrim::TESNPC*>(actor->baseObject);
+		auto* npc = static_cast<Skyrim::TESNPC*>(actor->baseObject);
 
 		if (!npc)
 		{
 			return;
 		}
 
-		auto perkRankArray = static_cast<Skyrim::BGSPerkRankArray*>(npc);
-		auto perkRanks     = perkRankArray->perkRanks;
+		auto* perkRankArray = static_cast<Skyrim::BGSPerkRankArray*>(npc);
 
-		if (!perkRanks)
+		if (perkRankArray)
 		{
-			return;
-		}
-
-		auto perkRankCount = perkRankArray->perkRankCount;
-
-		for (std::uint32_t index = 0; index < perkRankCount; ++index)
-		{
-			const auto& perkRank = perkRanks[index];
-			auto        perk     = perkRank.perk;
-
-			if (!perk)
+			for (const auto& perkRank : *perkRankArray)
 			{
-				continue;
-			}
+				auto* perk = perkRank.perk;
 
-			perk->ApplyPerk(actor, 0, perkRank.currentRank);
+				if (!perk)
+				{
+					continue;
+				}
+
+				perk->ApplyPerk(actor, 0, perkRank.currentRank);
+			}
 		}
 	}
 
@@ -95,7 +89,7 @@ namespace ActorBasePerkFix
 		SKSE::Cache::GetSingleton().GetTaskInterface()->AddTask(
 			[playerHandle]()
 			{
-				auto player = playerHandle.get().get();
+				auto* player = playerHandle.get().get();
 
 				if (!player)
 				{
@@ -110,9 +104,9 @@ namespace ActorBasePerkFix
 	{
 		Hooks::ApplyBasePerksActorImplementation(player);
 
-		for (auto addedPerkRank : player->addedPerkRanks)
+		for (auto* addedPerkRank : player->addedPerkRanks)
 		{
-			auto perk = addedPerkRank->perk;
+			auto* perk = addedPerkRank->perk;
 
 			if (!perk)
 			{

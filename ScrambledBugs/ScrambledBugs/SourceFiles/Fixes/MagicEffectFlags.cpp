@@ -23,11 +23,11 @@ namespace ScrambledBugs::Fixes
 	{
 		activeEffect->elapsedTime = 0.0F;
 
-		auto baseEffect = activeEffect->GetBaseEffect();
+		auto* baseEffect = activeEffect->GetBaseEffect();
 
 		if (baseEffect && baseEffect->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kRecover))
 		{
-			auto caster = activeEffect->caster.get().get();
+			auto* caster = activeEffect->caster.get().get();
 
 			if (caster)
 			{
@@ -45,8 +45,8 @@ namespace ScrambledBugs::Fixes
 
 				if (dualCasting != dualCasted)
 				{
-					auto magicItem = activeEffect->magicItem;
-					auto cost      = magicItem->GetCost(caster);
+					auto* magicItem = activeEffect->magicItem;
+					auto  cost      = magicItem->GetCost(caster);
 
 					auto effectiveness = caster->GetDualCastingEffectiveness(cost);
 
@@ -66,7 +66,7 @@ namespace ScrambledBugs::Fixes
 
 	void MagicEffectFlags::SetEffectiveness(Skyrim::ActiveEffect* activeEffect, float effectiveness, bool requiresHostility)
 	{
-		auto magicItem = activeEffect->magicItem;
+		auto* magicItem = activeEffect->magicItem;
 
 		if (magicItem->ShouldSetEffectiveness() && (!requiresHostility || activeEffect->effect->IsHostile()))
 		{

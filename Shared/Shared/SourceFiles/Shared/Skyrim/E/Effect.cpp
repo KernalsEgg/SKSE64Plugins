@@ -12,12 +12,12 @@ namespace Skyrim
 {
 	std::uint32_t Effect::GetArea() const
 	{
-		return this->baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoArea) ? 0U : this->area;
+		return this->baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoArea) ? 0 : this->area;
 	}
 
 	std::uint32_t Effect::GetDuration() const
 	{
-		return this->baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoDuration) ? 0U : this->duration;
+		return this->baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoDuration) ? 0 : this->duration;
 	}
 
 	float Effect::GetMagnitude() const
@@ -32,14 +32,14 @@ namespace Skyrim
 
 	bool Effect::SetDuration(std::uint32_t duration)
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Effect::SetDuration)>::type>(Addresses::Effect::SetDuration) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Effect::SetDuration)>::type>(Addresses::Effect::SetDuration) };
 
 		return function(this, duration);
 	}
 
 	bool Effect::SetMagnitude(float magnitude)
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Effect::SetMagnitude)>::type>(Addresses::Effect::SetMagnitude) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Effect::SetMagnitude)>::type>(Addresses::Effect::SetMagnitude) };
 
 		return function(this, magnitude);
 	}

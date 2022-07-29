@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	bool TESCondition::IsTrue(TESObjectREFR* subject, TESObjectREFR* target) const
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESCondition::IsTrue)>::type>(Addresses::TESCondition::IsTrue) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESCondition::IsTrue)>::type>(Addresses::TESCondition::IsTrue) };
 
 		return function(this, subject, target);
 	}

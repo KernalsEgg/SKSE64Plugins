@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	float MagicItem::GetCost(Actor* caster) const
 	{
-		auto function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&MagicItem::GetCost)>::type>(Addresses::MagicItem::GetCost) };
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&MagicItem::GetCost)>::type>(Addresses::MagicItem::GetCost) };
 
 		return function(this, caster);
 	}
@@ -62,9 +62,7 @@ namespace Skyrim
 
 	bool MagicItem::ShouldSetEffectiveness() const
 	{
-		auto spellType = this->GetSpellType();
-
-		switch (spellType)
+		switch (this->GetSpellType())
 		{
 			case MagicSystem::SpellType::kDisease:
 			case MagicSystem::SpellType::kAbility:

@@ -56,7 +56,7 @@ namespace Trails
 			return;
 		}
 
-		auto file = form->GetFile(0);
+		auto* file = form->GetFile(0);
 
 		if (!file)
 		{
@@ -77,7 +77,7 @@ namespace Trails
 			return;
 		}
 
-		auto file = form->GetFile(0);
+		auto* file = form->GetFile(0);
 
 		if (!file)
 		{
@@ -167,6 +167,11 @@ namespace Trails
 			jsonDecal.at("force").get_to(this->force);
 		}
 
+		if (jsonDecal.contains("useLandColor"))
+		{
+			jsonDecal.at("useLandColor").get_to(this->useLandColor);
+		}
+
 		if (jsonDecal.contains("rotation"))
 		{
 			this->rotation.Deserialize(jsonDecal.at("rotation"));
@@ -179,8 +184,9 @@ namespace Trails
 	{
 		nlohmann::json jsonDecal;
 
-		jsonDecal["force"]    = this->force;
-		jsonDecal["rotation"] = this->rotation.Serialize();
+		jsonDecal["force"]        = this->force;
+		jsonDecal["useLandColor"] = this->useLandColor;
+		jsonDecal["rotation"]     = this->rotation.Serialize();
 
 		return jsonDecal;
 	}
@@ -330,7 +336,7 @@ namespace Trails
 
 		for (const auto& jsonSetting : jsonSettings)
 		{
-			auto conditions = Settings::Form().Deserialize(jsonSetting.at("conditions")).GetForm<Skyrim::BGSConstructibleObject>(Skyrim::FormType::kConstructibleObject);
+			auto* conditions = Settings::Form().Deserialize(jsonSetting.at("conditions")).GetForm<Skyrim::BGSConstructibleObject>(Skyrim::FormType::kConstructibleObject);
 
 			for (const auto& jsonFootstep : jsonSetting.at("footsteps"))
 			{
