@@ -4,7 +4,10 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
+#include "Shared/Skyrim/A/ActorEquipManager.h"
+#include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Utility/Assembly.h"
+#include "Shared/Utility/Enumeration.h"
 #include "Shared/Utility/Memory.h"
 #include "Shared/Utility/Trampoline.h"
 
@@ -50,12 +53,27 @@ namespace StolenItems
 		return true;
 	}
 
-	std::uint32_t Events::DropItem(Skyrim::PlayerCharacter* player, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
+	std::uint32_t& Events::DropItem(Skyrim::PlayerCharacter* player, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject*, Events::Arguments* arguments, std::uint32_t, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
+	{
+		std::unique_ptr<Events::Arguments> smartPointer(arguments);
+
+		result = Events::HandleItem(player, smartPointer->inventoryEntryData, smartPointer->itemCount, smartPointer->remainEquipped,
+			[position, rotation](Skyrim::PlayerCharacter* player, Skyrim::TESBoundObject* item, Skyrim::ExtraDataList* extraDataList, std::uint32_t itemCount) -> Skyrim::ObjectReferenceHandle
+			{
+				return player->DropItem(item, extraDataList, itemCount, position, rotation);
+			});
+
+		return reinterpret_cast<std::uint32_t&>(result);
+	}
+
+	Skyrim::ObjectReferenceHandle Events::HandleItem(Skyrim::PlayerCharacter* player, Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped, std::function<Skyrim::ObjectReferenceHandle(Skyrim::PlayerCharacter*, Skyrim::TESBoundObject*, Skyrim::ExtraDataList*, std::uint32_t)> handleItem)
 	{
 		auto* extraDataLists = inventoryEntryData->extraDataLists;
 
 		if (extraDataLists)
 		{
+			std::priority_queue<std::pair<Events::Priority, Skyrim::ExtraDataList*>> priorityQueue{};
+
 			for (auto* extraDataList : *extraDataLists)
 			{
 				if (!extraDataList)
@@ -63,43 +81,72 @@ namespace StolenItems
 					break;
 				}
 
-				auto count = extraDataList->GetCount();
+				Utility::Enumeration<Events::Priority> priority(Events::Priority::kNone);
 
-				if (count < 1)
+				if (!extraDataList->IsWorn(true, false))
 				{
-					continue;
+					priority.set(Events::Priority::kUnequipped);
 				}
 
 				Skyrim::InventoryEntryData temporary{};
 
 				temporary.item           = inventoryEntryData->item;
 				temporary.extraDataLists = new Skyrim::BSSimpleList<Skyrim::ExtraDataList*>();
+				temporary.itemCountDelta = 1;
+
 				temporary.extraDataLists->push_front(extraDataList);
 
-				if (temporary.IsOwnedBy(player, true))
+				if (!temporary.IsOwnedBy(player, true))
 				{
-					continue;
+					priority.set(Events::Priority::kStolen);
 				}
 
-				result = player->DropItem(item, extraDataList, static_cast<std::int64_t>(itemCount) > static_cast<std::int64_t>(count) ? count : itemCount, position, rotation);
+				priorityQueue.emplace(priority.get(), extraDataList);
+			}
 
-				itemCount = static_cast<std::int64_t>(itemCount) > static_cast<std::int64_t>(count) ? itemCount - count : 0;
+			while (!priorityQueue.empty())
+			{
+				const auto& top           = priorityQueue.top();
+				auto*       extraDataList = top.second;
 
-				if (itemCount < 1)
+				auto count = extraDataList->GetCount();
+
+				if (count > 0)
 				{
-					return result.native_handle();
+					Utility::Enumeration<Events::Priority> priority(top.first);
+
+					if (!remainEquipped && !priority.all(Events::Priority::kUnequipped))
+					{
+						if (itemCount == count && itemCount == inventoryEntryData->itemCountDelta)
+						{
+							Skyrim::ActorEquipManager::GetSingleton()->UnequipItem(player, inventoryEntryData->item, extraDataList, 1, nullptr, false, false, false, false, nullptr);
+						}
+					}
+
+					auto result = handleItem(player, inventoryEntryData->item, extraDataList, static_cast<std::int64_t>(itemCount) > static_cast<std::int64_t>(count) ? count : itemCount);
+
+					itemCount = static_cast<std::int64_t>(itemCount) > static_cast<std::int64_t>(count) ? itemCount - count : 0;
+
+					if (itemCount == 0)
+					{
+						return result;
+					}
 				}
+
+				priorityQueue.pop();
 			}
 		}
 
-		result = player->DropItem(item, nullptr, itemCount, position, rotation);
-
-		return result.native_handle();
+		return handleItem(player, inventoryEntryData->item, nullptr, itemCount);
 	}
 
-	Skyrim::ExtraDataList* Events::GetExtraDataList(Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped)
+	Events::Arguments* Events::GetExtraDataList(Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped)
 	{
-		return static_cast<Skyrim::ExtraDataList*>(static_cast<void*>(inventoryEntryData));
+		return new Events::Arguments{
+			.inventoryEntryData = inventoryEntryData,
+			.itemCount          = itemCount,
+			.remainEquipped     = remainEquipped
+		};
 	}
 
 	bool Events::IsOwnedBy(Skyrim::InventoryEntryData* inventoryEntryData, Skyrim::Actor* actor, bool defaultOwnership)
@@ -114,6 +161,8 @@ namespace StolenItems
 
 				temporary.item           = inventoryEntryData->item;
 				temporary.extraDataLists = new Skyrim::BSSimpleList<Skyrim::ExtraDataList*>();
+				temporary.itemCountDelta = 1;
+
 				temporary.extraDataLists->push_front(extraDataList);
 
 				if (!Events::isOwnedBy_(std::addressof(temporary), actor, defaultOwnership))
@@ -126,51 +175,17 @@ namespace StolenItems
 		return defaultOwnership;
 	}
 
-	std::uint32_t Events::RemoveItem(Skyrim::PlayerCharacter* player, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Skyrim::InventoryEntryData* inventoryEntryData, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
+	std::uint32_t& Events::RemoveItem(Skyrim::PlayerCharacter* player, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject*, std::uint32_t, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Events::Arguments* arguments, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
 	{
-		auto* extraDataLists = inventoryEntryData->extraDataLists;
+		std::unique_ptr<Events::Arguments> smartPointer(arguments);
 
-		if (extraDataLists)
-		{
-			for (auto* extraDataList : *extraDataLists)
+		result = Events::HandleItem(player, smartPointer->inventoryEntryData, smartPointer->itemCount, smartPointer->remainEquipped,
+			[reason, moveToReference, position, rotation](Skyrim::PlayerCharacter* player, Skyrim::TESBoundObject* item, Skyrim::ExtraDataList* extraDataList, std::uint32_t itemCount) -> Skyrim::ObjectReferenceHandle
 			{
-				if (!extraDataList)
-				{
-					break;
-				}
+				return player->RemoveItem(item, itemCount, reason, extraDataList, moveToReference, position, rotation);
+			});
 
-				auto count = extraDataList->GetCount();
-
-				if (count < 1)
-				{
-					continue;
-				}
-
-				Skyrim::InventoryEntryData temporary{};
-
-				temporary.item           = inventoryEntryData->item;
-				temporary.extraDataLists = new Skyrim::BSSimpleList<Skyrim::ExtraDataList*>();
-				temporary.extraDataLists->push_front(extraDataList);
-
-				if (temporary.IsOwnedBy(player, true))
-				{
-					continue;
-				}
-
-				result = player->RemoveItem(item, static_cast<std::int64_t>(itemCount) > static_cast<std::int64_t>(count) ? count : itemCount, reason, extraDataList, moveToReference, position, rotation);
-
-				itemCount = static_cast<std::int64_t>(itemCount) > static_cast<std::int64_t>(count) ? itemCount - count : 0;
-
-				if (itemCount < 1)
-				{
-					return result.native_handle();
-				}
-			}
-		}
-
-		result = player->RemoveItem(item, itemCount, reason, nullptr, moveToReference, position, rotation);
-
-		return result.native_handle();
+		return reinterpret_cast<std::uint32_t&>(result);
 	}
 
 	decltype(&Events::IsOwnedBy) Events::isOwnedBy_{ nullptr };
