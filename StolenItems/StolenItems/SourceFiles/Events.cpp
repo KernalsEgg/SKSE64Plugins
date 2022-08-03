@@ -32,6 +32,7 @@ namespace StolenItems
 		}
 
 		Events::isOwnedBy_ = reinterpret_cast<decltype(Events::isOwnedBy_)>(Utility::Memory::ReadRelativeCall(Addresses::Events::RequestItemCardInformation::IsOwnedBy));
+
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::RequestItemCardInformation::IsOwnedBy, reinterpret_cast<std::uintptr_t>(std::addressof(Events::IsOwnedBy)));
 
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::Add::GetExtraDataList, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
@@ -56,13 +57,13 @@ namespace StolenItems
 
 	std::uint32_t& Events::DropItem(Skyrim::Actor* actor, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject*, Events::Arguments* arguments, std::uint32_t, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
 	{
-		std::unique_ptr<Events::Arguments> smartPointer(arguments);
-
-		result = Events::HandleItem(smartPointer->inventoryEntryData, smartPointer->itemCount, smartPointer->remainEquipped,
+		result = Events::HandleItem(arguments->inventoryEntryData, arguments->itemCount, arguments->remainEquipped,
 			[actor, position, rotation](Skyrim::TESBoundObject* item, std::uint32_t itemCount, Skyrim::ExtraDataList* extraDataList) -> Skyrim::ObjectReferenceHandle
 			{
 				return actor->DropItem(item, extraDataList, itemCount, position, rotation);
 			});
+
+		delete arguments;
 
 		return reinterpret_cast<std::uint32_t&>(result);
 	}
@@ -155,6 +156,11 @@ namespace StolenItems
 		{
 			for (auto* extraDataList : *extraDataLists)
 			{
+				if (!extraDataList)
+				{
+					break;
+				}
+
 				Skyrim::InventoryEntryData temporary{};
 
 				temporary.item           = inventoryEntryData->item;
@@ -175,13 +181,13 @@ namespace StolenItems
 
 	std::uint32_t& Events::RemoveItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject*, std::uint32_t, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Events::Arguments* arguments, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
 	{
-		std::unique_ptr<Events::Arguments> smartPointer(arguments);
-
-		result = Events::HandleItem(smartPointer->inventoryEntryData, smartPointer->itemCount, smartPointer->remainEquipped,
+		result = Events::HandleItem(arguments->inventoryEntryData, arguments->itemCount, arguments->remainEquipped,
 			[reference, reason, moveToReference, position, rotation](Skyrim::TESBoundObject* item, std::uint32_t itemCount, Skyrim::ExtraDataList* extraDataList) -> Skyrim::ObjectReferenceHandle
 			{
 				return reference->RemoveItem(item, itemCount, reason, extraDataList, moveToReference, position, rotation);
 			});
+
+		delete arguments;
 
 		return reinterpret_cast<std::uint32_t&>(result);
 	}
