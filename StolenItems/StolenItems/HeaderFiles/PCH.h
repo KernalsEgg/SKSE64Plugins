@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>  // std::min
 #include <cstdint>    // Fixed width integer types
 #include <functional> // std::function
 #include <memory>     // std::addressof, std::unique_ptr

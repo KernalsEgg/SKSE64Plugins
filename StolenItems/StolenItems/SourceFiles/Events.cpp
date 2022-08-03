@@ -6,6 +6,7 @@
 #include "Patterns.h"
 #include "Shared/Skyrim/A/ActorEquipManager.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
+#include "Shared/Skyrim/P/PlayerCharacter.h"
 #include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Enumeration.h"
 #include "Shared/Utility/Memory.h"
@@ -53,20 +54,20 @@ namespace StolenItems
 		return true;
 	}
 
-	std::uint32_t& Events::DropItem(Skyrim::PlayerCharacter* player, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject*, Events::Arguments* arguments, std::uint32_t, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
+	std::uint32_t& Events::DropItem(Skyrim::Actor* actor, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject*, Events::Arguments* arguments, std::uint32_t, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
 	{
 		std::unique_ptr<Events::Arguments> smartPointer(arguments);
 
-		result = Events::HandleItem(player, smartPointer->inventoryEntryData, smartPointer->itemCount, smartPointer->remainEquipped,
-			[position, rotation](Skyrim::PlayerCharacter* player, Skyrim::TESBoundObject* item, Skyrim::ExtraDataList* extraDataList, std::uint32_t itemCount) -> Skyrim::ObjectReferenceHandle
+		result = Events::HandleItem(smartPointer->inventoryEntryData, smartPointer->itemCount, smartPointer->remainEquipped,
+			[actor, position, rotation](Skyrim::TESBoundObject* item, std::uint32_t itemCount, Skyrim::ExtraDataList* extraDataList) -> Skyrim::ObjectReferenceHandle
 			{
-				return player->DropItem(item, extraDataList, itemCount, position, rotation);
+				return actor->DropItem(item, extraDataList, itemCount, position, rotation);
 			});
 
 		return reinterpret_cast<std::uint32_t&>(result);
 	}
 
-	Skyrim::ObjectReferenceHandle Events::HandleItem(Skyrim::PlayerCharacter* player, Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped, std::function<Skyrim::ObjectReferenceHandle(Skyrim::PlayerCharacter*, Skyrim::TESBoundObject*, Skyrim::ExtraDataList*, std::uint32_t)> handleItem)
+	Skyrim::ObjectReferenceHandle Events::HandleItem(Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped, std::function<Skyrim::ObjectReferenceHandle(Skyrim::TESBoundObject*, std::uint32_t, Skyrim::ExtraDataList*)> handleItem)
 	{
 		auto* extraDataLists = inventoryEntryData->extraDataLists;
 
@@ -96,7 +97,7 @@ namespace StolenItems
 
 				temporary.extraDataLists->push_front(extraDataList);
 
-				if (!temporary.IsOwnedBy(player, true))
+				if (!temporary.IsOwnedBy(Skyrim::PlayerCharacter::GetSingleton(), true))
 				{
 					priority.set(Events::Priority::kStolen);
 				}
@@ -117,15 +118,12 @@ namespace StolenItems
 
 					if (!remainEquipped && !priority.all(Events::Priority::kUnequipped))
 					{
-						if (itemCount == count && itemCount == inventoryEntryData->itemCountDelta)
-						{
-							Skyrim::ActorEquipManager::GetSingleton()->UnequipItem(player, inventoryEntryData->item, extraDataList, 1, nullptr, false, false, false, false, nullptr);
-						}
+						Skyrim::ActorEquipManager::GetSingleton()->UnequipItem(Skyrim::PlayerCharacter::GetSingleton(), inventoryEntryData->item, extraDataList, 1, nullptr, false, false, false, false, nullptr);
 					}
 
-					auto result = handleItem(player, inventoryEntryData->item, extraDataList, static_cast<std::int64_t>(itemCount) > static_cast<std::int64_t>(count) ? count : itemCount);
+					auto result = handleItem(inventoryEntryData->item, std::min(itemCount, static_cast<std::uint32_t>(count)), extraDataList);
 
-					itemCount = static_cast<std::int64_t>(itemCount) > static_cast<std::int64_t>(count) ? itemCount - count : 0;
+					itemCount -= std::min(itemCount, static_cast<std::uint32_t>(count));
 
 					if (itemCount == 0)
 					{
@@ -137,7 +135,7 @@ namespace StolenItems
 			}
 		}
 
-		return handleItem(player, inventoryEntryData->item, nullptr, itemCount);
+		return handleItem(inventoryEntryData->item, itemCount, nullptr);
 	}
 
 	Events::Arguments* Events::GetExtraDataList(Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped)
@@ -175,14 +173,14 @@ namespace StolenItems
 		return defaultOwnership;
 	}
 
-	std::uint32_t& Events::RemoveItem(Skyrim::PlayerCharacter* player, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject*, std::uint32_t, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Events::Arguments* arguments, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
+	std::uint32_t& Events::RemoveItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject*, std::uint32_t, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Events::Arguments* arguments, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
 	{
 		std::unique_ptr<Events::Arguments> smartPointer(arguments);
 
-		result = Events::HandleItem(player, smartPointer->inventoryEntryData, smartPointer->itemCount, smartPointer->remainEquipped,
-			[reason, moveToReference, position, rotation](Skyrim::PlayerCharacter* player, Skyrim::TESBoundObject* item, Skyrim::ExtraDataList* extraDataList, std::uint32_t itemCount) -> Skyrim::ObjectReferenceHandle
+		result = Events::HandleItem(smartPointer->inventoryEntryData, smartPointer->itemCount, smartPointer->remainEquipped,
+			[reference, reason, moveToReference, position, rotation](Skyrim::TESBoundObject* item, std::uint32_t itemCount, Skyrim::ExtraDataList* extraDataList) -> Skyrim::ObjectReferenceHandle
 			{
-				return player->RemoveItem(item, itemCount, reason, extraDataList, moveToReference, position, rotation);
+				return reference->RemoveItem(item, itemCount, reason, extraDataList, moveToReference, position, rotation);
 			});
 
 		return reinterpret_cast<std::uint32_t&>(result);

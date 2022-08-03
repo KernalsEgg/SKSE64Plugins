@@ -7,7 +7,6 @@
 #include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/I/InventoryEntryData.h"
 #include "Shared/Skyrim/N/NiPoint3.h"
-#include "Shared/Skyrim/P/PlayerCharacter.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
 #include "Shared/Skyrim/T/TESObjectREFR.h"
 
@@ -36,11 +35,11 @@ namespace StolenItems
 			bool                        remainEquipped;
 		};
 
-		static std::uint32_t&                DropItem(Skyrim::PlayerCharacter* player, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, Events::Arguments* arguments, std::uint32_t itemCount, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
+		static std::uint32_t&                DropItem(Skyrim::Actor* actor, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, Events::Arguments* arguments, std::uint32_t itemCount, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
 		static Events::Arguments*            GetExtraDataList(Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped);
-		static Skyrim::ObjectReferenceHandle HandleItem(Skyrim::PlayerCharacter* player, Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped, std::function<Skyrim::ObjectReferenceHandle(Skyrim::PlayerCharacter*, Skyrim::TESBoundObject*, Skyrim::ExtraDataList*, std::uint32_t)> handleItem);
+		static Skyrim::ObjectReferenceHandle HandleItem(Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped, std::function<Skyrim::ObjectReferenceHandle(Skyrim::TESBoundObject*, std::uint32_t, Skyrim::ExtraDataList*)> handleItem);
 		static bool                          IsOwnedBy(Skyrim::InventoryEntryData* inventoryEntryData, Skyrim::Actor* actor, bool defaultOwnership);
-		static std::uint32_t&                RemoveItem(Skyrim::PlayerCharacter* player, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Events::Arguments* arguments, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
+		static std::uint32_t&                RemoveItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Events::Arguments* arguments, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
 
 		static decltype(&Events::IsOwnedBy) isOwnedBy_;
 	};
