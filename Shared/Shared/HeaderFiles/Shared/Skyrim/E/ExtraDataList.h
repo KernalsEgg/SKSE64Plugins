@@ -110,6 +110,7 @@ namespace Skyrim
 		bool               HasType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
 		bool               IsQuestItem() const;
 		bool               IsWorn(bool eitherHand, bool leftHand) const;
+		bool               ShouldStack(bool stackWorn) const;
 
 		template <class T>
 		T* GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType)

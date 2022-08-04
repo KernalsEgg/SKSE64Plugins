@@ -106,6 +106,8 @@ namespace StolenItems
 				priorityQueue.emplace(priority.get(), extraDataList);
 			}
 
+			auto handleAllItems = itemCount == inventoryEntryData->itemCountDelta;
+
 			while (!priorityQueue.empty())
 			{
 				const auto& top           = priorityQueue.top();
@@ -116,19 +118,21 @@ namespace StolenItems
 				if (count > 0)
 				{
 					Utility::Enumeration<Events::Priority> priority(top.first);
-
-					if (!remainEquipped && !priority.all(Events::Priority::kUnequipped))
+					/*
+					Prioritise dropping or removing stolen items over owned items
+					Preemptively unequip the item so that the correct stack of items is dropped or removed
+					When unequipped the ExtraDataList will be destroyed if it contains no other BSExtraData
+					*/
+					if (remainEquipped || priority.all(Events::Priority::kUnequipped) || ((handleAllItems || priority.all(Events::Priority::kStolen)) && !Skyrim::ActorEquipManager::GetSingleton()->UnequipItem(Skyrim::PlayerCharacter::GetSingleton(), inventoryEntryData->item, extraDataList, 1, nullptr, false, false, false, false, nullptr)))
 					{
-						Skyrim::ActorEquipManager::GetSingleton()->UnequipItem(Skyrim::PlayerCharacter::GetSingleton(), inventoryEntryData->item, extraDataList, 1, nullptr, false, false, false, false, nullptr);
-					}
+						auto result = handleItem(inventoryEntryData->item, std::min(itemCount, static_cast<std::uint32_t>(count)), extraDataList);
 
-					auto result = handleItem(inventoryEntryData->item, std::min(itemCount, static_cast<std::uint32_t>(count)), extraDataList);
+						itemCount -= std::min(itemCount, static_cast<std::uint32_t>(count));
 
-					itemCount -= std::min(itemCount, static_cast<std::uint32_t>(count));
-
-					if (itemCount == 0)
-					{
-						return result;
+						if (itemCount == 0)
+						{
+							return result;
+						}
 					}
 				}
 

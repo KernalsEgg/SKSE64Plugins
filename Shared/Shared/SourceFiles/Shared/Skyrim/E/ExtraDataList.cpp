@@ -144,4 +144,46 @@ namespace Skyrim
 			return this->HasType(ExtraDataType::kWorn);
 		}
 	}
+
+	bool ExtraDataList::ShouldStack(bool stackWorn) const
+	{
+		BSReadLockGuard readLockGuard(this->lock_);
+
+		for (const auto& extraData : *this)
+		{
+			switch (extraData.GetType())
+			{
+				case ExtraDataType::kWorn:
+				case ExtraDataType::kWornLeft:
+				{
+					if (!stackWorn)
+					{
+						return false;
+					}
+				}
+				case ExtraDataType::kReferenceHandle:
+				case ExtraDataType::kOriginalReference:
+				case ExtraDataType::kOwnership:
+				case ExtraDataType::kCount:
+				case ExtraDataType::kTimeLeft:
+				case ExtraDataType::kLeveledItem:
+				case ExtraDataType::kScale:
+				case ExtraDataType::kHotkey:
+				case ExtraDataType::kAliasInstanceArray:
+				case ExtraDataType::kOutfitItem:
+				case ExtraDataType::kFromAlias:
+				case ExtraDataType::kShouldWear:
+				case ExtraDataType::kUniqueID:
+				{
+					break;
+				}
+				default:
+				{
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
 }
