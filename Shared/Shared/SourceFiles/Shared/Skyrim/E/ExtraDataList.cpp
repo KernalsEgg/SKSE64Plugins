@@ -145,7 +145,7 @@ namespace Skyrim
 		}
 	}
 
-	bool ExtraDataList::ShouldStack(bool stackWorn) const
+	bool ExtraDataList::ShouldItemStack(bool stackWorn) const
 	{
 		BSReadLockGuard readLockGuard(this->lock_);
 

@@ -40,6 +40,7 @@ namespace StolenItems
 		static Skyrim::ObjectReferenceHandle HandleItem(Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped, std::function<Skyrim::ObjectReferenceHandle(Skyrim::TESBoundObject*, std::uint32_t, Skyrim::ExtraDataList*)> handleItem);
 		static bool                          IsOwnedBy(Skyrim::InventoryEntryData* inventoryEntryData, Skyrim::Actor* actor, bool defaultOwnership);
 		static std::uint32_t&                RemoveItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Events::Arguments* arguments, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
+		static std::uint32_t                 RemoveRequiredItem(Skyrim::TESBoundObject* item, std::int32_t itemCount);
 
 		static decltype(&Events::IsOwnedBy) isOwnedBy_;
 	};

@@ -6,6 +6,7 @@
 #include "Patterns.h"
 #include "Shared/Skyrim/A/ActorEquipManager.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
+#include "Shared/Skyrim/I/InventoryChanges.h"
 #include "Shared/Skyrim/P/PlayerCharacter.h"
 #include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Enumeration.h"
@@ -31,10 +32,12 @@ namespace StolenItems
 			return false;
 		}
 
+		// Request Item Card Information
 		Events::isOwnedBy_ = reinterpret_cast<decltype(Events::isOwnedBy_)>(Utility::Memory::ReadRelativeCall(Addresses::Events::RequestItemCardInformation::IsOwnedBy));
 
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::RequestItemCardInformation::IsOwnedBy, reinterpret_cast<std::uintptr_t>(std::addressof(Events::IsOwnedBy)));
 
+		// Add, Drop, Remove and Sell
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::Add::GetExtraDataList, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::Drop::GetExtraDataList, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::Remove::GetExtraDataList, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
@@ -51,6 +54,9 @@ namespace StolenItems
 		Utility::Memory::SafeWrite(Addresses::Events::Add::RemoveItem + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
 		Utility::Memory::SafeWrite(Addresses::Events::Drop::DropItem + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
 		Utility::Memory::SafeWrite(Addresses::Events::Sell::RemoveItem + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
+
+		// Craft
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Events::Craft::RemoveRequiredItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveRequiredItem)));
 
 		return true;
 	}
@@ -119,8 +125,8 @@ namespace StolenItems
 				{
 					Utility::Enumeration<Events::Priority> priority(top.first);
 					/*
-					Prioritise dropping or removing stolen items over owned items
-					Preemptively unequip the item so that the correct stack of items is dropped or removed
+					Prioritise stolen items over owned items
+					Preemptively unequip the item so that the intended stack of items is dropped or removed
 					When unequipped the ExtraDataList will be destroyed if it contains no other BSExtraData
 					*/
 					if (remainEquipped || priority.all(Events::Priority::kUnequipped) || ((handleAllItems || priority.all(Events::Priority::kStolen)) && !Skyrim::ActorEquipManager::GetSingleton()->UnequipItem(Skyrim::PlayerCharacter::GetSingleton(), inventoryEntryData->item, extraDataList, 1, nullptr, false, false, false, false, nullptr)))
@@ -154,6 +160,8 @@ namespace StolenItems
 
 	bool Events::IsOwnedBy(Skyrim::InventoryEntryData* inventoryEntryData, Skyrim::Actor* actor, bool defaultOwnership)
 	{
+		auto result{ defaultOwnership };
+
 		auto* extraDataLists = inventoryEntryData->extraDataLists;
 
 		if (extraDataLists)
@@ -173,14 +181,16 @@ namespace StolenItems
 
 				temporary.extraDataLists->push_front(extraDataList);
 
-				if (!Events::isOwnedBy_(std::addressof(temporary), actor, defaultOwnership))
+				result = Events::isOwnedBy_(std::addressof(temporary), actor, defaultOwnership);
+
+				if (!result)
 				{
-					return false;
+					break;
 				}
 			}
 		}
 
-		return defaultOwnership;
+		return result;
 	}
 
 	std::uint32_t& Events::RemoveItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject*, std::uint32_t, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Events::Arguments* arguments, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
@@ -194,6 +204,32 @@ namespace StolenItems
 		delete arguments;
 
 		return reinterpret_cast<std::uint32_t&>(result);
+	}
+
+	std::uint32_t Events::RemoveRequiredItem(Skyrim::TESBoundObject* item, std::int32_t itemCount)
+	{
+		auto* player           = Skyrim::PlayerCharacter::GetSingleton();
+		auto* inventoryChanges = player->GetInventoryChanges();
+
+		if (inventoryChanges)
+		{
+			auto* inventoryEntryData = inventoryChanges->GetInventoryEntryData(item);
+
+			if (inventoryEntryData)
+			{
+				Events::HandleItem(inventoryEntryData, std::abs(itemCount), false,
+					[player](Skyrim::TESBoundObject* item, std::uint32_t itemCount, Skyrim::ExtraDataList* extraDataList) -> Skyrim::ObjectReferenceHandle
+					{
+						return player->RemoveItem(item, itemCount, Skyrim::TESObjectREFR::RemoveItemReason::kRemove, extraDataList, nullptr, nullptr, nullptr);
+					});
+
+				return 1;
+			}
+		}
+
+		player->RemoveItem(item, std::abs(itemCount), Skyrim::TESObjectREFR::RemoveItemReason::kRemove, nullptr, nullptr, nullptr, nullptr);
+
+		return 1;
 	}
 
 	decltype(&Events::IsOwnedBy) Events::isOwnedBy_{ nullptr };

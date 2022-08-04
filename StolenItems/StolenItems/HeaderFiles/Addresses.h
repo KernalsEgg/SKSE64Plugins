@@ -19,6 +19,12 @@ namespace StolenItems::Addresses
 			inline const std::uintptr_t RemoveItem{ Relocation::AddressLibrary::GetSingleton().GetAddress(50212) + 0x2EE }; // ContainerMenu::ItemTransfer
 		}
 
+		namespace Craft
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x20AEF0</summary>
+			inline const std::uintptr_t RemoveRequiredItem{ Relocation::AddressLibrary::GetSingleton().GetAddress(16564) };
+		}
+
 		namespace Drop
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x88E280</summary>
