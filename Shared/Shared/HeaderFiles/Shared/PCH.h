@@ -40,6 +40,7 @@
 #include <sstream>         // std::stringstream, std::wistringstream
 #include <string>          // _stricmp, std::char_traits, std::getline, std::stoi, std::string, std::wstring
 #include <string_view>     // std::basic_string_view, std::string_view
+#include <tuple>           // std::apply, std::tuple
 #include <type_traits>     // Type traits
 #include <utility>         // std::forward, std::move
 #include <vector>          // std::vector

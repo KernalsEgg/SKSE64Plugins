@@ -7,8 +7,10 @@
 #include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/I/InventoryEntryData.h"
 #include "Shared/Skyrim/N/NiPoint3.h"
+#include "Shared/Skyrim/S/SoulLevel.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
 #include "Shared/Skyrim/T/TESObjectREFR.h"
+#include "Shared/Utility/Enumeration.h"
 
 
 
@@ -27,21 +29,17 @@ namespace StolenItems
 			kStolen     = 1U << 1
 		};
 
-		struct Arguments
-		{
-		public:
-			Skyrim::InventoryEntryData* inventoryEntryData;
-			std::uint32_t               itemCount;
-			bool                        remainEquipped;
-		};
-
-		static std::uint32_t&                DropItem(Skyrim::Actor* actor, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, Events::Arguments* arguments, std::uint32_t itemCount, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
-		static Events::Arguments*            GetExtraDataList(Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped);
-		static Skyrim::ObjectReferenceHandle HandleItem(Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped, std::function<Skyrim::ObjectReferenceHandle(Skyrim::TESBoundObject*, std::uint32_t, Skyrim::ExtraDataList*)> handleItem);
+		static std::uint32_t&                AddItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Skyrim::InventoryEntryData* inventoryEntryData, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
+		static std::uint32_t&                DisenchantItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Skyrim::ExtraDataList* extraDataList, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
+		static std::uint32_t&                DropItem(Skyrim::Actor* actor, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
+		static Skyrim::InventoryEntryData*   GetExtraDataList(Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped);
+		static Skyrim::ObjectReferenceHandle HandleItem(Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, bool remainEquipped, std::function<Skyrim::ObjectReferenceHandle(Skyrim::TESBoundObject* item, std::uint32_t itemCount, Skyrim::ExtraDataList* extraDataList)> handleItem);
 		static bool                          IsOwnedBy(Skyrim::InventoryEntryData* inventoryEntryData, Skyrim::Actor* actor, bool defaultOwnership);
-		static std::uint32_t&                RemoveItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Events::Arguments* arguments, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
-		static std::uint32_t                 RemoveRequiredItem(Skyrim::TESBoundObject* item, std::int32_t itemCount);
+		static std::uint32_t                 RemoveComponent(Skyrim::TESBoundObject* item, std::int32_t itemCount);
+		static std::uint32_t&                RemoveItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Skyrim::InventoryEntryData* inventoryEntryData, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
+		static void                          RemoveSoul(Skyrim::InventoryEntryData* inventoryEntryData, Utility::Enumeration<Skyrim::SoulLevel, std::uint8_t> soulLevel);
 
 		static decltype(&Events::IsOwnedBy) isOwnedBy_;
+		static void (*removeSoul_)(Skyrim::ExtraDataList* extraDataList, Utility::Enumeration<Skyrim::SoulLevel, std::uint8_t> soulLevel);
 	};
 }

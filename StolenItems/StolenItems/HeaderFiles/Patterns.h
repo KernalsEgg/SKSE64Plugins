@@ -8,33 +8,23 @@ namespace StolenItems::Patterns
 {
 	namespace Events
 	{
-		namespace Add
-		{
-			bool GetExtraDataList();
-			bool RemoveItem();
-		}
-
-		namespace Drop
-		{
-			bool GetExtraDataList();
-			bool DropItem();
-		}
-
-		namespace Remove
-		{
-			bool GetExtraDataList();
-			bool RemoveItem();
-		}
-
-		namespace RequestItemCardInformation
-		{
-			bool IsOwnedBy();
-		}
-
-		namespace Sell
-		{
-			bool GetExtraDataList();
-			bool RemoveItem();
-		}
+		bool AddItem();
+		bool DisenchantItem();
+		bool DropItem();
+		bool GetExtraDataLists();
+		bool GetExtraDataListToAddItem();
+		bool GetExtraDataListToDropItem();
+		bool GetExtraDataListToRemoveItem();
+		bool GetExtraDataListToRemoveSoul();
+		bool GetExtraDataListToRemoveSoulGem();
+		bool GetExtraDataListToSellItem();
+		bool GetIngredientToRemove();
+		bool GetItemToDisenchant();
+		bool IsOwnedBy();
+		bool RemoveIngredient();
+		bool RemoveItem();
+		bool RemoveSoul();
+		bool RemoveSoulGem();
+		bool SellItem();
 	}
 }

@@ -15,6 +15,7 @@
 namespace Skyrim
 {
 	class EnchantmentItem;
+	class InventoryEntryData;
 	class TESBoundObject;
 
 	namespace CraftingSubMenus
@@ -81,6 +82,25 @@ namespace Skyrim
 			static_assert(offsetof(EnchantmentEntry, power) == 0x20);
 			static_assert(offsetof(EnchantmentEntry, maximumPower) == 0x24);
 			static_assert(sizeof(EnchantmentEntry) == 0x28);
+
+			class ItemChangeEntry :
+				public CategoryListEntry // 0
+			{
+			public:
+				// Override
+				virtual ~ItemChangeEntry() override; // 0
+
+				// Override (CategoryListEntry)
+				virtual void Unknown1(CategoryListEntry*) override; // 1
+				virtual void Unknown2(CategoryListEntry*) override; // 2
+				virtual void Unknown3(CategoryListEntry*) override; // 3
+				virtual void Unknown4(CategoryListEntry*) override; // 4
+
+				// Member variables
+				InventoryEntryData* inventoryEntryData; // 18
+			};
+			static_assert(offsetof(ItemChangeEntry, inventoryEntryData) == 0x18);
+			static_assert(sizeof(ItemChangeEntry) == 0x20);
 
 			class CreateEffectFunctor :
 				public MagicItemTraversalFunctor // 0

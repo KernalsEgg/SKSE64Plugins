@@ -78,6 +78,18 @@ namespace Relocation
 			return result;
 		}
 
+		template <class... SpecialEditionArguments, class... AnniversaryEditionArguments>
+		static bool MatchPattern(std::uintptr_t address, const std::tuple<SpecialEditionArguments...>& specialEditionArguments, const std::tuple<AnniversaryEditionArguments...>& anniversaryEditionArguments)
+		{
+			return Executable::GetSingleton().IsSpecialEdition() ?
+                       std::apply([address](const SpecialEditionArguments&... specialEditionArguments) -> bool
+						   { return AddressLibrary::MatchPattern(address, specialEditionArguments...); },
+						   specialEditionArguments) :
+                       std::apply([address](const AnniversaryEditionArguments&... anniversaryEditionArguments) -> bool
+						   { return AddressLibrary::MatchPattern(address, anniversaryEditionArguments...); },
+						   anniversaryEditionArguments);
+		}
+
 		void           Dump(const std::filesystem::path& path) const;
 		std::uintptr_t GetAddress(std::uint64_t identifier) const;
 		std::uintptr_t GetAddress(std::uint64_t specialEditionIdentifier, std::uint64_t anniversaryEditionIdentifier) const;

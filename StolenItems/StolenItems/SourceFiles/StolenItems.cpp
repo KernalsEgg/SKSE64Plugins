@@ -37,6 +37,13 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 	return true;
 }
 
+extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
+	.pluginVersion  = 1,
+	.pluginName     = "Stolen Items",
+	.author         = "KernalsEgg",
+	.addressLibrary = true
+};
+
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
 	SKSE::Cache::GetSingleton().Initialize(loadInterface);
@@ -44,6 +51,6 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 	Utility::Log::Information("Registered: {}", StolenItems::Events::Register());
 
 	Utility::Trampoline::GetSingleton().Commit();
-	
+
 	return true;
 }
