@@ -3,6 +3,7 @@
 #include "Shared/Skyrim/C/Console.h"
 
 #include "Shared/Skyrim/Addresses.h"
+#include "Shared/Skyrim/T/TESObjectREFR.h"
 
 
 

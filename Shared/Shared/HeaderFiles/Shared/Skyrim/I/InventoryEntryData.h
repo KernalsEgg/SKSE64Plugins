@@ -11,6 +11,7 @@ namespace Skyrim
 	class Actor;
 	class ExtraDataList;
 	class TESBoundObject;
+	class TESForm;
 
 	template <class T>
 	class BSSimpleList;
@@ -33,8 +34,8 @@ namespace Skyrim
 		float          GetHealth() const;
 		const char*    GetName() const;
 		std::int32_t   GetValue() const;
-		ExtraDataList* GetWornExtraDataList(bool leftHand) const;
-		bool           IsOwnedBy(Actor* actor, bool defaultOwnership);
+		ExtraDataList* GetWornExtraDataList(bool eitherHand, bool leftHand) const;
+		bool           IsOwnedBy(Actor* actor, TESForm* owner, bool defaultOwnership);
 		bool           IsQuestItem() const;
 		bool           IsWorn(bool eitherHand, bool leftHand) const;
 

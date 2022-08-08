@@ -109,7 +109,7 @@ namespace Skyrim
 		return function(this);
 	}
 
-	ExtraDataList* InventoryEntryData::GetWornExtraDataList(bool leftHand) const
+	ExtraDataList* InventoryEntryData::GetWornExtraDataList(bool eitherHand, bool leftHand) const
 	{
 		auto* extraDataLists = this->extraDataLists;
 
@@ -122,7 +122,7 @@ namespace Skyrim
 					break;
 				}
 
-				if (extraDataList->IsWorn(false, leftHand))
+				if (extraDataList->IsWorn(eitherHand, leftHand))
 				{
 					return extraDataList;
 				}
@@ -132,11 +132,11 @@ namespace Skyrim
 		return nullptr;
 	}
 
-	bool InventoryEntryData::IsOwnedBy(Actor* actor, bool defaultOwnership)
+	bool InventoryEntryData::IsOwnedBy(Actor* actor, TESForm* owner, bool defaultOwnership)
 	{
 		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&InventoryEntryData::IsOwnedBy)>::type>(Addresses::InventoryEntryData::IsOwnedBy) };
 
-		return function(this, actor, defaultOwnership);
+		return function(this, actor, owner, defaultOwnership);
 	}
 
 	bool InventoryEntryData::IsQuestItem() const

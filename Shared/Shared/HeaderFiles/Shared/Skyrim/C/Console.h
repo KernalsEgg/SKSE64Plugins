@@ -5,12 +5,13 @@
 #include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/I/IMenu.h"
 #include "Shared/Skyrim/N/NiPointer.h"
-#include "Shared/Skyrim/T/TESObjectREFR.h"
 
 
 
 namespace Skyrim
 {
+	class TESObjectREFR;
+
 	class Console :
 		public IMenu // 0
 	{

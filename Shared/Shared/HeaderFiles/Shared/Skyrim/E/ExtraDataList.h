@@ -14,6 +14,7 @@
 namespace Skyrim
 {
 	class BSExtraData;
+	class TESForm;
 
 	class ExtraDataList
 	{
@@ -104,6 +105,7 @@ namespace Skyrim
 		float              GetCharge() const;
 		std::int16_t       GetCount() const;
 		float              GetHealth() const;
+		TESForm*           GetOwner() const;
 		BSExtraData*       GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType);
 		const BSExtraData* GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
 		SoulLevel          GetSoulLevel() const;

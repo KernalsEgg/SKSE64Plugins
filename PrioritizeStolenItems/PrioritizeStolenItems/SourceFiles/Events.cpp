@@ -15,35 +15,26 @@
 
 
 
-namespace StolenItems
+namespace PrioritizeStolenItems
 {
 	bool Events::Register()
 	{
 		if (!Patterns::Events::AddItem() ||
-			!Patterns::Events::DisenchantItem() ||
 			!Patterns::Events::DropItem() ||
-			!Patterns::Events::GetExtraDataLists() ||
 			!Patterns::Events::GetExtraDataListToAddItem() ||
 			!Patterns::Events::GetExtraDataListToDropItem() ||
 			!Patterns::Events::GetExtraDataListToRemoveItem() ||
-			!Patterns::Events::GetExtraDataListToRemoveSoul() ||
-			!Patterns::Events::GetExtraDataListToRemoveSoulGem() ||
 			!Patterns::Events::GetExtraDataListToSellItem() ||
-			!Patterns::Events::GetIngredientToRemove() ||
-			!Patterns::Events::GetItemToDisenchant() ||
-			!Patterns::Events::IsOwnedBy() ||
+			!Patterns::Events::GetIngredient() ||
 			!Patterns::Events::RemoveIngredient() ||
 			!Patterns::Events::RemoveItem() ||
-			!Patterns::Events::RemoveSoul() ||
-			!Patterns::Events::RemoveSoulGem() ||
 			!Patterns::Events::SellItem())
 		{
 			return false;
 		}
 
 		// IsOwnedBy
-		Events::isOwnedBy_ = reinterpret_cast<decltype(Events::isOwnedBy_)>(Utility::Memory::ReadRelativeCall(Addresses::Events::IsOwnedBy));
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::IsOwnedBy, reinterpret_cast<std::uintptr_t>(std::addressof(Events::IsOwnedBy)));
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Events::IsOwnedBy, reinterpret_cast<std::uintptr_t>(std::addressof(Events::IsOwnedBy)));
 
 		// RemoveComponent
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Events::RemoveComponent, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveComponent)));
@@ -79,28 +70,11 @@ namespace StolenItems
 		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::SellItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
 		Utility::Memory::SafeWrite(Addresses::Events::SellItem + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
 
-		// DisenchantItem
-		Utility::Memory::SafeWrite(Addresses::Events::GetItemToDisenchant, 0x4Dui8, 0x8Bui8, 0xC6ui8); // mov r8, r14
-
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::DisenchantItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::DisenchantItem)));
-		Utility::Memory::SafeWrite(Addresses::Events::DisenchantItem + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
-
 		// RemoveIngredient
-		Utility::Memory::SafeWrite(Addresses::Events::GetIngredientToRemove, 0x4Cui8, 0x8Bui8, 0xC7ui8); // mov r8, rdi
+		Utility::Memory::SafeWrite(Addresses::Events::GetIngredient, 0x4Cui8, 0x8Bui8, 0xC7ui8); // mov r8, rdi
 
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::RemoveIngredient, reinterpret_cast<std::uintptr_t>(std::addressof(Events::DisenchantItem)));
+		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::RemoveIngredient, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveIngredient)));
 		Utility::Memory::SafeWrite(Addresses::Events::RemoveIngredient + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
-
-		// RemoveSoulGem
-		Utility::Memory::SafeWrite(Addresses::Events::GetExtraDataLists, 0x48ui8, 0x8Bui8, 0xC8ui8, Utility::Assembly::NoOperation1); // mov rcx, rax
-		Utility::Memory::SafeWrite(Addresses::Events::GetExtraDataListToRemoveSoul, Utility::Assembly::NoOperation3);                 // nop
-		Utility::Memory::SafeWrite(Addresses::Events::GetExtraDataListToRemoveSoulGem, 0x48ui8, 0x8Bui8, 0xD1ui8);                    // mov rdx, rcx
-
-		Events::removeSoul_ = reinterpret_cast<decltype(Events::removeSoul_)>(Utility::Memory::ReadRelativeCall(Addresses::Events::RemoveSoul));
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::RemoveSoul, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveSoul)));
-
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::RemoveSoulGem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
-		Utility::Memory::SafeWrite(Addresses::Events::RemoveSoulGem + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
 
 		return true;
 	}
@@ -108,21 +82,6 @@ namespace StolenItems
 	std::uint32_t& Events::AddItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject*, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Skyrim::InventoryEntryData* inventoryEntryData, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
 	{
 		result = Events::HandleItem(inventoryEntryData, itemCount, true,
-			[reference, reason, moveToReference, position, rotation](Skyrim::TESBoundObject* item, std::uint32_t itemCount, Skyrim::ExtraDataList* extraDataList) -> Skyrim::ObjectReferenceHandle
-			{
-				return reference->RemoveItem(item, itemCount, reason, extraDataList, moveToReference, position, rotation);
-			});
-
-		return reinterpret_cast<std::uint32_t&>(result);
-	}
-
-	/*
-	DisenchantItem
-	RemoveIngredient
-	*/
-	std::uint32_t& Events::DisenchantItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Skyrim::ExtraDataList*, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
-	{
-		result = Events::HandleItem(inventoryEntryData, itemCount, false,
 			[reference, reason, moveToReference, position, rotation](Skyrim::TESBoundObject* item, std::uint32_t itemCount, Skyrim::ExtraDataList* extraDataList) -> Skyrim::ObjectReferenceHandle
 			{
 				return reference->RemoveItem(item, itemCount, reason, extraDataList, moveToReference, position, rotation);
@@ -164,15 +123,9 @@ namespace StolenItems
 					priority.set(Events::Priority::kUnequipped);
 				}
 
-				Skyrim::InventoryEntryData temporary{};
+				auto* owner = extraDataList->GetOwner();
 
-				temporary.item           = inventoryEntryData->item;
-				temporary.extraDataLists = new Skyrim::BSSimpleList<Skyrim::ExtraDataList*>();
-				temporary.itemCountDelta = 1;
-
-				temporary.extraDataLists->push_front(extraDataList);
-
-				if (!temporary.IsOwnedBy(Skyrim::PlayerCharacter::GetSingleton(), true))
+				if (!inventoryEntryData->IsOwnedBy(Skyrim::PlayerCharacter::GetSingleton(), owner, true))
 				{
 					priority.set(Events::Priority::kStolen);
 				}
@@ -193,9 +146,9 @@ namespace StolenItems
 				{
 					Utility::Enumeration<Events::Priority> priority(top.first);
 					/*
-					Prioritise stolen items over owned items
-					Preemptively unequip the item so that the intended stack of items is dropped or removed
-					When unequipped the ExtraDataList will be destroyed if it contains no other BSExtraData
+						Prioritise stolen items over owned items
+						Preemptively unequip the item so that the intended stack of items is dropped or removed
+						When unequipped the ExtraDataList will be destroyed if it contains no other BSExtraData
 					*/
 					if (remainEquipped || priority.all(Events::Priority::kUnequipped) || ((handleAllItems || priority.all(Events::Priority::kStolen)) && !Skyrim::ActorEquipManager::GetSingleton()->UnequipItem(Skyrim::PlayerCharacter::GetSingleton(), inventoryEntryData->item, extraDataList, 1, nullptr, false, false, false, false, nullptr)))
 					{
@@ -237,15 +190,9 @@ namespace StolenItems
 					break;
 				}
 
-				Skyrim::InventoryEntryData temporary{};
+				auto* owner = extraDataList->GetOwner();
 
-				temporary.item           = inventoryEntryData->item;
-				temporary.extraDataLists = new Skyrim::BSSimpleList<Skyrim::ExtraDataList*>();
-				temporary.itemCountDelta = 1;
-
-				temporary.extraDataLists->push_front(extraDataList);
-
-				result = Events::isOwnedBy_(std::addressof(temporary), actor, defaultOwnership);
+				result = inventoryEntryData->IsOwnedBy(actor, owner, defaultOwnership);
 
 				if (!result)
 				{
@@ -283,10 +230,20 @@ namespace StolenItems
 		return 1;
 	}
 
+	std::uint32_t& Events::RemoveIngredient(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Skyrim::ExtraDataList*, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
+	{
+		result = Events::HandleItem(inventoryEntryData, itemCount, false,
+			[reference, reason, moveToReference, position, rotation](Skyrim::TESBoundObject* item, std::uint32_t itemCount, Skyrim::ExtraDataList* extraDataList) -> Skyrim::ObjectReferenceHandle
+			{
+				return reference->RemoveItem(item, itemCount, reason, extraDataList, moveToReference, position, rotation);
+			});
+
+		return reinterpret_cast<std::uint32_t&>(result);
+	}
+
 	/*
-	RemoveItem
-	RemoveSoulGem
-	SellItem
+		RemoveItem
+		SellItem
 	*/
 	std::uint32_t& Events::RemoveItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject*, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Skyrim::InventoryEntryData* inventoryEntryData, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation)
 	{
@@ -298,44 +255,4 @@ namespace StolenItems
 
 		return reinterpret_cast<std::uint32_t&>(result);
 	}
-
-	void Events::RemoveSoul(Skyrim::InventoryEntryData* inventoryEntryData, Utility::Enumeration<Skyrim::SoulLevel, std::uint8_t> soulLevel)
-	{
-		auto* extraDataLists = inventoryEntryData->extraDataLists;
-
-		if (extraDataLists)
-		{
-			for (auto* extraDataList : *extraDataLists)
-			{
-				if (!extraDataList)
-				{
-					break;
-				}
-
-				Skyrim::InventoryEntryData temporary{};
-
-				temporary.item           = inventoryEntryData->item;
-				temporary.extraDataLists = new Skyrim::BSSimpleList<Skyrim::ExtraDataList*>();
-				temporary.itemCountDelta = 1;
-
-				temporary.extraDataLists->push_front(extraDataList);
-
-				if (!temporary.IsOwnedBy(Skyrim::PlayerCharacter::GetSingleton(), true))
-				{
-					Events::removeSoul_(extraDataList, soulLevel);
-
-					return;
-				}
-			}
-
-			Events::removeSoul_(extraDataLists->front(), soulLevel);
-
-			return;
-		}
-
-		Events::removeSoul_(nullptr, soulLevel);
-	}
-
-	decltype(&Events::IsOwnedBy) Events::isOwnedBy_{ nullptr };
-	void (*Events::removeSoul_)(Skyrim::ExtraDataList* extraDataList, Utility::Enumeration<Skyrim::SoulLevel, std::uint8_t> soulLevel){ nullptr };
 }

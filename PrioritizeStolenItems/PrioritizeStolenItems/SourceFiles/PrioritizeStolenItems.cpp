@@ -10,7 +10,7 @@
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* queryInterface, SKSE::PluginInfo* pluginInfo)
 {
 	pluginInfo->infoVersion = SKSE::PluginInfo::kVersion;
-	pluginInfo->name        = "Stolen Items";
+	pluginInfo->name        = "Prioritize Stolen Items";
 	pluginInfo->version     = 1;
 
 	if (queryInterface->IsEditor())
@@ -39,7 +39,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
 	.pluginVersion  = 1,
-	.pluginName     = "Stolen Items",
+	.pluginName     = "Prioritize Stolen Items",
 	.author         = "KernalsEgg",
 	.addressLibrary = true
 };
@@ -48,7 +48,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	SKSE::Cache::GetSingleton().Initialize(loadInterface);
 
-	Utility::Log::Information("Registered: {}", StolenItems::Events::Register());
+	Utility::Log::Information("Registered: {}", PrioritizeStolenItems::Events::Register());
 
 	Utility::Trampoline::GetSingleton().Commit();
 

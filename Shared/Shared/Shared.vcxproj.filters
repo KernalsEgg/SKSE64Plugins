@@ -1389,6 +1389,9 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorEquipManager.h">
       <Filter>Header Files\Shared\Skyrim\A</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraOwnership.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">

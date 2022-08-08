@@ -7,6 +7,7 @@
 #include "Shared/Skyrim/E/ExtraCharge.h"
 #include "Shared/Skyrim/E/ExtraCount.h"
 #include "Shared/Skyrim/E/ExtraHealth.h"
+#include "Shared/Skyrim/E/ExtraOwnership.h"
 #include "Shared/Skyrim/E/ExtraSoul.h"
 #include "Shared/Utility/TypeTraits.h"
 
@@ -66,6 +67,13 @@ namespace Skyrim
 		const auto* extraHealth = this->GetType<ExtraHealth>(ExtraDataType::kHealth);
 
 		return extraHealth ? extraHealth->health : -1.0F;
+	}
+
+	TESForm* ExtraDataList::GetOwner() const
+	{
+		const auto* extraOwnership = this->GetType<ExtraOwnership>(ExtraDataType::kOwnership);
+
+		return extraOwnership ? extraOwnership->owner : nullptr;
 	}
 
 	BSExtraData* ExtraDataList::GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType)

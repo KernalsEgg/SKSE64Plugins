@@ -361,8 +361,8 @@ namespace Skyrim::Addresses
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1D66E0, 1.6.318.0: SkyrimSE.exe + 0x1E1F60</summary>
 		inline const std::uintptr_t GetValue{ Relocation::AddressLibrary::GetSingleton().GetAddress(15757, 15995) };
 
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1D7510, 1.6.318.0: SkyrimSE.exe + 0x1E2D50</summary>
-		inline const std::uintptr_t IsOwnedBy{ Relocation::AddressLibrary::GetSingleton().GetAddress(15781, 16019) };
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1D7590, 1.6.318.0: SkyrimSE.exe + 0x1E2EA0</summary>
+		inline const std::uintptr_t IsOwnedBy{ Relocation::AddressLibrary::GetSingleton().GetAddress(15782, 16020) };
 	}
 
 	namespace MagicItem
