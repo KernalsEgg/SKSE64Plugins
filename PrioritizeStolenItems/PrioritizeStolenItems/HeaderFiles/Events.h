@@ -36,7 +36,5 @@ namespace PrioritizeStolenItems
 		static std::uint32_t                 RemoveComponent(Skyrim::TESBoundObject* item, std::int32_t itemCount);
 		static std::uint32_t&                RemoveIngredient(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::InventoryEntryData* inventoryEntryData, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Skyrim::ExtraDataList* extraDataList, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
 		static std::uint32_t&                RemoveItem(Skyrim::TESObjectREFR* reference, Skyrim::ObjectReferenceHandle& result, Skyrim::TESBoundObject* item, std::uint32_t itemCount, Utility::Enumeration<Skyrim::TESObjectREFR::RemoveItemReason, std::uint32_t> reason, Skyrim::InventoryEntryData* inventoryEntryData, Skyrim::TESObjectREFR* moveToReference, const Skyrim::NiPoint3* position, const Skyrim::NiPoint3* rotation);
-
-		static decltype(&Events::IsOwnedBy) isOwnedBy_;
 	};
 }

@@ -56,6 +56,7 @@ namespace PrioritizeStolenItems
 		// RemoveItem
 		if (Relocation::Executable::GetSingleton().IsSpecialEdition())
 		{
+			// Mimic a virtual function table
 			static auto* removeItem{ std::addressof(Events::RemoveItem) };
 
 			Utility::Memory::SafeWrite(Addresses::Events::RemoveItem, 0x48ui8, 0xBEui8, reinterpret_cast<std::uint64_t>(std::addressof(removeItem))); // mov rsi, std::addressof(removeItem)
@@ -146,7 +147,7 @@ namespace PrioritizeStolenItems
 				{
 					Utility::Enumeration<Events::Priority> priority(top.first);
 					/*
-						Prioritise stolen items over owned items
+						Prioritize stolen items over owned items
 						Preemptively unequip the item so that the intended stack of items is dropped or removed
 						When unequipped the ExtraDataList will be destroyed if it contains no other BSExtraData
 					*/
