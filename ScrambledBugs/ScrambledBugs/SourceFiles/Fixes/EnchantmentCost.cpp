@@ -19,7 +19,7 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Fixes::EnchantmentCost::NotEqual, reinterpret_cast<std::uintptr_t>(std::addressof(EnchantmentCost::NotEqual)));
+		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::EnchantmentCost::NotEqual, reinterpret_cast<std::uintptr_t>(std::addressof(EnchantmentCost::NotEqual)));
 	}
 
 	bool EnchantmentCost::NotEqual(Skyrim::Effect* left, Skyrim::Effect* right)

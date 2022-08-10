@@ -29,12 +29,14 @@ namespace Utility
 		std::uintptr_t               GetAddress() const { return this->address_; }
 		EventSource<std::uintptr_t>& GetEventSource() { return this->commit_; }
 		std::size_t                  GetPosition() const { return this->position_; }
-		void                         RelativeCall(std::uintptr_t address, std::uintptr_t function);
-		void                         RelativeJump(std::uintptr_t address, std::uintptr_t function);
+		std::uintptr_t               RelativeCall5(std::uintptr_t address, std::uintptr_t function);
+		void                         RelativeCall6(std::uintptr_t address, std::uintptr_t function);
+		std::uintptr_t               RelativeJump5(std::uintptr_t address, std::uintptr_t function);
+		void                         RelativeJump6(std::uintptr_t address, std::uintptr_t function);
 		std::size_t                  Reserve(std::size_t size);
 
 		template <class... Arguments>
-		void RelativeCallBranch(std::uintptr_t address, const Arguments&... arguments)
+		void RelativeCall5Branch(std::uintptr_t address, const Arguments&... arguments)
 		{
 			auto position = Trampoline::Reserve(Memory::SizeOf<Arguments...>::Implementation());
 
@@ -42,12 +44,12 @@ namespace Utility
 				[address, arguments..., position](std::uintptr_t trampolineAddress) -> void
 				{
 					Memory::SafeWrite(trampolineAddress + position, arguments...);
-					Memory::SafeWriteRelativeCall(address, trampolineAddress + position);
+					Memory::SafeWriteRelativeCall5(address, trampolineAddress + position);
 				});
 		}
 
 		template <class... Arguments>
-		void RelativeJumpBranch(std::uintptr_t address, const Arguments&... arguments)
+		void RelativeJump5Branch(std::uintptr_t address, const Arguments&... arguments)
 		{
 			auto position = Trampoline::Reserve(Memory::SizeOf<Arguments...>::Implementation());
 
@@ -55,7 +57,7 @@ namespace Utility
 				[address, arguments..., position](std::uintptr_t trampolineAddress) -> void
 				{
 					Memory::SafeWrite(trampolineAddress + position, arguments...);
-					Memory::SafeWriteRelativeJump(address, trampolineAddress + position);
+					Memory::SafeWriteRelativeJump5(address, trampolineAddress + position);
 				});
 		}
 

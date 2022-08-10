@@ -99,27 +99,57 @@ namespace Utility
 		}
 	}
 
-	void Trampoline::RelativeCall(std::uintptr_t address, std::uintptr_t function)
+	std::uintptr_t Trampoline::RelativeCall5(std::uintptr_t address, std::uintptr_t function)
 	{
+		auto result   = Memory::ReadRelativeCall5(address);
 		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
 
 		this->commit_.AddEventSink(
 			[address, function, position](std::uintptr_t trampolineAddress) -> void
 			{
 				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
-				Memory::SafeWriteRelativeCall(address, trampolineAddress + position);
+				Memory::SafeWriteRelativeCall5(address, trampolineAddress + position);
+			});
+
+		return result;
+	}
+
+	void Trampoline::RelativeCall6(std::uintptr_t address, std::uintptr_t function)
+	{
+		auto position = this->Reserve(sizeof(std::uintptr_t));
+
+		this->commit_.AddEventSink(
+			[address, function, position](std::uintptr_t trampolineAddress) -> void
+			{
+				Memory::SafeWrite(trampolineAddress + position, function);
+				Memory::SafeWriteRelativeCall6(address, trampolineAddress + position);
 			});
 	}
 
-	void Trampoline::RelativeJump(std::uintptr_t address, std::uintptr_t function)
+	std::uintptr_t Trampoline::RelativeJump5(std::uintptr_t address, std::uintptr_t function)
 	{
+		auto result   = Memory::ReadRelativeJump5(address);
 		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
 
 		this->commit_.AddEventSink(
 			[address, function, position](std::uintptr_t trampolineAddress) -> void
 			{
 				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
-				Memory::SafeWriteRelativeJump(address, trampolineAddress + position);
+				Memory::SafeWriteRelativeJump5(address, trampolineAddress + position);
+			});
+
+		return result;
+	}
+
+	void Trampoline::RelativeJump6(std::uintptr_t address, std::uintptr_t function)
+	{
+		auto position = this->Reserve(sizeof(std::uintptr_t));
+
+		this->commit_.AddEventSink(
+			[address, function, position](std::uintptr_t trampolineAddress) -> void
+			{
+				Memory::SafeWrite(trampolineAddress + position, function);
+				Memory::SafeWriteRelativeJump6(address, trampolineAddress + position);
 			});
 	}
 

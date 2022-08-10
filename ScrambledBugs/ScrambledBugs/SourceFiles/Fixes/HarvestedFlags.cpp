@@ -6,7 +6,6 @@
 #include "Patterns.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
 #include "Shared/Utility/Convert.h"
-#include "Shared/Utility/Memory.h"
 #include "Shared/Utility/Trampoline.h"
 
 
@@ -22,8 +21,8 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		HarvestedFlags::setHarvestedFlag_ = reinterpret_cast<decltype(HarvestedFlags::setHarvestedFlag_)>(Utility::Memory::ReadRelativeCall(Addresses::Fixes::HarvestedFlags::RemoveHarvestedFlag));
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Fixes::HarvestedFlags::RemoveHarvestedFlag, reinterpret_cast<std::uintptr_t>(std::addressof(HarvestedFlags::SetHarvestedFlag)));
+		HarvestedFlags::setHarvestedFlag_ = reinterpret_cast<decltype(HarvestedFlags::setHarvestedFlag_)>(
+			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::HarvestedFlags::RemoveHarvestedFlag, reinterpret_cast<std::uintptr_t>(std::addressof(HarvestedFlags::SetHarvestedFlag))));
 	}
 
 	void HarvestedFlags::SetHarvestedFlag(Skyrim::TESObjectREFR* reference, bool harvested)

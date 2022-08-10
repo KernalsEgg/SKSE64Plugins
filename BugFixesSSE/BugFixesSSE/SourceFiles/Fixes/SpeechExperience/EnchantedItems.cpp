@@ -21,7 +21,7 @@ namespace BugFixesSSE::Fixes::SpeechExperience
 			return;
 		}
 
-		Utility::Memory::SafeWriteRelativeCall(Addresses::Fixes::SpeechExperience::ItemStacks::Buy, Skyrim::Addresses::InventoryEntryData::GetValue);
-		Utility::Memory::SafeWriteRelativeCall(Addresses::Fixes::SpeechExperience::ItemStacks::Sell, Skyrim::Addresses::InventoryEntryData::GetValue);
+		Utility::Memory::SafeWriteRelativeCall5(Addresses::Fixes::SpeechExperience::ItemStacks::Buy, Skyrim::Addresses::InventoryEntryData::GetValue);
+		Utility::Memory::SafeWriteRelativeCall5(Addresses::Fixes::SpeechExperience::ItemStacks::Sell, Skyrim::Addresses::InventoryEntryData::GetValue);
 	}
 }

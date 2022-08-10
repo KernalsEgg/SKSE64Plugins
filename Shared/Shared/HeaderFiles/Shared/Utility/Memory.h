@@ -46,13 +46,15 @@ namespace Utility::Memory
 		}
 	};
 
-	std::uintptr_t ReadRelativeCall(std::uintptr_t address);
-	std::uintptr_t ReadRelativeJump(std::uintptr_t address);
+	std::uintptr_t ReadRelativeCall5(std::uintptr_t address);
+	std::uintptr_t ReadRelativeJump5(std::uintptr_t address);
 	std::uintptr_t ReadVirtualFunction(std::uintptr_t address, std::size_t index);
 	void           SafeWriteAbsoluteCall(std::uintptr_t address, std::uintptr_t function);
 	void           SafeWriteAbsoluteJump(std::uintptr_t address, std::uintptr_t function);
-	void           SafeWriteRelativeCall(std::uintptr_t address, std::uintptr_t function);
-	void           SafeWriteRelativeJump(std::uintptr_t address, std::uintptr_t function);
+	void           SafeWriteRelativeCall5(std::uintptr_t address, std::uintptr_t function);
+	void           SafeWriteRelativeCall6(std::uintptr_t address, std::uintptr_t functionAddress);
+	void           SafeWriteRelativeJump5(std::uintptr_t address, std::uintptr_t function);
+	void           SafeWriteRelativeJump6(std::uintptr_t address, std::uintptr_t functionAddress);
 	void           SafeWriteVirtualFunction(std::uintptr_t address, std::size_t index, std::uintptr_t function);
 
 	template <class First, class... Rest>

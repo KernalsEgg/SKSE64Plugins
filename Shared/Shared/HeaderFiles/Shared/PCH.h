@@ -29,7 +29,7 @@
 #include <fstream>         // std::ifstream, std::ofstream
 #include <functional>      // std::equal_to, std::function
 #include <ios>             // std::ios
-#include <iterator>        // std::forward_iterator_tag
+#include <iterator>        // std::bidirectional_iterator_tag, std::forward_iterator_tag, std::reverse_iterator
 #include <limits>          // std::numeric_limits
 #include <memory>          // std::addressof, std::construct_at, std::destroy_at
 #include <new>             // Dynamic memory management

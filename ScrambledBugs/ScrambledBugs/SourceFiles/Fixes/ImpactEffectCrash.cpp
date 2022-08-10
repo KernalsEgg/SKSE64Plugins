@@ -4,7 +4,6 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Utility/Memory.h"
 #include "Shared/Utility/Trampoline.h"
 
 
@@ -21,11 +20,11 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		ImpactEffectCrash::decalApplier_ = reinterpret_cast<decltype(ImpactEffectCrash::decalApplier_)>(Utility::Memory::ReadRelativeCall(Addresses::Fixes::ImpactEffectCrash::DecalApplier));
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Fixes::ImpactEffectCrash::DecalApplier, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::DecalApplier)));
+		ImpactEffectCrash::decalApplier_ = reinterpret_cast<decltype(ImpactEffectCrash::decalApplier_)>(
+			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::ImpactEffectCrash::DecalApplier, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::DecalApplier))));
 
-		ImpactEffectCrash::mainUpdate_ = reinterpret_cast<decltype(ImpactEffectCrash::mainUpdate_)>(Utility::Memory::ReadRelativeCall(Addresses::Fixes::ImpactEffectCrash::MainUpdate));
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Fixes::ImpactEffectCrash::MainUpdate, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::MainUpdate)));
+		ImpactEffectCrash::mainUpdate_ = reinterpret_cast<decltype(ImpactEffectCrash::mainUpdate_)>(
+			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::ImpactEffectCrash::MainUpdate, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::MainUpdate))));
 	}
 
 	bool ImpactEffectCrash::DecalApplier(Skyrim::BSTempEffectSimpleDecal* tempEffectSimpleDecal)

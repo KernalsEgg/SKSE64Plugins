@@ -19,7 +19,7 @@ namespace BugFixesSSE::Fixes
 			return;
 		}
 
-		Utility::Trampoline::GetSingleton().RelativeCallBranch(Addresses::Fixes::MovementSpeed::CompareMovementType + 0x5,
+		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::Fixes::MovementSpeed::CompareMovementType + 0x5,
 			0x48ui8, 0x39ui8, 0x44ui8, 0x24ui8, 0x78ui8, // cmp [rsp+78], rax
 			0x0Fui8, 0x85ui8, 0x96ui32,                  // jne 96
 			0x8Bui8, 0x44ui8, 0x24ui8, 0x40ui8,          // mov eax, [rsp+40]

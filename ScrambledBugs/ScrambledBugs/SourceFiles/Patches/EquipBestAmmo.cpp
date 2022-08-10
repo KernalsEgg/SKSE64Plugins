@@ -4,7 +4,6 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
 #include "Shared/Utility/Trampoline.h"
 
@@ -30,7 +29,7 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWrite(Addresses::Patches::EquipBestAmmo::CompareDamageInventoryChanges, 0x76ui8, std::optional<std::uint8_t>{});                                                                                                 // jbe 10
 
 		// Skip ammo if it is not playable
-		Utility::Trampoline::GetSingleton().RelativeCallBranch(
+		Utility::Trampoline::GetSingleton().RelativeCall5Branch(
 			Addresses::Patches::EquipBestAmmo::IsBoltContainer + (8 + 3 + 2),
 			0x24ui8, 0x01ui8,                              // and al, 1
 			0x40ui8, 0x3Aui8, 0xC7ui8,                     // cmp al, dil
@@ -39,7 +38,7 @@ namespace ScrambledBugs::Patches
 			0xC3ui8                                        // ret
 		);
 
-		Utility::Trampoline::GetSingleton().RelativeCallBranch(
+		Utility::Trampoline::GetSingleton().RelativeCall5Branch(
 			Addresses::Patches::EquipBestAmmo::IsBoltInventoryChanges + (7 + 3 + 2),
 			0x24ui8, 0x01ui8,                     // and al, 1
 			0x40ui8, 0x3Aui8, 0xC7ui8,            // cmp al, dil

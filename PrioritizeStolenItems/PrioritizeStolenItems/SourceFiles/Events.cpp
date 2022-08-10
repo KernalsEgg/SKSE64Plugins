@@ -39,21 +39,17 @@ namespace PrioritizeStolenItems
 		// RemoveComponent
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Events::RemoveComponent, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveComponent)));
 
-		// GetExtraDataList
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::GetExtraDataListToAddItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::GetExtraDataListToDropItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::GetExtraDataListToRemoveItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::GetExtraDataListToSellItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
-
 		// AddItem
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::AddItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::AddItem)));
-		Utility::Memory::SafeWrite(Addresses::Events::AddItem + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
+		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Events::GetExtraDataListToAddItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
+		Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::AddItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::AddItem)));
 
 		// DropItem
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::DropItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::DropItem)));
-		Utility::Memory::SafeWrite(Addresses::Events::DropItem + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
+		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Events::GetExtraDataListToDropItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
+		Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::DropItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::DropItem)));
 
 		// RemoveItem
+		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Events::GetExtraDataListToRemoveItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
+
 		if (Relocation::Executable::GetSingleton().IsSpecialEdition())
 		{
 			// Mimic a virtual function table
@@ -63,19 +59,17 @@ namespace PrioritizeStolenItems
 		}
 		else
 		{
-			Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::RemoveItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
-			Utility::Memory::SafeWrite(Addresses::Events::RemoveItem + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
+			Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::RemoveItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
 		}
 
 		// SellItem
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::SellItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
-		Utility::Memory::SafeWrite(Addresses::Events::SellItem + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
+		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Events::GetExtraDataListToSellItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
+		Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::SellItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
 
 		// RemoveIngredient
 		Utility::Memory::SafeWrite(Addresses::Events::GetIngredient, 0x4Cui8, 0x8Bui8, 0xC7ui8); // mov r8, rdi
 
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Events::RemoveIngredient, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveIngredient)));
-		Utility::Memory::SafeWrite(Addresses::Events::RemoveIngredient + sizeof(Utility::Assembly::RelativeCall), Utility::Assembly::NoOperation1);
+		Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::RemoveIngredient, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveIngredient)));
 
 		return true;
 	}

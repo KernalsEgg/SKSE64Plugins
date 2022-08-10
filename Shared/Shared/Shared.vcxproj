@@ -203,6 +203,8 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FormType.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FxDelegateHandler.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GameSettingCollection.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GAtomic.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GList.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMemoryStat.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountBase.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountBaseStatImpl.h" />
@@ -210,6 +212,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountImplCore.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GridArray.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GridCellArray.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GStatistics.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HandleEntryPointVisitor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HighProcessData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HitData.h" />
@@ -322,6 +325,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffectController.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RegSettingCollection.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScaleformTypes.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrapHeap.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Script.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScriptEffect.h" />
@@ -479,6 +483,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindAppropriateDisplaceEffect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindMaxMagnitudeVisitor.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GameSettingCollection.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GAtomic.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GridCellArray.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpClosestRayHitCollector.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpCollidable.cpp" />

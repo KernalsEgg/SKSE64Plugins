@@ -8,14 +8,14 @@
 
 namespace Utility::Memory
 {
-	std::uintptr_t ReadRelativeCall(std::uintptr_t address)
+	std::uintptr_t ReadRelativeCall5(std::uintptr_t address)
 	{
-		return address + sizeof(Assembly::RelativeCall) + reinterpret_cast<Assembly::RelativeCall*>(address)->relative32;
+		return address + sizeof(Assembly::RelativeCall5) + reinterpret_cast<Assembly::RelativeCall5*>(address)->relative32;
 	}
 
-	std::uintptr_t ReadRelativeJump(std::uintptr_t address)
+	std::uintptr_t ReadRelativeJump5(std::uintptr_t address)
 	{
-		return address + sizeof(Assembly::RelativeJump) + reinterpret_cast<Assembly::RelativeJump*>(address)->relative32;
+		return address + sizeof(Assembly::RelativeJump5) + reinterpret_cast<Assembly::RelativeJump5*>(address)->relative32;
 	}
 
 	std::uintptr_t ReadVirtualFunction(std::uintptr_t address, std::size_t index)
@@ -33,14 +33,24 @@ namespace Utility::Memory
 		Memory::SafeWrite(address, Assembly::AbsoluteJump(function));
 	}
 
-	void SafeWriteRelativeCall(std::uintptr_t address, std::uintptr_t function)
+	void SafeWriteRelativeCall5(std::uintptr_t address, std::uintptr_t function)
 	{
-		Memory::SafeWrite(address, Assembly::RelativeCall(address, function));
+		Memory::SafeWrite(address, Assembly::RelativeCall5(address, function));
 	}
 
-	void SafeWriteRelativeJump(std::uintptr_t address, std::uintptr_t function)
+	void SafeWriteRelativeCall6(std::uintptr_t address, std::uintptr_t functionAddress)
 	{
-		Memory::SafeWrite(address, Assembly::RelativeJump(address, function));
+		Memory::SafeWrite(address, Assembly::RelativeCall6(address, functionAddress));
+	}
+
+	void SafeWriteRelativeJump5(std::uintptr_t address, std::uintptr_t function)
+	{
+		Memory::SafeWrite(address, Assembly::RelativeJump5(address, function));
+	}
+
+	void SafeWriteRelativeJump6(std::uintptr_t address, std::uintptr_t functionAddress)
+	{
+		Memory::SafeWrite(address, Assembly::RelativeJump6(address, functionAddress));
 	}
 
 	void SafeWriteVirtualFunction(std::uintptr_t address, std::size_t index, std::uintptr_t function)

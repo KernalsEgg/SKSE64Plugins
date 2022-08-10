@@ -38,8 +38,8 @@ namespace ScrambledBugs::Patches
 			Utility::Assembly::NoOperation2         // nop
 		);
 
-		AttachHitEffectArt::getTargetActor_ = reinterpret_cast<decltype(AttachHitEffectArt::getTargetActor_)>(Utility::Memory::ReadRelativeCall(Addresses::Patches::AttachHitEffectArt::GetTargetActor));
-		Utility::Trampoline::GetSingleton().RelativeCall(Addresses::Patches::AttachHitEffectArt::GetTargetActor, reinterpret_cast<std::uintptr_t>(std::addressof(AttachHitEffectArt::GetTargetActor)));
+		AttachHitEffectArt::getTargetActor_ = reinterpret_cast<decltype(AttachHitEffectArt::getTargetActor_)>(
+			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Patches::AttachHitEffectArt::GetTargetActor, reinterpret_cast<std::uintptr_t>(std::addressof(AttachHitEffectArt::GetTargetActor))));
 	}
 
 	Skyrim::Actor* AttachHitEffectArt::GetTargetActor(Skyrim::ModelReferenceEffect* modelReferenceEffect)
