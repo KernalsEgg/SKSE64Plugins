@@ -9,6 +9,7 @@ namespace Skyrim
 	template <class T>
 	struct GListNode
 	{
+	public:
 		using value_type = T;
 		using reference  = value_type&;
 		using pointer    = value_type*;
@@ -169,12 +170,12 @@ namespace Skyrim
 
 		constexpr iterator<value_type> end() noexcept
 		{
-			return iterator<value_type>(reinterpret_cast<pointer>(std::addressof(this->root_)));
+			return iterator<value_type>(static_cast<pointer>(std::addressof(this->root_)));
 		}
 
 		constexpr iterator<const value_type> end() const noexcept
 		{
-			return iterator<const value_type>(reinterpret_cast<const_pointer>(std::addressof(this->root_)));
+			return iterator<const value_type>(static_cast<const_pointer>(std::addressof(this->root_)));
 		}
 
 		constexpr iterator<const value_type> cend() const noexcept
@@ -184,12 +185,12 @@ namespace Skyrim
 
 		constexpr std::reverse_iterator<iterator<value_type>> rbegin() noexcept
 		{
-			return std::reverse_iterator<iterator<value_type>>(this->root_.previous);
+			return std::reverse_iterator<iterator<value_type>>(this->end());
 		}
 
 		constexpr std::reverse_iterator<iterator<const value_type>> rbegin() const noexcept
 		{
-			return std::reverse_iterator<iterator<const value_type>>(this->root_.next);
+			return std::reverse_iterator<iterator<const value_type>>(this->end());
 		}
 
 		constexpr std::reverse_iterator<iterator<const value_type>> crbegin() const noexcept
@@ -199,12 +200,12 @@ namespace Skyrim
 
 		constexpr std::reverse_iterator<iterator<value_type>> rend() noexcept
 		{
-			return std::reverse_iterator<iterator<value_type>>(reinterpret_cast<pointer>(std::addressof(this->root_)));
+			return std::reverse_iterator<iterator<value_type>>(this->begin());
 		}
 
 		constexpr std::reverse_iterator<iterator<const value_type>> rend() const noexcept
 		{
-			return std::reverse_iterator<iterator<const value_type>>(reinterpret_cast<const_pointer>(std::addressof(this->root_)));
+			return std::reverse_iterator<iterator<const value_type>>(this->begin());
 		}
 
 		constexpr std::reverse_iterator<iterator<const value_type>> crend() const noexcept
@@ -219,14 +220,14 @@ namespace Skyrim
 
 		constexpr void clear() noexcept
 		{
-			this->root_.next     = reinterpret_cast<pointer>(std::addressof(this->root_));
-			this->root_.previous = reinterpret_cast<pointer>(std::addressof(this->root_));
+			this->root_.next     = static_cast<pointer>(std::addressof(this->root_));
+			this->root_.previous = static_cast<pointer>(std::addressof(this->root_));
 		}
 
 		constexpr void push_back(pointer value)
 		{
 			value->previous = this->root_.previous;
-			value->next     = reinterpret_cast<pointer>(std::addressof(this->root_));
+			value->next     = static_cast<pointer>(std::addressof(this->root_));
 
 			this->root_.previous->next = value;
 			this->root_.previous       = value;
@@ -235,13 +236,13 @@ namespace Skyrim
 		constexpr void pop_back()
 		{
 			this->root_.previous       = this->root_.previous->previous;
-			this->root_.previous->next = reinterpret_cast<pointer>(std::addressof(this->root_));
+			this->root_.previous->next = static_cast<pointer>(std::addressof(this->root_));
 		}
 
 		constexpr void push_front(pointer value)
 		{
 			value->next     = this->root_.next;
-			value->previous = reinterpret_cast<pointer>(std::addressof(this->root_));
+			value->previous = static_cast<pointer>(std::addressof(this->root_));
 
 			this->root_.next->previous = value;
 			this->root_.next           = value;
@@ -250,7 +251,7 @@ namespace Skyrim
 		constexpr void pop_front()
 		{
 			this->root_.next           = this->root_.next->next;
-			this->root_.next->previous = reinterpret_cast<pointer>(std::addressof(this->root_));
+			this->root_.next->previous = static_cast<pointer>(std::addressof(this->root_));
 		}
 
 	private:
