@@ -12,6 +12,8 @@
 * [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
 ### Log Inventory Item Rotation
 * [fmt 8.1.1](https://github.com/fmtlib/fmt)
+### Prioritize Stolen Items
+* [fmt 8.1.1](https://github.com/fmtlib/fmt)
 ### Scrambled Bugs
 * [fmt 8.1.1](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
