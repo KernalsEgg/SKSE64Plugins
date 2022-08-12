@@ -293,6 +293,12 @@ namespace Skyrim::Addresses
 		inline const std::uintptr_t StaminaPowerBashBase{ Relocation::AddressLibrary::GetSingleton().GetAddress(505219, 374463) };
 	}
 
+	namespace GMemory
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x3032C50, 1.6.318.0: SkyrimSE.exe + 0x30CC600</summary>
+		inline const std::uintptr_t GlobalHeap{ Relocation::AddressLibrary::GetSingleton().GetAddress(525584, 412058) };
+	}
+
 	namespace hkReferencedObject
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x9C6730, 1.6.318.0: SkyrimSE.exe + 0x9EAF20</summary>

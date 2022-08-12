@@ -12,7 +12,7 @@ namespace Skyrim
 	class BSExtraData
 	{
 	public:
-		SKYRIM_HEAP_OPERATORS();
+		TES_MEMORY_REDEFINE_NEW();
 
 		// Add
 		virtual ~BSExtraData();                                           // 0

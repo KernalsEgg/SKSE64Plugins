@@ -2,8 +2,8 @@
 
 #include "Shared/PCH.h"
 
-#include "Shared/Skyrim/G/GMemoryStat.h"
 #include "Shared/Skyrim/G/GRefCountBase.h"
+#include "Shared/Skyrim/G/GStatistics.h"
 #include "Shared/Utility/Convert.h"
 
 
@@ -14,7 +14,7 @@ namespace Skyrim
 	class GString;
 
 	class FxDelegateHandler :
-		public GRefCountBase<FxDelegateHandler, Utility::ToUnderlying(GMemoryStat::kDefaultMemory)> // 0
+		public GRefCountBase<FxDelegateHandler, Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)> // 0
 	{
 	public:
 		using CallbackFunction = void(const FxDelegateArguments& arguments);

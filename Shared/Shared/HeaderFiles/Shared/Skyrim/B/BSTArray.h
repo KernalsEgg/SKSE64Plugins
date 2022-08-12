@@ -69,7 +69,7 @@ namespace Skyrim
 		using pointer       = value_type*;
 		using const_pointer = const value_type*;
 
-		SKYRIM_HEAP_OPERATORS();
+		TES_MEMORY_REDEFINE_NEW();
 
 		constexpr BSTArrayHeapAllocator() noexcept = default;
 
@@ -184,7 +184,7 @@ namespace Skyrim
 		using pointer       = value_type*;
 		using const_pointer = const value_type*;
 
-		SKYRIM_HEAP_OPERATORS();
+		TES_MEMORY_REDEFINE_NEW();
 
 		constexpr BSTSmallArrayHeapAllocator() noexcept = default;
 
@@ -356,7 +356,7 @@ namespace Skyrim
 		using pointer       = value_type*;
 		using const_pointer = const value_type*;
 
-		SKYRIM_HEAP_OPERATORS();
+		TES_MEMORY_REDEFINE_NEW();
 
 		constexpr BSScrapArrayAllocator() noexcept = default;
 
@@ -503,7 +503,7 @@ namespace Skyrim
 		using iterator        = pointer;
 		using const_iterator  = const_pointer;
 
-		SKYRIM_HEAP_OPERATORS();
+		TES_MEMORY_REDEFINE_NEW();
 
 		BSTArray() = default;
 

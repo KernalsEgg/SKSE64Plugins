@@ -606,9 +606,6 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GameSettingCollection.h">
       <Filter>Header Files\Shared\Skyrim\G</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMemoryStat.h">
-      <Filter>Header Files\Shared\Skyrim\G</Filter>
-    </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountBase.h">
       <Filter>Header Files\Shared\Skyrim\G</Filter>
     </ClInclude>
@@ -1404,6 +1401,21 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GList.h">
       <Filter>Header Files\Shared\Skyrim\G</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMemoryHeap.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GSysAllocBase.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GSysAlloc.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GSysAllocPaged.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMemory.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">
@@ -1668,6 +1680,12 @@
       <Filter>Source Files\Shared\Skyrim\A</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GAtomic.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GMemory.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GMemoryHeap.cpp">
       <Filter>Source Files\Shared\Skyrim\G</Filter>
     </ClCompile>
   </ItemGroup>

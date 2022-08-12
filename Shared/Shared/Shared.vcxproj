@@ -205,7 +205,8 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GameSettingCollection.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GAtomic.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GList.h" />
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMemoryStat.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMemory.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMemoryHeap.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountBase.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountBaseStatImpl.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountImpl.h" />
@@ -213,6 +214,9 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GridArray.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GridCellArray.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GStatistics.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GSysAlloc.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GSysAllocBase.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GSysAllocPaged.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HandleEntryPointVisitor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HighProcessData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HitData.h" />
@@ -484,6 +488,8 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindMaxMagnitudeVisitor.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GameSettingCollection.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GAtomic.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GMemory.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GMemoryHeap.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GridCellArray.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpClosestRayHitCollector.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpCollidable.cpp" />

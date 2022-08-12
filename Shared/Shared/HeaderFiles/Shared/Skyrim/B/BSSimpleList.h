@@ -17,12 +17,12 @@ namespace Skyrim
 		using reference       = value_type&;
 		using const_reference = const value_type&;
 
-		SKYRIM_HEAP_OPERATORS();
+		TES_MEMORY_REDEFINE_NEW();
 
 		struct Node
 		{
 		public:
-			SKYRIM_HEAP_OPERATORS();
+			TES_MEMORY_REDEFINE_NEW();
 
 			Node()            = default;
 			Node(const Node&) = default;

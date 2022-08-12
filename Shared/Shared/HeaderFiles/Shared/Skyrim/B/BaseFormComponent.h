@@ -11,7 +11,7 @@ namespace Skyrim
 	class BaseFormComponent
 	{
 	public:
-		SKYRIM_HEAP_OPERATORS();
+		TES_MEMORY_REDEFINE_NEW();
 
 		// Add
 		virtual ~BaseFormComponent();                  // 0

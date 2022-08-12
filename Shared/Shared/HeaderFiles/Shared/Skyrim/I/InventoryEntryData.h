@@ -19,7 +19,7 @@ namespace Skyrim
 	class InventoryEntryData
 	{
 	public:
-		SKYRIM_HEAP_OPERATORS();
+		TES_MEMORY_REDEFINE_NEW();
 
 		InventoryEntryData() = default;
 		InventoryEntryData(const InventoryEntryData& right);

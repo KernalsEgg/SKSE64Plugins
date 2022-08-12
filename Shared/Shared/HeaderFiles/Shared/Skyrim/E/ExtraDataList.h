@@ -19,12 +19,12 @@ namespace Skyrim
 	class ExtraDataList
 	{
 	public:
-		SKYRIM_HEAP_OPERATORS();
+		TES_MEMORY_REDEFINE_NEW();
 
 		struct PresenceBitField
 		{
 		public:
-			SKYRIM_HEAP_OPERATORS();
+			TES_MEMORY_REDEFINE_NEW();
 
 			// Member functions
 			bool HasType(std::uint32_t type) const;

@@ -31,7 +31,7 @@ namespace Skyrim
 		kGStatisticStringMemory,
 		kGStatisticVideoMemory,
 
-		// Debugging memory
+		// Debug memory
 		kGStatisticDebugMemory,
 		kGStatisticDebugHUDMemory,
 		kGStatisticDebugTrackerMemory,
@@ -71,6 +71,7 @@ namespace Skyrim
 
 	enum class GHeapID : UPInt
 	{
+		kReserved        = 0,
 		kGlobal          = 1,
 		kMovieDefinition = 2,
 		kMovieView       = 3,

@@ -11,7 +11,7 @@ namespace Skyrim
 	struct BSIntrusiveRefCounted
 	{
 	public:
-		SKYRIM_HEAP_OPERATORS();
+		TES_MEMORY_REDEFINE_NEW();
 
 		// Member functions
 		std::uint32_t DecrementReferenceCount() const;
