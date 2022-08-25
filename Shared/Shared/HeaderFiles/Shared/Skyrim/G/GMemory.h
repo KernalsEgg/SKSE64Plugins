@@ -35,6 +35,7 @@ namespace Skyrim
 	protected:
 		static GMemoryHeap*& GetGlobalHeapReference();
 	};
+	static_assert(std::is_empty_v<GMemory>);
 
 // Global heap
 #define GALLOCATE(size)                    Skyrim::GMemory::Allocate((size))
@@ -49,66 +50,66 @@ namespace Skyrim
 #define GHEAP_AUTOMATIC_ALLOCATE(pointer, size)       Skyrim::GMemory::AllocateAutomaticHeap((pointer), (size))
 #define GHEAP_FREE(heap, pointer)                     Skyrim::GMemory::FreeInHeap((heap), (pointer))
 
-#define GFC_MEMORY_REDEFINE_NEW_IMPLEMENTATION(className, checkDelete, statisticType)        \
-	/* 1 */                                                                                  \
-	void* operator new(Skyrim::UPInt size)                                                   \
-	{                                                                                        \
-		return GALLOCATE(size);                                                              \
-	}                                                                                        \
-                                                                                             \
-	/* 2 */                                                                                  \
-	void* operator new[](Skyrim::UPInt size)                                                 \
-	{                                                                                        \
-		return operator new(size);                                                           \
-	}                                                                                        \
-                                                                                             \
-	/* 9 */                                                                                  \
-	void* operator new([[maybe_unused]] Skyrim::UPInt size, void* placement)                 \
-	{                                                                                        \
-		return placement;                                                                    \
-	}                                                                                        \
-                                                                                             \
-	/* 10 */                                                                                 \
-	void* operator new[](Skyrim::UPInt size, void* placement)                                \
-	{                                                                                        \
-		return operator new(size, placement);                                                \
-	}                                                                                        \
-                                                                                             \
-	void* operator new(Skyrim::UPInt size, Skyrim::GMemoryHeap* heap)                        \
-	{                                                                                        \
-		return GHEAP_ALLOCATE(heap, size);                                                   \
-	}                                                                                        \
-                                                                                             \
-	void* operator new[](Skyrim::UPInt size, Skyrim::GMemoryHeap* heap)                      \
-	{                                                                                        \
-		return operator new(size, heap);                                                     \
-	}                                                                                        \
-                                                                                             \
-	/* 1 */                                                                                  \
-	void operator delete(void* pointer)                                                      \
-	{                                                                                        \
-		GFREE(pointer);                                                                      \
-	}                                                                                        \
-                                                                                             \
-	/* 2 */                                                                                  \
-	void operator delete[](void* pointer)                                                    \
-	{                                                                                        \
-		operator delete(pointer);                                                            \
-	}                                                                                        \
-                                                                                             \
-	/* 13 */                                                                                 \
-	void operator delete([[maybe_unused]] void* pointer, [[maybe_unused]] void* placement)   \
-	{                                                                                        \
-	}                                                                                        \
-                                                                                             \
-	/* 14 */                                                                                 \
-	void operator delete[]([[maybe_unused]] void* pointer, [[maybe_unused]] void* placement) \
-	{                                                                                        \
-	}                                                                                        \
-                                                                                             \
-	void operator delete(void* pointer, Skyrim::GMemoryHeap* heap)                           \
-	{                                                                                        \
-		GHEAP_FREE(heap, pointer);                                                           \
+#define GFC_MEMORY_REDEFINE_NEW_IMPLEMENTATION(className, checkDelete, statisticType) \
+	/* 1 */                                                                           \
+	[[nodiscard]] void* operator new(Skyrim::UPInt size)                              \
+	{                                                                                 \
+		return GALLOCATE(size);                                                       \
+	}                                                                                 \
+                                                                                      \
+	/* 2 */                                                                           \
+	[[nodiscard]] void* operator new[](Skyrim::UPInt size)                            \
+	{                                                                                 \
+		return GALLOCATE(size);                                                       \
+	}                                                                                 \
+                                                                                      \
+	/* 9 */                                                                           \
+	[[nodiscard]] void* operator new(Skyrim::UPInt /* size */, void* placement)       \
+	{                                                                                 \
+		return placement;                                                             \
+	}                                                                                 \
+                                                                                      \
+	/* 10 */                                                                          \
+	[[nodiscard]] void* operator new[](Skyrim::UPInt /* size */, void* placement)     \
+	{                                                                                 \
+		return placement;                                                             \
+	}                                                                                 \
+                                                                                      \
+	[[nodiscard]] void* operator new(Skyrim::UPInt size, Skyrim::GMemoryHeap* heap)   \
+	{                                                                                 \
+		return GHEAP_ALLOCATE(heap, size);                                            \
+	}                                                                                 \
+                                                                                      \
+	[[nodiscard]] void* operator new[](Skyrim::UPInt size, Skyrim::GMemoryHeap* heap) \
+	{                                                                                 \
+		return GHEAP_ALLOCATE(heap, size);                                            \
+	}                                                                                 \
+                                                                                      \
+	/* 1 */                                                                           \
+	void operator delete(void* pointer)                                               \
+	{                                                                                 \
+		GFREE(pointer);                                                               \
+	}                                                                                 \
+                                                                                      \
+	/* 2 */                                                                           \
+	void operator delete[](void* pointer)                                             \
+	{                                                                                 \
+		GFREE(pointer);                                                               \
+	}                                                                                 \
+                                                                                      \
+	/* 13 */                                                                          \
+	void operator delete(void* /* pointer */, void* /* placement */)                  \
+	{                                                                                 \
+	}                                                                                 \
+                                                                                      \
+	/* 14 */                                                                          \
+	void operator delete[](void* /* pointer */, void* /* placement */)                \
+	{                                                                                 \
+	}                                                                                 \
+                                                                                      \
+	void operator delete(void* pointer, Skyrim::GMemoryHeap* heap)                    \
+	{                                                                                 \
+		GHEAP_FREE(heap, pointer);                                                    \
 	}
 
 #define GFC_MEMORY_CHECK_DELETE_NONE(className, pointer)

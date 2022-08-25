@@ -9,14 +9,14 @@
 
 namespace Skyrim
 {
-	template <class T, std::uint32_t StatType>
+	template <class T, std::uint32_t StatisticType>
 	class GRefCountBase :
-		public GRefCountBaseStatImpl<GRefCountImpl, StatType> // 0
+		public GRefCountBaseStatImpl<GRefCountImpl, StatisticType> // 0
 	{
 	public:
 		enum
 		{
-			kStatType = StatType
+			kStatisticType = StatisticType
 		};
 	};
 }

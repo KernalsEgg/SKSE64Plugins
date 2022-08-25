@@ -38,14 +38,14 @@ namespace Relocation
 
 	void Plugin::SetSize(std::uintptr_t address)
 	{
-		::MODULEINFO moduleInfo;
+		::MODULEINFO moduleInformation;
 
-		if (!::GetModuleInformation(::GetCurrentProcess(), reinterpret_cast<::HMODULE>(address), std::addressof(moduleInfo), sizeof(::MODULEINFO)))
+		if (!::GetModuleInformation(::GetCurrentProcess(), reinterpret_cast<::HMODULE>(address), std::addressof(moduleInformation), sizeof(::MODULEINFO)))
 		{
 			Utility::MessageBox::Error("Module information not found, last-error code {}.", ::GetLastError());
 		}
 
-		this->size_ = moduleInfo.SizeOfImage;
+		this->size_ = moduleInformation.SizeOfImage;
 	}
 
 	Executable::Executable(std::uintptr_t address) :
@@ -64,22 +64,22 @@ namespace Relocation
 	void Executable::SetProductVersion(const std::filesystem::path& path)
 	{
 		std::uint32_t     dummy;
-		std::vector<char> fileVersionInfo(::GetFileVersionInfoSizeA(path.string().c_str(), reinterpret_cast<::LPDWORD>(std::addressof(dummy))));
+		std::vector<char> fileVersionInformation(::GetFileVersionInfoSizeA(path.string().c_str(), reinterpret_cast<::LPDWORD>(std::addressof(dummy))));
 
-		if (fileVersionInfo.empty())
+		if (fileVersionInformation.empty())
 		{
-			Utility::MessageBox::Error("{} file version info size not found, last-error code {}.", path.filename().string(), ::GetLastError());
+			Utility::MessageBox::Error("{} file version information size not found, last-error code {}.", path.filename().string(), ::GetLastError());
 		}
 
-		if (!::GetFileVersionInfoA(path.string().c_str(), 0, static_cast<::DWORD>(fileVersionInfo.size()), fileVersionInfo.data()))
+		if (!::GetFileVersionInfoA(path.string().c_str(), 0, static_cast<::DWORD>(fileVersionInformation.size()), fileVersionInformation.data()))
 		{
-			Utility::MessageBox::Error("{} file version info not found, last-error code {}.", path.filename().string(), ::GetLastError());
+			Utility::MessageBox::Error("{} file version information not found, last-error code {}.", path.filename().string(), ::GetLastError());
 		}
 
 		void*         productVersionPointer{ nullptr };
 		std::uint32_t productVersionSize{ 0 };
 
-		if (!::VerQueryValueW(fileVersionInfo.data(), L"\\StringFileInfo\\040904B0\\ProductVersion", std::addressof(productVersionPointer), std::addressof(productVersionSize))) // 0x0409 = MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US), 0x04B0 = UTF-16
+		if (!::VerQueryValueW(fileVersionInformation.data(), L"\\StringFileInfo\\040904B0\\ProductVersion", std::addressof(productVersionPointer), std::addressof(productVersionSize))) // 0x0409 = MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US), 0x04B0 = UTF-16
 		{
 			Utility::MessageBox::Error("{} product version not found.", path.filename().string());
 		}

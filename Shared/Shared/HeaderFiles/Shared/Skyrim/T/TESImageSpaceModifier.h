@@ -33,22 +33,22 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			MultiplyAdd<float> eyeAdaptSpeed;   // 0
-			MultiplyAdd<float> bloomBlurRadius; // 8
-			MultiplyAdd<float> bloomThreshold;  // 10
-			MultiplyAdd<float> bloomScale;      // 18
-			MultiplyAdd<float> targetLumMin;    // 20
-			MultiplyAdd<float> targetLumMax;    // 28
-			MultiplyAdd<float> sunlightScale;   // 30
-			MultiplyAdd<float> skyScale;        // 38
-			MultiplyAdd<float> empty[6];        // 40, Used in GECK
+			MultiplyAdd<float> eyeAdaptSpeed;       // 0
+			MultiplyAdd<float> bloomBlurRadius;     // 8
+			MultiplyAdd<float> bloomThreshold;      // 10
+			MultiplyAdd<float> bloomScale;          // 18
+			MultiplyAdd<float> targetLumensMinimum; // 20
+			MultiplyAdd<float> targetLumensMaximum; // 28
+			MultiplyAdd<float> sunlightScale;       // 30
+			MultiplyAdd<float> skyScale;            // 38
+			MultiplyAdd<float> empty[6];            // 40, Used in GECK
 		};
 		static_assert(offsetof(HDR, eyeAdaptSpeed) == 0x0);
 		static_assert(offsetof(HDR, bloomBlurRadius) == 0x8);
 		static_assert(offsetof(HDR, bloomThreshold) == 0x10);
 		static_assert(offsetof(HDR, bloomScale) == 0x18);
-		static_assert(offsetof(HDR, targetLumMin) == 0x20);
-		static_assert(offsetof(HDR, targetLumMax) == 0x28);
+		static_assert(offsetof(HDR, targetLumensMinimum) == 0x20);
+		static_assert(offsetof(HDR, targetLumensMaximum) == 0x28);
 		static_assert(offsetof(HDR, sunlightScale) == 0x30);
 		static_assert(offsetof(HDR, skyScale) == 0x38);
 		static_assert(offsetof(HDR, empty) == 0x40);
@@ -139,22 +139,22 @@ namespace Skyrim
 			{
 			public:
 				// Member variables
-				MultiplyAdd<NiPointer<NiFloatInterpolator>> eyeAdaptSpeed;   // 0
-				MultiplyAdd<NiPointer<NiFloatInterpolator>> bloomBlurRadius; // 10
-				MultiplyAdd<NiPointer<NiFloatInterpolator>> bloomThreshold;  // 20
-				MultiplyAdd<NiPointer<NiFloatInterpolator>> bloomScale;      // 30
-				MultiplyAdd<NiPointer<NiFloatInterpolator>> targetLumMin;    // 40
-				MultiplyAdd<NiPointer<NiFloatInterpolator>> targetLumMax;    // 50
-				MultiplyAdd<NiPointer<NiFloatInterpolator>> sunlightScale;   // 60
-				MultiplyAdd<NiPointer<NiFloatInterpolator>> skyScale;        // 70
-				MultiplyAdd<NiPointer<NiFloatInterpolator>> empty[6];        // 80
+				MultiplyAdd<NiPointer<NiFloatInterpolator>> eyeAdaptSpeed;       // 0
+				MultiplyAdd<NiPointer<NiFloatInterpolator>> bloomBlurRadius;     // 10
+				MultiplyAdd<NiPointer<NiFloatInterpolator>> bloomThreshold;      // 20
+				MultiplyAdd<NiPointer<NiFloatInterpolator>> bloomScale;          // 30
+				MultiplyAdd<NiPointer<NiFloatInterpolator>> targetLumensMinimum; // 40
+				MultiplyAdd<NiPointer<NiFloatInterpolator>> targetLumensMaximum; // 50
+				MultiplyAdd<NiPointer<NiFloatInterpolator>> sunlightScale;       // 60
+				MultiplyAdd<NiPointer<NiFloatInterpolator>> skyScale;            // 70
+				MultiplyAdd<NiPointer<NiFloatInterpolator>> empty[6];            // 80
 			};
 			static_assert(offsetof(HDR, eyeAdaptSpeed) == 0x0);
 			static_assert(offsetof(HDR, bloomBlurRadius) == 0x10);
 			static_assert(offsetof(HDR, bloomThreshold) == 0x20);
 			static_assert(offsetof(HDR, bloomScale) == 0x30);
-			static_assert(offsetof(HDR, targetLumMin) == 0x40);
-			static_assert(offsetof(HDR, targetLumMax) == 0x50);
+			static_assert(offsetof(HDR, targetLumensMinimum) == 0x40);
+			static_assert(offsetof(HDR, targetLumensMaximum) == 0x50);
 			static_assert(offsetof(HDR, sunlightScale) == 0x60);
 			static_assert(offsetof(HDR, skyScale) == 0x70);
 			static_assert(offsetof(HDR, empty) == 0x80);

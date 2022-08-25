@@ -9,7 +9,7 @@
 namespace Skyrim
 {
 	class TESTexture1024 :
-		public TESTexture
+		public TESTexture // 0
 	{
 	public:
 		// Override

@@ -6,9 +6,9 @@
 
 
 
-// Based on std::forward_list
 namespace Skyrim
 {
+	// Based on std::forward_list
 	template <class T>
 	class BSSimpleList
 	{
@@ -72,7 +72,6 @@ namespace Skyrim
 			Node*      next{ nullptr }; // ?
 		};
 
-		// Based on std::iterator
 		template <class U>
 		class iterator
 		{
@@ -112,6 +111,7 @@ namespace Skyrim
 			constexpr iterator operator++(int) noexcept
 			{
 				iterator iterator(*this);
+
 				++(*this);
 
 				return iterator;
@@ -159,8 +159,8 @@ namespace Skyrim
 		}
 
 		// Element access
-		constexpr reference       front() noexcept { return *(this->begin()); }
-		constexpr const_reference front() const noexcept { return *(this->begin()); }
+		constexpr reference       front() noexcept { return *this->begin(); }
+		constexpr const_reference front() const noexcept { return *this->begin(); }
 
 		// Iterators
 		constexpr iterator<Node>       begin() noexcept { return iterator<Node>(this->get_head()); }

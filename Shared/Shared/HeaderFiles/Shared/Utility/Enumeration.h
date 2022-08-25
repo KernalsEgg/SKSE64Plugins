@@ -6,6 +6,7 @@
 
 namespace Utility
 {
+	// Based on std::bitset
 	template <class Enum, class Underlying = std::underlying_type_t<Enum>>
 		requires(std::is_enum_v<Enum>)
 	class Enumeration
@@ -23,8 +24,10 @@ namespace Utility
 		constexpr Enumeration& operator=(const Enumeration&) noexcept = default;
 		constexpr Enumeration& operator=(Enumeration&&) noexcept = default;
 
-		constexpr Enumeration(enumeration_type enumeration) noexcept :
-			enumeration_(static_cast<underlying_type>(enumeration))
+		template <class... Arguments>
+			requires(std::same_as<Arguments, enumeration_type>&&...)
+		constexpr Enumeration(Arguments... arguments) noexcept :
+			enumeration_((static_cast<underlying_type>(arguments) | ...))
 		{
 		}
 

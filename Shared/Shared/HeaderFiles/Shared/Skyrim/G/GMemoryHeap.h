@@ -4,7 +4,6 @@
 #include "Shared/Skyrim/G/GList.h"
 #include "Shared/Skyrim/G/GStatistics.h"
 #include "Shared/Skyrim/S/ScaleformTypes.h"
-#include "Shared/Utility/Convert.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -12,7 +11,11 @@
 namespace Skyrim
 {
 	class GHeapMemoryVisitor;
+	class GHeapRoot;
+	class GHeapRootMH;
 	class GHeapSegmentVisitor;
+	class GMemoryHeapMH;
+	class GMemoryHeapPT;
 	class GStatisticBag;
 	class GSysAllocPaged;
 
@@ -102,17 +105,7 @@ namespace Skyrim
 			public HeapDescriptor // 0
 		{
 		public:
-			RootHeapDescriptor() :
-				HeapDescriptor(
-					HeapFlags::kNone,
-					Utility::ToUnderlying(RootHeapParameters::kMinimumAlignment),
-					Utility::ToUnderlying(RootHeapParameters::kGranularity),
-					Utility::ToUnderlying(RootHeapParameters::kReserve),
-					Utility::ToUnderlying(RootHeapParameters::kThreshold),
-					Utility::ToUnderlying(RootHeapParameters::kLimit),
-					GHeapID::kGlobal)
-			{
-			}
+			RootHeapDescriptor();
 		};
 		static_assert(sizeof(RootHeapDescriptor) == 0x40);
 

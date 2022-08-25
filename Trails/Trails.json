@@ -553,11 +553,11 @@
 		"tags": [ "FootFront" ], /* Front */
 		"arguments":
 		[{
-			"impactEffect": { "formID": "0xD87", "fileName": "Trails.esp" }, /* TRAILS_IPDS_SabreCat_FrontLeft */
+			"impactEffect": { "formID": "0xD85", "fileName": "Trails.esp" }, /* TRAILS_IPDS_SabreCat_BackLeft */
 			"rayCast": { "origin": { "nodeName": "Sabrecat_LeftHand[LHnd]" } } /* Left */
 		},
 		{
-			"impactEffect": { "formID": "0xD88", "fileName": "Trails.esp" }, /* TRAILS_IPDS_SabreCat_FrontRight */
+			"impactEffect": { "formID": "0xD86", "fileName": "Trails.esp" }, /* TRAILS_IPDS_SabreCat_BackRight */
 			"rayCast": { "origin": { "nodeName": "Sabrecat_RightHand[RHnd]" } } /* Right */
 		}]
 	}]

@@ -6,11 +6,11 @@
 
 
 
-extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* queryInterface, SKSE::PluginInfo* pluginInfo)
+extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* queryInterface, SKSE::PluginInformation* pluginInformation)
 {
-	pluginInfo->infoVersion = SKSE::PluginInfo::kVersion;
-	pluginInfo->name        = "Log Inventory Item Rotation";
-	pluginInfo->version     = 1;
+	pluginInformation->informationVersion = SKSE::PluginInformation::kVersion;
+	pluginInformation->name               = "Log Inventory Item Rotation";
+	pluginInformation->version            = 1;
 
 	if (queryInterface->IsEditor())
 	{

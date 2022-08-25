@@ -2,6 +2,7 @@
 
 #include "Shared/PCH.h"
 
+#include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/M/MemoryManager.h"
 
 
@@ -12,9 +13,6 @@ namespace Skyrim
 	class ExtraDataList;
 	class TESBoundObject;
 	class TESForm;
-
-	template <class T>
-	class BSSimpleList;
 
 	class InventoryEntryData
 	{

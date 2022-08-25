@@ -67,7 +67,7 @@ namespace Skyrim
 
 			constexpr reference operator*() const noexcept
 			{
-				return *(this->current_);
+				return *this->current_;
 			}
 
 			constexpr pointer operator->() const noexcept
@@ -95,6 +95,7 @@ namespace Skyrim
 			constexpr iterator operator++(int) noexcept
 			{
 				iterator iterator{ *this };
+
 				++(*this);
 
 				return iterator;
@@ -110,6 +111,7 @@ namespace Skyrim
 			constexpr iterator operator--(int) noexcept
 			{
 				iterator iterator{ *this };
+
 				--(*this);
 
 				return iterator;
@@ -135,22 +137,22 @@ namespace Skyrim
 
 		constexpr reference front() noexcept
 		{
-			return *(this->root_.next);
+			return *this->root_.next;
 		}
 
 		constexpr const_reference front() const noexcept
 		{
-			return *(this->root_.next);
+			return *this->root_.next;
 		}
 
 		constexpr reference back() noexcept
 		{
-			return *(this->root_.previous);
+			return *this->root_.previous;
 		}
 
 		constexpr const_reference back() const noexcept
 		{
-			return *(this->root_.previous);
+			return *this->root_.previous;
 		}
 
 		constexpr iterator<value_type> begin() noexcept

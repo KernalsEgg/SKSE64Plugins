@@ -21,23 +21,23 @@ namespace Skyrim
 	public:
 		enum class Flags : std::uint32_t
 		{
-			kNone                            = 0,
-			kFemale                          = 1U << 0, // Traits
-			kEssential                       = 1U << 1,
-			kIsCharacterGenerationFacePreset = 1U << 2,
-			kRespawn                         = 1U << 3,
-			kAutomaticallyCalculateStats     = 1U << 4, // Stats
-			kUnique                          = 1U << 5,
-			kDoesntAffectStealthMeter        = 1U << 6,
-			kPlayerLevelMultiplier           = 1U << 7, // Stats, Leveling Data
-			kProtected                       = 1U << 11,
-			kSummonable                      = 1U << 14,
-			kDoesntBleed                     = 1U << 16,
-			kBleedoutOverride                = 1U << 18, // Stats
-			kOppositeGenderAnimations        = 1U << 19, // Traits
-			kSimpleActor                     = 1U << 20,
-			kIsGhost                         = 1U << 29,
-			kInvulnerable                    = 1U << 31
+			kNone                             = 0,
+			kFemale                           = 1U << 0, // Traits
+			kEssential                        = 1U << 1,
+			kIsCharacterGenerationFacePreset  = 1U << 2,
+			kRespawn                          = 1U << 3,
+			kAutomaticallyCalculateStatistics = 1U << 4, // Stats
+			kUnique                           = 1U << 5,
+			kDoesntAffectStealthMeter         = 1U << 6,
+			kPlayerLevelMultiplier            = 1U << 7, // Stats, Leveling Data
+			kProtected                        = 1U << 11,
+			kSummonable                       = 1U << 14,
+			kDoesntBleed                      = 1U << 16,
+			kBleedoutOverride                 = 1U << 18, // Stats
+			kOppositeGenderAnimations         = 1U << 19, // Traits
+			kSimpleActor                      = 1U << 20,
+			kIsGhost                          = 1U << 29,
+			kInvulnerable                     = 1U << 31
 		};
 		static_assert(sizeof(Flags) == 0x4);
 
@@ -45,7 +45,7 @@ namespace Skyrim
 		{
 			kNone                  = 0,
 			kUseTraits             = 1U << 0,
-			kUseStats              = 1U << 1,
+			kUseStatistics         = 1U << 1,
 			kUseFactions           = 1U << 2,
 			kUseSpellList          = 1U << 3,
 			kUseAIData             = 1U << 4,

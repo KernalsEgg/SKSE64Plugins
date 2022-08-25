@@ -3,7 +3,6 @@
 #include "Shared/Skyrim/I/InventoryEntryData.h"
 
 #include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Utility/TypeTraits.h"
 
@@ -17,7 +16,7 @@ namespace Skyrim
 	{
 		if (right.extraDataLists)
 		{
-			this->extraDataLists = new BSSimpleList<ExtraDataList*>(*(right.extraDataLists));
+			this->extraDataLists = new BSSimpleList<ExtraDataList*>(*right.extraDataLists);
 		}
 	}
 
@@ -43,7 +42,7 @@ namespace Skyrim
 			delete this->extraDataLists;
 
 			this->item           = right.item;
-			this->extraDataLists = right.extraDataLists ? new BSSimpleList<ExtraDataList*>(*(right.extraDataLists)) : nullptr;
+			this->extraDataLists = right.extraDataLists ? new BSSimpleList<ExtraDataList*>(*right.extraDataLists) : nullptr;
 			this->itemCountDelta = right.itemCountDelta;
 		}
 

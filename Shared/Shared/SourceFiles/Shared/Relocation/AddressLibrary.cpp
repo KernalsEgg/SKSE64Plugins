@@ -2,7 +2,7 @@
 
 #include "Shared/Relocation/AddressLibrary.h"
 
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Enumeration.h"
 #include "Shared/Utility/MessageBox.h"
 
 
@@ -181,16 +181,16 @@ namespace Relocation
 		std::uint64_t previousIdentifier{ 0 };
 		std::uint64_t previousOffset{ 0 };
 
-		std::underlying_type_t<ReadType> type;
+		std::uint8_t type;
 
 		for (auto& element : this->span_)
 		{
-			inputFileStream.read(reinterpret_cast<char*>(std::addressof(type)), sizeof(std::underlying_type_t<ReadType>));
+			inputFileStream.read(reinterpret_cast<char*>(std::addressof(type)), sizeof(std::uint8_t));
 
-			auto identifierType = static_cast<ReadType>(type & 0xF);
-			auto offsetType     = static_cast<ReadType>(type >> 4);
+			Utility::Enumeration<ReadType, std::uint8_t> identifierType = type & 0xF;
+			Utility::Enumeration<ReadType, std::uint8_t> offsetType     = type >> 4;
 
-			switch (identifierType)
+			switch (identifierType.get())
 			{
 				case ReadType::kSetUInt64:
 				{
@@ -263,13 +263,13 @@ namespace Relocation
 				}
 				default:
 				{
-					Utility::MessageBox::Error("Unexpected indentifier type encountered, {}.", Utility::ToUnderlying(identifierType));
+					Utility::MessageBox::Error("Unexpected indentifier type encountered, {}.", identifierType.underlying());
 				}
 			}
 
-			auto temporaryOffset = (Utility::ToUnderlying(offsetType) & 8) != 0 ? (previousOffset / header.pointerSize) : previousOffset;
+			auto temporaryOffset = (offsetType & 8) != 0 ? (previousOffset / header.pointerSize) : previousOffset;
 
-			switch (static_cast<ReadType>(Utility::ToUnderlying(offsetType) & 7))
+			switch ((offsetType & 7).get())
 			{
 				case ReadType::kSetUInt64:
 				{
@@ -342,11 +342,11 @@ namespace Relocation
 				}
 				default:
 				{
-					Utility::MessageBox::Error("Unexpected offset type encountered, {}.", Utility::ToUnderlying(offsetType) & 7);
+					Utility::MessageBox::Error("Unexpected offset type encountered, {}.", (offsetType & 7).underlying());
 				}
 			}
 
-			if ((Utility::ToUnderlying(offsetType) & 8) != 0)
+			if ((offsetType & 8) != 0)
 			{
 				offset *= header.pointerSize;
 			}

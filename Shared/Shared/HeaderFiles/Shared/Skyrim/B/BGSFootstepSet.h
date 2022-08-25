@@ -13,7 +13,7 @@ namespace Skyrim
 	class BGSFootstep;
 
 	class BGSFootstepSet :
-		public TESForm
+		public TESForm // 0
 	{
 	public:
 		enum class MovementState

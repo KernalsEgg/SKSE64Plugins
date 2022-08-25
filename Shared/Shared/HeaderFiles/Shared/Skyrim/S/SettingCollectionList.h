@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	template <class T>
 	class SettingCollectionList :
-		public SettingCollection<T>
+		public SettingCollection<T> // 0
 	{
 	public:
 		// Override

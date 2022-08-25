@@ -66,9 +66,9 @@ namespace Skyrim
 
 		constexpr const_reference operator[](size_type index) const noexcept { return this->data()[index]; }
 
-		constexpr const_reference front() const noexcept { return operator[](0); }
+		constexpr const_reference front() const noexcept { return this->operator[](0); }
 
-		constexpr const_reference back() const noexcept { return operator[](this->size() - 1); }
+		constexpr const_reference back() const noexcept { return this->operator[](this->size() - 1); }
 
 		constexpr const_pointer data() const noexcept
 		{

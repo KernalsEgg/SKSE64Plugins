@@ -6,7 +6,7 @@
 
 namespace Skyrim
 {
-	class hkMultiThreadCheck
+	class hkMultipleThreadCheck
 	{
 	public:
 		enum class AccessType : std::uint32_t
@@ -38,9 +38,9 @@ namespace Skyrim
 		std::uint16_t markCount;    // 8
 		std::uint16_t markBitStack; // A
 	};
-	static_assert(offsetof(hkMultiThreadCheck, threadID) == 0x0);
-	static_assert(offsetof(hkMultiThreadCheck, stackTraceID) == 0x4);
-	static_assert(offsetof(hkMultiThreadCheck, markCount) == 0x8);
-	static_assert(offsetof(hkMultiThreadCheck, markBitStack) == 0xA);
-	static_assert(sizeof(hkMultiThreadCheck) == 0xC);
+	static_assert(offsetof(hkMultipleThreadCheck, threadID) == 0x0);
+	static_assert(offsetof(hkMultipleThreadCheck, stackTraceID) == 0x4);
+	static_assert(offsetof(hkMultipleThreadCheck, markCount) == 0x8);
+	static_assert(offsetof(hkMultipleThreadCheck, markBitStack) == 0xA);
+	static_assert(sizeof(hkMultipleThreadCheck) == 0xC);
 }

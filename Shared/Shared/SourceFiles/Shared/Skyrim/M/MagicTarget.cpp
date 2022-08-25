@@ -3,7 +3,6 @@
 #include "Shared/Skyrim/M/MagicTarget.h"
 
 #include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/T/TESObjectREFR.h"
 
 

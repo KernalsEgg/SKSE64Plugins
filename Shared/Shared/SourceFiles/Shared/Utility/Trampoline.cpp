@@ -23,14 +23,14 @@ namespace Utility
 	/// <summary>https://stackoverflow.com/a/54732489</summary>
 	std::uintptr_t Trampoline::Allocate(std::uintptr_t moduleAddress, std::size_t moduleSize, std::size_t allocationSize)
 	{
-		::SYSTEM_INFO systemInfo;
-		::GetSystemInfo(std::addressof(systemInfo));
+		::SYSTEM_INFO systemInformation;
+		::GetSystemInfo(std::addressof(systemInformation));
 
 		std::uintptr_t minimumAddress = moduleAddress + moduleSize >= std::numeric_limits<std::int32_t>::max() ?
-                                            Math::Ceiling(moduleAddress + moduleSize - std::numeric_limits<std::int32_t>::max(), systemInfo.dwAllocationGranularity) :
+                                            Math::Ceiling(moduleAddress + moduleSize - std::numeric_limits<std::int32_t>::max(), systemInformation.dwAllocationGranularity) :
                                             0;
 		std::uintptr_t maximumAddress = moduleAddress < static_cast<std::uintptr_t>(std::numeric_limits<std::int64_t>::max() - std::numeric_limits<std::int32_t>::max()) ?
-                                            Math::Floor(moduleAddress + std::numeric_limits<std::int32_t>::max(), systemInfo.dwAllocationGranularity) :
+                                            Math::Floor(moduleAddress + std::numeric_limits<std::int32_t>::max(), systemInformation.dwAllocationGranularity) :
                                             std::numeric_limits<std::int64_t>::max();
 
 		::MEMORY_BASIC_INFORMATION memoryBasicInformation;
@@ -49,7 +49,7 @@ namespace Utility
 
 			if (memoryBasicInformation.State == MEM_FREE)
 			{
-				regionAddress = Math::Ceiling(reinterpret_cast<std::size_t>(memoryBasicInformation.BaseAddress), systemInfo.dwAllocationGranularity);
+				regionAddress = Math::Ceiling(reinterpret_cast<std::size_t>(memoryBasicInformation.BaseAddress), systemInformation.dwAllocationGranularity);
 
 				// If rounding has not advanced the address to the next region and the region is at least the required size
 				if (regionAddress < minimumAddress && (minimumAddress - regionAddress) >= allocationSize)

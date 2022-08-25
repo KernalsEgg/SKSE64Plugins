@@ -31,10 +31,10 @@ namespace Skyrim
 	class TESRace;
 
 	class TESNPC :
-		public TESActorBase,              // 0
-		public TESRaceForm,               // 150
-		public BGSOverridePackCollection, // 160
-		public BSTEventSink<MenuOpenCloseEvent>
+		public TESActorBase,                    // 0
+		public TESRaceForm,                     // 150
+		public BGSOverridePackCollection,       // 160
+		public BSTEventSink<MenuOpenCloseEvent> // 188
 	{
 	public:
 		struct CreatureSounds;

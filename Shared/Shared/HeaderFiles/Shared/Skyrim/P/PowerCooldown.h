@@ -34,7 +34,7 @@ namespace Skyrim
 			{
 			}
 
-			const reference operator*() const noexcept { return *(this->current_); }
+			const reference operator*() const noexcept { return *this->current_; }
 			const pointer   operator->() const noexcept { return this->current_; }
 
 			friend constexpr bool operator==(const iterator& left, const iterator& right) noexcept { return left.current_ == right.current_; }
@@ -50,6 +50,7 @@ namespace Skyrim
 			constexpr iterator operator++(int) noexcept
 			{
 				iterator iterator(*this);
+
 				++(*this);
 
 				return iterator;

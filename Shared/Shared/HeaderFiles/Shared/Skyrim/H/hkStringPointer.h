@@ -6,10 +6,10 @@
 
 namespace Skyrim
 {
-	class hkStringPtr
+	class hkStringPointer
 	{
 	public:
-		enum Flags : std::uint32_t
+		enum class Flags : std::uint32_t
 		{
 			kOwned = 1U << 0
 		};
@@ -22,5 +22,5 @@ namespace Skyrim
 		// Member variables
 		const char* stringAndFlag_; // 0
 	};
-	static_assert(sizeof(hkStringPtr) == 0x8);
+	static_assert(sizeof(hkStringPointer) == 0x8);
 }

@@ -11,7 +11,7 @@
 namespace Skyrim
 {
 	class GameSettingCollection :
-		public SettingCollectionMap<Setting>
+		public SettingCollectionMap<Setting> // 0
 	{
 	public:
 		// Override

@@ -16,11 +16,11 @@ void OnInitializeThread()
 	Skyrim::BGSFootstepManager::GetSingleton()->AddEventSink(Trails::Events::FootstepEventSink::GetSingleton());
 }
 
-extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* queryInterface, SKSE::PluginInfo* pluginInfo)
+extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* queryInterface, SKSE::PluginInformation* pluginInformation)
 {
-	pluginInfo->infoVersion = SKSE::PluginInfo::kVersion;
-	pluginInfo->name        = "Trails";
-	pluginInfo->version     = 1;
+	pluginInformation->informationVersion = SKSE::PluginInformation::kVersion;
+	pluginInformation->name               = "Trails";
+	pluginInformation->version            = 1;
 
 	if (queryInterface->IsEditor())
 	{

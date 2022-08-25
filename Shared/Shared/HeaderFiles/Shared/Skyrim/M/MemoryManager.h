@@ -142,102 +142,116 @@ namespace Skyrim
 		}
 	}
 
-#define TES_MEMORY_REDEFINE_NEW()                                                                      \
-	/* 1 */                                                                                            \
-	[[nodiscard]] void* operator new(std::size_t size)                                                 \
-	{                                                                                                  \
-		auto* pointer = Skyrim::malloc(size);                                                          \
-                                                                                                       \
-		if (!pointer)                                                                                  \
-		{                                                                                              \
-			throw std::bad_alloc{};                                                                    \
-		}                                                                                              \
-                                                                                                       \
-		return pointer;                                                                                \
-	}                                                                                                  \
-                                                                                                       \
-	/* 2 */                                                                                            \
-	[[nodiscard]] void* operator new[](std::size_t size)                                               \
-	{                                                                                                  \
-		return operator new(size);                                                                     \
-	}                                                                                                  \
-                                                                                                       \
-	/* 3 */                                                                                            \
-	[[nodiscard]] void* operator new(std::size_t size, std::align_val_t alignment)                     \
-	{                                                                                                  \
-		auto* pointer = Skyrim::aligned_malloc(size, static_cast<std::size_t>(alignment));             \
-                                                                                                       \
-		if (!pointer)                                                                                  \
-		{                                                                                              \
-			throw std::bad_alloc{};                                                                    \
-		}                                                                                              \
-                                                                                                       \
-		return pointer;                                                                                \
-	}                                                                                                  \
-                                                                                                       \
-	/* 4 */                                                                                            \
-	[[nodiscard]] void* operator new[](std::size_t size, std::align_val_t alignment)                   \
-	{                                                                                                  \
-		return operator new(size, alignment);                                                          \
-	}                                                                                                  \
-                                                                                                       \
-	/* 9 */                                                                                            \
-	[[nodiscard]] void* operator new([[maybe_unused]] std::size_t size, void* placement) noexcept      \
-	{                                                                                                  \
-		return placement;                                                                              \
-	}                                                                                                  \
-                                                                                                       \
-	/* 10 */                                                                                           \
-	[[nodiscard]] void* operator new[](std::size_t size, void* placement) noexcept                     \
-	{                                                                                                  \
-		return operator new(size, placement);                                                          \
-	}                                                                                                  \
-                                                                                                       \
-	/* 1 */                                                                                            \
-	void operator delete(void* pointer)                                                                \
-	{                                                                                                  \
-		Skyrim::free(pointer);                                                                         \
-	}                                                                                                  \
-                                                                                                       \
-	/* 2 */                                                                                            \
-	void operator delete[](void* pointer)                                                              \
-	{                                                                                                  \
-		operator delete(pointer);                                                                      \
-	}                                                                                                  \
-                                                                                                       \
-	/* 3 */                                                                                            \
-	void operator delete(void* pointer, [[maybe_unused]] std::align_val_t alignment)                   \
-	{                                                                                                  \
-		Skyrim::aligned_free(pointer);                                                                 \
-	}                                                                                                  \
-                                                                                                       \
-	/* 4 */                                                                                            \
-	void operator delete[](void* pointer, std::align_val_t alignment)                                  \
-	{                                                                                                  \
-		operator delete(pointer, alignment);                                                           \
-	}                                                                                                  \
-                                                                                                       \
-	/* 5 */                                                                                            \
-	void operator delete(void* pointer, [[maybe_unused]] std::size_t size)                             \
-	{                                                                                                  \
-		operator delete(pointer);                                                                      \
-	}                                                                                                  \
-                                                                                                       \
-	/* 6 */                                                                                            \
-	void operator delete[](void* pointer, std::size_t size)                                            \
-	{                                                                                                  \
-		operator delete(pointer, size);                                                                \
-	}                                                                                                  \
-                                                                                                       \
-	/* 7 */                                                                                            \
-	void operator delete(void* pointer, [[maybe_unused]] std::size_t size, std::align_val_t alignment) \
-	{                                                                                                  \
-		operator delete(pointer, alignment);                                                           \
-	}                                                                                                  \
-                                                                                                       \
-	/* 8 */                                                                                            \
-	void operator delete[](void* pointer, std::size_t size, std::align_val_t alignment)                \
-	{                                                                                                  \
-		operator delete(pointer, size, alignment);                                                     \
+#define TES_MEMORY_REDEFINE_NEW()                                                                   \
+	/* 1 */                                                                                         \
+	[[nodiscard]] void* operator new(std::size_t size)                                              \
+	{                                                                                               \
+		auto* pointer = Skyrim::malloc(size);                                                       \
+                                                                                                    \
+		if (!pointer)                                                                               \
+		{                                                                                           \
+			throw std::bad_alloc{};                                                                 \
+		}                                                                                           \
+                                                                                                    \
+		return pointer;                                                                             \
+	}                                                                                               \
+                                                                                                    \
+	/* 2 */                                                                                         \
+	[[nodiscard]] void* operator new[](std::size_t size)                                            \
+	{                                                                                               \
+		auto* pointer = Skyrim::malloc(size);                                                       \
+                                                                                                    \
+		if (!pointer)                                                                               \
+		{                                                                                           \
+			throw std::bad_alloc{};                                                                 \
+		}                                                                                           \
+                                                                                                    \
+		return pointer;                                                                             \
+	}                                                                                               \
+                                                                                                    \
+	/* 3 */                                                                                         \
+	[[nodiscard]] void* operator new(std::size_t size, std::align_val_t alignment)                  \
+	{                                                                                               \
+		auto* pointer = Skyrim::aligned_malloc(size, static_cast<std::size_t>(alignment));          \
+                                                                                                    \
+		if (!pointer)                                                                               \
+		{                                                                                           \
+			throw std::bad_alloc{};                                                                 \
+		}                                                                                           \
+                                                                                                    \
+		return pointer;                                                                             \
+	}                                                                                               \
+                                                                                                    \
+	/* 4 */                                                                                         \
+	[[nodiscard]] void* operator new[](std::size_t size, std::align_val_t alignment)                \
+	{                                                                                               \
+		auto* pointer = Skyrim::aligned_malloc(size, static_cast<std::size_t>(alignment));          \
+                                                                                                    \
+		if (!pointer)                                                                               \
+		{                                                                                           \
+			throw std::bad_alloc{};                                                                 \
+		}                                                                                           \
+                                                                                                    \
+		return pointer;                                                                             \
+	}                                                                                               \
+                                                                                                    \
+	/* 9 */                                                                                         \
+	[[nodiscard]] void* operator new(std::size_t /* size */, void* placement) noexcept              \
+	{                                                                                               \
+		return placement;                                                                           \
+	}                                                                                               \
+                                                                                                    \
+	/* 10 */                                                                                        \
+	[[nodiscard]] void* operator new[](std::size_t /* size */, void* placement) noexcept            \
+	{                                                                                               \
+		return placement;                                                                           \
+	}                                                                                               \
+                                                                                                    \
+	/* 1 */                                                                                         \
+	void operator delete(void* pointer)                                                             \
+	{                                                                                               \
+		Skyrim::free(pointer);                                                                      \
+	}                                                                                               \
+                                                                                                    \
+	/* 2 */                                                                                         \
+	void operator delete[](void* pointer)                                                           \
+	{                                                                                               \
+		Skyrim::free(pointer);                                                                      \
+	}                                                                                               \
+                                                                                                    \
+	/* 3 */                                                                                         \
+	void operator delete(void* pointer, std::align_val_t /* alignment */)                           \
+	{                                                                                               \
+		Skyrim::aligned_free(pointer);                                                              \
+	}                                                                                               \
+                                                                                                    \
+	/* 4 */                                                                                         \
+	void operator delete[](void* pointer, std::align_val_t /* alignment */)                         \
+	{                                                                                               \
+		Skyrim::aligned_free(pointer);                                                              \
+	}                                                                                               \
+                                                                                                    \
+	/* 5 */                                                                                         \
+	void operator delete(void* pointer, std::size_t /* size */)                                     \
+	{                                                                                               \
+		Skyrim::free(pointer);                                                                      \
+	}                                                                                               \
+                                                                                                    \
+	/* 6 */                                                                                         \
+	void operator delete[](void* pointer, std::size_t /* size */)                                   \
+	{                                                                                               \
+		Skyrim::free(pointer);                                                                      \
+	}                                                                                               \
+                                                                                                    \
+	/* 7 */                                                                                         \
+	void operator delete(void* pointer, std::size_t /* size */, std::align_val_t /* alignment */)   \
+	{                                                                                               \
+		Skyrim::aligned_free(pointer);                                                              \
+	}                                                                                               \
+                                                                                                    \
+	/* 8 */                                                                                         \
+	void operator delete[](void* pointer, std::size_t /* size */, std::align_val_t /* alignment */) \
+	{                                                                                               \
+		Skyrim::aligned_free(pointer);                                                              \
 	}
 }

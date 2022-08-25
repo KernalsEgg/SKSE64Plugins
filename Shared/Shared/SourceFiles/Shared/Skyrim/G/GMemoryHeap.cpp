@@ -2,6 +2,8 @@
 
 #include "Shared/Skyrim/G/GMemoryHeap.h"
 
+#include "Shared/Utility/Convert.h"
+
 
 
 namespace Skyrim
@@ -28,6 +30,18 @@ namespace Skyrim
 		this->limit               = 0;
 		this->heapID              = GHeapID::kReserved;
 		this->arena               = 0;
+	}
+
+	GMemoryHeap::RootHeapDescriptor::RootHeapDescriptor() :
+		HeapDescriptor(
+			HeapFlags::kNone,
+			Utility::ToUnderlying(RootHeapParameters::kMinimumAlignment),
+			Utility::ToUnderlying(RootHeapParameters::kGranularity),
+			Utility::ToUnderlying(RootHeapParameters::kReserve),
+			Utility::ToUnderlying(RootHeapParameters::kThreshold),
+			Utility::ToUnderlying(RootHeapParameters::kLimit),
+			GHeapID::kGlobal)
+	{
 	}
 
 	void GMemoryHeap::CheckIntegrity()

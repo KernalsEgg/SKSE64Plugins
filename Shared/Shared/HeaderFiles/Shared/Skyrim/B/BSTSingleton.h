@@ -38,8 +38,8 @@ namespace Skyrim
 
 	template <class Traits>
 	struct BSTSingletonSDMBase :
-		public Traits,
-		public Traits::allocator_type
+		public Traits,                // 0
+		public Traits::allocator_type // ?
 	{
 	public:
 		using value_type     = typename Traits::value_type;
@@ -49,7 +49,7 @@ namespace Skyrim
 
 	template <class T, template <class> class Singleton = BSTSingletonSDMOpStaticBuffer>
 	struct BSTSingletonSDM :
-		public BSTSingletonSDMBase<BSTSDMTraits<T, Singleton<T>>>
+		public BSTSingletonSDMBase<BSTSDMTraits<T, Singleton<T>>> // 0
 	{
 	};
 	static_assert(std::is_empty_v<BSTSingletonSDM<void>>);

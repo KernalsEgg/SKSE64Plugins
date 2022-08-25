@@ -3,6 +3,7 @@
 #include "Shared/PCH.h"
 
 #include "Shared/Skyrim/S/ScaleformTypes.h"
+#include "Shared/Utility/Convert.h"
 
 
 
@@ -46,7 +47,7 @@ namespace Skyrim
 
 	enum class GStatisticRenderers : std::uint32_t
 	{
-		kDefault = static_cast<std::underlying_type_t<GStatisticRenderers>>(GStatisticGroup::kGStatisticGroupDefault),
+		kDefault = Utility::ToUnderlying(GStatisticGroup::kGStatisticGroupDefault),
 
 		kMemory,
 

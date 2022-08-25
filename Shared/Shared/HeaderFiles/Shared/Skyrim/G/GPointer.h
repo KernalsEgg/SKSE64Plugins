@@ -4,35 +4,35 @@
 
 
 
-// Based on std::shared_ptr
 namespace Skyrim
 {
+	// Based on std::shared_ptr
 	template <class T>
-	class hkRefPtr
+	class GPointer
 	{
 	public:
 		using element_type = T;
 
 		// Constructors
 		// 1
-		constexpr hkRefPtr() noexcept = default;
+		constexpr GPointer() noexcept = default;
 
 		// 2
-		constexpr hkRefPtr(std::nullptr_t) noexcept
+		constexpr GPointer(std::nullptr_t) noexcept
 		{
 		}
 
 		// 3
 		template <class Y>
 			requires(std::is_convertible_v<Y*, element_type*>)
-		explicit hkRefPtr(Y* right) :
-			pointer_(right)
+		explicit GPointer(Y* pointer) :
+			pointer_(pointer)
 		{
 			this->Attach();
 		}
 
 		// 9
-		hkRefPtr(const hkRefPtr& right) :
+		GPointer(const GPointer& right) :
 			pointer_(right.pointer_)
 		{
 			this->Attach();
@@ -40,14 +40,14 @@ namespace Skyrim
 
 		template <class Y>
 			requires(std::is_convertible_v<Y*, element_type*>)
-		hkRefPtr(const hkRefPtr<Y>& right) :
+		GPointer(const GPointer<Y>& right) :
 			pointer_(right.pointer_)
 		{
 			this->Attach();
 		}
 
 		// 10
-		constexpr hkRefPtr(hkRefPtr&& right) noexcept :
+		constexpr GPointer(GPointer&& right) noexcept :
 			pointer_(right.pointer_)
 		{
 			right.pointer_ = nullptr;
@@ -55,21 +55,21 @@ namespace Skyrim
 
 		template <class Y>
 			requires(std::is_convertible_v<Y*, element_type*>)
-		constexpr hkRefPtr(hkRefPtr<Y>&& right) noexcept :
+		constexpr GPointer(GPointer<Y>&& right) noexcept :
 			pointer_(right.pointer_)
 		{
 			right.pointer_ = nullptr;
 		}
 
 		// Destructor
-		~hkRefPtr()
+		~GPointer()
 		{
 			this->Detach();
 		}
 
 		// Member functions
 		// 1
-		hkRefPtr& operator=(const hkRefPtr& right)
+		GPointer& operator=(const GPointer& right)
 		{
 			if (this != std::addressof(right))
 			{
@@ -83,7 +83,7 @@ namespace Skyrim
 
 		template <class Y>
 			requires(std::is_convertible_v<Y*, element_type*>)
-		hkRefPtr& operator=(const hkRefPtr<Y>& right)
+		GPointer& operator=(const GPointer<Y>& right)
 		{
 			this->Detach();
 			this->pointer_ = right.pointer_;
@@ -93,7 +93,7 @@ namespace Skyrim
 		}
 
 		// 2
-		hkRefPtr& operator=(hkRefPtr&& right)
+		GPointer& operator=(GPointer&& right)
 		{
 			if (this != std::addressof(right))
 			{
@@ -107,7 +107,7 @@ namespace Skyrim
 
 		template <class Y>
 			requires(std::is_convertible_v<Y*, element_type*>)
-		hkRefPtr& operator=(hkRefPtr<Y>&& right)
+		GPointer& operator=(GPointer<Y>&& right)
 		{
 			this->Detach();
 			this->pointer_ = right.pointer_;
@@ -144,7 +144,7 @@ namespace Skyrim
 
 		constexpr element_type& operator*() const noexcept
 		{
-			return *(this->pointer_);
+			return *this->pointer_;
 		}
 
 		constexpr element_type* operator->() const noexcept
@@ -171,7 +171,7 @@ namespace Skyrim
 		{
 			if (this->pointer_)
 			{
-				this->pointer_->RemoveReference();
+				this->pointer_->Release();
 				this->pointer_ = nullptr;
 			}
 		}
@@ -179,47 +179,47 @@ namespace Skyrim
 		// Member variables
 		element_type* pointer_{ nullptr }; // 0
 	};
-	static_assert(sizeof(hkRefPtr<void*>) == 0x8);
+	static_assert(sizeof(GPointer<void*>) == 0x8);
 
 	// Non-member functions
 	// 1
 	template <class T1, class T2>
-	constexpr bool operator==(const hkRefPtr<T1>& left, const hkRefPtr<T2>& right) noexcept
+	constexpr bool operator==(const GPointer<T1>& left, const GPointer<T2>& right) noexcept
 	{
 		return left.get() == right.get();
 	}
 
 	// 2
 	template <class T1, class T2>
-	constexpr bool operator!=(const hkRefPtr<T1>& left, const hkRefPtr<T2>& right) noexcept
+	constexpr bool operator!=(const GPointer<T1>& left, const GPointer<T2>& right) noexcept
 	{
 		return !(left == right);
 	}
 
 	// 8
 	template <class T>
-	constexpr bool operator==(const hkRefPtr<T>& left, std::nullptr_t) noexcept
+	constexpr bool operator==(const GPointer<T>& left, std::nullptr_t) noexcept
 	{
 		return !left;
 	}
 
 	// 9
 	template <class T>
-	constexpr bool operator==(std::nullptr_t, const hkRefPtr<T>& right) noexcept
+	constexpr bool operator==(std::nullptr_t, const GPointer<T>& right) noexcept
 	{
 		return !right;
 	}
 
 	// 10
 	template <class T>
-	constexpr bool operator!=(const hkRefPtr<T>& left, std::nullptr_t) noexcept
+	constexpr bool operator!=(const GPointer<T>& left, std::nullptr_t) noexcept
 	{
 		return left;
 	}
 
 	// 11
 	template <class T>
-	constexpr bool operator!=(std::nullptr_t, const hkRefPtr<T>& right) noexcept
+	constexpr bool operator!=(std::nullptr_t, const GPointer<T>& right) noexcept
 	{
 		return right;
 	}

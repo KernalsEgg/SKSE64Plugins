@@ -42,8 +42,8 @@ namespace Skyrim
 		// Member variables
 		std::uint32_t absoluteCurrentPosition_;                                                                                                                               // 8
 		std::uint32_t paddingC_;                                                                                                                                              // C
-		std::uint32_t (*readFunction_)(NiBinaryStream* binaryStream, void* buffer, std::uint32_t length, std::uint32_t* componentSizes, std::uint32_t componentCount);        // 10, 1.5.97.0: SkyrimSE.exe + 0xC767B0 (69647), 1.6.318.0: SkyrimSE.exe + 0xC9EE90 (71027)
-		std::uint32_t (*writeFunction_)(NiBinaryStream* binaryStream, const void* buffer, std::uint32_t length, std::uint32_t* componentSizes, std::uint32_t componentCount); // 18, 1.5.97.0: SkyrimSE.exe + 0xC76820 (69648), 1.6.318.0: SkyrimSE.exe + 0xC9EF00 (71028)
+		std::uint32_t (*readFunction_)(NiBinaryStream* binaryStream, void* buffer, std::uint32_t length, std::uint32_t* componentSizes, std::uint32_t componentCount);        // 10 (1.5.97.0: SkyrimSE.exe + 0xC767B0 (69647), 1.6.318.0: SkyrimSE.exe + 0xC9EE90 (71027))
+		std::uint32_t (*writeFunction_)(NiBinaryStream* binaryStream, const void* buffer, std::uint32_t length, std::uint32_t* componentSizes, std::uint32_t componentCount); // 18 (1.5.97.0: SkyrimSE.exe + 0xC76820 (69648), 1.6.318.0: SkyrimSE.exe + 0xC9EF00 (71028))
 	};
 	static_assert(sizeof(NiBinaryStream) == 0x20);
 }

@@ -648,16 +648,16 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCharacterStateType.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpSurfaceInfo.h">
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpSurfaceInformation.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkReferencedObject.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkRefPtr.h">
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkReferencePointer.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkStepInfo.h">
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkStepInformation.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkVector4.h">
@@ -1236,10 +1236,10 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpLinkedCollidable.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkMultiThreadCheck.h">
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkMultipleThreadCheck.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkStringPtr.h">
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkStringPointer.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkSimpleProperty.h">
@@ -1260,7 +1260,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpCollisionFilter.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkEnum.h">
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkEnumeration.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpGroupFilter.h">
@@ -1414,6 +1414,174 @@
       <Filter>Header Files\Shared\Skyrim\G</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMemory.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GPointer.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountNTSImpl.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRefCountBaseNTS.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxValue.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GNewOverrideBase.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxPlayerStatistics.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GString.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMatrix3D.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxFileConstants.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxStateBag.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxState.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxMovie.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxMovieView.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GViewport.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GMatrix2D.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GPoint.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRectangle.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GColor.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GPoint3.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxResourceKey.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxResourceID.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxResourceLibBase.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxResource.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxMovieDef.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GFxExporterInformation.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FxDelegateArguments.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FxResponseArgumentsBase.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FxResponseArguments.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GImage.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GImageBase.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GAllocatorBaseLH.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GAllocatorBaseDH.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GAllocatorBaseGH.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GConstructorPOD.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GConstructorMovable.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GConstructorCPP.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GAllocator.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayDefaultPolicy.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayConstantPolicy.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayDataBase.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayData.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayDataDH.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayDataCC.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayBase.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArray.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayPOD.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayCPP.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayLH.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayLHPOD.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayDH.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayDHPOD.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GArrayCC.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GTexture.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRenderTarget.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRenderer.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRendererEventHandler.h">
       <Filter>Header Files\Shared\Skyrim\G</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1595,7 +1763,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiMatrix33.cpp">
       <Filter>Source Files\Shared\Skyrim\N</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkStringPtr.cpp">
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkStringPointer.cpp">
       <Filter>Source Files\Shared\Skyrim\H</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpCollidable.cpp">
@@ -1679,13 +1847,64 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorEquipManager.cpp">
       <Filter>Source Files\Shared\Skyrim\A</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GAtomic.cpp">
-      <Filter>Source Files\Shared\Skyrim\G</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GMemory.cpp">
       <Filter>Source Files\Shared\Skyrim\G</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GMemoryHeap.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GRefCountImpl.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GRefCountNTSImpl.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GString.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GFxValue.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GFxState.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GFxStateBag.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GFxMovie.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GViewport.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GFxResourceKey.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GFxResourceID.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GFxResource.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GFxMovieDef.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\F\FxDelegateArguments.cpp">
+      <Filter>Source Files\Shared\Skyrim\F</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GArrayDefaultPolicy.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GTexture.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GRenderTarget.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GRenderer.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GRendererEventHandler.cpp">
       <Filter>Source Files\Shared\Skyrim\G</Filter>
     </ClCompile>
   </ItemGroup>

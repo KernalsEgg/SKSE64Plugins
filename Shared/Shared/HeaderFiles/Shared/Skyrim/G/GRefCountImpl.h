@@ -14,6 +14,10 @@ namespace Skyrim
 	public:
 		// Override
 		virtual ~GRefCountImpl() override; // 0
+
+		// Member functions
+		void AddReference();
+		void Release();
 	};
 	static_assert(sizeof(GRefCountImpl) == 0x10);
 }

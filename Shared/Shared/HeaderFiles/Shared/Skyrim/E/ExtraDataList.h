@@ -10,7 +10,6 @@
 
 
 
-// Based on std::iterator
 namespace Skyrim
 {
 	class BSExtraData;
@@ -58,7 +57,7 @@ namespace Skyrim
 			{
 			}
 
-			constexpr reference operator*() const noexcept { return *(this->current_); }
+			constexpr reference operator*() const noexcept { return *this->current_; }
 			constexpr pointer   operator->() const noexcept { return this->current_; }
 
 			friend constexpr bool operator==(const iterator& left, const iterator& right) noexcept { return left.current_ == right.current_; }
@@ -74,6 +73,7 @@ namespace Skyrim
 			constexpr iterator operator++(int) noexcept
 			{
 				iterator iterator{ *this };
+
 				++(*this);
 
 				return iterator;

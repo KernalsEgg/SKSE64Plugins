@@ -53,8 +53,8 @@ namespace Skyrim
 	struct TESSleepStopEvent;
 	struct TESSpellCastEvent;
 	struct TESSwitchRaceCompleteEvent;
-	struct TESTopicInfoEvent;
-	struct TESTrackedStatsEvent;
+	struct TESTopicInformationEvent;
+	struct TESTrackedStatisticsEvent;
 	struct TESTrapHitEvent;
 	struct TESTriggerEnterEvent;
 	struct TESTriggerEvent;
@@ -107,8 +107,8 @@ namespace Skyrim
 		public BSTEventSource<TESSleepStopEvent>,               // 0DC0
 		public BSTEventSource<TESSpellCastEvent>,               // 0E18
 		public BSTEventSource<TESPlayerBowShotEvent>,           // 0E70
-		public BSTEventSource<TESTopicInfoEvent>,               // 0EC8
-		public BSTEventSource<TESTrackedStatsEvent>,            // 0F20
+		public BSTEventSource<TESTopicInformationEvent>,        // 0EC8
+		public BSTEventSource<TESTrackedStatisticsEvent>,       // 0F20
 		public BSTEventSource<TESTrapHitEvent>,                 // 0F78
 		public BSTEventSource<TESTriggerEvent>,                 // 0FD0
 		public BSTEventSource<TESTriggerEnterEvent>,            // 1028

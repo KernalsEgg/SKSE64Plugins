@@ -11,7 +11,7 @@ namespace Skyrim
 	class TESBoundObject;
 
 	class BGSMenuDisplayObject :
-		public BaseFormComponent
+		public BaseFormComponent // 0
 	{
 	public:
 		// Override

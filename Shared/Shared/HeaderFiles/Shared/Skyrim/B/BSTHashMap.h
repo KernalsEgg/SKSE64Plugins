@@ -47,7 +47,6 @@ namespace Skyrim
 
 		using allocator_type = Allocator<sizeof(entry_type), sizeof(entry_type)>;
 
-		// Based on std::iterator
 		template <class U>
 		class iterator
 		{
@@ -97,6 +96,7 @@ namespace Skyrim
 			constexpr iterator operator++(int) noexcept
 			{
 				iterator iterator(*this);
+
 				++(*this);
 
 				return iterator;

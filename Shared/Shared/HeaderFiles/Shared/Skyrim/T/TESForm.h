@@ -21,7 +21,6 @@ namespace Skyrim
 	class TESFileArray :
 		public BSStaticArray<TESFile*> // 0
 	{
-	public:
 	};
 	static_assert(sizeof(TESFileArray) == 0x10);
 

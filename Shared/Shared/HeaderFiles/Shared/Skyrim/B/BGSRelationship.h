@@ -15,7 +15,7 @@ namespace Skyrim
 	class TESNPC;
 
 	class BGSRelationship :
-		public TESForm
+		public TESForm // 0
 	{
 	public:
 		enum class RecordFlags : std::uint32_t

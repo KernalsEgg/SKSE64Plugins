@@ -4,7 +4,6 @@
 
 
 
-// Based on std::shared_ptr
 namespace Skyrim
 {
 	template <class T>
@@ -25,6 +24,7 @@ namespace Skyrim
 		}
 	};
 
+	// Based on std::shared_ptr
 	template <class T, template <class> class ReferenceManager = BSTSmartPointerIntrusiveRefCount>
 	class BSTSmartPointer
 	{
@@ -163,7 +163,7 @@ namespace Skyrim
 
 		constexpr element_type& operator*() const noexcept
 		{
-			return *(this->pointer_);
+			return *this->pointer_;
 		}
 
 		constexpr element_type* operator->() const noexcept

@@ -10,7 +10,7 @@
 namespace Skyrim
 {
 	class RegSettingCollection :
-		public SettingCollectionList<Setting>
+		public SettingCollectionList<Setting> // 0
 	{
 	public:
 		// Override

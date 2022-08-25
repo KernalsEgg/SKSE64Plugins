@@ -2,6 +2,8 @@
 
 #include "Shared/PCH.h"
 
+#include "Shared/Skyrim/B/BSSimpleList.h"
+
 
 
 namespace Skyrim
@@ -12,9 +14,6 @@ namespace Skyrim
 	class TESBoundObject;
 	class TESObjectREFR;
 	class TESSoulGem;
-
-	template <class T>
-	class BSSimpleList;
 
 	class InventoryChanges
 	{
@@ -57,7 +56,6 @@ namespace Skyrim
 
 		// Member functions
 		InventoryEntryData* GetInventoryEntryData(TESBoundObject* item) const;
-		void                ImproveItem(TESBoundObject* item, ExtraDataList* extraDataList, float health) const;
 		void                ResetWeight();
 
 		// Member variables

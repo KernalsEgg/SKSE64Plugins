@@ -13,21 +13,21 @@ namespace Skyrim
 	public:
 		enum class Function : std::uint32_t
 		{
-			kSetValue                      = 1,
-			kAddValue                      = 2,
-			kMultiplyValue                 = 3,
-			kAddRangeToValue               = 4,
-			kAddActorValueMult             = 5,
-			kAbsoluteValue                 = 6,
-			kNegativeAbsoluteValue         = 7,
-			kAddLeveledList                = 8,
-			kAddActivateChoice             = 9,
-			kSelectSpell                   = 10,
-			kSelectText                    = 11,
-			kSetToActorValueMult           = 12,
-			kMultiplyActorValueMult        = 13,
-			kMultiplyOnePlusActorValueMult = 14,
-			kSetText                       = 15
+			kSetValue                          = 1,
+			kAddValue                          = 2,
+			kMultiplyValue                     = 3,
+			kAddRangeToValue                   = 4,
+			kAddActorValueMultiple             = 5,
+			kAbsoluteValue                     = 6,
+			kNegativeAbsoluteValue             = 7,
+			kAddLeveledList                    = 8,
+			kAddActivateChoice                 = 9,
+			kSelectSpell                       = 10,
+			kSelectText                        = 11,
+			kSetToActorValueMultiple           = 12,
+			kMultiplyActorValueMultiple        = 13,
+			kMultiplyOnePlusActorValueMultiple = 14,
+			kSetText                           = 15
 		};
 		static_assert(sizeof(Function) == 0x4);
 

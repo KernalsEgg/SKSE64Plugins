@@ -9,7 +9,7 @@
 
 namespace Skyrim
 {
-	struct hkpSurfaceInfo
+	struct hkpSurfaceInformation
 	{
 	public:
 		enum class SupportedState : std::uint32_t
@@ -32,10 +32,10 @@ namespace Skyrim
 		std::uint16_t                                       padding36;             // 36
 		std::uint64_t                                       padding38;             // 38
 	};
-	static_assert(offsetof(hkpSurfaceInfo, supportedState) == 0x0);
-	static_assert(offsetof(hkpSurfaceInfo, surfaceNormal) == 0x10);
-	static_assert(offsetof(hkpSurfaceInfo, surfaceVelocity) == 0x20);
-	static_assert(offsetof(hkpSurfaceInfo, surfaceDistanceExcess) == 0x30);
-	static_assert(offsetof(hkpSurfaceInfo, surfaceIsDynamic) == 0x34);
-	static_assert(sizeof(hkpSurfaceInfo) == 0x40);
+	static_assert(offsetof(hkpSurfaceInformation, supportedState) == 0x0);
+	static_assert(offsetof(hkpSurfaceInformation, surfaceNormal) == 0x10);
+	static_assert(offsetof(hkpSurfaceInformation, surfaceVelocity) == 0x20);
+	static_assert(offsetof(hkpSurfaceInformation, surfaceDistanceExcess) == 0x30);
+	static_assert(offsetof(hkpSurfaceInformation, surfaceIsDynamic) == 0x34);
+	static_assert(sizeof(hkpSurfaceInformation) == 0x40);
 }

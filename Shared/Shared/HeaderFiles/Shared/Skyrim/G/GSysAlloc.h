@@ -10,7 +10,7 @@
 namespace Skyrim
 {
 	class GSysAlloc :
-		public GSysAllocBase
+		public GSysAllocBase // 0
 	{
 	public:
 		// Override

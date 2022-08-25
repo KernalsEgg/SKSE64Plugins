@@ -46,14 +46,14 @@ namespace Skyrim
 			{
 				if (this->head_ && this->tail_)
 				{
-					while (this->head_ != this->tail_ && !*(this->head_))
+					while (this->head_ != this->tail_ && !*this->head_)
 					{
 						++this->head_;
 					}
 				}
 			}
 
-			constexpr reference operator*() const noexcept { return *(this->head_); }
+			constexpr reference operator*() const noexcept { return *this->head_; }
 			constexpr pointer   operator->() const noexcept { return this->head_; }
 
 			friend constexpr bool operator==(const iterator& left, const iterator& right) noexcept { return left.head_ == right.head_; }
@@ -64,7 +64,7 @@ namespace Skyrim
 				do
 				{
 					++this->head_;
-				} while (this->head_ != this->tail_ && !*(this->head_));
+				} while (this->head_ != this->tail_ && !*this->head_);
 
 				return *this;
 			}
@@ -72,6 +72,7 @@ namespace Skyrim
 			constexpr iterator operator++(int) noexcept
 			{
 				iterator iterator{ *this };
+
 				++(*this);
 
 				return iterator;

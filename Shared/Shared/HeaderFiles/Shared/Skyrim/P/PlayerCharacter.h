@@ -11,7 +11,7 @@
 #include "Shared/Skyrim/B/BSTHashMap.h"
 #include "Shared/Skyrim/C/Character.h"
 #include "Shared/Skyrim/D/Difficulty.h"
-#include "Shared/Skyrim/H/hkRefPtr.h"
+#include "Shared/Skyrim/H/hkReferencePointer.h"
 #include "Shared/Skyrim/N/NiPointer.h"
 #include "Shared/Utility/Enumeration.h"
 
@@ -26,7 +26,7 @@ namespace Skyrim
 	struct PerkRank;
 	struct PositionPlayerEvent;
 	struct TESQuestStageItem;
-	struct TESTrackedStatsEvent;
+	struct TESTrackedStatisticsEvent;
 	struct UserEventEnabledEvent;
 
 	class AlchemyItem;
@@ -67,14 +67,14 @@ namespace Skyrim
 	static_assert(sizeof(StolenItemValue) == 0x8);
 
 	class PlayerCharacter :
-		public Character,                           // 0
-		public BSTEventSink<MenuOpenCloseEvent>,    // 2B0
-		public BSTEventSink<MenuModeChangeEvent>,   // 2B8
-		public BSTEventSink<UserEventEnabledEvent>, // 2C0
-		public BSTEventSink<TESTrackedStatsEvent>,  // 2C8
-		public BSTEventSource<BGSActorCellEvent>,   // 2D0
-		public BSTEventSource<BGSActorDeathEvent>,  // 328
-		public BSTEventSource<PositionPlayerEvent>  // 380
+		public Character,                               // 0
+		public BSTEventSink<MenuOpenCloseEvent>,        // 2B0
+		public BSTEventSink<MenuModeChangeEvent>,       // 2B8
+		public BSTEventSink<UserEventEnabledEvent>,     // 2C0
+		public BSTEventSink<TESTrackedStatisticsEvent>, // 2C8
+		public BSTEventSource<BGSActorCellEvent>,       // 2D0
+		public BSTEventSource<BGSActorDeathEvent>,      // 328
+		public BSTEventSource<PositionPlayerEvent>      // 380
 	{
 	public:
 		enum class GrabType : std::uint32_t
@@ -241,8 +241,8 @@ namespace Skyrim
 		// Override (BSTEventSink<UserEventEnabledEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const UserEventEnabledEvent* eventArguments, BSTEventSource<UserEventEnabledEvent>* eventSource) override; // 1
 
-		// Override (BSTEventSink<TESTrackedStatsEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const TESTrackedStatsEvent* eventArguments, BSTEventSource<TESTrackedStatsEvent>* eventSource) override; // 1
+		// Override (BSTEventSink<TESTrackedStatisticsEvent>)
+		virtual BSEventNotifyControl ProcessEvent(const TESTrackedStatisticsEvent* eventArguments, BSTEventSource<TESTrackedStatisticsEvent>* eventSource) override; // 1
 
 		// Add
 		virtual void Unknown12A(PlayerCharacter*); // 12A
@@ -392,7 +392,7 @@ namespace Skyrim
 		std::uint64_t                                                unknown888;               // 888
 		std::uint32_t                                                unknown890;               // 890
 		ActorHandle                                                  commandedActor;           // 894
-		BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4>             grabSpringActions;        // 898
+		BSTSmallArray<hkReferencePointer<bhkMouseSpringAction>, 4>   grabSpringActions;        // 898
 		ObjectReferenceHandle                                        grabbedReference;         // 8C8
 		float                                                        grabbedReferenceWeight;   // 8CC
 		float                                                        grabbedReferenceDistance; // 8D0

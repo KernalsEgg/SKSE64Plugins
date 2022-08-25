@@ -4,11 +4,11 @@
 
 #include "Shared/Skyrim/B/BSBound.h"
 #include "Shared/Skyrim/B/BSTEventSource.h"
-#include "Shared/Skyrim/H/hkStepInfo.h"
+#include "Shared/Skyrim/H/hkStepInformation.h"
 #include "Shared/Skyrim/H/hkVector4.h"
 #include "Shared/Skyrim/H/hkpCharacterContext.h"
 #include "Shared/Skyrim/H/hkpCharacterStateType.h"
-#include "Shared/Skyrim/H/hkpSurfaceInfo.h"
+#include "Shared/Skyrim/H/hkpSurfaceInformation.h"
 #include "Shared/Skyrim/N/NiRefObject.h"
 #include "Shared/Utility/Enumeration.h"
 
@@ -57,7 +57,7 @@ namespace Skyrim
 		// Member variables
 		std::uint64_t                                              padding68;                // 68
 		hkVector4                                                  direction;                // 70
-		hkStepInfo                                                 stepInformation;          // 80
+		hkStepInformation                                          stepInformation;          // 80
 		hkVector4                                                  havokVelocity;            // 90
 		std::uint64_t                                              unknownA0;                // A0
 		std::uint64_t                                              unknownA8;                // A8
@@ -78,7 +78,7 @@ namespace Skyrim
 		hkVector4                                                  velocity;                 // 180
 		bhkICharOrientationController*                             orientationController;    // 190
 		std::uint64_t                                              padding198;               // 198
-		hkpSurfaceInfo                                             surfaceInformation;       // 1A0
+		hkpSurfaceInformation                                      surfaceInformation;       // 1A0
 		hkpCharacterContext                                        context;                  // 1E0
 		Utility::Enumeration<Flags, std::uint32_t>                 characterControllerFlags; // 218
 		Utility::Enumeration<hkpCharacterStateType, std::uint32_t> desiredState;             // 21C

@@ -11,9 +11,9 @@ namespace SKSE
 		return this->getPluginHandle_();
 	}
 
-	const PluginInfo* Interface::GetPluginInfo(const char* name) const
+	const PluginInformation* Interface::GetPluginInformation(const char* name) const
 	{
-		return this->getPluginInfo_(name);
+		return this->getPluginInformation_(name);
 	}
 
 	std::uint32_t Interface::GetReleaseIndex() const
@@ -35,9 +35,9 @@ namespace SKSE
 			static_cast<std::int32_t>((this->runtimeVersion_ & 0x0000000F) >> 0));
 	}
 
-	bool SerializationInterface::GetNextRecordInfo(std::uint32_t& type, std::uint32_t& version, std::uint32_t& length) const
+	bool SerializationInterface::GetNextRecordInformation(std::uint32_t& type, std::uint32_t& version, std::uint32_t& length) const
 	{
-		return this->getNextRecordInfo_(std::addressof(type), std::addressof(version), std::addressof(length));
+		return this->getNextRecordInformation_(std::addressof(type), std::addressof(version), std::addressof(length));
 	}
 
 	bool SerializationInterface::OpenRecord(std::uint32_t type, std::uint32_t version) const

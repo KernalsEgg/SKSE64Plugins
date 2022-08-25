@@ -192,7 +192,7 @@ namespace ConsoleCommandCompanion
 
 		if (jsonSettings.contains("log"))
 		{
-			this->log = jsonSettings.at("log");
+			this->log = jsonSettings.at("log").get<bool>();
 		}
 
 		return *this;

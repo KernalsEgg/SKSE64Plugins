@@ -7,7 +7,6 @@
 
 
 
-// Based on std::thread
 namespace Skyrim
 {
 	class Actor;
@@ -36,6 +35,7 @@ namespace Skyrim
 		}
 	};
 
+	// Based on std::thread
 	template <class T>
 	class BSPointerHandle
 	{

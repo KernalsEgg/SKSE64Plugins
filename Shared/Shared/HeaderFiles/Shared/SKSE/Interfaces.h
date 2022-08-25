@@ -19,7 +19,7 @@ namespace SKSE
 		kInvalidPluginHandle = static_cast<PluginHandle>(-1),
 	};
 
-	struct PluginInfo
+	struct PluginInformation
 	{
 	public:
 		enum
@@ -27,14 +27,14 @@ namespace SKSE
 			kVersion = 1
 		};
 
-		std::uint32_t infoVersion; // 0
-		const char*   name;        // 8
-		std::uint32_t version;     // 10
+		std::uint32_t informationVersion; // 0
+		const char*   name;               // 8
+		std::uint32_t version;            // 10
 	};
-	static_assert(offsetof(PluginInfo, infoVersion) == 0x0);
-	static_assert(offsetof(PluginInfo, name) == 0x8);
-	static_assert(offsetof(PluginInfo, version) == 0x10);
-	static_assert(sizeof(PluginInfo) == 0x18);
+	static_assert(offsetof(PluginInformation, informationVersion) == 0x0);
+	static_assert(offsetof(PluginInformation, name) == 0x8);
+	static_assert(offsetof(PluginInformation, version) == 0x10);
+	static_assert(sizeof(PluginInformation) == 0x18);
 
 	class Interface
 	{
@@ -52,14 +52,14 @@ namespace SKSE
 			kTotal         = 8
 		};
 
-		std::uint32_t       EditorVersion() const { return this->editorVersion_; }
-		PluginHandle        GetPluginHandle() const;
-		const PluginInfo*   GetPluginInfo(const char* name) const;
-		std::uint32_t       GetReleaseIndex() const;
-		std::uint32_t       IsEditor() const { return this->isEditor_; }
-		void*               QueryInterface(std::uint32_t id) const;
-		Relocation::Version RuntimeVersion() const;
-		std::uint32_t       SKSEVersion() const { return this->skseVersion_; }
+		std::uint32_t            EditorVersion() const { return this->editorVersion_; }
+		PluginHandle             GetPluginHandle() const;
+		const PluginInformation* GetPluginInformation(const char* name) const;
+		std::uint32_t            GetReleaseIndex() const;
+		std::uint32_t            IsEditor() const { return this->isEditor_; }
+		void*                    QueryInterface(std::uint32_t id) const;
+		Relocation::Version      RuntimeVersion() const;
+		std::uint32_t            SKSEVersion() const { return this->skseVersion_; }
 
 		template <class T>
 		T* QueryInterface(std::uint32_t id) const
@@ -82,7 +82,7 @@ namespace SKSE
 		void* (*queryInterface_)(std::uint32_t id);
 		PluginHandle (*getPluginHandle_)(); // Call in SKSEPlugin_Query or SKSEPlugin_Load
 		std::uint32_t (*getReleaseIndex_)();
-		const PluginInfo* (*getPluginInfo_)(const char* name); // Call after PostLoad event
+		const PluginInformation* (*getPluginInformation_)(const char* name); // Call after PostLoad event
 	};
 	static_assert(sizeof(Interface) == 0x30);
 
@@ -97,7 +97,7 @@ namespace SKSE
 		using EventCallback      = void(SerializationInterface* serializationInterface);
 		using FormDeleteCallback = void(Skyrim::VMHandle handle);
 
-		bool          GetNextRecordInfo(std::uint32_t& type, std::uint32_t& version, std::uint32_t& length) const;
+		bool          GetNextRecordInformation(std::uint32_t& type, std::uint32_t& version, std::uint32_t& length) const;
 		bool          OpenRecord(std::uint32_t type, std::uint32_t version) const;
 		std::uint32_t ReadRecordData(void* buffer, std::uint32_t length) const;
 		bool          ResolveFormID(std::uint32_t oldFormID, std::uint32_t& newFormID) const;
@@ -165,7 +165,7 @@ namespace SKSE
 		bool (*writeRecord_)(std::uint32_t type, std::uint32_t version, const void* buffer, std::uint32_t length);
 		bool (*openRecord_)(std::uint32_t type, std::uint32_t version);
 		bool (*writeRecordData_)(const void* buffer, std::uint32_t length);
-		bool (*getNextRecordInfo_)(std::uint32_t* type, std::uint32_t* version, std::uint32_t* length);
+		bool (*getNextRecordInformation_)(std::uint32_t* type, std::uint32_t* version, std::uint32_t* length);
 		std::uint32_t (*readRecordData_)(void* buffer, std::uint32_t length);
 		bool (*resolveHandle_)(Skyrim::VMHandle oldHandle, Skyrim::VMHandle* newHandle);
 		bool (*resolveFormID_)(std::uint32_t oldFormID, std::uint32_t* newFormID);
@@ -178,6 +178,7 @@ namespace SKSE
 		virtual void Run()     = 0;
 		virtual void Dispose() = 0;
 	};
+	static_assert(sizeof(TaskDelegate) == 0x8);
 
 	class UITaskDelegate
 	{
@@ -185,6 +186,7 @@ namespace SKSE
 		virtual void Run()     = 0;
 		virtual void Dispose() = 0;
 	};
+	static_assert(sizeof(UITaskDelegate) == 0x8);
 
 	class TaskInterface
 	{

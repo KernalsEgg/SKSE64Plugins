@@ -22,6 +22,11 @@ namespace SKSE
 		float                 numericalArgument;
 		Skyrim::TESForm*      sender;
 	};
+	static_assert(offsetof(ModCallbackEvent, eventName) == 0x0);
+	static_assert(offsetof(ModCallbackEvent, stringArgument) == 0x8);
+	static_assert(offsetof(ModCallbackEvent, numericalArgument) == 0x10);
+	static_assert(offsetof(ModCallbackEvent, sender) == 0x18);
+	static_assert(sizeof(ModCallbackEvent) == 0x20);
 
 	struct CameraEvent
 	{
@@ -29,12 +34,17 @@ namespace SKSE
 		Skyrim::TESCameraState* oldCameraState;
 		Skyrim::TESCameraState* newCameraState;
 	};
+	static_assert(offsetof(CameraEvent, oldCameraState) == 0x0);
+	static_assert(offsetof(CameraEvent, newCameraState) == 0x8);
+	static_assert(sizeof(CameraEvent) == 0x10);
 
 	struct CrosshairReferenceEvent
 	{
 	public:
 		Skyrim::NiPointer<Skyrim::TESObjectREFR> crosshairReference;
 	};
+	static_assert(offsetof(CrosshairReferenceEvent, crosshairReference) == 0x0);
+	static_assert(sizeof(CrosshairReferenceEvent) == 0x8);
 
 	struct ActionEvent
 	{
@@ -53,6 +63,7 @@ namespace SKSE
 			kBeginSheathe = 9,
 			kEndSheathe   = 10
 		};
+		static_assert(sizeof(Type) == 0x4);
 
 		enum class Slot : std::uint32_t
 		{
@@ -60,6 +71,7 @@ namespace SKSE
 			kRight = 1,
 			kVoice = 2
 		};
+		static_assert(sizeof(Slot) == 0x4);
 
 		Utility::Enumeration<Type, std::uint32_t> type;
 		Skyrim::Actor*                            actor;
@@ -72,4 +84,6 @@ namespace SKSE
 	public:
 		Skyrim::TESObjectREFR* reference;
 	};
+	static_assert(offsetof(NiNodeUpdateEvent, reference) == 0x0);
+	static_assert(sizeof(NiNodeUpdateEvent) == 0x8);
 }

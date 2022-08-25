@@ -4,9 +4,9 @@
 
 
 
-// Based on std::pair
 namespace Skyrim
 {
+	// Based on std::pair
 	template <class T1, class T2>
 	struct BSTTuple
 	{

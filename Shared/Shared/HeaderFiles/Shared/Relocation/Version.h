@@ -9,7 +9,7 @@ namespace Relocation
 	struct Version
 	{
 	public:
-		constexpr Version() noexcept               = delete;
+		constexpr Version() noexcept               = default;
 		constexpr Version(const Version&) noexcept = default;
 		constexpr Version(Version&&) noexcept      = default;
 
@@ -23,10 +23,10 @@ namespace Relocation
 		{
 		}
 
-		std::int32_t major;
-		std::int32_t minor;
-		std::int32_t revision;
-		std::int32_t build;
+		std::int32_t major{};
+		std::int32_t minor{};
+		std::int32_t revision{};
+		std::int32_t build{};
 	};
 
 	constexpr bool operator==(const Version& left, const Version& right) noexcept

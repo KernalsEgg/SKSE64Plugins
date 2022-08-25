@@ -25,6 +25,7 @@ namespace Skyrim
 			kWinter = 3,
 			kTotal  = 4
 		};
+		static_assert(sizeof(Season) == 0x4);
 
 		// Override
 		virtual ~TESProduceForm() override; // 0

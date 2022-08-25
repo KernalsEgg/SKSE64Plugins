@@ -34,7 +34,7 @@ namespace ScrambledBugs::Patches
 		{
 			const auto& surfaceInformation = characterController->surfaceInformation;
 
-			if (surfaceInformation.supportedState == Skyrim::hkpSurfaceInfo::SupportedState::kSupported)
+			if (surfaceInformation.supportedState == Skyrim::hkpSurfaceInformation::SupportedState::kSupported)
 			{
 				auto surfaceNormalZ = surfaceInformation.surfaceNormal.quad.m128_f32[2];
 

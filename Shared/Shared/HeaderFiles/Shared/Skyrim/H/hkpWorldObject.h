@@ -3,10 +3,10 @@
 #include "Shared/PCH.h"
 
 #include "Shared/Skyrim/H/hkArray.h"
-#include "Shared/Skyrim/H/hkMultiThreadCheck.h"
+#include "Shared/Skyrim/H/hkMultipleThreadCheck.h"
 #include "Shared/Skyrim/H/hkReferencedObject.h"
 #include "Shared/Skyrim/H/hkSimpleProperty.h"
-#include "Shared/Skyrim/H/hkStringPtr.h"
+#include "Shared/Skyrim/H/hkStringPointer.h"
 #include "Shared/Skyrim/H/hkpLinkedCollidable.h"
 
 
@@ -60,9 +60,9 @@ namespace Skyrim
 		hkpWorld*                 world;               // 10
 		std::uint64_t             userData;            // 18
 		hkpLinkedCollidable       collidable;          // 20
-		hkMultiThreadCheck        multipleThreadCheck; // A0
+		hkMultipleThreadCheck     multipleThreadCheck; // A0
 		std::uint32_t             paddingAC;           // AC
-		hkStringPtr               name;                // B0
+		hkStringPointer           name;                // B0
 		hkArray<hkSimpleProperty> properties;          // B8
 		hkReferencedObject*       aiData;              // C8 (2009)
 	};

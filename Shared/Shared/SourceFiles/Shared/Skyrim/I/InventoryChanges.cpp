@@ -4,7 +4,6 @@
 
 #include "Shared/Skyrim/A/Actor.h"
 #include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/I/InventoryEntryData.h"
 #include "Shared/Skyrim/T/TESObjectREFR.h"
 #include "Shared/Utility/TypeTraits.h"
@@ -34,13 +33,6 @@ namespace Skyrim
 		}
 
 		return nullptr;
-	}
-
-	void InventoryChanges::ImproveItem(TESBoundObject* item, ExtraDataList* extraDataList, float health) const
-	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&InventoryChanges::ImproveItem)>::type>(Addresses::InventoryChanges::ImproveItem) };
-
-		function(this, item, extraDataList, health);
 	}
 
 	void InventoryChanges::ResetWeight()

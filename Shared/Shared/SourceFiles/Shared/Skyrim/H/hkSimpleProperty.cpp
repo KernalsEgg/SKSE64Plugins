@@ -45,6 +45,7 @@ namespace Skyrim
 	{
 		union
 		{
+		public:
 			float         real;
 			std::uint32_t unsignedInteger32;
 		} cast{
@@ -73,6 +74,7 @@ namespace Skyrim
 	{
 		union
 		{
+		public:
 			float         real;
 			std::uint32_t unsignedInteger32;
 		} cast{

@@ -43,9 +43,9 @@ namespace Skyrim
 
 		constexpr const_pointer data() const noexcept { return this->data_ ? this->data_ : BSStringT::EMPTY; }
 
-		constexpr const_reference front() const noexcept { return operator[](0); }
+		constexpr const_reference front() const noexcept { return this->operator[](0); }
 
-		constexpr const_reference back() const noexcept { return operator[](this->size() - 1); }
+		constexpr const_reference back() const noexcept { return this->operator[](this->size() - 1); }
 
 		// Capacity
 		constexpr bool empty() const noexcept { return this->size() == 0; }
@@ -60,7 +60,7 @@ namespace Skyrim
 		pointer       data_;     // 0
 		size_type     size_;     // 8
 		size_type     capacity_; // A
-		std::uint32_t paddingC;  // C
+		std::uint32_t paddingC_; // C
 	};
 
 	using BSString = BSStringT<char, static_cast<std::uint32_t>(-1), DynamicMemoryManagementPol>;

@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	template <class T>
 	class SettingT :
-		public Setting
+		public Setting // 0
 	{
 	public:
 		// Override

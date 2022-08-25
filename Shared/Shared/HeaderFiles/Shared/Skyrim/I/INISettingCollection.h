@@ -10,7 +10,7 @@
 namespace Skyrim
 {
 	class INISettingCollection :
-		public SettingCollectionList<Setting>
+		public SettingCollectionList<Setting> // 0
 	{
 	public:
 		// Override

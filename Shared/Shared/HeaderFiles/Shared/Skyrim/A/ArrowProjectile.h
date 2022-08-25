@@ -11,7 +11,7 @@ namespace Skyrim
 	class AlchemyItem;
 
 	class ArrowProjectile :
-		public MissileProjectile
+		public MissileProjectile // 0
 	{
 	public:
 		// Override

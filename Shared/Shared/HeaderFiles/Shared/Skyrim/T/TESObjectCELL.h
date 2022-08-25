@@ -74,7 +74,7 @@ namespace Skyrim
 			kDirectionalFade     = 1U << 6,
 			kClipDistance        = 1U << 7,
 			kFogPower            = 1U << 8,
-			kFogMax              = 1U << 9,
+			kFogMaximum          = 1U << 9,
 			kLightFadeDistances  = 1U << 10
 		};
 		static_assert(sizeof(InheritanceFlags) == 0x4);

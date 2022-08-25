@@ -2,7 +2,7 @@
 
 #include "Shared/PCH.h"
 
-#include "Shared/Skyrim/H/hkEnum.h"
+#include "Shared/Skyrim/H/hkEnumeration.h"
 #include "Shared/Skyrim/H/hkReferencedObject.h"
 #include "Shared/Skyrim/H/hkpCollidableCollidableFilter.h"
 #include "Shared/Skyrim/H/hkpRayCollidableFilter.h"
@@ -44,10 +44,10 @@ namespace Skyrim
 		virtual void Initialize(hkpWorld* world); // 3
 
 		// Member variables
-		std::uint64_t                        padding30; // 30
-		hkEnum<hkpFilterType, std::uint32_t> type;      // 38
-		std::uint32_t                        padding3C; // 3C
-		std::uint64_t                        padding40; // 40
+		std::uint64_t                               padding30; // 30
+		hkEnumeration<hkpFilterType, std::uint32_t> type;      // 38
+		std::uint32_t                               padding3C; // 3C
+		std::uint64_t                               padding40; // 40
 	};
 	static_assert(offsetof(hkpCollisionFilter, type) == 0x38);
 	static_assert(sizeof(hkpCollisionFilter) == 0x48);

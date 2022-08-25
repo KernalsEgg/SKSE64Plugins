@@ -32,12 +32,12 @@ namespace Skyrim
 		kConvex             = 19,
 		kMoppEmbedded       = 20,
 		kConvexPiece        = 21,
-		kMultiSphere        = 22,
+		kMultipleSphere     = 22,
 		kConvexList         = 23,
 		kTriangleCollection = 24,
-		kMultiRay           = 25,
+		kMultipleRay        = 25,
 		kHeightField        = 26,
-		kSphereRep          = 27,
+		kSphereRepresents   = 27,
 		kBV                 = 28,
 		kPlane              = 29,
 		kPhantomCallback    = 30,
@@ -48,4 +48,5 @@ namespace Skyrim
 
 		kAll = static_cast<std::underlying_type_t<hkpShapeType>>(-1)
 	};
+	static_assert(sizeof(hkpShapeType) == 0x4);
 }

@@ -592,11 +592,11 @@ namespace Skyrim
 		constexpr pointer       data() noexcept { return allocator_type::data(); }
 		constexpr const_pointer data() const noexcept { return allocator_type::data(); }
 
-		constexpr reference       front() noexcept { return operator[](0); }
-		constexpr const_reference front() const noexcept { return operator[](0); }
+		constexpr reference       front() noexcept { return this->operator[](0); }
+		constexpr const_reference front() const noexcept { return this->operator[](0); }
 
-		constexpr reference       back() noexcept { return operator[](this->size() - 1); }
-		constexpr const_reference back() const noexcept { return operator[](this->size() - 1); }
+		constexpr reference       back() noexcept { return this->operator[](this->size() - 1); }
+		constexpr const_reference back() const noexcept { return this->operator[](this->size() - 1); }
 
 		// Capacity
 		constexpr bool empty() const noexcept { return BSTArrayBase::empty(); }
@@ -827,11 +827,11 @@ namespace Skyrim
 		constexpr pointer       data() noexcept { return this->data_; }
 		constexpr const_pointer data() const noexcept { return this->data_; }
 
-		constexpr reference       front() noexcept { return operator[](0); }
-		constexpr const_reference front() const noexcept { return operator[](0); }
+		constexpr reference       front() noexcept { return this->operator[](0); }
+		constexpr const_reference front() const noexcept { return this->operator[](0); }
 
-		constexpr reference       back() noexcept { return operator[](this->size() - 1); }
-		constexpr const_reference back() const noexcept { return operator[](this->size() - 1); }
+		constexpr reference       back() noexcept { return this->operator[](this->size() - 1); }
+		constexpr const_reference back() const noexcept { return this->operator[](this->size() - 1); }
 
 		// Capacity
 		constexpr bool empty() const noexcept { return this->size() == 0; }

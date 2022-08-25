@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	template <class T>
 	class SettingCollectionMap :
-		public SettingCollection<T>
+		public SettingCollection<T> // 0
 	{
 	public:
 		// Override

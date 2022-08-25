@@ -21,4 +21,4 @@ namespace Skyrim
 	};
 	static_assert(offsetof(CharEvent, keyCode) == 0x18);
 	static_assert(sizeof(CharEvent) == 0x20);
-};
+}

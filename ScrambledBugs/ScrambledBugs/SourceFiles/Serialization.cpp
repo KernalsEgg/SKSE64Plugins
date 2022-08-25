@@ -87,7 +87,7 @@ namespace ScrambledBugs::Serialization
 
 		std::uint32_t type, version, length;
 
-		while (serializationInterface->GetNextRecordInfo(type, version, length))
+		while (serializationInterface->GetNextRecordInformation(type, version, length))
 		{
 			switch (type)
 			{

@@ -293,10 +293,76 @@ namespace Skyrim::Addresses
 		inline const std::uintptr_t StaminaPowerBashBase{ Relocation::AddressLibrary::GetSingleton().GetAddress(505219, 374463) };
 	}
 
+	namespace GFxValue
+	{
+		namespace ObjectInterface
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xEC83A0, 1.6.318.0: SkyrimSE.exe + 0xF0AA10</summary>
+			inline const std::uintptr_t AttachMovie{ Relocation::AddressLibrary::GetSingleton().GetAddress(80197, 82219) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xEC9490, 1.6.318.0: SkyrimSE.exe + 0xF0BC40</summary>
+			inline const std::uintptr_t DeleteMember{ Relocation::AddressLibrary::GetSingleton().GetAddress(80207, 82230) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xEC9BD0, 1.6.318.0: SkyrimSE.exe + 0xF0C310</summary>
+			inline const std::uintptr_t GetArraySize{ Relocation::AddressLibrary::GetSingleton().GetAddress(80214, 82237) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xEC9C20, 1.6.318.0: SkyrimSE.exe + 0xF0C370</summary>
+			inline const std::uintptr_t GetDisplayInformation{ Relocation::AddressLibrary::GetSingleton().GetAddress(80216, 82239) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xEC9F30, 1.6.318.0: SkyrimSE.exe + 0xF0C690</summary>
+			inline const std::uintptr_t GetElement{ Relocation::AddressLibrary::GetSingleton().GetAddress(80218, 82241) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECA150, 1.6.318.0: SkyrimSE.exe + 0xF0C8B0</summary>
+			inline const std::uintptr_t GetMember{ Relocation::AddressLibrary::GetSingleton().GetAddress(80222, 82245) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECA570, 1.6.318.0: SkyrimSE.exe + 0xF0CCC0</summary>
+			inline const std::uintptr_t GotoAndPlay{ Relocation::AddressLibrary::GetSingleton().GetAddress(80230, 82253) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECA620, 1.6.318.0: SkyrimSE.exe + 0xF0CD60</summary>
+			inline const std::uintptr_t HasMember{ Relocation::AddressLibrary::GetSingleton().GetAddress(80231, 82254) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECA860, 1.6.318.0: SkyrimSE.exe + 0xF0CFD0</summary>
+			inline const std::uintptr_t Invoke{ Relocation::AddressLibrary::GetSingleton().GetAddress(80233, 82256) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECB080, 1.6.318.0: SkyrimSE.exe + 0xF0D6A0</summary>
+			inline const std::uintptr_t ObjectAddReference{ Relocation::AddressLibrary::GetSingleton().GetAddress(80244, 82269) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECB0E0, 1.6.318.0: SkyrimSE.exe + 0xF0D700</summary>
+			inline const std::uintptr_t ObjectRelease{ Relocation::AddressLibrary::GetSingleton().GetAddress(80245, 82270) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECB300, 1.6.318.0: SkyrimSE.exe + 0xF0D920</summary>
+			inline const std::uintptr_t PushBack{ Relocation::AddressLibrary::GetSingleton().GetAddress(80248, 82273) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECB6C0, 1.6.318.0: SkyrimSE.exe + 0xF0DDB0</summary>
+			inline const std::uintptr_t RemoveElements{ Relocation::AddressLibrary::GetSingleton().GetAddress(80252, 82280) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECBD20, 1.6.318.0: SkyrimSE.exe + 0xF0E120</summary>
+			inline const std::uintptr_t SetArraySize{ Relocation::AddressLibrary::GetSingleton().GetAddress(80261, 82285) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECBDB0, 1.6.318.0: SkyrimSE.exe + 0xF0E1A0</summary>
+			inline const std::uintptr_t SetDisplayInformation{ Relocation::AddressLibrary::GetSingleton().GetAddress(80263, 82287) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECC960, 1.6.318.0: SkyrimSE.exe + 0xF0EF70</summary>
+			inline const std::uintptr_t SetElement{ Relocation::AddressLibrary::GetSingleton().GetAddress(80265, 82289) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECCBA0, 1.6.318.0: SkyrimSE.exe + 0xF0F1C0</summary>
+			inline const std::uintptr_t SetMember{ Relocation::AddressLibrary::GetSingleton().GetAddress(80268, 82292) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xECCCF0, 1.6.318.0: SkyrimSE.exe + 0xF0F2C0</summary>
+			inline const std::uintptr_t SetText{ Relocation::AddressLibrary::GetSingleton().GetAddress(80270, 82293) };
+		}
+	}
+
 	namespace GMemory
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x3032C50, 1.6.318.0: SkyrimSE.exe + 0x30CC600</summary>
 		inline const std::uintptr_t GlobalHeap{ Relocation::AddressLibrary::GetSingleton().GetAddress(525584, 412058) };
+	}
+
+	namespace GString
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xED3A50, 1.6.318.0: SkyrimSE.exe + 0xF1ACC0</summary>
+		inline const std::uintptr_t Constructor{ Relocation::AddressLibrary::GetSingleton().GetAddress(80446, 82562) };
 	}
 
 	namespace hkReferencedObject
@@ -354,9 +420,6 @@ namespace Skyrim::Addresses
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1658668, 1.6.318.0: SkyrimSE.exe + 0x174E2D0</summary>
 			inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(260831, 207680) };
 		}
-
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1EC6D0, 1.6.318.0: SkyrimSE.exe + 0x1F8070</summary>
-		inline const std::uintptr_t ImproveItem{ Relocation::AddressLibrary::GetSingleton().GetAddress(15905, 16145) };
 	}
 
 	namespace InventoryEntryData

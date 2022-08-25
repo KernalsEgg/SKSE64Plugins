@@ -92,14 +92,14 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			float dayNear;    // 0
-			float dayFar;     // 4
-			float nightNear;  // 8
-			float nightFar;   // C
-			float dayPower;   // 10
-			float nightPower; // 14
-			float dayMax;     // 18
-			float nightMax;   // 1C
+			float dayNear;      // 0
+			float dayFar;       // 4
+			float nightNear;    // 8
+			float nightFar;     // C
+			float dayPower;     // 10
+			float nightPower;   // 14
+			float dayMaximum;   // 18
+			float nightMaximum; // 1C
 		};
 		static_assert(offsetof(FogDistance, dayNear) == 0x0);
 		static_assert(offsetof(FogDistance, dayFar) == 0x4);
@@ -107,8 +107,8 @@ namespace Skyrim
 		static_assert(offsetof(FogDistance, nightFar) == 0xC);
 		static_assert(offsetof(FogDistance, dayPower) == 0x10);
 		static_assert(offsetof(FogDistance, nightPower) == 0x14);
-		static_assert(offsetof(FogDistance, dayMax) == 0x18);
-		static_assert(offsetof(FogDistance, nightMax) == 0x1C);
+		static_assert(offsetof(FogDistance, dayMaximum) == 0x18);
+		static_assert(offsetof(FogDistance, nightMaximum) == 0x1C);
 		static_assert(sizeof(FogDistance) == 0x20);
 
 		struct Sound

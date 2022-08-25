@@ -34,7 +34,7 @@ namespace Skyrim
 		static_assert(sizeof(FreeBlock) == 0x20);
 
 		struct FreeTreeNode :
-			public Block
+			public Block // 0
 		{
 		public:
 			// Member variables

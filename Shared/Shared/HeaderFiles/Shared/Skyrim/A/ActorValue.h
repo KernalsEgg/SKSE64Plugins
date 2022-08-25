@@ -13,7 +13,7 @@ namespace Skyrim
 		kHealth          = 24,
 		kMagicka         = 25,
 		kStamina         = 26,
-		kSpeedMult       = 30,
+		kSpeedMultiplier = 30,
 		kInventoryWeight = 31,
 		kCarryWeight     = 32,
 		kPoisonResist    = 40,

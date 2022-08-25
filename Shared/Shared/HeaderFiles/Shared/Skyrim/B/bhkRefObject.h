@@ -2,7 +2,7 @@
 
 #include "Shared/PCH.h"
 
-#include "Shared/Skyrim/H/hkRefPtr.h"
+#include "Shared/Skyrim/H/hkReferencePointer.h"
 #include "Shared/Skyrim/N/NiObject.h"
 
 
@@ -26,7 +26,7 @@ namespace Skyrim
 		virtual void Unknown26(bhkRefObject*); // 26
 
 		// Member variables
-		hkRefPtr<hkReferencedObject> referencedObject; // 10
+		hkReferencePointer<hkReferencedObject> referencedObject; // 10
 	};
 	static_assert(offsetof(bhkRefObject, referencedObject) == 0x10);
 	static_assert(sizeof(bhkRefObject) == 0x18);

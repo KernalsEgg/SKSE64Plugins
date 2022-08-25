@@ -15,15 +15,17 @@
 #include <d3d9types.h>
 #include <memoryapi.h>
 
-#include <algorithm>       // std::find, std::lower_bound, std::min, std::sort
+#include <algorithm>       // std::find, std::lower_bound, std::max, std::min, std::sort
 #include <atomic>          // std::atomic_ref, std::atomic_size_t
 #include <chrono>          // std::chrono
 #include <cmath>           // std::abs, std::ceil, std::pow, std::sqrt
 #include <compare>         // std::strong_ordering
 #include <concepts>        // std::same_as
+#include <cstdarg>         // std::va_list
 #include <cstddef>         // offsetof, std::nullptr_t, std::ptrdiff_t, std::size_t
 #include <cstdint>         // Fixed width integer types
-#include <cstring>         // std::memcpy, std::memmove, std::memset
+#include <cstring>         // std::memcpy, std::memmove, std::memset, std::strcmp, std::strlen
+#include <cwchar>          // std::wcscoll
 #include <exception>       // std::terminate
 #include <filesystem>      // std::filesystem::path
 #include <fstream>         // std::ifstream, std::ofstream

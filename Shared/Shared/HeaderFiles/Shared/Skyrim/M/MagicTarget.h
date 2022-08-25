@@ -2,6 +2,8 @@
 
 #include "Shared/PCH.h"
 
+#include "Shared/Skyrim/B/BSSimpleList.h"
+
 
 
 namespace Skyrim
@@ -13,9 +15,6 @@ namespace Skyrim
 	class MagicItem;
 	class TESBoundObject;
 	class TESObjectREFR;
-
-	template <class T>
-	class BSSimpleList;
 
 	class MagicTarget
 	{
