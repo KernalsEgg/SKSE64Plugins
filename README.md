@@ -1,25 +1,28 @@
 ## Build Dependencies
 ### Actor Base Perk Fix
-* [fmt 8.1.1](https://github.com/fmtlib/fmt)
+* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 ### Actor Limit Fix
-* [fmt 8.1.1](https://github.com/fmtlib/fmt)
-* [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
+* [fmt 9.0.0](https://github.com/fmtlib/fmt)
+* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
 ### Bug Fixes SSE
-* [fmt 8.1.1](https://github.com/fmtlib/fmt)
-* [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
+* [fmt 9.0.0](https://github.com/fmtlib/fmt)
+* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
 ### Console Command Companion
-* [fmt 8.1.1](https://github.com/fmtlib/fmt)
-* [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
+* [fmt 9.0.0](https://github.com/fmtlib/fmt)
+* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
 ### Log Inventory Item Rotation
-* [fmt 8.1.1](https://github.com/fmtlib/fmt)
+* [fmt 9.0.0](https://github.com/fmtlib/fmt)
+### Power Attack Notifications
+* [fmt 9.0.0](https://github.com/fmtlib/fmt)
+* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
 ### Prioritize Stolen Items
-* [fmt 8.1.1](https://github.com/fmtlib/fmt)
+* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 ### Scrambled Bugs
-* [fmt 8.1.1](https://github.com/fmtlib/fmt)
-* [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
+* [fmt 9.0.0](https://github.com/fmtlib/fmt)
+* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
 ### Trails
-* [fmt 8.1.1](https://github.com/fmtlib/fmt)
-* [JSON for Modern C++ 3.10.5](https://github.com/nlohmann/json)
+* [fmt 9.0.0](https://github.com/fmtlib/fmt)
+* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
 
 ## End-User Dependencies
 * [SKSE64](https://github.com/ianpatt/skse64)
