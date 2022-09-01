@@ -4,6 +4,8 @@
 ### Actor Limit Fix
 * [fmt 9.0.0](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
+### Barter Limit Fix
+* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 ### Bug Fixes SSE
 * [fmt 9.0.0](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
