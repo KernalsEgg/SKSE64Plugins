@@ -69,11 +69,11 @@ namespace Skyrim
 	};
 	static_assert(sizeof(hkArray<void*>) == 0x10);
 
-	template <class T, std::size_t N, class Allocator = void>
+	template <class T, std::size_t Count, class Allocator = void>
 	class hkInplaceArray :
 		public hkArray<T, Allocator> // 0
 	{
 	public:
-		T storage[N]; // 10
+		T storage[Count]; // 10
 	};
 }

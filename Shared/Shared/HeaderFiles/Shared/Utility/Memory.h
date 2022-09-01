@@ -26,13 +26,13 @@ namespace Utility::Memory
 		}
 	};
 
-	template <class Last, std::size_t N>
-	struct SizeOf<Last[N]>
+	template <class Last, std::size_t Count>
+	struct SizeOf<Last[Count]>
 	{
 	public:
 		static std::size_t Implementation()
 		{
-			return Memory::SizeOf<Last>::Implementation() * N;
+			return Memory::SizeOf<Last>::Implementation() * Count;
 		}
 	};
 
@@ -63,8 +63,8 @@ namespace Utility::Memory
 	template <class Last>
 	bool MatchPattern(std::uintptr_t address, const Last& last);
 
-	template <class Last, std::size_t N>
-	bool MatchPattern(std::uintptr_t address, const Last (&last)[N]);
+	template <class Last, std::size_t Count>
+	bool MatchPattern(std::uintptr_t address, const Last (&last)[Count]);
 
 	template <class Last>
 	bool MatchPattern(std::uintptr_t address, const std::optional<Last>& last);
@@ -78,8 +78,8 @@ namespace Utility::Memory
 	template <class Last>
 	void Write(std::uintptr_t address, const Last& last);
 
-	template <class Last, std::size_t N>
-	void Write(std::uintptr_t address, const Last (&last)[N]);
+	template <class Last, std::size_t Count>
+	void Write(std::uintptr_t address, const Last (&last)[Count]);
 
 	template <class Last>
 	void Write(std::uintptr_t address, const std::optional<Last>& last);
@@ -101,10 +101,10 @@ namespace Utility::Memory
 		return *reinterpret_cast<Last*>(address) == last;
 	}
 
-	template <class Last, std::size_t N>
-	bool MatchPattern(std::uintptr_t address, const Last (&last)[N])
+	template <class Last, std::size_t Count>
+	bool MatchPattern(std::uintptr_t address, const Last (&last)[Count])
 	{
-		for (std::size_t index = 0; index < N; ++index)
+		for (std::size_t index = 0; index < Count; ++index)
 		{
 			if (!Memory::MatchPattern(address + (Memory::SizeOf<Last>::Implementation() * index), last[index]))
 			{
@@ -146,10 +146,10 @@ namespace Utility::Memory
 		*reinterpret_cast<Last*>(address) = last;
 	}
 
-	template <class Last, std::size_t N>
-	void Write(std::uintptr_t address, const Last (&last)[N])
+	template <class Last, std::size_t Count>
+	void Write(std::uintptr_t address, const Last (&last)[Count])
 	{
-		for (std::size_t index = 0; index < N; ++index)
+		for (std::size_t index = 0; index < Count; ++index)
 		{
 			Memory::Write(address + (Memory::SizeOf<Last>::Implementation() * index), last[index]);
 		}

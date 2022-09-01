@@ -142,6 +142,9 @@
     <Filter Include="Source Files\Shared\Skyrim\C">
       <UniqueIdentifier>{7e0a6c4e-b6ef-4388-b627-6dbada75968a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Shared\Skyrim\L">
+      <UniqueIdentifier>{c8fd837b-641c-4c9d-b58d-77b965bdfa2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HeaderFiles\Shared\PCH.h">
@@ -1584,6 +1587,36 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GRendererEventHandler.h">
       <Filter>Header Files\Shared\Skyrim\G</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ContainerMenu.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ItemList.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\StandardItemData.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDefaultObjectManager.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IMessageBoxCallback.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConfirmLevelUpAttributeCallback.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\L\LevelUpMenu.h">
+      <Filter>Header Files\Shared\Skyrim\L</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UIMessageQueue.h">
+      <Filter>Header Files\Shared\Skyrim\U</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UIMessage.h">
+      <Filter>Header Files\Shared\Skyrim\U</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSTMessageQueue.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PCH.cpp">
@@ -1906,6 +1939,18 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GRendererEventHandler.cpp">
       <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\I\ItemList.cpp">
+      <Filter>Source Files\Shared\Skyrim\I</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDefaultObjectManager.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\C\ContainerMenu.cpp">
+      <Filter>Source Files\Shared\Skyrim\C</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\U\UIMessageQueue.cpp">
+      <Filter>Source Files\Shared\Skyrim\U</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

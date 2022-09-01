@@ -175,7 +175,7 @@ namespace Skyrim
 	static_assert(sizeof(BSTArrayHeapAllocator<void*>) == 0x10);
 
 	// CommonLibSSE incorrectly implements move, release, and setting allocator traits
-	template <class T, std::uint32_t N>
+	template <class T, std::uint32_t Count>
 	class BSTSmallArrayHeapAllocator
 	{
 	public:
@@ -233,7 +233,7 @@ namespace Skyrim
 	protected:
 		pointer allocate(size_type count)
 		{
-			if (count > N)
+			if (count > Count)
 			{
 				auto* data = static_cast<pointer>(Skyrim::malloc(sizeof(value_type) * count));
 
@@ -315,7 +315,7 @@ namespace Skyrim
 				std::memmove(this->data(), right.data(), sizeof(value_type) * this->capacity());
 			}
 
-			right.capacity_ = N;
+			right.capacity_ = Count;
 			right.local_    = 1;
 
 			std::memset(right.data(), 0, sizeof(value_type) * right.capacity());
@@ -328,7 +328,7 @@ namespace Skyrim
 				Skyrim::free(this->data_.heap);
 			}
 
-			this->capacity_ = N;
+			this->capacity_ = Count;
 			this->local_    = 1;
 
 			std::memset(this->data(), 0, sizeof(value_type) * this->capacity());
@@ -342,7 +342,7 @@ namespace Skyrim
 		public:
 			// Member variables
 			pointer    heap;
-			value_type local[N]{ 0 };
+			value_type local[Count]{ 0 };
 		} data_; // 8
 	};
 	static_assert(sizeof(BSTSmallArrayHeapAllocator<void*, 1>) == 0x10);
@@ -790,8 +790,8 @@ namespace Skyrim
 	};
 	static_assert(sizeof(BSTArray<void*>) == 0x18);
 
-	template <class T, std::uint32_t N>
-	using BSTSmallArray = BSTArray<T, BSTSmallArrayHeapAllocator<T, N>>;
+	template <class T, std::uint32_t Count>
+	using BSTSmallArray = BSTArray<T, BSTSmallArrayHeapAllocator<T, Count>>;
 	static_assert(sizeof(BSTSmallArray<void*, 1>) == 0x18);
 
 	template <class T>

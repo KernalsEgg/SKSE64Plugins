@@ -83,6 +83,12 @@ namespace Skyrim::Addresses
 		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(514414, 400561) };
 	}
 
+	namespace BGSDefaultObjectManager
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xF7210, 1.6.318.0: SkyrimSE.exe + 0x182100</summary>
+		inline const std::uintptr_t GetSingleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(10878, 13894) };
+	}
+
 	namespace BGSEntryPointPerkEntry
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x32ECE0, 1.6.318.0: SkyrimSE.exe + 0x3444C0</summary>
@@ -213,6 +219,12 @@ namespace Skyrim::Addresses
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F4C31C, 1.6.318.0: SkyrimSE.exe + 0x2FE6FE4</summary>
 		inline const std::uintptr_t SelectedReferenceHandle{ Relocation::AddressLibrary::GetSingleton().GetAddress(519394, 405935) };
+	}
+
+	namespace ContainerMenu
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F4C3F0, 1.6.318.0: SkyrimSE.exe + 0x2FE70B8</summary>
+		inline const std::uintptr_t TargetReferenceHandle{ Relocation::AddressLibrary::GetSingleton().GetAddress(519421, 405962) };
 	}
 
 	namespace CraftingSubMenus
@@ -434,6 +446,15 @@ namespace Skyrim::Addresses
 		inline const std::uintptr_t IsOwnedBy{ Relocation::AddressLibrary::GetSingleton().GetAddress(15782, 16020) };
 	}
 
+	namespace ItemList
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x856400, 1.6.318.0: SkyrimSE.exe + 0x883290</summary>
+		inline const std::uintptr_t GetSelectedItem{ Relocation::AddressLibrary::GetSingleton().GetAddress(50086, 51017) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x856A50, 1.6.318.0: SkyrimSE.exe + 0x883930</summary>
+		inline const std::uintptr_t Update{ Relocation::AddressLibrary::GetSingleton().GetAddress(50099, 51031) };
+	}
+
 	namespace MagicItem
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x101A30, 1.6.318.0: SkyrimSE.exe + 0x10BCB0</summary>
@@ -648,6 +669,15 @@ namespace Skyrim::Addresses
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1EBEB20, 1.6.318.0: SkyrimSE.exe + 0x1F59320</summary>
 		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(514178, 400327) };
+	}
+
+	namespace UIMessageQueue
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1652D0, 1.6.318.0: SkyrimSE.exe + 0x16ECD0</summary>
+		inline const std::uintptr_t AddMessage{ Relocation::AddressLibrary::GetSingleton().GetAddress(13530, 13631) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1EC0A70, 1.6.318.0: SkyrimSE.exe + 0x1F5B270</summary>
+		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(514285, 400445) };
 	}
 
 	namespace UserEvents

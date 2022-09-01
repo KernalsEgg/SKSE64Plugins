@@ -104,6 +104,12 @@ namespace Skyrim
 	}
 
 	template <class T>
+	inline T* malloc(std::size_t size)
+	{
+		return static_cast<T*>(Skyrim::malloc(size));
+	}
+
+	template <class T>
 	inline T* malloc()
 	{
 		return static_cast<T*>(Skyrim::malloc(sizeof(T)));
@@ -114,6 +120,12 @@ namespace Skyrim
 		auto* memoryManager = MemoryManager::GetSingleton();
 
 		return memoryManager ? memoryManager->Allocate(size, static_cast<std::uint32_t>(alignment), true) : nullptr;
+	}
+
+	template <class T>
+	inline T* aligned_malloc(std::size_t size, std::size_t alignment)
+	{
+		return static_cast<T*>(Skyrim::aligned_malloc(size, alignment));
 	}
 
 	template <class T>

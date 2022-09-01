@@ -7,12 +7,12 @@
 namespace Utility
 {
 	// Based on std::bitset
-	template <class Enum, class Underlying = std::underlying_type_t<Enum>>
-		requires(std::is_enum_v<Enum>)
+	template <class T, class Underlying = std::underlying_type_t<T>>
+		requires(std::is_enum_v<T>)
 	class Enumeration
 	{
 	public:
-		using enumeration_type = Enum;
+		using enumeration_type = T;
 		using underlying_type  = Underlying;
 
 		constexpr Enumeration() noexcept                   = default;

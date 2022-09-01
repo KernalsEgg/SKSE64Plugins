@@ -18,20 +18,22 @@ namespace Skyrim
 		virtual void Unknown5(NiBinaryStream*) = 0; // 5
 
 		// Member functions
-		template <class CharT>
-		bool Read(CharT* string, std::uint32_t count)
+		template <class Character>
+		bool Read(Character* string, std::uint32_t count)
 		{
-			std::uint32_t length = count * sizeof(CharT);
+			std::uint32_t size   = sizeof(Character);
+			std::uint32_t length = count * size;
 
-			return this->Read(string, length, std::addressof(sizeof(CharT))) == length;
+			return this->Read(string, length, std::addressof(size)) == length;
 		}
 
-		template <class CharT>
-		bool Write(const CharT* string, std::uint32_t count)
+		template <class Character>
+		bool Write(const Character* string, std::uint32_t count)
 		{
-			std::uint32_t length = count * sizeof(CharT);
+			std::uint32_t size   = sizeof(Character);
+			std::uint32_t length = count * size;
 
-			return this->Write(string, length, std::addressof(sizeof(CharT))) == length;
+			return this->Write(string, length, std::addressof(size)) == length;
 		}
 
 	protected:

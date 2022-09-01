@@ -28,7 +28,7 @@ namespace Skyrim
 				public BSIntrusiveRefCounted // 0
 			{
 			public:
-				enum class Type : std::uint32_t
+				enum class FilterFlag : std::uint32_t
 				{
 					kNone             = 0,
 					kEnchantWeapon    = 1U << 0,
@@ -39,7 +39,7 @@ namespace Skyrim
 					kEffectArmor      = 1U << 5,
 					kSoulGem          = 1U << 6
 				};
-				static_assert(sizeof(Type) == 0x4);
+				static_assert(sizeof(FilterFlag) == 0x4);
 
 				// Add
 				virtual ~CategoryListEntry();                  // 0
@@ -49,13 +49,13 @@ namespace Skyrim
 				virtual void Unknown4(CategoryListEntry*);     // 4
 
 				// Member variables
-				Utility::Enumeration<Type, std::uint32_t> type;      // C
-				bool                                      equipped;  // 10
-				bool                                      enabled;   // 11
-				std::uint16_t                             padding12; // 12
-				std::uint32_t                             padding14; // 14
+				Utility::Enumeration<FilterFlag, std::uint32_t> filterFlag; // C
+				bool                                            equipped;   // 10
+				bool                                            enabled;    // 11
+				std::uint16_t                                   padding12;  // 12
+				std::uint32_t                                   padding14;  // 14
 			};
-			static_assert(offsetof(CategoryListEntry, type) == 0xC);
+			static_assert(offsetof(CategoryListEntry, filterFlag) == 0xC);
 			static_assert(offsetof(CategoryListEntry, equipped) == 0x10);
 			static_assert(offsetof(CategoryListEntry, enabled) == 0x11);
 			static_assert(sizeof(CategoryListEntry) == 0x18);

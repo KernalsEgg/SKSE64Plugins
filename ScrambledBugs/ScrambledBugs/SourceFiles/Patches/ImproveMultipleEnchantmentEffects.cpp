@@ -73,11 +73,11 @@ namespace ScrambledBugs::Patches
 
 				enchantmentEntry->maximumPower = maximumPower;
 
-				if (enchantmentEntry->type.all(Skyrim::CraftingSubMenus::EnchantConstructMenu::EnchantmentEntry::Type::kEffectWeapon))
+				if (enchantmentEntry->filterFlag.all(Skyrim::CraftingSubMenus::EnchantConstructMenu::EnchantmentEntry::FilterFlag::kEffectWeapon))
 				{
 					enchantmentEntry->power = power;
 				}
-				else if (enchantmentEntry->type.all(Skyrim::CraftingSubMenus::EnchantConstructMenu::EnchantmentEntry::Type::kEffectArmor))
+				else if (enchantmentEntry->filterFlag.all(Skyrim::CraftingSubMenus::EnchantConstructMenu::EnchantmentEntry::FilterFlag::kEffectArmor))
 				{
 					power = maximumPower * createEffectFunctor->effectiveness;
 

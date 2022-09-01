@@ -9,7 +9,7 @@
 
 namespace Skyrim
 {
-	template <std::int32_t N>
+	template <std::int32_t Count>
 	class FxResponseArguments :
 		public FxResponseArgumentsBase // 0
 	{
@@ -22,7 +22,7 @@ namespace Skyrim
 		// Member functions
 		void Add(const GFxValue& value)
 		{
-			if (this->index_ > N)
+			if (this->index_ > Count)
 			{
 				return;
 			}
@@ -39,8 +39,8 @@ namespace Skyrim
 
 	private:
 		// Member variables
-		GFxValue      values_[N + 1]; // 0
-		std::uint32_t index_;         // ?
+		GFxValue      values_[Count + 1]; // 0
+		std::uint32_t index_;             // ?
 	};
 	static_assert(sizeof(FxResponseArguments<1>) == 0x40);
 }

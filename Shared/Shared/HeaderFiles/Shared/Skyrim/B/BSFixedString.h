@@ -64,6 +64,7 @@ namespace Skyrim
 			return *this;
 		}
 
+		// Element access
 		constexpr const_reference operator[](size_type index) const noexcept { return this->data()[index]; }
 
 		constexpr const_reference front() const noexcept { return this->operator[](0); }
@@ -89,6 +90,7 @@ namespace Skyrim
 
 		constexpr operator std::basic_string_view<value_type>() const { return { this->data(), this->size() }; }
 
+		// Capacity
 		constexpr bool empty() const noexcept { return this->size() == 0; }
 
 		constexpr size_type size() const noexcept
@@ -98,10 +100,13 @@ namespace Skyrim
 			return proxy ? proxy->size() : 0;
 		}
 
+		// Non-member functions
 		friend constexpr bool operator==(const BSFixedString& left, const BSFixedString& right) noexcept { return left.data_ == right.data_ || left.empty() && right.empty(); }
 		friend constexpr bool operator!=(const BSFixedString& left, const BSFixedString& right) noexcept { return !(left == right); }
 
 	private:
+		static constexpr value_type EMPTY[]{ 0 };
+
 		void Acquire();
 
 		constexpr BSStringPool::Entry* GetProxy() noexcept
@@ -113,8 +118,6 @@ namespace Skyrim
 		{
 			return this->data_ ? reinterpret_cast<const BSStringPool::Entry*>(this->data_) - 1 : nullptr;
 		}
-
-		static constexpr value_type EMPTY[]{ 0 };
 
 		// Member functions
 		BSFixedString* Initialize(const_pointer string);

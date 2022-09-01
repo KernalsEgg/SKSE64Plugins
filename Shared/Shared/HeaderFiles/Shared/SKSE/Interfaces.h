@@ -119,12 +119,12 @@ namespace SKSE
 			return this->ReadRecordData(std::addressof(recordData), sizeof(T));
 		}
 
-		template <class T, std::size_t N>
+		template <class T, std::size_t Count>
 			requires(std::is_array_v<T>)
-		std::uint32_t ReadRecordData(T (&recordData)[N])
+		std::uint32_t ReadRecordData(T (&recordData)[Count])
 		const
 		{
-			return this->ReadRecordData(std::addressof(recordData), sizeof(T) * N);
+			return this->ReadRecordData(std::addressof(recordData), sizeof(T) * Count);
 		}
 
 		template <class T>
@@ -134,11 +134,11 @@ namespace SKSE
 			return this->WriteRecord(type, version, std::addressof(record), sizeof(T));
 		}
 
-		template <class T, std::size_t N>
+		template <class T, std::size_t Count>
 			requires(std::is_array_v<T>)
-		bool WriteRecord(std::uint32_t type, std::uint32_t version, const T (&record)[N]) const
+		bool WriteRecord(std::uint32_t type, std::uint32_t version, const T (&record)[Count]) const
 		{
-			return this->WriteRecord(type, version, std::addressof(record), sizeof(T) * N);
+			return this->WriteRecord(type, version, std::addressof(record), sizeof(T) * Count);
 		}
 
 		template <class T>
@@ -148,11 +148,11 @@ namespace SKSE
 			return this->WriteRecordData(std::addressof(recordData), sizeof(T));
 		}
 
-		template <class T, std::size_t N>
+		template <class T, std::size_t Count>
 			requires(std::is_array_v<T>)
-		bool WriteRecordData(const T (&recordData)[N]) const
+		bool WriteRecordData(const T (&recordData)[Count]) const
 		{
-			return this->WriteRecordData(std::addressof(recordData), sizeof(T) * N);
+			return this->WriteRecordData(std::addressof(recordData), sizeof(T) * Count);
 		}
 
 	private:

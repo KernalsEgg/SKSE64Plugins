@@ -6,11 +6,11 @@
 
 namespace Skyrim
 {
-	template <class Enum, class Underlying>
+	template <class T, class Underlying>
 	class hkEnumeration
 	{
 	public:
-		using enumeration_type = Enum;
+		using enumeration_type = T;
 		using underlying_type  = Underlying;
 
 		constexpr hkEnumeration() noexcept

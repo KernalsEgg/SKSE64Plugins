@@ -3,12 +3,15 @@
 #include "Shared/PCH.h"
 
 #include "Shared/Skyrim/F/FxDelegateHandler.h"
+#include "Shared/Skyrim/G/GPointer.h"
 #include "Shared/Utility/Enumeration.h"
 
 
 
 namespace Skyrim
 {
+	class FxDelegate;
+	class GFxMovieView;
 	class UIMessage;
 
 	enum class UIMessageResult : std::uint32_t
@@ -53,16 +56,18 @@ namespace Skyrim
 		virtual void            Unknown8(IMenu*);                   // 8
 
 		// Member variables
-		std::uint64_t                              unknown10;     // 10
+		GPointer<GFxMovieView>                     movieView;     // 10
 		std::int8_t                                depthPriority; // 18
 		std::uint8_t                               padding19;     // 19
 		std::uint16_t                              padding1A;     // 1A
 		Utility::Enumeration<Flags, std::uint32_t> menuFlags;     // 1C
 		std::uint32_t                              unknown20;     // 20
 		std::uint32_t                              padding24;     // 24
-		std::uint64_t                              unknown28;     // 28
+		GPointer<FxDelegate>                       delegate;      // 28
 	};
+	static_assert(offsetof(IMenu, movieView) == 0x10);
 	static_assert(offsetof(IMenu, depthPriority) == 0x18);
 	static_assert(offsetof(IMenu, menuFlags) == 0x1C);
+	static_assert(offsetof(IMenu, delegate) == 0x28);
 	static_assert(sizeof(IMenu) == 0x30);
 }

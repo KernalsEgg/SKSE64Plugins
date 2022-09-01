@@ -13,6 +13,7 @@ namespace Skyrim
 		kEnchantment         = 0x15, // EnchantmentItem
 		kScroll              = 0x17, // ScrollItem
 		kArmor               = 0x1A, // TESObjectARMO
+		kBook                = 0x1B, // TESObjectBOOK
 		kContainer           = 0x1C, // TESObjectCONT
 		kLight               = 0x1F, // TESObjectLIGH
 		kStatic              = 0x22, // TESObjectSTAT

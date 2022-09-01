@@ -11,6 +11,7 @@ namespace Skyrim
 	class Actor;
 	class BGSEquipSlot;
 	class ExtraDataList;
+	class InventoryEntryData;
 	class TESBoundObject;
 
 	class ActorEquipManager :
@@ -25,7 +26,7 @@ namespace Skyrim
 		bool UnequipItem(Actor* actor, TESBoundObject* item, ExtraDataList* extraDataList, std::uint32_t itemCount, BGSEquipSlot* equipSlot, bool queueEquip, bool forceEquip, bool playSounds, bool applyNow, BGSEquipSlot* replacementEquipSlot);
 
 		// Member variables
-		bool initialized;
+		bool initialized; // 1
 	};
 	static_assert(offsetof(ActorEquipManager, initialized) == 0x1);
 	static_assert(sizeof(ActorEquipManager) == 0x2);

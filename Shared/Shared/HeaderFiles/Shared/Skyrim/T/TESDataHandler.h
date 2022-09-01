@@ -18,6 +18,7 @@ namespace Skyrim
 	struct TESObjectList;
 
 	class BGSAddonNode;
+	class InventoryChanges;
 	class TESFile;
 	class TESForm;
 	class TESObjectCELL;
@@ -80,7 +81,7 @@ namespace Skyrim
 		std::uint64_t                     unknownDA0;                                          // DA0
 		std::uint64_t                     unknownDA8;                                          // DA8
 		std::uint64_t                     unknownDB0;                                          // DB0
-		std::uint64_t                     unknownDB8;                                          // DB8
+		InventoryChanges*                 barterContainerInventoryChanges;                     // DB8
 	};
 	static_assert(offsetof(TESDataHandler, objectList) == 0x8);
 	static_assert(offsetof(TESDataHandler, formArrays) == 0x10);
@@ -92,5 +93,6 @@ namespace Skyrim
 	static_assert(offsetof(TESDataHandler, activeFile) == 0xD58);
 	static_assert(offsetof(TESDataHandler, files) == 0xD60);
 	static_assert(offsetof(TESDataHandler, compiledFileCollection) == 0xD70);
+	static_assert(offsetof(TESDataHandler, barterContainerInventoryChanges) == 0xDB8);
 	static_assert(sizeof(TESDataHandler) == 0xDC0);
 }
