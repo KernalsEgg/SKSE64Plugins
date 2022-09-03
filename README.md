@@ -25,6 +25,8 @@
 ### Trails
 * [fmt 9.0.0](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
+### Vendor Respawn Fix
+* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 
 ## End-User Dependencies
 * [SKSE64](https://github.com/ianpatt/skse64)
