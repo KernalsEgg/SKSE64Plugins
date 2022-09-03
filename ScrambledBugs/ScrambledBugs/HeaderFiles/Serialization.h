@@ -9,33 +9,38 @@
 
 
 
-namespace ScrambledBugs::Serialization
+namespace ScrambledBugs
 {
-	enum : std::uint32_t
+	class Serialization
 	{
-		kUniqueID = 'ECF' // SMBL
-	};
-
-	struct EnchantmentCost
-	{
+	public:
 		enum : std::uint32_t
 		{
-			kType    = 'ENCH', // ECST
-			kVersion = 1
+			kUniqueID = 'ECF' // SMBL
 		};
 
-		static bool Deserialize(SKSE::SerializationInterface* serializationInterface);
-		static bool Serialize(SKSE::SerializationInterface* serializationInterface, Skyrim::EnchantmentItem* enchantment);
+		struct EnchantmentCost
+		{
+		public:
+			enum : std::uint32_t
+			{
+				kType    = 'ENCH', // ECST
+				kVersion = 1
+			};
 
-		Skyrim::FormID                                                      formID;               // 0
-		std::int32_t                                                        enchantmentCost;      // 4
-		Utility::Enumeration<Skyrim::EnchantmentItem::Flags, std::uint32_t> enchantmentItemFlags; // 8
+			bool LoadGame(SKSE::SerializationInterface* serializationInterface);
+			bool SaveGame(SKSE::SerializationInterface* serializationInterface, Skyrim::EnchantmentItem* enchantment);
+
+			Skyrim::FormID                                                      formID;               // 0
+			std::int32_t                                                        enchantmentCost;      // 4
+			Utility::Enumeration<Skyrim::EnchantmentItem::Flags, std::uint32_t> enchantmentItemFlags; // 8
+		};
+		static_assert(offsetof(EnchantmentCost, formID) == 0x0);
+		static_assert(offsetof(EnchantmentCost, enchantmentCost) == 0x4);
+		static_assert(offsetof(EnchantmentCost, enchantmentItemFlags) == 0x8);
+		static_assert(sizeof(EnchantmentCost) == 0xC);
+
+		static void LoadGame(SKSE::SerializationInterface* serializationInterface);
+		static void SaveGame(SKSE::SerializationInterface* serializationInterface);
 	};
-	static_assert(offsetof(EnchantmentCost, formID) == 0x0);
-	static_assert(offsetof(EnchantmentCost, enchantmentCost) == 0x4);
-	static_assert(offsetof(EnchantmentCost, enchantmentItemFlags) == 0x8);
-	static_assert(sizeof(EnchantmentCost) == 0xC);
-
-	void Load(SKSE::SerializationInterface* serializationInterface);
-	void Save(SKSE::SerializationInterface* serializationInterface);
 }

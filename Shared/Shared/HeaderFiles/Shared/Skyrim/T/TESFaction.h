@@ -112,7 +112,7 @@ namespace Skyrim
 			TESCondition*    vendorConditions;  // 18
 			BGSListForm*     vendorBuySellList; // 20
 			TESObjectREFR*   merchantContainer; // 28
-			std::uint32_t    lastDayReset;      // 30
+			std::uint32_t    lastDayRespawned;  // 30
 		};
 		static_assert(offsetof(Vendor, startHour) == 0x0);
 		static_assert(offsetof(Vendor, endHour) == 0x2);
@@ -124,7 +124,7 @@ namespace Skyrim
 		static_assert(offsetof(Vendor, vendorConditions) == 0x18);
 		static_assert(offsetof(Vendor, vendorBuySellList) == 0x20);
 		static_assert(offsetof(Vendor, merchantContainer) == 0x28);
-		static_assert(offsetof(Vendor, lastDayReset) == 0x30);
+		static_assert(offsetof(Vendor, lastDayRespawned) == 0x30);
 		static_assert(sizeof(Vendor) == 0x38);
 
 		struct Rank

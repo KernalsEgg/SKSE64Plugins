@@ -93,7 +93,7 @@ namespace ScrambledBugs::Patches
 			{
 				power = maximumPower;
 
-				if (enchantmentEntry->type.all(Skyrim::CraftingSubMenus::EnchantConstructMenu::EnchantmentEntry::Type::kEffectArmor))
+				if (enchantmentEntry->filterFlag.all(Skyrim::CraftingSubMenus::EnchantConstructMenu::EnchantmentEntry::FilterFlag::kEffectArmor))
 				{
 					power = maximumPower * createEffectFunctor->effectiveness;
 

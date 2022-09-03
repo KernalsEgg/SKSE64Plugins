@@ -7,4 +7,5 @@
 #include <memory>     // std::addressof
 #include <optional>   // std::optional
 #include <queue>      // std::priority_queue
+#include <tuple>      // std::tuple
 #include <utility>    // std::pair

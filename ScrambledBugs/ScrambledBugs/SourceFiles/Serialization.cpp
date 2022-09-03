@@ -10,25 +10,24 @@
 
 
 
-namespace ScrambledBugs::Serialization
+namespace ScrambledBugs
 {
-	bool EnchantmentCost::Deserialize(SKSE::SerializationInterface* serializationInterface)
+	bool Serialization::EnchantmentCost::LoadGame(SKSE::SerializationInterface* serializationInterface)
 	{
-		EnchantmentCost record;
-		serializationInterface->ReadRecordData(record);
+		serializationInterface->ReadRecordData(*this);
 
-		if (!serializationInterface->ResolveFormID(record.formID, record.formID))
+		if (!serializationInterface->ResolveFormID(this->formID, this->formID))
 		{
-			Utility::Log::Error("Failed to resolve form ID, 0x{:X}.", record.formID);
+			Utility::Log::Error("Failed to resolve form ID, 0x{:X}.", this->formID);
 
 			return false;
 		}
 
-		auto* enchantment = static_cast<Skyrim::EnchantmentItem*>(Skyrim::TESDataHandler::GetForm(record.formID));
+		auto* enchantment = static_cast<Skyrim::EnchantmentItem*>(Skyrim::TESDataHandler::GetForm(this->formID));
 
 		if (!enchantment || enchantment->formType != Skyrim::FormType::kEnchantment)
 		{
-			Utility::Log::Error("Enchantment not found, form ID 0x{:X}.", record.formID);
+			Utility::Log::Error("Enchantment not found, form ID 0x{:X}.", this->formID);
 
 			return false;
 		}
@@ -37,18 +36,18 @@ namespace ScrambledBugs::Serialization
 
 		if (!enchantmentItemData)
 		{
-			Utility::Log::Error("Data not found, form ID 0x{:X}.", record.formID);
+			Utility::Log::Error("Data not found, form ID 0x{:X}.", this->formID);
 
 			return false;
 		}
 
-		enchantmentItemData->enchantmentCost      = record.enchantmentCost;
-		enchantmentItemData->enchantmentItemFlags = record.enchantmentItemFlags;
+		enchantmentItemData->enchantmentCost      = this->enchantmentCost;
+		enchantmentItemData->enchantmentItemFlags = this->enchantmentItemFlags;
 
 		return true;
 	}
 
-	bool EnchantmentCost::Serialize(SKSE::SerializationInterface* serializationInterface, Skyrim::EnchantmentItem* enchantment)
+	bool Serialization::EnchantmentCost::SaveGame(SKSE::SerializationInterface* serializationInterface, Skyrim::EnchantmentItem* enchantment)
 	{
 		if (!enchantment)
 		{
@@ -66,17 +65,16 @@ namespace ScrambledBugs::Serialization
 			return false;
 		}
 
-		EnchantmentCost record;
-		record.formID               = enchantment->formID;
-		record.enchantmentCost      = enchantment->enchantmentItemData.enchantmentCost;
-		record.enchantmentItemFlags = enchantment->enchantmentItemData.enchantmentItemFlags;
+		this->formID               = enchantment->formID;
+		this->enchantmentCost      = enchantment->enchantmentItemData.enchantmentCost;
+		this->enchantmentItemFlags = enchantment->enchantmentItemData.enchantmentItemFlags;
 
-		serializationInterface->WriteRecord(EnchantmentCost::kType, EnchantmentCost::kVersion, record);
+		serializationInterface->WriteRecord(EnchantmentCost::kType, EnchantmentCost::kVersion, *this);
 
 		return true;
 	}
 
-	void Load(SKSE::SerializationInterface* serializationInterface)
+	void Serialization::LoadGame(SKSE::SerializationInterface* serializationInterface)
 	{
 		Utility::Log::Information("Loading...");
 
@@ -112,7 +110,7 @@ namespace ScrambledBugs::Serialization
 						continue;
 					}
 
-					EnchantmentCost::Deserialize(serializationInterface);
+					EnchantmentCost().LoadGame(serializationInterface);
 
 					break;
 				}
@@ -126,7 +124,7 @@ namespace ScrambledBugs::Serialization
 		Utility::Log::Information("Loaded.");
 	}
 
-	void Save(SKSE::SerializationInterface* serializationInterface)
+	void Serialization::SaveGame(SKSE::SerializationInterface* serializationInterface)
 	{
 		Utility::Log::Information("Saving...");
 
@@ -139,12 +137,12 @@ namespace ScrambledBugs::Serialization
 
 			for (const auto& armorEnchantment : persistentFormManager->armorEnchantments)
 			{
-				EnchantmentCost::Serialize(serializationInterface, armorEnchantment.enchantment);
+				EnchantmentCost().SaveGame(serializationInterface, armorEnchantment.enchantment);
 			}
 
 			for (const auto& weaponEnchantment : persistentFormManager->weaponEnchantments)
 			{
-				EnchantmentCost::Serialize(serializationInterface, weaponEnchantment.enchantment);
+				EnchantmentCost().SaveGame(serializationInterface, weaponEnchantment.enchantment);
 			}
 		}
 
