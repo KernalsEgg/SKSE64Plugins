@@ -1,32 +1,16 @@
 ## Build Dependencies
-### Actor Base Perk Fix
-* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 ### Actor Limit Fix
-* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
-### Barter Limit Fix
-* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 ### Bug Fixes SSE
-* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
 ### Console Command Companion
-* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
-### Log Inventory Item Rotation
-* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 ### Power Attack Notifications
-* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
-### Prioritize Stolen Items
-* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 ### Scrambled Bugs
-* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
 ### Trails
-* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
-### Vendor Respawn Fix
-* [fmt 9.0.0](https://github.com/fmtlib/fmt)
 
 ## End-User Dependencies
 * [SKSE64](https://github.com/ianpatt/skse64)
