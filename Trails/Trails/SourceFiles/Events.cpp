@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Events.h"
 
@@ -60,10 +60,10 @@ namespace Trails::Events
 		return Skyrim::BSEventNotifyControl::kContinue;
 	}
 
-	FootstepEventSink* FootstepEventSink::GetSingleton()
+	FootstepEventSink& FootstepEventSink::GetSingleton()
 	{
 		static FootstepEventSink singleton;
 
-		return std::addressof(singleton);
+		return singleton;
 	}
 }

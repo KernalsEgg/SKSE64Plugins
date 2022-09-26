@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Fixes/MagicEffectConditions.h"
 
@@ -20,7 +20,7 @@ namespace BugFixesSSE::Fixes
 
 	float MagicEffectConditions::ActiveEffectConditionUpdateInterval()
 	{
-		auto activeEffectConditionUpdateInterval = Skyrim::GameSettingCollection::ActiveEffectConditionUpdateInterval()->value.floatingPoint;
+		auto activeEffectConditionUpdateInterval = Skyrim::GameSettingCollection::ActiveEffectConditionUpdateInterval()->GetFloat();
 
 		return activeEffectConditionUpdateInterval > 0.0001F ? activeEffectConditionUpdateInterval : 1.0F;
 	}

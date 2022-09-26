@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Settings.h"
 
@@ -41,7 +41,7 @@ namespace Trails
 		}
 		catch (const std::exception& exception)
 		{
-			Utility::Log::Error("Form ID: {}, File Name: {}. {}.", this->formID, this->fileName, exception.what());
+			Utility::Log::Critical("Form ID: {}, File Name: {}, {}", this->formID, this->fileName, exception.what());
 
 			throw;
 		}
@@ -86,7 +86,7 @@ namespace Trails
 			return;
 		}
 
-		this->formID = fmt::format("0x{:X}", form->formID & (file->recordFlags.all(Skyrim::TESFile::RecordFlags::kSmallFile) ? 0xFFF : 0xFFFFFF));
+		this->formID = std::vformat("0x{:X}", std::make_format_args(form->formID & (file->recordFlags.all(Skyrim::TESFile::RecordFlags::kSmallFile) ? 0xFFF : 0xFFFFFF)));
 	}
 
 	Settings::Position& Settings::Position::Deserialize(const nlohmann::json& jsonPosition)
@@ -291,7 +291,7 @@ namespace Trails
 				auto path      = directoryEntry.path();
 				auto extension = path.extension().string();
 
-				if (_stricmp(extension.c_str(), ".json") != 0)
+				if (::_stricmp(extension.c_str(), ".json") != 0)
 				{
 					continue;
 				}
@@ -313,7 +313,7 @@ namespace Trails
 				}
 				catch (const nlohmann::json::exception& jsonException)
 				{
-					Utility::Log::Error("{}", jsonException.what());
+					Utility::Log::Critical("{}", jsonException.what());
 
 					throw;
 				}
@@ -325,7 +325,7 @@ namespace Trails
 
 	Settings& Settings::GetSingleton()
 	{
-		static Settings settings(std::filesystem::path(Relocation::Plugin::GetSingleton().GetPath()).replace_extension());
+		static Settings settings(std::filesystem::path(Relocation::DynamicLinkLibrary::GetSingleton().GetPath()).replace_extension());
 
 		return settings;
 	}

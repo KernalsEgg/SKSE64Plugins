@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/ActorValue.h"
 #include "Shared/Skyrim/B/BGSKeywordForm.h"
@@ -8,6 +8,7 @@
 #include "Shared/Skyrim/M/MagicSystem.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
 #include "Shared/Skyrim/T/TESFullName.h"
+#include "Shared/Utility/Enumeration.h"
 
 
 
@@ -46,7 +47,7 @@ namespace Skyrim
 
 		// Override (TESBoundObject)
 		virtual void InitializeData() override;      // 4
-		virtual void Unknown6(TESForm*) override;    // 6
+		virtual bool Load(TESFile* file) override;   // 6
 		virtual void Unknown13(TESForm*) override;   // 13
 		virtual void Unknown29(TESForm*) override;   // 29
 		virtual void Unknown2F(TESForm*) override;   // 2F
@@ -89,7 +90,7 @@ namespace Skyrim
 
 		// Member functions
 		float      GetCost(Actor* caster) const;
-		ActorValue GetCostActorValue(bool rightHand) const;
+		ActorValue GetCostActorValue(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource) const;
 		bool       ShouldAddSpell() const;
 		bool       ShouldSetEffectiveness() const;
 

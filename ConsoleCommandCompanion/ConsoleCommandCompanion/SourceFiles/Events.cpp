@@ -1,11 +1,11 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Events.h"
 
 #include "Settings.h"
 #include "Shared/SKSE/Interfaces.h"
 #include "Shared/Skyrim/B/ButtonEvent.h"
-#include "Shared/Skyrim/S/Script.h"
+#include "Shared/Skyrim/C/Console.h"
 #include "Shared/Utility/Log.h"
 
 
@@ -31,7 +31,7 @@ namespace ConsoleCommandCompanion::Events
 					{
 						if (Settings::GetSingleton().log)
 						{
-							Utility::Log::Information("Pressed, ID Code: {}, Input Device: {}, User Event: \"{}\"", buttonEvent->idCode, buttonEvent->inputDevice.underlying(), buttonEvent->GetUserEvent());
+							Utility::Log::Information("Pressed, ID Code: {}, Input Device: {}, User Event: \"{}\"", buttonEvent->idCode, buttonEvent->inputDevice.underlying(), buttonEvent->GetUserEvent().data());
 						}
 
 						for (const auto& pressed : Settings::GetSingleton().events.button.pressed)
@@ -56,7 +56,7 @@ namespace ConsoleCommandCompanion::Events
 								SKSE::Cache::GetSingleton().GetTaskInterface()->AddTask(
 									[consoleCommand]()
 									{
-										Skyrim::Script::ExecuteCommand(consoleCommand);
+										Skyrim::Console::ExecuteCommand(consoleCommand);
 									});
 							}
 						}
@@ -65,7 +65,7 @@ namespace ConsoleCommandCompanion::Events
 					{
 						if (Settings::GetSingleton().log)
 						{
-							Utility::Log::Information("Released, ID Code: {}, Input Device: {}, User Event: \"{}\"", buttonEvent->idCode, buttonEvent->inputDevice.underlying(), buttonEvent->GetUserEvent());
+							Utility::Log::Information("Released, ID Code: {}, Input Device: {}, User Event: \"{}\"", buttonEvent->idCode, buttonEvent->inputDevice.underlying(), buttonEvent->GetUserEvent().data());
 						}
 
 						for (const auto& released : Settings::GetSingleton().events.button.released)
@@ -90,7 +90,7 @@ namespace ConsoleCommandCompanion::Events
 								SKSE::Cache::GetSingleton().GetTaskInterface()->AddTask(
 									[consoleCommand]()
 									{
-										Skyrim::Script::ExecuteCommand(consoleCommand);
+										Skyrim::Console::ExecuteCommand(consoleCommand);
 									});
 							}
 						}
@@ -104,11 +104,11 @@ namespace ConsoleCommandCompanion::Events
 		return Skyrim::BSEventNotifyControl::kContinue;
 	}
 
-	ButtonEventSink* ButtonEventSink::GetSingleton()
+	ButtonEventSink& ButtonEventSink::GetSingleton()
 	{
 		static ButtonEventSink singleton;
 
-		return std::addressof(singleton);
+		return singleton;
 	}
 
 	Skyrim::BSEventNotifyControl LoadGameEventSink::ProcessEvent(const Skyrim::TESLoadGameEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::TESLoadGameEvent>* eventSource)
@@ -118,17 +118,17 @@ namespace ConsoleCommandCompanion::Events
 			SKSE::Cache::GetSingleton().GetTaskInterface()->AddTask(
 				[consoleCommand]()
 				{
-					Skyrim::Script::ExecuteCommand(consoleCommand);
+					Skyrim::Console::ExecuteCommand(consoleCommand);
 				});
 		}
 
 		return Skyrim::BSEventNotifyControl::kContinue;
 	}
 
-	LoadGameEventSink* LoadGameEventSink::GetSingleton()
+	LoadGameEventSink& LoadGameEventSink::GetSingleton()
 	{
 		static LoadGameEventSink singleton;
 
-		return std::addressof(singleton);
+		return singleton;
 	}
 }

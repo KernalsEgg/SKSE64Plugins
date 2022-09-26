@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/F/FxResponseArgumentsBase.h"
 #include "Shared/Skyrim/G/GFxValue.h"

@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/M/MagicItem.h"
 
@@ -16,7 +16,7 @@ namespace Skyrim
 		return function(this, caster);
 	}
 
-	ActorValue MagicItem::GetCostActorValue(bool rightHand) const
+	ActorValue MagicItem::GetCostActorValue(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource) const
 	{
 		switch (this->GetSpellType())
 		{
@@ -34,7 +34,7 @@ namespace Skyrim
 					return ActorValue::kNone;
 				}
 
-				return rightHand ? ActorValue::kRightItemCharge : ActorValue::kLeftItemCharge;
+				return castingSource == MagicSystem::CastingSource::kLeftHand ? ActorValue::kLeftItemCharge : ActorValue::kRightItemCharge;
 			}
 			default:
 			{

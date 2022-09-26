@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSNiNode.h"
 
@@ -16,18 +16,18 @@ namespace Skyrim
 		virtual ~BSMultiBoundNode() override; // 0
 
 		// Override (BSNiNode)
-		virtual const NiRTTI* GetRTTI() const override;        // 2
-		virtual void          Unknown6(NiObject*) override;    // 6
-		virtual void          Unknown17(NiObject*) override;   // 17
-		virtual void          Unknown18(NiObject*) override;   // 18
-		virtual void          Unknown19(NiObject*) override;   // 19
-		virtual void          Unknown1A(NiObject*) override;   // 1A
-		virtual void          Unknown1B(NiObject*) override;   // 1B
-		virtual void          Unknown1C(NiObject*) override;   // 1C
-		virtual void          Unknown2C(NiAVObject*) override; // 2C
-		virtual void          Unknown2F(NiAVObject*) override; // 2F
-		virtual void          Unknown34(NiAVObject*) override; // 34
-		virtual void          Unknown3D(NiNode*) override;     // 3D
+		virtual const NiRTTI*     GetRTTI() const override;                               // 2
+		virtual BSMultiBoundNode* AsBSMultipleBoundNode() override;                       // 6
+		virtual NiObject*         CreateClone(NiCloningProcess& cloningProcess) override; // 17
+		virtual void              LoadBinary(NiStream& stream) override;                  // 18
+		virtual void              LinkObject(NiStream& stream) override;                  // 19
+		virtual bool              RegisterStreamables(NiStream& stream) override;         // 1A
+		virtual void              SaveBinary(NiStream& stream) override;                  // 1B
+		virtual bool              IsEqual(NiObject* object) override;                     // 1C
+		virtual void              Unknown2C(NiAVObject*) override;                        // 2C
+		virtual void              Unknown2F(NiAVObject*) override;                        // 2F
+		virtual void              Unknown34(NiAVObject*) override;                        // 34
+		virtual void              Unknown3D(NiNode*) override;                            // 3D
 
 		// Add
 		virtual void Unknown3E(BSMultiBoundNode*); // 3E

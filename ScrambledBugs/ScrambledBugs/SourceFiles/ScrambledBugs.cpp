@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Fixes/ActivateFurniture.h"
 #include "Fixes/ActorValuePercentage.h"
@@ -218,24 +218,34 @@ void Settings()
 	Utility::Trampoline::GetSingleton().Commit();
 }
 
+#ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
-	.pluginVersion  = 18,
-	.pluginName     = "Scrambled Bugs",
-	.author         = "KernalsEgg",
-	.addressLibrary = true
+	.pluginVersion   = 18,
+	.pluginName      = "Scrambled Bugs",
+	.author          = "KernalsEgg",
+	.addressLibrary  = true,
+	.compatible16629 = true
 };
+#endif
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
 	SKSE::Cache::GetSingleton().Initialize(loadInterface);
 
-	Settings();
-
 	const auto* serializationInterface = SKSE::Cache::GetSingleton().GetSerializationInterface();
+
+	if (!serializationInterface)
+	{
+		Utility::Log::Critical("Serialization interface not found.");
+
+		return false;
+	}
 
 	serializationInterface->SetUniqueID(ScrambledBugs::Serialization::kUniqueID);
 	serializationInterface->SetLoadCallback(std::addressof(ScrambledBugs::Serialization::LoadGame));
 	serializationInterface->SetSaveCallback(std::addressof(ScrambledBugs::Serialization::SaveGame));
+
+	Settings();
 
 	return true;
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/S/SettingCollection.h"
 
@@ -17,10 +17,10 @@ namespace Skyrim
 		virtual ~SettingCollectionMap() override; // 0
 
 		// Override (SettingCollection<T>)
-		virtual void InsertSetting(T* setting) override;       // 1
-		virtual void RemoveSetting(T* setting) override;       // 2
-		virtual void Unknown8(SettingCollection<T>*) override; // 8
-		virtual void Unknown9(SettingCollection<T>*) override; // 9
+		virtual void Add(T* setting) override;    // 1
+		virtual void Remove(T* setting) override; // 2
+		virtual bool WriteSettings() override;    // 8
+		virtual bool ReadSettings() override;     // 9
 
 		// Member variables
 		std::uint64_t unknown118; // 118

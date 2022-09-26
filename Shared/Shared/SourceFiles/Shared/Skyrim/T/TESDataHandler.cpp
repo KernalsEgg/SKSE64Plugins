@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/T/TESDataHandler.h"
 
@@ -32,7 +32,7 @@ namespace Skyrim
 				break;
 			}
 
-			if (_stricmp(file->fileName, fileName.data()) == 0)
+			if (::_stricmp(file->fileName, fileName.data()) == 0)
 			{
 				return file;
 			}
@@ -52,7 +52,7 @@ namespace Skyrim
 	{
 		for (auto* file : this->compiledFileCollection.files)
 		{
-			if (_stricmp(file->fileName, fileName.data()) == 0)
+			if (::_stricmp(file->fileName, fileName.data()) == 0)
 			{
 				return file;
 			}
@@ -85,7 +85,7 @@ namespace Skyrim
 	{
 		for (auto* smallFile : this->compiledFileCollection.smallFiles)
 		{
-			if (_stricmp(smallFile->fileName, fileName.data()) == 0)
+			if (::_stricmp(smallFile->fileName, fileName.data()) == 0)
 			{
 				return smallFile;
 			}

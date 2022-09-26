@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSTTuple.h"
 
@@ -63,7 +63,7 @@ namespace Skyrim
 			constexpr ~iterator() noexcept = default;
 
 			constexpr iterator& operator=(const iterator&) noexcept = default;
-			constexpr iterator& operator=(iterator&&) noexcept = default;
+			constexpr iterator& operator=(iterator&&) noexcept      = default;
 
 			constexpr iterator(entry_type* head, entry_type* tail) noexcept :
 				head_(head), tail_(tail)

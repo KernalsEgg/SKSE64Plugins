@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/B/BSString.h"
@@ -247,9 +247,9 @@ namespace Skyrim
 		static_assert(offsetof(ScriptData, parameterCount) == 0x4);
 		static_assert(sizeof(ScriptData) == 0x6);
 
-		using ExecuteType   = bool(const ScriptParameter* scriptParameterInformation, ScriptData* scriptData, TESObjectREFR* thisObject, TESObjectREFR* containingObject, Script* scriptObject, ScriptLocals* scriptLocals, double& result, std::uint32_t& opcodeOffsetPointer);
-		using CompileType   = bool(std::uint16_t parameterCount, const ScriptParameter* scriptParameterInformation, ScriptLine* scriptLineBuffer, ScriptCompileData* scriptBuffer);
-		using ConditionType = bool(TESObjectREFR* thisObject, void* parameter1, void* parameter2, double& result);
+		using ExecuteFunction   = bool(const ScriptParameter* scriptParameters, ScriptData* scriptData, TESObjectREFR* object, TESObjectREFR* containingObject, Script* script, ScriptLocals* scriptLocals, double& result, std::uint32_t& opcodeOffset);
+		using CompileFunction   = bool(std::uint16_t parameterCount, const ScriptParameter* scriptParameters, ScriptLine* scriptLineBuffer, ScriptCompileData* scriptBuffer);
+		using ConditionFunction = bool(TESObjectREFR* object, void* parameter1, void* parameter2, double& result);
 
 		// Member variables
 		const char*                                       functionName;       // 0
@@ -262,9 +262,9 @@ namespace Skyrim
 		std::uint16_t                                     parameterCount;     // 22
 		std::uint32_t                                     padding24;          // 24
 		ScriptParameter*                                  scriptParameters;   // 28
-		ExecuteType*                                      executeFunction;    // 30
-		CompileType*                                      compileFunction;    // 38
-		ConditionType*                                    conditionFunction;  // 40
+		ExecuteFunction*                                  executeFunction;    // 30
+		CompileFunction*                                  compileFunction;    // 38
+		ConditionFunction*                                conditionFunction;  // 40
 		bool                                              editorFilter;       // 48
 		bool                                              invalidateCellList; // 49
 		std::uint16_t                                     padding4A;          // 4A

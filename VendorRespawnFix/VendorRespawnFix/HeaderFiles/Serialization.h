@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Shared/SKSE/Interfaces.h"
 #include "Shared/Skyrim/B/BSCoreTypes.h"

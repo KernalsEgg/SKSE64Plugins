@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/M/MemoryManager.h"
 
@@ -21,7 +21,7 @@ namespace Skyrim
 		constexpr ~DynamicMemoryManagementPol() noexcept = default;
 
 		constexpr DynamicMemoryManagementPol& operator=(const DynamicMemoryManagementPol&) noexcept = default;
-		constexpr DynamicMemoryManagementPol& operator=(DynamicMemoryManagementPol&&) noexcept = default;
+		constexpr DynamicMemoryManagementPol& operator=(DynamicMemoryManagementPol&&) noexcept      = default;
 
 		value_type* allocate(std::uint32_t count)
 		{
@@ -122,7 +122,7 @@ namespace Skyrim
 		using pointer         = value_type*;
 		using const_pointer   = const value_type*;
 
-		TES_MEMORY_REDEFINE_NEW();
+		SKYRIM_MEMORY_REDEFINE_NEW();
 
 		BSStringT()
 		{
@@ -230,12 +230,12 @@ namespace Skyrim
 
 		static int compare(const char* left, const char* right)
 		{
-			return _stricmp(left, right);
+			return ::_stricmp(left, right);
 		}
 
 		static int compare(const wchar_t* left, const wchar_t* right)
 		{
-			return _wcsicmp(left, right);
+			return ::_wcsicmp(left, right);
 		}
 
 		pointer allocate(std::uint32_t count)

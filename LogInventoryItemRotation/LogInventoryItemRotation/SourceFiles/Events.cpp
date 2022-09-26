@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Events.h"
 
@@ -65,12 +65,13 @@ namespace LogInventoryItemRotation
 					rotationMatrix.RotationMatrixToEulerAnglesXYZ(eulerAngles.x, eulerAngles.y, eulerAngles.z);
 
 					Skyrim::UI::Notification(
-						fmt::format(
+						std::vformat(
 							"{}: ({}, {}, {})",
-							loadedInventoryModel.modelForm->GetFormName(),
-							Events::AdjustRotation(eulerAngles.x),
-							Events::AdjustRotation(eulerAngles.y),
-							Events::AdjustRotation(eulerAngles.z))
+							std::make_format_args(
+								loadedInventoryModel.modelForm->GetFormName(),
+								Events::AdjustRotation(eulerAngles.x),
+								Events::AdjustRotation(eulerAngles.y),
+								Events::AdjustRotation(eulerAngles.z)))
 							.c_str(),
 						nullptr,
 						true);

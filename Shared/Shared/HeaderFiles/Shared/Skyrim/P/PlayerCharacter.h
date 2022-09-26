@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/A/AITimestamp.h"
 #include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
@@ -68,13 +69,13 @@ namespace Skyrim
 
 	class PlayerCharacter :
 		public Character,                               // 0
-		public BSTEventSink<MenuOpenCloseEvent>,        // 2B0
-		public BSTEventSink<MenuModeChangeEvent>,       // 2B8
-		public BSTEventSink<UserEventEnabledEvent>,     // 2C0
-		public BSTEventSink<TESTrackedStatisticsEvent>, // 2C8
-		public BSTEventSource<BGSActorCellEvent>,       // 2D0
-		public BSTEventSource<BGSActorDeathEvent>,      // 328
-		public BSTEventSource<PositionPlayerEvent>      // 380
+		public BSTEventSink<MenuOpenCloseEvent>,        // 2B0, 2B8
+		public BSTEventSink<MenuModeChangeEvent>,       // 2B8, 2C0
+		public BSTEventSink<UserEventEnabledEvent>,     // 2C0, 2C8
+		public BSTEventSink<TESTrackedStatisticsEvent>, // 2C8, 2D0
+		public BSTEventSource<BGSActorCellEvent>,       // 2D0, 2D8
+		public BSTEventSource<BGSActorDeathEvent>,      // 328, 330
+		public BSTEventSource<PositionPlayerEvent>      // 380, 388
 	{
 	public:
 		enum class GrabType : std::uint32_t
@@ -92,7 +93,7 @@ namespace Skyrim
 		};
 		static_assert(sizeof(CharacterGenerationFlags) == 0x1);
 
-		enum class FlagsBDB : std::uint8_t
+		enum class FlagsBE3 : std::uint8_t
 		{
 			kNone                        = 0,
 			kThirdPerson                 = 1U << 0,
@@ -100,21 +101,21 @@ namespace Skyrim
 			kInsufficientChargeRightHand = 1U << 3,
 			kInCombat                    = 1U << 5
 		};
-		static_assert(sizeof(FlagsBDB) == 0x1);
+		static_assert(sizeof(FlagsBE3) == 0x1);
 
 		// Override
 		virtual ~PlayerCharacter() override; // 0
 
 		// Override (Character)
-		virtual void                              UnknownE(TESForm*) override;                                                                                                                        // E
-		virtual void                              UnknownF(TESForm*) override;                                                                                                                        // F
-		virtual void                              Unknown10(TESForm*) override;                                                                                                                       // 10
-		virtual void                              Unknown11(TESForm*) override;                                                                                                                       // 11
-		virtual void                              Unknown12(TESForm*) override;                                                                                                                       // 12
+		virtual void                              SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;                                                                                               // E
+		virtual void                              LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                                                                               // F
+		virtual void                              InitializeLoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                                                                     // 10
+		virtual void                              FinishLoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                                                                         // 11
+		virtual void                              Revert(BGSLoadFormBuffer* loadFormBuffer) override;                                                                                                 // 12
 		virtual void                              Unknown46(TESObjectREFR*) override;                                                                                                                 // 46
 		virtual void                              Unknown47(TESObjectREFR*) override;                                                                                                                 // 47
 		virtual void                              Unknown55(TESObjectREFR*) override;                                                                                                                 // 55
-		virtual void                              Unknown5B(TESObjectREFR*) override;                                                                                                                 // 5B
+		virtual NiPoint3                          GetLookingAtLocation() const override;                                                                                                              // 5B
 		virtual void                              Unknown6A(TESObjectREFR*) override;                                                                                                                 // 6A
 		virtual void                              Unknown6C(TESObjectREFR*) override;                                                                                                                 // 6C
 		virtual NiAVObject*                       Get3D(bool firstPerson) const override;                                                                                                             // 6F
@@ -255,301 +256,301 @@ namespace Skyrim
 		static PlayerCharacter* GetSingleton();
 
 		// Member variables
-		std::uint64_t                                                unknown3D8;               // 3D8
-		BSTHashMap<const TESFaction*, CrimeGold>                     crimeGold;                // 3E0
-		BSTHashMap<const TESFaction*, StolenItemValue>               stolenItemValue;          // 410
-		ObjectReferenceHandle                                        commandedActorWaitMarker; // 440
-		std::uint32_t                                                unknown444;               // 444
-		std::uint64_t                                                unknown448;               // 448
-		std::uint64_t                                                unknown450;               // 450
-		std::uint64_t                                                unknown458;               // 458
-		std::uint64_t                                                unknown460;               // 460
-		std::uint64_t                                                unknown468;               // 468
-		std::uint64_t                                                unknown470;               // 470
-		std::uint64_t                                                unknown478;               // 478
-		std::uint64_t                                                unknown480;               // 480
-		std::uint64_t                                                unknown488;               // 488
-		std::uint64_t                                                unknown490;               // 490
-		std::uint64_t                                                unknown498;               // 498
-		std::uint64_t                                                unknown4A0;               // 4A0
-		std::uint64_t                                                unknown4A8;               // 4A8
-		BSTArray<PerkRank*>                                          addedPerkRanks;           // 4B0
-		BSTArray<BGSPerk*>                                           perks;                    // 4C8
-		BSTArray<BGSPerk*>                                           standingStonePerks;       // 4E0
-		BSTArray<ObjectReferenceHandle>                              currentMapMarkers;        // 4F8
-		std::uint64_t                                                unknown510;               // 510
-		std::uint64_t                                                unknown518;               // 518
-		std::uint64_t                                                unknown520;               // 520
-		BSTArray<ProjectileHandle>                                   runes;                    // 528
-		std::uint64_t                                                unknown540;               // 540
-		std::uint64_t                                                unknown548;               // 548
-		std::uint64_t                                                unknown550;               // 550
-		std::uint64_t                                                unknown558;               // 558
-		std::uint64_t                                                unknown560;               // 560
-		std::uint64_t                                                unknown568;               // 568
-		BSSimpleList<TESQuestStageItem*>                             questLogEntries;          // 570
-		std::uint64_t                                                unknown580;               // 580
-		std::uint64_t                                                unknown588;               // 588
-		std::uint64_t                                                unknown590;               // 590
-		std::uint64_t                                                unknown598;               // 598
-		std::uint64_t                                                unknown5A0;               // 5A0
-		std::uint64_t                                                unknown5A8;               // 5A8
-		std::uint64_t                                                unknown5B0;               // 5B0
-		std::uint64_t                                                unknown5B8;               // 5B8
-		std::uint64_t                                                unknown5C0;               // 5C0
-		std::uint64_t                                                unknown5C8;               // 5C8
-		std::uint64_t                                                unknown5D0;               // 5D0
-		std::uint64_t                                                unknown5D8;               // 5D8
-		std::uint64_t                                                unknown5E0;               // 5E0
-		std::uint64_t                                                unknown5E8;               // 5E8
-		std::uint64_t                                                unknown5F0;               // 5F0
-		std::uint64_t                                                unknown5F8;               // 5F8
-		std::uint64_t                                                unknown600;               // 600
-		std::uint64_t                                                unknown608;               // 608
-		std::uint64_t                                                unknown610;               // 610
-		std::uint64_t                                                unknown618;               // 618
-		std::uint64_t                                                unknown620;               // 620
-		std::uint64_t                                                unknown628;               // 628
-		std::uint64_t                                                unknown630;               // 630
-		std::uint64_t                                                unknown638;               // 638
-		std::uint64_t                                                unknown640;               // 640
-		std::uint64_t                                                unknown648;               // 648
-		std::uint64_t                                                unknown650;               // 650
-		std::uint64_t                                                unknown658;               // 658
-		std::uint64_t                                                unknown660;               // 660
-		std::uint64_t                                                unknown668;               // 668
-		std::uint64_t                                                unknown670;               // 670
-		std::uint64_t                                                unknown678;               // 678
-		std::uint64_t                                                unknown680;               // 680
-		std::uint64_t                                                unknown688;               // 688
-		std::uint64_t                                                unknown690;               // 690
-		std::uint64_t                                                unknown698;               // 698
-		std::uint64_t                                                unknown6A0;               // 6A0
-		std::uint64_t                                                unknown6A8;               // 6A8
-		std::uint64_t                                                unknown6B0;               // 6B0
-		std::uint64_t                                                unknown6B8;               // 6B8
-		std::uint64_t                                                unknown6C0;               // 6C0
-		std::int32_t                                                 stealWarningCount;        // 6C8
-		float                                                        stealWarningTimer;        // 6CC
-		std::int32_t                                                 pickpocketWarningCount;   // 6D0
-		float                                                        pickpocketWarningTimer;   // 6D4
-		AITimestamp                                                  warnToLeaveTimestamp;     // 6D8
-		std::uint32_t                                                padding6DC;               // 6DC
-		std::uint64_t                                                unknown6E0;               // 6E0
-		std::uint64_t                                                unknown6E8;               // 6E8
-		std::uint64_t                                                unknown6F0;               // 6F0
-		std::uint64_t                                                unknown6F8;               // 6F8
-		std::uint64_t                                                unknown700;               // 700
-		std::uint64_t                                                unknown708;               // 708
-		std::uint64_t                                                unknown710;               // 710
-		TESFaction*                                                  currentJailFaction;       // 718
-		std::int32_t                                                 jailSentence;             // 720
-		std::uint32_t                                                padding724;               // 724
-		std::uint64_t                                                unknown728;               // 728
-		std::uint64_t                                                unknown730;               // 730
-		std::uint64_t                                                unknown738;               // 738
-		std::uint64_t                                                unknown740;               // 740
-		std::uint64_t                                                unknown748;               // 748
-		std::uint64_t                                                unknown750;               // 750
-		std::uint64_t                                                unknown758;               // 758
-		std::uint64_t                                                unknown760;               // 760
-		std::uint64_t                                                unknown768;               // 768
-		std::uint64_t                                                unknown770;               // 770
-		std::uint64_t                                                unknown778;               // 778
-		std::uint64_t                                                unknown780;               // 780
-		std::uint64_t                                                unknown788;               // 788
-		std::uint64_t                                                unknown790;               // 790
-		std::uint64_t                                                unknown798;               // 798
-		std::uint64_t                                                unknown7A0;               // 7A0
-		std::uint64_t                                                unknown7A8;               // 7A8
-		std::uint64_t                                                unknown7B0;               // 7B0
-		std::uint64_t                                                unknown7B8;               // 7B8
-		std::uint64_t                                                unknown7C0;               // 7C0
-		std::uint64_t                                                unknown7C8;               // 7C8
-		std::uint64_t                                                unknown7D0;               // 7D0
-		std::uint64_t                                                unknown7D8;               // 7D8
-		std::uint64_t                                                unknown7E0;               // 7E0
-		std::uint64_t                                                unknown7E8;               // 7E8
-		std::uint64_t                                                unknown7F0;               // 7F0
-		std::uint64_t                                                unknown7F8;               // 7F8
-		std::uint64_t                                                unknown800;               // 800
-		std::uint64_t                                                unknown808;               // 808
-		std::uint64_t                                                unknown810;               // 810
-		std::uint64_t                                                unknown818;               // 818
-		std::uint64_t                                                unknown820;               // 820
-		std::uint64_t                                                unknown828;               // 828
-		std::uint64_t                                                unknown830;               // 830
-		std::uint64_t                                                unknown838;               // 838
-		std::uint64_t                                                unknown840;               // 840
-		std::uint64_t                                                unknown848;               // 848
-		std::uint64_t                                                unknown850;               // 850
-		std::uint64_t                                                unknown858;               // 858
-		std::uint64_t                                                unknown860;               // 860
-		std::uint64_t                                                unknown868;               // 868
-		std::uint64_t                                                unknown870;               // 870
-		std::uint64_t                                                unknown878;               // 878
-		std::uint64_t                                                unknown880;               // 880
-		std::uint64_t                                                unknown888;               // 888
-		std::uint32_t                                                unknown890;               // 890
-		ActorHandle                                                  commandedActor;           // 894
-		BSTSmallArray<hkReferencePointer<bhkMouseSpringAction>, 4>   grabSpringActions;        // 898
-		ObjectReferenceHandle                                        grabbedReference;         // 8C8
-		float                                                        grabbedReferenceWeight;   // 8CC
-		float                                                        grabbedReferenceDistance; // 8D0
-		std::uint32_t                                                unknown8D4;               // 8D4
-		std::uint64_t                                                unknown8D8;               // 8D8
-		std::uint64_t                                                unknown8E0;               // 8E0
-		std::uint64_t                                                unknown8E8;               // 8E8
-		NiPointer<NiNode>                                            firstPerson3D;            // 8F0
-		std::uint64_t                                                unknown8F8;               // 8F8
-		float                                                        overencumberedTimer;      // 900
-		float                                                        powerAttackTimer;         // 904
-		std::uint32_t                                                unknown904;               // 908
-		std::int32_t                                                 amountStolenSold;         // 90C
-		std::uint32_t                                                unknown910;               // 910
-		ActorHandle                                                  lastRiddenMount;          // 914
-		std::uint64_t                                                unknown918;               // 918
-		std::uint64_t                                                unknown920;               // 920
-		std::uint64_t                                                unknown928;               // 928
-		std::uint64_t                                                unknown930;               // 930
-		std::uint64_t                                                unknown938;               // 938
-		std::uint64_t                                                unknown940;               // 940
-		std::uint64_t                                                unknown948;               // 948
-		std::uint64_t                                                unknown950;               // 950
-		std::uint64_t                                                unknown958;               // 958
-		std::uint64_t                                                unknown960;               // 960
-		AlchemyItem*                                                 weaponPoison;             // 968
-		std::uint64_t                                                unknown970;               // 970
-		std::uint64_t                                                unknown978;               // 978
-		std::uint64_t                                                unknown980;               // 980
-		std::uint64_t                                                unknown988;               // 988
-		std::uint64_t                                                unknown990;               // 990
-		NiPointer<BSLight>                                           firstPersonLight;         // 998
-		NiPointer<BSLight>                                           thirdPersonLight;         // 9A0
-		std::uint64_t                                                unknown9A8;               // 9A8
-		std::uint64_t                                                unknown9B0;               // 9B0
-		ActorHandle                                                  autoAimActor;             // 9B8
-		std::uint32_t                                                unknown9BC;               // 9BC
-		std::uint64_t                                                unknown9C0;               // 9C0
-		std::uint64_t                                                unknown9C8;               // 9C8
-		std::uint64_t                                                unknown9D0;               // 9D0
-		BSTArray<ActorHandle>                                        enemiesHUD;               // 9D8
-		std::uint64_t                                                unknown9F0;               // 9F0
-		std::uint64_t                                                unknown9F8;               // 9F8
-		std::uint64_t                                                unknownA00;               // A00
-		std::uint32_t                                                teammateCount;            // A08
-		std::uint32_t                                                unknownA0C;               // A0C
-		std::uint64_t                                                unknownA10;               // A10
-		std::uint64_t                                                unknownA18;               // A18
-		std::uint64_t                                                unknownA20;               // A20
-		std::uint64_t                                                unknownA28;               // A28
-		std::uint64_t                                                unknownA30;               // A30
-		std::uint64_t                                                unknownA38;               // A38
-		std::uint64_t                                                unknownA40;               // A40
-		std::uint64_t                                                unknownA48;               // A48
-		std::uint64_t                                                unknownA50;               // A50
-		std::uint64_t                                                unknownA58;               // A58
-		std::uint64_t                                                unknownA60;               // A60
-		std::uint64_t                                                unknownA68;               // A68
-		std::uint64_t                                                unknownA70;               // A70
-		std::uint64_t                                                unknownA78;               // A78
-		std::uint64_t                                                unknownA80;               // A80
-		std::uint64_t                                                unknownA88;               // A88
-		std::uint64_t                                                unknownA90;               // A90
-		std::uint64_t                                                unknownA98;               // A98
-		std::uint64_t                                                unknownAA0;               // AA0
-		std::uint64_t                                                unknownAA8;               // AA8
-		std::uint64_t                                                unknownAB0;               // AB0
-		std::uint64_t                                                unknownAB8;               // AB8
-		std::uint64_t                                                unknownAC0;               // AC0
-		BGSLocation*                                                 currentLocation;          // AC8
-		std::uint32_t                                                unknownAD0;               // AD0
-		float                                                        telekinesisDistance;      // AD4
-		float                                                        commandedActorTimer;      // AD8
-		std::uint32_t                                                unknownADC;               // ADC
-		std::uint64_t                                                unknownAE0;               // AE0
-		std::uint64_t                                                unknownAE8;               // AE8
-		std::uint32_t                                                unknownAF0;               // AF0
-		Utility::Enumeration<GrabType, std::uint32_t>                grabType;                 // AF4
-		Utility::Enumeration<Difficulty, std::uint32_t>              difficulty;               // AF8
-		std::uint32_t                                                unknownAFC;               // AFC
-		std::uint8_t                                                 unknownB00;               // B00
-		std::int8_t                                                  perkCount;                // B01
-		Utility::Enumeration<CharacterGenerationFlags, std::uint8_t> characterGenerationFlags; // B02
-		std::uint8_t                                                 paddingB03;               // B03
-		std::uint32_t                                                unknownB04;               // B04
-		std::uint64_t                                                unknownB08;               // B08
-		BSTArray<TintMask*>                                          tintMasks;                // B10
-		BSTArray<TintMask*>*                                         overlayTintMasks;         // B28
-		BGSTextureSet*                                               complexion;               // B30
-		TESRace*                                                     characterGenerationRace;  // B38
-		std::uint64_t                                                unknownB40;               // B40
-		std::uint64_t                                                unknownB48;               // B48
-		std::uint64_t                                                unknownB50;               // B50
-		std::uint64_t                                                unknownB58;               // B58
-		std::uint64_t                                                unknownB60;               // B60
-		std::uint64_t                                                unknownB68;               // B68
-		std::uint64_t                                                unknownB70;               // B70
-		std::uint64_t                                                unknownB78;               // B78
-		std::uint64_t                                                unknownB80;               // B80
-		std::uint64_t                                                unknownB88;               // B88
-		std::uint64_t                                                unknownB90;               // B90
-		std::uint64_t                                                unknownB98;               // B98
-		std::uint64_t                                                unknownBA0;               // BA0
-		std::uint64_t                                                unknownBA8;               // BA8
-		std::uint64_t                                                unknownBB0;               // BB0
-		std::uint64_t                                                unknownBB8;               // BB8
-		std::uint64_t                                                unknownBC0;               // BC0
-		std::uint64_t                                                unknownBC8;               // BC8
-		std::uint64_t                                                unknownBD0;               // BD0
-		std::uint16_t                                                unknownBD8;               // BD8
-		std::uint8_t                                                 unknownBDA;               // BDA
-		Utility::Enumeration<FlagsBDB, std::uint8_t>                 flagsBDB;                 // BDB
-		std::uint32_t                                                unknownBDC;               // BDC
+		std::uint64_t                                                unknown3E0;               // 3D8, 3E0
+		BSTHashMap<const TESFaction*, CrimeGold>                     crimeGold;                // 3E0, 3E8
+		BSTHashMap<const TESFaction*, StolenItemValue>               stolenItemValue;          // 410, 418
+		ObjectReferenceHandle                                        commandedActorWaitMarker; // 440, 448
+		std::uint32_t                                                unknown44C;               // 444, 44C
+		std::uint64_t                                                unknown450;               // 448, 450
+		std::uint64_t                                                unknown458;               // 450, 458
+		std::uint64_t                                                unknown460;               // 458, 460
+		std::uint64_t                                                unknown468;               // 460, 468
+		std::uint64_t                                                unknown470;               // 468, 470
+		std::uint64_t                                                unknown478;               // 470, 478
+		std::uint64_t                                                unknown480;               // 478, 480
+		std::uint64_t                                                unknown488;               // 480, 488
+		std::uint64_t                                                unknown490;               // 488, 490
+		std::uint64_t                                                unknown498;               // 490, 498
+		std::uint64_t                                                unknown4A0;               // 498, 4A0
+		std::uint64_t                                                unknown4A8;               // 4A0, 4A8
+		std::uint64_t                                                unknown4B0;               // 4A8, 4B0
+		BSTArray<PerkRank*>                                          addedPerkRanks;           // 4B0, 4B8
+		BSTArray<BGSPerk*>                                           perks;                    // 4C8, 4D0
+		BSTArray<BGSPerk*>                                           standingStonePerks;       // 4E0, 4E8
+		BSTArray<ObjectReferenceHandle>                              currentMapMarkers;        // 4F8, 500
+		std::uint64_t                                                unknown518;               // 510, 518
+		std::uint64_t                                                unknown520;               // 518, 520
+		std::uint64_t                                                unknown528;               // 520, 528
+		BSTArray<ProjectileHandle>                                   runes;                    // 528, 530
+		std::uint64_t                                                unknown548;               // 540, 548
+		std::uint64_t                                                unknown550;               // 548, 550
+		std::uint64_t                                                unknown558;               // 550, 558
+		std::uint64_t                                                unknown560;               // 558, 560
+		std::uint64_t                                                unknown568;               // 560, 568
+		std::uint64_t                                                unknown570;               // 568, 570
+		BSSimpleList<TESQuestStageItem*>                             questLogEntries;          // 570, 578
+		std::uint64_t                                                unknown588;               // 580, 588
+		std::uint64_t                                                unknown590;               // 588, 590
+		std::uint64_t                                                unknown598;               // 590, 598
+		std::uint64_t                                                unknown5A0;               // 598, 5A0
+		std::uint64_t                                                unknown5A8;               // 5A0, 5A8
+		std::uint64_t                                                unknown5B0;               // 5A8, 5B0
+		std::uint64_t                                                unknown5B8;               // 5B0, 5B8
+		std::uint64_t                                                unknown5C0;               // 5B8, 5C0
+		std::uint64_t                                                unknown5C8;               // 5C0, 5C8
+		std::uint64_t                                                unknown5D0;               // 5C8, 5D0
+		std::uint64_t                                                unknown5D8;               // 5D0, 5D8
+		std::uint64_t                                                unknown5E0;               // 5D8, 5E0
+		std::uint64_t                                                unknown5E8;               // 5E0, 5E8
+		std::uint64_t                                                unknown5F0;               // 5E8, 5F0
+		std::uint64_t                                                unknown5F8;               // 5F0, 5F8
+		std::uint64_t                                                unknown600;               // 5F8, 600
+		std::uint64_t                                                unknown608;               // 600, 608
+		std::uint64_t                                                unknown610;               // 608, 610
+		std::uint64_t                                                unknown618;               // 610, 618
+		std::uint64_t                                                unknown620;               // 618, 620
+		std::uint64_t                                                unknown628;               // 620, 628
+		std::uint64_t                                                unknown630;               // 628, 630
+		std::uint64_t                                                unknown638;               // 630, 638
+		std::uint64_t                                                unknown640;               // 638, 640
+		std::uint64_t                                                unknown648;               // 640, 648
+		std::uint64_t                                                unknown650;               // 648, 650
+		std::uint64_t                                                unknown658;               // 650, 658
+		std::uint64_t                                                unknown660;               // 658, 660
+		std::uint64_t                                                unknown668;               // 660, 668
+		std::uint64_t                                                unknown670;               // 668, 670
+		std::uint64_t                                                unknown678;               // 670, 678
+		std::uint64_t                                                unknown680;               // 678, 680
+		std::uint64_t                                                unknown688;               // 680, 688
+		std::uint64_t                                                unknown690;               // 688, 690
+		std::uint64_t                                                unknown698;               // 690, 698
+		std::uint64_t                                                unknown6A0;               // 698, 6A0
+		std::uint64_t                                                unknown6A8;               // 6A0, 6A8
+		std::uint64_t                                                unknown6B0;               // 6A8, 6B0
+		std::uint64_t                                                unknown6B8;               // 6B0, 6B8
+		std::uint64_t                                                unknown6C0;               // 6B8, 6C0
+		std::uint64_t                                                unknown6C8;               // 6C0, 6C8
+		std::int32_t                                                 stealWarningCount;        // 6C8, 6D0
+		float                                                        stealWarningTimer;        // 6CC, 6D4
+		std::int32_t                                                 pickpocketWarningCount;   // 6D0, 6D8
+		float                                                        pickpocketWarningTimer;   // 6D4, 6DC
+		AITimestamp                                                  warnToLeaveTimestamp;     // 6D8, 6E0
+		std::uint32_t                                                padding6E4;               // 6DC, 6E4
+		std::uint64_t                                                unknown6E8;               // 6E0, 6E8
+		std::uint64_t                                                unknown6F0;               // 6E8, 6F0
+		std::uint64_t                                                unknown6F8;               // 6F0, 6F8
+		std::uint64_t                                                unknown700;               // 6F8, 700
+		std::uint64_t                                                unknown708;               // 700, 708
+		std::uint64_t                                                unknown710;               // 708, 710
+		std::uint64_t                                                unknown718;               // 710, 718
+		TESFaction*                                                  currentJailFaction;       // 718, 720
+		std::int32_t                                                 jailSentence;             // 720, 728
+		std::uint32_t                                                padding72C;               // 724, 72C
+		std::uint64_t                                                unknown730;               // 728, 730
+		std::uint64_t                                                unknown738;               // 730, 738
+		std::uint64_t                                                unknown740;               // 738, 740
+		std::uint64_t                                                unknown748;               // 740, 748
+		std::uint64_t                                                unknown750;               // 748, 750
+		std::uint64_t                                                unknown758;               // 750, 758
+		std::uint64_t                                                unknown760;               // 758, 760
+		std::uint64_t                                                unknown768;               // 760, 768
+		std::uint64_t                                                unknown770;               // 768, 770
+		std::uint64_t                                                unknown778;               // 770, 778
+		std::uint64_t                                                unknown780;               // 778, 780
+		std::uint64_t                                                unknown788;               // 780, 788
+		std::uint64_t                                                unknown790;               // 788, 790
+		std::uint64_t                                                unknown798;               // 790, 798
+		std::uint64_t                                                unknown7A0;               // 798, 7A0
+		std::uint64_t                                                unknown7A8;               // 7A0, 7A8
+		std::uint64_t                                                unknown7B0;               // 7A8, 7B0
+		std::uint64_t                                                unknown7B8;               // 7B0, 7B8
+		std::uint64_t                                                unknown7C0;               // 7B8, 7C0
+		std::uint64_t                                                unknown7C8;               // 7C0, 7C8
+		std::uint64_t                                                unknown7D0;               // 7C8, 7D0
+		std::uint64_t                                                unknown7D8;               // 7D0, 7D8
+		std::uint64_t                                                unknown7E0;               // 7D8, 7E0
+		std::uint64_t                                                unknown7E8;               // 7E0, 7E8
+		std::uint64_t                                                unknown7F0;               // 7E8, 7F0
+		std::uint64_t                                                unknown7F8;               // 7F0, 7F8
+		std::uint64_t                                                unknown800;               // 7F8, 800
+		std::uint64_t                                                unknown808;               // 800, 808
+		std::uint64_t                                                unknown810;               // 808, 810
+		std::uint64_t                                                unknown818;               // 810, 818
+		std::uint64_t                                                unknown820;               // 818, 820
+		std::uint64_t                                                unknown828;               // 820, 828
+		std::uint64_t                                                unknown830;               // 828, 830
+		std::uint64_t                                                unknown838;               // 830, 838
+		std::uint64_t                                                unknown840;               // 838, 840
+		std::uint64_t                                                unknown848;               // 840, 848
+		std::uint64_t                                                unknown850;               // 848, 850
+		std::uint64_t                                                unknown858;               // 850, 858
+		std::uint64_t                                                unknown860;               // 858, 860
+		std::uint64_t                                                unknown868;               // 860, 868
+		std::uint64_t                                                unknown870;               // 868, 870
+		std::uint64_t                                                unknown878;               // 870, 878
+		std::uint64_t                                                unknown880;               // 878, 880
+		std::uint64_t                                                unknown888;               // 880, 888
+		std::uint64_t                                                unknown890;               // 888, 890
+		std::uint32_t                                                unknown898;               // 890, 898
+		ActorHandle                                                  commandedActor;           // 894, 89C
+		BSTSmallArray<hkReferencePointer<bhkMouseSpringAction>, 4>   grabSpringActions;        // 898, 8A0
+		ObjectReferenceHandle                                        grabbedReference;         // 8C8, 8D0
+		float                                                        grabbedReferenceWeight;   // 8CC, 8D4
+		float                                                        grabbedReferenceDistance; // 8D0, 8D8
+		std::uint32_t                                                unknown8DC;               // 8D4, 8DC
+		std::uint64_t                                                unknown8E0;               // 8D8, 8E0
+		std::uint64_t                                                unknown8E8;               // 8E0, 8E8
+		std::uint64_t                                                unknown8F0;               // 8E8, 8F0
+		NiPointer<NiNode>                                            firstPerson3D;            // 8F0, 8F8
+		std::uint64_t                                                unknown900;               // 8F8, 900
+		float                                                        overencumberedTimer;      // 900, 908
+		float                                                        powerAttackTimer;         // 904, 90C
+		std::uint32_t                                                unknown910;               // 908, 910
+		std::int32_t                                                 amountStolenSold;         // 90C, 914
+		std::uint32_t                                                unknown918;               // 910, 918
+		ActorHandle                                                  lastRiddenMount;          // 914, 91C
+		std::uint64_t                                                unknown920;               // 918, 920
+		std::uint64_t                                                unknown928;               // 920, 928
+		std::uint64_t                                                unknown930;               // 928, 930
+		std::uint64_t                                                unknown938;               // 930, 938
+		std::uint64_t                                                unknown940;               // 938, 940
+		std::uint64_t                                                unknown948;               // 940, 948
+		std::uint64_t                                                unknown950;               // 948, 950
+		std::uint64_t                                                unknown958;               // 950, 958
+		std::uint64_t                                                unknown960;               // 958, 960
+		std::uint64_t                                                unknown968;               // 960, 968
+		AlchemyItem*                                                 weaponPoison;             // 968, 970
+		std::uint64_t                                                unknown978;               // 970, 978
+		std::uint64_t                                                unknown980;               // 978, 980
+		std::uint64_t                                                unknown988;               // 980, 988
+		std::uint64_t                                                unknown990;               // 988, 990
+		std::uint64_t                                                unknown998;               // 990, 998
+		NiPointer<BSLight>                                           firstPersonLight;         // 998, 9A0
+		NiPointer<BSLight>                                           thirdPersonLight;         // 9A0, 9A8
+		std::uint64_t                                                unknown9B0;               // 9A8, 9B0
+		std::uint64_t                                                unknown9B8;               // 9B0, 9B8
+		ActorHandle                                                  automaticAimActor;        // 9B8, 9C0
+		std::uint32_t                                                unknown9C4;               // 9BC, 9C4
+		std::uint64_t                                                unknown9C8;               // 9C0, 9C8
+		std::uint64_t                                                unknown9D0;               // 9C8, 9D0
+		std::uint64_t                                                unknown9D8;               // 9D0, 9D8
+		BSTArray<ActorHandle>                                        enemiesHUD;               // 9D8, 9E0
+		std::uint64_t                                                unknown9F8;               // 9F0, 9F8
+		std::uint64_t                                                unknownA00;               // 9F8, A00
+		std::uint64_t                                                unknownA08;               // A00, A08
+		std::uint32_t                                                teammateCount;            // A08, A10
+		std::uint32_t                                                unknownA14;               // A0C, A14
+		std::uint64_t                                                unknownA18;               // A10, A18
+		std::uint64_t                                                unknownA20;               // A18, A20
+		std::uint64_t                                                unknownA28;               // A20, A28
+		std::uint64_t                                                unknownA30;               // A28, A30
+		std::uint64_t                                                unknownA38;               // A30, A38
+		std::uint64_t                                                unknownA40;               // A38, A40
+		std::uint64_t                                                unknownA48;               // A40, A48
+		std::uint64_t                                                unknownA50;               // A48, A50
+		std::uint64_t                                                unknownA58;               // A50, A58
+		std::uint64_t                                                unknownA60;               // A58, A60
+		std::uint64_t                                                unknownA68;               // A60, A68
+		std::uint64_t                                                unknownA70;               // A68, A70
+		std::uint64_t                                                unknownA78;               // A70, A78
+		std::uint64_t                                                unknownA80;               // A78, A80
+		std::uint64_t                                                unknownA88;               // A80, A88
+		std::uint64_t                                                unknownA90;               // A88, A90
+		std::uint64_t                                                unknownA98;               // A90, A98
+		std::uint64_t                                                unknownAA0;               // A98, AA0
+		std::uint64_t                                                unknownAA8;               // AA0, AA8
+		std::uint64_t                                                unknownAB0;               // AA8, AB0
+		std::uint64_t                                                unknownAB8;               // AB0, AB8
+		std::uint64_t                                                unknownAC0;               // AB8, AC0
+		std::uint64_t                                                unknownAC8;               // AC0, AC8
+		BGSLocation*                                                 currentLocation;          // AC8, AD0
+		std::uint32_t                                                unknownAD8;               // AD0, AD8
+		float                                                        telekinesisDistance;      // AD4, ADC
+		float                                                        commandedActorTimer;      // AD8, AE0
+		std::uint32_t                                                unknownAE4;               // ADC, AE4
+		std::uint64_t                                                unknownAE8;               // AE0, AE8
+		std::uint64_t                                                unknownAF0;               // AE8, AF0
+		std::uint32_t                                                unknownAF8;               // AF0, AF8
+		Utility::Enumeration<GrabType, std::uint32_t>                grabType;                 // AF4, AFC
+		Utility::Enumeration<Difficulty, std::uint32_t>              difficulty;               // AF8, B00
+		std::uint32_t                                                unknownB04;               // AFC, B04
+		std::uint8_t                                                 unknownB08;               // B00, B08
+		std::int8_t                                                  perkCount;                // B01, B09
+		Utility::Enumeration<CharacterGenerationFlags, std::uint8_t> characterGenerationFlags; // B02, B0A
+		std::uint8_t                                                 paddingB0B;               // B03, B0B
+		std::uint32_t                                                unknownB0C;               // B04, B0C
+		std::uint64_t                                                unknownB10;               // B08, B10
+		BSTArray<TintMask*>                                          tintMasks;                // B10, B18
+		BSTArray<TintMask*>*                                         overlayTintMasks;         // B28, B30
+		BGSTextureSet*                                               complexion;               // B30, B38
+		TESRace*                                                     characterGenerationRace;  // B38, B40
+		std::uint64_t                                                unknownB48;               // B40, B48
+		std::uint64_t                                                unknownB50;               // B48, B50
+		std::uint64_t                                                unknownB58;               // B50, B58
+		std::uint64_t                                                unknownB60;               // B58, B60
+		std::uint64_t                                                unknownB68;               // B60, B68
+		std::uint64_t                                                unknownB70;               // B68, B70
+		std::uint64_t                                                unknownB78;               // B70, B78
+		std::uint64_t                                                unknownB80;               // B78, B80
+		std::uint64_t                                                unknownB88;               // B80, B88
+		std::uint64_t                                                unknownB90;               // B88, B90
+		std::uint64_t                                                unknownB98;               // B90, B98
+		std::uint64_t                                                unknownBA0;               // B98, BA0
+		std::uint64_t                                                unknownBA8;               // BA0, BA8
+		std::uint64_t                                                unknownBB0;               // BA8, BB0
+		std::uint64_t                                                unknownBB8;               // BB0, BB8
+		std::uint64_t                                                unknownBC0;               // BB8, BC0
+		std::uint64_t                                                unknownBC8;               // BC0, BC8
+		std::uint64_t                                                unknownBD0;               // BC8, BD0
+		std::uint64_t                                                unknownBD8;               // BD0, BD8
+		std::uint16_t                                                unknownBE0;               // BD8, BE0
+		std::uint8_t                                                 unknownBE2;               // BDA, BE2
+		Utility::Enumeration<FlagsBE3, std::uint8_t>                 flagsBE3;                 // BDB, BE3
+		std::uint32_t                                                unknownBE4;               // BDC, BE4
 	};
-	static_assert(offsetof(PlayerCharacter, crimeGold) == 0x3E0);
-	static_assert(offsetof(PlayerCharacter, stolenItemValue) == 0x410);
-	static_assert(offsetof(PlayerCharacter, commandedActorWaitMarker) == 0x440);
-	static_assert(offsetof(PlayerCharacter, addedPerkRanks) == 0x4B0);
-	static_assert(offsetof(PlayerCharacter, perks) == 0x4C8);
-	static_assert(offsetof(PlayerCharacter, standingStonePerks) == 0x4E0);
-	static_assert(offsetof(PlayerCharacter, currentMapMarkers) == 0x4F8);
-	static_assert(offsetof(PlayerCharacter, runes) == 0x528);
-	static_assert(offsetof(PlayerCharacter, questLogEntries) == 0x570);
-	static_assert(offsetof(PlayerCharacter, stealWarningCount) == 0x6C8);
-	static_assert(offsetof(PlayerCharacter, stealWarningTimer) == 0x6CC);
-	static_assert(offsetof(PlayerCharacter, pickpocketWarningCount) == 0x6D0);
-	static_assert(offsetof(PlayerCharacter, pickpocketWarningTimer) == 0x6D4);
-	static_assert(offsetof(PlayerCharacter, warnToLeaveTimestamp) == 0x6D8);
-	static_assert(offsetof(PlayerCharacter, currentJailFaction) == 0x718);
-	static_assert(offsetof(PlayerCharacter, jailSentence) == 0x720);
-	static_assert(offsetof(PlayerCharacter, commandedActor) == 0x894);
-	static_assert(offsetof(PlayerCharacter, grabSpringActions) == 0x898);
-	static_assert(offsetof(PlayerCharacter, grabbedReference) == 0x8C8);
-	static_assert(offsetof(PlayerCharacter, grabbedReferenceWeight) == 0x8CC);
-	static_assert(offsetof(PlayerCharacter, grabbedReferenceDistance) == 0x8D0);
-	static_assert(offsetof(PlayerCharacter, firstPerson3D) == 0x8F0);
-	static_assert(offsetof(PlayerCharacter, overencumberedTimer) == 0x900);
-	static_assert(offsetof(PlayerCharacter, powerAttackTimer) == 0x904);
-	static_assert(offsetof(PlayerCharacter, amountStolenSold) == 0x90C);
-	static_assert(offsetof(PlayerCharacter, lastRiddenMount) == 0x914);
-	static_assert(offsetof(PlayerCharacter, weaponPoison) == 0x968);
-	static_assert(offsetof(PlayerCharacter, firstPersonLight) == 0x998);
-	static_assert(offsetof(PlayerCharacter, thirdPersonLight) == 0x9A0);
-	static_assert(offsetof(PlayerCharacter, autoAimActor) == 0x9B8);
-	static_assert(offsetof(PlayerCharacter, enemiesHUD) == 0x9D8);
-	static_assert(offsetof(PlayerCharacter, teammateCount) == 0xA08);
-	static_assert(offsetof(PlayerCharacter, currentLocation) == 0xAC8);
-	static_assert(offsetof(PlayerCharacter, telekinesisDistance) == 0xAD4);
-	static_assert(offsetof(PlayerCharacter, commandedActorTimer) == 0xAD8);
-	static_assert(offsetof(PlayerCharacter, grabType) == 0xAF4);
-	static_assert(offsetof(PlayerCharacter, difficulty) == 0xAF8);
-	static_assert(offsetof(PlayerCharacter, perkCount) == 0xB01);
-	static_assert(offsetof(PlayerCharacter, characterGenerationFlags) == 0xB02);
-	static_assert(offsetof(PlayerCharacter, tintMasks) == 0xB10);
-	static_assert(offsetof(PlayerCharacter, overlayTintMasks) == 0xB28);
-	static_assert(offsetof(PlayerCharacter, complexion) == 0xB30);
-	static_assert(offsetof(PlayerCharacter, characterGenerationRace) == 0xB38);
-	static_assert(offsetof(PlayerCharacter, flagsBDB) == 0xBDB);
-	static_assert(sizeof(PlayerCharacter) == 0xBE0);
+	static_assert(offsetof(PlayerCharacter, crimeGold) == SKYRIM_RELOCATE(0x3E0, 0x3E8));
+	static_assert(offsetof(PlayerCharacter, stolenItemValue) == SKYRIM_RELOCATE(0x410, 0x418));
+	static_assert(offsetof(PlayerCharacter, commandedActorWaitMarker) == SKYRIM_RELOCATE(0x440, 0x448));
+	static_assert(offsetof(PlayerCharacter, addedPerkRanks) == SKYRIM_RELOCATE(0x4B0, 0x4B8));
+	static_assert(offsetof(PlayerCharacter, perks) == SKYRIM_RELOCATE(0x4C8, 0x4D0));
+	static_assert(offsetof(PlayerCharacter, standingStonePerks) == SKYRIM_RELOCATE(0x4E0, 0x4E8));
+	static_assert(offsetof(PlayerCharacter, currentMapMarkers) == SKYRIM_RELOCATE(0x4F8, 0x500));
+	static_assert(offsetof(PlayerCharacter, runes) == SKYRIM_RELOCATE(0x528, 0x530));
+	static_assert(offsetof(PlayerCharacter, questLogEntries) == SKYRIM_RELOCATE(0x570, 0x578));
+	static_assert(offsetof(PlayerCharacter, stealWarningCount) == SKYRIM_RELOCATE(0x6C8, 0x6D0));
+	static_assert(offsetof(PlayerCharacter, stealWarningTimer) == SKYRIM_RELOCATE(0x6CC, 0x6D4));
+	static_assert(offsetof(PlayerCharacter, pickpocketWarningCount) == SKYRIM_RELOCATE(0x6D0, 0x6D8));
+	static_assert(offsetof(PlayerCharacter, pickpocketWarningTimer) == SKYRIM_RELOCATE(0x6D4, 0x6DC));
+	static_assert(offsetof(PlayerCharacter, warnToLeaveTimestamp) == SKYRIM_RELOCATE(0x6D8, 0x6E0));
+	static_assert(offsetof(PlayerCharacter, currentJailFaction) == SKYRIM_RELOCATE(0x718, 0x720));
+	static_assert(offsetof(PlayerCharacter, jailSentence) == SKYRIM_RELOCATE(0x720, 0x728));
+	static_assert(offsetof(PlayerCharacter, commandedActor) == SKYRIM_RELOCATE(0x894, 0x89C));
+	static_assert(offsetof(PlayerCharacter, grabSpringActions) == SKYRIM_RELOCATE(0x898, 0x8A0));
+	static_assert(offsetof(PlayerCharacter, grabbedReference) == SKYRIM_RELOCATE(0x8C8, 0x8D0));
+	static_assert(offsetof(PlayerCharacter, grabbedReferenceWeight) == SKYRIM_RELOCATE(0x8CC, 0x8D4));
+	static_assert(offsetof(PlayerCharacter, grabbedReferenceDistance) == SKYRIM_RELOCATE(0x8D0, 0x8D8));
+	static_assert(offsetof(PlayerCharacter, firstPerson3D) == SKYRIM_RELOCATE(0x8F0, 0x8F8));
+	static_assert(offsetof(PlayerCharacter, overencumberedTimer) == SKYRIM_RELOCATE(0x900, 0x908));
+	static_assert(offsetof(PlayerCharacter, powerAttackTimer) == SKYRIM_RELOCATE(0x904, 0x90C));
+	static_assert(offsetof(PlayerCharacter, amountStolenSold) == SKYRIM_RELOCATE(0x90C, 0x914));
+	static_assert(offsetof(PlayerCharacter, lastRiddenMount) == SKYRIM_RELOCATE(0x914, 0x91C));
+	static_assert(offsetof(PlayerCharacter, weaponPoison) == SKYRIM_RELOCATE(0x968, 0x970));
+	static_assert(offsetof(PlayerCharacter, firstPersonLight) == SKYRIM_RELOCATE(0x998, 0x9A0));
+	static_assert(offsetof(PlayerCharacter, thirdPersonLight) == SKYRIM_RELOCATE(0x9A0, 0x9A8));
+	static_assert(offsetof(PlayerCharacter, automaticAimActor) == SKYRIM_RELOCATE(0x9B8, 0x9C0));
+	static_assert(offsetof(PlayerCharacter, enemiesHUD) == SKYRIM_RELOCATE(0x9D8, 0x9E0));
+	static_assert(offsetof(PlayerCharacter, teammateCount) == SKYRIM_RELOCATE(0xA08, 0xA10));
+	static_assert(offsetof(PlayerCharacter, currentLocation) == SKYRIM_RELOCATE(0xAC8, 0xAD0));
+	static_assert(offsetof(PlayerCharacter, telekinesisDistance) == SKYRIM_RELOCATE(0xAD4, 0xADC));
+	static_assert(offsetof(PlayerCharacter, commandedActorTimer) == SKYRIM_RELOCATE(0xAD8, 0xAE0));
+	static_assert(offsetof(PlayerCharacter, grabType) == SKYRIM_RELOCATE(0xAF4, 0xAFC));
+	static_assert(offsetof(PlayerCharacter, difficulty) == SKYRIM_RELOCATE(0xAF8, 0xB00));
+	static_assert(offsetof(PlayerCharacter, perkCount) == SKYRIM_RELOCATE(0xB01, 0xB09));
+	static_assert(offsetof(PlayerCharacter, characterGenerationFlags) == SKYRIM_RELOCATE(0xB02, 0xB0A));
+	static_assert(offsetof(PlayerCharacter, tintMasks) == SKYRIM_RELOCATE(0xB10, 0xB18));
+	static_assert(offsetof(PlayerCharacter, overlayTintMasks) == SKYRIM_RELOCATE(0xB28, 0xB30));
+	static_assert(offsetof(PlayerCharacter, complexion) == SKYRIM_RELOCATE(0xB30, 0xB38));
+	static_assert(offsetof(PlayerCharacter, characterGenerationRace) == SKYRIM_RELOCATE(0xB38, 0xB40));
+	static_assert(offsetof(PlayerCharacter, flagsBE3) == SKYRIM_RELOCATE(0xBDB, 0xBE3));
+	static_assert(sizeof(PlayerCharacter) == SKYRIM_RELOCATE(0xBE0, 0xBE8));
 }

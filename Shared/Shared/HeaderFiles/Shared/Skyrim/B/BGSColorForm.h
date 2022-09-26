@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/C/Color.h"
 #include "Shared/Skyrim/T/TESForm.h"
@@ -27,9 +27,9 @@ namespace Skyrim
 		virtual ~BGSColorForm() override; // 0
 
 		// Override (TESForm)
-		virtual void InitializeData() override;   // 4
-		virtual void ClearData() override;        // 5
-		virtual void Unknown6(TESForm*) override; // 6
+		virtual void InitializeData() override;    // 4
+		virtual void ClearData() override;         // 5
+		virtual bool Load(TESFile* file) override; // 6
 
 		// Member variables
 		Color                                      color;          // 30

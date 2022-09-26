@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSCoreTypes.h"
 #include "Shared/Skyrim/B/BSString.h"
@@ -38,7 +38,7 @@ namespace Skyrim
 		constexpr ~CellID() noexcept = default;
 
 		constexpr CellID& operator=(const CellID&) noexcept = default;
-		constexpr CellID& operator=(CellID&&) noexcept = default;
+		constexpr CellID& operator=(CellID&&) noexcept      = default;
 
 		constexpr CellID(std::int16_t x, std::int16_t y) noexcept :
 			x(x), y(y)
@@ -232,8 +232,8 @@ namespace Skyrim
 		// Override (TESForm)
 		virtual void        InitializeData() override;                  // 4
 		virtual void        ClearData() override;                       // 5
-		virtual void        Unknown6(TESForm*) override;                // 6
-		virtual void        Unknown7(TESForm*) override;                // 7
+		virtual bool        Load(TESFile* file) override;               // 6
+		virtual bool        LoadPartial(TESFile* file) override;        // 7
 		virtual void        Unknown9(TESForm*) override;                // 9
 		virtual void        UnknownC(TESForm*) override;                // C
 		virtual void        Unknown13(TESForm*) override;               // 13

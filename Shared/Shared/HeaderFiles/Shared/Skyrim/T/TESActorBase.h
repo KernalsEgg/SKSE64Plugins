@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/ActorValueOwner.h"
 #include "Shared/Skyrim/B/BGSAttackDataForm.h"
@@ -40,13 +40,13 @@ namespace Skyrim
 		virtual ~TESActorBase() override; // 0
 
 		// Override (TESBoundAnimObject)
-		virtual bool AddChanges(std::uint32_t changeFlags) override;    // A
-		virtual void RemoveChanges(std::uint32_t changeFlags) override; // B
-		virtual void UnknownE(TESForm*) override;                       // E
-		virtual void UnknownF(TESForm*) override;                       // F
-		virtual void Unknown12(TESForm*) override;                      // 12
-		virtual void Unknown3E(TESObject*) override;                    // 3E
-		virtual void Unknown3F(TESObject*) override;                    // 3F
+		virtual bool AddChanges(std::uint32_t changeFlags) override;       // A
+		virtual void RemoveChanges(std::uint32_t changeFlags) override;    // B
+		virtual void SaveGame(BGSSaveFormBuffer* saveFormBuffer) override; // E
+		virtual void LoadGame(BGSLoadFormBuffer* loadFormBuffer) override; // F
+		virtual void Revert(BGSLoadFormBuffer* loadFormBuffer) override;   // 12
+		virtual void Unknown3E(TESObject*) override;                       // 3E
+		virtual void Unknown3F(TESObject*) override;                       // 3F
 
 		// Override (ActorValueOwner)
 		virtual float GetActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue) override;                                                                                              // 1

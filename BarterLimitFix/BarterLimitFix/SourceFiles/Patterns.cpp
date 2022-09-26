@@ -1,9 +1,10 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Patterns.h"
 
 #include "Addresses.h"
 #include "Shared/Relocation/AddressLibrary.h"
+#include "Shared/Relocation/PreprocessorDirectives.h"
 
 
 
@@ -50,10 +51,11 @@ namespace BarterLimitFix::Patterns
 		{
 			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::HasIterated,
-				std::make_tuple(                   // 0x6
-					0x0Fui8, 0x85ui8, 0x45Dui32),  // jnz 45D
-				std::make_tuple(                   // 0x6
-					0x0Fui8, 0x85ui8, 0x45Fui32)); // jnz 45F
+				SKYRIM_RELOCATE(
+					SKYRIM_VARIADIC_ARGUMENTS(          // 0x6
+						0x0Fui8, 0x85ui8, 0x45Dui32),   // jnz 45D
+					SKYRIM_VARIADIC_ARGUMENTS(          // 0x6
+						0x0Fui8, 0x85ui8, 0x45Fui32))); // jnz 45F
 		}
 
 		bool SetCount1()

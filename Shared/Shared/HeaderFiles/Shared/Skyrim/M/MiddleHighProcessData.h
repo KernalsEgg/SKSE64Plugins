@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/N/NiPointer.h"
@@ -13,6 +13,7 @@ namespace Skyrim
 	class bhkCharacterController;
 	class HitData;
 	class InventoryEntryData;
+	class NiAVObject;
 
 	enum class Update3DFlags : std::uint8_t
 	{
@@ -68,8 +69,8 @@ namespace Skyrim
 		std::uint64_t                                     unknown140;          // 140
 		std::uint64_t                                     unknown148;          // 148
 		std::uint64_t                                     unknown150;          // 150
-		std::uint64_t                                     unknown158;          // 158
-		std::uint64_t                                     unknown160;          // 160
+		NiAVObject*                                       headNode;            // 158
+		NiAVObject*                                       torsoNode;           // 160
 		std::uint64_t                                     unknown168;          // 168
 		std::uint64_t                                     unknown170;          // 170
 		std::uint64_t                                     unknown178;          // 178
@@ -134,6 +135,8 @@ namespace Skyrim
 		std::uint64_t                                     unknown328;          // 328
 		std::uint64_t                                     unknown330;          // 330
 	};
+	static_assert(offsetof(MiddleHighProcessData, headNode) == 0x158);
+	static_assert(offsetof(MiddleHighProcessData, torsoNode) == 0x160);
 	static_assert(offsetof(MiddleHighProcessData, lastHitData) == 0x190);
 	static_assert(offsetof(MiddleHighProcessData, currentFurniture) == 0x208);
 	static_assert(offsetof(MiddleHighProcessData, leftHand) == 0x220);

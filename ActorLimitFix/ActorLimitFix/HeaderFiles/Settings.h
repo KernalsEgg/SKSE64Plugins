@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 
 
@@ -27,7 +27,7 @@ namespace ActorLimitFix
 		~Settings() = default;
 
 		Settings& operator=(const Settings&) = delete;
-		Settings& operator=(Settings&&) = delete;
+		Settings& operator=(Settings&&)      = delete;
 
 		explicit Settings(const std::filesystem::path& path);
 

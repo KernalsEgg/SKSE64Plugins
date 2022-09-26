@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/N/NiMatrix33.h"
 #include "Shared/Skyrim/N/NiPoint3.h"

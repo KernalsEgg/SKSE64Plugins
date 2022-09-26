@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/Attribute.h"
 #include "Shared/Skyrim/S/Skill.h"
@@ -26,11 +26,11 @@ namespace Skyrim
 		virtual ~TESClass() override; // 0
 
 		// Override (TESForm)
-		virtual void InitializeData() override;    // 4
-		virtual void Unknown6(TESForm*) override;  // 6
-		virtual void UnknownE(TESForm*) override;  // E
-		virtual void UnknownF(TESForm*) override;  // F
-		virtual void Unknown12(TESForm*) override; // 12
+		virtual void InitializeData() override;                            // 4
+		virtual bool Load(TESFile* file) override;                         // 6
+		virtual void SaveGame(BGSSaveFormBuffer* saveFormBuffer) override; // E
+		virtual void LoadGame(BGSLoadFormBuffer* loadFormBuffer) override; // F
+		virtual void Revert(BGSLoadFormBuffer* loadFormBuffer) override;   // 12
 
 		// Member variables
 		std::uint32_t                             unknown50;                                                  // 50

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
@@ -58,7 +58,7 @@ namespace Skyrim
 			constexpr ~iterator() noexcept = default;
 
 			constexpr iterator& operator=(const iterator&) noexcept = default;
-			constexpr iterator& operator=(iterator&&) noexcept = default;
+			constexpr iterator& operator=(iterator&&) noexcept      = default;
 
 			constexpr iterator(pointer current) noexcept :
 				current_(current)
@@ -133,7 +133,7 @@ namespace Skyrim
 		constexpr ~GList() noexcept = default;
 
 		constexpr GList& operator=(const GList&) noexcept = delete;
-		constexpr GList& operator=(GList&&) noexcept = delete;
+		constexpr GList& operator=(GList&&) noexcept      = delete;
 
 		constexpr reference front() noexcept
 		{

@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/N/NiRefObject.h"
 
@@ -12,7 +12,7 @@ namespace Skyrim
 
 		if (--referenceCount == 0)
 		{
-			this->Dispose();
+			this->DeleteThis();
 		}
 	}
 

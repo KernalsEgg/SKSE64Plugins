@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
@@ -11,16 +11,16 @@ namespace Skyrim
 	{
 	public:
 		// Add
-		virtual ~SettingCollection();               // 0
-		virtual void InsertSetting(T* setting) = 0; // 1
-		virtual void RemoveSetting(T* setting) = 0; // 2
-		virtual bool WriteSetting(T* setting)  = 0; // 3
-		virtual bool ReadSetting(T* setting)   = 0; // 4
-		virtual void Unknown5(SettingCollection*);  // 5
-		virtual void Unknown6(SettingCollection*);  // 6
-		virtual void Unknown7(SettingCollection*);  // 7
-		virtual void Unknown8(SettingCollection*);  // 8
-		virtual void Unknown9(SettingCollection*);  // 9
+		virtual ~SettingCollection();              // 0
+		virtual void Add(T* setting)          = 0; // 1
+		virtual void Remove(T* setting)       = 0; // 2
+		virtual bool WriteSetting(T& setting) = 0; // 3
+		virtual bool ReadSetting(T& setting)  = 0; // 4
+		virtual bool Open(bool write);             // 5
+		virtual bool Close();                      // 6
+		virtual bool ReadSettingsFromProfile();    // 7
+		virtual bool WriteSettings();              // 8
+		virtual bool ReadSettings();               // 9
 
 		// Member variables
 		std::uint64_t unknown8;   // 8
@@ -58,5 +58,5 @@ namespace Skyrim
 		std::uint64_t unknown108; // 108
 		std::uint64_t unknown110; // 110
 	};
-	static_assert(sizeof(SettingCollection<void>) == 0x118);
+	static_assert(sizeof(SettingCollection<void*>) == 0x118);
 }

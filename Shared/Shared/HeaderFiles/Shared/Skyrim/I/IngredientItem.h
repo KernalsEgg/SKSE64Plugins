@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BGSDestructibleObjectForm.h"
 #include "Shared/Skyrim/B/BGSEquipType.h"
@@ -53,9 +53,9 @@ namespace Skyrim
 		// Override (MagicItem)
 		virtual void                     InitializeData() override;                                                   // 4
 		virtual void                     ClearData() override;                                                        // 5
-		virtual void                     UnknownE(TESForm*) override;                                                 // E
-		virtual void                     UnknownF(TESForm*) override;                                                 // F
-		virtual void                     Unknown12(TESForm*) override;                                                // 12
+		virtual void                     SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;                        // E
+		virtual void                     LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                        // F
+		virtual void                     Revert(BGSLoadFormBuffer* loadFormBuffer) override;                          // 12
 		virtual void                     Unknown13(TESForm*) override;                                                // 13
 		virtual MagicSystem::SpellType   GetSpellType() const override;                                               // 53
 		virtual MagicSystem::CastingType GetCastingType() const override;                                             // 55

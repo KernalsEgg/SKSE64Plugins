@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BGSFootstepEvent.h"
 #include "Shared/Skyrim/B/BSTEventSink.h"
@@ -19,7 +19,7 @@ namespace Trails::Events
 		FootstepEventSink(FootstepEventSink&&)      = delete;
 
 		FootstepEventSink& operator=(const FootstepEventSink&) = delete;
-		FootstepEventSink& operator=(FootstepEventSink&&) = delete;
+		FootstepEventSink& operator=(FootstepEventSink&&)      = delete;
 
 		// Override
 		virtual ~FootstepEventSink() override = default; // 0
@@ -28,6 +28,6 @@ namespace Trails::Events
 		virtual Skyrim::BSEventNotifyControl ProcessEvent(const Skyrim::BGSFootstepEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::BGSFootstepEvent>* eventSource) override; // 1
 
 		// Non-member functions
-		static FootstepEventSink* GetSingleton();
+		static FootstepEventSink& GetSingleton();
 	};
 }

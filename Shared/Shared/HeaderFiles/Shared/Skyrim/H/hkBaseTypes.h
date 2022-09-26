@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
 namespace Skyrim
 {
 	using hkpShapeKey = std::uint32_t;
-	using hkQuadReal  = __m128;
+	using hkQuadReal  = ::__m128;
 	using hkTime      = float;
 
 	constexpr hkpShapeKey HK_INVALID_SHAPE_KEY = static_cast<hkpShapeKey>(-1);

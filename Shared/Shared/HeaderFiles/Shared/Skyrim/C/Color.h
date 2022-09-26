@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
@@ -16,7 +16,7 @@ namespace Skyrim
 		constexpr ~Color() noexcept = default;
 
 		constexpr Color& operator=(const Color&) noexcept = default;
-		constexpr Color& operator=(Color&&) noexcept = default;
+		constexpr Color& operator=(Color&&) noexcept      = default;
 
 		constexpr Color(std::uint8_t red, std::uint8_t green, std::uint8_t blue, std::uint8_t alpha) noexcept :
 			red(red), green(green), blue(blue), alpha(alpha)

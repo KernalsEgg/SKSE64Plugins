@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeaderFiles\PCH.h">
+    <ClInclude Include="HeaderFiles\PrecompiledHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Hooks.h">
@@ -26,7 +26,7 @@
     <ClCompile Include="SourceFiles\ActorBasePerkFix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\PCH.cpp">
+    <ClCompile Include="SourceFiles\PrecompiledHeader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Hooks.cpp">

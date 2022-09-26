@@ -1,9 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugAnniversaryEdition|Win32">
+      <Configuration>DebugAnniversaryEdition</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugAnniversaryEdition|x64">
+      <Configuration>DebugAnniversaryEdition</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseAnniversaryEdition|Win32">
+      <Configuration>ReleaseAnniversaryEdition</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseAnniversaryEdition|x64">
+      <Configuration>ReleaseAnniversaryEdition</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
@@ -19,10 +35,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeaderFiles\Shared\PCH.h" />
+    <ClInclude Include="HeaderFiles\Shared\PrecompiledHeader.h" />
     <ClInclude Include="HeaderFiles\Shared\Relocation\AddressLibrary.h" />
     <ClInclude Include="HeaderFiles\Shared\Relocation\FileMapping.h" />
     <ClInclude Include="HeaderFiles\Shared\Relocation\Module.h" />
+    <ClInclude Include="HeaderFiles\Shared\Relocation\PreprocessorDirectives.h" />
     <ClInclude Include="HeaderFiles\Shared\Relocation\Version.h" />
     <ClInclude Include="HeaderFiles\Shared\SKSE\Events.h" />
     <ClInclude Include="HeaderFiles\Shared\SKSE\Interfaces.h" />
@@ -43,6 +60,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AttachTechniqueInput.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AttackAnimationArrayMap.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Attribute.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BaseExtraList.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BaseFormComponent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAbilityPerkEntry.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSAddonNode.h" />
@@ -175,6 +193,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConcussionEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConfirmLevelUpAttributeCallback.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Console.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConsoleLog.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ContainerItemExtra.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ContainerMenu.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CraftingSubMenu.h" />
@@ -348,6 +367,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicItemTraversalFunctor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicSystem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MagicTarget.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\Main.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MemoryManager.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MenuEventHandler.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MiddleHighProcessData.h" />
@@ -358,12 +378,17 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiAVObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBillboardNode.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBinaryStream.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBooleanExtraData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBound.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiCollisionObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiColor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiDirectionalLight.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiExtraData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiFile.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiFloatExtraData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiFloatsExtraData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiIntegerExtraData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiIntegersExtraData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiLight.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiMatrix33.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiNode.h" />
@@ -375,6 +400,8 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiProperty.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiQuaternion.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiRefObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiStringExtraData.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiStringsExtraData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTArray.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTexture.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTList.h" />
@@ -443,6 +470,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESForm.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFullName.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESFurniture.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESGlobal.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESHitEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESIcon.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESImageSpace.h" />
@@ -511,9 +539,12 @@
     <ClInclude Include="HeaderFiles\Shared\Utility\TypeTraits.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceFiles\Shared\PCH.cpp">
+    <ClCompile Include="HeaderFiles\Shared\Skyrim\M\Main.cpp" />
+    <ClCompile Include="SourceFiles\Shared\PrecompiledHeader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Relocation\AddressLibrary.cpp" />
     <ClCompile Include="SourceFiles\Shared\Relocation\FileMapping.cpp" />
@@ -522,9 +553,11 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActiveEffect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\Actor.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorEquipManager.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorState.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\AIProcess.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorValueOwner.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\AttachTechniqueInput.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BaseExtraList.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDecalManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDefaultObjectManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSFootstepManager.cpp" />
@@ -547,6 +580,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\ButtonEvent.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\C\CommandTable.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\C\Console.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\C\ConsoleLog.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\C\ContainerMenu.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\Events.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\Effect.cpp" />
@@ -597,16 +631,27 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\MemoryManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiAVObject.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiBinaryStream.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiBooleanExtraData.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiExtraData.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiFloatExtraData.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiFloatsExtraData.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiIntegerExtraData.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiIntegersExtraData.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiMatrix33.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiNode.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiObjectNET.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiPoint3.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiRefObject.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiStringExtraData.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiStringsExtraData.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\PersistentFormManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\PlayerCharacter.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\P\Precipitation.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\R\ReferenceEffect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScrapHeap.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\Script.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScriptEventSourceHolder.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\Setting.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\Sky.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\SpellItem.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TES.cpp" />
@@ -622,7 +667,6 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\U\UI.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\U\UIMessageQueue.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\U\UserEvents.cpp" />
-    <ClCompile Include="SourceFiles\Shared\Utility\Log.cpp" />
     <ClCompile Include="SourceFiles\Shared\Utility\Memory.cpp" />
     <ClCompile Include="SourceFiles\Shared\Utility\Trampoline.cpp" />
   </ItemGroup>
@@ -637,27 +681,55 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
@@ -670,10 +742,20 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Shared.Debug.x64.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="Shared.Debug.x64.props" />
   </ImportGroup>
@@ -681,26 +763,63 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="Shared.Release.x64.props" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Shared.Release.x64.props" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|Win32'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <VcpkgTriplet>x64-windows-static-md</VcpkgTriplet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'" Label="Vcpkg">
     <VcpkgTriplet>x64-windows-static-md</VcpkgTriplet>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgTriplet>x64-windows-static-md</VcpkgTriplet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'" Label="Vcpkg">
+    <VcpkgTriplet>x64-windows-static-md</VcpkgTriplet>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
@@ -734,6 +853,25 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -741,7 +879,22 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>Shared/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>Shared/PrecompiledHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>SKYRIM_ANNIVERSARY_EDITION;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Shared/PrecompiledHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -758,7 +911,26 @@
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>Shared/PCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>Shared/PrecompiledHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>SKYRIM_ANNIVERSARY_EDITION;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Shared/PrecompiledHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>

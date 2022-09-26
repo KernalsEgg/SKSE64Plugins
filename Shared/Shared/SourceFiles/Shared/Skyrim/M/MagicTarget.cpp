@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/M/MagicTarget.h"
 

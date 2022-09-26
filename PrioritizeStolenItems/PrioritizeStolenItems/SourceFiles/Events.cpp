@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Events.h"
 
@@ -50,17 +50,14 @@ namespace PrioritizeStolenItems
 		// RemoveItem
 		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Events::GetExtraDataListToRemoveItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
 
-		if (Relocation::Executable::GetSingleton().IsSpecialEdition())
-		{
-			// Mimic a virtual function table
-			static auto* removeItem{ std::addressof(Events::RemoveItem) };
+#ifdef SKYRIM_ANNIVERSARY_EDITION
+		Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::RemoveItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
+#else
+		// Mimic a virtual function table
+		static auto* removeItem{ std::addressof(Events::RemoveItem) };
 
-			Utility::Memory::SafeWrite(Addresses::Events::RemoveItem, 0x48ui8, 0xBEui8, reinterpret_cast<std::uint64_t>(std::addressof(removeItem))); // mov rsi, std::addressof(removeItem)
-		}
-		else
-		{
-			Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::RemoveItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
-		}
+		Utility::Memory::SafeWrite(Addresses::Events::RemoveItem, 0x48ui8, 0xBEui8, reinterpret_cast<std::uint64_t>(std::addressof(removeItem))); // mov rsi, std::addressof(removeItem)
+#endif
 
 		// SellItem
 		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Events::GetExtraDataListToSellItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));

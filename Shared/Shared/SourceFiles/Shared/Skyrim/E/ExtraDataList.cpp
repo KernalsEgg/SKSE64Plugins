@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/E/ExtraDataList.h"
 
@@ -15,119 +15,39 @@
 
 namespace Skyrim
 {
-	bool ExtraDataList::PresenceBitField::HasType(std::uint32_t type) const
-	{
-		std::uint32_t index = type >> 3; // Divide by 8
-
-		if (index < sizeof(PresenceBitField))
-		{
-			std::uint8_t bitMask = 1 << (type % 8); // Modulus of 8
-
-			return (bitMask & this->bitField_[index]) != 0;
-		}
-
-		return false;
-	}
-
-	ExtraDataList::~ExtraDataList()
-	{
-		auto* next = this->extraData_;
-
-		while (next)
-		{
-			auto* current = next;
-			next          = current->next;
-
-			delete current;
-		}
-
-		this->extraData_ = nullptr;
-
-		delete this->presenceBitField_;
-
-		this->presenceBitField_ = nullptr;
-	}
-
 	float ExtraDataList::GetCharge() const
 	{
-		const auto* extraCharge = this->GetType<ExtraCharge>(ExtraDataType::kCharge);
+		const auto* extraCharge = this->GetExtraData<ExtraCharge>(ExtraDataType::kCharge);
 
 		return extraCharge ? extraCharge->charge : -1.0F;
 	}
 
 	std::int16_t ExtraDataList::GetCount() const
 	{
-		const auto* extraCount = this->GetType<ExtraCount>(ExtraDataType::kCount);
+		const auto* extraCount = this->GetExtraData<ExtraCount>(ExtraDataType::kCount);
 
 		return extraCount ? extraCount->count : 1;
 	}
 
 	float ExtraDataList::GetHealth() const
 	{
-		const auto* extraHealth = this->GetType<ExtraHealth>(ExtraDataType::kHealth);
+		const auto* extraHealth = this->GetExtraData<ExtraHealth>(ExtraDataType::kHealth);
 
 		return extraHealth ? extraHealth->health : -1.0F;
 	}
 
 	TESForm* ExtraDataList::GetOwner() const
 	{
-		const auto* extraOwnership = this->GetType<ExtraOwnership>(ExtraDataType::kOwnership);
+		const auto* extraOwnership = this->GetExtraData<ExtraOwnership>(ExtraDataType::kOwnership);
 
 		return extraOwnership ? extraOwnership->owner : nullptr;
 	}
 
-	BSExtraData* ExtraDataList::GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType)
-	{
-		BSReadLockGuard readLockGuard(this->lock_);
-
-		if (!this->HasType(extraDataType))
-		{
-			return nullptr;
-		}
-
-		for (auto* extraData = this->extraData_; extraData; extraData = extraData->next)
-		{
-			if (extraData->GetType() == extraDataType)
-			{
-				return extraData;
-			}
-		}
-
-		return nullptr;
-	}
-
-	const BSExtraData* ExtraDataList::GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const
-	{
-		BSReadLockGuard readLockGuard(this->lock_);
-
-		if (!this->HasType(extraDataType))
-		{
-			return nullptr;
-		}
-
-		for (auto* extraData = this->extraData_; extraData; extraData = extraData->next)
-		{
-			if (extraData->GetType() == extraDataType)
-			{
-				return extraData;
-			}
-		}
-
-		return nullptr;
-	}
-
 	SoulLevel ExtraDataList::GetSoulLevel() const
 	{
-		const auto* extraSoul = this->GetType<ExtraSoul>(ExtraDataType::kSoul);
+		const auto* extraSoul = this->GetExtraData<ExtraSoul>(ExtraDataType::kSoul);
 
 		return extraSoul ? extraSoul->soul.get() : SoulLevel::kNone;
-	}
-
-	bool ExtraDataList::HasType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const
-	{
-		BSReadLockGuard readLockGuard(this->lock_);
-
-		return this->presenceBitField_ && this->presenceBitField_->HasType(extraDataType.underlying());
 	}
 
 	bool ExtraDataList::IsQuestItem() const
@@ -141,57 +61,36 @@ namespace Skyrim
 	{
 		if (eitherHand)
 		{
-			return this->HasType(ExtraDataType::kWorn) || this->HasType(ExtraDataType::kWornLeft);
+			return this->HasExtraData(ExtraDataType::kWorn) || this->HasExtraData(ExtraDataType::kWornLeft);
 		}
 		else if (leftHand)
 		{
-			return this->HasType(ExtraDataType::kWornLeft);
+			return this->HasExtraData(ExtraDataType::kWornLeft);
 		}
 		else
 		{
-			return this->HasType(ExtraDataType::kWorn);
+			return this->HasExtraData(ExtraDataType::kWorn);
 		}
 	}
 
-	bool ExtraDataList::ShouldItemStack(bool stackWorn) const
+	BSExtraData* ExtraDataList::GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type)
 	{
 		BSReadLockGuard readLockGuard(this->lock_);
 
-		for (const auto& extraData : *this)
-		{
-			switch (extraData.GetType())
-			{
-				case ExtraDataType::kWorn:
-				case ExtraDataType::kWornLeft:
-				{
-					if (!stackWorn)
-					{
-						return false;
-					}
-				}
-				case ExtraDataType::kReferenceHandle:
-				case ExtraDataType::kOriginalReference:
-				case ExtraDataType::kOwnership:
-				case ExtraDataType::kCount:
-				case ExtraDataType::kTimeLeft:
-				case ExtraDataType::kLeveledItem:
-				case ExtraDataType::kScale:
-				case ExtraDataType::kHotkey:
-				case ExtraDataType::kAliasInstanceArray:
-				case ExtraDataType::kOutfitItem:
-				case ExtraDataType::kFromAlias:
-				case ExtraDataType::kShouldWear:
-				case ExtraDataType::kUniqueID:
-				{
-					break;
-				}
-				default:
-				{
-					return false;
-				}
-			}
-		}
+		return this->baseExtraList_.GetExtraData(type);
+	}
 
-		return true;
+	const BSExtraData* ExtraDataList::GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const
+	{
+		BSReadLockGuard readLockGuard(this->lock_);
+
+		return this->baseExtraList_.GetExtraData(type);
+	}
+
+	bool ExtraDataList::HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const
+	{
+		BSReadLockGuard readLockGuard(this->lock_);
+
+		return this->baseExtraList_.HasExtraData(type);
 	}
 }

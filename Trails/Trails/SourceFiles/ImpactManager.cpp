@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "ImpactManager.h"
 
@@ -75,7 +75,7 @@ namespace Trails
 
 		auto  originNodeName = rayCast.origin.nodeName;
 		auto* originNode     = originNodeName.empty() || !source3D ? nullptr : source3D->GetBoneFromName(Skyrim::BSFixedString(originNodeName), true);
-		auto  origin         = originNode ? originNode->worldTransform.translation : source->position;
+		auto  origin         = originNode ? originNode->currentWorldTransform.translation : source->position;
 
 		auto originOffset = Skyrim::NiPoint3(rayCast.origin.offset.x, rayCast.origin.offset.y, rayCast.origin.offset.z);
 		auto ray          = Skyrim::NiPoint3(rayCast.ray.x, rayCast.ray.y, rayCast.ray.z);
@@ -95,7 +95,7 @@ namespace Trails
 
 			if (rotationNode)
 			{
-				rotationNode->worldTransform.rotation.RotationMatrixToEulerAnglesZXY(eulerAngles.z, eulerAngles.x, eulerAngles.y);
+				rotationNode->currentWorldTransform.rotation.RotationMatrixToEulerAnglesZXY(eulerAngles.z, eulerAngles.x, eulerAngles.y);
 			}
 			else
 			{
@@ -124,8 +124,8 @@ namespace Trails
 		rayCastInput.rayHitCollectorA8 = std::addressof(closestRayHitCollector);
 
 		auto havokWorldScale   = Skyrim::bhkWorld::GetScale();
-		rayCastInput.from.quad = _mm_setr_ps(origin.x * havokWorldScale, origin.y * havokWorldScale, origin.z * havokWorldScale, 0.0F);
-		rayCastInput.ray.quad  = _mm_setr_ps(ray.x * havokWorldScale, ray.y * havokWorldScale, ray.z * havokWorldScale, 0.0F);
+		rayCastInput.from.quad = ::_mm_setr_ps(origin.x * havokWorldScale, origin.y * havokWorldScale, origin.z * havokWorldScale, 0.0F);
+		rayCastInput.ray.quad  = ::_mm_setr_ps(ray.x * havokWorldScale, ray.y * havokWorldScale, ray.z * havokWorldScale, 0.0F);
 
 		if (source->formType == Skyrim::FormType::kActor)
 		{
@@ -253,7 +253,7 @@ namespace Trails
 
 		if (source == Skyrim::PlayerCharacter::GetSingleton())
 		{
-			Utility::Log::Information("Material: {}", materialType->materialName);
+			Utility::Log::Information("Material: {}", materialType->materialName.data());
 		}
 
 		auto* impactData = impactEffect->GetImpactData(materialType);
@@ -319,7 +319,7 @@ namespace Trails
 
 			if (rotationNode)
 			{
-				rotationNode->worldTransform.rotation.RotationMatrixToEulerAnglesZXY(eulerAngles.z, eulerAngles.x, eulerAngles.y);
+				rotationNode->currentWorldTransform.rotation.RotationMatrixToEulerAnglesZXY(eulerAngles.z, eulerAngles.x, eulerAngles.y);
 			}
 			else
 			{

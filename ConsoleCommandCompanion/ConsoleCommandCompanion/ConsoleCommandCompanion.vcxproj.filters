@@ -24,7 +24,7 @@
     <ClInclude Include="HeaderFiles\Patterns.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\PCH.h">
+    <ClInclude Include="HeaderFiles\PrecompiledHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Settings.h">
@@ -47,10 +47,13 @@
     <ClCompile Include="SourceFiles\Patterns.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\PCH.cpp">
+    <ClCompile Include="SourceFiles\PrecompiledHeader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Addresses.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BGSLocalizedStringDL.h"
 #include "Shared/Skyrim/T/TESCondition.h"

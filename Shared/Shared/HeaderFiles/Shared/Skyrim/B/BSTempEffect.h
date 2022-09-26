@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/N/NiObject.h"
 
@@ -18,27 +18,27 @@ namespace Skyrim
 		virtual ~BSTempEffect() override; // 0
 
 		// Override (NiObject)
-		virtual const NiRTTI* GetRTTI() const override;      // 2
-		virtual NiNode*       AsNode() override;             // 3
-		virtual void          Unknown4(NiObject*) override;  // 4
-		virtual BSFadeNode*   AsFadeNode() override;         // 5
-		virtual void          Unknown6(NiObject*) override;  // 6
-		virtual void          Unknown7(NiObject*) override;  // 7
-		virtual void          Unknown8(NiObject*) override;  // 8
-		virtual void          Unknown9(NiObject*) override;  // 9
-		virtual void          UnknownA(NiObject*) override;  // A
-		virtual void          UnknownB(NiObject*) override;  // B
-		virtual void          UnknownC(NiObject*) override;  // C
-		virtual void          UnknownD(NiObject*) override;  // D
-		virtual void          UnknownE(NiObject*) override;  // E
-		virtual void          UnknownF(NiObject*) override;  // F
-		virtual void          Unknown10(NiObject*) override; // 10
-		virtual void          Unknown11(NiObject*) override; // 11
-		virtual void          Unknown12(NiObject*) override; // 12
-		virtual void          Unknown13(NiObject*) override; // 13
-		virtual void          Unknown14(NiObject*) override; // 14
-		virtual void          Unknown15(NiObject*) override; // 15
-		virtual void          Unknown16(NiObject*) override; // 16
+		virtual const NiRTTI*                 GetRTTI() const override;                  // 2
+		virtual NiNode*                       AsNiNode() override;                       // 3
+		virtual NiSwitchNode*                 AsNiSwitchNode() override;                 // 4
+		virtual BSFadeNode*                   AsBSFadeNode() override;                   // 5
+		virtual BSMultiBoundNode*             AsBSMultipleBoundNode() override;          // 6
+		virtual BSGeometry*                   AsBSGeometry() override;                   // 7
+		virtual NiTriStrips*                  AsNiTriangleStrips() override;             // 8
+		virtual BSTriShape*                   AsBSTriangleShape() override;              // 9
+		virtual BSSegmentedTriShape*          AsBSSegmentedTriangleShape() override;     // A
+		virtual BSSubIndexTriShape*           AsBSSubIndexTriangleShape() override;      // B
+		virtual BSDynamicTriShape*            AsBSDynamicTriangleShape() override;       // C
+		virtual NiGeometry*                   AsNiGeometry() override;                   // D
+		virtual NiTriBasedGeom*               AsNiTriangleBasedGeometry() override;      // E
+		virtual NiTriShape*                   AsNiTriangleShape() override;              // F
+		virtual NiParticles*                  AsNiParticles() override;                  // 10
+		virtual BSLines*                      AsBSLines() override;                      // 11
+		virtual bhkNiCollisionObject*         AsBhkNiCollisionObject() override;         // 12
+		virtual bhkBlendCollisionObject*      AsBhkBlendCollisionObject() override;      // 13
+		virtual bhkAttachmentCollisionObject* AsBhkAttachmentCollisionObject() override; // 14
+		virtual bhkRigidBody*                 AsBhkRigidBody() override;                 // 15
+		virtual bhkLimitedHingeConstraint*    AsBhkLimitedHingeConstraint() override;    // 16
 
 		// Add
 		virtual void Unknown25(BSTempEffect*); // 25

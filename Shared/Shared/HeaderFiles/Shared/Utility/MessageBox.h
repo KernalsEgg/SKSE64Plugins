@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Relocation/Module.h"
 #include "Shared/Utility/Message.h"
@@ -14,13 +14,15 @@ namespace Utility::MessageBox
 	{
 		::MessageBoxA(
 			nullptr,
-			fmt::format("{}({},{}): {}",
-				std::filesystem::path(message.sourceLocation.file_name()).filename().string(),
-				message.sourceLocation.line(),
-				message.sourceLocation.column(),
-				fmt::format(message.stringView, arguments...))
+			std::vformat(
+				"{}({},{}): {}",
+				std::make_format_args(
+					std::filesystem::path(message.sourceLocation.file_name()).filename().string(),
+					message.sourceLocation.line(),
+					message.sourceLocation.column(),
+					std::vformat(message.stringView, std::make_format_args(arguments...))))
 				.c_str(),
-			Relocation::Plugin::GetSingleton().GetPath().filename().string().c_str(),
+			Relocation::DynamicLinkLibrary::GetSingleton().GetPath().filename().string().c_str(),
 			MB_OK | MB_ICONERROR);
 
 		std::terminate();

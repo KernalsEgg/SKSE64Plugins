@@ -155,7 +155,7 @@ namespace Skyrim
 
 		// Override (TESForm)
 		virtual void InitializeData() override;    // 4
-		virtual void Unknown6(TESForm*) override;  // 6
+		virtual bool Load(TESFile* file) override; // 6
 		virtual void Unknown13(TESForm*) override; // 13
 
 		// Member variables

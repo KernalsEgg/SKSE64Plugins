@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
@@ -16,7 +16,7 @@ namespace Skyrim
 		constexpr ~NiPoint3() noexcept = default;
 
 		constexpr NiPoint3& operator=(const NiPoint3&) noexcept = default;
-		constexpr NiPoint3& operator=(NiPoint3&&) noexcept = default;
+		constexpr NiPoint3& operator=(NiPoint3&&) noexcept      = default;
 
 		constexpr NiPoint3(float x, float y, float z) noexcept :
 			x(x), y(y), z(z)

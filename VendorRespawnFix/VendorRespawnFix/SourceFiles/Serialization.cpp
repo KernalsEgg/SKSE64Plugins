@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Serialization.h"
 #include "Shared/Skyrim/B/BSTArray.h"
@@ -45,7 +45,7 @@ namespace VendorRespawnFix
 	{
 		if (!faction)
 		{
-			Utility::Log::Error("Faction not found");
+			Utility::Log::Error("Faction not found.");
 
 			return false;
 		}
@@ -85,6 +85,8 @@ namespace VendorRespawnFix
 					if (length != sizeof(LastDayRespawned))
 					{
 						Utility::Log::Error("{} size mismatch, 0x{:X}.", type, length);
+
+						continue;
 					}
 
 					LastDayRespawned().LoadGame(serializationInterface);
@@ -93,7 +95,7 @@ namespace VendorRespawnFix
 				}
 				default:
 				{
-					Utility::Log::Error("Type mismatch, {}", type);
+					Utility::Log::Error("Type mismatch, {}.", type);
 				}
 			}
 		}

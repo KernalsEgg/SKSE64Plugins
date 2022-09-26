@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
@@ -10,8 +10,8 @@ namespace Skyrim
 	{
 	public:
 		// Add
-		virtual ~NiRefObject(); // 0
-		virtual void Dispose(); // 1
+		virtual ~NiRefObject();    // 0
+		virtual void DeleteThis(); // 1
 
 		// Member functions
 		void          DecrementReferenceCount();

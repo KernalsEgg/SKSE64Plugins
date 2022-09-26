@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Utility/EventSource.h"
 
@@ -22,7 +22,7 @@ namespace Skyrim
 			~InitializeThread() = default;
 
 			InitializeThread& operator=(const InitializeThread&) = delete;
-			InitializeThread& operator=(InitializeThread&&) = delete;
+			InitializeThread& operator=(InitializeThread&&)      = delete;
 
 			static InitializeThread& GetSingleton();
 

@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/AIProcess.h"
 
@@ -33,6 +33,20 @@ namespace Skyrim
 		}
 
 		return leftHand ? middleHighProcessData->leftHand : middleHighProcessData->rightHand;
+	}
+
+	NiAVObject* AIProcess::GetHeadNode() const
+	{
+		auto* middleHighProcessData = this->middleHighProcessData;
+
+		return middleHighProcessData ? middleHighProcessData->headNode : nullptr;
+	}
+
+	NiAVObject* AIProcess::GetTorsoNode() const
+	{
+		auto* middleHighProcessData = this->middleHighProcessData;
+
+		return middleHighProcessData ? middleHighProcessData->torsoNode : nullptr;
 	}
 
 	HitData* AIProcess::GetLastHitData() const

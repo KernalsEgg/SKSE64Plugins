@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Fixes/ActorValuePercentage.h"
 
@@ -39,9 +39,9 @@ namespace ScrambledBugs::Fixes
 
 	float ActorValuePercentage::GetStaminaPercentage(Skyrim::Actor* actor)
 	{
-		Skyrim::NiPointer<Skyrim::Actor> movementActor;
-		actor->GetMovementActor(movementActor);
+		Skyrim::NiPointer<Skyrim::Actor> controllingActor;
+		actor->GetControllingActor(controllingActor);
 
-		return ActorValuePercentage::GetActorValuePercentage(movementActor.get(), Skyrim::ActorValue::kStamina);
+		return ActorValuePercentage::GetActorValuePercentage(controllingActor.get(), Skyrim::ActorValue::kStamina);
 	}
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BGSConstructibleObject.h"
 #include "Shared/Skyrim/B/BGSImpactDataSet.h"
@@ -25,7 +25,7 @@ namespace Trails
 			~Form() = default;
 
 			Form& operator=(const Form&) = default;
-			Form& operator=(Form&&) = default;
+			Form& operator=(Form&&)      = default;
 
 			explicit Form(Skyrim::TESForm* form);
 
@@ -41,14 +41,14 @@ namespace Trails
 
 				if (!form)
 				{
-					Utility::Log::Warning("Form ID: {}, File Name: {}. Form not found.", this->formID, this->fileName);
+					Utility::Log::Error("Form ID: {}, File Name: {}. Form not found.", this->formID, this->fileName);
 
 					return nullptr;
 				}
 
 				if (form->formType != formType)
 				{
-					Utility::Log::Warning("Form ID: {}, File Name: {}. Incorrect form type.", this->formID, this->fileName);
+					Utility::Log::Error("Form ID: {}, File Name: {}. Incorrect form type.", this->formID, this->fileName);
 
 					return nullptr;
 				}
@@ -217,7 +217,7 @@ namespace Trails
 		~Settings() = default;
 
 		Settings& operator=(const Settings&) = default;
-		Settings& operator=(Settings&&) = default;
+		Settings& operator=(Settings&&)      = default;
 
 		explicit Settings(const std::filesystem::path& path);
 

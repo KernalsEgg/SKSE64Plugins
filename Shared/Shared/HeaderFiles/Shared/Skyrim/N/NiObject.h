@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/N/NiRefObject.h"
 
@@ -8,9 +8,31 @@
 
 namespace Skyrim
 {
+	class bhkAttachmentCollisionObject;
+	class bhkBlendCollisionObject;
+	class bhkLimitedHingeConstraint;
+	class bhkNiCollisionObject;
+	class bhkRigidBody;
+	class BSDynamicTriShape;
 	class BSFadeNode;
+	class BSGeometry;
+	class BSLines;
+	class BSMultiBoundNode;
+	class BSSegmentedTriShape;
+	class BSSubIndexTriShape;
+	class BSTriShape;
+	class NiCloningProcess;
+	class NiControllerManager;
+	class NiGeometry;
 	class NiNode;
+	class NiObjectGroup;
+	class NiParticles;
 	class NiRTTI;
+	class NiStream;
+	class NiSwitchNode;
+	class NiTriBasedGeom;
+	class NiTriShape;
+	class NiTriStrips;
 
 	class NiObject :
 		public NiRefObject // 0
@@ -20,41 +42,41 @@ namespace Skyrim
 		virtual ~NiObject() override; // 0
 
 		// Add
-		virtual const NiRTTI* GetRTTI() const;      // 2
-		virtual NiNode*       AsNode();             // 3
-		virtual void          Unknown4(NiObject*);  // 4
-		virtual BSFadeNode*   AsFadeNode();         // 5
-		virtual void          Unknown6(NiObject*);  // 6
-		virtual void          Unknown7(NiObject*);  // 7
-		virtual void          Unknown8(NiObject*);  // 8
-		virtual void          Unknown9(NiObject*);  // 9
-		virtual void          UnknownA(NiObject*);  // A
-		virtual void          UnknownB(NiObject*);  // B
-		virtual void          UnknownC(NiObject*);  // C
-		virtual void          UnknownD(NiObject*);  // D
-		virtual void          UnknownE(NiObject*);  // E
-		virtual void          UnknownF(NiObject*);  // F
-		virtual void          Unknown10(NiObject*); // 10
-		virtual void          Unknown11(NiObject*); // 11
-		virtual void          Unknown12(NiObject*); // 12
-		virtual void          Unknown13(NiObject*); // 13
-		virtual void          Unknown14(NiObject*); // 14
-		virtual void          Unknown15(NiObject*); // 15
-		virtual void          Unknown16(NiObject*); // 16
-		virtual void          Unknown17(NiObject*); // 17
-		virtual void          Unknown18(NiObject*); // 18
-		virtual void          Unknown19(NiObject*); // 19
-		virtual void          Unknown1A(NiObject*); // 1A
-		virtual void          Unknown1B(NiObject*); // 1B
-		virtual void          Unknown1C(NiObject*); // 1C
-		virtual void          Unknown1D(NiObject*); // 1D
-		virtual void          Unknown1E(NiObject*); // 1E
-		virtual void          Unknown1F(NiObject*); // 1F
-		virtual void          Unknown20(NiObject*); // 20
-		virtual void          Unknown21(NiObject*); // 21
-		virtual void          Unknown22(NiObject*); // 22
-		virtual void          Unknown23(NiObject*); // 23
-		virtual void          Unknown24(NiObject*); // 24
+		virtual const NiRTTI*                 GetRTTI() const;                                // 2
+		virtual NiNode*                       AsNiNode();                                     // 3
+		virtual NiSwitchNode*                 AsNiSwitchNode();                               // 4
+		virtual BSFadeNode*                   AsBSFadeNode();                                 // 5
+		virtual BSMultiBoundNode*             AsBSMultipleBoundNode();                        // 6
+		virtual BSGeometry*                   AsBSGeometry();                                 // 7
+		virtual NiTriStrips*                  AsNiTriangleStrips();                           // 8
+		virtual BSTriShape*                   AsBSTriangleShape();                            // 9
+		virtual BSSegmentedTriShape*          AsBSSegmentedTriangleShape();                   // A
+		virtual BSSubIndexTriShape*           AsBSSubIndexTriangleShape();                    // B
+		virtual BSDynamicTriShape*            AsBSDynamicTriangleShape();                     // C
+		virtual NiGeometry*                   AsNiGeometry();                                 // D
+		virtual NiTriBasedGeom*               AsNiTriangleBasedGeometry();                    // E
+		virtual NiTriShape*                   AsNiTriangleShape();                            // F
+		virtual NiParticles*                  AsNiParticles();                                // 10
+		virtual BSLines*                      AsBSLines();                                    // 11
+		virtual bhkNiCollisionObject*         AsBhkNiCollisionObject();                       // 12
+		virtual bhkBlendCollisionObject*      AsBhkBlendCollisionObject();                    // 13
+		virtual bhkAttachmentCollisionObject* AsBhkAttachmentCollisionObject();               // 14
+		virtual bhkRigidBody*                 AsBhkRigidBody();                               // 15
+		virtual bhkLimitedHingeConstraint*    AsBhkLimitedHingeConstraint();                  // 16
+		virtual NiObject*                     CreateClone(NiCloningProcess& cloningProcess);  // 17
+		virtual void                          LoadBinary(NiStream& stream);                   // 18
+		virtual void                          LinkObject(NiStream& stream);                   // 19
+		virtual bool                          RegisterStreamables(NiStream& stream);          // 1A
+		virtual void                          SaveBinary(NiStream& stream);                   // 1B
+		virtual bool                          IsEqual(NiObject* object);                      // 1C
+		virtual void                          ProcessClone(NiCloningProcess& cloningProcess); // 1D
+		virtual void                          PostLinkObject(NiStream& stream);               // 1E
+		virtual bool                          StreamCanSkip();                                // 1F
+		virtual const NiRTTI*                 GetStreamableRTTI() const;                      // 20
+		virtual std::uint32_t                 GetBlockAllocationSize() const;                 // 21
+		virtual NiObjectGroup*                GetGroup() const;                               // 22
+		virtual void                          SetGroup(NiObjectGroup* group);                 // 23
+		virtual NiControllerManager*          AsNiControllerManager();                        // 24
 	};
 	static_assert(sizeof(NiObject) == 0x10);
 }

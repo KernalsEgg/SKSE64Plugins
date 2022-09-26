@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSLensFlareRenderData.h"
 #include "Shared/Skyrim/T/TESForm.h"
@@ -19,7 +19,7 @@ namespace Skyrim
 
 		// Override (TESForm)
 		virtual void ClearData() override;         // 5
-		virtual void Unknown6(TESForm*) override;  // 6
+		virtual bool Load(TESFile* file) override; // 6
 		virtual void Unknown13(TESForm*) override; // 13
 	};
 	static_assert(sizeof(BGSLensFlare) == 0x40);

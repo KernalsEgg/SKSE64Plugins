@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Relocation/Version.h"
 
@@ -8,21 +8,21 @@
 
 namespace Relocation
 {
-	class Plugin
+	class DynamicLinkLibrary
 	{
 	public:
-		Plugin()              = delete;
-		Plugin(const Plugin&) = delete;
-		Plugin(Plugin&&)      = delete;
+		DynamicLinkLibrary()                          = delete;
+		DynamicLinkLibrary(const DynamicLinkLibrary&) = delete;
+		DynamicLinkLibrary(DynamicLinkLibrary&&)      = delete;
 
-		~Plugin() = default;
+		virtual ~DynamicLinkLibrary() = default;
 
-		Plugin& operator=(const Plugin&) = delete;
-		Plugin& operator=(Plugin&&) = delete;
+		DynamicLinkLibrary& operator=(const DynamicLinkLibrary&) = delete;
+		DynamicLinkLibrary& operator=(DynamicLinkLibrary&&)      = delete;
 
-		explicit Plugin(std::uintptr_t address);
+		explicit DynamicLinkLibrary(std::uintptr_t address);
 
-		static const Plugin& GetSingleton();
+		static const DynamicLinkLibrary& GetSingleton();
 
 		std::uintptr_t               GetAddress() const { return this->address_; }
 		const std::filesystem::path& GetPath() const { return this->path_; }
@@ -38,19 +38,27 @@ namespace Relocation
 	};
 
 	class Executable :
-		public Plugin
+		public DynamicLinkLibrary
 	{
 	public:
+		Executable()                  = delete;
+		Executable(const Executable&) = delete;
+		Executable(Executable&&)      = delete;
+
+		virtual ~Executable() override = default;
+
+		Executable& operator=(const Executable&) = delete;
+		Executable& operator=(Executable&&)      = delete;
+
 		explicit Executable(std::uintptr_t address);
 
 		static const Executable& GetSingleton();
 
-		const Version& GetProductVersion() const { return this->productVersion_; }
-		bool           IsSpecialEdition() const { return this->productVersion_ <= Version(1, 5, 97, 0); }
+		const Version<std::int32_t>& GetProductVersion() const { return this->productVersion_; }
 
 	protected:
 		void SetProductVersion(const std::filesystem::path& path);
 
-		Version productVersion_;
+		Version<std::int32_t> productVersion_;
 	};
 }

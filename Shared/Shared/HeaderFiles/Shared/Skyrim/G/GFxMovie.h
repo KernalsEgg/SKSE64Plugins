@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/G/GFxPlayerStatistics.h"
 #include "Shared/Skyrim/G/GRefCountBase.h"

@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Skyrim/B/BSTSingleton.h"
 #include "Shared/Skyrim/E/ExtraDataList.h"
@@ -57,13 +58,13 @@ namespace Skyrim
 		std::uint64_t                          unknown30;             // 30
 		std::uint64_t                          unknown38;             // 38
 		ExtraDataList                          extraDataList;         // 40
-		BSTSmallArray<LoadedInventoryModel, 7> loadedInventoryModels; // 58
-		std::uint64_t                          unknown148;            // 148
-		std::uint64_t                          unknown150;            // 150
-		std::uint64_t                          unknown158;            // 158
+		BSTSmallArray<LoadedInventoryModel, 7> loadedInventoryModels; // 58, 60
+		std::uint64_t                          unknown150;            // 148, 150
+		std::uint64_t                          unknown158;            // 150, 158
+		std::uint64_t                          unknown160;            // 158, 160
 	};
 	static_assert(offsetof(Inventory3DManager, zoom) == 0x2C);
 	static_assert(offsetof(Inventory3DManager, extraDataList) == 0x40);
-	static_assert(offsetof(Inventory3DManager, loadedInventoryModels) == 0x58);
-	static_assert(sizeof(Inventory3DManager) == 0x160);
+	static_assert(offsetof(Inventory3DManager, loadedInventoryModels) == SKYRIM_RELOCATE(0x58, 0x60));
+	static_assert(sizeof(Inventory3DManager) == SKYRIM_RELOCATE(0x160, 0x168));
 }

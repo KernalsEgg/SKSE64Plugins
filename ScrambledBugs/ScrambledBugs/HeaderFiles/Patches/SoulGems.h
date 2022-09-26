@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Shared/Skyrim/I/InventoryChanges.h"
 #include "Shared/Skyrim/I/InventoryEntryData.h"

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
@@ -19,7 +19,7 @@ namespace Relocation
 			~View() { this->Unmap(); }
 
 			View& operator=(const View&) = delete;
-			View& operator=(View&&) = delete;
+			View& operator=(View&&)      = delete;
 
 			std::uintptr_t GetAddress() const { return this->address_; }
 			bool           Map(void* fileMapping, std::size_t size);
@@ -36,7 +36,7 @@ namespace Relocation
 		~FileMapping() { this->Close(); }
 
 		FileMapping& operator=(const FileMapping&) = delete;
-		FileMapping& operator=(FileMapping&&) = delete;
+		FileMapping& operator=(FileMapping&&)      = delete;
 
 		void  Close();
 		bool  Create(std::string_view name, std::size_t size);

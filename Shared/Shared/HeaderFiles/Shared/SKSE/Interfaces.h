@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Relocation/Version.h"
 #include "Shared/SKSE/Events.h"
@@ -52,14 +52,14 @@ namespace SKSE
 			kTotal         = 8
 		};
 
-		std::uint32_t            EditorVersion() const { return this->editorVersion_; }
-		PluginHandle             GetPluginHandle() const;
-		const PluginInformation* GetPluginInformation(const char* name) const;
-		std::uint32_t            GetReleaseIndex() const;
-		std::uint32_t            IsEditor() const { return this->isEditor_; }
-		void*                    QueryInterface(std::uint32_t id) const;
-		Relocation::Version      RuntimeVersion() const;
-		std::uint32_t            SKSEVersion() const { return this->skseVersion_; }
+		std::uint32_t                     EditorVersion() const { return this->editorVersion_; }
+		PluginHandle                      GetPluginHandle() const;
+		const PluginInformation*          GetPluginInformation(const char* name) const;
+		std::uint32_t                     GetReleaseIndex() const;
+		std::uint32_t                     IsEditor() const { return this->isEditor_; }
+		void*                             QueryInterface(std::uint32_t id) const;
+		Relocation::Version<std::int32_t> RuntimeVersion() const;
+		std::uint32_t                     SKSEVersion() const { return this->skseVersion_; }
 
 		template <class T>
 		T* QueryInterface(std::uint32_t id) const
@@ -68,7 +68,7 @@ namespace SKSE
 
 			if (interface && interface->Version() != T::kVersion)
 			{
-				Utility::Log::Warning("Unexpected {} version encountered, {}. Expected {}.", typeid(T).name(), interface->Version(), interface->Version());
+				Utility::Log::Warning("Unexpected {} version encountered, {}. Expected {}.", typeid(T).name(), interface->Version(), static_cast<std::uint32_t>(T::kVersion));
 			}
 
 			return interface;
@@ -216,7 +216,7 @@ namespace SKSE
 			~Task() = default;
 
 			Task& operator=(const Task&) = delete;
-			Task& operator=(Task&&) = delete;
+			Task& operator=(Task&&)      = delete;
 
 			explicit Task(TaskFunction&& taskFunction);
 
@@ -238,7 +238,7 @@ namespace SKSE
 			~UITask() = default;
 
 			UITask& operator=(const UITask&) = delete;
-			UITask& operator=(UITask&&) = delete;
+			UITask& operator=(UITask&&)      = delete;
 
 			explicit UITask(TaskFunction&& taskFunction);
 
@@ -323,6 +323,7 @@ namespace SKSE
 	};
 	static_assert(sizeof(MessagingInterface) == 0x20);
 
+#ifdef SKYRIM_ANNIVERSARY_EDITION
 	struct PluginVersionData
 	{
 	public:
@@ -331,29 +332,29 @@ namespace SKSE
 			kVersion = 1
 		};
 
-		const std::uint32_t dataVersion{ PluginVersionData::kVersion }; // 0
-		std::uint32_t       pluginVersion{ 0 };                         // 4
-		char                pluginName[256]{};                          // 8
-		char                author[256]{};                              // 108
-		char                supportEmail[256]{};                        // 208
-		bool                addressLibrary   : 1 { false };             // 308 (0, 0)
-		bool                signatureScanning: 1 { false };             // 308 (0, 1)
-		std::uint8_t        padding308Bit2   : 6 { 0 };                 // 308 (0, 2)
-		std::uint8_t        padding309{ 0 };                            // 309
-		std::uint16_t       padding30A{ 0 };                            // 30A
-		std::uint32_t       compatibleVersions[16]{};                   // 30C
-		std::uint32_t       minimumSKSEVersion{ 0 };                    // 34C
+		const std::uint32_t dataVersion{ PluginVersionData::kVersion };            // 0
+		std::uint32_t       pluginVersion{ 0 };                                    // 4
+		char                pluginName[256]{};                                     // 8
+		char                author[256]{};                                         // 108
+		char                supportEmail[252]{};                                   // 208
+		std::uint32_t       backwardCompatible16629                 : 1 { false }; // 304 (0, 0)
+		std::uint32_t       reservedVersionIndependenceExtendedFlags: 31 { 0 };    // 304 (0, 1)
+		std::uint32_t       addressLibrary                          : 1 { false }; // 308 (0, 0)
+		std::uint32_t       signatureScanning                       : 1 { false }; // 308 (0, 1)
+		std::uint32_t       compatible16629                         : 1 { false }; // 308 (0, 2)
+		std::uint32_t       reservedVersionIndependenceFlags        : 29 { 0 };    // 308 (0, 3)
+		std::uint32_t       compatibleVersions[16]{};                              // 30C
+		std::uint32_t       minimumSKSEVersion{ 0 };                               // 34C
 	};
 	static_assert(offsetof(PluginVersionData, dataVersion) == 0x0);
 	static_assert(offsetof(PluginVersionData, pluginVersion) == 0x4);
 	static_assert(offsetof(PluginVersionData, pluginName) == 0x8);
 	static_assert(offsetof(PluginVersionData, author) == 0x108);
 	static_assert(offsetof(PluginVersionData, supportEmail) == 0x208);
-	static_assert(offsetof(PluginVersionData, padding309) == 0x309);
-	static_assert(offsetof(PluginVersionData, padding30A) == 0x30A);
 	static_assert(offsetof(PluginVersionData, compatibleVersions) == 0x30C);
 	static_assert(offsetof(PluginVersionData, minimumSKSEVersion) == 0x34C);
 	static_assert(sizeof(PluginVersionData) == 0x350);
+#endif
 
 	class Cache
 	{

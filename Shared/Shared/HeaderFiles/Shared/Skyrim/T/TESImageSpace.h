@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/T/TESForm.h"
 
@@ -84,8 +84,8 @@ namespace Skyrim
 		virtual ~TESImageSpace() override; // 0
 
 		// Override (TESForm)
-		virtual void InitializeData() override;   // 4
-		virtual void Unknown6(TESForm*) override; // 6
+		virtual void InitializeData() override;    // 4
+		virtual bool Load(TESFile* file) override; // 6
 
 		// Member variables
 		HDR          hdr;          // 0

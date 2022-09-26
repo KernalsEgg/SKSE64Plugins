@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Patches.h"
 
@@ -11,6 +11,6 @@ namespace ConsoleCommandCompanion
 	class Patches
 	{
 	public:
-		static std::optional<bool> Install();
+		static bool Install();
 	};
 }

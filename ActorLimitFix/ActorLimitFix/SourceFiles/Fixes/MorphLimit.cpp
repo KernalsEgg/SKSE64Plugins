@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Fixes/MorphLimit.h"
 
@@ -12,6 +12,6 @@ namespace ActorLimitFix::Fixes
 	{
 		morphLimit = std::min(morphLimit, replaceStaticArray ? 0x200U : 0x40U);
 
-		Skyrim::INISettingCollection::NumberActorsAllowedToMorph()->value.unsignedInteger = morphLimit;
+		Skyrim::INISettingCollection::NumberActorsAllowedToMorph()->SetUnsignedInteger(morphLimit);
 	}
 }

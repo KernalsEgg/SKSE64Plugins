@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BGSBipedObjectForm.h"
 #include "Shared/Skyrim/B/BGSBlockBashData.h"
@@ -51,13 +51,13 @@ namespace Skyrim
 		virtual ~TESObjectARMO() override; // 0
 
 		// Override (TESBoundObject)
-		virtual void InitializeData() override;    // 4
-		virtual void Unknown6(TESForm*) override;  // 6
-		virtual void UnknownE(TESForm*) override;  // E
-		virtual void UnknownF(TESForm*) override;  // F
-		virtual void Unknown13(TESForm*) override; // 13
-		virtual void Unknown14(TESForm*) override; // 14
-		virtual void Unknown2F(TESForm*) override; // 2F
+		virtual void InitializeData() override;                            // 4
+		virtual bool Load(TESFile* file) override;                         // 6
+		virtual void SaveGame(BGSSaveFormBuffer* saveFormBuffer) override; // E
+		virtual void LoadGame(BGSLoadFormBuffer* loadFormBuffer) override; // F
+		virtual void Unknown13(TESForm*) override;                         // 13
+		virtual void Unknown14(TESForm*) override;                         // 14
+		virtual void Unknown2F(TESForm*) override;                         // 2F
 
 		// Override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override; // 5

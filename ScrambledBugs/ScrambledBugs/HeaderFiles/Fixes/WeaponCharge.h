@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/Actor.h"
 #include "Shared/Skyrim/E/ExtraDataList.h"
@@ -16,6 +16,6 @@ namespace ScrambledBugs::Fixes
 		static void Fix(bool& weaponCharge);
 
 	private:
-		static void UpdateWeaponEnchantments(Skyrim::Actor* actor, Skyrim::TESBoundObject* item, Skyrim::ExtraDataList* extraDataList, bool leftHand);
+		static void UpdateEquippedEnchantmentCharge(Skyrim::Actor* actor, Skyrim::TESBoundObject* item, Skyrim::ExtraDataList* extraDataList, bool leftHand);
 	};
 }

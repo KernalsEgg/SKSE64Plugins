@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/I/IMenu.h"
@@ -24,6 +24,8 @@ namespace Skyrim
 		virtual UIMessageResult ProcessMessage(UIMessage& message) override;   // 4
 
 		// Non-member functions
+		static void                     ExecuteCommand(std::string_view command);
+		static void                     ExecuteCommand(std::string_view command, TESObjectREFR* target);
 		static NiPointer<TESObjectREFR> GetSelectedReference();
 		static ObjectReferenceHandle    GetSelectedReferenceHandle();
 

@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/B/BSHandleRefObject.h"
 #include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/B/BSTEventSink.h"
@@ -65,16 +66,6 @@ namespace Skyrim
 		};
 		static_assert(sizeof(ChangeFlags) == 0x4);
 
-		enum class Height : std::uint32_t
-		{
-			kNone      = 0,
-			kEyeLevel  = 1,
-			k85Percent = 2,
-			k50Percent = 3,
-			k15Percent = 4
-		};
-		static_assert(sizeof(Height) == 0x4);
-
 		enum class RecordFlags : std::uint32_t
 		{
 			kDeleted  = 1U << 5,
@@ -97,35 +88,35 @@ namespace Skyrim
 		virtual ~TESObjectREFR() override; // 0
 
 		// Override (TESForm)
-		virtual void        InitializeData() override;    // 4
-		virtual void        ClearData() override;         // 5
-		virtual void        Unknown6(TESForm*) override;  // 6
-		virtual void        Unknown9(TESForm*) override;  // 9
-		virtual void        UnknownD(TESForm*) override;  // D
-		virtual void        UnknownE(TESForm*) override;  // E
-		virtual void        UnknownF(TESForm*) override;  // F
-		virtual void        Unknown10(TESForm*) override; // 10
-		virtual void        Unknown11(TESForm*) override; // 11
-		virtual void        Unknown12(TESForm*) override; // 12
-		virtual void        Unknown13(TESForm*) override; // 13
-		virtual void        Unknown15(TESForm*) override; // 15
-		virtual void        Unknown16(TESForm*) override; // 16
-		virtual void        Unknown18(TESForm*) override; // 18
-		virtual void        Unknown1A(TESForm*) override; // 1A
-		virtual void        Unknown1B(TESForm*) override; // 1B
-		virtual void        Unknown1D(TESForm*) override; // 1D
-		virtual void        Unknown1F(TESForm*) override; // 1F
-		virtual void        Unknown20(TESForm*) override; // 20
-		virtual void        Unknown21(TESForm*) override; // 21
-		virtual void        Unknown22(TESForm*) override; // 22
-		virtual void        Unknown23(TESForm*) override; // 23
-		virtual void        Unknown24(TESForm*) override; // 24
-		virtual bool        IsWater() const override;     // 2A
-		virtual void        Unknown2B(TESForm*) override; // 2B
-		virtual void        Unknown2C(TESForm*) override; // 2C
-		virtual void        Unknown30(TESForm*) override; // 30
-		virtual void        Unknown31(TESForm*) override; // 31
-		virtual const char* GetEditorID() const override; // 32
+		virtual void        InitializeData() override;                                      // 4
+		virtual void        ClearData() override;                                           // 5
+		virtual bool        Load(TESFile* file) override;                                   // 6
+		virtual void        Unknown9(TESForm*) override;                                    // 9
+		virtual bool        CheckSaveGame(BGSSaveFormBuffer* saveFormBuffer) override;      // D
+		virtual void        SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;           // E
+		virtual void        LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;           // F
+		virtual void        InitializeLoadGame(BGSLoadFormBuffer* loadFormBuffer) override; // 10
+		virtual void        FinishLoadGame(BGSLoadFormBuffer* loadFormBuffer) override;     // 11
+		virtual void        Revert(BGSLoadFormBuffer* loadFormBuffer) override;             // 12
+		virtual void        Unknown13(TESForm*) override;                                   // 13
+		virtual void        Unknown15(TESForm*) override;                                   // 15
+		virtual void        Unknown16(TESForm*) override;                                   // 16
+		virtual void        Unknown18(TESForm*) override;                                   // 18
+		virtual void        Unknown1A(TESForm*) override;                                   // 1A
+		virtual void        Unknown1B(TESForm*) override;                                   // 1B
+		virtual void        Unknown1D(TESForm*) override;                                   // 1D
+		virtual void        Unknown1F(TESForm*) override;                                   // 1F
+		virtual void        Unknown20(TESForm*) override;                                   // 20
+		virtual void        Unknown21(TESForm*) override;                                   // 21
+		virtual void        Unknown22(TESForm*) override;                                   // 22
+		virtual void        Unknown23(TESForm*) override;                                   // 23
+		virtual void        Unknown24(TESForm*) override;                                   // 24
+		virtual bool        IsWater() const override;                                       // 2A
+		virtual void        Unknown2B(TESForm*) override;                                   // 2B
+		virtual void        Unknown2C(TESForm*) override;                                   // 2C
+		virtual void        Unknown30(TESForm*) override;                                   // 30
+		virtual void        Unknown31(TESForm*) override;                                   // 31
+		virtual const char* GetEditorID() const override;                                   // 32
 
 		// Override (BSTEventSink<BSAnimationGraphEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* eventArguments, BSTEventSource<BSAnimationGraphEvent>* eventSource) override; // 1
@@ -172,7 +163,7 @@ namespace Skyrim
 		virtual void                              Unknown58(TESObjectREFR*);                                                                                                                                                                                                                 // 58
 		virtual void                              Unknown59(TESObjectREFR*);                                                                                                                                                                                                                 // 59
 		virtual void                              Unknown5A(TESObjectREFR*);                                                                                                                                                                                                                 // 5A
-		virtual void                              Unknown5B(TESObjectREFR*);                                                                                                                                                                                                                 // 5B
+		virtual NiPoint3                          GetLookingAtLocation() const;                                                                                                                                                                                                              // 5B
 		virtual MagicCaster*                      GetMagicCaster(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource);                                                                                                                                             // 5C
 		virtual MagicTarget*                      GetMagicTarget();                                                                                                                                                                                                                          // 5D
 		virtual void                              Unknown5E(TESObjectREFR*);                                                                                                                                                                                                                 // 5E
@@ -196,8 +187,8 @@ namespace Skyrim
 		virtual NiAVObject*                       GetThirdPerson3D() const;                                                                                                                                                                                                                  // 70
 		virtual void                              Unknown71(TESObjectREFR*);                                                                                                                                                                                                                 // 71
 		virtual void                              Unknown72(TESObjectREFR*);                                                                                                                                                                                                                 // 72
-		virtual void                              Unknown73(TESObjectREFR*);                                                                                                                                                                                                                 // 73
-		virtual void                              Unknown74(TESObjectREFR*);                                                                                                                                                                                                                 // 74
+		virtual NiPoint3                          GetBoundMinimum() const;                                                                                                                                                                                                                   // 73
+		virtual NiPoint3                          GetBoundMaximum() const;                                                                                                                                                                                                                   // 74
 		virtual void                              Unknown75(TESObjectREFR*);                                                                                                                                                                                                                 // 75
 		virtual void                              Unknown76(TESObjectREFR*);                                                                                                                                                                                                                 // 76
 		virtual void                              Unknown77(TESObjectREFR*);                                                                                                                                                                                                                 // 77
@@ -248,16 +239,16 @@ namespace Skyrim
 		static TESObjectREFR* GetReferenceFrom3D(NiAVObject* avObject);
 
 		// Member functions
-		bool                                                 Activate(TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount, bool defaultProcessingOnly);
-		TESContainer*                                        GetContainer() const;
-		float                                                GetDistanceSquared(TESObjectREFR* target) const;
-		float                                                GetDistanceSquared(TESObjectREFR* target, bool ignoreDisabled, bool ignoreWorldSpace) const;
-		InventoryChanges*                                    GetInventoryChanges();
-		const char*                                          GetReferenceName() const;
-		Utility::Enumeration<BipedObjectSlot, std::uint32_t> GetShieldObject() const;
-		bool                                                 Is3DLoaded() const;
-		bool                                                 SameWorldSpace(TESObjectREFR* target, bool compareParentWorldSpace) const;
-		bool                                                 ShouldApplyDecal() const;
+		bool              Activate(TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount, bool defaultProcessingOnly);
+		TESContainer*     GetContainer() const;
+		float             GetDistanceSquared(TESObjectREFR* target) const;
+		float             GetDistanceSquared(TESObjectREFR* target, bool ignoreDisabled, bool ignoreWorldSpace) const;
+		InventoryChanges* GetInventoryChanges();
+		const char*       GetReferenceName() const;
+		BipedObjectSlot   GetShieldObject() const;
+		bool              Is3DLoaded() const;
+		bool              SameWorldSpace(TESObjectREFR* target, bool compareParentWorldSpace) const;
+		bool              ShouldApplyDecal() const;
 
 		// Member variables
 		TESBoundObject*      baseObject;          // 40
@@ -266,8 +257,8 @@ namespace Skyrim
 		TESObjectCELL*       parentCell;          // 60
 		LoadedReferenceData* loadedReferenceData; // 68
 		ExtraDataList        extraDataList;       // 70
-		std::uint64_t        unknown88;           // 88
-		std::uint64_t        unknown90;           // 90
+		std::uint64_t        unknown90;           // 88, 90
+		std::uint64_t        unknown98;           // 90, 98
 	};
 	static_assert(offsetof(TESObjectREFR, baseObject) == 0x40);
 	static_assert(offsetof(TESObjectREFR, rotation) == 0x48);
@@ -275,5 +266,5 @@ namespace Skyrim
 	static_assert(offsetof(TESObjectREFR, parentCell) == 0x60);
 	static_assert(offsetof(TESObjectREFR, loadedReferenceData) == 0x68);
 	static_assert(offsetof(TESObjectREFR, extraDataList) == 0x70);
-	static_assert(sizeof(TESObjectREFR) == 0x98);
+	static_assert(sizeof(TESObjectREFR) == SKYRIM_RELOCATE(0x98, 0xA0));
 }

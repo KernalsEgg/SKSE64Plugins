@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32602.291
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleCommandCompanion", "ConsoleCommandCompanion\ConsoleCommandCompanion.vcxproj", "{5C3602A8-F11A-48A1-844B-BF1BA941AC31}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -14,26 +14,46 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		DebugAnniversaryEdition|x64 = DebugAnniversaryEdition|x64
+		DebugAnniversaryEdition|x86 = DebugAnniversaryEdition|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
+		ReleaseAnniversaryEdition|x64 = ReleaseAnniversaryEdition|x64
+		ReleaseAnniversaryEdition|x86 = ReleaseAnniversaryEdition|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.Debug|x64.ActiveCfg = Debug|x64
 		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.Debug|x64.Build.0 = Debug|x64
 		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.Debug|x86.ActiveCfg = Debug|Win32
 		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.Debug|x86.Build.0 = Debug|Win32
+		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.DebugAnniversaryEdition|x64.ActiveCfg = DebugAnniversaryEdition|x64
+		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.DebugAnniversaryEdition|x64.Build.0 = DebugAnniversaryEdition|x64
+		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.DebugAnniversaryEdition|x86.ActiveCfg = DebugAnniversaryEdition|Win32
+		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.DebugAnniversaryEdition|x86.Build.0 = DebugAnniversaryEdition|Win32
 		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.Release|x64.ActiveCfg = Release|x64
 		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.Release|x64.Build.0 = Release|x64
 		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.Release|x86.ActiveCfg = Release|Win32
 		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.Release|x86.Build.0 = Release|Win32
+		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.ReleaseAnniversaryEdition|x64.ActiveCfg = ReleaseAnniversaryEdition|x64
+		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.ReleaseAnniversaryEdition|x64.Build.0 = ReleaseAnniversaryEdition|x64
+		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.ReleaseAnniversaryEdition|x86.ActiveCfg = ReleaseAnniversaryEdition|Win32
+		{5C3602A8-F11A-48A1-844B-BF1BA941AC31}.ReleaseAnniversaryEdition|x86.Build.0 = ReleaseAnniversaryEdition|Win32
 		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.Debug|x64.ActiveCfg = Debug|x64
 		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.Debug|x64.Build.0 = Debug|x64
 		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.Debug|x86.ActiveCfg = Debug|Win32
 		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.Debug|x86.Build.0 = Debug|Win32
+		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.DebugAnniversaryEdition|x64.ActiveCfg = DebugAnniversaryEdition|x64
+		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.DebugAnniversaryEdition|x64.Build.0 = DebugAnniversaryEdition|x64
+		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.DebugAnniversaryEdition|x86.ActiveCfg = DebugAnniversaryEdition|Win32
+		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.DebugAnniversaryEdition|x86.Build.0 = DebugAnniversaryEdition|Win32
 		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.Release|x64.ActiveCfg = Release|x64
 		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.Release|x64.Build.0 = Release|x64
 		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.Release|x86.ActiveCfg = Release|Win32
 		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.Release|x86.Build.0 = Release|Win32
+		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.ReleaseAnniversaryEdition|x64.ActiveCfg = ReleaseAnniversaryEdition|x64
+		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.ReleaseAnniversaryEdition|x64.Build.0 = ReleaseAnniversaryEdition|x64
+		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.ReleaseAnniversaryEdition|x86.ActiveCfg = ReleaseAnniversaryEdition|Win32
+		{EFC3AF1C-A311-4857-A75E-FAB2E3915F35}.ReleaseAnniversaryEdition|x86.Build.0 = ReleaseAnniversaryEdition|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/M/MemoryManager.h"
 
@@ -17,12 +17,12 @@ namespace Skyrim
 		using reference       = value_type&;
 		using const_reference = const value_type&;
 
-		TES_MEMORY_REDEFINE_NEW();
+		SKYRIM_MEMORY_REDEFINE_NEW();
 
 		struct Node
 		{
 		public:
-			TES_MEMORY_REDEFINE_NEW();
+			SKYRIM_MEMORY_REDEFINE_NEW();
 
 			Node()            = default;
 			Node(const Node&) = default;
@@ -88,7 +88,7 @@ namespace Skyrim
 			constexpr ~iterator() noexcept = default;
 
 			constexpr iterator& operator=(const iterator&) noexcept = default;
-			constexpr iterator& operator=(iterator&&) noexcept = default;
+			constexpr iterator& operator=(iterator&&) noexcept      = default;
 
 			constexpr iterator(U* current) noexcept :
 				current_(current)
@@ -174,19 +174,19 @@ namespace Skyrim
 		// Modifiers
 		void clear()
 		{
-			auto* current = this->get_head();
-			auto* next    = current->next;
+			auto* head = this->get_head();
+			auto* next = head->next;
 
-			std::destroy_at(std::addressof(current->value));
+			std::destroy_at(std::addressof(head->value));
 
-			current->next = nullptr;
+			head->next = nullptr;
 
 			while (next)
 			{
-				current = next;
-				next    = next->next;
+				head = next;
+				next = next->next;
 
-				delete current;
+				delete head;
 			}
 		}
 

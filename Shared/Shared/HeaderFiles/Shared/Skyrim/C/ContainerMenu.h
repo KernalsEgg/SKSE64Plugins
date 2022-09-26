@@ -1,13 +1,11 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSPointerHandle.h"
-#include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/G/GFxValue.h"
 #include "Shared/Skyrim/I/IMenu.h"
 #include "Shared/Skyrim/N/NiPointer.h"
-#include "Shared/Skyrim/T/TESBoundObject.h"
 
 
 
@@ -16,9 +14,9 @@ namespace Skyrim
 	struct ItemCard;
 	struct ItemList;
 
-	class BGSEquipSlot;
 	class BottomBar;
-	class InventoryEntryData;
+	class ExtraDataList;
+	class TESBoundObject;
 
 	class ContainerMenu :
 		public IMenu // 0

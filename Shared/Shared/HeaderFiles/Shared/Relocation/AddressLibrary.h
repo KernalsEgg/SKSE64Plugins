@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Relocation/FileMapping.h"
 #include "Shared/Relocation/Module.h"
@@ -31,14 +31,14 @@ namespace Relocation
 		struct Header
 		{
 		public:
-			void Read(std::ifstream& inputFileStream, const Version& productVersion);
+			void Read(std::ifstream& inputFileStream, const Version<std::int32_t>& productVersion);
 
-			std::int32_t format;
-			Version      productVersion{ Version({}, {}, {}, {}) };
-			std::int32_t fileNameLength;
-			std::string  fileName;
-			std::int32_t pointerSize;
-			std::int32_t addressCount;
+			std::int32_t          format;
+			Version<std::int32_t> productVersion;
+			std::int32_t          fileNameLength;
+			std::string           fileName;
+			std::int32_t          pointerSize;
+			std::int32_t          addressCount;
 		};
 
 		struct Element
@@ -58,11 +58,10 @@ namespace Relocation
 		~AddressLibrary() = default;
 
 		AddressLibrary& operator=(const AddressLibrary&) = delete;
-		AddressLibrary& operator=(AddressLibrary&&) = delete;
+		AddressLibrary& operator=(AddressLibrary&&)      = delete;
 
-		explicit AddressLibrary(const Version& productVersion);
+		explicit AddressLibrary(const Version<std::int32_t>& productVersion);
 
-		static std::ptrdiff_t        GetOffset(std::ptrdiff_t specialEditionOffset, std::ptrdiff_t anniversaryEditionOffset);
 		static const AddressLibrary& GetSingleton();
 
 		template <class... Arguments>
@@ -72,28 +71,15 @@ namespace Relocation
 
 			if (!result)
 			{
-				Utility::Log::Warning("Unexpected pattern encountered at {} + 0x{:X}.", Executable::GetSingleton().GetPath().filename().string(), address - Executable::GetSingleton().GetAddress());
+				Utility::Log::Error("Unexpected pattern encountered at {} + 0x{:X}.", Executable::GetSingleton().GetPath().filename().string(), address - Executable::GetSingleton().GetAddress());
 			}
 
 			return result;
 		}
 
-		template <class... SpecialEditionArguments, class... AnniversaryEditionArguments>
-		static bool MatchPattern(std::uintptr_t address, const std::tuple<SpecialEditionArguments...>& specialEditionArguments, const std::tuple<AnniversaryEditionArguments...>& anniversaryEditionArguments)
-		{
-			return Executable::GetSingleton().IsSpecialEdition() ?
-                       std::apply([address](const SpecialEditionArguments&... specialEditionArguments) -> bool
-						   { return AddressLibrary::MatchPattern(address, specialEditionArguments...); },
-						   specialEditionArguments) :
-                       std::apply([address](const AnniversaryEditionArguments&... anniversaryEditionArguments) -> bool
-						   { return AddressLibrary::MatchPattern(address, anniversaryEditionArguments...); },
-						   anniversaryEditionArguments);
-		}
-
 		void           Dump(const std::filesystem::path& path) const;
 		std::uintptr_t GetAddress(std::uint64_t identifier) const;
-		std::uintptr_t GetAddress(std::uint64_t specialEditionIdentifier, std::uint64_t anniversaryEditionIdentifier) const;
-		void           Load(const Version& productVersion);
+		void           Load(const Version<std::int32_t>& productVersion);
 		void           Read(std::ifstream& inputFileStream, const Header& header);
 
 	private:

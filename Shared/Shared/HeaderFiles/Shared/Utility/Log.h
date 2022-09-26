@@ -1,14 +1,15 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Relocation/Module.h"
 #include "Shared/Utility/Message.h"
 
 
 
-namespace Utility::Log
+namespace Utility
 {
-	class Logger
+	class Log
 	{
 	private:
 		enum
@@ -27,86 +28,58 @@ namespace Utility::Log
 		};
 
 	public:
-		Logger()              = delete;
-		Logger(const Logger&) = delete;
-		Logger(Logger&&)      = delete;
-
-		~Logger() = default;
-
-		Logger& operator=(const Logger&) = delete;
-		Logger& operator=(Logger&&) = delete;
-
-		explicit Logger(const std::filesystem::path& path);
-
-		static Logger& GetSingleton();
-
 		template <class... Arguments>
-		void Critical(Message message, const Arguments&... arguments)
+		static void Critical(Message message, const Arguments&... arguments)
 		{
-			this->Log(Logger::kCritical, message, arguments...);
+			Log::PrintLine(Log::kCritical, message, arguments...);
 		}
 
 		template <class... Arguments>
-		void Error(Message message, const Arguments&... arguments)
+		static void Error(Message message, const Arguments&... arguments)
 		{
-			this->Log(Logger::kError, message, arguments...);
+			Log::PrintLine(Log::kError, message, arguments...);
 		}
 
 		template <class... Arguments>
-		void Information(Message message, const Arguments&... arguments)
+		static void Information(Message message, const Arguments&... arguments)
 		{
-			this->Log(Logger::kInformation, message, arguments...);
+			Log::PrintLine(Log::kInformation, message, arguments...);
 		}
 
 		template <class... Arguments>
-		void Warning(Message message, const Arguments&... arguments)
+		static void Warning(Message message, const Arguments&... arguments)
 		{
-			this->Log(Logger::kWarning, message, arguments...);
+			Log::PrintLine(Log::kWarning, message, arguments...);
 		}
 
 	private:
+		static std::ofstream& GetSingleton()
+		{
+			static std::ofstream singleton(
+				std::filesystem::path(Relocation::DynamicLinkLibrary::GetSingleton().GetPath()).replace_extension("log"),
+				std::ios::out | std::ios::trunc);
+
+			return singleton;
+		}
+
 		template <class... Arguments>
-		void Log(std::size_t level, Message message, const Arguments&... arguments)
+		static void PrintLine(std::size_t level, Message message, const Arguments&... arguments)
 		{
 			std::stringstream stringStream;
 
 			stringStream
-				<< fmt::format("[{:%F %T}] [{}] {}({},{}): {}",
-					   std::chrono::system_clock::now(),
-					   Logger::LEVELS[level],
-					   std::filesystem::path(message.sourceLocation.file_name()).filename().string(),
-					   message.sourceLocation.line(),
-					   message.sourceLocation.column(),
-					   fmt::format(message.stringView, arguments...))
+				<< std::vformat(
+					   "[{:%F %T}] [{}] {}({},{}): {}",
+					   std::make_format_args(
+						   std::chrono::system_clock::now(),
+						   Log::LEVELS[level],
+						   std::filesystem::path(message.sourceLocation.file_name()).filename().string(),
+						   message.sourceLocation.line(),
+						   message.sourceLocation.column(),
+						   std::vformat(message.stringView, std::make_format_args(arguments...))))
 				<< std::endl;
 
-			this->outputFileStream_ << stringStream.rdbuf() << std::flush;
+			Log::GetSingleton() << stringStream.rdbuf() << std::flush;
 		}
-
-		std::ofstream outputFileStream_;
 	};
-
-	template <class... Arguments>
-	void Critical(Message message, const Arguments&... arguments)
-	{
-		Logger::GetSingleton().Critical(message, arguments...);
-	}
-
-	template <class... Arguments>
-	void Error(Message message, const Arguments&... arguments)
-	{
-		Logger::GetSingleton().Error(message, arguments...);
-	}
-
-	template <class... Arguments>
-	void Information(Message message, const Arguments&... arguments)
-	{
-		Logger::GetSingleton().Information(message, arguments...);
-	}
-
-	template <class... Arguments>
-	void Warning(Message message, const Arguments&... arguments)
-	{
-		Logger::GetSingleton().Warning(message, arguments...);
-	}
 }

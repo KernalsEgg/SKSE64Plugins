@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/N/NiPointer.h"
 
@@ -12,6 +12,7 @@ namespace Skyrim
 	class BSGeometry;
 	class BSShaderAccumulator;
 	class NiCamera;
+	class NiPoint3;
 
 	class Precipitation
 	{
@@ -35,11 +36,17 @@ namespace Skyrim
 		// Add
 		virtual ~Precipitation(); // 0
 
+		// Non-member functions
+		static const NiPoint3& GetRainDirection();
+
+		// Member functions
+		bool HasActiveGeometry() const;
+
 		// Member variables
 		OcclusionMapData      occlusionMapData;        // 10
 		NiPointer<BSGeometry> currentPrecipitation;    // 70
 		NiPointer<BSGeometry> previousPrecipitation;   // 78
-		float                 previousCubeSize;        // 80
+		float                 lastCubeSize;            // 80
 		float                 currentParticleDensity;  // 84
 		float                 previousParticleDensity; // 88
 		std::uint32_t         padding8C;               // 8C
@@ -47,8 +54,8 @@ namespace Skyrim
 	static_assert(offsetof(Precipitation, occlusionMapData) == 0x10);
 	static_assert(offsetof(Precipitation, currentPrecipitation) == 0x70);
 	static_assert(offsetof(Precipitation, previousPrecipitation) == 0x78);
-	static_assert(offsetof(Precipitation, previousCubeSize) == 0x80);
+	static_assert(offsetof(Precipitation, lastCubeSize) == 0x80);
 	static_assert(offsetof(Precipitation, currentParticleDensity) == 0x84);
-	static_assert(offsetof(Precipitation, previousParticleDensity) == 0x8C);
+	static_assert(offsetof(Precipitation, previousParticleDensity) == 0x88);
 	static_assert(sizeof(Precipitation) == 0x90);
 }

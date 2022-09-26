@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/AssociationType.h"
 #include "Shared/Skyrim/B/BSFixedString.h"
@@ -28,8 +28,8 @@ namespace Skyrim
 		virtual ~BGSAssociationType() override; // 0
 
 		// Override (TESForm)
-		virtual void InitializeData() override;   // 4
-		virtual void Unknown6(TESForm*) override; // 6
+		virtual void InitializeData() override;    // 4
+		virtual bool Load(TESFile* file) override; // 6
 
 		// Member variables
 		BSFixedString                              associationTypeLabels[Utility::ToUnderlying(AssociationType::kTotal)][Utility::ToUnderlying(Sex::kTotal)]; // 20

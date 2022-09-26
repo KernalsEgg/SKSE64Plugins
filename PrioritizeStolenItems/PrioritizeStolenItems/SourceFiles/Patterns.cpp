@@ -1,9 +1,10 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Patterns.h"
 
 #include "Addresses.h"
 #include "Shared/Relocation/AddressLibrary.h"
+#include "Shared/Relocation/PreprocessorDirectives.h"
 
 
 
@@ -23,11 +24,11 @@ namespace PrioritizeStolenItems::Patterns
 		{
 			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::DropItem,
-				std::make_tuple(                  // 0x6
-					0xFFui8, 0x97ui8, 0x658ui32), // call [rdi+658] (PlayerCharacter::DropItem)
-				std::make_tuple(                  // 0x6
-					0xFFui8, 0x96ui8, 0x658ui32)  // call [rsi+658] (PlayerCharacter::DropItem)
-			);
+				SKYRIM_RELOCATE(
+					SKYRIM_VARIADIC_ARGUMENTS(          // 0x6
+						0xFFui8, 0x97ui8, 0x658ui32),   // call [rdi+658] (PlayerCharacter::DropItem)
+					SKYRIM_VARIADIC_ARGUMENTS(          // 0x6
+						0xFFui8, 0x96ui8, 0x658ui32))); // call [rsi+658] (PlayerCharacter::DropItem)
 		}
 
 		bool GetExtraDataListToAddItem()
@@ -82,12 +83,12 @@ namespace PrioritizeStolenItems::Patterns
 		{
 			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::RemoveItem,
-				std::make_tuple(                           // 0x3 + 0x7 = 0x10
-					0x49ui8, 0x8Bui8, 0x36ui8,             // mov rsi, [r14] (PlayerCharacter::VirtualFunctionTable)
-					0x48ui8, 0x81ui8, 0xC6ui8, 0x2B0ui32), // add rsi, 2B0 (PlayerCharacter::RemoveItem)
-				std::make_tuple(                           // 0x6
-					0xFFui8, 0x96ui8, 0x2B0ui32)           // call [rsi+2B0] (PlayerCharacter::RemoveItem)
-			);
+				SKYRIM_RELOCATE(
+					SKYRIM_VARIADIC_ARGUMENTS(                 // 0x3 + 0x7 = 0x10
+						0x49ui8, 0x8Bui8, 0x36ui8,             // mov rsi, [r14] (PlayerCharacter::VirtualFunctionTable)
+						0x48ui8, 0x81ui8, 0xC6ui8, 0x2B0ui32), // add rsi, 2B0 (PlayerCharacter::RemoveItem)
+					SKYRIM_VARIADIC_ARGUMENTS(                 // 0x6
+						0xFFui8, 0x96ui8, 0x2B0ui32)));        // call [rsi+2B0] (PlayerCharacter::RemoveItem)
 		}
 
 		bool SellItem()

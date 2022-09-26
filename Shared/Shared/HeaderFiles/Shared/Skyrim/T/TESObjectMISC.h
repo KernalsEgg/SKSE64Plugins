@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BGSDestructibleObjectForm.h"
 #include "Shared/Skyrim/B/BGSKeywordForm.h"
@@ -34,10 +34,10 @@ namespace Skyrim
 		virtual ~TESObjectMISC() override; // 0
 
 		// Override (TESBoundObject)
-		virtual void Unknown6(TESForm*) override;  // 6
-		virtual void UnknownE(TESForm*) override;  // E
-		virtual void UnknownF(TESForm*) override;  // F
-		virtual void Unknown13(TESForm*) override; // 13
+		virtual bool Load(TESFile* file) override;                         // 6
+		virtual void SaveGame(BGSSaveFormBuffer* saveFormBuffer) override; // E
+		virtual void LoadGame(BGSLoadFormBuffer* loadFormBuffer) override; // F
+		virtual void Unknown13(TESForm*) override;                         // 13
 
 		// Override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override; // 5

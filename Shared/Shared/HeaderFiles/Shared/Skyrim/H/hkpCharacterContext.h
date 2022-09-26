@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/H/hkReferencedObject.h"
 #include "Shared/Skyrim/H/hkpCharacterStateType.h"

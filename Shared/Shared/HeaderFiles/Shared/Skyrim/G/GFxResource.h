@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/G/GAtomic.h"
 #include "Shared/Skyrim/G/GFxResourceKey.h"

@@ -1,9 +1,10 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BipedAnim.h"
 
 #include "Shared/Skyrim/A/Actor.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
+#include "Shared/Utility/Enumeration.h"
 
 
 
@@ -18,7 +19,7 @@ namespace Skyrim
 			return nullptr;
 		}
 
-		auto shieldObjectSlot = actor->GetShieldObject();
+		Utility::Enumeration<BipedObjectSlot, std::uint32_t> shieldObjectSlot = actor->GetShieldObject();
 
 		if (shieldObjectSlot == BipedObjectSlot::kNone)
 		{

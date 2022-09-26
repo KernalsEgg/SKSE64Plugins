@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Fixes/LeftHandPowerAttacks.h"
 
@@ -28,7 +28,7 @@ namespace ScrambledBugs::Fixes
 
 		if (attackDataFlags.all(Skyrim::BGSAttackData::Flags::kBashAttack))
 		{
-			auto staminaBashBase = powerAttack ? Skyrim::GameSettingCollection::StaminaPowerBashBase()->value.floatingPoint : Skyrim::GameSettingCollection::StaminaBashBase()->value.floatingPoint;
+			auto staminaBashBase = powerAttack ? Skyrim::GameSettingCollection::StaminaPowerBashBase()->GetFloat() : Skyrim::GameSettingCollection::StaminaBashBase()->GetFloat();
 
 			return staminaBashBase * attackData->staminaMultiplier;
 		}
@@ -48,9 +48,9 @@ namespace ScrambledBugs::Fixes
 				equippedWeapon = Skyrim::TESObjectWEAP::GetUnarmedWeapon();
 			}
 
-			auto staminaAttackWeaponBase       = Skyrim::GameSettingCollection::StaminaAttackWeaponBase()->value.floatingPoint;
-			auto staminaAttackWeaponMultiplier = Skyrim::GameSettingCollection::StaminaAttackWeaponMultiplier()->value.floatingPoint;
-			auto powerAttackStaminaPenalty     = Skyrim::GameSettingCollection::PowerAttackStaminaPenalty()->value.floatingPoint;
+			auto staminaAttackWeaponBase       = Skyrim::GameSettingCollection::StaminaAttackWeaponBase()->GetFloat();
+			auto staminaAttackWeaponMultiplier = Skyrim::GameSettingCollection::StaminaAttackWeaponMultiplier()->GetFloat();
+			auto powerAttackStaminaPenalty     = Skyrim::GameSettingCollection::PowerAttackStaminaPenalty()->GetFloat();
 
 			auto powerAttackStamina = ((equippedWeaponWeight * staminaAttackWeaponMultiplier) + staminaAttackWeaponBase) * powerAttackStaminaPenalty;
 

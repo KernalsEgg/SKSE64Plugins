@@ -1,9 +1,10 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Fixes/WeaponCharge.h"
 
 #include "Addresses.h"
 #include "Shared/Skyrim/E/EnchantmentItem.h"
+#include "Shared/Skyrim/M/MagicSystem.h"
 #include "Shared/Skyrim/P/PlayerCharacter.h"
 #include "Shared/Utility/Memory.h"
 
@@ -13,10 +14,10 @@ namespace ScrambledBugs::Fixes
 {
 	void WeaponCharge::Fix(bool& weaponCharge)
 	{
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::WeaponCharge::UpdateWeaponEnchantments, reinterpret_cast<std::uintptr_t>(std::addressof(WeaponCharge::UpdateWeaponEnchantments)));
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::WeaponCharge::UpdateEquippedEnchantmentCharge, reinterpret_cast<std::uintptr_t>(std::addressof(WeaponCharge::UpdateEquippedEnchantmentCharge)));
 	}
 
-	void WeaponCharge::UpdateWeaponEnchantments(Skyrim::Actor* actor, Skyrim::TESBoundObject* item, Skyrim::ExtraDataList* extraDataList, bool leftHand)
+	void WeaponCharge::UpdateEquippedEnchantmentCharge(Skyrim::Actor* actor, Skyrim::TESBoundObject* item, Skyrim::ExtraDataList* extraDataList, bool leftHand)
 	{
 		if (!item)
 		{
@@ -27,13 +28,14 @@ namespace ScrambledBugs::Fixes
 
 		if (actor == player)
 		{
+			// PlayerCharacter::ResetInsufficientChargeMessage
 			if (leftHand)
 			{
-				player->flagsBDB.reset(Skyrim::PlayerCharacter::FlagsBDB::kInsufficientChargeLeftHand);
+				player->flagsBE3.reset(Skyrim::PlayerCharacter::FlagsBE3::kInsufficientChargeLeftHand);
 			}
 			else
 			{
-				player->flagsBDB.reset(Skyrim::PlayerCharacter::FlagsBDB::kInsufficientChargeRightHand);
+				player->flagsBE3.reset(Skyrim::PlayerCharacter::FlagsBE3::kInsufficientChargeRightHand);
 			}
 		}
 
@@ -49,7 +51,8 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		auto costActorValue = enchantment->GetCostActorValue(!leftHand);
+		auto castingSource  = leftHand ? Skyrim::MagicSystem::CastingSource::kLeftHand : Skyrim::MagicSystem::CastingSource::kRightHand;
+		auto costActorValue = enchantment->GetCostActorValue(castingSource);
 
 		if (costActorValue != Skyrim::ActorValue::kNone)
 		{
@@ -58,13 +61,13 @@ namespace ScrambledBugs::Fixes
 			auto maximumCharge = item->GetMaximumCharge(extraDataList);
 			actor->SetActorValue(costActorValue, maximumCharge);
 
-			if (extraDataList && extraDataList->HasType(Skyrim::ExtraDataType::kCharge))
+			if (extraDataList && extraDataList->HasExtraData(Skyrim::ExtraDataType::kCharge))
 			{
 				auto charge = extraDataList->GetCharge();
 				actor->RestoreActorValue(Skyrim::ActorValueModifier::kDamage, costActorValue, -(maximumCharge - charge));
 			}
 		}
 
-		actor->RevertSelectedSpell(leftHand ? Skyrim::Actor::SlotType::kLeftHand : Skyrim::Actor::SlotType::kRightHand, enchantment);
+		actor->SetSelectedSpell(castingSource, enchantment);
 	}
 }

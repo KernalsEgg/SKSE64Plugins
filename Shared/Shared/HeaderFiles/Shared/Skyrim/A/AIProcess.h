@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/B/BSTArray.h"
@@ -15,6 +15,7 @@ namespace Skyrim
 	class HitData;
 	class InventoryEntryData;
 	class MiddleHighProcessData;
+	class NiAVObject;
 
 	struct CachedValue
 	{
@@ -78,6 +79,8 @@ namespace Skyrim
 		bhkCharacterController* GetCharacterController() const;
 		ObjectReferenceHandle   GetCurrentFurniture() const;
 		InventoryEntryData*     GetEquippedItem(bool leftHand) const;
+		NiAVObject*             GetHeadNode() const;
+		NiAVObject*             GetTorsoNode() const;
 		HitData*                GetLastHitData() const;
 		float                   GetMaximumWardPower() const;
 		bool                    IsDualCasting() const;

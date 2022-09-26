@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Utility/EventSource.h"
 #include "Shared/Utility/Memory.h"
@@ -19,7 +19,7 @@ namespace Utility
 		~Trampoline();
 
 		Trampoline& operator=(const Trampoline&) = delete;
-		Trampoline& operator=(Trampoline&&) = delete;
+		Trampoline& operator=(Trampoline&&)      = delete;
 
 		static std::uintptr_t Allocate(std::uintptr_t moduleAddress, std::size_t moduleSize, std::size_t allocationSize);
 		static void           Free(std::uintptr_t allocationAddress);

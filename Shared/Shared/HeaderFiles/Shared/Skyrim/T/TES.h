@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSTEventSink.h"
 #include "Shared/Skyrim/I/ICellAttachDetachEventSource.h"

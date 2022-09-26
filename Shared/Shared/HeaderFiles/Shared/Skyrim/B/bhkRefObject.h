@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/H/hkReferencePointer.h"
 #include "Shared/Skyrim/N/NiObject.h"

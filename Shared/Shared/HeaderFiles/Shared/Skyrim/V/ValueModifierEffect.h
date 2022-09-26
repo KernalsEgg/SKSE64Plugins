@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/ActiveEffect.h"
 #include "Shared/Skyrim/A/ActorValue.h"

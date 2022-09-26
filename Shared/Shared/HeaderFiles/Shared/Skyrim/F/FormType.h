@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
@@ -9,6 +9,7 @@ namespace Skyrim
 	enum class FormType
 	{
 		kNone                = 0,
+		kGlobal              = 0x9,  // TESGlobal
 		kFaction             = 0xB,  // TESFaction
 		kScript              = 0x13, // Script
 		kEnchantment         = 0x15, // EnchantmentItem

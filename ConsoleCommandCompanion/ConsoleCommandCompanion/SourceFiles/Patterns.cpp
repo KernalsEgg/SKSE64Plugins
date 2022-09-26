@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Patterns.h"
 
@@ -14,8 +14,8 @@ namespace ConsoleCommandCompanion::Patterns
 		bool IsLoggedIn()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::Patches::IsLoggedIn, // 0x2
-				0x74ui8, 0x09ui8                // je 9
+				Addresses::Patches::IsLoggedIn(), // 0x2
+				0x74ui8, 0x09ui8                  // je 9
 			);
 		}
 	}

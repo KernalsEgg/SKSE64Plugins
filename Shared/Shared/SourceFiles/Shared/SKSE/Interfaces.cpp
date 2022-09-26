@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/SKSE/Interfaces.h"
 
@@ -26,9 +26,9 @@ namespace SKSE
 		return this->queryInterface_(id);
 	}
 
-	Relocation::Version Interface::RuntimeVersion() const
+	Relocation::Version<std::int32_t> Interface::RuntimeVersion() const
 	{
-		return Relocation::Version(
+		return Relocation::Version<std::int32_t>(
 			static_cast<std::int32_t>((this->runtimeVersion_ & 0xFF000000) >> 24),
 			static_cast<std::int32_t>((this->runtimeVersion_ & 0x00FF0000) >> 16),
 			static_cast<std::int32_t>((this->runtimeVersion_ & 0x0000FFF0) >> 4),
@@ -180,7 +180,14 @@ namespace SKSE
 
 		if (!result)
 		{
-			Utility::Log::Error("Failed to register message listener.");
+			if (sender)
+			{
+				Utility::Log::Error("Failed to register message listener for {}.", sender);
+			}
+			else
+			{
+				Utility::Log::Error("Failed to register message listener.");
+			}
 		}
 
 		return result;

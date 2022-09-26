@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
@@ -16,7 +16,7 @@ namespace Skyrim
 		constexpr ~NiColor() noexcept = default;
 
 		constexpr NiColor& operator=(const NiColor&) noexcept = default;
-		constexpr NiColor& operator=(NiColor&&) noexcept = default;
+		constexpr NiColor& operator=(NiColor&&) noexcept      = default;
 
 		constexpr NiColor(float red, float green, float blue) noexcept :
 			red(red), green(green), blue(blue)
@@ -46,7 +46,7 @@ namespace Skyrim
 		constexpr ~NiColorA() noexcept = default;
 
 		constexpr NiColorA& operator=(const NiColorA&) noexcept = default;
-		constexpr NiColorA& operator=(NiColorA&&) noexcept = default;
+		constexpr NiColorA& operator=(NiColorA&&) noexcept      = default;
 
 		constexpr NiColorA(float red, float green, float blue, float alpha) noexcept :
 			red(red), green(green), blue(blue), alpha(alpha)

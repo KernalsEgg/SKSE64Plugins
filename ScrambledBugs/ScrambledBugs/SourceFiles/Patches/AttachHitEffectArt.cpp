@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Patches/AttachHitEffectArt.h"
 
@@ -65,7 +65,7 @@ namespace ScrambledBugs::Patches
 
 		if (attachObject)
 		{
-			attachRoot = attachObject->AsNode();
+			attachRoot = attachObject->AsNiNode();
 
 			if (!attachRoot)
 			{

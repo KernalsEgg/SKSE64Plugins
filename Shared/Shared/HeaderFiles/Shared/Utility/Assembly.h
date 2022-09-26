@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
@@ -19,7 +19,7 @@ namespace Utility
 			constexpr ~AbsoluteCall() noexcept = default;
 
 			constexpr AbsoluteCall& operator=(const AbsoluteCall&) noexcept = default;
-			constexpr AbsoluteCall& operator=(AbsoluteCall&&) noexcept = default;
+			constexpr AbsoluteCall& operator=(AbsoluteCall&&) noexcept      = default;
 
 			explicit constexpr AbsoluteCall(std::uintptr_t function) noexcept :
 				absolute64(function)
@@ -51,7 +51,7 @@ namespace Utility
 			constexpr ~AbsoluteJump() noexcept = default;
 
 			constexpr AbsoluteJump& operator=(const AbsoluteJump&) noexcept = default;
-			constexpr AbsoluteJump& operator=(AbsoluteJump&&) noexcept = default;
+			constexpr AbsoluteJump& operator=(AbsoluteJump&&) noexcept      = default;
 
 			explicit constexpr AbsoluteJump(std::uintptr_t function) noexcept :
 				absolute64(function)
@@ -79,7 +79,7 @@ namespace Utility
 			constexpr ~RelativeCall5() noexcept = default;
 
 			constexpr RelativeCall5& operator=(const RelativeCall5&) noexcept = default;
-			constexpr RelativeCall5& operator=(RelativeCall5&&) noexcept = default;
+			constexpr RelativeCall5& operator=(RelativeCall5&&) noexcept      = default;
 
 			explicit constexpr RelativeCall5(std::uintptr_t address, std::uintptr_t function) noexcept :
 				relative32(static_cast<std::int32_t>(function - (address + sizeof(RelativeCall5))))
@@ -103,7 +103,7 @@ namespace Utility
 			constexpr ~RelativeCall6() noexcept = default;
 
 			constexpr RelativeCall6& operator=(const RelativeCall6&) noexcept = default;
-			constexpr RelativeCall6& operator=(RelativeCall6&&) noexcept = default;
+			constexpr RelativeCall6& operator=(RelativeCall6&&) noexcept      = default;
 
 			explicit constexpr RelativeCall6(std::uintptr_t address, std::uintptr_t functionAddress) noexcept :
 				relative32(static_cast<std::int32_t>(functionAddress - (address + sizeof(RelativeCall6))))
@@ -129,7 +129,7 @@ namespace Utility
 			constexpr ~RelativeJump5() noexcept = default;
 
 			constexpr RelativeJump5& operator=(const RelativeJump5&) noexcept = default;
-			constexpr RelativeJump5& operator=(RelativeJump5&&) noexcept = default;
+			constexpr RelativeJump5& operator=(RelativeJump5&&) noexcept      = default;
 
 			explicit constexpr RelativeJump5(std::uintptr_t address, std::uintptr_t function) noexcept :
 				relative32(static_cast<std::int32_t>(function - (address + sizeof(RelativeJump5))))
@@ -153,7 +153,7 @@ namespace Utility
 			constexpr ~RelativeJump6() noexcept = default;
 
 			constexpr RelativeJump6& operator=(const RelativeJump6&) noexcept = default;
-			constexpr RelativeJump6& operator=(RelativeJump6&&) noexcept = default;
+			constexpr RelativeJump6& operator=(RelativeJump6&&) noexcept      = default;
 
 			explicit constexpr RelativeJump6(std::uintptr_t address, std::uintptr_t functionAddress) noexcept :
 				relative32(static_cast<std::int32_t>(functionAddress - (address + sizeof(RelativeJump6))))

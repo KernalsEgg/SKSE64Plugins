@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/G/GMemoryHeap.h"
 
@@ -56,11 +56,11 @@ namespace Skyrim
 
 	void GMemoryHeap::ReleaseCachedMemory()
 	{
-		this->ReleaseCachedMemory();
+		this->ReleaseCachedMemoryImplementation();
 	}
 
 	void GMemoryHeap::UltimateCheck()
 	{
-		this->UltimateCheck();
+		this->UltimateCheckImplementation();
 	}
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/bhkRefObject.h"
 
@@ -18,12 +18,12 @@ namespace Skyrim
 		virtual ~bhkSerializable() override; // 0
 
 		// Override (bhkRefObject)
-		virtual const NiRTTI* GetRTTI() const override;          // 2
-		virtual void          Unknown18(NiObject*) override;     // 18
-		virtual void          Unknown19(NiObject*) override;     // 19
-		virtual void          Unknown1A(NiObject*) override;     // 1A
-		virtual void          Unknown1B(NiObject*) override;     // 1B
-		virtual void          Unknown25(bhkRefObject*) override; // 25
+		virtual const NiRTTI* GetRTTI() const override;                       // 2
+		virtual void          LoadBinary(NiStream& stream) override;          // 18
+		virtual void          LinkObject(NiStream& stream) override;          // 19
+		virtual bool          RegisterStreamables(NiStream& stream) override; // 1A
+		virtual void          SaveBinary(NiStream& stream) override;          // 1B
+		virtual void          Unknown25(bhkRefObject*) override;              // 25
 
 		// Add
 		virtual hkpWorld* GetWorld();                      // 27

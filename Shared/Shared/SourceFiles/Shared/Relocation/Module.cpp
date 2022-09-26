@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Relocation/Module.h"
 
@@ -10,21 +10,21 @@ extern "C" IMAGE_DOS_HEADER __ImageBase;
 
 namespace Relocation
 {
-	Plugin::Plugin(std::uintptr_t address) :
+	DynamicLinkLibrary::DynamicLinkLibrary(std::uintptr_t address) :
 		address_(address)
 	{
 		this->SetPath(this->address_);
 		this->SetSize(this->address_);
 	}
 
-	const Plugin& Plugin::GetSingleton()
+	const DynamicLinkLibrary& DynamicLinkLibrary::GetSingleton()
 	{
-		static Plugin singleton(reinterpret_cast<std::uintptr_t>(std::addressof(__ImageBase)));
+		static DynamicLinkLibrary singleton(reinterpret_cast<std::uintptr_t>(std::addressof(__ImageBase)));
 
 		return singleton;
 	}
 
-	void Plugin::SetPath(std::uintptr_t address)
+	void DynamicLinkLibrary::SetPath(std::uintptr_t address)
 	{
 		char path[MAX_PATH];
 
@@ -36,7 +36,7 @@ namespace Relocation
 		this->path_ = std::filesystem::path(path);
 	}
 
-	void Plugin::SetSize(std::uintptr_t address)
+	void DynamicLinkLibrary::SetSize(std::uintptr_t address)
 	{
 		::MODULEINFO moduleInformation;
 
@@ -49,7 +49,7 @@ namespace Relocation
 	}
 
 	Executable::Executable(std::uintptr_t address) :
-		Plugin(address)
+		DynamicLinkLibrary(address)
 	{
 		this->SetProductVersion(this->path_);
 	}

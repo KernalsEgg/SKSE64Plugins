@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BGSPreloadable.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
@@ -42,7 +42,7 @@ namespace Skyrim
 
 		// Override (TESBoundObject)
 		virtual void InitializeData() override;    // 4
-		virtual void Unknown6(TESForm*) override;  // 6
+		virtual bool Load(TESFile* file) override; // 6
 		virtual void Unknown13(TESForm*) override; // 13
 
 		// Override (BGSPreloadable)

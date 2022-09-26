@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/T/TESObjectREFR.h"
 
 
@@ -23,12 +24,12 @@ namespace Skyrim
 		virtual ~Projectile() override; // 0
 
 		// Override (TESObjectREFR)
-		virtual void         Unknown6(TESForm*) override;                                                                            // 6
-		virtual void         UnknownE(TESForm*) override;                                                                            // E
-		virtual void         UnknownF(TESForm*) override;                                                                            // F
-		virtual void         Unknown10(TESForm*) override;                                                                           // 10
-		virtual void         Unknown11(TESForm*) override;                                                                           // 11
-		virtual void         Unknown12(TESForm*) override;                                                                           // 12
+		virtual bool         Load(TESFile* file) override;                                                                           // 6
+		virtual void         SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;                                                   // E
+		virtual void         LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                                   // F
+		virtual void         InitializeLoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                         // 10
+		virtual void         FinishLoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                             // 11
+		virtual void         Revert(BGSLoadFormBuffer* loadFormBuffer) override;                                                     // 12
 		virtual void         Unknown47(TESObjectREFR*) override;                                                                     // 47
 		virtual void         Unknown48(TESObjectREFR*) override;                                                                     // 48
 		virtual void         Unknown50(TESObjectREFR*) override;                                                                     // 50
@@ -79,55 +80,55 @@ namespace Skyrim
 		virtual void UnknownC1(Projectile*);     // C1
 
 		// Member variables
-		std::uint64_t                              unknown98;             // 98
-		std::uint64_t                              unknownA0;             // A0
-		std::uint64_t                              unknownA8;             // A8
-		std::uint64_t                              unknownB0;             // B0
-		std::uint64_t                              unknownB8;             // B8
-		std::uint64_t                              unknownC0;             // C0
-		std::uint64_t                              unknownC8;             // C8
-		std::uint64_t                              unknownD0;             // D0
-		std::uint64_t                              unknownD8;             // D8
-		std::uint64_t                              unknownE0;             // E0
-		std::uint64_t                              unknownE8;             // E8
-		std::uint64_t                              unknownF0;             // F0
-		std::uint64_t                              unknownF8;             // F8
-		std::uint64_t                              unknown100;            // 100
-		std::uint64_t                              unknown108;            // 108
-		std::uint64_t                              unknown110;            // 110
-		std::uint64_t                              unknown118;            // 118
-		std::uint64_t                              unknown120;            // 120
-		std::uint64_t                              unknown128;            // 128
-		std::uint64_t                              unknown130;            // 130
-		std::uint64_t                              unknown138;            // 138
-		std::uint64_t                              unknown140;            // 140
-		std::uint64_t                              unknown148;            // 148
-		std::uint64_t                              unknown150;            // 150
-		std::uint64_t                              unknown158;            // 158
-		std::uint64_t                              unknown160;            // 160
-		std::uint64_t                              unknown168;            // 168
-		std::uint64_t                              unknown170;            // 170
-		std::uint64_t                              unknown178;            // 178
-		std::uint64_t                              unknown180;            // 180
-		std::uint64_t                              unknown188;            // 188
-		std::uint64_t                              unknown190;            // 190
-		float                                      damage;                // 198
-		std::uint32_t                              unknown19C;            // 19C
-		std::uint64_t                              unknown1A0;            // 1A0
-		std::uint64_t                              unknown1A8;            // 1A8
-		std::uint64_t                              unknown1B0;            // 1B0
-		std::uint64_t                              unknown1B8;            // 1B8
-		std::uint64_t                              unknown1C0;            // 1C0
-		std::uint32_t                              unknown1C8;            // 1C8
-		Utility::Enumeration<Flags, std::uint32_t> projectileFlags;       // 1CC
-		bool                                       startedQueuingFiles;   // 1D0, 1.5.97.0: SkyrimSE.exe + 0x754DC0 + 0x1CB (43035), 1.6.318.0: SkyrimSE.exe + 0x782B00 + 0x1C7 (44227)
-		bool                                       finishedQueueingFiles; // 1D1, 1.5.97.0: SkyrimSE.exe + 0x754FF0 + 0x5 (43036), 1.6.318.0: SkyrimSE.exe + 0x782D20 + 0x5 (44228)
-		std::uint16_t                              unknown1D2;            // 1D2
-		std::uint32_t                              unknown1D4;            // 1D4
+		std::uint64_t                              unknownA0;             // 98, A0
+		std::uint64_t                              unknownA8;             // A0, A8
+		std::uint64_t                              unknownB0;             // A8, B0
+		std::uint64_t                              unknownB8;             // B0, B8
+		std::uint64_t                              unknownC0;             // B8, C0
+		std::uint64_t                              unknownC8;             // C0, C8
+		std::uint64_t                              unknownD0;             // C8, D0
+		std::uint64_t                              unknownD8;             // D0, D8
+		std::uint64_t                              unknownE0;             // D8, E0
+		std::uint64_t                              unknownE8;             // E0, E8
+		std::uint64_t                              unknownF0;             // E8, F0
+		std::uint64_t                              unknownF8;             // F0, F8
+		std::uint64_t                              unknown100;            // F8, 100
+		std::uint64_t                              unknown108;            // 100, 108
+		std::uint64_t                              unknown110;            // 108, 110
+		std::uint64_t                              unknown118;            // 110, 118
+		std::uint64_t                              unknown120;            // 118, 120
+		std::uint64_t                              unknown128;            // 120, 128
+		std::uint64_t                              unknown130;            // 128, 130
+		std::uint64_t                              unknown138;            // 130, 138
+		std::uint64_t                              unknown140;            // 138, 140
+		std::uint64_t                              unknown148;            // 140, 148
+		std::uint64_t                              unknown150;            // 148, 150
+		std::uint64_t                              unknown158;            // 150, 158
+		std::uint64_t                              unknown160;            // 158, 160
+		std::uint64_t                              unknown168;            // 160, 168
+		std::uint64_t                              unknown170;            // 168, 170
+		std::uint64_t                              unknown178;            // 170, 178
+		std::uint64_t                              unknown180;            // 178, 180
+		std::uint64_t                              unknown188;            // 180, 188
+		std::uint64_t                              unknown190;            // 188, 190
+		std::uint64_t                              unknown198;            // 190, 198
+		float                                      damage;                // 198, 1A0
+		std::uint32_t                              unknown1A4;            // 19C, 1A4
+		std::uint64_t                              unknown1A8;            // 1A0, 1A8
+		std::uint64_t                              unknown1B0;            // 1A8, 1B0
+		std::uint64_t                              unknown1B8;            // 1B0, 1B8
+		std::uint64_t                              unknown1C0;            // 1B8, 1C0
+		std::uint64_t                              unknown1C8;            // 1C0, 1C8
+		std::uint32_t                              unknown1D0;            // 1C8, 1D0
+		Utility::Enumeration<Flags, std::uint32_t> projectileFlags;       // 1CC, 1D4
+		bool                                       startedQueuingFiles;   // 1D0, 1D8 (1.5.97.0: SkyrimSE.exe + 0x754DC0 + 0x1CB (43035), 1.6.318.0: SkyrimSE.exe + 0x782B00 + 0x1C7 (44227))
+		bool                                       finishedQueueingFiles; // 1D1, 1D9 (1.5.97.0: SkyrimSE.exe + 0x754FF0 + 0x5 (43036), 1.6.318.0: SkyrimSE.exe + 0x782D20 + 0x5 (44228))
+		std::uint16_t                              unknown1DA;            // 1D2, 1DA
+		std::uint32_t                              unknown1DC;            // 1D4, 1DC
 	};
-	static_assert(offsetof(Projectile, damage) == 0x198);
-	static_assert(offsetof(Projectile, projectileFlags) == 0x1CC);
-	static_assert(offsetof(Projectile, startedQueuingFiles) == 0x1D0);
-	static_assert(offsetof(Projectile, finishedQueueingFiles) == 0x1D1);
-	static_assert(sizeof(Projectile) == 0x1D8);
+	static_assert(offsetof(Projectile, damage) == SKYRIM_RELOCATE(0x198, 0x1A0));
+	static_assert(offsetof(Projectile, projectileFlags) == SKYRIM_RELOCATE(0x1CC, 0x1D4));
+	static_assert(offsetof(Projectile, startedQueuingFiles) == SKYRIM_RELOCATE(0x1D0, 0x1D8));
+	static_assert(offsetof(Projectile, finishedQueueingFiles) == SKYRIM_RELOCATE(0x1D1, 0x1D9));
+	static_assert(sizeof(Projectile) == SKYRIM_RELOCATE(0x1D8, 0x1E0));
 }

@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/G/GameSettingCollection.h"
 
@@ -8,6 +8,20 @@
 
 namespace Skyrim
 {
+	GameSettingCollection* GameSettingCollection::GetSingleton()
+	{
+		auto** singleton{ reinterpret_cast<GameSettingCollection**>(Addresses::GameSettingCollection::Singleton) };
+
+		return *singleton;
+	}
+
+	void GameSettingCollection::InitializeCollection()
+	{
+		auto* function{ reinterpret_cast<decltype(&GameSettingCollection::InitializeCollection)>(Addresses::GameSettingCollection::InitializeCollection) };
+
+		function();
+	}
+
 	SettingT<GameSettingCollection>* GameSettingCollection::ActiveEffectConditionUpdateInterval()
 	{
 		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::ActiveEffectConditionUpdateInterval) };

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSTEventSink.h"
 #include "Shared/Skyrim/B/BSTEventSource.h"
@@ -18,7 +18,7 @@ namespace ConsoleCommandCompanion::Events
 		virtual ~ButtonEventSink() override = default;
 		virtual Skyrim::BSEventNotifyControl ProcessEvent(Skyrim::InputEvent* const* eventArguments, Skyrim::BSTEventSource<Skyrim::InputEvent*>* eventSource) override;
 
-		static ButtonEventSink* GetSingleton();
+		static ButtonEventSink& GetSingleton();
 	};
 
 	class LoadGameEventSink :
@@ -28,6 +28,6 @@ namespace ConsoleCommandCompanion::Events
 		virtual ~LoadGameEventSink() override = default;
 		virtual Skyrim::BSEventNotifyControl ProcessEvent(const Skyrim::TESLoadGameEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::TESLoadGameEvent>* eventSource) override;
 
-		static LoadGameEventSink* GetSingleton();
+		static LoadGameEventSink& GetSingleton();
 	};
 }

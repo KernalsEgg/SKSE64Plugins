@@ -135,7 +135,7 @@
     <ClInclude Include="HeaderFiles\Patterns.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\PCH.h">
+    <ClInclude Include="HeaderFiles\PrecompiledHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Serialization.h">
@@ -248,7 +248,7 @@
     <ClCompile Include="SourceFiles\Patterns.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\PCH.cpp">
+    <ClCompile Include="SourceFiles\PrecompiledHeader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\ScrambledBugs.cpp">

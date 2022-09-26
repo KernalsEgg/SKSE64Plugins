@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Shared/Skyrim/E/EnchantmentItem.h"
 #include "Shared/Skyrim/M/MagicItem.h"

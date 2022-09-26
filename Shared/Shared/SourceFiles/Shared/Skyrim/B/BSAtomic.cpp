@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSAtomic.h"
 
@@ -12,7 +12,7 @@ namespace Skyrim
 	void BSSpinLock::Lock(std::uint32_t pauseAttempts)
 	{
 		std::uint32_t currentThread = ::GetCurrentThreadId();
-		_mm_lfence();
+		::_mm_lfence();
 
 		if (this->currentThread_ == currentThread)
 		{
@@ -27,7 +27,7 @@ namespace Skyrim
 				do
 				{
 					++pauseAttempt;
-					_mm_pause();
+					::_mm_pause();
 
 					if (pauseAttempt >= pauseAttempts)
 					{
@@ -43,25 +43,25 @@ namespace Skyrim
 
 				} while (::_InterlockedCompareExchange(std::addressof(this->lockCount_), 1, 0));
 
-				_mm_lfence();
+				::_mm_lfence();
 			}
 
 			this->currentThread_ = currentThread;
-			_mm_sfence();
+			::_mm_sfence();
 		}
 	}
 
 	void BSSpinLock::Unlock()
 	{
 		std::uint32_t currentThread = ::GetCurrentThreadId();
-		_mm_lfence();
+		::_mm_lfence();
 
 		if (this->currentThread_ == currentThread)
 		{
 			if (this->lockCount_ == 1)
 			{
 				this->currentThread_ = 0;
-				_mm_mfence();
+				::_mm_mfence();
 				::_InterlockedCompareExchange(std::addressof(this->lockCount_), 0, 1);
 			}
 			else

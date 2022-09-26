@@ -1,11 +1,13 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/B/BSAtomic.h"
 #include "Shared/Skyrim/B/BSTHashMap.h"
 #include "Shared/Skyrim/C/Color.h"
 #include "Shared/Skyrim/D/DirectionalAmbientLighting.h"
+#include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/N/NiPointer.h"
 #include "Shared/Skyrim/T/TESForm.h"
 #include "Shared/Skyrim/T/TESFullName.h"
@@ -220,22 +222,22 @@ namespace Skyrim
 		virtual ~TESObjectCELL() override; // 0
 
 		// Override (TESForm)
-		virtual void        ClearData() override;                       // 5
-		virtual void        Unknown6(TESForm*) override;                // 6
-		virtual void        Unknown9(TESForm*) override;                // 9
-		virtual void        UnknownC(TESForm*) override;                // C
-		virtual void        UnknownE(TESForm*) override;                // E
-		virtual void        UnknownF(TESForm*) override;                // F
-		virtual void        Unknown12(TESForm*) override;               // 12
-		virtual void        Unknown13(TESForm*) override;               // 13
-		virtual void        Unknown16(TESForm*) override;               // 16
-		virtual void        Unknown24(TESForm*) override;               // 24
-		virtual void        Unknown30(TESForm*) override;               // 30
-		virtual void        Unknown31(TESForm*) override;               // 31
-		virtual const char* GetEditorID() const override;               // 32
-		virtual bool        SetEditorID(const char* editorID) override; // 33
-		virtual void        Unknown34(TESForm*) override;               // 34
-		virtual void        Unknown36(TESForm*) override;               // 36
+		virtual void        ClearData() override;                                 // 5
+		virtual bool        Load(TESFile* file) override;                         // 6
+		virtual void        Unknown9(TESForm*) override;                          // 9
+		virtual void        UnknownC(TESForm*) override;                          // C
+		virtual void        SaveGame(BGSSaveFormBuffer* saveFormBuffer) override; // E
+		virtual void        LoadGame(BGSLoadFormBuffer* loadFormBuffer) override; // F
+		virtual void        Revert(BGSLoadFormBuffer* loadFormBuffer) override;   // 12
+		virtual void        Unknown13(TESForm*) override;                         // 13
+		virtual void        Unknown16(TESForm*) override;                         // 16
+		virtual void        Unknown24(TESForm*) override;                         // 24
+		virtual void        Unknown30(TESForm*) override;                         // 30
+		virtual void        Unknown31(TESForm*) override;                         // 31
+		virtual const char* GetEditorID() const override;                         // 32
+		virtual bool        SetEditorID(const char* editorID) override;           // 33
+		virtual void        Unknown34(TESForm*) override;                         // 34
+		virtual void        Unknown36(TESForm*) override;                         // 36
 
 		// Member functions
 		BSTempEffectParticle* CreateTemporaryEffectParticle(float duration, const char* model, const NiPoint3& normal, const NiPoint3& position, float scale, std::uint32_t flags, NiAVObject* target3D);
@@ -250,39 +252,38 @@ namespace Skyrim
 		Utility::Enumeration<State, std::uint8_t>  cellState;      // 44
 		std::uint8_t                               unknown45;      // 45
 		std::uint16_t                              unknown46;      // 46
-		std::uint64_t                              unknown48;      // 48
-		std::uint64_t                              unknown50;      // 50
-		std::uint64_t                              unknown58;      // 58
-		CellData                                   cellData;       // 60
-		std::uint64_t                              unknown68;      // 68
-		std::uint64_t                              unknown70;      // 70
-		std::uint64_t                              unknown78;      // 78
-		BSTSet<NiPointer<TESObjectREFR>>           references;     // 80
-		std::uint64_t                              unknownB0;      // B0
-		std::uint64_t                              unknownB8;      // B8
-		std::uint64_t                              unknownC0;      // C0
-		std::uint64_t                              unknownC8;      // C8
-		std::uint64_t                              unknownD0;      // D0
-		std::uint64_t                              unknownD8;      // D8
-		std::uint64_t                              unknownE0;      // E0
-		std::uint64_t                              unknownE8;      // E8
-		std::uint64_t                              unknownF0;      // F0
-		std::uint64_t                              unknownF8;      // F8
-		std::uint64_t                              unknown100;     // 100
-		std::uint64_t                              unknown108;     // 108
-		std::uint64_t                              unknown110;     // 110
-		mutable BSSpinLock                         lock;           // 118
-		TESWorldSpace*                             worldSpace;     // 120
-		LoadedCellData*                            loadedCellData; // 128
-		std::uint64_t                              unknown130;     // 130
-		std::uint64_t                              unknown138;     // 138
+		ExtraDataList                              extraDataList;  // 48
+		CellData                                   cellData;       // 60, 68
+		std::uint64_t                              unknown70;      // 68, 70
+		std::uint64_t                              unknown78;      // 70, 78
+		std::uint64_t                              unknown80;      // 78, 80
+		BSTSet<NiPointer<TESObjectREFR>>           references;     // 80, 88
+		std::uint64_t                              unknownB8;      // B0, B8
+		std::uint64_t                              unknownC0;      // B8, C0
+		std::uint64_t                              unknownC8;      // C0, C8
+		std::uint64_t                              unknownD0;      // C8, D0
+		std::uint64_t                              unknownD8;      // D0, D8
+		std::uint64_t                              unknownE0;      // D8, E0
+		std::uint64_t                              unknownE8;      // E0, E8
+		std::uint64_t                              unknownF0;      // E8, F0
+		std::uint64_t                              unknownF8;      // F0, F8
+		std::uint64_t                              unknown100;     // F8, 100
+		std::uint64_t                              unknown108;     // 100, 108
+		std::uint64_t                              unknown110;     // 108, 110
+		std::uint64_t                              unknown118;     // 110, 118
+		mutable BSSpinLock                         lock;           // 118, 120
+		TESWorldSpace*                             worldSpace;     // 120, 128
+		LoadedCellData*                            loadedCellData; // 128, 130
+		std::uint64_t                              unknown138;     // 130, 138
+		std::uint64_t                              unknown140;     // 138, 140
 	};
 	static_assert(offsetof(TESObjectCELL, cellFlags) == 0x40);
 	static_assert(offsetof(TESObjectCELL, cellState) == 0x44);
-	static_assert(offsetof(TESObjectCELL, cellData) == 0x60);
-	static_assert(offsetof(TESObjectCELL, references) == 0x80);
-	static_assert(offsetof(TESObjectCELL, lock) == 0x118);
-	static_assert(offsetof(TESObjectCELL, worldSpace) == 0x120);
-	static_assert(offsetof(TESObjectCELL, loadedCellData) == 0x128);
-	static_assert(sizeof(TESObjectCELL) == 0x140);
+	static_assert(offsetof(TESObjectCELL, extraDataList) == 0x48);
+	static_assert(offsetof(TESObjectCELL, cellData) == SKYRIM_RELOCATE(0x60, 0x68));
+	static_assert(offsetof(TESObjectCELL, references) == SKYRIM_RELOCATE(0x80, 0x88));
+	static_assert(offsetof(TESObjectCELL, lock) == SKYRIM_RELOCATE(0x118, 0x120));
+	static_assert(offsetof(TESObjectCELL, worldSpace) == SKYRIM_RELOCATE(0x120, 0x128));
+	static_assert(offsetof(TESObjectCELL, loadedCellData) == SKYRIM_RELOCATE(0x128, 0x130));
+	static_assert(sizeof(TESObjectCELL) == SKYRIM_RELOCATE(0x140, 0x148));
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Shared/Skyrim/E/Effect.h"
 #include "Shared/Skyrim/E/EnchantConstructMenu.h"

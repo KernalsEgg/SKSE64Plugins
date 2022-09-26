@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BGSDecalGroup.h"
 #include "Shared/Skyrim/B/BGSDecalManager.h"

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/N/NiBound.h"
 #include "Shared/Skyrim/N/NiObjectNET.h"
@@ -33,13 +33,13 @@ namespace Skyrim
 		virtual ~NiAVObject() override; // 0
 
 		// Override (NiObjectNET)
-		virtual const NiRTTI* GetRTTI() const override;      // 2
-		virtual void          Unknown18(NiObject*) override; // 18
-		virtual void          Unknown19(NiObject*) override; // 19
-		virtual void          Unknown1A(NiObject*) override; // 1A
-		virtual void          Unknown1B(NiObject*) override; // 1B
-		virtual void          Unknown1C(NiObject*) override; // 1C
-		virtual void          Unknown1D(NiObject*) override; // 1D
+		virtual const NiRTTI* GetRTTI() const override;                                // 2
+		virtual void          LoadBinary(NiStream& stream) override;                   // 18
+		virtual void          LinkObject(NiStream& stream) override;                   // 19
+		virtual bool          RegisterStreamables(NiStream& stream) override;          // 1A
+		virtual void          SaveBinary(NiStream& stream) override;                   // 1B
+		virtual bool          IsEqual(NiObject* object) override;                      // 1C
+		virtual void          ProcessClone(NiCloningProcess& cloningProcess) override; // 1D
 
 		// Add
 		virtual void        Unknown25(NiAVObject*);                       // 25
@@ -68,7 +68,7 @@ namespace Skyrim
 		std::uint64_t                              unknown38;              // 38
 		NiPointer<NiCollisionObject>               collisionObject;        // 40
 		NiTransform                                localTransform;         // 48
-		NiTransform                                worldTransform;         // 7C
+		NiTransform                                currentWorldTransform;  // 7C
 		NiTransform                                previousWorldTransform; // B0
 		NiBound                                    worldBound;             // E4
 		Utility::Enumeration<Flags, std::uint32_t> avObjectFlags;          // F4
@@ -79,7 +79,7 @@ namespace Skyrim
 	static_assert(offsetof(NiAVObject, parentNode) == 0x30);
 	static_assert(offsetof(NiAVObject, collisionObject) == 0x40);
 	static_assert(offsetof(NiAVObject, localTransform) == 0x48);
-	static_assert(offsetof(NiAVObject, worldTransform) == 0x7C);
+	static_assert(offsetof(NiAVObject, currentWorldTransform) == 0x7C);
 	static_assert(offsetof(NiAVObject, previousWorldTransform) == 0xB0);
 	static_assert(offsetof(NiAVObject, worldBound) == 0xE4);
 	static_assert(offsetof(NiAVObject, avObjectFlags) == 0xF4);

@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Patches/PoisonResistance.h"
 
@@ -67,7 +67,7 @@ namespace ScrambledBugs::Patches
 
 		if (actor == Skyrim::PlayerCharacter::GetSingleton())
 		{
-			auto playerMaximumResistance = Skyrim::GameSettingCollection::PlayerMaximumResistance()->value.floatingPoint;
+			auto playerMaximumResistance = Skyrim::GameSettingCollection::PlayerMaximumResistance()->GetFloat();
 
 			if (defaultResistance > playerMaximumResistance)
 			{

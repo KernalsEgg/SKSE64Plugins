@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSHandleRefObject.h"
 
@@ -12,7 +12,7 @@ namespace Skyrim
 
 		if ((--referenceCount & BSHandleRefObject::kReferenceCountMask) == 0)
 		{
-			this->Dispose();
+			this->DeleteThis();
 		}
 	}
 

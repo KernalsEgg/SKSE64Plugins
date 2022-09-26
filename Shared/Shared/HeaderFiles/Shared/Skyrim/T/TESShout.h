@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BGSEquipType.h"
 #include "Shared/Skyrim/B/BGSMenuDisplayObject.h"
@@ -58,7 +58,7 @@ namespace Skyrim
 		virtual ~TESShout() override; // 0
 
 		// Override (TESForm)
-		virtual void Unknown6(TESForm*) override;  // 6
+		virtual bool Load(TESFile* file) override; // 6
 		virtual void Unknown13(TESForm*) override; // 13
 		virtual void Unknown17(TESForm*) override; // 17
 

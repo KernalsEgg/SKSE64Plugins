@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/AssociationType.h"
 #include "Shared/Skyrim/T/TESForm.h"
@@ -49,12 +49,12 @@ namespace Skyrim
 		virtual ~BGSRelationship() override; // 0
 
 		// Override (TESForm)
-		virtual void InitializeData() override;    // 4
-		virtual void Unknown6(TESForm*) override;  // 6
-		virtual void UnknownE(TESForm*) override;  // E
-		virtual void UnknownF(TESForm*) override;  // F
-		virtual void Unknown10(TESForm*) override; // 10
-		virtual void Unknown13(TESForm*) override; // 13
+		virtual void InitializeData() override;                                      // 4
+		virtual bool Load(TESFile* file) override;                                   // 6
+		virtual void SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;           // E
+		virtual void LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;           // F
+		virtual void InitializeLoadGame(BGSLoadFormBuffer* loadFormBuffer) override; // 10
+		virtual void Unknown13(TESForm*) override;                                   // 13
 
 		// Member variables
 		TESNPC*                                               relationshipNPC[Utility::ToUnderlying(AssociationType::kTotal)]; // 20

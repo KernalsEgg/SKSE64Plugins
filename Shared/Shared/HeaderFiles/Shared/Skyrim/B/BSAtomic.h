@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
@@ -21,7 +21,7 @@ namespace Skyrim
 		~BSSpinLock() = default;
 
 		BSSpinLock& operator=(const BSSpinLock&) = delete;
-		BSSpinLock& operator=(BSSpinLock&&) = delete;
+		BSSpinLock& operator=(BSSpinLock&&)      = delete;
 
 		// Member functions
 		void Lock(std::uint32_t pauseAttempts = 0);
@@ -44,7 +44,7 @@ namespace Skyrim
 		~BSSpinLockGuard();
 
 		BSSpinLockGuard& operator=(const BSSpinLockGuard&) = delete;
-		BSSpinLockGuard& operator=(BSSpinLockGuard&&) = delete;
+		BSSpinLockGuard& operator=(BSSpinLockGuard&&)      = delete;
 
 		explicit BSSpinLockGuard(BSSpinLock& lock);
 
@@ -64,7 +64,7 @@ namespace Skyrim
 		~BSReadWriteLock() = default;
 
 		BSReadWriteLock& operator=(const BSReadWriteLock&) = delete;
-		BSReadWriteLock& operator=(BSReadWriteLock&&) = delete;
+		BSReadWriteLock& operator=(BSReadWriteLock&&)      = delete;
 
 		// Member functions
 		void ReadLock();
@@ -89,7 +89,7 @@ namespace Skyrim
 		~BSReadLockGuard();
 
 		BSReadLockGuard& operator=(const BSReadLockGuard&) = delete;
-		BSReadLockGuard& operator=(BSReadLockGuard&&) = delete;
+		BSReadLockGuard& operator=(BSReadLockGuard&&)      = delete;
 
 		explicit BSReadLockGuard(BSReadWriteLock& lock);
 
@@ -109,7 +109,7 @@ namespace Skyrim
 		~BSWriteLockGuard();
 
 		BSWriteLockGuard& operator=(const BSWriteLockGuard&) = delete;
-		BSWriteLockGuard& operator=(BSWriteLockGuard&&) = delete;
+		BSWriteLockGuard& operator=(BSWriteLockGuard&&)      = delete;
 
 		explicit BSWriteLockGuard(BSReadWriteLock& lock);
 

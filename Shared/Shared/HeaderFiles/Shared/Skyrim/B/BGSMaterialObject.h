@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSMaterialObject.h"
 #include "Shared/Skyrim/T/TESForm.h"
@@ -20,8 +20,8 @@ namespace Skyrim
 		virtual ~BGSMaterialObject() override; // 0
 
 		// Override (TESForm)
-		virtual void ClearData() override;        // 5
-		virtual void Unknown6(TESForm*) override; // 6
+		virtual void ClearData() override;         // 5
+		virtual bool Load(TESFile* file) override; // 6
 
 		// Override (BSMaterialObject)
 		virtual void Unknown1(BSMaterialObject*) override; // 1

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/ActorValue.h"
 #include "Shared/Utility/Enumeration.h"

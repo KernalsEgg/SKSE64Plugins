@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/M/MemoryManager.h"
@@ -17,7 +17,7 @@ namespace Skyrim
 	class InventoryEntryData
 	{
 	public:
-		TES_MEMORY_REDEFINE_NEW();
+		SKYRIM_MEMORY_REDEFINE_NEW();
 
 		InventoryEntryData() = default;
 		InventoryEntryData(const InventoryEntryData& right);

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/AITimestamp.h"
 #include "Shared/Skyrim/B/BSFixedString.h"
@@ -144,13 +144,13 @@ namespace Skyrim
 		virtual ~TESFaction() override; // 0
 
 		// Override (TESForm)
-		virtual void InitializeData() override;    // 4
-		virtual void ClearData() override;         // 5
-		virtual void Unknown6(TESForm*) override;  // 6
-		virtual void UnknownE(TESForm*) override;  // E
-		virtual void UnknownF(TESForm*) override;  // F
-		virtual void Unknown12(TESForm*) override; // 12
-		virtual void Unknown13(TESForm*) override; // 13
+		virtual void InitializeData() override;                            // 4
+		virtual void ClearData() override;                                 // 5
+		virtual bool Load(TESFile* file) override;                         // 6
+		virtual void SaveGame(BGSSaveFormBuffer* saveFormBuffer) override; // E
+		virtual void LoadGame(BGSLoadFormBuffer* loadFormBuffer) override; // F
+		virtual void Revert(BGSLoadFormBuffer* loadFormBuffer) override;   // 12
+		virtual void Unknown13(TESForm*) override;                         // 13
 
 		// Member variables
 		BSTHashMap<const TESNPC*, std::uint32_t>*  crimeGold;             // 50

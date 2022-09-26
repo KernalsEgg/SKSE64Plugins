@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Shared/Relocation/AddressLibrary.h"
 
@@ -103,7 +103,7 @@ namespace ScrambledBugs::Addresses
 		namespace WeaponCharge
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x6313D0 (37803), 1.6.318.0: SkyrimSE.exe + 0x6572D0</summary>
-			inline const std::uintptr_t UpdateWeaponEnchantments{ Relocation::AddressLibrary::GetSingleton().GetAddress(38752) }; // Actor::UpdateWeaponEnchantments
+			inline const std::uintptr_t UpdateEquippedEnchantmentCharge{ Relocation::AddressLibrary::GetSingleton().GetAddress(38752) }; // Actor::UpdateEquippedEnchantmentCharge
 		}
 	}
 

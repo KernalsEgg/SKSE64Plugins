@@ -1,7 +1,8 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Relocation/AddressLibrary.h"
 
+#include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Utility/Enumeration.h"
 #include "Shared/Utility/MessageBox.h"
 
@@ -9,11 +10,11 @@
 
 namespace Relocation
 {
-	void AddressLibrary::Header::Read(std::ifstream& inputFileStream, const Version& productVersion)
+	void AddressLibrary::Header::Read(std::ifstream& inputFileStream, const Version<std::int32_t>& productVersion)
 	{
 		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->format)), sizeof(std::int32_t));
 
-		if (this->format != (Executable::GetSingleton().IsSpecialEdition() ? 1 : 2))
+		if (this->format != SKYRIM_RELOCATE(1, 2))
 		{
 			Utility::MessageBox::Error("Unexpected format encountered, {}. Expected {}.", this->format, 1);
 		}
@@ -44,7 +45,7 @@ namespace Relocation
 		inputFileStream.read(fileName.data(), fileName.size());
 		this->fileName = std::string(fileName.data(), fileName.size());
 
-		if (_stricmp(this->fileName.c_str(), executableFileName.string().c_str()) != 0)
+		if (::_stricmp(this->fileName.c_str(), executableFileName.string().c_str()) != 0)
 		{
 			Utility::MessageBox::Error("Unexpected file name encountered, {}. Expected {}.", this->fileName, executableFileName.string());
 		}
@@ -53,14 +54,9 @@ namespace Relocation
 		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->addressCount)), sizeof(std::int32_t));
 	}
 
-	AddressLibrary::AddressLibrary(const Version& productVersion)
+	AddressLibrary::AddressLibrary(const Version<std::int32_t>& productVersion)
 	{
 		this->Load(productVersion);
-	}
-
-	std::ptrdiff_t AddressLibrary::GetOffset(std::ptrdiff_t specialEditionOffset, std::ptrdiff_t anniversaryEditionOffset)
-	{
-		return Executable::GetSingleton().IsSpecialEdition() ? specialEditionOffset : anniversaryEditionOffset;
 	}
 
 	const AddressLibrary& AddressLibrary::GetSingleton()
@@ -76,7 +72,7 @@ namespace Relocation
 
 		for (const auto& element : this->span_)
 		{
-			outputFileStream << fmt::format("{}\t0x{:X}", element.identifier, element.offset) << std::endl;
+			outputFileStream << std::vformat("{}\t0x{:X}", std::make_format_args(element.identifier, element.offset)) << std::endl;
 		}
 	}
 
@@ -106,23 +102,20 @@ namespace Relocation
 		return Executable::GetSingleton().GetAddress() + iterator->offset;
 	}
 
-	std::uintptr_t AddressLibrary::GetAddress(std::uint64_t specialEditionIdentifier, std::uint64_t anniversaryEditionIdentifier) const
-	{
-		return Executable::GetSingleton().IsSpecialEdition() ? this->GetAddress(specialEditionIdentifier) : this->GetAddress(anniversaryEditionIdentifier);
-	}
-
-	void AddressLibrary::Load(const Version& productVersion)
+	void AddressLibrary::Load(const Version<std::int32_t>& productVersion)
 	{
 		std::filesystem::path inputFileStreamPath = Executable::GetSingleton().GetPath().parent_path();
+
 		inputFileStreamPath /= "Data";
 		inputFileStreamPath /= "SKSE";
 		inputFileStreamPath /= "Plugins";
-		inputFileStreamPath /= fmt::format(
-			Executable::GetSingleton().IsSpecialEdition() ? "version-{}-{}-{}-{}.bin" : "versionlib-{}-{}-{}-{}.bin",
-			productVersion.major,
-			productVersion.minor,
-			productVersion.revision,
-			productVersion.build);
+		inputFileStreamPath /= std::vformat(
+			SKYRIM_RELOCATE("version-{}-{}-{}-{}.bin", "versionlib-{}-{}-{}-{}.bin"),
+			std::make_format_args(
+				productVersion.major,
+				productVersion.minor,
+				productVersion.revision,
+				productVersion.build));
 
 		std::ifstream inputFileStream(inputFileStreamPath, std::ios::in | std::ios::binary);
 
@@ -137,7 +130,7 @@ namespace Relocation
 		header.Read(inputFileStream, productVersion);
 
 		auto fileMappingSize = static_cast<std::size_t>(sizeof(Element) * header.addressCount);
-		auto fileMappingName = fmt::format("Shared-AddressLibrary-1-{}", inputFileStreamPath.stem().string());
+		auto fileMappingName = std::vformat("Shared-AddressLibrary-1-{}", std::make_format_args(inputFileStreamPath.stem().string()));
 
 		if (!this->fileMapping_.Open(fileMappingName))
 		{
@@ -157,7 +150,7 @@ namespace Relocation
 			std::sort(
 				this->span_.begin(),
 				this->span_.end(),
-				[](const auto& left, const auto& right)
+				[](const Element& left, const Element& right)
 				{
 					return left.identifier < right.identifier;
 				});

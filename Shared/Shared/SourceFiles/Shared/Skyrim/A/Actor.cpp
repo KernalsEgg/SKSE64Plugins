@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/Actor.h"
 
@@ -37,18 +37,18 @@ namespace Skyrim
 		return function(this, inventoryEntryData);
 	}
 
-	float Actor::GetWeaponDamage(InventoryEntryData* inventoryEntryData) const
-	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::GetWeaponDamage)>::type>(Addresses::Actor::GetWeaponDamage) };
-
-		return function(this, inventoryEntryData);
-	}
-
 	bhkCharacterController* Actor::GetCharacterController() const
 	{
 		auto* currentProcess = this->currentProcess;
 
 		return currentProcess ? currentProcess->GetCharacterController() : nullptr;
+	}
+
+	bool Actor::GetControllingActor(NiPointer<Actor>& controllingActor)
+	{
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::GetControllingActor)>::type>(Addresses::Actor::GetControllingActor) };
+
+		return function(this, controllingActor);
 	}
 
 	InventoryEntryData* Actor::GetEquippedItem(bool leftHand) const
@@ -86,11 +86,25 @@ namespace Skyrim
 		return item && item->formType == FormType::kWeapon ? static_cast<TESObjectWEAP*>(item) : nullptr;
 	}
 
+	NiAVObject* Actor::GetHeadNode() const
+	{
+		auto* currentProcess = this->currentProcess;
+
+		return currentProcess ? currentProcess->GetHeadNode() : nullptr;
+	}
+
 	HitData* Actor::GetLastHitData() const
 	{
 		auto* currentProcess = this->currentProcess;
 
 		return currentProcess ? currentProcess->GetLastHitData() : nullptr;
+	}
+
+	NiPoint3& Actor::GetLineOfSightLocation(NiPoint3& result, Utility::Enumeration<LineOfSightLocation, std::uint32_t> lineOfSightLocation) const
+	{
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::GetLineOfSightLocation)>::type>(Addresses::Actor::GetLineOfSightLocation) };
+
+		return function(this, result, lineOfSightLocation);
 	}
 
 	float Actor::GetMaximumWardPower() const
@@ -107,13 +121,6 @@ namespace Skyrim
 		return function(this, mount);
 	}
 
-	bool Actor::GetMovementActor(NiPointer<Actor>& movementActor)
-	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::GetMovementActor)>::type>(Addresses::Actor::GetMovementActor) };
-
-		return function(this, movementActor);
-	}
-
 	SoulLevel Actor::GetSoulLevel() const
 	{
 		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::GetSoulLevel)>::type>(Addresses::Actor::GetSoulLevel) };
@@ -121,18 +128,32 @@ namespace Skyrim
 		return function(this);
 	}
 
+	NiAVObject* Actor::GetTorsoNode() const
+	{
+		auto* currentProcess = this->currentProcess;
+
+		return currentProcess ? currentProcess->GetTorsoNode() : nullptr;
+	}
+
+	float Actor::GetWeaponDamage(InventoryEntryData* inventoryEntryData) const
+	{
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::GetWeaponDamage)>::type>(Addresses::Actor::GetWeaponDamage) };
+
+		return function(this, inventoryEntryData);
+	}
+
+	Actor::LineOfSightLocation Actor::IsActorInLineOfSight(Actor* target, float viewCone) const
+	{
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::IsActorInLineOfSight)>::type>(Addresses::Actor::IsActorInLineOfSight) };
+
+		return function(this, target, viewCone);
+	}
+
 	bool Actor::IsDualCasting() const
 	{
 		auto* currentProcess = this->currentProcess;
 
 		return currentProcess ? currentProcess->IsDualCasting() : false;
-	}
-
-	TESObjectREFR::Height Actor::IsInViewCone(TESObjectREFR* target, float viewCone) const
-	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::IsInViewCone)>::type>(Addresses::Actor::IsInViewCone) };
-
-		return function(this, target, viewCone);
 	}
 
 	bool Actor::IsNPC() const
@@ -161,7 +182,7 @@ namespace Skyrim
 			return false;
 		}
 
-		return this->extraDataList.HasType(ExtraDataType::kInteraction);
+		return this->extraDataList.HasExtraData(ExtraDataType::kInteraction);
 	}
 
 	bool Actor::IsPlayerTeammate() const
@@ -169,11 +190,30 @@ namespace Skyrim
 		return this->booleanBits.all(BooleanBits::kPlayerTeammate);
 	}
 
-	void Actor::ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float previousValue, float deltaValue, Actor* source)
+	NiAVObject* Actor::IsPositionInLineOfSight(const NiPoint3& target, NiPoint3& result, float viewCone) const
+	{
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::IsPositionInLineOfSight)>::type>(Addresses::Actor::IsPositionInLineOfSight) };
+
+		return function(this, target, result, viewCone);
+	}
+
+	bool Actor::IsReferenceInLineOfSight(TESObjectREFR* target, float viewCone) const
+	{
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::IsReferenceInLineOfSight)>::type>(Addresses::Actor::IsReferenceInLineOfSight) };
+
+		return function(this, target, viewCone);
+	}
+
+	bool Actor::IsSneaking() const
+	{
+		return this->ActorState::IsSneaking() && !this->ActorState::IsSwimming() && !this->IsOnMount();
+	}
+
+	void Actor::ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float oldValue, float deltaValue, Actor* source)
 	{
 		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::ModifyActorValue)>::type>(Addresses::Actor::ModifyActorValue) };
 
-		function(this, actorValue, previousValue, deltaValue, source);
+		function(this, actorValue, oldValue, deltaValue, source);
 	}
 
 	void Actor::RemoveActorValueModifiers(Utility::Enumeration<ActorValue, std::uint32_t> actorValue)
@@ -190,13 +230,6 @@ namespace Skyrim
 		function(this);
 	}
 
-	void Actor::RevertSelectedSpell(Utility::Enumeration<SlotType, std::uint32_t> slotType, MagicItem* selectedSpell)
-	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::RevertSelectedSpell)>::type>(Addresses::Actor::RevertSelectedSpell) };
-
-		function(this, slotType, selectedSpell);
-	}
-
 	void Actor::SetMaximumWardPower(float maximumWardPower)
 	{
 		auto* currentProcess = this->currentProcess;
@@ -207,5 +240,12 @@ namespace Skyrim
 		}
 
 		currentProcess->SetMaximumWardPower(maximumWardPower);
+	}
+
+	void Actor::SetSelectedSpell(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource, MagicItem* selectedSpell)
+	{
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::SetSelectedSpell)>::type>(Addresses::Actor::SetSelectedSpell) };
+
+		function(this, castingSource, selectedSpell);
 	}
 }

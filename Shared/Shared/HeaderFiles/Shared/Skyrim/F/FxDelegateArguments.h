@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/G/GFxValue.h"
 #include "Shared/Skyrim/S/ScaleformTypes.h"

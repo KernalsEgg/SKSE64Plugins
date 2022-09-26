@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Settings.h"
 
@@ -48,13 +48,15 @@ namespace ActorLimitFix
 		}
 		catch (const nlohmann::json::exception& jsonException)
 		{
-			Utility::Log::Error("{}", jsonException.what());
+			Utility::Log::Critical("{}", jsonException.what());
+
+			throw;
 		}
 	}
 
 	Settings& Settings::GetSingleton()
 	{
-		static Settings singleton(std::filesystem::path(Relocation::Plugin::GetSingleton().GetPath()).replace_extension("json"));
+		static Settings singleton(std::filesystem::path(Relocation::DynamicLinkLibrary::GetSingleton().GetPath()).replace_extension("json"));
 
 		return singleton;
 	}

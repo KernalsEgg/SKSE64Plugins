@@ -1,13 +1,15 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/A/ActorState.h"
 #include "Shared/Skyrim/A/ActorValue.h"
 #include "Shared/Skyrim/A/ActorValueOwner.h"
 #include "Shared/Skyrim/B/BSTEventSink.h"
 #include "Shared/Skyrim/I/IPostAnimationChannelUpdateFunctor.h"
 #include "Shared/Skyrim/M/MagicTarget.h"
+#include "Shared/Skyrim/N/NiPoint3.h"
 #include "Shared/Skyrim/N/NiPointer.h"
 #include "Shared/Skyrim/S/SoulLevel.h"
 #include "Shared/Skyrim/T/TESObjectREFR.h"
@@ -26,6 +28,7 @@ namespace Skyrim
 	class HitData;
 	class InventoryEntryData;
 	class MagicItem;
+	class NiAVObject;
 	class PowerCooldown;
 	class SpellItem;
 	class TESForm;
@@ -34,23 +37,14 @@ namespace Skyrim
 
 	class Actor :
 		public TESObjectREFR,                             // 0
-		public MagicTarget,                               // 98
-		public ActorValueOwner,                           // B0
-		public ActorState,                                // B8
-		public BSTEventSink<BSTransformDeltaEvent>,       // C8
-		public BSTEventSink<bhkCharacterMoveFinishEvent>, // D0
-		public IPostAnimationChannelUpdateFunctor         // D8
+		public MagicTarget,                               // 98, A0
+		public ActorValueOwner,                           // B0, B8
+		public ActorState,                                // B8, C0
+		public BSTEventSink<BSTransformDeltaEvent>,       // C8, D0
+		public BSTEventSink<bhkCharacterMoveFinishEvent>, // D0, D8
+		public IPostAnimationChannelUpdateFunctor         // D8, E0
 	{
 	public:
-		enum class SlotType : std::uint32_t
-		{
-			kLeftHand     = 0,
-			kRightHand    = 1,
-			kPowerOrShout = 3,
-			kTotal        = 4
-		};
-		static_assert(sizeof(SlotType) == 0x4);
-
 		enum class BooleanBits : std::uint32_t
 		{
 			kNone           = 0,
@@ -65,15 +59,34 @@ namespace Skyrim
 		};
 		static_assert(sizeof(BooleanFlags) == 0x4);
 
+		enum class LineOfSightLocation : std::uint32_t
+		{
+			kNone  = 0,
+			kEyes  = 1, // Eye level
+			kHead  = 2, // 85%
+			kTorso = 3, // 50%
+			kFeet  = 4  // 15%
+		};
+		static_assert(sizeof(LineOfSightLocation) == 0x4);
+
+		enum class SlotType : std::uint32_t
+		{
+			kLeftHand     = 0,
+			kRightHand    = 1,
+			kPowerOrShout = 3,
+			kTotal        = 4
+		};
+		static_assert(sizeof(SlotType) == 0x4);
+
 		// Override
 		virtual ~Actor() override; // 0
 
 		// Override (TESObjectREFR)
-		virtual void                  UnknownE(TESForm*) override;                                                                                                                                                                                                                                       // E
-		virtual void                  UnknownF(TESForm*) override;                                                                                                                                                                                                                                       // F
-		virtual void                  Unknown10(TESForm*) override;                                                                                                                                                                                                                                      // 10
-		virtual void                  Unknown11(TESForm*) override;                                                                                                                                                                                                                                      // 11
-		virtual void                  Unknown12(TESForm*) override;                                                                                                                                                                                                                                      // 12
+		virtual void                  SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;                                                                                                                                                                                                              // E
+		virtual void                  LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                                                                                                                                                                                              // F
+		virtual void                  InitializeLoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                                                                                                                                                                                    // 10
+		virtual void                  FinishLoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                                                                                                                                                                                        // 11
+		virtual void                  Revert(BGSLoadFormBuffer* loadFormBuffer) override;                                                                                                                                                                                                                // 12
 		virtual void                  Unknown13(TESForm*) override;                                                                                                                                                                                                                                      // 13
 		virtual void                  Unknown23(TESForm*) override;                                                                                                                                                                                                                                      // 23
 		virtual void                  Unknown3B(TESObjectREFR*) override;                                                                                                                                                                                                                                // 3B
@@ -99,7 +112,7 @@ namespace Skyrim
 		virtual void                  Unknown58(TESObjectREFR*) override;                                                                                                                                                                                                                                // 58
 		virtual void                  Unknown59(TESObjectREFR*) override;                                                                                                                                                                                                                                // 59
 		virtual void                  Unknown5A(TESObjectREFR*) override;                                                                                                                                                                                                                                // 5A
-		virtual void                  Unknown5B(TESObjectREFR*) override;                                                                                                                                                                                                                                // 5B
+		virtual NiPoint3              GetLookingAtLocation() const override;                                                                                                                                                                                                                             // 5B
 		virtual MagicCaster*          GetMagicCaster(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource) override;                                                                                                                                                            // 5C
 		virtual MagicTarget*          GetMagicTarget() override;                                                                                                                                                                                                                                         // 5D
 		virtual void                  Unknown5E(TESObjectREFR*) override;                                                                                                                                                                                                                                // 5E
@@ -112,8 +125,8 @@ namespace Skyrim
 		virtual void                  Unknown6A(TESObjectREFR*) override;                                                                                                                                                                                                                                // 6A
 		virtual void                  Unknown6C(TESObjectREFR*) override;                                                                                                                                                                                                                                // 6C
 		virtual void                  Unknown72(TESObjectREFR*) override;                                                                                                                                                                                                                                // 72
-		virtual void                  Unknown73(TESObjectREFR*) override;                                                                                                                                                                                                                                // 73
-		virtual void                  Unknown74(TESObjectREFR*) override;                                                                                                                                                                                                                                // 74
+		virtual NiPoint3              GetBoundMinimum() const override;                                                                                                                                                                                                                                  // 73
+		virtual NiPoint3              GetBoundMaximum() const override;                                                                                                                                                                                                                                  // 74
 		virtual void                  Unknown75(TESObjectREFR*) override;                                                                                                                                                                                                                                // 75
 		virtual void                  Unknown78(TESObjectREFR*) override;                                                                                                                                                                                                                                // 78
 		virtual void                  Unknown79(TESObjectREFR*) override;                                                                                                                                                                                                                                // 79
@@ -147,22 +160,22 @@ namespace Skyrim
 		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* eventArguments, BSTEventSource<BSAnimationGraphEvent>* eventSource) override; // 1
 
 		// Override (IAnimationGraphManagerHolder)
-		virtual void Unknown1(IAnimationGraphManagerHolder*) override;                                               // 1
-		virtual void Unknown2(IAnimationGraphManagerHolder*) override;                                               // 2
-		virtual void Unknown3(IAnimationGraphManagerHolder*) override;                                               // 3
-		virtual void Unknown5(IAnimationGraphManagerHolder*) override;                                               // 5
-		virtual void Unknown6(IAnimationGraphManagerHolder*) override;                                               // 6
-		virtual void Unknown7(IAnimationGraphManagerHolder*) override;                                               // 7
-		virtual void Unknown8(IAnimationGraphManagerHolder*) override;                                               // 8
-		virtual void UnknownA(IAnimationGraphManagerHolder*) override;                                               // A
-		virtual void UnknownB(IAnimationGraphManagerHolder*) override;                                               // B
-		virtual void UnknownC(IAnimationGraphManagerHolder*) override;                                               // C
-		virtual void UnknownD(IAnimationGraphManagerHolder*) override;                                               // D
-		virtual void UnknownE(IAnimationGraphManagerHolder*) override;                                               // E
-		virtual void UnknownF(IAnimationGraphManagerHolder*) override;                                               // F
-		virtual bool GetAnimationVariableFloat(const BSFixedString& variableName, float& value) const override;      // 10
-		virtual bool GetAnimationVariableInt(const BSFixedString& variableName, std::int32_t& value) const override; // 11
-		virtual bool GetAnimationVariableBool(const BSFixedString& variableName, bool& value) const override;        // 12
+		virtual void Unknown1(IAnimationGraphManagerHolder*) override;                                                   // 1
+		virtual void Unknown2(IAnimationGraphManagerHolder*) override;                                                   // 2
+		virtual void Unknown3(IAnimationGraphManagerHolder*) override;                                                   // 3
+		virtual void Unknown5(IAnimationGraphManagerHolder*) override;                                                   // 5
+		virtual void Unknown6(IAnimationGraphManagerHolder*) override;                                                   // 6
+		virtual void Unknown7(IAnimationGraphManagerHolder*) override;                                                   // 7
+		virtual void Unknown8(IAnimationGraphManagerHolder*) override;                                                   // 8
+		virtual void UnknownA(IAnimationGraphManagerHolder*) override;                                                   // A
+		virtual void UnknownB(IAnimationGraphManagerHolder*) override;                                                   // B
+		virtual void UnknownC(IAnimationGraphManagerHolder*) override;                                                   // C
+		virtual void UnknownD(IAnimationGraphManagerHolder*) override;                                                   // D
+		virtual void UnknownE(IAnimationGraphManagerHolder*) override;                                                   // E
+		virtual void UnknownF(IAnimationGraphManagerHolder*) override;                                                   // F
+		virtual bool GetAnimationVariableFloat(const BSFixedString& variableName, float& value) const override;          // 10
+		virtual bool GetAnimationVariableInteger(const BSFixedString& variableName, std::int32_t& value) const override; // 11
+		virtual bool GetAnimationVariableBool(const BSFixedString& variableName, bool& value) const override;            // 12
 
 		// Override (MagicTarget)
 		virtual void                         Unknown1(MagicTarget*) override;                                                      // 1
@@ -357,94 +370,100 @@ namespace Skyrim
 		float                   GetActorValueModifier(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue) const;
 		float                   GetArmorRating(InventoryEntryData* inventoryEntryData) const;
 		bhkCharacterController* GetCharacterController() const;
+		bool                    GetControllingActor(NiPointer<Actor>& controllingActor);
 		InventoryEntryData*     GetEquippedItem(bool leftHand) const;
 		TESObjectARMO*          GetEquippedShield() const;
 		TESObjectWEAP*          GetEquippedWeapon(bool leftHand) const;
+		NiAVObject*             GetHeadNode() const;
 		HitData*                GetLastHitData() const;
+		NiPoint3&               GetLineOfSightLocation(NiPoint3& result, Utility::Enumeration<LineOfSightLocation, std::uint32_t> lineOfSightLocation) const;
 		float                   GetMaximumWardPower() const;
 		bool                    GetMount(NiPointer<Actor>& mount);
-		bool                    GetMovementActor(NiPointer<Actor>& movementActor);
 		SoulLevel               GetSoulLevel() const;
+		NiAVObject*             GetTorsoNode() const;
 		float                   GetWeaponDamage(InventoryEntryData* inventoryEntryData) const;
+		LineOfSightLocation     IsActorInLineOfSight(Actor* target, float viewCone = 2 * std::numbers::pi_v<float>) const;
 		bool                    IsDualCasting() const;
-		TESObjectREFR::Height   IsInViewCone(TESObjectREFR* target, float viewCone) const;
 		bool                    IsNPC() const;
 		bool                    IsOnMount() const;
 		bool                    IsPlayerTeammate() const;
-		void                    ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float previousValue, float deltaValue, Actor* source);
+		NiAVObject*             IsPositionInLineOfSight(const NiPoint3& target, NiPoint3& result, float viewCone = 2 * std::numbers::pi_v<float>) const;
+		bool                    IsReferenceInLineOfSight(TESObjectREFR* target, float viewCone = 2 * std::numbers::pi_v<float>) const;
+		bool                    IsSneaking() const;
+		void                    ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float oldValue, float deltaValue, Actor* source);
 		void                    RemoveActorValueModifiers(Utility::Enumeration<ActorValue, std::uint32_t> actorValue);
 		void                    RemoveBasePerks();
-		void                    RevertSelectedSpell(Utility::Enumeration<SlotType, std::uint32_t> slotType, MagicItem* selectedSpell);
 		void                    SetMaximumWardPower(float maximumWardPower);
+		void                    SetSelectedSpell(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource, MagicItem* selectedSpell);
 
 		// Member variables
-		Utility::Enumeration<BooleanBits, std::uint32_t>  booleanBits;                                             // E0
-		std::uint32_t                                     unknownE4;                                               // E4
-		std::uint64_t                                     unknownE8;                                               // E8
-		AIProcess*                                        currentProcess;                                          // F0
-		std::uint64_t                                     unknownF8;                                               // F8
-		std::uint64_t                                     unknown100;                                              // 100
-		std::uint64_t                                     unknown108;                                              // 108
-		std::uint64_t                                     unknown110;                                              // 110
-		std::uint64_t                                     unknown118;                                              // 118
-		std::uint64_t                                     unknown120;                                              // 120
-		std::uint64_t                                     unknown128;                                              // 128
-		std::uint64_t                                     unknown130;                                              // 130
-		std::uint64_t                                     unknown138;                                              // 138
-		std::uint64_t                                     unknown140;                                              // 140
-		std::uint64_t                                     unknown148;                                              // 148
-		std::uint64_t                                     unknown150;                                              // 150
-		std::uint64_t                                     unknown158;                                              // 158
-		std::uint64_t                                     unknown160;                                              // 160
-		std::uint64_t                                     unknown168;                                              // 168
-		std::uint64_t                                     unknown170;                                              // 170
-		std::uint64_t                                     unknown178;                                              // 178
-		PowerCooldown*                                    powerCooldowns;                                          // 180
-		std::uint64_t                                     unknown188;                                              // 188
-		std::uint64_t                                     unknown190;                                              // 190
-		std::uint64_t                                     unknown198;                                              // 198
-		ActorMagicCaster*                                 magicCasters[Utility::ToUnderlying(SlotType::kTotal)];   // 1A0
-		MagicItem*                                        selectedSpells[Utility::ToUnderlying(SlotType::kTotal)]; // 1C0
-		TESForm*                                          selectedPower;                                           // 1E0
-		std::uint64_t                                     unknown1E8;                                              // 1E8
-		std::uint64_t                                     unknown1F0;                                              // 1F0
-		float                                             equippedWeight;                                          // 1F8
-		Utility::Enumeration<BooleanFlags, std::uint32_t> booleanFlags;                                            // 1FC
-		std::uint64_t                                     unknown200;                                              // 200
-		std::uint64_t                                     unknown208;                                              // 208
-		std::uint64_t                                     unknown210;                                              // 210
-		std::uint64_t                                     unknown218;                                              // 218
-		std::uint64_t                                     unknown220;                                              // 220
-		std::uint64_t                                     unknown228;                                              // 228
-		std::uint64_t                                     unknown230;                                              // 230
-		std::uint64_t                                     unknown238;                                              // 238
-		std::uint64_t                                     unknown240;                                              // 240
-		std::uint64_t                                     unknown248;                                              // 248
-		std::uint64_t                                     unknown250;                                              // 250
-		float                                             lastUpdate;                                              // 258
-		std::uint32_t                                     unknown25C;                                              // 25C
-		std::uint64_t                                     unknown260;                                              // 260
-		float                                             armorRating;                                             // 268
-		float                                             totalArmorBaseFactor;                                    // 26C
-		std::uint64_t                                     unknown270;                                              // 270
-		std::uint64_t                                     unknown278;                                              // 278
-		std::uint64_t                                     unknown280;                                              // 280
-		std::uint64_t                                     unknown288;                                              // 288
-		std::uint64_t                                     unknown290;                                              // 290
-		std::uint64_t                                     unknown298;                                              // 298
-		std::uint64_t                                     unknown2A0;                                              // 2A0
-		std::uint64_t                                     unknown2A8;                                              // 2A8
+		Utility::Enumeration<BooleanBits, std::uint32_t>  booleanBits;                                             // E0, E8
+		std::uint32_t                                     unknownEC;                                               // E4, EC
+		std::uint64_t                                     unknownF0;                                               // E8, F0
+		AIProcess*                                        currentProcess;                                          // F0, F8
+		std::uint64_t                                     unknown100;                                              // F8, 100
+		std::uint64_t                                     unknown108;                                              // 100, 108
+		std::uint64_t                                     unknown110;                                              // 108, 110
+		std::uint64_t                                     unknown118;                                              // 110, 118
+		std::uint64_t                                     unknown120;                                              // 118, 120
+		std::uint64_t                                     unknown128;                                              // 120, 128
+		std::uint64_t                                     unknown130;                                              // 128, 130
+		std::uint64_t                                     unknown138;                                              // 130, 138
+		std::uint64_t                                     unknown140;                                              // 138, 140
+		std::uint64_t                                     unknown148;                                              // 140, 148
+		std::uint64_t                                     unknown150;                                              // 148, 150
+		std::uint64_t                                     unknown158;                                              // 150, 158
+		std::uint64_t                                     unknown160;                                              // 158, 160
+		std::uint64_t                                     unknown168;                                              // 160, 168
+		std::uint64_t                                     unknown170;                                              // 168, 170
+		std::uint64_t                                     unknown178;                                              // 170, 178
+		std::uint64_t                                     unknown180;                                              // 178, 180
+		PowerCooldown*                                    powerCooldowns;                                          // 180, 188
+		std::uint64_t                                     unknown190;                                              // 188, 190
+		std::uint64_t                                     unknown198;                                              // 190, 198
+		std::uint64_t                                     unknown1A0;                                              // 198, 1A0
+		ActorMagicCaster*                                 magicCasters[Utility::ToUnderlying(SlotType::kTotal)];   // 1A0, 1A8
+		MagicItem*                                        selectedSpells[Utility::ToUnderlying(SlotType::kTotal)]; // 1C0, 1C8
+		TESForm*                                          selectedPower;                                           // 1E0, 1E8
+		std::uint64_t                                     unknown1F0;                                              // 1E8, 1F0
+		std::uint64_t                                     unknown1F8;                                              // 1F0, 1F8
+		float                                             equippedWeight;                                          // 1F8, 200
+		Utility::Enumeration<BooleanFlags, std::uint32_t> booleanFlags;                                            // 1FC, 204
+		std::uint64_t                                     unknown208;                                              // 200, 208
+		std::uint64_t                                     unknown210;                                              // 208, 210
+		std::uint64_t                                     unknown218;                                              // 210, 218
+		std::uint64_t                                     unknown220;                                              // 218, 220
+		std::uint64_t                                     unknown228;                                              // 220, 228
+		std::uint64_t                                     unknown230;                                              // 228, 230
+		std::uint64_t                                     unknown238;                                              // 230, 238
+		std::uint64_t                                     unknown240;                                              // 238, 240
+		std::uint64_t                                     unknown248;                                              // 240, 248
+		std::uint64_t                                     unknown250;                                              // 248, 250
+		std::uint64_t                                     unknown258;                                              // 250, 258
+		float                                             lastUpdate;                                              // 258, 260
+		std::uint32_t                                     unknown264;                                              // 25C, 264
+		std::uint64_t                                     unknown268;                                              // 260, 268
+		float                                             armorRating;                                             // 268, 270
+		float                                             totalArmorBaseFactor;                                    // 26C, 274
+		std::uint64_t                                     unknown278;                                              // 270, 278
+		std::uint64_t                                     unknown280;                                              // 278, 280
+		std::uint64_t                                     unknown288;                                              // 280, 288
+		std::uint64_t                                     unknown290;                                              // 288, 290
+		std::uint64_t                                     unknown298;                                              // 290, 298
+		std::uint64_t                                     unknown2A0;                                              // 298, 2A0
+		std::uint64_t                                     unknown2A8;                                              // 2A0, 2A8
+		std::uint64_t                                     unknown2B0;                                              // 2A8, 2B0
 	};
-	static_assert(offsetof(Actor, booleanBits) == 0xE0);
-	static_assert(offsetof(Actor, currentProcess) == 0xF0);
-	static_assert(offsetof(Actor, powerCooldowns) == 0x180);
-	static_assert(offsetof(Actor, magicCasters) == 0x1A0);
-	static_assert(offsetof(Actor, selectedSpells) == 0x1C0);
-	static_assert(offsetof(Actor, selectedPower) == 0x1E0);
-	static_assert(offsetof(Actor, equippedWeight) == 0x1F8);
-	static_assert(offsetof(Actor, booleanFlags) == 0x1FC);
-	static_assert(offsetof(Actor, lastUpdate) == 0x258);
-	static_assert(offsetof(Actor, armorRating) == 0x268);
-	static_assert(offsetof(Actor, totalArmorBaseFactor) == 0x26C);
-	static_assert(sizeof(Actor) == 0x2B0);
+	static_assert(offsetof(Actor, booleanBits) == SKYRIM_RELOCATE(0xE0, 0xE8));
+	static_assert(offsetof(Actor, currentProcess) == SKYRIM_RELOCATE(0xF0, 0xF8));
+	static_assert(offsetof(Actor, powerCooldowns) == SKYRIM_RELOCATE(0x180, 0x188));
+	static_assert(offsetof(Actor, magicCasters) == SKYRIM_RELOCATE(0x1A0, 0x1A8));
+	static_assert(offsetof(Actor, selectedSpells) == SKYRIM_RELOCATE(0x1C0, 0x1C8));
+	static_assert(offsetof(Actor, selectedPower) == SKYRIM_RELOCATE(0x1E0, 0x1E8));
+	static_assert(offsetof(Actor, equippedWeight) == SKYRIM_RELOCATE(0x1F8, 0x200));
+	static_assert(offsetof(Actor, booleanFlags) == SKYRIM_RELOCATE(0x1FC, 0x204));
+	static_assert(offsetof(Actor, lastUpdate) == SKYRIM_RELOCATE(0x258, 0x260));
+	static_assert(offsetof(Actor, armorRating) == SKYRIM_RELOCATE(0x268, 0x270));
+	static_assert(offsetof(Actor, totalArmorBaseFactor) == SKYRIM_RELOCATE(0x26C, 0x274));
+	static_assert(sizeof(Actor) == SKYRIM_RELOCATE(0x2B0, 0x2B8));
 }

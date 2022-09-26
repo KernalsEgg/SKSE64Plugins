@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BGSMessageIcon.h"
 #include "Shared/Skyrim/B/BaseFormComponent.h"

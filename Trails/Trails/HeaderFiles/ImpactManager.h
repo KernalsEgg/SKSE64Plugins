@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Settings.h"
 #include "Shared/Skyrim/T/TESObjectREFR.h"

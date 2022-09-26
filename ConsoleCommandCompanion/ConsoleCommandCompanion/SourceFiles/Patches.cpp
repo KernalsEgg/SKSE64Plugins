@@ -1,4 +1,4 @@
-#include "PCH.h"
+#include "PrecompiledHeader.h"
 
 #include "Patches.h"
 
@@ -12,19 +12,14 @@
 
 namespace ConsoleCommandCompanion
 {
-	std::optional<bool> Patches::Install()
+	bool Patches::Install()
 	{
-		if (!Relocation::Executable::GetSingleton().IsSpecialEdition())
-		{
-			return {};
-		}
-
 		if (!Patterns::Patches::IsLoggedIn())
 		{
 			return false;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::IsLoggedIn, Utility::Assembly::NoOperation2);
+		Utility::Memory::SafeWrite(Addresses::Patches::IsLoggedIn(), Utility::Assembly::NoOperation2);
 
 		return true;
 	}

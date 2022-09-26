@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/T/TESBoundObject.h"
 #include "Shared/Skyrim/T/TESModelTextureSwap.h"
@@ -55,7 +55,7 @@ namespace Skyrim
 
 		// Override (TESBoundObject)
 		virtual void ClearData() override;         // 5
-		virtual void Unknown6(TESForm*) override;  // 6
+		virtual bool Load(TESFile* file) override; // 6
 		virtual void Unknown13(TESForm*) override; // 13
 		virtual bool IsPlayable() const override;  // 19
 		virtual void Unknown1A(TESForm*) override; // 1A

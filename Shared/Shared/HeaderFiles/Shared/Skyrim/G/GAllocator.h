@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/G/GAllocatorBaseDH.h"
 #include "Shared/Skyrim/G/GAllocatorBaseGH.h"

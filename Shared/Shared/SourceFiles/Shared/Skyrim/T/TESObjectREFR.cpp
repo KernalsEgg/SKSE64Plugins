@@ -1,4 +1,4 @@
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/T/TESObjectREFR.h"
 
@@ -89,7 +89,7 @@ namespace Skyrim
 		return function(this);
 	}
 
-	Utility::Enumeration<BipedObjectSlot, std::uint32_t> TESObjectREFR::GetShieldObject() const
+	BipedObjectSlot TESObjectREFR::GetShieldObject() const
 	{
 		auto* baseObject = this->baseObject;
 
@@ -100,7 +100,7 @@ namespace Skyrim
 
 		auto* race = static_cast<TESNPC*>(baseObject)->race;
 
-		return race ? race->shieldBipedObject : BipedObjectSlot::kNone;
+		return race ? race->shieldBipedObject.get() : BipedObjectSlot::kNone;
 	}
 
 	bool TESObjectREFR::Is3DLoaded() const

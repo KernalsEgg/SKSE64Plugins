@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/S/ScrapHeap.h"
 
@@ -154,7 +154,7 @@ namespace Skyrim
 		}
 	}
 
-#define TES_MEMORY_REDEFINE_NEW()                                                                   \
+#define SKYRIM_MEMORY_REDEFINE_NEW()                                                                \
 	/* 1 */                                                                                         \
 	[[nodiscard]] void* operator new(std::size_t size)                                              \
 	{                                                                                               \

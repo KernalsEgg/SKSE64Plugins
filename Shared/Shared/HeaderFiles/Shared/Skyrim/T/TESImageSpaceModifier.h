@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSString.h"
 #include "Shared/Skyrim/C/Color.h"
@@ -271,7 +271,7 @@ namespace Skyrim
 		// Override (TESForm)
 		virtual void        InitializeData() override;                  // 4
 		virtual void        ClearData() override;                       // 5
-		virtual void        Unknown6(TESForm*) override;                // 6
+		virtual bool        Load(TESFile* file) override;               // 6
 		virtual const char* GetEditorID() const override;               // 32
 		virtual bool        SetEditorID(const char* editorID) override; // 33
 

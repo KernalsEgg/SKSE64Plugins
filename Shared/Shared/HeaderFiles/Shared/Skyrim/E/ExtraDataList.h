@@ -1,8 +1,10 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/B/BSAtomic.h"
+#include "Shared/Skyrim/B/BaseExtraList.h"
 #include "Shared/Skyrim/E/ExtraDataType.h"
 #include "Shared/Skyrim/M/MemoryManager.h"
 #include "Shared/Skyrim/S/SoulLevel.h"
@@ -18,21 +20,7 @@ namespace Skyrim
 	class ExtraDataList
 	{
 	public:
-		TES_MEMORY_REDEFINE_NEW();
-
-		struct PresenceBitField
-		{
-		public:
-			TES_MEMORY_REDEFINE_NEW();
-
-			// Member functions
-			bool HasType(std::uint32_t type) const;
-
-		private:
-			// Member variables
-			std::uint8_t bitField_[0x17];
-		};
-		static_assert(sizeof(PresenceBitField) == 0x17);
+		SKYRIM_MEMORY_REDEFINE_NEW();
 
 		template <class T>
 		class iterator
@@ -50,7 +38,7 @@ namespace Skyrim
 			constexpr ~iterator() noexcept = default;
 
 			constexpr iterator& operator=(const iterator&) noexcept = default;
-			constexpr iterator& operator=(iterator&&) noexcept = default;
+			constexpr iterator& operator=(iterator&&) noexcept      = default;
 
 			constexpr iterator(pointer current) noexcept :
 				current_(current)
@@ -83,18 +71,9 @@ namespace Skyrim
 			pointer current_{ nullptr };
 		};
 
-		ExtraDataList()                     = default;
-		ExtraDataList(const ExtraDataList&) = delete;
-		ExtraDataList(ExtraDataList&&)      = delete;
-
-		~ExtraDataList();
-
-		ExtraDataList& operator=(const ExtraDataList&) = delete;
-		ExtraDataList& operator=(ExtraDataList&&) = delete;
-
 		// Iterators
-		constexpr iterator<BSExtraData>       begin() noexcept { return iterator<BSExtraData>(this->extraData_); }
-		constexpr iterator<const BSExtraData> begin() const noexcept { return iterator<const BSExtraData>(this->extraData_); }
+		constexpr iterator<BSExtraData>       begin() noexcept { return iterator<BSExtraData>(this->baseExtraList_.extraData); }
+		constexpr iterator<const BSExtraData> begin() const noexcept { return iterator<const BSExtraData>(this->baseExtraList_.extraData); }
 		constexpr iterator<const BSExtraData> cbegin() const noexcept { return this->begin(); }
 
 		constexpr iterator<BSExtraData>       end() noexcept { return iterator<BSExtraData>(nullptr); }
@@ -102,35 +81,34 @@ namespace Skyrim
 		constexpr iterator<const BSExtraData> cend() const noexcept { return this->end(); }
 
 		// Member functions
-		float              GetCharge() const;
-		std::int16_t       GetCount() const;
-		float              GetHealth() const;
-		TESForm*           GetOwner() const;
-		BSExtraData*       GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType);
-		const BSExtraData* GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
-		SoulLevel          GetSoulLevel() const;
-		bool               HasType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
-		bool               IsQuestItem() const;
-		bool               IsWorn(bool eitherHand, bool leftHand) const;
-		bool               ShouldItemStack(bool stackWorn) const;
+		float        GetCharge() const;
+		std::int16_t GetCount() const;
+		float        GetHealth() const;
+		TESForm*     GetOwner() const;
+		SoulLevel    GetSoulLevel() const;
+		bool         IsQuestItem() const;
+		bool         IsWorn(bool eitherHand, bool leftHand) const;
+
+		BSExtraData*       GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type);
+		const BSExtraData* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const;
+		bool               HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const;
 
 		template <class T>
-		T* GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType)
+		T* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type)
 		{
-			return static_cast<T*>(this->GetType(extraDataType));
+			return static_cast<T*>(this->GetExtraData(type));
 		}
 
 		template <class T>
-		const T* GetType(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const
+		const T* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const
 		{
-			return static_cast<const T*>(this->GetType(extraDataType));
+			return static_cast<const T*>(this->GetExtraData(type));
 		}
 
 	private:
 		// Member variables
-		BSExtraData*            extraData_{ nullptr };        // 0
-		PresenceBitField*       presenceBitField_{ nullptr }; // 8
-		mutable BSReadWriteLock lock_{};                      // 10
+		BaseExtraList           baseExtraList_{}; // 0
+		mutable BSReadWriteLock lock_{};          // 10, 18
 	};
-	static_assert(sizeof(ExtraDataList) == 0x18);
+	static_assert(sizeof(ExtraDataList) == SKYRIM_RELOCATE(0x18, 0x20));
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 
 
@@ -22,7 +22,7 @@ namespace Utility
 		constexpr ~Enumeration() noexcept = default;
 
 		constexpr Enumeration& operator=(const Enumeration&) noexcept = default;
-		constexpr Enumeration& operator=(Enumeration&&) noexcept = default;
+		constexpr Enumeration& operator=(Enumeration&&) noexcept      = default;
 
 		template <class... Arguments>
 			requires(std::same_as<Arguments, enumeration_type>&&...)

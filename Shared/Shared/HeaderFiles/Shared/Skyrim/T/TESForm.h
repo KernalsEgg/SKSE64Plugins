@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSCoreTypes.h"
 #include "Shared/Skyrim/B/BSTArray.h"
@@ -12,6 +12,8 @@
 
 namespace Skyrim
 {
+	class BGSLoadFormBuffer;
+	class BGSSaveFormBuffer;
 	class EnchantmentItem;
 	class ExtraDataList;
 	class TESBoundObject;
@@ -48,19 +50,19 @@ namespace Skyrim
 		// Add
 		virtual void        InitializeData();                                                                                                       // 4
 		virtual void        ClearData();                                                                                                            // 5
-		virtual void        Unknown6(TESForm*);                                                                                                     // 6
-		virtual void        Unknown7(TESForm*);                                                                                                     // 7
-		virtual void        Unknown8(TESForm*);                                                                                                     // 8
+		virtual bool        Load(TESFile* file);                                                                                                    // 6
+		virtual bool        LoadPartial(TESFile* file);                                                                                             // 7
+		virtual bool        LoadEdit(TESFile* file);                                                                                                // 8
 		virtual void        Unknown9(TESForm*);                                                                                                     // 9
 		virtual bool        AddChanges(std::uint32_t changeFlags);                                                                                  // A
 		virtual void        RemoveChanges(std::uint32_t changeFlags);                                                                               // B
 		virtual void        UnknownC(TESForm*);                                                                                                     // C
-		virtual void        UnknownD(TESForm*);                                                                                                     // D
-		virtual void        UnknownE(TESForm*);                                                                                                     // E
-		virtual void        UnknownF(TESForm*);                                                                                                     // F
-		virtual void        Unknown10(TESForm*);                                                                                                    // 10
-		virtual void        Unknown11(TESForm*);                                                                                                    // 11
-		virtual void        Unknown12(TESForm*);                                                                                                    // 12
+		virtual bool        CheckSaveGame(BGSSaveFormBuffer* saveFormBuffer);                                                                       // D
+		virtual void        SaveGame(BGSSaveFormBuffer* saveFormBuffer);                                                                            // E
+		virtual void        LoadGame(BGSLoadFormBuffer* loadFormBuffer);                                                                            // F
+		virtual void        InitializeLoadGame(BGSLoadFormBuffer* loadFormBuffer);                                                                  // 10
+		virtual void        FinishLoadGame(BGSLoadFormBuffer* loadFormBuffer);                                                                      // 11
+		virtual void        Revert(BGSLoadFormBuffer* loadFormBuffer);                                                                              // 12
 		virtual void        Unknown13(TESForm*);                                                                                                    // 13
 		virtual void        Unknown14(TESForm*);                                                                                                    // 14
 		virtual void        Unknown15(TESForm*);                                                                                                    // 15

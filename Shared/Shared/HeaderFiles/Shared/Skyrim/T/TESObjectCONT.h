@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Shared/PCH.h"
+#include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BGSDestructibleObjectForm.h"
 #include "Shared/Skyrim/B/BGSOpenCloseForm.h"
@@ -68,7 +68,7 @@ namespace Skyrim
 
 		// Override (TESBoundAnimObject)
 		virtual void InitializeData() override;                                                                                                       // 4
-		virtual void Unknown6(TESForm*) override;                                                                                                     // 6
+		virtual bool Load(TESFile* file) override;                                                                                                    // 6
 		virtual void Unknown13(TESForm*) override;                                                                                                    // 13
 		virtual bool Activate(TESObjectREFR* target, TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount) override; // 37
 		virtual void Unknown4C(TESBoundObject*) override;                                                                                             // 4C
