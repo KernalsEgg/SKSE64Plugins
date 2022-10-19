@@ -105,7 +105,7 @@ namespace Skyrim
 			{
 				if (std::find(this->pendingUnregisters.begin(), this->pendingUnregisters.end(), eventSink) == this->pendingUnregisters.end())
 				{
-					if (eventSink->ProcessEvent(eventSink, this) == BSEventNotifyControl::kStop)
+					if (eventSink->ProcessEvent(eventArguments, this) == BSEventNotifyControl::kStop)
 					{
 						break;
 					}

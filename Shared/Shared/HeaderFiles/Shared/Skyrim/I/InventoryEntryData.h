@@ -10,6 +10,7 @@
 namespace Skyrim
 {
 	class Actor;
+	class AlchemyItem;
 	class ExtraDataList;
 	class TESBoundObject;
 	class TESForm;
@@ -31,9 +32,10 @@ namespace Skyrim
 		// Member functions
 		float          GetHealth() const;
 		const char*    GetName() const;
+		AlchemyItem*   GetPoison() const;
 		std::int32_t   GetValue() const;
 		ExtraDataList* GetWornExtraDataList(bool eitherHand, bool leftHand) const;
-		bool           IsOwnedBy(Actor* actor, TESForm* owner, bool defaultOwnership);
+		bool           IsOwnedBy(Actor* actor, TESForm* owner, bool defaultOwnership) const;
 		bool           IsQuestItem() const;
 		bool           IsWorn(bool eitherHand, bool leftHand) const;
 

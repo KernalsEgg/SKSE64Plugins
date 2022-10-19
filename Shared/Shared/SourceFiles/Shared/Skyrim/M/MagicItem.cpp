@@ -60,7 +60,7 @@ namespace Skyrim
 		}
 	}
 
-	bool MagicItem::ShouldSetEffectiveness() const
+	bool MagicItem::ShouldAdjust() const
 	{
 		switch (this->GetSpellType())
 		{

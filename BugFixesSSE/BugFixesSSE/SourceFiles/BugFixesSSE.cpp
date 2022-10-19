@@ -45,7 +45,7 @@ void Settings()
 
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
-	.pluginVersion   = 7,
+	.pluginVersion   = 8,
 	.pluginName      = "Bug Fixes SSE",
 	.author          = "meh321 and KernalsEgg",
 	.addressLibrary  = true,

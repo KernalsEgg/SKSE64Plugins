@@ -23,6 +23,7 @@ namespace Skyrim
 		kFlora               = 0x27, // TESFlora
 		kFurniture           = 0x28, // TESFurniture
 		kWeapon              = 0x29, // TESObjectWEAP
+		kAmmunition          = 0x2A, // TESAmmo
 		kNPC                 = 0x2B, // TESNPC
 		kConstructibleObject = 0x31, // BGSConstructibleObject
 		kProjectile          = 0x32, // BGSProjectile

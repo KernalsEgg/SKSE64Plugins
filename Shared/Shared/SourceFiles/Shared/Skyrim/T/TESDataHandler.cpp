@@ -23,6 +23,11 @@ namespace Skyrim
 		return *singleton;
 	}
 
+	bool TESDataHandler::IsFormIDCreated(FormID formID) const
+	{
+		return formID >= 0xFF000000;
+	}
+
 	const TESFile* TESDataHandler::GetFile(std::string_view fileName) const
 	{
 		for (auto* file : this->files)

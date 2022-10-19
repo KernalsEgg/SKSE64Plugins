@@ -7,6 +7,7 @@
 #include "Shared/Skyrim/B/BipedAnim.h"
 #include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/I/InventoryEntryData.h"
+#include "Shared/Skyrim/T/TESAmmo.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
 #include "Shared/Skyrim/T/TESObjectARMO.h"
 #include "Shared/Skyrim/T/TESObjectWEAP.h"
@@ -51,11 +52,25 @@ namespace Skyrim
 		return function(this, controllingActor);
 	}
 
-	InventoryEntryData* Actor::GetEquippedItem(bool leftHand) const
+	InventoryEntryData* Actor::GetEquippedAmmunitionInventoryEntryData() const
 	{
 		auto* currentProcess = this->currentProcess;
 
-		return currentProcess ? currentProcess->GetEquippedItem(leftHand) : nullptr;
+		if (!currentProcess)
+		{
+			return nullptr;
+		}
+
+		auto* inventoryEntryData = currentProcess->GetAmmunitionInventoryEntryData();
+
+		if (!inventoryEntryData)
+		{
+			return nullptr;
+		}
+
+		auto* item = inventoryEntryData->item;
+
+		return (item && item->formType == FormType::kAmmunition) ? inventoryEntryData : nullptr;
 	}
 
 	TESObjectARMO* Actor::GetEquippedShield() const
@@ -74,7 +89,21 @@ namespace Skyrim
 
 	TESObjectWEAP* Actor::GetEquippedWeapon(bool leftHand) const
 	{
-		auto* inventoryEntryData = this->GetEquippedItem(leftHand);
+		auto* inventoryEntryData = this->GetEquippedWeaponInventoryEntryData(leftHand);
+
+		return inventoryEntryData ? static_cast<TESObjectWEAP*>(inventoryEntryData->item) : nullptr;
+	}
+
+	InventoryEntryData* Actor::GetEquippedWeaponInventoryEntryData(bool leftHand) const
+	{
+		auto* currentProcess = this->currentProcess;
+
+		if (!currentProcess)
+		{
+			return nullptr;
+		}
+
+		auto* inventoryEntryData = leftHand ? currentProcess->GetLeftHandInventoryEntryData() : currentProcess->GetRightHandInventoryEntryData();
 
 		if (!inventoryEntryData)
 		{
@@ -83,7 +112,7 @@ namespace Skyrim
 
 		auto* item = inventoryEntryData->item;
 
-		return item && item->formType == FormType::kWeapon ? static_cast<TESObjectWEAP*>(item) : nullptr;
+		return (item && item->formType == FormType::kWeapon) ? inventoryEntryData : nullptr;
 	}
 
 	NiAVObject* Actor::GetHeadNode() const

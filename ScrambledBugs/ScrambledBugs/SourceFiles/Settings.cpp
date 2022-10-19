@@ -56,9 +56,9 @@ namespace ScrambledBugs
 			jsonFixes.at("magicEffectFlags").get_to(this->magicEffectFlags);
 		}
 
-		if (jsonFixes.contains("modArmorWeightPerkEntryPoint"))
+		if (jsonFixes.contains("modifyArmorWeightPerkEntryPoint"))
 		{
-			jsonFixes.at("modArmorWeightPerkEntryPoint").get_to(this->modArmorWeightPerkEntryPoint);
+			jsonFixes.at("modifyArmorWeightPerkEntryPoint").get_to(this->modifyArmorWeightPerkEntryPoint);
 		}
 
 		if (jsonFixes.contains("powerCooldowns"))
@@ -98,22 +98,22 @@ namespace ScrambledBugs
 	{
 		nlohmann::json jsonFixes;
 
-		jsonFixes["activateFurniture"]            = this->activateFurniture;
-		jsonFixes["actorValuePercentage"]         = this->actorValuePercentage;
-		jsonFixes["enchantmentCost"]              = this->enchantmentCost;
-		jsonFixes["harvestedFlags"]               = this->harvestedFlags;
-		jsonFixes["hitEffectRaceCondition"]       = this->hitEffectRaceCondition;
-		jsonFixes["impactEffectCrash"]            = this->impactEffectCrash;
-		jsonFixes["killCamera"]                   = this->killCamera;
-		jsonFixes["leftHandPowerAttacks"]         = this->leftHandPowerAttacks;
-		jsonFixes["magicEffectFlags"]             = this->magicEffectFlags;
-		jsonFixes["modArmorWeightPerkEntryPoint"] = this->modArmorWeightPerkEntryPoint;
-		jsonFixes["powerCooldowns"]               = this->powerCooldowns;
-		jsonFixes["quickShot"]                    = this->quickShot;
-		jsonFixes["quickShotPlaybackSpeed"]       = this->quickShotPlaybackSpeed;
-		jsonFixes["terrainDecals"]                = this->terrainDecals;
-		jsonFixes["trainingMenu"]                 = this->trainingMenu;
-		jsonFixes["weaponCharge"]                 = this->weaponCharge;
+		jsonFixes["activateFurniture"]               = this->activateFurniture;
+		jsonFixes["actorValuePercentage"]            = this->actorValuePercentage;
+		jsonFixes["enchantmentCost"]                 = this->enchantmentCost;
+		jsonFixes["harvestedFlags"]                  = this->harvestedFlags;
+		jsonFixes["hitEffectRaceCondition"]          = this->hitEffectRaceCondition;
+		jsonFixes["impactEffectCrash"]               = this->impactEffectCrash;
+		jsonFixes["killCamera"]                      = this->killCamera;
+		jsonFixes["leftHandPowerAttacks"]            = this->leftHandPowerAttacks;
+		jsonFixes["magicEffectFlags"]                = this->magicEffectFlags;
+		jsonFixes["modifyArmorWeightPerkEntryPoint"] = this->modifyArmorWeightPerkEntryPoint;
+		jsonFixes["powerCooldowns"]                  = this->powerCooldowns;
+		jsonFixes["quickShot"]                       = this->quickShot;
+		jsonFixes["quickShotPlaybackSpeed"]          = this->quickShotPlaybackSpeed;
+		jsonFixes["terrainDecals"]                   = this->terrainDecals;
+		jsonFixes["trainingMenu"]                    = this->trainingMenu;
+		jsonFixes["weaponCharge"]                    = this->weaponCharge;
 
 		return jsonFixes;
 	}
@@ -170,9 +170,9 @@ namespace ScrambledBugs
 			jsonPatches.at("cloakHitEffects").get_to(this->cloakHitEffects);
 		}
 
-		if (jsonPatches.contains("equipBestAmmo"))
+		if (jsonPatches.contains("equipBestAmmunition"))
 		{
-			jsonPatches.at("equipBestAmmo").get_to(this->equipBestAmmo);
+			jsonPatches.at("equipBestAmmunition").get_to(this->equipBestAmmunition);
 		}
 
 		if (jsonPatches.contains("improveMultipleEnchantmentEffects"))
@@ -247,7 +247,7 @@ namespace ScrambledBugs
 		jsonPatches["attachHitEffectArt"]                = this->attachHitEffectArt;
 		jsonPatches["blackSoulGems"]                     = this->blackSoulGems;
 		jsonPatches["cloakHitEffects"]                   = this->cloakHitEffects;
-		jsonPatches["equipBestAmmo"]                     = this->equipBestAmmo;
+		jsonPatches["equipBestAmmunition"]               = this->equipBestAmmunition;
 		jsonPatches["improveMultipleEnchantmentEffects"] = this->improveMultipleEnchantmentEffects;
 		jsonPatches["leveledCharacters"]                 = this->leveledCharacters;
 		jsonPatches["lockpickingExperience"]             = this->lockpickingExperience;

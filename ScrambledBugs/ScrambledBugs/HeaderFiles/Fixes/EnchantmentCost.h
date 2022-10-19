@@ -14,6 +14,6 @@ namespace ScrambledBugs::Fixes
 		static void Fix(bool& enchantmentCost);
 
 	private:
-		static bool NotEqual(Skyrim::Effect* left, Skyrim::Effect* right);
+		static bool NotEqualTo(Skyrim::Effect* left, Skyrim::Effect* right);
 	};
 }

@@ -23,20 +23,20 @@ namespace Skyrim
 	public:
 		enum class Flags : std::uint32_t
 		{
-			kNone                  = 0,
-			kNoHitShader           = 1U << 1,
-			kNoHitEffectArt        = 1U << 2,
-			kNoInitialFlare        = 1U << 4,
-			kApplyingVisualEffects = 1U << 5,
-			kApplyingSounds        = 1U << 6,
-			kHasConditions         = 1U << 7,
-			kRecover               = 1U << 9,
-			kDualCasted            = 1U << 12,
-			kInactive              = 1U << 15,
-			kAppliedEffects        = 1U << 16,
-			kRemovedEffects        = 1U << 17,
-			kDispelled             = 1U << 18,
-			kWornOff               = 1U << 31
+			kNone               = 0,
+			kNoHitShader        = 1U << 1,
+			kNoHitEffectArt     = 1U << 2,
+			kNoInitialFlare     = 1U << 4,
+			kApplyingHitEffects = 1U << 5,
+			kApplyingSounds     = 1U << 6,
+			kHasConditions      = 1U << 7,
+			kRecover            = 1U << 9,
+			kDualCasted         = 1U << 12,
+			kInactive           = 1U << 15,
+			kAppliedEffects     = 1U << 16,
+			kRemovedEffects     = 1U << 17,
+			kDispelled          = 1U << 18,
+			kWornOff            = 1U << 31
 		};
 		static_assert(sizeof(Flags) == 0x4);
 

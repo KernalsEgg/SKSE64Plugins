@@ -2,6 +2,8 @@
 
 #include "PrecompiledHeader.h"
 
+#include "Shared/Skyrim/A/ActiveEffect.h"
+
 
 
 namespace ScrambledBugs::Patches
@@ -10,5 +12,8 @@ namespace ScrambledBugs::Patches
 	{
 	public:
 		static void Patch(bool& pausedGameHitEffects);
+
+	private:
+		static bool AllowHitEffects(Skyrim::ActiveEffect* activeEffect);
 	};
 }

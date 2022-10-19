@@ -26,6 +26,7 @@ namespace Skyrim
 	class MagicCaster;
 	class MagicTarget;
 	class NiAVObject;
+	class TESAmmo;
 	class TESBoundObject;
 	class TESContainer;
 	class TESObjectCELL;
@@ -230,7 +231,7 @@ namespace Skyrim
 		virtual void                              Unknown9B(TESObjectREFR*);                                                                                                                                                                                                                 // 9B
 		virtual void                              Unknown9C(TESObjectREFR*);                                                                                                                                                                                                                 // 9C
 		virtual void                              Unknown9D(TESObjectREFR*);                                                                                                                                                                                                                 // 9D
-		virtual void                              Unknown9E(TESObjectREFR*);                                                                                                                                                                                                                 // 9E
+		virtual TESAmmo*                          GetEquippedAmmunition() const;                                                                                                                                                                                                             // 9E
 		virtual void                              Unknown9F(TESObjectREFR*);                                                                                                                                                                                                                 // 9F
 		virtual void                              UnknownA0(TESObjectREFR*);                                                                                                                                                                                                                 // A0
 		virtual void                              UnknownA1(TESObjectREFR*);                                                                                                                                                                                                                 // A1

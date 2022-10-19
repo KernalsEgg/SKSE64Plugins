@@ -13,6 +13,8 @@ namespace Skyrim
 {
 	class BSFixedString;
 	class IUIMessageData;
+	class TESBoundObject;
+	class TESObjectREFR;
 
 	class UIMessageQueue :
 		public BSTSingletonSDM<UIMessageQueue> // 0
@@ -24,6 +26,7 @@ namespace Skyrim
 		};
 
 		// Non-member functions
+		static void            AddInventoryUpdateMessage(TESObjectREFR* reference, TESBoundObject* item);
 		static UIMessageQueue* GetSingleton();
 
 		// Member functions

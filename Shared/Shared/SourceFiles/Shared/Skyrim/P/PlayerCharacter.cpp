@@ -14,4 +14,16 @@ namespace Skyrim
 
 		return *singleton;
 	}
+
+	void PlayerCharacter::ResetInsufficientChargeNotification(bool leftHand)
+	{
+		if (leftHand)
+		{
+			this->flagsBE3.reset(Skyrim::PlayerCharacter::FlagsBE3::kShownInsufficientChargeNotificationLeftHand);
+		}
+		else
+		{
+			this->flagsBE3.reset(Skyrim::PlayerCharacter::FlagsBE3::kShownInsufficientChargeNotificationRightHand);
+		}
+	}
 }

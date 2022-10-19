@@ -45,7 +45,7 @@
     <ClInclude Include="HeaderFiles\Fixes\KillCamera.h" />
     <ClInclude Include="HeaderFiles\Fixes\LeftHandPowerAttacks.h" />
     <ClInclude Include="HeaderFiles\Fixes\MagicEffectFlags.h" />
-    <ClInclude Include="HeaderFiles\Fixes\ModArmorWeightPerkEntryPoint.h" />
+    <ClInclude Include="HeaderFiles\Fixes\ModifyArmorWeightPerkEntryPoint.h" />
     <ClInclude Include="HeaderFiles\Fixes\PowerCooldowns.h" />
     <ClInclude Include="HeaderFiles\Fixes\QuickShot.h" />
     <ClInclude Include="HeaderFiles\Fixes\TerrainDecals.h" />
@@ -55,7 +55,7 @@
     <ClInclude Include="HeaderFiles\Patches\AlreadyCaughtPickpocketing.h" />
     <ClInclude Include="HeaderFiles\Patches\AttachHitEffectArt.h" />
     <ClInclude Include="HeaderFiles\Patches\CloakHitEffects.h" />
-    <ClInclude Include="HeaderFiles\Patches\EquipBestAmmo.h" />
+    <ClInclude Include="HeaderFiles\Patches\EquipBestAmmunition.h" />
     <ClInclude Include="HeaderFiles\Patches\ImproveMultipleEnchantmentEffects.h" />
     <ClInclude Include="HeaderFiles\Patches\LeveledCharacters.h" />
     <ClInclude Include="HeaderFiles\Patches\LockpickingExperience.h" />
@@ -84,7 +84,7 @@
     <ClCompile Include="SourceFiles\Fixes\KillCamera.cpp" />
     <ClCompile Include="SourceFiles\Fixes\LeftHandPowerAttacks.cpp" />
     <ClCompile Include="SourceFiles\Fixes\MagicEffectFlags.cpp" />
-    <ClCompile Include="SourceFiles\Fixes\ModArmorWeightPerkEntryPoint.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\ModifyArmorWeightPerkEntryPoint.cpp" />
     <ClCompile Include="SourceFiles\Fixes\PowerCooldowns.cpp" />
     <ClCompile Include="SourceFiles\Fixes\QuickShot.cpp" />
     <ClCompile Include="SourceFiles\Fixes\TerrainDecals.cpp" />
@@ -94,7 +94,7 @@
     <ClCompile Include="SourceFiles\Patches\AlreadyCaughtPickpocketing.cpp" />
     <ClCompile Include="SourceFiles\Patches\AttachHitEffectArt.cpp" />
     <ClCompile Include="SourceFiles\Patches\CloakHitEffects.cpp" />
-    <ClCompile Include="SourceFiles\Patches\EquipBestAmmo.cpp" />
+    <ClCompile Include="SourceFiles\Patches\EquipBestAmmunition.cpp" />
     <ClCompile Include="SourceFiles\Patches\ImproveMultipleEnchantmentEffects.cpp" />
     <ClCompile Include="SourceFiles\Patches\LeveledCharacters.cpp" />
     <ClCompile Include="SourceFiles\Patches\LockpickingExperience.cpp" />

@@ -4,6 +4,7 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
+#include "Shared/Skyrim/I/InventoryEntryData.h"
 #include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
 #include "Shared/Utility/Trampoline.h"
@@ -33,11 +34,11 @@ namespace BarterLimitFix
 		Utility::Memory::SafeWrite(Addresses::Events::HasIterated, Utility::Assembly::NoOperation6);
 
 		// Remove the cast from a 32-byte integer to a 16-byte integer
-		Utility::Memory::SafeWrite(Addresses::Events::GetCount1, 0x41ui8, 0x8Bui8, 0x54ui8, 0x24ui8, 0x10ui8, Utility::Assembly::NoOperation1); // mov edx, [r12 + 10]
-		Utility::Memory::SafeWrite(Addresses::Events::GetCount2, 0x44ui8, 0x29ui8, 0xF2ui8, Utility::Assembly::NoOperation1);                   // sub edx, r14d
-		Utility::Memory::SafeWrite(Addresses::Events::GetCount3, 0x41ui8, 0x8Bui8, 0x55ui8, 0x10ui8, Utility::Assembly::NoOperation1);          // mov edx, [r13 + 10]
-		Utility::Memory::SafeWrite(Addresses::Events::GetCount4, 0x41ui8, 0x8Bui8, 0x57ui8, 0x10ui8, Utility::Assembly::NoOperation1);          // mov edx, [r15 + 10]
-		Utility::Memory::SafeWrite(Addresses::Events::GetCount5, 0x44ui8, 0x29ui8, 0xE2ui8, Utility::Assembly::NoOperation1);                   // sub edx, r12d
+		Utility::Memory::SafeWrite(Addresses::Events::GetCount1, 0x41ui8, 0x8Bui8, 0x54ui8, 0x24ui8, static_cast<std::uint8_t>(offsetof(Skyrim::InventoryEntryData, itemCountDelta)), Utility::Assembly::NoOperation1); // mov edx, [r12 + 10]
+		Utility::Memory::SafeWrite(Addresses::Events::GetCount2, 0x44ui8, 0x29ui8, 0xF2ui8, Utility::Assembly::NoOperation1);                                                                                           // sub edx, r14d
+		Utility::Memory::SafeWrite(Addresses::Events::GetCount3, 0x41ui8, 0x8Bui8, 0x55ui8, static_cast<std::uint8_t>(offsetof(Skyrim::InventoryEntryData, itemCountDelta)), Utility::Assembly::NoOperation1);          // mov edx, [r13 + 10]
+		Utility::Memory::SafeWrite(Addresses::Events::GetCount4, 0x41ui8, 0x8Bui8, 0x57ui8, static_cast<std::uint8_t>(offsetof(Skyrim::InventoryEntryData, itemCountDelta)), Utility::Assembly::NoOperation1);          // mov edx, [r15 + 10]
+		Utility::Memory::SafeWrite(Addresses::Events::GetCount5, 0x44ui8, 0x29ui8, 0xE2ui8, Utility::Assembly::NoOperation1);                                                                                           // sub edx, r12d
 
 		// Limit count to the maximum value that a 16-byte integer can store (32,767)
 		Events::setCount1_ = reinterpret_cast<SetCount>(Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Events::SetCount1, reinterpret_cast<std::uintptr_t>(std::addressof(Events::SetCount1))));

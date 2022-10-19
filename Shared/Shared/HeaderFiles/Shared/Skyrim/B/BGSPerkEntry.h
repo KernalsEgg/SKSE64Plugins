@@ -50,7 +50,8 @@ namespace Skyrim
 			kApplyReanimateSpell      = 53,
 			kApplyWeaponSwingSpell    = 67,
 			kApplySneakingSpell       = 69,
-			kModifyEnchantmentPower   = 77
+			kModifyEnchantmentPower   = 77,
+			kModifyPoisonDoseCount    = 83
 		};
 		static_assert(sizeof(EntryPoint) == 0x4);
 

@@ -5,6 +5,7 @@
 #include "Addresses.h"
 #include "Shared/Relocation/AddressLibrary.h"
 #include "Shared/Relocation/PreprocessorDirectives.h"
+#include "Shared/Skyrim/I/InventoryEntryData.h"
 
 
 
@@ -15,8 +16,8 @@ namespace BarterLimitFix::Patterns
 		bool GetCount1()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::Events::GetCount1,                          // 0x6
-				0x41ui8, 0x0Fui8, 0xB7ui8, 0x54ui8, 0x24ui8, 0x10ui8); // movzx edx, word ptr [r12 + 10]
+				Addresses::Events::GetCount1,                                                                                                  // 0x6
+				0x41ui8, 0x0Fui8, 0xB7ui8, 0x54ui8, 0x24ui8, static_cast<std::uint8_t>(offsetof(Skyrim::InventoryEntryData, itemCountDelta))); // movzx edx, word ptr [r12 + 10]
 		}
 
 		bool GetCount2()
@@ -29,15 +30,15 @@ namespace BarterLimitFix::Patterns
 		bool GetCount3()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::Events::GetCount3,                 // 0x5
-				0x41ui8, 0x0Fui8, 0xB7ui8, 0x55ui8, 0x10ui8); // movzx edx, word ptr [r13 + 10]
+				Addresses::Events::GetCount3,                                                                                         // 0x5
+				0x41ui8, 0x0Fui8, 0xB7ui8, 0x55ui8, static_cast<std::uint8_t>(offsetof(Skyrim::InventoryEntryData, itemCountDelta))); // movzx edx, word ptr [r13 + 10]
 		}
 
 		bool GetCount4()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::Events::GetCount4,                 // 0x5
-				0x41ui8, 0x0Fui8, 0xB7ui8, 0x57ui8, 0x10ui8); // movzx edx, word ptr [r15 + 10]
+				Addresses::Events::GetCount4,                                                                                         // 0x5
+				0x41ui8, 0x0Fui8, 0xB7ui8, 0x57ui8, static_cast<std::uint8_t>(offsetof(Skyrim::InventoryEntryData, itemCountDelta))); // movzx edx, word ptr [r15 + 10]
 		}
 
 		bool GetCount5()

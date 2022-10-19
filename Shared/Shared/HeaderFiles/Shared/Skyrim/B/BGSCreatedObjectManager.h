@@ -9,9 +9,10 @@
 
 namespace Skyrim
 {
+	class AlchemyItem;
 	class EnchantmentItem;
 
-	class PersistentFormManager
+	class BGSCreatedObjectManager
 	{
 	public:
 		struct EnchantmentEntry
@@ -27,7 +28,10 @@ namespace Skyrim
 		static_assert(sizeof(EnchantmentEntry) == 0x10);
 
 		// Non-member functions
-		static PersistentFormManager* GetSingleton();
+		static BGSCreatedObjectManager* GetSingleton();
+
+		// Member functions
+		void DecrementReference(AlchemyItem* potion);
 
 		// Member variables
 		std::uint64_t              unknown0;           // 0
@@ -53,8 +57,8 @@ namespace Skyrim
 		std::uint64_t              unknownC0;          // C0
 		mutable BSSpinLock         lock;               // C8
 	};
-	static_assert(offsetof(PersistentFormManager, weaponEnchantments) == 0x8);
-	static_assert(offsetof(PersistentFormManager, armorEnchantments) == 0x20);
-	static_assert(offsetof(PersistentFormManager, lock) == 0xC8);
-	static_assert(sizeof(PersistentFormManager) == 0xD0);
+	static_assert(offsetof(BGSCreatedObjectManager, weaponEnchantments) == 0x8);
+	static_assert(offsetof(BGSCreatedObjectManager, armorEnchantments) == 0x20);
+	static_assert(offsetof(BGSCreatedObjectManager, lock) == 0xC8);
+	static_assert(sizeof(BGSCreatedObjectManager) == 0xD0);
 }

@@ -15,6 +15,6 @@ namespace ScrambledBugs::Fixes
 		static void Fix(bool& powerCooldowns);
 
 	private:
-		static void SavePowerCooldowns(Skyrim::Actor* actor, Skyrim::BGSSaveFormBuffer* saveFormBuffer);
+		static void SaveCastPowers(Skyrim::Actor* actor, Skyrim::BGSSaveFormBuffer* saveFormBuffer);
 	};
 }

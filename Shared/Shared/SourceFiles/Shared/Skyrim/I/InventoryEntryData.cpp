@@ -101,6 +101,31 @@ namespace Skyrim
 		return function(this);
 	}
 
+	AlchemyItem* InventoryEntryData::GetPoison() const
+	{
+		auto* extraDataLists = this->extraDataLists;
+
+		if (extraDataLists)
+		{
+			for (auto* extraDataList : *extraDataLists)
+			{
+				if (!extraDataList)
+				{
+					break;
+				}
+
+				auto* poison = extraDataList->GetPoison();
+
+				if (poison)
+				{
+					return poison;
+				}
+			}
+		}
+
+		return nullptr;
+	}
+
 	std::int32_t InventoryEntryData::GetValue() const
 	{
 		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&InventoryEntryData::GetValue)>::type>(Addresses::InventoryEntryData::GetValue) };
@@ -131,7 +156,7 @@ namespace Skyrim
 		return nullptr;
 	}
 
-	bool InventoryEntryData::IsOwnedBy(Actor* actor, TESForm* owner, bool defaultOwnership)
+	bool InventoryEntryData::IsOwnedBy(Actor* actor, TESForm* owner, bool defaultOwnership) const
 	{
 		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&InventoryEntryData::IsOwnedBy)>::type>(Addresses::InventoryEntryData::IsOwnedBy) };
 

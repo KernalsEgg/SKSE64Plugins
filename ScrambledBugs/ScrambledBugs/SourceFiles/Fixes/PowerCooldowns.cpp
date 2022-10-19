@@ -4,7 +4,7 @@
 
 #include "Addresses.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
-#include "Shared/Skyrim/P/PowerCooldown.h"
+#include "Shared/Skyrim/C/CastPowerItem.h"
 #include "Shared/Skyrim/S/SpellItem.h"
 #include "Shared/Utility/Memory.h"
 
@@ -14,35 +14,35 @@ namespace ScrambledBugs::Fixes
 {
 	void PowerCooldowns::Fix(bool& powerCooldowns)
 	{
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::PowerCooldowns::SavePowerCooldowns, reinterpret_cast<std::uintptr_t>(std::addressof(PowerCooldowns::SavePowerCooldowns)));
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::PowerCooldowns::SaveCastPowers, reinterpret_cast<std::uintptr_t>(std::addressof(PowerCooldowns::SaveCastPowers)));
 	}
 
-	void PowerCooldowns::SavePowerCooldowns(Skyrim::Actor* actor, Skyrim::BGSSaveFormBuffer* saveFormBuffer)
+	void PowerCooldowns::SaveCastPowers(Skyrim::Actor* actor, Skyrim::BGSSaveFormBuffer* saveFormBuffer)
 	{
 		// actor != nullptr
 		// saveFormBuffer != nullptr
 
-		std::uint32_t powerCooldownCount{ 0 };
-		auto*         powerCooldowns = actor->powerCooldowns;
+		std::uint32_t castPowerCount{ 0 };
+		auto*         castPowers = actor->castPowers;
 
-		if (powerCooldowns)
+		if (castPowers)
 		{
-			for (const auto& powerCooldown : *powerCooldowns)
+			for (const auto& castPower : *castPowers)
 			{
-				++powerCooldownCount;
+				++castPowerCount;
 			}
 
-			saveFormBuffer->Write(std::addressof(powerCooldownCount), sizeof(std::uint32_t));
+			saveFormBuffer->Write(std::addressof(castPowerCount), sizeof(std::uint32_t));
 
-			for (const auto& powerCooldown : *powerCooldowns)
+			for (const auto& castPower : *castPowers)
 			{
-				saveFormBuffer->WriteFormID(powerCooldown.power);
-				saveFormBuffer->Write(std::addressof(powerCooldown.cooldown), sizeof(float));
+				saveFormBuffer->WriteFormID(castPower.power);
+				saveFormBuffer->Write(std::addressof(castPower.cooldown), sizeof(float));
 			}
 		}
 		else
 		{
-			saveFormBuffer->Write(std::addressof(powerCooldownCount), sizeof(std::uint32_t));
+			saveFormBuffer->Write(std::addressof(castPowerCount), sizeof(std::uint32_t));
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace Skyrim
 {
 	class SpellItem;
 
-	class PowerCooldown
+	class CastPowerItem
 	{
 	public:
 		template <class T>
@@ -61,22 +61,22 @@ namespace Skyrim
 			pointer current_{ nullptr };
 		};
 
-		constexpr iterator<PowerCooldown>       begin() noexcept { return iterator<PowerCooldown>(this); }
-		constexpr iterator<const PowerCooldown> begin() const noexcept { return iterator<const PowerCooldown>(this); }
-		constexpr iterator<const PowerCooldown> cbegin() const noexcept { return this->begin(); }
+		constexpr iterator<CastPowerItem>       begin() noexcept { return iterator<CastPowerItem>(this); }
+		constexpr iterator<const CastPowerItem> begin() const noexcept { return iterator<const CastPowerItem>(this); }
+		constexpr iterator<const CastPowerItem> cbegin() const noexcept { return this->begin(); }
 
-		constexpr iterator<PowerCooldown>       end() noexcept { return iterator<PowerCooldown>(nullptr); }
-		constexpr iterator<const PowerCooldown> end() const noexcept { return iterator<const PowerCooldown>(nullptr); }
-		constexpr iterator<const PowerCooldown> cend() const noexcept { return this->end(); }
+		constexpr iterator<CastPowerItem>       end() noexcept { return iterator<CastPowerItem>(nullptr); }
+		constexpr iterator<const CastPowerItem> end() const noexcept { return iterator<const CastPowerItem>(nullptr); }
+		constexpr iterator<const CastPowerItem> cend() const noexcept { return this->end(); }
 
 		// Member variables
 		SpellItem*     power;    // 0
 		float          cooldown; // 8
 		std::uint32_t  paddingC; // C
-		PowerCooldown* next;     // 10
+		CastPowerItem* next;     // 10
 	};
-	static_assert(offsetof(PowerCooldown, power) == 0x0);
-	static_assert(offsetof(PowerCooldown, cooldown) == 0x8);
-	static_assert(offsetof(PowerCooldown, next) == 0x10);
-	static_assert(sizeof(PowerCooldown) == 0x18);
+	static_assert(offsetof(CastPowerItem, power) == 0x0);
+	static_assert(offsetof(CastPowerItem, cooldown) == 0x8);
+	static_assert(offsetof(CastPowerItem, next) == 0x10);
+	static_assert(sizeof(CastPowerItem) == 0x18);
 }

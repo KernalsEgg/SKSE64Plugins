@@ -14,16 +14,18 @@ namespace ActorLimitFix::Patterns
 
 	namespace ReplaceStaticArray
 	{
-		bool GetStaticArrayCapacityCommentOnPlayerAction();
-		bool GetStaticArrayCapacityContains();
-		bool GetStaticArrayCapacityContainsInline();
-		bool GetStaticArrayCapacityCopy();
-		bool GetStaticArrayCapacityInsert();
-		bool GetStaticArrayCommentOnPlayerAction();
-		bool GetStaticArrayContains();
-		bool GetStaticArrayContainsInline();
-		bool GetStaticArrayCopy();
-		bool GetStaticArrayInsert();
-		bool HasCapacityInsert();
+		bool GetArrayCapacityAdd();
+		bool GetArrayCapacityCommentOnPlayerAction();
+		bool GetArrayCapacityFind();
+		bool GetArrayCapacityFindInline();
+		bool GetArrayCapacityGetActors();
+
+		bool GetArrayAdd();
+		bool GetArrayCommentOnPlayerAction();
+		bool GetArrayFind();
+		bool GetArrayFindInline();
+		bool GetArrayGetActors();
+
+		bool HasCapacityAdd();
 	}
 }

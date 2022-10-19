@@ -3,8 +3,8 @@
 #include "Serialization.h"
 
 #include "Settings.h"
+#include "Shared/Skyrim/B/BGSCreatedObjectManager.h"
 #include "Shared/Skyrim/B/BSAtomic.h"
-#include "Shared/Skyrim/P/PersistentFormManager.h"
 #include "Shared/Skyrim/T/TESDataHandler.h"
 #include "Shared/Utility/Log.h"
 
@@ -80,8 +80,8 @@ namespace ScrambledBugs
 
 		const auto& settings = ScrambledBugs::Settings::GetSingleton();
 
-		auto*                   persistentFormManager = Skyrim::PersistentFormManager::GetSingleton();
-		Skyrim::BSSpinLockGuard lockGuard(persistentFormManager->lock);
+		auto*                   createdObjectManager = Skyrim::BGSCreatedObjectManager::GetSingleton();
+		Skyrim::BSSpinLockGuard lockGuard(createdObjectManager->lock);
 
 		std::uint32_t type, version, length;
 
@@ -117,6 +117,8 @@ namespace ScrambledBugs
 				default:
 				{
 					Utility::Log::Error("Type mismatch, {}.", type);
+
+					break;
 				}
 			}
 		}
@@ -132,15 +134,15 @@ namespace ScrambledBugs
 
 		if (settings.fixes.enchantmentCost)
 		{
-			auto*                   persistentFormManager = Skyrim::PersistentFormManager::GetSingleton();
-			Skyrim::BSSpinLockGuard lockGuard(persistentFormManager->lock);
+			auto*                   createdObjectManager = Skyrim::BGSCreatedObjectManager::GetSingleton();
+			Skyrim::BSSpinLockGuard lockGuard(createdObjectManager->lock);
 
-			for (const auto& armorEnchantment : persistentFormManager->armorEnchantments)
+			for (const auto& armorEnchantment : createdObjectManager->armorEnchantments)
 			{
 				EnchantmentCost().SaveGame(serializationInterface, armorEnchantment.enchantment);
 			}
 
-			for (const auto& weaponEnchantment : persistentFormManager->weaponEnchantments)
+			for (const auto& weaponEnchantment : createdObjectManager->weaponEnchantments)
 			{
 				EnchantmentCost().SaveGame(serializationInterface, weaponEnchantment.enchantment);
 			}

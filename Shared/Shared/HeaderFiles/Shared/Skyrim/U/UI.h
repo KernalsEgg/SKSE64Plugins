@@ -2,10 +2,12 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/B/BSAtomic.h"
 #include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/B/BSTEventSource.h"
 #include "Shared/Skyrim/B/BSTSingleton.h"
+#include "Shared/Utility/TypeTraits.h"
 
 
 
@@ -24,6 +26,15 @@ namespace Skyrim
 		// Non-member functions
 		static UI*  GetSingleton();
 		static void Notification(const char* notification, const char* sound, bool queueOnce);
+		static void PlaySound(const char* editorID);
+
+		template <class... Arguments>
+		static void MessageBox(const char* message, void (*messageBoxCallback)(std::int8_t buttonIndex), std::int32_t baseButtonIndex, std::uint32_t warningType, std::int32_t depthPriority, Arguments... buttons)
+		{
+			auto* function{ reinterpret_cast<decltype(&UI::MessageBox<Arguments...>)>(Addresses::UI::MessageBox) };
+
+			function(message, messageBoxCallback, baseButtonIndex, warningType, depthPriority, buttons...);
+		}
 
 		// Member functions
 		bool IsMenuOpen(const BSFixedString& menuName) const;

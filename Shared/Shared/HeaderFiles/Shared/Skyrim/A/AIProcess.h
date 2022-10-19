@@ -76,9 +76,11 @@ namespace Skyrim
 	{
 	public:
 		// Member functions
+		InventoryEntryData*     GetAmmunitionInventoryEntryData() const;
 		bhkCharacterController* GetCharacterController() const;
 		ObjectReferenceHandle   GetCurrentFurniture() const;
-		InventoryEntryData*     GetEquippedItem(bool leftHand) const;
+		InventoryEntryData*     GetLeftHandInventoryEntryData() const;
+		InventoryEntryData*     GetRightHandInventoryEntryData() const;
 		NiAVObject*             GetHeadNode() const;
 		NiAVObject*             GetTorsoNode() const;
 		HitData*                GetLastHitData() const;

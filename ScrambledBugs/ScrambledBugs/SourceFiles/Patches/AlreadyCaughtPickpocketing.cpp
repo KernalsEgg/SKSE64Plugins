@@ -13,7 +13,7 @@ namespace ScrambledBugs::Patches
 {
 	void AlreadyCaughtPickpocketing::Patch(bool& alreadyCaughtPickpocketing)
 	{
-		if (!Patterns::Patches::AlreadyCaughtPickpocketing::AttackOnSight() ||
+		if (!Patterns::Patches::AlreadyCaughtPickpocketing::IsAngryWithPlayer() ||
 			!Patterns::Patches::AlreadyCaughtPickpocketing::HasBeenPickpocketed())
 		{
 			alreadyCaughtPickpocketing = false;
@@ -21,7 +21,7 @@ namespace ScrambledBugs::Patches
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::AlreadyCaughtPickpocketing::AttackOnSight, Utility::Assembly::NoOperation2);
+		Utility::Memory::SafeWrite(Addresses::Patches::AlreadyCaughtPickpocketing::IsAngryWithPlayer, Utility::Assembly::NoOperation2);
 		Utility::Memory::SafeWrite(Addresses::Patches::AlreadyCaughtPickpocketing::HasBeenPickpocketed, Utility::Assembly::NoOperation2);
 	}
 }

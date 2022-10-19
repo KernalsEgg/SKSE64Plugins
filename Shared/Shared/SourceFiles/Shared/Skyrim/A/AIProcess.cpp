@@ -9,6 +9,13 @@
 
 namespace Skyrim
 {
+	InventoryEntryData* AIProcess::GetAmmunitionInventoryEntryData() const
+	{
+		auto* middleHighProcessData = this->middleHighProcessData;
+
+		return middleHighProcessData ? middleHighProcessData->ammunitionInventoryEntryData : nullptr;
+	}
+
 	bhkCharacterController* AIProcess::GetCharacterController() const
 	{
 		auto* middleHighProcessData = this->middleHighProcessData;
@@ -23,16 +30,18 @@ namespace Skyrim
 		return middleHighProcessData ? middleHighProcessData->currentFurniture : ObjectReferenceHandle{};
 	}
 
-	InventoryEntryData* AIProcess::GetEquippedItem(bool leftHand) const
+	InventoryEntryData* AIProcess::GetLeftHandInventoryEntryData() const
 	{
 		auto* middleHighProcessData = this->middleHighProcessData;
 
-		if (!middleHighProcessData)
-		{
-			return nullptr;
-		}
+		return middleHighProcessData ? middleHighProcessData->leftHandInventoryEntryData : nullptr;
+	}
 
-		return leftHand ? middleHighProcessData->leftHand : middleHighProcessData->rightHand;
+	InventoryEntryData* AIProcess::GetRightHandInventoryEntryData() const
+	{
+		auto* middleHighProcessData = this->middleHighProcessData;
+
+		return middleHighProcessData ? middleHighProcessData->rightHandInventoryEntryData : nullptr;
 	}
 
 	NiAVObject* AIProcess::GetHeadNode() const

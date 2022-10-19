@@ -14,76 +14,76 @@ namespace ActorLimitFix::Fixes
 {
 	void ReplaceStaticArray::Fix(bool& replaceStaticArray)
 	{
-		if (!Patterns::ReplaceStaticArray::GetStaticArrayCapacityCommentOnPlayerAction() ||
-			!Patterns::ReplaceStaticArray::GetStaticArrayCapacityContains() ||
-			!Patterns::ReplaceStaticArray::GetStaticArrayCapacityContainsInline() ||
-			!Patterns::ReplaceStaticArray::GetStaticArrayCapacityCopy() ||
-			!Patterns::ReplaceStaticArray::GetStaticArrayCapacityInsert() ||
-			!Patterns::ReplaceStaticArray::GetStaticArrayCommentOnPlayerAction() ||
-			!Patterns::ReplaceStaticArray::GetStaticArrayContains() ||
-			!Patterns::ReplaceStaticArray::GetStaticArrayContainsInline() ||
-			!Patterns::ReplaceStaticArray::GetStaticArrayCopy() ||
-			!Patterns::ReplaceStaticArray::GetStaticArrayInsert() ||
-			!Patterns::ReplaceStaticArray::HasCapacityInsert())
+		if (!Patterns::ReplaceStaticArray::GetArrayCapacityAdd() ||
+			!Patterns::ReplaceStaticArray::GetArrayCapacityCommentOnPlayerAction() ||
+			!Patterns::ReplaceStaticArray::GetArrayCapacityFind() ||
+			!Patterns::ReplaceStaticArray::GetArrayCapacityFindInline() ||
+			!Patterns::ReplaceStaticArray::GetArrayCapacityGetActors() ||
+			!Patterns::ReplaceStaticArray::GetArrayAdd() ||
+			!Patterns::ReplaceStaticArray::GetArrayCommentOnPlayerAction() ||
+			!Patterns::ReplaceStaticArray::GetArrayFind() ||
+			!Patterns::ReplaceStaticArray::GetArrayFindInline() ||
+			!Patterns::ReplaceStaticArray::GetArrayGetActors() ||
+			!Patterns::ReplaceStaticArray::HasCapacityAdd())
 		{
 			replaceStaticArray = false;
 
 			return;
 		}
 
-		// CommentOnPlayerAction
-		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetStaticArrayCapacityCommentOnPlayerAction, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 12ui8); // (1 << 12) / 8 = 0x200
+		// Add
+		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetArrayCapacityAdd, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 12ui8); // (1 << 12) / 8 = 0x200
 
-		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetStaticArrayCommentOnPlayerAction + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NoOperation2);
-		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::GetStaticArrayCommentOnPlayerAction,
-			0x48ui8, 0xB9ui8, std::addressof(ReplaceStaticArray::actorDistanceArray_), // mov rcx, StaticArray
-			0xC3ui8                                                                    // ret
+		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetArrayAdd + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NoOperation2);
+		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::GetArrayAdd,
+			0x48ui8, 0xB8ui8, std::addressof(ReplaceStaticArray::actorRelativeToPlayerArray_), // mov rax, ActorRelativeToPlayer::ActorArray
+			0xC3ui8                                                                            // ret
 		);
 
-		// Contains
-		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetStaticArrayCapacityContains, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 12ui8); // (1 << 12) / 8 = 0x200
-
-		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetStaticArrayContains + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NoOperation2);
-		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::GetStaticArrayContains,
-			0x48ui8, 0xB9ui8, std::addressof(ReplaceStaticArray::actorDistanceArray_), // mov rcx, StaticArray
-			0xC3ui8                                                                    // ret
-		);
-
-		// ContainsInline
-		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetStaticArrayCapacityContainsInline, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 12ui8); // (1 << 12) / 8 = 0x200
-
-		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetStaticArrayContainsInline + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NoOperation2);
-		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::GetStaticArrayContainsInline,
-			0x48ui8, 0xB9ui8, std::addressof(ReplaceStaticArray::actorDistanceArray_), // mov rcx, StaticArray
-			0xC3ui8                                                                    // ret
-		);
-
-		// Copy
-		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetStaticArrayCapacityCopy, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 12ui8); // (1 << 12) / 8 = 0x200
-
-		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetStaticArrayCopy + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NoOperation2);
-		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::GetStaticArrayCopy,
-			0x48ui8, 0xB9ui8, std::addressof(ReplaceStaticArray::actorDistanceArray_), // mov rcx, StaticArray
-			0xC3ui8                                                                    // ret
-		);
-
-		// Insert
-		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetStaticArrayCapacityInsert, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 12ui8); // (1 << 12) / 8 = 0x200
-
-		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetStaticArrayInsert + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NoOperation2);
-		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::GetStaticArrayInsert,
-			0x48ui8, 0xB8ui8, std::addressof(ReplaceStaticArray::actorDistanceArray_), // mov rax, StaticArray
-			0xC3ui8                                                                    // ret
-		);
-
-		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::HasCapacityInsert, Utility::Assembly::NoOperation4);
-		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::HasCapacityInsert + sizeof(Utility::Assembly::NoOperation4),
+		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::HasCapacityAdd, Utility::Assembly::NoOperation4);
+		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::HasCapacityAdd + sizeof(Utility::Assembly::NoOperation4),
 			0x81ui8, 0xFFui8, 0x200ui32,         // cmp edi, 200
 			0x72ui8, 0x07ui8,                    // jb 7
 			0x81ui8, 0x04ui8, 0x24ui8, 0xECui32, // add [rsp], EC
 			0xC3ui8                              // ret
 		);
+
+		// CommentOnPlayerAction
+		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetArrayCapacityCommentOnPlayerAction, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 12ui8); // (1 << 12) / 8 = 0x200
+
+		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetArrayCommentOnPlayerAction + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NoOperation2);
+		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::GetArrayCommentOnPlayerAction,
+			0x48ui8, 0xB9ui8, std::addressof(ReplaceStaticArray::actorRelativeToPlayerArray_), // mov rcx, ActorRelativeToPlayer::ActorArray
+			0xC3ui8                                                                            // ret
+		);
+
+		// Find
+		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetArrayCapacityFind, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 12ui8); // (1 << 12) / 8 = 0x200
+
+		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetArrayFind + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NoOperation2);
+		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::GetArrayFind,
+			0x48ui8, 0xB9ui8, std::addressof(ReplaceStaticArray::actorRelativeToPlayerArray_), // mov rcx, ActorRelativeToPlayer::ActorArray
+			0xC3ui8                                                                            // ret
+		);
+
+		// FindInline
+		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetArrayCapacityFindInline, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 12ui8); // (1 << 12) / 8 = 0x200
+
+		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetArrayFindInline + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NoOperation2);
+		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::GetArrayFindInline,
+			0x48ui8, 0xB9ui8, std::addressof(ReplaceStaticArray::actorRelativeToPlayerArray_), // mov rcx, ActorRelativeToPlayer::ActorArray
+			0xC3ui8                                                                            // ret
+		);
+
+		// GetActors
+		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetArrayCapacityGetActors, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 12ui8); // (1 << 12) / 8 = 0x200
+
+		Utility::Memory::SafeWrite(Addresses::ReplaceStaticArray::GetArrayGetActors + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NoOperation2);
+		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::ReplaceStaticArray::GetArrayGetActors,
+			0x48ui8, 0xB9ui8, std::addressof(ReplaceStaticArray::actorRelativeToPlayerArray_), // mov rcx, ActorRelativeToPlayer::ActorArray
+			0xC3ui8                                                                            // ret
+		);
 	}
 
-	ReplaceStaticArray::ActorDistance ReplaceStaticArray::actorDistanceArray_[0x400]{}; // 2 * 0x200
+	Skyrim::ActorRelativeToPlayer ReplaceStaticArray::actorRelativeToPlayerArray_[0x400]{}; // 2 * 0x200
 }

@@ -25,11 +25,11 @@ namespace Skyrim
 	class ActorMagicCaster;
 	class AIProcess;
 	class bhkCharacterController;
+	class CastPowerItem;
 	class HitData;
 	class InventoryEntryData;
 	class MagicItem;
 	class NiAVObject;
-	class PowerCooldown;
 	class SpellItem;
 	class TESForm;
 	class TESObjectARMO;
@@ -153,7 +153,7 @@ namespace Skyrim
 		virtual bool                  IsDead(bool nonEssential) const override;                                                                                                                                                                                                                          // 99
 		virtual void                  Unknown9C(TESObjectREFR*) override;                                                                                                                                                                                                                                // 9C
 		virtual void                  Unknown9D(TESObjectREFR*) override;                                                                                                                                                                                                                                // 9D
-		virtual void                  Unknown9E(TESObjectREFR*) override;                                                                                                                                                                                                                                // 9E
+		virtual TESAmmo*              GetEquippedAmmunition() const override;                                                                                                                                                                                                                            // 9E
 		virtual void                  UnknownA1(TESObjectREFR*) override;                                                                                                                                                                                                                                // A1
 
 		// Override (BSTEventSink<BSAnimationGraphEvent>)
@@ -179,8 +179,8 @@ namespace Skyrim
 
 		// Override (MagicTarget)
 		virtual void                         Unknown1(MagicTarget*) override;                                                      // 1
-		virtual TESObjectREFR*               GetMagicTargetOwner() override;                                                       // 2
-		virtual bool                         IsMagicTargetOwnerActor() const override;                                             // 3
+		virtual TESObjectREFR*               GetMagicTargetReference() override;                                                   // 2
+		virtual bool                         IsMagicTargetActor() const override;                                                  // 3
 		virtual void                         Unknown4(MagicTarget*) override;                                                      // 4
 		virtual void                         Unknown5(MagicTarget*) override;                                                      // 5
 		virtual void                         Unknown6(MagicTarget*) override;                                                      // 6
@@ -371,9 +371,10 @@ namespace Skyrim
 		float                   GetArmorRating(InventoryEntryData* inventoryEntryData) const;
 		bhkCharacterController* GetCharacterController() const;
 		bool                    GetControllingActor(NiPointer<Actor>& controllingActor);
-		InventoryEntryData*     GetEquippedItem(bool leftHand) const;
+		InventoryEntryData*     GetEquippedAmmunitionInventoryEntryData() const;
 		TESObjectARMO*          GetEquippedShield() const;
 		TESObjectWEAP*          GetEquippedWeapon(bool leftHand) const;
+		InventoryEntryData*     GetEquippedWeaponInventoryEntryData(bool leftHand) const;
 		NiAVObject*             GetHeadNode() const;
 		HitData*                GetLastHitData() const;
 		NiPoint3&               GetLineOfSightLocation(NiPoint3& result, Utility::Enumeration<LineOfSightLocation, std::uint32_t> lineOfSightLocation) const;
@@ -418,7 +419,7 @@ namespace Skyrim
 		std::uint64_t                                     unknown170;                                              // 168, 170
 		std::uint64_t                                     unknown178;                                              // 170, 178
 		std::uint64_t                                     unknown180;                                              // 178, 180
-		PowerCooldown*                                    powerCooldowns;                                          // 180, 188
+		CastPowerItem*                                    castPowers;                                              // 180, 188
 		std::uint64_t                                     unknown190;                                              // 188, 190
 		std::uint64_t                                     unknown198;                                              // 190, 198
 		std::uint64_t                                     unknown1A0;                                              // 198, 1A0
@@ -456,7 +457,7 @@ namespace Skyrim
 	};
 	static_assert(offsetof(Actor, booleanBits) == SKYRIM_RELOCATE(0xE0, 0xE8));
 	static_assert(offsetof(Actor, currentProcess) == SKYRIM_RELOCATE(0xF0, 0xF8));
-	static_assert(offsetof(Actor, powerCooldowns) == SKYRIM_RELOCATE(0x180, 0x188));
+	static_assert(offsetof(Actor, castPowers) == SKYRIM_RELOCATE(0x180, 0x188));
 	static_assert(offsetof(Actor, magicCasters) == SKYRIM_RELOCATE(0x1A0, 0x1A8));
 	static_assert(offsetof(Actor, selectedSpells) == SKYRIM_RELOCATE(0x1C0, 0x1C8));
 	static_assert(offsetof(Actor, selectedPower) == SKYRIM_RELOCATE(0x1E0, 0x1E8));

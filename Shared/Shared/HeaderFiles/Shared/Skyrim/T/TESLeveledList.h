@@ -45,6 +45,15 @@ namespace Skyrim
 		};
 		static_assert(sizeof(Flags) == 0x1);
 
+		enum class AllBelowForce : std::uint32_t
+		{
+			kNone        = static_cast<std::underlying_type_t<AllBelowForce>>(-1),
+			kEqualTo     = 0,
+			kLessThan    = 1,
+			kGreaterThan = 2
+		};
+		static_assert(sizeof(AllBelowForce) == 0x4);
+
 		// Override
 		virtual ~TESLeveledList() override; // 0
 

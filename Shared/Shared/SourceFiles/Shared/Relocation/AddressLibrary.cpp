@@ -257,6 +257,8 @@ namespace Relocation
 				default:
 				{
 					Utility::MessageBox::Error("Unexpected indentifier type encountered, {}.", identifierType.underlying());
+
+					break;
 				}
 			}
 
@@ -336,6 +338,8 @@ namespace Relocation
 				default:
 				{
 					Utility::MessageBox::Error("Unexpected offset type encountered, {}.", (offsetType & 7).underlying());
+
+					break;
 				}
 			}
 

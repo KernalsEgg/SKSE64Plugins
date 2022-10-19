@@ -2,9 +2,6 @@
 
 #include "Shared/Skyrim/U/UI.h"
 
-#include "Shared/Skyrim/Addresses.h"
-#include "Shared/Utility/TypeTraits.h"
-
 
 
 namespace Skyrim
@@ -21,6 +18,13 @@ namespace Skyrim
 		auto* function{ reinterpret_cast<decltype(&UI::Notification)>(Addresses::UI::Notification) };
 
 		function(notification, sound, queueOnce);
+	}
+
+	void UI::PlaySound(const char* editorID)
+	{
+		auto* function{ reinterpret_cast<decltype(&UI::PlaySound)>(Addresses::UI::PlaySound) };
+
+		function(editorID);
 	}
 
 	bool UI::IsMenuOpen(const BSFixedString& menuName) const

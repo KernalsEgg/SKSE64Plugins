@@ -64,7 +64,7 @@ namespace Skyrim
 		{
 			kNone                                   = 0,
 			kPlayerOnly                             = 1U << 0,  // Flags
-			kNPCsUseAmmo                            = 1U << 1,  // Flags
+			kNPCsUseAmmunition                      = 1U << 1,  // Flags
 			kNoJamAfterReload                       = 1U << 2,  // Flags (Unused)
 			kMinorCrime                             = 1U << 4,  // Flags
 			kRangeFixed                             = 1U << 5,  // Game Data, Range

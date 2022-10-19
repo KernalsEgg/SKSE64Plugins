@@ -96,6 +96,8 @@ namespace VendorRespawnFix
 				default:
 				{
 					Utility::Log::Error("Type mismatch, {}.", type);
+
+					break;
 				}
 			}
 		}

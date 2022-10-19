@@ -14,6 +14,7 @@
 
 namespace Skyrim
 {
+	class AlchemyItem;
 	class BSExtraData;
 	class TESForm;
 
@@ -71,6 +72,15 @@ namespace Skyrim
 			pointer current_{ nullptr };
 		};
 
+		ExtraDataList()                     = default;
+		ExtraDataList(const ExtraDataList&) = delete;
+		ExtraDataList(ExtraDataList&&)      = delete;
+
+		~ExtraDataList() = default;
+
+		ExtraDataList& operator=(const ExtraDataList&) = delete;
+		ExtraDataList& operator=(ExtraDataList&&)      = delete;
+
 		// Iterators
 		constexpr iterator<BSExtraData>       begin() noexcept { return iterator<BSExtraData>(this->baseExtraList_.extraData); }
 		constexpr iterator<const BSExtraData> begin() const noexcept { return iterator<const BSExtraData>(this->baseExtraList_.extraData); }
@@ -85,6 +95,7 @@ namespace Skyrim
 		std::int16_t GetCount() const;
 		float        GetHealth() const;
 		TESForm*     GetOwner() const;
+		AlchemyItem* GetPoison() const;
 		SoulLevel    GetSoulLevel() const;
 		bool         IsQuestItem() const;
 		bool         IsWorn(bool eitherHand, bool leftHand) const;

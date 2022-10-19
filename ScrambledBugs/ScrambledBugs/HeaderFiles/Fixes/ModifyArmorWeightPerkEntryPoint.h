@@ -10,17 +10,17 @@
 
 namespace ScrambledBugs::Fixes
 {
-	class ModArmorWeightPerkEntryPoint
+	class ModifyArmorWeightPerkEntryPoint
 	{
 	public:
-		static void Fix(bool& modArmorWeightPerkEntryPoint);
+		static void Fix(bool& modifyArmorWeightPerkEntryPoint);
 
 	private:
 		static void  ApplyPerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner);
 		static float GetInventoryWeight(Skyrim::InventoryChanges* inventoryChanges);
 		static void  RemovePerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner);
 
-		static decltype(&ModArmorWeightPerkEntryPoint::ApplyPerkEntry)  applyPerkEntry_;
-		static decltype(&ModArmorWeightPerkEntryPoint::RemovePerkEntry) removePerkEntry_;
+		static decltype(&ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)  applyPerkEntry_;
+		static decltype(&ModifyArmorWeightPerkEntryPoint::RemovePerkEntry) removePerkEntry_;
 	};
 }

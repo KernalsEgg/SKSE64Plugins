@@ -76,11 +76,11 @@ namespace ScrambledBugs::Patches
 							{
 								auto* bestSoulGem               = findBestSoulGemVisitor->bestSoulGem;
 								auto  bestSoulGemSoulLevelValue = bestSoulGem ?
-                                                                      std::make_optional(Skyrim::TESSoulGem::GetSoulLevelValue(bestSoulGem->capacity.get())) :
-                                                                      std::nullopt;
+								                                      std::make_optional(Skyrim::TESSoulGem::GetSoulLevelValue(bestSoulGem->capacity.get())) :
+								                                      std::nullopt;
 								auto  bestSoulGemCanHoldNPCSoul = bestSoulGem ?
-                                                                      std::make_optional(Utility::Enumeration<Skyrim::TESSoulGem::RecordFlags, std::uint32_t>(bestSoulGem->recordFlags).all(Skyrim::TESSoulGem::RecordFlags::kCanHoldNPCSoul)) :
-                                                                      std::nullopt;
+								                                      std::make_optional(Utility::Enumeration<Skyrim::TESSoulGem::RecordFlags, std::uint32_t>(bestSoulGem->recordFlags).all(Skyrim::TESSoulGem::RecordFlags::kCanHoldNPCSoul)) :
+								                                      std::nullopt;
 
 								if (!bestSoulGem || bestSoulGemSoulLevelValue.value() > soulGemSoulLevelValue ||
 									(!targetIsNPC && bestSoulGemSoulLevelValue.value() == soulGemSoulLevelValue && bestSoulGemCanHoldNPCSoul.value() && !soulGemCanHoldNPCSoul))
@@ -88,8 +88,8 @@ namespace ScrambledBugs::Patches
 									findBestSoulGemVisitor->bestSoulGem = soulGem;
 
 									return soulGemSoulLevelValue == targetSoulLevelValue && (targetIsNPC || !soulGemCanHoldNPCSoul) ?
-                                               Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType::kStop :
-                                               Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType::kContinue;
+									           Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType::kStop :
+									           Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType::kContinue;
 								}
 							}
 						}
@@ -101,6 +101,6 @@ namespace ScrambledBugs::Patches
 		return Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType::kContinue;
 	}
 
-	bool SoulGems::blackSoulGems_;
-	bool SoulGems::underfilledSoulGems_;
+	bool SoulGems::blackSoulGems_{ false };
+	bool SoulGems::underfilledSoulGems_{ false };
 }

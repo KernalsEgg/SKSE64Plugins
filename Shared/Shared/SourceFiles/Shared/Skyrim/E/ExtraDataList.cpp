@@ -8,6 +8,7 @@
 #include "Shared/Skyrim/E/ExtraCount.h"
 #include "Shared/Skyrim/E/ExtraHealth.h"
 #include "Shared/Skyrim/E/ExtraOwnership.h"
+#include "Shared/Skyrim/E/ExtraPoison.h"
 #include "Shared/Skyrim/E/ExtraSoul.h"
 #include "Shared/Utility/TypeTraits.h"
 
@@ -41,6 +42,13 @@ namespace Skyrim
 		const auto* extraOwnership = this->GetExtraData<ExtraOwnership>(ExtraDataType::kOwnership);
 
 		return extraOwnership ? extraOwnership->owner : nullptr;
+	}
+
+	AlchemyItem* ExtraDataList::GetPoison() const
+	{
+		const auto* extraPoison = this->GetExtraData<ExtraPoison>(ExtraDataType::kPoison);
+
+		return extraPoison ? extraPoison->poison : nullptr;
 	}
 
 	SoulLevel ExtraDataList::GetSoulLevel() const

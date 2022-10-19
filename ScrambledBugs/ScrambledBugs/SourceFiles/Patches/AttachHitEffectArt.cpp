@@ -17,11 +17,11 @@ namespace ScrambledBugs::Patches
 {
 	void AttachHitEffectArt::Patch(bool& attachHitEffectArt)
 	{
-		if (!Patterns::Patches::AttachHitEffectArt::AddNoHitEffectArtFlag() ||
-			!Patterns::Patches::AttachHitEffectArt::GetTargetActor() ||
+		if (!Patterns::Patches::AttachHitEffectArt::GetTargetActor() ||
 			!Patterns::Patches::AttachHitEffectArt::IsPerspectiveChange() ||
-			!Patterns::Patches::AttachHitEffectArt::IsPlayerAttach() ||
-			!Patterns::Patches::AttachHitEffectArt::IsPlayerUpdatePosition())
+			!Patterns::Patches::AttachHitEffectArt::IsPlayerReattach() ||
+			!Patterns::Patches::AttachHitEffectArt::IsPlayerUpdatePosition() ||
+			!Patterns::Patches::AttachHitEffectArt::SetNoHitEffectArtFlag())
 		{
 			attachHitEffectArt = false;
 
@@ -29,11 +29,11 @@ namespace ScrambledBugs::Patches
 		}
 
 		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPerspectiveChange, Utility::Assembly::NoOperation2);
-		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerAttach, Utility::Assembly::NoOperation2);
+		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerReattach, Utility::Assembly::NoOperation2);
 		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, Utility::Assembly::NoOperation6);
 
 		Utility::Memory::SafeWrite(
-			Addresses::Patches::AttachHitEffectArt::AddNoHitEffectArtFlag,
+			Addresses::Patches::AttachHitEffectArt::SetNoHitEffectArtFlag,
 			std::optional<std::uint8_t>{}, 0xF8ui8, // and al, F8 (1 << 2 (NoHitEffectArt), 1 << 4 (NoInitialFlare))
 			Utility::Assembly::NoOperation2         // nop
 		);

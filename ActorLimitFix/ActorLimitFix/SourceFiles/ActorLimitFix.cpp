@@ -21,6 +21,7 @@ void Settings()
 		ActorLimitFix::Fixes::ReplaceStaticArray::Fix(settings.fixes.replaceStaticArray);
 	}
 
+	// Must be installed after ActorLimitFix::Fixes::ReplaceStaticArray
 	ActorLimitFix::Fixes::MorphLimit::Fix(settings.fixes.morphLimit, settings.fixes.replaceStaticArray);
 	ActorLimitFix::Fixes::MoverLimit::Fix(settings.fixes.moverLimit);
 
@@ -31,7 +32,7 @@ void Settings()
 
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
-	.pluginVersion   = 6,
+	.pluginVersion   = 7,
 	.pluginName      = "Actor Limit Fix",
 	.author          = "meh321 and KernalsEgg",
 	.addressLibrary  = true,

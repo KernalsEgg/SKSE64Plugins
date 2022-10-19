@@ -95,11 +95,11 @@ namespace Skyrim
 
 		enum class FlagsBE3 : std::uint8_t
 		{
-			kNone                        = 0,
-			kThirdPerson                 = 1U << 0,
-			kInsufficientChargeLeftHand  = 1U << 2,
-			kInsufficientChargeRightHand = 1U << 3,
-			kInCombat                    = 1U << 5
+			kNone                                         = 0,
+			kThirdPerson                                  = 1U << 0,
+			kShownInsufficientChargeNotificationLeftHand  = 1U << 2,
+			kShownInsufficientChargeNotificationRightHand = 1U << 3,
+			kInCombat                                     = 1U << 5
 		};
 		static_assert(sizeof(FlagsBE3) == 0x1);
 
@@ -254,6 +254,9 @@ namespace Skyrim
 
 		// Non-member functions
 		static PlayerCharacter* GetSingleton();
+
+		// Member functions
+		void ResetInsufficientChargeNotification(bool leftHand);
 
 		// Member variables
 		std::uint64_t                                                unknown3E0;               // 3D8, 3E0
@@ -419,7 +422,7 @@ namespace Skyrim
 		std::uint64_t                                                unknown958;               // 950, 958
 		std::uint64_t                                                unknown960;               // 958, 960
 		std::uint64_t                                                unknown968;               // 960, 968
-		AlchemyItem*                                                 weaponPoison;             // 968, 970
+		AlchemyItem*                                                 pendingWeaponPoison;      // 968, 970
 		std::uint64_t                                                unknown978;               // 970, 978
 		std::uint64_t                                                unknown980;               // 978, 980
 		std::uint64_t                                                unknown988;               // 980, 988
@@ -534,7 +537,7 @@ namespace Skyrim
 	static_assert(offsetof(PlayerCharacter, powerAttackTimer) == SKYRIM_RELOCATE(0x904, 0x90C));
 	static_assert(offsetof(PlayerCharacter, amountStolenSold) == SKYRIM_RELOCATE(0x90C, 0x914));
 	static_assert(offsetof(PlayerCharacter, lastRiddenMount) == SKYRIM_RELOCATE(0x914, 0x91C));
-	static_assert(offsetof(PlayerCharacter, weaponPoison) == SKYRIM_RELOCATE(0x968, 0x970));
+	static_assert(offsetof(PlayerCharacter, pendingWeaponPoison) == SKYRIM_RELOCATE(0x968, 0x970));
 	static_assert(offsetof(PlayerCharacter, firstPersonLight) == SKYRIM_RELOCATE(0x998, 0x9A0));
 	static_assert(offsetof(PlayerCharacter, thirdPersonLight) == SKYRIM_RELOCATE(0x9A0, 0x9A8));
 	static_assert(offsetof(PlayerCharacter, automaticAimActor) == SKYRIM_RELOCATE(0x9B8, 0x9C0));

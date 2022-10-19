@@ -68,15 +68,15 @@ namespace Skyrim
 		virtual BGSKeyword* GetDefaultKeyword() const override; // 5
 
 		// Member variables
-		BGSProjectile*                            projectile;  // 110
-		Utility::Enumeration<Flags, std::uint8_t> ammoFlags;   // 118
-		std::uint8_t                              padding119;  // 119
-		std::uint16_t                             padding11A;  // 11A
-		float                                     damage;      // 11C
-		BSFixedString                             description; // 120
+		BGSProjectile*                            projectile;      // 110
+		Utility::Enumeration<Flags, std::uint8_t> ammunitionFlags; // 118
+		std::uint8_t                              padding119;      // 119
+		std::uint16_t                             padding11A;      // 11A
+		float                                     damage;          // 11C
+		BSFixedString                             description;     // 120
 	};
 	static_assert(offsetof(TESAmmo, projectile) == 0x110);
-	static_assert(offsetof(TESAmmo, ammoFlags) == 0x118);
+	static_assert(offsetof(TESAmmo, ammunitionFlags) == 0x118);
 	static_assert(offsetof(TESAmmo, damage) == 0x11C);
 	static_assert(offsetof(TESAmmo, description) == 0x120);
 	static_assert(sizeof(TESAmmo) == 0x128);

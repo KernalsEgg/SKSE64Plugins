@@ -3,6 +3,7 @@
 #include "Shared/Skyrim/T/TESForm.h"
 
 #include "Shared/Skyrim/Addresses.h"
+#include "Shared/Skyrim/T/TESDataHandler.h"
 #include "Shared/Utility/TypeTraits.h"
 
 
@@ -40,5 +41,10 @@ namespace Skyrim
 		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESForm::GetMaximumCharge)>::type>(Addresses::TESForm::GetMaximumCharge) };
 
 		return function(this, extraDataList);
+	}
+
+	bool TESForm::IsCreated() const
+	{
+		return TESDataHandler::GetSingleton()->IsFormIDCreated(this->formID);
 	}
 }

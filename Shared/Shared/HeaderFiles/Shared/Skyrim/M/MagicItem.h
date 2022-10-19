@@ -92,7 +92,7 @@ namespace Skyrim
 		float      GetCost(Actor* caster) const;
 		ActorValue GetCostActorValue(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource) const;
 		bool       ShouldAddSpell() const;
-		bool       ShouldSetEffectiveness() const;
+		bool       ShouldAdjust() const;
 
 		// Member variables
 		BSTArray<Effect*> effects;      // 58

@@ -109,6 +109,7 @@ namespace Skyrim
 		TESFile*         GetFile(std::int32_t index = -1) const;
 		const char*      GetFormName() const;
 		std::uint16_t    GetMaximumCharge(ExtraDataList* extraDataList) const;
+		bool             IsCreated() const;
 
 		// Member variables
 		TESFileContainer                             sourceFiles; // 8

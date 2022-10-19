@@ -30,92 +30,92 @@ namespace ActorLimitFix::Patterns
 
 	namespace ReplaceStaticArray
 	{
-		bool GetStaticArrayCapacityCommentOnPlayerAction()
+		bool GetArrayCapacityAdd()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::ReplaceStaticArray::GetStaticArrayCapacityCommentOnPlayerAction, // 0x4
-				0x48ui8, 0xC1ui8, 0xE7ui8, 0x09ui8                                          // shl rdi, 9
+				Addresses::ReplaceStaticArray::GetArrayCapacityAdd, // 0x4
+				0x48ui8, 0xC1ui8, 0xE3ui8, 0x09ui8                  // shl rbx, 9
 			);
 		}
 
-		bool GetStaticArrayCapacityContains()
+		bool GetArrayCapacityCommentOnPlayerAction()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::ReplaceStaticArray::GetStaticArrayCapacityContains, // 0x4
-				0x48ui8, 0xC1ui8, 0xE3ui8, 0x09ui8                             // shl rbx, 9
+				Addresses::ReplaceStaticArray::GetArrayCapacityCommentOnPlayerAction, // 0x4
+				0x48ui8, 0xC1ui8, 0xE7ui8, 0x09ui8                                    // shl rdi, 9
 			);
 		}
 
-		bool GetStaticArrayCapacityContainsInline()
+		bool GetArrayCapacityFind()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::ReplaceStaticArray::GetStaticArrayCapacityContainsInline, // 0x4
-				0x48ui8, 0xC1ui8, 0xE7ui8, 0x09ui8                                   // shl rdi, 9
+				Addresses::ReplaceStaticArray::GetArrayCapacityFind, // 0x4
+				0x48ui8, 0xC1ui8, 0xE3ui8, 0x09ui8                   // shl rbx, 9
 			);
 		}
 
-		bool GetStaticArrayCapacityCopy()
+		bool GetArrayCapacityFindInline()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::ReplaceStaticArray::GetStaticArrayCapacityCopy, // 0x4
-				0x48ui8, 0xC1ui8, 0xE3ui8, 0x09ui8                         // shl rbx, 9
+				Addresses::ReplaceStaticArray::GetArrayCapacityFindInline, // 0x4
+				0x48ui8, 0xC1ui8, 0xE7ui8, 0x09ui8                         // shl rdi, 9
 			);
 		}
 
-		bool GetStaticArrayCapacityInsert()
+		bool GetArrayCapacityGetActors()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::ReplaceStaticArray::GetStaticArrayCapacityInsert, // 0x4
-				0x48ui8, 0xC1ui8, 0xE3ui8, 0x09ui8                           // shl rbx, 9
+				Addresses::ReplaceStaticArray::GetArrayCapacityGetActors, // 0x4
+				0x48ui8, 0xC1ui8, 0xE3ui8, 0x09ui8                        // shl rbx, 9
 			);
 		}
 
-		bool GetStaticArrayCommentOnPlayerAction()
+		bool GetArrayAdd()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::ReplaceStaticArray::GetStaticArrayCommentOnPlayerAction, // 0x7
-				0x48ui8, 0x8Dui8, 0x0Dui8, std::optional<std::int32_t>{}            // lea rcx, StaticArray
+				Addresses::ReplaceStaticArray::GetArrayAdd,              // 0x7
+				0x48ui8, 0x8Dui8, 0x05ui8, std::optional<std::int32_t>{} // lea rax, ActorRelativeToPlayer::ActorArray
 			);
 		}
 
-		bool GetStaticArrayContains()
+		bool GetArrayCommentOnPlayerAction()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::ReplaceStaticArray::GetStaticArrayContains,   // 0x7
-				0x48ui8, 0x8Dui8, 0x0Dui8, std::optional<std::int32_t>{} // lea rcx, StaticArray
+				Addresses::ReplaceStaticArray::GetArrayCommentOnPlayerAction, // 0x7
+				0x48ui8, 0x8Dui8, 0x0Dui8, std::optional<std::int32_t>{}      // lea rcx, ActorRelativeToPlayer::ActorArray
 			);
 		}
 
-		bool GetStaticArrayContainsInline()
+		bool GetArrayFind()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::ReplaceStaticArray::GetStaticArrayContainsInline, // 0x7
-				0x48ui8, 0x8Dui8, 0x0Dui8, std::optional<std::int32_t>{}     // lea rcx, StaticArray
+				Addresses::ReplaceStaticArray::GetArrayFind,             // 0x7
+				0x48ui8, 0x8Dui8, 0x0Dui8, std::optional<std::int32_t>{} // lea rcx, ActorRelativeToPlayer::ActorArray
 			);
 		}
 
-		bool GetStaticArrayCopy()
+		bool GetArrayFindInline()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::ReplaceStaticArray::GetStaticArrayCopy,       // 0x7
-				0x48ui8, 0x8Dui8, 0x0Dui8, std::optional<std::int32_t>{} // lea rcx, StaticArray
+				Addresses::ReplaceStaticArray::GetArrayFindInline,       // 0x7
+				0x48ui8, 0x8Dui8, 0x0Dui8, std::optional<std::int32_t>{} // lea rcx, ActorRelativeToPlayer::ActorArray
 			);
 		}
 
-		bool GetStaticArrayInsert()
+		bool GetArrayGetActors()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::ReplaceStaticArray::GetStaticArrayInsert,     // 0x7
-				0x48ui8, 0x8Dui8, 0x05ui8, std::optional<std::int32_t>{} // lea rax, StaticArray
+				Addresses::ReplaceStaticArray::GetArrayGetActors,        // 0x7
+				0x48ui8, 0x8Dui8, 0x0Dui8, std::optional<std::int32_t>{} // lea rcx, ActorRelativeToPlayer::ActorArray
 			);
 		}
 
-		bool HasCapacityInsert()
+		bool HasCapacityAdd()
 		{
 			return Relocation::AddressLibrary::MatchPattern(
-				Addresses::ReplaceStaticArray::HasCapacityInsert, // 0x5
-				0x83ui8, 0xFFui8, 0x40ui8,                        // cmp edi, 40
-				0x0Fui8, 0x83ui8, 0xECui32                        // jnb EC
+				Addresses::ReplaceStaticArray::HasCapacityAdd, // 3 + 6 = 0x9
+				0x83ui8, 0xFFui8, 0x40ui8,                     // cmp edi, 40
+				0x0Fui8, 0x83ui8, 0xECui32                     // jnb EC
 			);
 		}
 	}

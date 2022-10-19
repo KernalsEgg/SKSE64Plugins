@@ -57,6 +57,8 @@ namespace Skyrim
 
 		TESForm* GetFormFromFile(FormID formID, std::string_view fileName) const;
 
+		bool IsFormIDCreated(FormID formID) const;
+
 		template <class T>
 		T* GetFormFromFile(FormID formID, std::string_view fileName) const
 		{

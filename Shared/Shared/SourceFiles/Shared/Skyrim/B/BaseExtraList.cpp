@@ -22,7 +22,6 @@ namespace Skyrim
 		return false;
 	}
 
-#ifdef SKYRIM_ANNIVERSARY_EDITION
 	BaseExtraList::~BaseExtraList()
 	{
 		auto* next = this->extraData;
@@ -41,7 +40,6 @@ namespace Skyrim
 
 		this->presenceBitField = nullptr;
 	}
-#endif
 
 	bool BaseExtraList::HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const
 	{

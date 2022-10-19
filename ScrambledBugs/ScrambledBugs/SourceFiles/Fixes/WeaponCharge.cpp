@@ -28,15 +28,7 @@ namespace ScrambledBugs::Fixes
 
 		if (actor == player)
 		{
-			// PlayerCharacter::ResetInsufficientChargeMessage
-			if (leftHand)
-			{
-				player->flagsBE3.reset(Skyrim::PlayerCharacter::FlagsBE3::kInsufficientChargeLeftHand);
-			}
-			else
-			{
-				player->flagsBE3.reset(Skyrim::PlayerCharacter::FlagsBE3::kInsufficientChargeRightHand);
-			}
+			player->ResetInsufficientChargeNotification(leftHand);
 		}
 
 		auto* enchantment = item->GetEnchantment(extraDataList);

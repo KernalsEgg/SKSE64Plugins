@@ -63,7 +63,7 @@
     <ClInclude Include="HeaderFiles\Fixes\MagicEffectFlags.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\ModArmorWeightPerkEntryPoint.h">
+    <ClInclude Include="HeaderFiles\Fixes\ModifyArmorWeightPerkEntryPoint.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Fixes\QuickShot.h">
@@ -90,7 +90,7 @@
     <ClInclude Include="HeaderFiles\Patches\CloakHitEffects.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\EquipBestAmmo.h">
+    <ClInclude Include="HeaderFiles\Patches\EquipBestAmmunition.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Patches\ImproveMultipleEnchantmentEffects.h">
@@ -176,7 +176,7 @@
     <ClCompile Include="SourceFiles\Fixes\MagicEffectFlags.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\ModArmorWeightPerkEntryPoint.cpp">
+    <ClCompile Include="SourceFiles\Fixes\ModifyArmorWeightPerkEntryPoint.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Fixes\QuickShot.cpp">
@@ -203,7 +203,7 @@
     <ClCompile Include="SourceFiles\Patches\CloakHitEffects.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\EquipBestAmmo.cpp">
+    <ClCompile Include="SourceFiles\Patches\EquipBestAmmunition.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Patches\ImproveMultipleEnchantmentEffects.cpp">

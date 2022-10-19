@@ -1,6 +1,6 @@
 #include "PrecompiledHeader.h"
 
-#include "Fixes/ModArmorWeightPerkEntryPoint.h"
+#include "Fixes/ModifyArmorWeightPerkEntryPoint.h"
 
 #include "Addresses.h"
 #include "Shared/Skyrim/Addresses.h"
@@ -14,20 +14,20 @@
 
 namespace ScrambledBugs::Fixes
 {
-	void ModArmorWeightPerkEntryPoint::Fix(bool& modArmorWeightPerkEntryPoint)
+	void ModifyArmorWeightPerkEntryPoint::Fix(bool& modifyArmorWeightPerkEntryPoint)
 	{
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::ModArmorWeightPerkEntryPoint::GetInventoryWeight, reinterpret_cast<std::uintptr_t>(std::addressof(ModArmorWeightPerkEntryPoint::GetInventoryWeight)));
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::ModifyArmorWeightPerkEntryPoint::GetInventoryWeight, reinterpret_cast<std::uintptr_t>(std::addressof(ModifyArmorWeightPerkEntryPoint::GetInventoryWeight)));
 
-		ModArmorWeightPerkEntryPoint::applyPerkEntry_ = reinterpret_cast<decltype(ModArmorWeightPerkEntryPoint::applyPerkEntry_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xA));
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(ModArmorWeightPerkEntryPoint::ApplyPerkEntry)));
+		ModifyArmorWeightPerkEntryPoint::applyPerkEntry_ = reinterpret_cast<decltype(ModifyArmorWeightPerkEntryPoint::applyPerkEntry_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xA));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)));
 
-		ModArmorWeightPerkEntryPoint::removePerkEntry_ = reinterpret_cast<decltype(ModArmorWeightPerkEntryPoint::removePerkEntry_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xB));
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xB, reinterpret_cast<std::uintptr_t>(std::addressof(ModArmorWeightPerkEntryPoint::RemovePerkEntry)));
+		ModifyArmorWeightPerkEntryPoint::removePerkEntry_ = reinterpret_cast<decltype(ModifyArmorWeightPerkEntryPoint::removePerkEntry_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xB));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xB, reinterpret_cast<std::uintptr_t>(std::addressof(ModifyArmorWeightPerkEntryPoint::RemovePerkEntry)));
 	}
 
-	void ModArmorWeightPerkEntryPoint::ApplyPerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner)
+	void ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner)
 	{
-		ModArmorWeightPerkEntryPoint::applyPerkEntry_(entryPointPerkEntry, perkOwner);
+		ModifyArmorWeightPerkEntryPoint::applyPerkEntry_(entryPointPerkEntry, perkOwner);
 
 		if (entryPointPerkEntry->entryPoint == Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight)
 		{
@@ -40,7 +40,7 @@ namespace ScrambledBugs::Fixes
 		}
 	}
 
-	float ModArmorWeightPerkEntryPoint::GetInventoryWeight(Skyrim::InventoryChanges* inventoryChanges)
+	float ModifyArmorWeightPerkEntryPoint::GetInventoryWeight(Skyrim::InventoryChanges* inventoryChanges)
 	{
 		// inventoryChanges != nullptr
 
@@ -173,9 +173,9 @@ namespace ScrambledBugs::Fixes
 		return inventoryChanges->currentInventoryWeight;
 	}
 
-	void ModArmorWeightPerkEntryPoint::RemovePerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner)
+	void ModifyArmorWeightPerkEntryPoint::RemovePerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner)
 	{
-		ModArmorWeightPerkEntryPoint::removePerkEntry_(entryPointPerkEntry, perkOwner);
+		ModifyArmorWeightPerkEntryPoint::removePerkEntry_(entryPointPerkEntry, perkOwner);
 
 		if (entryPointPerkEntry->entryPoint == Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight)
 		{
@@ -188,6 +188,6 @@ namespace ScrambledBugs::Fixes
 		}
 	}
 
-	decltype(&ModArmorWeightPerkEntryPoint::ApplyPerkEntry)  ModArmorWeightPerkEntryPoint::applyPerkEntry_;
-	decltype(&ModArmorWeightPerkEntryPoint::RemovePerkEntry) ModArmorWeightPerkEntryPoint::removePerkEntry_;
+	decltype(&ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)  ModifyArmorWeightPerkEntryPoint::applyPerkEntry_;
+	decltype(&ModifyArmorWeightPerkEntryPoint::RemovePerkEntry) ModifyArmorWeightPerkEntryPoint::removePerkEntry_;
 }

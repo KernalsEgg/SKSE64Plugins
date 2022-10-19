@@ -49,7 +49,7 @@ namespace ScrambledBugs::Fixes
 			return true;
 		}
 
-		if (activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kApplyingVisualEffects))
+		if (activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kApplyingHitEffects))
 		{
 			return true;
 		}

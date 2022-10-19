@@ -9,7 +9,7 @@
 #include "Fixes/KillCamera.h"
 #include "Fixes/LeftHandPowerAttacks.h"
 #include "Fixes/MagicEffectFlags.h"
-#include "Fixes/ModArmorWeightPerkEntryPoint.h"
+#include "Fixes/ModifyArmorWeightPerkEntryPoint.h"
 #include "Fixes/PowerCooldowns.h"
 #include "Fixes/QuickShot.h"
 #include "Fixes/TerrainDecals.h"
@@ -19,7 +19,7 @@
 #include "Patches/AlreadyCaughtPickpocketing.h"
 #include "Patches/AttachHitEffectArt.h"
 #include "Patches/CloakHitEffects.h"
-#include "Patches/EquipBestAmmo.h"
+#include "Patches/EquipBestAmmunition.h"
 #include "Patches/ImproveMultipleEnchantmentEffects.h"
 #include "Patches/LeveledCharacters.h"
 #include "Patches/LockpickingExperience.h"
@@ -93,9 +93,9 @@ void Settings()
 		ScrambledBugs::Fixes::MagicEffectFlags::Fix(settings.fixes.magicEffectFlags);
 	}
 
-	if (settings.fixes.modArmorWeightPerkEntryPoint)
+	if (settings.fixes.modifyArmorWeightPerkEntryPoint)
 	{
-		ScrambledBugs::Fixes::ModArmorWeightPerkEntryPoint::Fix(settings.fixes.modArmorWeightPerkEntryPoint);
+		ScrambledBugs::Fixes::ModifyArmorWeightPerkEntryPoint::Fix(settings.fixes.modifyArmorWeightPerkEntryPoint);
 	}
 
 	if (settings.fixes.powerCooldowns)
@@ -144,9 +144,9 @@ void Settings()
 		ScrambledBugs::Patches::CloakHitEffects::Patch(settings.patches.cloakHitEffects);
 	}
 
-	if (settings.patches.equipBestAmmo)
+	if (settings.patches.equipBestAmmunition)
 	{
-		ScrambledBugs::Patches::EquipBestAmmo::Patch(settings.patches.equipBestAmmo);
+		ScrambledBugs::Patches::EquipBestAmmunition::Patch(settings.patches.equipBestAmmunition);
 	}
 
 	if (settings.patches.improveMultipleEnchantmentEffects)
@@ -220,7 +220,7 @@ void Settings()
 
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
-	.pluginVersion   = 18,
+	.pluginVersion   = 19,
 	.pluginName      = "Scrambled Bugs",
 	.author          = "KernalsEgg",
 	.addressLibrary  = true,

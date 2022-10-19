@@ -9,6 +9,13 @@
 
 namespace Skyrim
 {
+	void UIMessageQueue::AddInventoryUpdateMessage(TESObjectREFR* reference, TESBoundObject* item)
+	{
+		auto* function{ reinterpret_cast<decltype(&UIMessageQueue::AddInventoryUpdateMessage)>(Addresses::UIMessageQueue::AddInventoryUpdateMessage) };
+
+		function(reference, item);
+	}
+
 	UIMessageQueue* UIMessageQueue::GetSingleton()
 	{
 		auto** singleton{ reinterpret_cast<UIMessageQueue**>(Addresses::UIMessageQueue::Singleton) };

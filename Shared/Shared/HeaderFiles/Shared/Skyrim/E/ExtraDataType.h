@@ -20,6 +20,7 @@ namespace Skyrim
 		kCharge             = 0x28, // ExtraCharge
 		kLeveledItem        = 0x2E, // ExtraLeveledItem
 		kScale              = 0x2F, // ExtraScale
+		kPoison             = 0x3E, // ExtraPoison
 		kHotkey             = 0x49, // ExtraHotkey
 		kAliasInstanceArray = 0x88, // ExtraAliasInstanceArray
 		kOutfitItem         = 0x8E, // ExtraOutfitItem

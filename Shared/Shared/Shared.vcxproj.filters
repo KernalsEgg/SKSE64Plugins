@@ -813,9 +813,6 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PerkEntryVisitor.h">
       <Filter>Header Files\Shared\Skyrim\P</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PersistentFormManager.h">
-      <Filter>Header Files\Shared\Skyrim\P</Filter>
-    </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerCamera.h">
       <Filter>Header Files\Shared\Skyrim\P</Filter>
     </ClInclude>
@@ -1173,9 +1170,6 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSSaveFormBuffer.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PowerCooldown.h">
-      <Filter>Header Files\Shared\Skyrim\P</Filter>
-    </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSImpactManager.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
@@ -1209,7 +1203,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkArray.h">
       <Filter>Header Files\Shared\Skyrim\H</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorldRayCastInput.h">
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkPickData.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkpClosestRayHitCollector.h">
@@ -1653,6 +1647,24 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BaseExtraList.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorRelativeToPlayer.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSCreatedObjectManager.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CastPowerItem.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraPoison.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PoisonedWeapon.h">
+      <Filter>Header Files\Shared\Skyrim\P</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ItemCard.h">
+      <Filter>Header Files\Shared\Skyrim\I</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PrecompiledHeader.cpp">
@@ -1741,9 +1753,6 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiRefObject.cpp">
       <Filter>Source Files\Shared\Skyrim\N</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFiles\Shared\Skyrim\P\PersistentFormManager.cpp">
-      <Filter>Source Files\Shared\Skyrim\P</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\PlayerCharacter.cpp">
       <Filter>Source Files\Shared\Skyrim\P</Filter>
@@ -2029,6 +2038,12 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BaseExtraList.cpp">
       <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSCreatedObjectManager.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\P\PoisonedWeapon.cpp">
+      <Filter>Source Files\Shared\Skyrim\P</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

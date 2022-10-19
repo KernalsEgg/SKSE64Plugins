@@ -24,7 +24,7 @@ namespace ScrambledBugs
 			bool  killCamera{ false };
 			bool  leftHandPowerAttacks{ false };
 			bool  magicEffectFlags{ false };
-			bool  modArmorWeightPerkEntryPoint{ false };
+			bool  modifyArmorWeightPerkEntryPoint{ false };
 			bool  powerCooldowns{ false };
 			bool  quickShot{ false };
 			float quickShotPlaybackSpeed{ 0.0F };
@@ -54,7 +54,7 @@ namespace ScrambledBugs
 			bool            attachHitEffectArt{ false };
 			bool            blackSoulGems{ false };
 			bool            cloakHitEffects{ false };
-			bool            equipBestAmmo{ false };
+			bool            equipBestAmmunition{ false };
 			bool            improveMultipleEnchantmentEffects{ false };
 			bool            leveledCharacters{ false };
 			bool            lockpickingExperience{ false };

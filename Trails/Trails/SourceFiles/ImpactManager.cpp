@@ -12,11 +12,11 @@
 #include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/B/bhkCharacterController.h"
 #include "Shared/Skyrim/B/bhkCollisionObject.h"
+#include "Shared/Skyrim/B/bhkPickData.h"
 #include "Shared/Skyrim/B/bhkRigidBody.h"
 #include "Shared/Skyrim/B/bhkShape.h"
 #include "Shared/Skyrim/B/bhkWorld.h"
 #include "Shared/Skyrim/B/bhkWorldObject.h"
-#include "Shared/Skyrim/B/bhkWorldRayCastInput.h"
 #include "Shared/Skyrim/D/DecalData.h"
 #include "Shared/Skyrim/H/hkBaseTypes.h"
 #include "Shared/Skyrim/H/hkpClosestRayHitCollector.h"
@@ -118,14 +118,14 @@ namespace Trails
 
 		origin += originOffset;
 
-		Skyrim::bhkWorldRayCastInput      rayCastInput;
+		Skyrim::bhkPickData               pickData;
 		Skyrim::hkpClosestRayHitCollector closestRayHitCollector;
 
-		rayCastInput.rayHitCollectorA8 = std::addressof(closestRayHitCollector);
+		pickData.rayHitCollectorA8 = std::addressof(closestRayHitCollector);
 
-		auto havokWorldScale   = Skyrim::bhkWorld::GetScale();
-		rayCastInput.from.quad = ::_mm_setr_ps(origin.x * havokWorldScale, origin.y * havokWorldScale, origin.z * havokWorldScale, 0.0F);
-		rayCastInput.ray.quad  = ::_mm_setr_ps(ray.x * havokWorldScale, ray.y * havokWorldScale, ray.z * havokWorldScale, 0.0F);
+		auto havokWorldScale            = Skyrim::bhkWorld::GetScale();
+		pickData.rayCastInput.from.quad = ::_mm_setr_ps(origin.x * havokWorldScale, origin.y * havokWorldScale, origin.z * havokWorldScale, 0.0F);
+		pickData.ray.quad               = ::_mm_setr_ps(ray.x * havokWorldScale, ray.y * havokWorldScale, ray.z * havokWorldScale, 0.0F);
 
 		if (source->formType == Skyrim::FormType::kActor)
 		{
@@ -133,7 +133,7 @@ namespace Trails
 
 			if (characterController)
 			{
-				characterController->GetCollisionFilterInformation(rayCastInput.filterInformation);
+				characterController->GetCollisionFilterInformation(pickData.rayCastInput.filterInformation);
 			}
 		}
 		else
@@ -152,14 +152,14 @@ namespace Trails
 
 						if (referencedObject)
 						{
-							rayCastInput.filterInformation = referencedObject->collidable.broadPhaseHandle.collisionFilterInformation;
+							pickData.rayCastInput.filterInformation = referencedObject->collidable.broadPhaseHandle.collisionFilterInformation;
 						}
 					}
 				}
 			}
 		}
 
-		if (!havokWorld->CastRay(rayCastInput))
+		if (!havokWorld->Pick(pickData))
 		{
 			return false;
 		}

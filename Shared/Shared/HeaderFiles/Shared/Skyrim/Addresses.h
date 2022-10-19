@@ -87,6 +87,15 @@ namespace Skyrim::Addresses
 		inline const std::uintptr_t GetDualCastingEffectiveness{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(25931, 26518)) };
 	}
 
+	namespace BGSCreatedObjectManager
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1EBEAE8, 1.6.318.0: SkyrimSE.exe + 0x1F592E8</summary>
+		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(514172, 400320)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x59F6E0, 1.6.318.0: SkyrimSE.exe + 0x5C0B20</summary>
+		inline const std::uintptr_t DecrementReference{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(35269, 36171)) };
+	}
+
 	namespace BGSDecalManager
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1EC4320, 1.6.318.0: SkyrimSE.exe + 0x1F5EA88</summary>
@@ -308,8 +317,26 @@ namespace Skyrim::Addresses
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0xF9980, 1.6.318.0: SkyrimSE.exe + 0x103B70</summary>
 		inline const std::uintptr_t InitializeCollection{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(10962, 11040)) };
 
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE5660, 1.6.318.0: SkyrimSE.exe + 0x1E79740</summary>
+		inline const std::uintptr_t No{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(506337, 376288)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE5630, 1.6.318.0: SkyrimSE.exe + 0x1E79710</summary>
+		inline const std::uintptr_t Okay{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(506333, 376282)) };
+
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE34A0, 1.6.318.0: SkyrimSE.exe + 0x1E77580</summary>
 		inline const std::uintptr_t PlayerMaximumResistance{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(505721, 375300)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE5BA0, 1.6.318.0: SkyrimSE.exe + 0x1E79C80</summary>
+		inline const std::uintptr_t PoisonAlreadyPoisonedMessage{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(506414, 376456)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE5BB8, 1.6.318.0: SkyrimSE.exe + 0x1E79C98</summary>
+		inline const std::uintptr_t PoisonConfirmMessage{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(506416, 376459)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE5B88, 1.6.318.0: SkyrimSE.exe + 0x1E79C68</summary>
+		inline const std::uintptr_t PoisonNoWeaponMessage{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(506412, 376453)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE8F78, 1.6.318.0: SkyrimSE.exe + 0x1E7D058</summary>
+		inline const std::uintptr_t PoisonUnableToPoison{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(507261, 378091)) };
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE18C8, 1.6.318.0: SkyrimSE.exe + 0x1E759A8</summary>
 		inline const std::uintptr_t PowerAttackStaminaPenalty{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(505283, 374565)) };
@@ -328,6 +355,9 @@ namespace Skyrim::Addresses
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE1598, 1.6.318.0: SkyrimSE.exe + 0x1E75678</summary>
 		inline const std::uintptr_t StaminaPowerBashBase{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(505219, 374463)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE5648, 1.6.318.0: SkyrimSE.exe + 0x1E79728</summary>
+		inline const std::uintptr_t Yes{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(506335, 376285)) };
 	}
 
 	namespace GFxValue
@@ -618,12 +648,6 @@ namespace Skyrim::Addresses
 		inline const std::uintptr_t CreateObject{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(69243, 70607)) };
 	}
 
-	namespace PersistentFormManager
-	{
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1EBEAE8, 1.6.318.0: SkyrimSE.exe + 0x1F592E8</summary>
-		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(514172, 400320)) };
-	}
-
 	namespace PlayerCharacter
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1664030, 1.6.318.0: SkyrimSE.exe + 0x175A500</summary>
@@ -634,6 +658,12 @@ namespace Skyrim::Addresses
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x16635E0, 1.6.318.0: SkyrimSE.exe + 0x1759AB0</summary>
 		inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(261916, 208040)) };
+	}
+
+	namespace PoisonedWeapon
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x6C7F40, 1.6.318.0: SkyrimSE.exe + 0x6F0190</summary>
+		inline const std::uintptr_t GetEventSource{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(40058, 41069)) };
 	}
 
 	namespace Precipitation
@@ -782,8 +812,14 @@ namespace Skyrim::Addresses
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0xEBE150, 1.6.318.0: SkyrimSE.exe + 0xF044A0</summary>
 		inline const std::uintptr_t IsMenuOpen{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(79937, 82074)) };
 
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x8AB180, 1.6.318.0: SkyrimSE.exe + 0x8DA780</summary>
+		inline const std::uintptr_t MessageBox{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(51420, 52269)) };
+
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x8DA3D0, 1.6.318.0: SkyrimSE.exe + 0x909870</summary>
 		inline const std::uintptr_t Notification{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(52050, 52933)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x8DA860, 1.6.318.0: SkyrimSE.exe + 0x909EE0</summary>
+		inline const std::uintptr_t PlaySound{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(52054, 52939)) };
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1EBEB20, 1.6.318.0: SkyrimSE.exe + 0x1F59320</summary>
 		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(514178, 400327)) };
@@ -791,6 +827,9 @@ namespace Skyrim::Addresses
 
 	namespace UIMessageQueue
 	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x8D5710, 1.6.318.0: SkyrimSE.exe + 0x905CD0</summary>
+		inline const std::uintptr_t AddInventoryUpdateMessage{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(51911, 52849)) };
+
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1652D0, 1.6.318.0: SkyrimSE.exe + 0x16ECD0</summary>
 		inline const std::uintptr_t AddMessage{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(13530, 13631)) };
 

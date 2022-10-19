@@ -3,8 +3,6 @@
 #include "Patches/PausedGameHitEffects.h"
 
 #include "Addresses.h"
-#include "Patterns.h"
-#include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -13,13 +11,11 @@ namespace ScrambledBugs::Patches
 {
 	void PausedGameHitEffects::Patch(bool& pausedGameHitEffects)
 	{
-		if (!Patterns::Patches::PausedGameHitEffects::ShouldApplyHitEffects())
-		{
-			pausedGameHitEffects = false;
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Patches::PausedGameHitEffects::AllowHitEffects, reinterpret_cast<std::uintptr_t>(std::addressof(PausedGameHitEffects::AllowHitEffects)));
+	}
 
-			return;
-		}
-
-		Utility::Memory::SafeWrite(Addresses::Patches::PausedGameHitEffects::ShouldApplyHitEffects, Utility::Assembly::NoOperation6);
+	bool PausedGameHitEffects::AllowHitEffects(Skyrim::ActiveEffect* activeEffect)
+	{
+		return true;
 	}
 }

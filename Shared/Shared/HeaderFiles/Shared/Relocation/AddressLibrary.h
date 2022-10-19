@@ -83,8 +83,10 @@ namespace Relocation
 		void           Read(std::ifstream& inputFileStream, const Header& header);
 
 	private:
-		FileMapping        fileMapping_;
-		FileMapping::View  fileMappingView_;
+		FileMapping       fileMapping_;
+		FileMapping::View fileMappingView_;
+
+	public:
 		std::span<Element> span_;
 	};
 }

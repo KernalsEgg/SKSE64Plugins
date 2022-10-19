@@ -10,7 +10,7 @@ namespace ScrambledBugs::Patterns
 	{
 		namespace EnchantmentCost
 		{
-			bool NotEqual();
+			bool NotEqualTo();
 		}
 
 		namespace HarvestedFlags
@@ -21,7 +21,7 @@ namespace ScrambledBugs::Patterns
 		namespace ImpactEffectCrash
 		{
 			bool DecalApplier();
-			bool MainUpdate();
+			bool UpdateDecals();
 		}
 
 		namespace KillCamera
@@ -31,7 +31,7 @@ namespace ScrambledBugs::Patterns
 
 		namespace TerrainDecals
 		{
-			bool UnloadCellMopp();
+			bool FreeCellCollision();
 		}
 
 		namespace TrainingMenu
@@ -44,17 +44,17 @@ namespace ScrambledBugs::Patterns
 	{
 		namespace AlreadyCaughtPickpocketing
 		{
-			bool AttackOnSight();
+			bool IsAngryWithPlayer();
 			bool HasBeenPickpocketed();
 		}
 
 		namespace AttachHitEffectArt
 		{
-			bool AddNoHitEffectArtFlag();
 			bool GetTargetActor();
 			bool IsPerspectiveChange();
-			bool IsPlayerAttach();
+			bool IsPlayerReattach();
 			bool IsPlayerUpdatePosition();
+			bool SetNoHitEffectArtFlag();
 		}
 
 		namespace CloakHitEffects
@@ -62,7 +62,7 @@ namespace ScrambledBugs::Patterns
 			bool IsNotCostliestEffect();
 		}
 
-		namespace EquipBestAmmo
+		namespace EquipBestAmmunition
 		{
 			bool CompareDamageContainer();
 			bool CompareDamageInventoryChanges();
@@ -74,11 +74,6 @@ namespace ScrambledBugs::Patterns
 		namespace LockpickingExperience
 		{
 			bool HasNotBeenUnlocked();
-		}
-
-		namespace PausedGameHitEffects
-		{
-			bool ShouldApplyHitEffects();
 		}
 
 		namespace PerkEntryPoints

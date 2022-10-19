@@ -48,6 +48,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActiveEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Actor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorEquipManager.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorRelativeToPlayer.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AIProcess.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorState.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValue.h" />
@@ -76,6 +77,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSCollisionLayer.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSColorForm.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSConstructibleObject.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSCreatedObjectManager.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDecalGroup.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDecalManager.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDefaultObjectManager.h" />
@@ -138,7 +140,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkShapeCollection.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorld.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorldObject.h" />
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkWorldRayCastInput.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkPickData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedAnim.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedObjectSlot.h" />
@@ -183,6 +185,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSVolumetricLightingRenderData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\ButtonEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CameraState.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CastPowerItem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Character.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CharEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Clouds.h" />
@@ -215,6 +218,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraHealth.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraLevCreaModifier.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraOwnership.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraPoison.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraSoul.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWorn.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraWornLeft.h" />
@@ -359,6 +363,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InventoryChanges.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\InventoryEntryData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\IPostAnimationChannelUpdateFunctor.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ItemCard.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ItemList.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\K\KinectEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\L\LevelUpMenu.h" />
@@ -407,11 +412,10 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTList.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiTransform.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PerkEntryVisitor.h" />
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PersistentFormManager.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerCamera.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerCharacter.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PlayerInputHandler.h" />
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PowerCooldown.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\P\PoisonedWeapon.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\Precipitation.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\ProcessLists.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\P\Projectile.h" />
@@ -558,6 +562,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorValueOwner.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\AttachTechniqueInput.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BaseExtraList.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSCreatedObjectManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDecalManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDefaultObjectManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSFootstepManager.cpp" />
@@ -644,8 +649,8 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiRefObject.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiStringExtraData.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiStringsExtraData.cpp" />
-    <ClCompile Include="SourceFiles\Shared\Skyrim\P\PersistentFormManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\PlayerCharacter.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\P\PoisonedWeapon.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\Precipitation.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\R\ReferenceEffect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScrapHeap.cpp" />

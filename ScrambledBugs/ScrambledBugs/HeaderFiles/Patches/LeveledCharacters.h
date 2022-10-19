@@ -3,6 +3,7 @@
 #include "PrecompiledHeader.h"
 
 #include "Shared/Skyrim/E/ExtraLevCreaModifier.h"
+#include "Shared/Skyrim/T/TESLeveledList.h"
 
 
 
@@ -14,6 +15,6 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& leveledCharacters);
 
 	private:
-		static std::uint32_t GetLeveledCreatureModifier(Skyrim::ExtraLevCreaModifier* extraLeveledCreatureModifier);
+		static Skyrim::TESLeveledList::AllBelowForce GetAllBelowForce(Skyrim::ExtraLevCreaModifier* extraLeveledCreatureModifier);
 	};
 }

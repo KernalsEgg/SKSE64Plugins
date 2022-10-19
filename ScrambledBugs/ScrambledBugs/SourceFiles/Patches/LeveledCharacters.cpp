@@ -11,10 +11,10 @@ namespace ScrambledBugs::Patches
 {
 	void LeveledCharacters::Patch(bool& leveledCharacters)
 	{
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Patches::LeveledCharacters::GetLeveledCreatureModifier, reinterpret_cast<std::uintptr_t>(std::addressof(LeveledCharacters::GetLeveledCreatureModifier)));
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Patches::LeveledCharacters::GetAllBelowForce, reinterpret_cast<std::uintptr_t>(std::addressof(LeveledCharacters::GetAllBelowForce)));
 	}
 
-	std::uint32_t LeveledCharacters::GetLeveledCreatureModifier(Skyrim::ExtraLevCreaModifier* extraLeveledCreatureModifier)
+	Skyrim::TESLeveledList::AllBelowForce LeveledCharacters::GetAllBelowForce(Skyrim::ExtraLevCreaModifier* extraLeveledCreatureModifier)
 	{
 		// extraLeveledCreatureModifier != nullptr
 
@@ -22,15 +22,15 @@ namespace ScrambledBugs::Patches
 		{
 			case Skyrim::LeveledCreatureModifier::kEasy:
 			{
-				return 1;
+				return Skyrim::TESLeveledList::AllBelowForce::kLessThan;
 			}
 			case Skyrim::LeveledCreatureModifier::kNone:
 			{
-				return 0;
+				return Skyrim::TESLeveledList::AllBelowForce::kEqualTo;
 			}
 			default:
 			{
-				return -1;
+				return Skyrim::TESLeveledList::AllBelowForce::kNone;
 			}
 		}
 	}

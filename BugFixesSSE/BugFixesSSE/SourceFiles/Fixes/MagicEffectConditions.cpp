@@ -34,7 +34,7 @@ namespace BugFixesSSE::Fixes
 			return;
 		}
 
-		if ((activeEffect->activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kHasConditions) || activeEffect->displacementSpell) && activeEffect->magicTarget && activeEffect->magicTarget->GetMagicTargetOwner())
+		if ((activeEffect->activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kHasConditions) || activeEffect->displacementSpell) && activeEffect->magicTarget && activeEffect->magicTarget->GetMagicTargetReference())
 		{
 			if (!forceUpdate)
 			{
@@ -57,12 +57,12 @@ namespace BugFixesSSE::Fixes
 
 			reinterpret_cast<float&>(activeEffect->padding8C) = elapsedTimeDelta;
 
-			auto* subject = activeEffect->magicTarget->GetMagicTargetOwner();
+			auto* subject = activeEffect->magicTarget->GetMagicTargetReference();
 			auto* target  = activeEffect->caster.get().get();
 
 			activeEffect->conditionStatus = activeEffect->effect->conditions.IsTrue(subject, target) && !activeEffect->ShouldDisplace() ?
-                                                Skyrim::ActiveEffect::ConditionStatus::kTrue :
-                                                Skyrim::ActiveEffect::ConditionStatus::kFalse;
+			                                    Skyrim::ActiveEffect::ConditionStatus::kTrue :
+			                                    Skyrim::ActiveEffect::ConditionStatus::kFalse;
 		}
 		else
 		{

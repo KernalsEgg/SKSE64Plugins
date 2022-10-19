@@ -13,7 +13,7 @@ namespace ScrambledBugs::Fixes
 	void ImpactEffectCrash::Fix(bool& impactEffectCrash)
 	{
 		if (!Patterns::Fixes::ImpactEffectCrash::DecalApplier() ||
-			!Patterns::Fixes::ImpactEffectCrash::MainUpdate())
+			!Patterns::Fixes::ImpactEffectCrash::UpdateDecals())
 		{
 			impactEffectCrash = false;
 
@@ -23,8 +23,8 @@ namespace ScrambledBugs::Fixes
 		ImpactEffectCrash::decalApplier_ = reinterpret_cast<decltype(ImpactEffectCrash::decalApplier_)>(
 			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::ImpactEffectCrash::DecalApplier, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::DecalApplier))));
 
-		ImpactEffectCrash::mainUpdate_ = reinterpret_cast<decltype(ImpactEffectCrash::mainUpdate_)>(
-			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::ImpactEffectCrash::MainUpdate, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::MainUpdate))));
+		ImpactEffectCrash::updateDecals_ = reinterpret_cast<decltype(ImpactEffectCrash::updateDecals_)>(
+			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::ImpactEffectCrash::UpdateDecals, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::UpdateDecals))));
 	}
 
 	bool ImpactEffectCrash::DecalApplier(Skyrim::BSTempEffectSimpleDecal* tempEffectSimpleDecal)
@@ -41,11 +41,11 @@ namespace ScrambledBugs::Fixes
 		}
 	}
 
-	bool ImpactEffectCrash::MainUpdate(Skyrim::BSTempEffectSimpleDecal* tempEffectSimpleDecal)
+	bool ImpactEffectCrash::UpdateDecals(Skyrim::BSTempEffectSimpleDecal* tempEffectSimpleDecal)
 	{
 		if (tempEffectSimpleDecal->textureSet1)
 		{
-			return ImpactEffectCrash::mainUpdate_(tempEffectSimpleDecal);
+			return ImpactEffectCrash::updateDecals_(tempEffectSimpleDecal);
 		}
 		else
 		{
@@ -56,5 +56,5 @@ namespace ScrambledBugs::Fixes
 	}
 
 	decltype(&ImpactEffectCrash::DecalApplier) ImpactEffectCrash::decalApplier_;
-	decltype(&ImpactEffectCrash::MainUpdate)   ImpactEffectCrash::mainUpdate_;
+	decltype(&ImpactEffectCrash::UpdateDecals) ImpactEffectCrash::updateDecals_;
 }

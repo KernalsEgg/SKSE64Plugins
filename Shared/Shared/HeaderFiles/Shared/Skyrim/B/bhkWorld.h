@@ -3,12 +3,13 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/bhkSerializable.h"
-#include "Shared/Skyrim/B/bhkWorldRayCastInput.h"
 
 
 
 namespace Skyrim
 {
+	struct bhkPickData;
+
 	class bhkWorld :
 		public bhkSerializable // 0
 	{
@@ -28,11 +29,11 @@ namespace Skyrim
 		virtual void          Unknown2F(bhkSerializable*) override; // 2F
 
 		// Add
-		virtual void Unknown32(bhkWorld*);                 // 32
-		virtual bool CastRay(bhkWorldRayCastInput& input); // 33
-		virtual void Unknown34(bhkWorld*);                 // 34
-		virtual void Unknown35(bhkWorld*);                 // 35
-		virtual void Unknown36(bhkWorld*);                 // 36
+		virtual void Unknown32(bhkWorld*);        // 32
+		virtual bool Pick(bhkPickData& pickData); // 33
+		virtual void Unknown34(bhkWorld*);        // 34
+		virtual void Unknown35(bhkWorld*);        // 35
+		virtual void Unknown36(bhkWorld*);        // 36
 
 		// Non-member functions
 		static float GetScale();

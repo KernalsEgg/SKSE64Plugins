@@ -32,16 +32,16 @@ namespace Skyrim
 		};
 		static_assert(sizeof(PresenceBitField) == 0x17);
 
-		BaseExtraList()                     = default;
-		BaseExtraList(const BaseExtraList&) = delete;
-		BaseExtraList(BaseExtraList&&)      = delete;
-
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 		// Add
 		virtual ~BaseExtraList(); // 0
 #else
 		~BaseExtraList();
 #endif
+
+		BaseExtraList()                     = default;
+		BaseExtraList(const BaseExtraList&) = delete;
+		BaseExtraList(BaseExtraList&&)      = delete;
 
 		BaseExtraList& operator=(const BaseExtraList&) = delete;
 		BaseExtraList& operator=(BaseExtraList&&)      = delete;

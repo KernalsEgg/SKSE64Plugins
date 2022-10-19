@@ -6,9 +6,9 @@
 
 namespace ScrambledBugs::Patches
 {
-	class EquipBestAmmo
+	class EquipBestAmmunition
 	{
 	public:
-		static void Patch(bool& equipBestAmmo);
+		static void Patch(bool& equipBestAmmunition);
 	};
 }

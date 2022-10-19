@@ -2,7 +2,7 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BSPointerHandle.h"
+#include "Shared/Skyrim/A/ActorRelativeToPlayer.h"
 
 
 
@@ -18,16 +18,6 @@ namespace ActorLimitFix::Fixes
 		static void Fix(bool& replaceStaticArray);
 
 	private:
-		struct ActorDistance
-		{
-		public:
-			Skyrim::ActorHandle actorHandle{};     // 0
-			float               distanceSquared{}; // 4
-		};
-		static_assert(offsetof(ActorDistance, actorHandle) == 0x0);
-		static_assert(offsetof(ActorDistance, distanceSquared) == 0x4);
-		static_assert(sizeof(ActorDistance) == 0x8);
-
-		static ActorDistance actorDistanceArray_[0x400]; // 2 * 0x200
+		static Skyrim::ActorRelativeToPlayer actorRelativeToPlayerArray_[0x400]; // 2 * 0x200
 	};
 }

@@ -15,12 +15,51 @@ namespace ScrambledBugs::Fixes
 {
 	void MagicEffectFlags::Fix(bool& magicEffectFlags)
 	{
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::MagicEffectFlags::ResetElapsedTime, reinterpret_cast<std::uintptr_t>(std::addressof(MagicEffectFlags::ResetElapsedTime)));
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::MagicEffectFlags::SetEffectiveness, reinterpret_cast<std::uintptr_t>(std::addressof(MagicEffectFlags::SetEffectiveness)));
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::MagicEffectFlags::Adjust, reinterpret_cast<std::uintptr_t>(std::addressof(MagicEffectFlags::Adjust)));
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::MagicEffectFlags::Restart, reinterpret_cast<std::uintptr_t>(std::addressof(MagicEffectFlags::Restart)));
 	}
 
-	void MagicEffectFlags::ResetElapsedTime(Skyrim::ActiveEffect* activeEffect)
+	void MagicEffectFlags::Adjust(Skyrim::ActiveEffect* activeEffect, float effectiveness, bool requiresHostility)
 	{
+		// activeEffect != nullptr
+
+		auto* magicItem = activeEffect->magicItem;
+
+		if (!magicItem->ShouldAdjust())
+		{
+			return;
+		}
+
+		if (requiresHostility && !activeEffect->effect->IsHostile())
+		{
+			return;
+		}
+
+		if (effectiveness == 1.0F || effectiveness < 0.0F)
+		{
+			return;
+		}
+
+		auto effectSettingFlags = activeEffect->GetBaseEffect()->effectSettingFlags;
+
+		if (effectSettingFlags.none(Skyrim::EffectSetting::Flags::kNoDuration) && effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsDuration))
+		{
+			activeEffect->duration *= effectiveness;
+		}
+
+		if (effectSettingFlags.none(Skyrim::EffectSetting::Flags::kNoMagnitude) && effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsMagnitude))
+		{
+			auto oldMagnitude = activeEffect->magnitude;
+			auto newMagnitude = effectiveness * oldMagnitude;
+
+			activeEffect->magnitude = oldMagnitude >= 0.0F ? std::max(newMagnitude, 1.0F) : std::min(newMagnitude, -1.0F);
+		}
+	}
+
+	void MagicEffectFlags::Restart(Skyrim::ActiveEffect* activeEffect)
+	{
+		// activeEffect != nullptr
+
 		activeEffect->elapsedTime = 0.0F;
 
 		auto* baseEffect = activeEffect->GetBaseEffect();
@@ -55,47 +94,9 @@ namespace ScrambledBugs::Fixes
 						effectiveness = 1.0F / effectiveness;
 					}
 
-					if (magicItem->ShouldSetEffectiveness())
-					{
-						MagicEffectFlags::SetEffectivenessImplementation(activeEffect, effectiveness);
-					}
+					MagicEffectFlags::Adjust(activeEffect, effectiveness, false);
 				}
 			}
-		}
-	}
-
-	void MagicEffectFlags::SetEffectiveness(Skyrim::ActiveEffect* activeEffect, float effectiveness, bool requiresHostility)
-	{
-		auto* magicItem = activeEffect->magicItem;
-
-		if (magicItem->ShouldSetEffectiveness() && (!requiresHostility || activeEffect->effect->IsHostile()))
-		{
-			MagicEffectFlags::SetEffectivenessImplementation(activeEffect, effectiveness);
-		}
-	}
-
-	void MagicEffectFlags::SetEffectivenessImplementation(Skyrim::ActiveEffect* activeEffect, float effectiveness)
-	{
-		// activeEffect != nullptr
-
-		if (effectiveness == 1.0F || effectiveness < 0.0F)
-		{
-			return;
-		}
-
-		auto effectSettingFlags = activeEffect->GetBaseEffect()->effectSettingFlags;
-
-		if (effectSettingFlags.none(Skyrim::EffectSetting::Flags::kNoDuration) && effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsDuration))
-		{
-			activeEffect->duration *= effectiveness;
-		}
-
-		if (effectSettingFlags.none(Skyrim::EffectSetting::Flags::kNoMagnitude) && effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsMagnitude))
-		{
-			auto oldMagnitude = activeEffect->magnitude;
-			auto newMagnitude = effectiveness * oldMagnitude;
-
-			activeEffect->magnitude = oldMagnitude >= 0.0F ? std::max(newMagnitude, 1.0F) : std::min(newMagnitude, -1.0F);
 		}
 	}
 }

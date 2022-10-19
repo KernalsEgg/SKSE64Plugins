@@ -50,9 +50,51 @@ namespace Skyrim
 		return singleton;
 	}
 
+	SettingT<GameSettingCollection>* GameSettingCollection::No()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::No) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::Okay()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::Okay) };
+
+		return singleton;
+	}
+
 	SettingT<GameSettingCollection>* GameSettingCollection::PlayerMaximumResistance()
 	{
 		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PlayerMaximumResistance) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::PoisonAlreadyPoisonedMessage()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PoisonAlreadyPoisonedMessage) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::PoisonConfirmMessage()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PoisonConfirmMessage) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::PoisonNoWeaponMessage()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PoisonNoWeaponMessage) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::PoisonUnableToPoison()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PoisonUnableToPoison) };
 
 		return singleton;
 	}
@@ -88,6 +130,13 @@ namespace Skyrim
 	SettingT<GameSettingCollection>* GameSettingCollection::StaminaPowerBashBase()
 	{
 		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::StaminaPowerBashBase) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::Yes()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::Yes) };
 
 		return singleton;
 	}
