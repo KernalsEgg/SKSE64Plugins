@@ -9,10 +9,10 @@
 
 namespace Skyrim
 {
-	std::uint32_t NiNode::AddDecal(const BGSDecalManager::AdditionData& applicationData)
+	std::uint32_t NiNode::AddDecal(const BGSDecalManager::AdditionData& additionData)
 	{
 		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&NiNode::AddDecal)>::type>(Addresses::NiNode::AddDecal) };
 
-		return function(this, applicationData);
+		return function(this, additionData);
 	}
 }

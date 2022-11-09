@@ -28,7 +28,7 @@ namespace ScrambledBugs::Fixes
 
 		if (actor == player)
 		{
-			player->ResetInsufficientChargeNotification(leftHand);
+			player->ResetInsufficientWeaponChargeMessage(leftHand);
 		}
 
 		auto* enchantment = item->GetEnchantment(extraDataList);

@@ -12,8 +12,6 @@
 
 namespace Skyrim
 {
-	class TESForm;
-
 	enum class DefaultObjects : std::uint32_t
 	{
 		kLeftHandEquip  = 19,
@@ -28,6 +26,7 @@ namespace Skyrim
 		kTotal            = 364
 #endif
 	};
+	static_assert(sizeof(DefaultObjects) == 0x4);
 
 	class BGSDefaultObjectManager :
 		public TESForm,                                      // 0

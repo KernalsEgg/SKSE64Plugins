@@ -4,7 +4,6 @@
 
 #include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/C/ConcreteFormFactory.h"
-#include "Shared/Skyrim/C/Console.h"
 #include "Shared/Skyrim/S/Script.h"
 #include "Shared/Skyrim/T/TESObjectREFR.h"
 

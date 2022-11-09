@@ -6,15 +6,18 @@
 
 
 
-namespace Skyrim::BSResource
+namespace Skyrim
 {
-	struct ID :
-		public FileID // 0
+	namespace BSResource
 	{
-	public:
-		// Member variables
-		std::uint32_t directory; // 8
-	};
-	static_assert(offsetof(ID, directory) == 0x8);
-	static_assert(sizeof(ID) == 0xC);
+		struct ID :
+			public FileID // 0
+		{
+		public:
+			// Member variables
+			std::uint32_t directory; // 8
+		};
+		static_assert(offsetof(ID, directory) == 0x8);
+		static_assert(sizeof(ID) == 0xC);
+	}
 }

@@ -4,13 +4,15 @@
 
 #include "Shared/Skyrim/A/AIProcess.h"
 #include "Shared/Skyrim/Addresses.h"
+#include "Shared/Skyrim/B/BSTSmartPointer.h"
 #include "Shared/Skyrim/B/BipedAnim.h"
 #include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/I/InventoryEntryData.h"
-#include "Shared/Skyrim/T/TESAmmo.h"
+#include "Shared/Skyrim/R/RefrInteraction.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
 #include "Shared/Skyrim/T/TESObjectARMO.h"
 #include "Shared/Skyrim/T/TESObjectWEAP.h"
+#include "Shared/Skyrim/T/TESRace.h"
 #include "Shared/Utility/TypeTraits.h"
 
 
@@ -22,6 +24,20 @@ namespace Skyrim
 		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::AddSpell)>::type>(Addresses::Actor::AddSpell) };
 
 		return function(this, spell);
+	}
+
+	float Actor::AdjustHealthDamageToDifficulty(float damage, float onlyReduceDamage) const
+	{
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::AdjustHealthDamageToDifficulty)>::type>(Addresses::Actor::AdjustHealthDamageToDifficulty) };
+
+		return function(this, damage, onlyReduceDamage);
+	}
+
+	bool Actor::CanBeKilledBy(Actor* attacker) const
+	{
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::CanBeKilledBy)>::type>(Addresses::Actor::CanBeKilledBy) };
+
+		return function(this, attacker);
 	}
 
 	float Actor::GetActorValueModifier(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue) const
@@ -43,6 +59,13 @@ namespace Skyrim
 		auto* currentProcess = this->currentProcess;
 
 		return currentProcess ? currentProcess->GetCharacterController() : nullptr;
+	}
+
+	ActorHandle Actor::GetCommandingActor() const
+	{
+		auto* currentProcess = this->currentProcess;
+
+		return currentProcess ? currentProcess->GetCommandingActor() : ActorHandle{};
 	}
 
 	bool Actor::GetControllingActor(NiPointer<Actor>& controllingActor)
@@ -143,11 +166,44 @@ namespace Skyrim
 		return currentProcess ? currentProcess->GetMaximumWardPower() : -1.0F;
 	}
 
-	bool Actor::GetMount(NiPointer<Actor>& mount)
+	bool Actor::GetMount(NiPointer<Actor>& mount) const
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::GetMount)>::type>(Addresses::Actor::GetMount) };
+		if (this->booleanFlags.none(Actor::BooleanFlags::kMount))
+		{
+			BSTSmartPointer<RefrInteraction> referenceInteraction;
 
-		return function(this, mount);
+			if (this->GetInteraction(referenceInteraction) && referenceInteraction->GetTargetActor(mount))
+			{
+				if (mount->booleanFlags.all(Actor::BooleanFlags::kMount))
+				{
+					return static_cast<bool>(mount);
+				}
+			}
+		}
+
+		mount.reset();
+
+		return static_cast<bool>(mount);
+	}
+
+	bool Actor::GetRider(NiPointer<Actor>& rider) const
+	{
+		if (this->booleanFlags.all(Actor::BooleanFlags::kMount))
+		{
+			BSTSmartPointer<RefrInteraction> referenceInteraction;
+
+			if (this->GetInteraction(referenceInteraction) && referenceInteraction->GetActor(rider))
+			{
+				if (rider->booleanFlags.none(Actor::BooleanFlags::kMount))
+				{
+					return static_cast<bool>(rider);
+				}
+			}
+		}
+
+		rider.reset();
+
+		return static_cast<bool>(rider);
 	}
 
 	SoulLevel Actor::GetSoulLevel() const
@@ -169,6 +225,13 @@ namespace Skyrim
 		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::GetWeaponDamage)>::type>(Addresses::Actor::GetWeaponDamage) };
 
 		return function(this, inventoryEntryData);
+	}
+
+	void Actor::HandleActorValueModified(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float oldValue, float deltaValue, Actor* source)
+	{
+		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::HandleActorValueModified)>::type>(Addresses::Actor::HandleActorValueModified) };
+
+		function(this, actorValue, oldValue, deltaValue, source);
 	}
 
 	Actor::LineOfSightLocation Actor::IsActorInLineOfSight(Actor* target, float viewCone) const
@@ -204,14 +267,16 @@ namespace Skyrim
 		return cachedValues->flags.all(CachedValues::Flags::kNPC) ? cachedValues->booleanValues.all(CachedValues::BooleanValues::kNPC) : this->UpdateIsNPC();
 	}
 
+	bool Actor::IsOnFlyingMount() const
+	{
+		NiPointer<Actor> mount;
+
+		return this->GetMount(mount) && mount->race->raceFlags.all(TESRace::Flags::kFlies);
+	}
+
 	bool Actor::IsOnMount() const
 	{
-		if (this->booleanFlags.all(BooleanFlags::kIsMount))
-		{
-			return false;
-		}
-
-		return this->extraDataList.HasExtraData(ExtraDataType::kInteraction);
+		return this->booleanFlags.none(BooleanFlags::kMount) && this->extraDataList.HasExtraData(ExtraDataType::kInteraction);
 	}
 
 	bool Actor::IsPlayerTeammate() const
@@ -238,11 +303,11 @@ namespace Skyrim
 		return this->ActorState::IsSneaking() && !this->ActorState::IsSwimming() && !this->IsOnMount();
 	}
 
-	void Actor::ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float oldValue, float deltaValue, Actor* source)
+	void Actor::ModifyActorValue(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float value, Actor* source)
 	{
 		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Actor::ModifyActorValue)>::type>(Addresses::Actor::ModifyActorValue) };
 
-		function(this, actorValue, oldValue, deltaValue, source);
+		function(this, actorValueModifier, actorValue, value, source);
 	}
 
 	void Actor::RemoveActorValueModifiers(Utility::Enumeration<ActorValue, std::uint32_t> actorValue)

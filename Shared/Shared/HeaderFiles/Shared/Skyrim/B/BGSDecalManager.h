@@ -57,7 +57,7 @@ namespace Skyrim
 			float                 placementRadius{ 16.0F };                                         // A0
 			NiColor               color{ 1.0F, 1.0F, 1.0F };                                        // A4
 			std::uint32_t         unknownB0{ 0 };                                                   // B0
-			std::int8_t           subtextureIndex{ 0 };                                             // B4
+			std::int8_t           subTextureIndex{ 0 };                                             // B4
 			bool                  permanent{ false };                                               // B5
 			std::uint8_t          unknownB6{ 1 };                                                   // B6
 			bool                  parallax{ false };                                                // B7
@@ -90,7 +90,7 @@ namespace Skyrim
 		static_assert(offsetof(CreationData, angleThreshold) == 0x9C);
 		static_assert(offsetof(CreationData, placementRadius) == 0xA0);
 		static_assert(offsetof(CreationData, color) == 0xA4);
-		static_assert(offsetof(CreationData, subtextureIndex) == 0xB4);
+		static_assert(offsetof(CreationData, subTextureIndex) == 0xB4);
 		static_assert(offsetof(CreationData, permanent) == 0xB5);
 		static_assert(offsetof(CreationData, parallax) == 0xB7);
 		static_assert(offsetof(CreationData, alphaTesting) == 0xB8);

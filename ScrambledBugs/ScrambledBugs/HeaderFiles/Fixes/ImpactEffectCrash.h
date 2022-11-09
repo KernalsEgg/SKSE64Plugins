@@ -14,8 +14,8 @@ namespace ScrambledBugs::Fixes
 		static void Fix(bool& impactEffectCrash);
 
 	private:
-		static bool DecalApplier(Skyrim::BSTempEffectSimpleDecal* tempEffectSimpleDecal);
-		static bool UpdateDecals(Skyrim::BSTempEffectSimpleDecal* tempEffectSimpleDecal);
+		static bool DecalApplier(Skyrim::BSTempEffectSimpleDecal* temporaryEffectSimpleDecal);
+		static bool UpdateDecals(Skyrim::BSTempEffectSimpleDecal* temporaryEffectSimpleDecal);
 
 		static decltype(&ImpactEffectCrash::DecalApplier) decalApplier_;
 		static decltype(&ImpactEffectCrash::UpdateDecals) updateDecals_;

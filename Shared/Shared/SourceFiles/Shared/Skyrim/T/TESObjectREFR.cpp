@@ -75,6 +75,11 @@ namespace Skyrim
 		}
 	}
 
+	bool TESObjectREFR::GetInteraction(BSTSmartPointer<RefrInteraction>& referenceInteraction) const
+	{
+		return this->extraDataList.GetInteraction(referenceInteraction);
+	}
+
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
 		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::GetInventoryChanges)>::type>(Addresses::TESObjectREFR::GetInventoryChanges) };

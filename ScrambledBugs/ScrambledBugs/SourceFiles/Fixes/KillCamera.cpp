@@ -22,7 +22,7 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Fixes::KillCamera::HasWeapon + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NoOperation5);
+		Utility::Memory::SafeWrite(Addresses::Fixes::KillCamera::HasWeapon + sizeof(Utility::Assembly::RelativeCall5), Utility::Assembly::NO_OPERATION_5);
 		Utility::Trampoline::GetSingleton().RelativeCall5Branch(
 			Addresses::Fixes::KillCamera::HasWeapon,
 			0x4Cui8, 0x8Bui8, 0x86ui8, static_cast<std::int32_t>(offsetof(Skyrim::Projectile, weaponSource)),                                                             // mov r8, [rsi+1B8]

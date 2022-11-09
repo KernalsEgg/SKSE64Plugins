@@ -40,7 +40,7 @@ namespace Skyrim
 		virtual void                         Unknown1(MagicTarget*);                                                      // 1
 		virtual TESObjectREFR*               GetMagicTargetReference();                                                   // 2
 		virtual bool                         IsMagicTargetActor() const;                                                  // 3
-		virtual void                         Unknown4(MagicTarget*);                                                      // 4
+		virtual bool                         IsInvulnerable() const;                                                      // 4
 		virtual void                         Unknown5(MagicTarget*);                                                      // 5
 		virtual void                         Unknown6(MagicTarget*) = 0;                                                  // 6
 		virtual BSSimpleList<ActiveEffect*>* GetActiveEffects()     = 0;                                                  // 7

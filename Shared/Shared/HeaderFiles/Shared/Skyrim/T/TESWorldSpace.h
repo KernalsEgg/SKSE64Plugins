@@ -56,7 +56,7 @@ namespace Skyrim
 	static_assert(offsetof(CellID, y) == 0x2);
 	static_assert(sizeof(CellID) == 0x4);
 
-	class BGSLargeRefData
+	class BGSLargeReferenceData
 	{
 	public:
 		// Member variables
@@ -64,10 +64,10 @@ namespace Skyrim
 		BSTHashMap<FormID, CellID>  cells;                 // 30
 		BSTHashMap<CellID, FormID*> largeReferencesToLoad; // 60
 	};
-	static_assert(offsetof(BGSLargeRefData, largeReferences) == 0x0);
-	static_assert(offsetof(BGSLargeRefData, cells) == 0x30);
-	static_assert(offsetof(BGSLargeRefData, largeReferencesToLoad) == 0x60);
-	static_assert(sizeof(BGSLargeRefData) == 0x90);
+	static_assert(offsetof(BGSLargeReferenceData, largeReferences) == 0x0);
+	static_assert(offsetof(BGSLargeReferenceData, cells) == 0x30);
+	static_assert(offsetof(BGSLargeReferenceData, largeReferencesToLoad) == 0x60);
+	static_assert(sizeof(BGSLargeReferenceData) == 0x90);
 
 	class TESWorldSpace :
 		public TESForm,     // 0
@@ -287,7 +287,7 @@ namespace Skyrim
 		BGSLocation*                                                  location;                   // 228
 		TESTexture                                                    canopyShadow;               // 230
 		TESTexture                                                    waterEnvironmentMap;        // 240
-		BGSLargeRefData                                               largeRefData;               // 250
+		BGSLargeReferenceData                                         largeReferenceData;         // 250
 		std::uint64_t                                                 unknown2E0;                 // 2E0
 		std::uint64_t                                                 unknown2E8;                 // 2E8
 		std::uint64_t                                                 unknown2F0;                 // 2F0
@@ -331,6 +331,6 @@ namespace Skyrim
 	static_assert(offsetof(TESWorldSpace, location) == 0x228);
 	static_assert(offsetof(TESWorldSpace, canopyShadow) == 0x230);
 	static_assert(offsetof(TESWorldSpace, waterEnvironmentMap) == 0x240);
-	static_assert(offsetof(TESWorldSpace, largeRefData) == 0x250);
+	static_assert(offsetof(TESWorldSpace, largeReferenceData) == 0x250);
 	static_assert(sizeof(TESWorldSpace) == 0x358);
 }

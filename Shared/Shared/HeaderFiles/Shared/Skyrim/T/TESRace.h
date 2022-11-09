@@ -3,7 +3,6 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/ActorValue.h"
-#include "Shared/Skyrim/A/AttackAnimationArrayMap.h"
 #include "Shared/Skyrim/B/BGSAttackDataForm.h"
 #include "Shared/Skyrim/B/BGSBehaviorGraphModel.h"
 #include "Shared/Skyrim/B/BGSBipedObjectForm.h"
@@ -28,6 +27,7 @@
 
 namespace Skyrim
 {
+	class AttackAnimationArrayMap;
 	class BGSArtObject;
 	class BGSBodyPartData;
 	class BGSColorForm;

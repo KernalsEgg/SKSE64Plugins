@@ -10,7 +10,6 @@
 namespace Skyrim
 {
 	class FxDelegateHandler;
-	class FxResponseArgumentsBase;
 	class GFxMovieView;
 
 	class FxDelegateArguments

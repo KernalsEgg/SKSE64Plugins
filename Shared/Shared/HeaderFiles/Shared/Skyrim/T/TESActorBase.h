@@ -56,7 +56,7 @@ namespace Skyrim
 		virtual void  Unknown5(ActorValueOwner*) override;                                                                                                                                             // 5
 		virtual void  RestoreActorValue(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float value) override; // 6
 		virtual void  SetActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float value) override;                                                                                 // 7
-		virtual void  Unknown8(ActorValueOwner*) override;                                                                                                                                             // 8
+		virtual bool  IsPlayerOwner() const override;                                                                                                                                                  // 8
 
 		// Add
 		virtual void            Unknown53(TESActorBase*);                    // 53

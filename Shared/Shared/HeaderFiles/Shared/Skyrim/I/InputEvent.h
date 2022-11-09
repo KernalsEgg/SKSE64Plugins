@@ -18,7 +18,7 @@ namespace Skyrim
 		{
 			kButton        = 0,
 			kMouseMove     = 1,
-			kChar          = 2,
+			kCharacter     = 2,
 			kThumbstick    = 3,
 			kDeviceConnect = 4,
 			kKinect        = 5

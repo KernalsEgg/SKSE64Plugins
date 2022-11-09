@@ -2,6 +2,9 @@
 
 #include "Shared/Skyrim/C/ConsoleLog.h"
 
+#include "Shared/Skyrim/Addresses.h"
+#include "Shared/Utility/TypeTraits.h"
+
 
 
 namespace Skyrim
@@ -27,5 +30,15 @@ namespace Skyrim
 		auto** threadLocalStoragePointer = reinterpret_cast<ThreadLocalStorage**>(::__readgsqword(0x58));
 
 		return threadLocalStoragePointer[*tlsIndex]->isConsoleOpen;
+	}
+
+	void ConsoleLog::PrintLine(const char* format, ...)
+	{
+		std::va_list arguments;
+		auto*        function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&ConsoleLog::PrintLine)>::type>(Addresses::ConsoleLog::PrintLine) };
+
+		va_start(arguments, format);
+		function(this, format, arguments);
+		va_end(arguments);
 	}
 }

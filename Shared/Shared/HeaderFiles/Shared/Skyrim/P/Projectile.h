@@ -18,8 +18,11 @@ namespace Skyrim
 	public:
 		enum class Flags : std::uint32_t
 		{
-			kNone     = 0,
-			k3DLoaded = 1U << 8, // 1.5.97.0: SkyrimSE.exe + 0x754820 + 0xD3 (43030), 1.6.318.0: SkyrimSE.exe + 0x7821A0 + 0x1D7 (44222), Projectile::Do3DLoaded
+			kNone             = 0,
+			k3DLoaded         = 1U << 8, // 1.5.97.0: SkyrimSE.exe + 0x754820 + 0xD3 (43030), 1.6.318.0: SkyrimSE.exe + 0x7821A0 + 0x1D7 (44222), Projectile::Do3DLoaded
+			kProcessedImpacts = 1U << 22,
+			kKilled           = 1U << 25,
+			kDualCasted       = 1U << 28
 		};
 		static_assert(sizeof(Flags) == 0x4);
 
@@ -116,7 +119,7 @@ namespace Skyrim
 		std::uint64_t                              unknown190;       // 188, 190
 		std::uint64_t                              unknown198;       // 190, 198
 		float                                      damage;           // 198, 1A0
-		std::uint32_t                              unknown1A4;       // 19C, 1A4
+		float                                      alpha;            // 19C, 1A4
 		std::uint64_t                              unknown1A8;       // 1A0, 1A8
 		std::uint64_t                              unknown1B0;       // 1A8, 1B0
 		TESObjectWEAP*                             weaponSource;     // 1B0, 1B8
@@ -130,6 +133,7 @@ namespace Skyrim
 		std::uint32_t                              unknown1DC;       // 1D4, 1DC
 	};
 	static_assert(offsetof(Projectile, damage) == SKYRIM_RELOCATE(0x198, 0x1A0));
+	static_assert(offsetof(Projectile, alpha) == SKYRIM_RELOCATE(0x19C, 0x1A4));
 	static_assert(offsetof(Projectile, weaponSource) == SKYRIM_RELOCATE(0x1B0, 0x1B8));
 	static_assert(offsetof(Projectile, ammunitionSource) == SKYRIM_RELOCATE(0x1B8, 0x1C0));
 	static_assert(offsetof(Projectile, projectileFlags) == SKYRIM_RELOCATE(0x1CC, 0x1D4));

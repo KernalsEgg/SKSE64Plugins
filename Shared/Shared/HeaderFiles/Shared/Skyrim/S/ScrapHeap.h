@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Shared/PrecompiledHeader.h"
+
 #include "Shared/Skyrim/I/IMemoryStore.h"
 
 

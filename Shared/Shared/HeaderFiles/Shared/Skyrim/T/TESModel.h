@@ -4,12 +4,16 @@
 
 #include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/B/BaseFormComponent.h"
-#include "Shared/Skyrim/I/ID.h"
 
 
 
 namespace Skyrim
 {
+	namespace BSResource
+	{
+		struct ID;
+	}
+
 	class TESModelTextureSwap;
 
 	class TESModel :

@@ -2,6 +2,7 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/I/IDEvent.h"
 
 

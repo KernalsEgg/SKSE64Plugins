@@ -11,6 +11,7 @@
 #include "Fixes/MagicEffectFlags.h"
 #include "Fixes/ModifyArmorWeightPerkEntryPoint.h"
 #include "Fixes/PowerCooldowns.h"
+#include "Fixes/ProjectileFadeDuration.h"
 #include "Fixes/QuickShot.h"
 #include "Fixes/TerrainDecals.h"
 #include "Fixes/TrainingMenu.h"
@@ -19,6 +20,7 @@
 #include "Patches/AlreadyCaughtPickpocketing.h"
 #include "Patches/AttachHitEffectArt.h"
 #include "Patches/CloakHitEffects.h"
+#include "Patches/DifficultyMultipliers.h"
 #include "Patches/EquipBestAmmunition.h"
 #include "Patches/ImproveMultipleEnchantmentEffects.h"
 #include "Patches/LeveledCharacters.h"
@@ -103,6 +105,11 @@ void Settings()
 		ScrambledBugs::Fixes::PowerCooldowns::Fix(settings.fixes.powerCooldowns);
 	}
 
+	if (settings.fixes.projectileFadeDuration)
+	{
+		ScrambledBugs::Fixes::ProjectileFadeDuration::Fix(settings.fixes.projectileFadeDuration);
+	}
+
 	if (settings.fixes.quickShot && settings.fixes.quickShotPlaybackSpeed > 0.0F)
 	{
 		ScrambledBugs::Fixes::QuickShot::Fix(settings.fixes.quickShot, settings.fixes.quickShotPlaybackSpeed);
@@ -142,6 +149,11 @@ void Settings()
 	if (settings.patches.cloakHitEffects)
 	{
 		ScrambledBugs::Patches::CloakHitEffects::Patch(settings.patches.cloakHitEffects);
+	}
+
+	if (settings.patches.difficultyMultipliers.commandedActors || settings.patches.difficultyMultipliers.followers)
+	{
+		ScrambledBugs::Patches::DifficultyMultipliers::Patch(settings.patches.difficultyMultipliers.commandedActors, settings.patches.difficultyMultipliers.followers);
 	}
 
 	if (settings.patches.equipBestAmmunition)
@@ -198,9 +210,9 @@ void Settings()
 		ScrambledBugs::Patches::ScrollExperience::Patch(settings.patches.scrollExperience);
 	}
 
-	if (settings.patches.blackSoulGems || settings.patches.underfilledSoulGems)
+	if (settings.patches.soulGems.black || settings.patches.soulGems.underfilled)
 	{
-		ScrambledBugs::Patches::SoulGems::Patch(settings.patches.blackSoulGems, settings.patches.underfilledSoulGems);
+		ScrambledBugs::Patches::SoulGems::Patch(settings.patches.soulGems.black, settings.patches.soulGems.underfilled);
 	}
 
 	if (settings.patches.staffExperience)

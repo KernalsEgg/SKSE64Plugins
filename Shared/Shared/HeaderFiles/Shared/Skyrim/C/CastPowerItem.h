@@ -72,7 +72,6 @@ namespace Skyrim
 		// Member variables
 		SpellItem*     power;    // 0
 		float          cooldown; // 8
-		std::uint32_t  paddingC; // C
 		CastPowerItem* next;     // 10
 	};
 	static_assert(offsetof(CastPowerItem, power) == 0x0);

@@ -25,7 +25,7 @@ namespace ScrambledBugs::Patches
 		auto magnitude = effect->GetMagnitude();
 		auto duration  = effect->GetDuration();
 
-		auto effectSettingFlags    = effect->baseEffect->effectSettingFlags;
+		auto effectSettingFlags    = effect->effectSetting->effectSettingFlags;
 		auto powerAffectsMagnitude = effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsMagnitude);
 		auto powerAffectsDuration  = effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsDuration);
 

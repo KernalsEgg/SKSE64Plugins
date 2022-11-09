@@ -394,15 +394,15 @@ namespace Trails
 
 		auto decalDataFlags = decalData.decalDataFlags;
 
-		if (decalDataFlags.all(Skyrim::DecalData::Flags::kNoSubtextures))
+		if (decalDataFlags.all(Skyrim::DecalData::Flags::kNoSubTextures))
 		{
-			creationData.subtextureIndex = -1;
+			creationData.subTextureIndex = -1;
 		}
 		else
 		{
 			std::uniform_int_distribution subtextureIndexDistribution(0, 3);
 
-			creationData.subtextureIndex = static_cast<std::uint8_t>(subtextureIndexDistribution(randomNumberGenerator));
+			creationData.subTextureIndex = static_cast<std::uint8_t>(subtextureIndexDistribution(randomNumberGenerator));
 		}
 
 		creationData.parallax      = decalDataFlags.all(Skyrim::DecalData::Flags::kParallax);

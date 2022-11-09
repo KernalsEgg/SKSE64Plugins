@@ -27,29 +27,29 @@ namespace ScrambledBugs::Fixes
 			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::ImpactEffectCrash::UpdateDecals, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::UpdateDecals))));
 	}
 
-	bool ImpactEffectCrash::DecalApplier(Skyrim::BSTempEffectSimpleDecal* tempEffectSimpleDecal)
+	bool ImpactEffectCrash::DecalApplier(Skyrim::BSTempEffectSimpleDecal* temporaryEffectSimpleDecal)
 	{
-		if (tempEffectSimpleDecal->textureSet1)
+		if (temporaryEffectSimpleDecal->textureSet1)
 		{
-			return ImpactEffectCrash::decalApplier_(tempEffectSimpleDecal);
+			return ImpactEffectCrash::decalApplier_(temporaryEffectSimpleDecal);
 		}
 		else
 		{
-			tempEffectSimpleDecal->state = 7;
+			temporaryEffectSimpleDecal->state = 7;
 
 			return false;
 		}
 	}
 
-	bool ImpactEffectCrash::UpdateDecals(Skyrim::BSTempEffectSimpleDecal* tempEffectSimpleDecal)
+	bool ImpactEffectCrash::UpdateDecals(Skyrim::BSTempEffectSimpleDecal* temporaryEffectSimpleDecal)
 	{
-		if (tempEffectSimpleDecal->textureSet1)
+		if (temporaryEffectSimpleDecal->textureSet1)
 		{
-			return ImpactEffectCrash::updateDecals_(tempEffectSimpleDecal);
+			return ImpactEffectCrash::updateDecals_(temporaryEffectSimpleDecal);
 		}
 		else
 		{
-			tempEffectSimpleDecal->state = 7;
+			temporaryEffectSimpleDecal->state = 7;
 
 			return false;
 		}

@@ -82,6 +82,15 @@ namespace ScrambledBugs::Addresses
 			inline const std::uintptr_t SaveCastPowers{ Relocation::AddressLibrary::GetSingleton().GetAddress(38743) }; // Actor::SaveCastPowers
 		}
 
+		namespace ProjectileFadeDuration
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x74C3D0 + 0x164 (42942), 1.6.318.0: SkyrimSE.exe + 0x779750</summary>
+			inline const std::uintptr_t HasFaded{ Relocation::AddressLibrary::GetSingleton().GetAddress(44122) + 0x166 }; // Projectile::Update
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x74C3D0 + 0x185 (42942), 1.6.318.0: SkyrimSE.exe + 0x779750</summary>
+			inline const std::uintptr_t HasProcessedImpacts{ Relocation::AddressLibrary::GetSingleton().GetAddress(44122) + 0x187 }; // Projectile::Update
+		}
+
 		namespace QuickShot
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x3BF020 (25868), 1.6.318.0: SkyrimSE.exe + 0x3D6AB0</summary>
@@ -91,7 +100,7 @@ namespace ScrambledBugs::Addresses
 		namespace TerrainDecals
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x271BE0 + 0xE7 (18711), 1.6.318.0: SkyrimSE.exe + 0x27FC50</summary>
-			inline const std::uintptr_t FreeCellCollision{ Relocation::AddressLibrary::GetSingleton().GetAddress(19130) + 0x24E }; // TESObjectCELL::Detach
+			inline const std::uintptr_t FreeCellMopp{ Relocation::AddressLibrary::GetSingleton().GetAddress(19130) + 0x24E }; // TESObjectCELL::Detach
 		}
 
 		namespace TrainingMenu
@@ -146,6 +155,12 @@ namespace ScrambledBugs::Addresses
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x5468E0 + 0x15 (33471), 1.6.318.0: SkyrimSE.exe + 0x561730</summary>
 			inline const std::uintptr_t IsNotCostliestEffect{ Relocation::AddressLibrary::GetSingleton().GetAddress(34250) + 0x15 }; // CloakEffectCallbackFunctor::ModifyActiveEffect
+		}
+
+		namespace DifficultyMultipliers
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x5D6300 (36345), 1.6.318.0: SkyrimSE.exe + 0x5FAC30</summary>
+			inline const std::uintptr_t DamageHealth{ Relocation::AddressLibrary::GetSingleton().GetAddress(37335) }; // Actor::DamageHealth
 		}
 
 		namespace EquipBestAmmunition

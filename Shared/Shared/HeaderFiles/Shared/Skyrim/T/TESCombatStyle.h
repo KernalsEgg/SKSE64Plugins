@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Shared/PrecompiledHeader.h"
+
 #include "Shared/Skyrim/T/TESForm.h"
 #include "Shared/Utility/Enumeration.h"
 

@@ -39,14 +39,14 @@ namespace Skyrim
 		return magnitude;
 	}
 
-	EffectSetting* ActiveEffect::GetBaseEffect()
+	EffectSetting* ActiveEffect::GetEffectSetting()
 	{
-		return this->effect->baseEffect;
+		return this->effect->effectSetting;
 	}
 
-	const EffectSetting* ActiveEffect::GetBaseEffect() const
+	const EffectSetting* ActiveEffect::GetEffectSetting() const
 	{
-		return this->effect->baseEffect;
+		return this->effect->effectSetting;
 	}
 
 	float ActiveEffect::GetCurrentMagnitude() const
@@ -56,14 +56,14 @@ namespace Skyrim
 			return this->magnitude;
 		}
 
-		const auto* baseEffect = this->GetBaseEffect();
+		const auto* effectSetting = this->GetEffectSetting();
 
-		auto noDuration  = baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoDuration);
-		auto noMagnitude = baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoMagnitude);
+		auto noDuration  = effectSetting->effectSettingFlags.all(EffectSetting::Flags::kNoDuration);
+		auto noMagnitude = effectSetting->effectSettingFlags.all(EffectSetting::Flags::kNoMagnitude);
 
-		auto taperDuration = noDuration || noMagnitude ? 0.0F : baseEffect->taperDuration;
-		auto taperWeight   = noDuration || noMagnitude ? 0.0F : baseEffect->taperWeight;
-		auto taperCurve    = noDuration || noMagnitude ? 0.0F : baseEffect->taperCurve;
+		auto taperDuration = noDuration || noMagnitude ? 0.0F : effectSetting->taperDuration;
+		auto taperWeight   = noDuration || noMagnitude ? 0.0F : effectSetting->taperWeight;
+		auto taperCurve    = noDuration || noMagnitude ? 0.0F : effectSetting->taperCurve;
 
 		return ActiveEffect::GetCurrentMagnitude(this->magnitude, this->duration - this->elapsedTime, taperDuration, taperWeight, taperCurve);
 	}

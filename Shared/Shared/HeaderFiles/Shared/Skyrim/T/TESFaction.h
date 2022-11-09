@@ -2,7 +2,7 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/AITimestamp.h"
+#include "Shared/Skyrim/A/AITimeStamp.h"
 #include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/B/BSTHashMap.h"
@@ -161,8 +161,8 @@ namespace Skyrim
 		BSSimpleList<Rank*>                        ranks;                 // E0
 		std::int32_t                               majorCrime;            // F0
 		std::int32_t                               minorCrime;            // F4
-		AITimestamp                                resistArrestTimestamp; // F8
-		AITimestamp                                playerEnemyTimestamp;  // FC
+		AITimeStamp                                resistArrestTimeStamp; // F8
+		AITimeStamp                                playerEnemyTimeStamp;  // FC
 	};
 	static_assert(offsetof(TESFaction, crimeGold) == 0x50);
 	static_assert(offsetof(TESFaction, factionFlags) == 0x58);
@@ -171,7 +171,7 @@ namespace Skyrim
 	static_assert(offsetof(TESFaction, ranks) == 0xE0);
 	static_assert(offsetof(TESFaction, majorCrime) == 0xF0);
 	static_assert(offsetof(TESFaction, minorCrime) == 0xF4);
-	static_assert(offsetof(TESFaction, resistArrestTimestamp) == 0xF8);
-	static_assert(offsetof(TESFaction, playerEnemyTimestamp) == 0xFC);
+	static_assert(offsetof(TESFaction, resistArrestTimeStamp) == 0xF8);
+	static_assert(offsetof(TESFaction, playerEnemyTimeStamp) == 0xFC);
 	static_assert(sizeof(TESFaction) == 0x100);
 }

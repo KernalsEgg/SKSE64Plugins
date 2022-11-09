@@ -12,7 +12,6 @@ namespace Skyrim
 {
 	struct Effect;
 
-	class Actor;
 	class EffectSetting;
 	class MagicItem;
 	class MagicTarget;
@@ -79,8 +78,8 @@ namespace Skyrim
 		static float GetCurrentMagnitude(float magnitude, float remainingTime, float taperDuration, float taperWeight, float taperCurve);
 
 		// Member functions
-		EffectSetting*       GetBaseEffect();
-		const EffectSetting* GetBaseEffect() const;
+		EffectSetting*       GetEffectSetting();
+		const EffectSetting* GetEffectSetting() const;
 		float                GetCurrentMagnitude() const;
 		bool                 ShouldDisplace() const;
 

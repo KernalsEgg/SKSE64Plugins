@@ -14,10 +14,10 @@
 
 namespace ScrambledBugs::Patches
 {
-	void SoulGems::Patch(bool& blackSoulGems, bool& underfilledSoulGems)
+	void SoulGems::Patch(bool& black, bool& underfilled)
 	{
-		SoulGems::blackSoulGems_       = blackSoulGems;
-		SoulGems::underfilledSoulGems_ = underfilledSoulGems;
+		SoulGems::black_       = black;
+		SoulGems::underfilled_ = underfilled;
 
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::InventoryChanges::FindBestSoulGemVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(SoulGems::Visit)));
 	}
@@ -67,12 +67,12 @@ namespace ScrambledBugs::Patches
 
 						auto soulGemCanHoldNPCSoul = Utility::Enumeration<Skyrim::TESSoulGem::RecordFlags, std::uint32_t>(soulGem->recordFlags).all(Skyrim::TESSoulGem::RecordFlags::kCanHoldNPCSoul);
 
-						if (SoulGems::blackSoulGems_ ? (targetIsNPC && soulGemCanHoldNPCSoul) || (!targetIsNPC && !soulGemCanHoldNPCSoul) : !targetIsNPC || soulGemCanHoldNPCSoul)
+						if (SoulGems::black_ ? (targetIsNPC && soulGemCanHoldNPCSoul) || (!targetIsNPC && !soulGemCanHoldNPCSoul) : !targetIsNPC || soulGemCanHoldNPCSoul)
 						{
 							auto targetSoulLevelValue  = Skyrim::TESSoulGem::GetSoulLevelValue(target->GetSoulLevel());
 							auto soulGemSoulLevelValue = Skyrim::TESSoulGem::GetSoulLevelValue(soulGem->capacity.get());
 
-							if (SoulGems::underfilledSoulGems_ ? soulGemSoulLevelValue == targetSoulLevelValue : soulGemSoulLevelValue >= targetSoulLevelValue)
+							if (SoulGems::underfilled_ ? soulGemSoulLevelValue == targetSoulLevelValue : soulGemSoulLevelValue >= targetSoulLevelValue)
 							{
 								auto* bestSoulGem               = findBestSoulGemVisitor->bestSoulGem;
 								auto  bestSoulGemSoulLevelValue = bestSoulGem ?
@@ -101,6 +101,6 @@ namespace ScrambledBugs::Patches
 		return Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType::kContinue;
 	}
 
-	bool SoulGems::blackSoulGems_{ false };
-	bool SoulGems::underfilledSoulGems_{ false };
+	bool SoulGems::black_{ false };
+	bool SoulGems::underfilled_{ false };
 }

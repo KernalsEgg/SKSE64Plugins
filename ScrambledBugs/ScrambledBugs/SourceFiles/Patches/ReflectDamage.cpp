@@ -20,6 +20,6 @@ namespace ScrambledBugs::Patches
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::ReflectDamage::CompareReflectDamage, Utility::Assembly::NoOperation8);
+		Utility::Memory::SafeWrite(Addresses::Patches::ReflectDamage::CompareReflectDamage, Utility::Assembly::NO_OPERATION_8);
 	}
 }

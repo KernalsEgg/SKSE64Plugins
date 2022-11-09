@@ -17,8 +17,20 @@ namespace Skyrim::Addresses
 
 	namespace Actor
 	{
+		namespace MagicTarget
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1656058, 1.6.318.0: SkyrimSE.exe + 0x174C360</summary>
+			inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(260542, 207519)) };
+		}
+
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x62F560, 1.6.318.0: SkyrimSE.exe + 0x655190</summary>
 		inline const std::uintptr_t AddSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37771, 38716)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x5E4800, 1.6.318.0: SkyrimSE.exe + 0x60A730</summary>
+		inline const std::uintptr_t AdjustHealthDamageToDifficulty{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(36506, 37506)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x5D0F40, 1.6.318.0: SkyrimSE.exe + 0x5F5520</summary>
+		inline const std::uintptr_t CanBeKilledBy{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(36247, 37229)) };
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x621350, 1.6.318.0: SkyrimSE.exe + 0x6468C0</summary>
 		inline const std::uintptr_t GetActorValueModifier{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37524, 38469)) };
@@ -32,14 +44,14 @@ namespace Skyrim::Addresses
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x5FD5B0, 1.6.318.0: SkyrimSE.exe + 0x624490</summary>
 		inline const std::uintptr_t GetLineOfSightLocation{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(36755, 37771)) };
 
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x62EBC0, 1.6.318.0: SkyrimSE.exe + 0x6546F0</summary>
-		inline const std::uintptr_t GetMount{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37757, 38702)) };
-
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x6348A0, 1.6.318.0: SkyrimSE.exe + 0x65A970</summary>
 		inline const std::uintptr_t GetSoulLevel{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37862, 38817)) };
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x693050, 1.6.318.0: SkyrimSE.exe + 0x6BAD10</summary>
 		inline const std::uintptr_t GetWeaponDamage{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(39179, 40253)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x6213D0, 1.6.318.0: SkyrimSE.exe + 0x646940</summary>
+		inline const std::uintptr_t HandleActorValueModified{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37525, 38470)) };
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x5FCCB0, 1.6.318.0: SkyrimSE.exe + 0x623C10</summary>
 		inline const std::uintptr_t IsActorInLineOfSight{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(36752, 37768)) };
@@ -50,11 +62,8 @@ namespace Skyrim::Addresses
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x5FCB90, 1.6.318.0: SkyrimSE.exe + 0x623AF0</summary>
 		inline const std::uintptr_t IsReferenceInLineOfSight{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(36751, 37767)) };
 
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1656058, 1.6.318.0: SkyrimSE.exe + 0x174C360</summary>
-		inline const std::uintptr_t MagicTargetVirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(260542, 207519)) };
-
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x6213D0, 1.6.318.0: SkyrimSE.exe + 0x646940</summary>
-		inline const std::uintptr_t ModifyActorValue{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37525, 38470)) };
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x621120, 1.6.318.0: SkyrimSE.exe + 0x6466A0</summary>
+		inline const std::uintptr_t ModifyActorValue{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37523, 38468)) };
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x621590, 1.6.318.0: SkyrimSE.exe + 0x646B00</summary>
 		inline const std::uintptr_t RemoveActorValueModifiers{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37527, 38476)) };
@@ -85,6 +94,12 @@ namespace Skyrim::Addresses
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x3C1700, 1.6.318.0: SkyrimSE.exe + 0x3D9160</summary>
 		inline const std::uintptr_t GetDualCastingEffectiveness{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(25931, 26518)) };
+	}
+
+	namespace AITimer
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F3A644, 1.6.318.0: SkyrimSE.exe + 0x2FD530C</summary>
+		inline const std::uintptr_t Timer{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(517597, 404125)) };
 	}
 
 	namespace BGSCreatedObjectManager
@@ -221,8 +236,11 @@ namespace Skyrim::Addresses
 
 	namespace Character
 	{
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x165E468, 1.6.318.0: SkyrimSE.exe + 0x1754098</summary>
-		inline const std::uintptr_t MagicTargetVirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(261401, 207894)) };
+		namespace MagicTarget
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x165E468, 1.6.318.0: SkyrimSE.exe + 0x1754098</summary>
+			inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(261401, 207894)) };
+		}
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x165DA40, 1.6.318.0: SkyrimSE.exe + 0x1753670</summary>
 		inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(261397, 207886)) };
@@ -325,18 +343,6 @@ namespace Skyrim::Addresses
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE34A0, 1.6.318.0: SkyrimSE.exe + 0x1E77580</summary>
 		inline const std::uintptr_t PlayerMaximumResistance{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(505721, 375300)) };
-
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE5BA0, 1.6.318.0: SkyrimSE.exe + 0x1E79C80</summary>
-		inline const std::uintptr_t PoisonAlreadyPoisonedMessage{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(506414, 376456)) };
-
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE5BB8, 1.6.318.0: SkyrimSE.exe + 0x1E79C98</summary>
-		inline const std::uintptr_t PoisonConfirmMessage{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(506416, 376459)) };
-
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE5B88, 1.6.318.0: SkyrimSE.exe + 0x1E79C68</summary>
-		inline const std::uintptr_t PoisonNoWeaponMessage{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(506412, 376453)) };
-
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE8F78, 1.6.318.0: SkyrimSE.exe + 0x1E7D058</summary>
-		inline const std::uintptr_t PoisonUnableToPoison{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(507261, 378091)) };
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DE18C8, 1.6.318.0: SkyrimSE.exe + 0x1E759A8</summary>
 		inline const std::uintptr_t PowerAttackStaminaPenalty{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(505283, 374565)) };
@@ -460,6 +466,9 @@ namespace Skyrim::Addresses
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DEA0E8, 1.6.318.0: SkyrimSE.exe + 0x1E7E1C8</summary>
 		inline const std::uintptr_t NumberActorsAllowedToMorph{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(507579, 378641)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DF19D8, 1.6.318.0: SkyrimSE.exe + 0x1E85DE8</summary>
+		inline const std::uintptr_t ZKeyDelay{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(509554, 382043)) };
 	}
 
 	namespace InitTESThread
@@ -650,8 +659,14 @@ namespace Skyrim::Addresses
 
 	namespace PlayerCharacter
 	{
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1664030, 1.6.318.0: SkyrimSE.exe + 0x175A500</summary>
-		inline const std::uintptr_t MagicTargetVirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(261920, 208048)) };
+		namespace MagicTarget
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1664030, 1.6.318.0: SkyrimSE.exe + 0x175A500</summary>
+			inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(261920, 208048)) };
+		}
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x3C1200, 1.6.318.0: SkyrimSE.exe + 0x3D8C80</summary>
+		inline const std::uintptr_t GetDifficultyMultiplier{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(25920, 26503)) };
 
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F26EF8, 1.6.318.0: SkyrimSE.exe + 0x2FC19C8</summary>
 		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(517014, 403521)) };
@@ -715,6 +730,18 @@ namespace Skyrim::Addresses
 	{
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1525720, 1.6.318.0: SkyrimSE.exe + 0x161F8A8</summary>
 		inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(228888, 186619)) };
+	}
+
+	namespace TaskQueueInterface
+	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x5C1E40, 1.6.318.0: SkyrimSE.exe + 0x5E8AC0</summary>
+		inline const std::uintptr_t QueueScriptFunctionCall{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(35918, 36893)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x63F810, 1.6.318.0: SkyrimSE.exe + 0x665DD0</summary>
+		inline const std::uintptr_t ShouldQueueTask{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(38079, 39033)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F38978, 1.6.318.0: SkyrimSE.exe + 0x2FD3650</summary>
+		inline const std::uintptr_t Singleton{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(517228, 403759)) };
 	}
 
 	namespace TES

@@ -167,7 +167,7 @@ namespace ScrambledBugs::Fixes
 
 		if (ownerActor)
 		{
-			ownerActor->ModifyActorValue(Skyrim::ActorValue::kInventoryWeight, inventoryChanges->previousInventoryWeight, inventoryWeight - inventoryChanges->previousInventoryWeight, nullptr);
+			ownerActor->HandleActorValueModified(Skyrim::ActorValue::kInventoryWeight, inventoryChanges->previousInventoryWeight, inventoryWeight - inventoryChanges->previousInventoryWeight, nullptr);
 		}
 
 		return inventoryChanges->currentInventoryWeight;

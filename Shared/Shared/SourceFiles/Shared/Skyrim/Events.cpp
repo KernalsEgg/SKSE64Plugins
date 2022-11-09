@@ -7,27 +7,30 @@
 
 
 
-namespace Skyrim::Events
+namespace Skyrim
 {
-	InitializeThread::InitializeThread() :
-		event_(reinterpret_cast<decltype(&InitializeThread::Event)>(Utility::Memory::ReadVirtualFunction(Addresses::InitTESThread::VirtualFunctionTable, 0x1)))
+	namespace Events
 	{
-		Utility::Memory::SafeWriteVirtualFunction(Addresses::InitTESThread::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(InitializeThread::Event)));
-	}
+		InitializeThread::InitializeThread() :
+			event_(reinterpret_cast<decltype(&InitializeThread::Event)>(Utility::Memory::ReadVirtualFunction(Addresses::InitTESThread::VirtualFunctionTable, 0x1)))
+		{
+			Utility::Memory::SafeWriteVirtualFunction(Addresses::InitTESThread::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(InitializeThread::Event)));
+		}
 
-	InitializeThread& InitializeThread::GetSingleton()
-	{
-		static InitializeThread singleton;
+		InitializeThread& InitializeThread::GetSingleton()
+		{
+			static InitializeThread singleton;
 
-		return singleton;
-	}
+			return singleton;
+		}
 
-	void InitializeThread::Event(InitTESThread* initializeThread)
-	{
-		const auto& singleton = InitializeThread::GetSingleton();
+		void InitializeThread::Event(InitTESThread* initializeThread)
+		{
+			const auto& singleton = InitializeThread::GetSingleton();
 
-		singleton.before_.SendEvent();
-		singleton.event_(initializeThread);
-		singleton.after_.SendEvent();
+			singleton.before_.SendEvent();
+			singleton.event_(initializeThread);
+			singleton.after_.SendEvent();
+		}
 	}
 }

@@ -23,7 +23,7 @@ namespace Skyrim
 		virtual void                              FinishLoadGame(BGSLoadFormBuffer* loadFormBuffer) override;     // 11
 		virtual void                              Revert(BGSLoadFormBuffer* loadFormBuffer) override;             // 12
 		virtual void                              Unknown3B(TESObjectREFR*) override;                             // 3B
-		virtual void                              Unknown5E(TESObjectREFR*) override;                             // 5E
+		virtual bool                              IsChild() const override;                                       // 5E
 		virtual void                              Unknown61(TESObjectREFR*) override;                             // 61
 		virtual void                              Unknown63(TESObjectREFR*) override;                             // 63
 		virtual const BSTSmartPointer<BipedAnim>& GetThirdPersonBiped() const override;                           // 7F

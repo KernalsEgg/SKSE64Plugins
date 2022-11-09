@@ -71,34 +71,6 @@ namespace Skyrim
 		return singleton;
 	}
 
-	SettingT<GameSettingCollection>* GameSettingCollection::PoisonAlreadyPoisonedMessage()
-	{
-		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PoisonAlreadyPoisonedMessage) };
-
-		return singleton;
-	}
-
-	SettingT<GameSettingCollection>* GameSettingCollection::PoisonConfirmMessage()
-	{
-		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PoisonConfirmMessage) };
-
-		return singleton;
-	}
-
-	SettingT<GameSettingCollection>* GameSettingCollection::PoisonNoWeaponMessage()
-	{
-		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PoisonNoWeaponMessage) };
-
-		return singleton;
-	}
-
-	SettingT<GameSettingCollection>* GameSettingCollection::PoisonUnableToPoison()
-	{
-		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PoisonUnableToPoison) };
-
-		return singleton;
-	}
-
 	SettingT<GameSettingCollection>* GameSettingCollection::PowerAttackStaminaPenalty()
 	{
 		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::PowerAttackStaminaPenalty) };

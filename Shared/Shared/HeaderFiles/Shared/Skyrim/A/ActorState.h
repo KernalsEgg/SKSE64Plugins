@@ -17,6 +17,15 @@ namespace Skyrim
 		public:
 			enum class ActorLifeState : std::uint32_t
 			{
+				kAlive         = 0,
+				kDying         = 1,
+				kDead          = 2,
+				kUnconcious    = 3,
+				kReanimate     = 4,
+				kRecycle       = 5,
+				kRestrained    = 6,
+				kEssentialDown = 7,
+				kBleedout      = 8
 			};
 			static_assert(sizeof(ActorLifeState) == 0x4);
 

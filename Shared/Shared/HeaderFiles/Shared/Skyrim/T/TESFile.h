@@ -4,7 +4,6 @@
 
 #include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/B/BSString.h"
-#include "Shared/Skyrim/T/TESFile.h"
 #include "Shared/Utility/Enumeration.h"
 
 

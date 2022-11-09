@@ -18,7 +18,7 @@ namespace Skyrim
 			kParallax      = 1U << 0,
 			kAlphaBlending = 1U << 1,
 			kAlphaTesting  = 1U << 2,
-			kNoSubtextures = 1U << 3
+			kNoSubTextures = 1U << 3
 		};
 		static_assert(sizeof(Flags) == 0x1);
 

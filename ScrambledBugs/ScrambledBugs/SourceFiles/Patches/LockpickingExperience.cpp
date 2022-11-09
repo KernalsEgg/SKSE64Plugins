@@ -20,6 +20,6 @@ namespace ScrambledBugs::Patches
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::LockpickingExperience::HasNotBeenUnlocked, Utility::Assembly::NoOperation2);
+		Utility::Memory::SafeWrite(Addresses::Patches::LockpickingExperience::HasNotBeenUnlocked, Utility::Assembly::NO_OPERATION_2);
 	}
 }

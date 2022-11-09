@@ -6,15 +6,21 @@
 
 namespace Skyrim
 {
+	class ButtonEvent;
+	class InputEvent;
+	class MouseMoveEvent;
+	class PlayerControlsData;
+	class ThumbstickEvent;
+
 	class PlayerInputHandler
 	{
 	public:
 		// Add
-		virtual ~PlayerInputHandler();                  // 0
-		virtual void Unknown1(PlayerInputHandler*) = 0; // 1
-		virtual void Unknown2(PlayerInputHandler*);     // 2
-		virtual void Unknown3(PlayerInputHandler*);     // 3
-		virtual void Unknown4(PlayerInputHandler*);     // 4
+		virtual ~PlayerInputHandler();                                                                                // 0
+		virtual bool ShouldHandleEvent(InputEvent* event) = 0;                                                        // 1
+		virtual void HandleThumbstickEvent(ThumbstickEvent* thumbstickEvent, PlayerControlsData* playerControlsData); // 2
+		virtual void HandleMouseMoveEvent(MouseMoveEvent* mouseMoveEvent, PlayerControlsData* playerControlsData);    // 3
+		virtual void HandleButtonEvent(ButtonEvent* buttonEvent, PlayerControlsData* playerControlsData);             // 4
 
 		// Member variables
 		bool          handleInputEvents; // 8

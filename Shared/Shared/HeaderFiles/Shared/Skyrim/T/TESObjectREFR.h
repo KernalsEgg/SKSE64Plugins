@@ -26,6 +26,7 @@ namespace Skyrim
 	class MagicCaster;
 	class MagicTarget;
 	class NiAVObject;
+	class RefrInteraction;
 	class TESAmmo;
 	class TESBoundObject;
 	class TESContainer;
@@ -70,7 +71,8 @@ namespace Skyrim
 		enum class RecordFlags : std::uint32_t
 		{
 			kDeleted  = 1U << 5,
-			kDisabled = 1U << 11
+			kDisabled = 1U << 11,
+			kTargeted = 1U << 18
 		};
 		static_assert(sizeof(RecordFlags) == 0x4);
 
@@ -139,7 +141,7 @@ namespace Skyrim
 		virtual void                              Unknown3F(TESObjectREFR*);                                                                                                                                                                                                                 // 3F
 		virtual void                              Unknown40(TESObjectREFR*);                                                                                                                                                                                                                 // 40
 		virtual void                              Unknown41(TESObjectREFR*);                                                                                                                                                                                                                 // 41
-		virtual void                              Unknown42(TESObjectREFR*);                                                                                                                                                                                                                 // 42
+		virtual void                              DamageObject(float damage, bool ignoreDestroyed);                                                                                                                                                                                          // 42
 		virtual void                              Unknown43(TESObjectREFR*);                                                                                                                                                                                                                 // 43
 		virtual void                              Unknown44(TESObjectREFR*);                                                                                                                                                                                                                 // 44
 		virtual void                              Unknown45(TESObjectREFR*);                                                                                                                                                                                                                 // 45
@@ -167,7 +169,7 @@ namespace Skyrim
 		virtual NiPoint3                          GetLookingAtLocation() const;                                                                                                                                                                                                              // 5B
 		virtual MagicCaster*                      GetMagicCaster(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource);                                                                                                                                             // 5C
 		virtual MagicTarget*                      GetMagicTarget();                                                                                                                                                                                                                          // 5D
-		virtual void                              Unknown5E(TESObjectREFR*);                                                                                                                                                                                                                 // 5E
+		virtual bool                              IsChild() const;                                                                                                                                                                                                                           // 5E
 		virtual void                              Unknown5F(TESObjectREFR*);                                                                                                                                                                                                                 // 5F
 		virtual void                              Unknown60(TESObjectREFR*);                                                                                                                                                                                                                 // 60
 		virtual void                              Unknown61(TESObjectREFR*);                                                                                                                                                                                                                 // 61
@@ -226,7 +228,7 @@ namespace Skyrim
 		virtual void                              Unknown96(TESObjectREFR*);                                                                                                                                                                                                                 // 96
 		virtual TESObjectCELL*                    GetPersistentCell() const;                                                                                                                                                                                                                 // 97
 		virtual void                              Unknown98(TESObjectREFR*);                                                                                                                                                                                                                 // 98
-		virtual bool                              IsDead(bool nonEssential) const;                                                                                                                                                                                                           // 99
+		virtual bool                              IsDead(bool notEssential) const;                                                                                                                                                                                                           // 99
 		virtual void                              Unknown9A(TESObjectREFR*);                                                                                                                                                                                                                 // 9A
 		virtual void                              Unknown9B(TESObjectREFR*);                                                                                                                                                                                                                 // 9B
 		virtual void                              Unknown9C(TESObjectREFR*);                                                                                                                                                                                                                 // 9C
@@ -244,6 +246,7 @@ namespace Skyrim
 		TESContainer*     GetContainer() const;
 		float             GetDistanceSquared(TESObjectREFR* target) const;
 		float             GetDistanceSquared(TESObjectREFR* target, bool ignoreDisabled, bool ignoreWorldSpace) const;
+		bool              GetInteraction(BSTSmartPointer<RefrInteraction>& referenceInteraction) const;
 		InventoryChanges* GetInventoryChanges();
 		const char*       GetReferenceName() const;
 		BipedObjectSlot   GetShieldObject() const;

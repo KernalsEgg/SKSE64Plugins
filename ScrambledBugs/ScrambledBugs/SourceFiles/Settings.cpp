@@ -66,6 +66,11 @@ namespace ScrambledBugs
 			jsonFixes.at("powerCooldowns").get_to(this->powerCooldowns);
 		}
 
+		if (jsonFixes.contains("projectileFadeDuration"))
+		{
+			jsonFixes.at("projectileFadeDuration").get_to(this->projectileFadeDuration);
+		}
+
 		if (jsonFixes.contains("quickShot"))
 		{
 			jsonFixes.at("quickShot").get_to(this->quickShot);
@@ -109,6 +114,7 @@ namespace ScrambledBugs
 		jsonFixes["magicEffectFlags"]                = this->magicEffectFlags;
 		jsonFixes["modifyArmorWeightPerkEntryPoint"] = this->modifyArmorWeightPerkEntryPoint;
 		jsonFixes["powerCooldowns"]                  = this->powerCooldowns;
+		jsonFixes["projectileFadeDuration"]          = this->projectileFadeDuration;
 		jsonFixes["quickShot"]                       = this->quickShot;
 		jsonFixes["quickShotPlaybackSpeed"]          = this->quickShotPlaybackSpeed;
 		jsonFixes["terrainDecals"]                   = this->terrainDecals;
@@ -116,6 +122,31 @@ namespace ScrambledBugs
 		jsonFixes["weaponCharge"]                    = this->weaponCharge;
 
 		return jsonFixes;
+	}
+
+	Settings::Patches::DifficultyMultipliers& Settings::Patches::DifficultyMultipliers::Deserialize(const nlohmann::json& jsonDifficultyMultipliers)
+	{
+		if (jsonDifficultyMultipliers.contains("commandedActors"))
+		{
+			jsonDifficultyMultipliers.at("commandedActors").get_to(this->commandedActors);
+		}
+
+		if (jsonDifficultyMultipliers.contains("followers"))
+		{
+			jsonDifficultyMultipliers.at("followers").get_to(this->followers);
+		}
+
+		return *this;
+	}
+
+	nlohmann::json Settings::Patches::DifficultyMultipliers::Serialize() const
+	{
+		nlohmann::json jsonDifficultyMultipliers;
+
+		jsonDifficultyMultipliers["commandedActors"] = this->commandedActors;
+		jsonDifficultyMultipliers["followers"]       = this->followers;
+
+		return jsonDifficultyMultipliers;
 	}
 
 	Settings::Patches::PerkEntryPoints& Settings::Patches::PerkEntryPoints::Deserialize(const nlohmann::json& jsonPerkEntryPoints)
@@ -143,6 +174,31 @@ namespace ScrambledBugs
 		return jsonPerkEntryPoints;
 	}
 
+	Settings::Patches::SoulGems& Settings::Patches::SoulGems::Deserialize(const nlohmann::json& jsonSoulGems)
+	{
+		if (jsonSoulGems.contains("black"))
+		{
+			jsonSoulGems.at("black").get_to(this->black);
+		}
+
+		if (jsonSoulGems.contains("underfilled"))
+		{
+			jsonSoulGems.at("underfilled").get_to(this->underfilled);
+		}
+
+		return *this;
+	}
+
+	nlohmann::json Settings::Patches::SoulGems::Serialize() const
+	{
+		nlohmann::json jsonSoulGems;
+
+		jsonSoulGems["black"]       = this->black;
+		jsonSoulGems["underfilled"] = this->underfilled;
+
+		return jsonSoulGems;
+	}
+
 	Settings::Patches& Settings::Patches::Deserialize(const nlohmann::json& jsonPatches)
 	{
 		if (jsonPatches.contains("accumulatingMagnitude"))
@@ -160,14 +216,14 @@ namespace ScrambledBugs
 			jsonPatches.at("attachHitEffectArt").get_to(this->attachHitEffectArt);
 		}
 
-		if (jsonPatches.contains("blackSoulGems"))
-		{
-			jsonPatches.at("blackSoulGems").get_to(this->blackSoulGems);
-		}
-
 		if (jsonPatches.contains("cloakHitEffects"))
 		{
 			jsonPatches.at("cloakHitEffects").get_to(this->cloakHitEffects);
+		}
+
+		if (jsonPatches.contains("difficultyMultipliers"))
+		{
+			this->difficultyMultipliers.Deserialize(jsonPatches.at("difficultyMultipliers"));
 		}
 
 		if (jsonPatches.contains("equipBestAmmunition"))
@@ -225,14 +281,14 @@ namespace ScrambledBugs
 			jsonPatches.at("staffExperience").get_to(this->staffExperience);
 		}
 
+		if (jsonPatches.contains("soulGems"))
+		{
+			this->soulGems.Deserialize(jsonPatches.at("soulGems"));
+		}
+
 		if (jsonPatches.contains("steepSlopes"))
 		{
 			jsonPatches.at("steepSlopes").get_to(this->steepSlopes);
-		}
-
-		if (jsonPatches.contains("underfilledSoulGems"))
-		{
-			jsonPatches.at("underfilledSoulGems").get_to(this->underfilledSoulGems);
 		}
 
 		return *this;
@@ -245,7 +301,6 @@ namespace ScrambledBugs
 		jsonPatches["accumulatingMagnitude"]             = this->accumulatingMagnitude;
 		jsonPatches["alreadyCaughtPickpocketing"]        = this->alreadyCaughtPickpocketing;
 		jsonPatches["attachHitEffectArt"]                = this->attachHitEffectArt;
-		jsonPatches["blackSoulGems"]                     = this->blackSoulGems;
 		jsonPatches["cloakHitEffects"]                   = this->cloakHitEffects;
 		jsonPatches["equipBestAmmunition"]               = this->equipBestAmmunition;
 		jsonPatches["improveMultipleEnchantmentEffects"] = this->improveMultipleEnchantmentEffects;
@@ -257,9 +312,9 @@ namespace ScrambledBugs
 		jsonPatches["powerAttackStamina"]                = this->powerAttackStamina;
 		jsonPatches["reflectDamage"]                     = this->reflectDamage;
 		jsonPatches["scrollExperience"]                  = this->scrollExperience;
+		jsonPatches["soulGems"]                          = this->soulGems.Serialize();
 		jsonPatches["staffExperience"]                   = this->staffExperience;
 		jsonPatches["steepSlopes"]                       = this->steepSlopes;
-		jsonPatches["underfilledSoulGems"]               = this->underfilledSoulGems;
 
 		return jsonPatches;
 	}

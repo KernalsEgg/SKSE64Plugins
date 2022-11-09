@@ -52,7 +52,7 @@ namespace Skyrim
 		virtual void Unknown3D(NiNode*); // 3D
 
 		// Member functions
-		std::uint32_t AddDecal(const BGSDecalManager::AdditionData& applicationData);
+		std::uint32_t AddDecal(const BGSDecalManager::AdditionData& additionData);
 
 		// Member variables
 		NiTObjectArray<NiPointer<NiAVObject>> children; // 110

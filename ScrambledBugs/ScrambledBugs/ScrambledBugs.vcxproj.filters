@@ -147,6 +147,12 @@
     <ClInclude Include="HeaderFiles\Fixes\PowerCooldowns.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Patches\DifficultyMultipliers.h">
+      <Filter>Header Files\Patches</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Fixes\ProjectileFadeDuration.h">
+      <Filter>Header Files\Fixes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Fixes\ActivateFurniture.cpp">
@@ -261,6 +267,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Fixes\PowerCooldowns.cpp">
+      <Filter>Source Files\Fixes</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Patches\DifficultyMultipliers.cpp">
+      <Filter>Source Files\Patches</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Fixes\ProjectileFadeDuration.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
   </ItemGroup>

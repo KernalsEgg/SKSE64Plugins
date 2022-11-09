@@ -10,6 +10,7 @@
 
 namespace Skyrim
 {
+	class Actor;
 	class bhkCharacterController;
 	class HighProcessData;
 	class HitData;
@@ -78,6 +79,7 @@ namespace Skyrim
 		// Member functions
 		InventoryEntryData*     GetAmmunitionInventoryEntryData() const;
 		bhkCharacterController* GetCharacterController() const;
+		ActorHandle             GetCommandingActor() const;
 		ObjectReferenceHandle   GetCurrentFurniture() const;
 		InventoryEntryData*     GetLeftHandInventoryEntryData() const;
 		InventoryEntryData*     GetRightHandInventoryEntryData() const;
@@ -86,6 +88,7 @@ namespace Skyrim
 		HitData*                GetLastHitData() const;
 		float                   GetMaximumWardPower() const;
 		bool                    IsDualCasting() const;
+		void                    ModifyTrackedDamage(Actor* attacker, float damage);
 		void                    SetMaximumWardPower(float maximumWardPower);
 
 		// Member variables
@@ -108,7 +111,8 @@ namespace Skyrim
 		std::uint64_t          unknown80;             // 80
 		std::uint64_t          unknown88;             // 88
 		std::uint64_t          unknown90;             // 90
-		std::uint64_t          unknown98;             // 98
+		float                  trackedDamage;         // 98
+		std::uint32_t          padding9C;             // 9C
 		std::uint64_t          unknownA0;             // A0
 		std::uint64_t          unknownA8;             // A8
 		std::uint64_t          unknownB0;             // B0
@@ -134,5 +138,6 @@ namespace Skyrim
 	static_assert(offsetof(AIProcess, middleHighProcessData) == 0x8);
 	static_assert(offsetof(AIProcess, highProcessData) == 0x10);
 	static_assert(offsetof(AIProcess, cachedValues) == 0x50);
+	static_assert(offsetof(AIProcess, trackedDamage) == 0x98);
 	static_assert(sizeof(AIProcess) == 0x140);
 }

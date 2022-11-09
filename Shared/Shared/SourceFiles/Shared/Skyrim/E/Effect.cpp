@@ -12,22 +12,22 @@ namespace Skyrim
 {
 	std::uint32_t Effect::GetArea() const
 	{
-		return this->baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoArea) ? 0 : this->area;
+		return this->effectSetting->effectSettingFlags.all(EffectSetting::Flags::kNoArea) ? 0 : this->area;
 	}
 
 	std::uint32_t Effect::GetDuration() const
 	{
-		return this->baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoDuration) ? 0 : this->duration;
+		return this->effectSetting->effectSettingFlags.all(EffectSetting::Flags::kNoDuration) ? 0 : this->duration;
 	}
 
 	float Effect::GetMagnitude() const
 	{
-		return this->baseEffect->effectSettingFlags.all(EffectSetting::Flags::kNoMagnitude) ? 0.0F : this->magnitude;
+		return this->effectSetting->effectSettingFlags.all(EffectSetting::Flags::kNoMagnitude) ? 0.0F : this->magnitude;
 	}
 
 	bool Effect::IsHostile() const
 	{
-		return this->baseEffect->effectSettingFlags.all(EffectSetting::Flags::kHostile);
+		return this->effectSetting->effectSettingFlags.all(EffectSetting::Flags::kHostile);
 	}
 
 	bool Effect::SetDuration(std::uint32_t duration)

@@ -28,14 +28,14 @@ namespace ScrambledBugs::Patches
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPerspectiveChange, Utility::Assembly::NoOperation2);
-		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerReattach, Utility::Assembly::NoOperation2);
-		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, Utility::Assembly::NoOperation6);
+		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPerspectiveChange, Utility::Assembly::NO_OPERATION_2);
+		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerReattach, Utility::Assembly::NO_OPERATION_2);
+		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, Utility::Assembly::NO_OPERATION_6);
 
 		Utility::Memory::SafeWrite(
 			Addresses::Patches::AttachHitEffectArt::SetNoHitEffectArtFlag,
 			std::optional<std::uint8_t>{}, 0xF8ui8, // and al, F8 (1 << 2 (NoHitEffectArt), 1 << 4 (NoInitialFlare))
-			Utility::Assembly::NoOperation2         // nop
+			Utility::Assembly::NO_OPERATION_2       // nop
 		);
 
 		AttachHitEffectArt::getTargetActor_ = reinterpret_cast<decltype(AttachHitEffectArt::getTargetActor_)>(

@@ -189,7 +189,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValueOwner.h">
       <Filter>Header Files\Shared\Skyrim\A</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AITimestamp.h">
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AITimeStamp.h">
       <Filter>Header Files\Shared\Skyrim\A</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AlchemyItem.h">
@@ -1665,6 +1665,48 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\I\ItemCard.h">
       <Filter>Header Files\Shared\Skyrim\I</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraInteraction.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SyncQueueObj.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RefrInteraction.h">
+      <Filter>Header Files\Shared\Skyrim\R</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MountInteraction.h">
+      <Filter>Header Files\Shared\Skyrim\M</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAnimationGraphChannel.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HeldStateHandler.h">
+      <Filter>Header Files\Shared\Skyrim\H</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActivateHandler.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TaskQueueInterface.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSPackedTaskQueue.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CombatController.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AITimer.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSWorldLocation.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UnreachableLocation.h">
+      <Filter>Header Files\Shared\Skyrim\U</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CombatState.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PrecompiledHeader.cpp">
@@ -2024,9 +2066,6 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\Precipitation.cpp">
       <Filter>Source Files\Shared\Skyrim\P</Filter>
     </ClCompile>
-    <ClCompile Include="HeaderFiles\Shared\Skyrim\M\Main.cpp">
-      <Filter>Source Files\Shared\Skyrim\M</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiObjectNET.cpp">
       <Filter>Source Files\Shared\Skyrim\N</Filter>
     </ClCompile>
@@ -2044,6 +2083,27 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\PoisonedWeapon.cpp">
       <Filter>Source Files\Shared\Skyrim\P</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\R\RefrInteraction.cpp">
+      <Filter>Source Files\Shared\Skyrim\R</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\AITimer.cpp">
+      <Filter>Source Files\Shared\Skyrim\A</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\C\CombatState.cpp">
+      <Filter>Source Files\Shared\Skyrim\C</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\C\CombatController.cpp">
+      <Filter>Source Files\Shared\Skyrim\C</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSEntryPointPerkEntry.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TaskQueueInterface.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\M\Main.cpp">
+      <Filter>Source Files\Shared\Skyrim\M</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

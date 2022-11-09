@@ -2,8 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Patches.h"
-
 
 
 namespace ConsoleCommandCompanion

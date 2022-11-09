@@ -39,6 +39,15 @@ namespace Skyrim
 		public BaseFormComponent // 0
 	{
 	public:
+		enum class RecordFlags : std::uint32_t
+		{
+			kDeleted      = 1U << 5,
+			kFireOff      = 1U << 7,
+			kDisabled     = 1U << 11,
+			kDestructible = 1U << 24
+		};
+		static_assert(sizeof(RecordFlags) == 0x4);
+
 		// Override
 		virtual ~TESForm() override; // 0
 

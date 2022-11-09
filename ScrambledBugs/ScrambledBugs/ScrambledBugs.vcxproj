@@ -47,6 +47,7 @@
     <ClInclude Include="HeaderFiles\Fixes\MagicEffectFlags.h" />
     <ClInclude Include="HeaderFiles\Fixes\ModifyArmorWeightPerkEntryPoint.h" />
     <ClInclude Include="HeaderFiles\Fixes\PowerCooldowns.h" />
+    <ClInclude Include="HeaderFiles\Fixes\ProjectileFadeDuration.h" />
     <ClInclude Include="HeaderFiles\Fixes\QuickShot.h" />
     <ClInclude Include="HeaderFiles\Fixes\TerrainDecals.h" />
     <ClInclude Include="HeaderFiles\Fixes\TrainingMenu.h" />
@@ -55,6 +56,7 @@
     <ClInclude Include="HeaderFiles\Patches\AlreadyCaughtPickpocketing.h" />
     <ClInclude Include="HeaderFiles\Patches\AttachHitEffectArt.h" />
     <ClInclude Include="HeaderFiles\Patches\CloakHitEffects.h" />
+    <ClInclude Include="HeaderFiles\Patches\DifficultyMultipliers.h" />
     <ClInclude Include="HeaderFiles\Patches\EquipBestAmmunition.h" />
     <ClInclude Include="HeaderFiles\Patches\ImproveMultipleEnchantmentEffects.h" />
     <ClInclude Include="HeaderFiles\Patches\LeveledCharacters.h" />
@@ -86,6 +88,7 @@
     <ClCompile Include="SourceFiles\Fixes\MagicEffectFlags.cpp" />
     <ClCompile Include="SourceFiles\Fixes\ModifyArmorWeightPerkEntryPoint.cpp" />
     <ClCompile Include="SourceFiles\Fixes\PowerCooldowns.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\ProjectileFadeDuration.cpp" />
     <ClCompile Include="SourceFiles\Fixes\QuickShot.cpp" />
     <ClCompile Include="SourceFiles\Fixes\TerrainDecals.cpp" />
     <ClCompile Include="SourceFiles\Fixes\TrainingMenu.cpp" />
@@ -94,6 +97,7 @@
     <ClCompile Include="SourceFiles\Patches\AlreadyCaughtPickpocketing.cpp" />
     <ClCompile Include="SourceFiles\Patches\AttachHitEffectArt.cpp" />
     <ClCompile Include="SourceFiles\Patches\CloakHitEffects.cpp" />
+    <ClCompile Include="SourceFiles\Patches\DifficultyMultipliers.cpp" />
     <ClCompile Include="SourceFiles\Patches\EquipBestAmmunition.cpp" />
     <ClCompile Include="SourceFiles\Patches\ImproveMultipleEnchantmentEffects.cpp" />
     <ClCompile Include="SourceFiles\Patches\LeveledCharacters.cpp" />

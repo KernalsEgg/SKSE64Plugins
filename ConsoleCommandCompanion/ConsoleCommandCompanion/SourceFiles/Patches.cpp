@@ -19,7 +19,7 @@ namespace ConsoleCommandCompanion
 			return false;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::IsLoggedIn(), Utility::Assembly::NoOperation2);
+		Utility::Memory::SafeWrite(Addresses::Patches::IsLoggedIn(), Utility::Assembly::NO_OPERATION_2);
 
 		return true;
 	}

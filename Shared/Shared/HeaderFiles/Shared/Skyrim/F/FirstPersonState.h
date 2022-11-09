@@ -32,8 +32,8 @@ namespace Skyrim
 		virtual void Unknown8(TESCameraState*) override; // 8
 
 		// Override (PlayerInputHandler)
-		virtual void Unknown1(PlayerInputHandler*) override; // 1
-		virtual void Unknown4(PlayerInputHandler*) override; // 4
+		virtual bool ShouldHandleEvent(InputEvent* event) override;                                                // 1
+		virtual void HandleButtonEvent(ButtonEvent* buttonEvent, PlayerControlsData* playerControlsData) override; // 4
 
 		// Member variables
 		NiPoint3      lastPosition;             // 30

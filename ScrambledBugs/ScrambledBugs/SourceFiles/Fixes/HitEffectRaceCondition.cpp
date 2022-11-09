@@ -34,7 +34,7 @@ namespace ScrambledBugs::Fixes
 			return true;
 		}
 
-		if (activeEffect->GetBaseEffect()->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kRecover))
+		if (activeEffect->GetEffectSetting()->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kRecover))
 		{
 			return true;
 		}

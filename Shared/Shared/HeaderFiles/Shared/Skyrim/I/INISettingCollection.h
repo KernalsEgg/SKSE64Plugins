@@ -25,6 +25,7 @@ namespace Skyrim
 		// Non-member functions
 		static SettingT<INISettingCollection>* ForceAllDecals();
 		static SettingT<INISettingCollection>* NumberActorsAllowedToMorph();
+		static SettingT<INISettingCollection>* ZKeyDelay();
 	};
 	static_assert(sizeof(INISettingCollection) == 0x128);
 }

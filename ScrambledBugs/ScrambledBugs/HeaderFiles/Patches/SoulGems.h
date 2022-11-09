@@ -12,12 +12,12 @@ namespace ScrambledBugs::Patches
 	class SoulGems
 	{
 	public:
-		static void Patch(bool& blackSoulGems, bool& underfilledSoulGems);
+		static void Patch(bool& black, bool& underfilled);
 
 	private:
 		static Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType Visit(Skyrim::InventoryChanges::FindBestSoulGemVisitor* findBestSoulGemVisitor, Skyrim::InventoryEntryData* inventoryEntryData);
 
-		static bool blackSoulGems_;
-		static bool underfilledSoulGems_;
+		static bool black_;
+		static bool underfilled_;
 	};
 }

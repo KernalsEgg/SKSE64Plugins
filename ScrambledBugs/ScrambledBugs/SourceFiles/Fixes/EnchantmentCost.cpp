@@ -24,7 +24,7 @@ namespace ScrambledBugs::Fixes
 
 	bool EnchantmentCost::NotEqualTo(Skyrim::Effect* left, Skyrim::Effect* right)
 	{
-		if (left->baseEffect != right->baseEffect)
+		if (left->effectSetting != right->effectSetting)
 		{
 			return true;
 		}

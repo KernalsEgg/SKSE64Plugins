@@ -9,7 +9,6 @@
 namespace Skyrim
 {
 	class Actor;
-	class ExtraDataList;
 	class InventoryEntryData;
 	class TESBoundObject;
 	class TESObjectREFR;

@@ -32,15 +32,15 @@ namespace Skyrim
 	public:
 		enum class Flags : std::uint32_t
 		{
-			kNone                           = 0,
-			kAlwaysUsesWorldOrientation     = 1U << 1,
-			kKnockDownLivingActorsAlways    = 1U << 2,
-			kKnockDownLivingActorsByFormula = 1U << 3,
-			kIgnoreLOSCheck                 = 1U << 4,
-			kPushExplosionSourceRefOnly     = 1U << 5,
-			kIgnoreImageSpaceSwap           = 1U << 6,
-			kChain                          = 1U << 7,
-			kNoControllerVibration          = 1U << 8
+			kNone                             = 0,
+			kAlwaysUsesWorldOrientation       = 1U << 1,
+			kKnockDownLivingActorsAlways      = 1U << 2,
+			kKnockDownLivingActorsByFormula   = 1U << 3,
+			kIgnoreLOSCheck                   = 1U << 4,
+			kPushExplosionSourceReferenceOnly = 1U << 5,
+			kIgnoreImageSpaceSwap             = 1U << 6,
+			kChain                            = 1U << 7,
+			kNoControllerVibration            = 1U << 8
 		};
 		static_assert(sizeof(Flags) == 0x4);
 

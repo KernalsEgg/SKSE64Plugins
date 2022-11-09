@@ -4,12 +4,10 @@
 
 #include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/A/ActorState.h"
-#include "Shared/Skyrim/A/ActorValue.h"
 #include "Shared/Skyrim/A/ActorValueOwner.h"
 #include "Shared/Skyrim/B/BSTEventSink.h"
 #include "Shared/Skyrim/I/IPostAnimationChannelUpdateFunctor.h"
 #include "Shared/Skyrim/M/MagicTarget.h"
-#include "Shared/Skyrim/N/NiPoint3.h"
 #include "Shared/Skyrim/N/NiPointer.h"
 #include "Shared/Skyrim/S/SoulLevel.h"
 #include "Shared/Skyrim/T/TESObjectREFR.h"
@@ -26,14 +24,15 @@ namespace Skyrim
 	class AIProcess;
 	class bhkCharacterController;
 	class CastPowerItem;
+	class CombatController;
 	class HitData;
 	class InventoryEntryData;
-	class MagicItem;
 	class NiAVObject;
 	class SpellItem;
 	class TESForm;
 	class TESObjectARMO;
 	class TESObjectWEAP;
+	class TESRace;
 
 	class Actor :
 		public TESObjectREFR,                             // 0
@@ -54,8 +53,11 @@ namespace Skyrim
 
 		enum class BooleanFlags : std::uint32_t
 		{
-			kNone    = 0,
-			kIsMount = 1U << 1,
+			kNone       = 0,
+			kMount      = 1U << 1,
+			kInKillMove = 1U << 14,
+			kEssential  = 1U << 18,
+			kProtected  = 1U << 19
 		};
 		static_assert(sizeof(BooleanFlags) == 0x4);
 
@@ -115,7 +117,7 @@ namespace Skyrim
 		virtual NiPoint3              GetLookingAtLocation() const override;                                                                                                                                                                                                                             // 5B
 		virtual MagicCaster*          GetMagicCaster(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource) override;                                                                                                                                                            // 5C
 		virtual MagicTarget*          GetMagicTarget() override;                                                                                                                                                                                                                                         // 5D
-		virtual void                  Unknown5E(TESObjectREFR*) override;                                                                                                                                                                                                                                // 5E
+		virtual bool                  IsChild() const override;                                                                                                                                                                                                                                          // 5E
 		virtual void                  Unknown63(TESObjectREFR*) override;                                                                                                                                                                                                                                // 63
 		virtual void                  Unknown65(TESObjectREFR*) override;                                                                                                                                                                                                                                // 65
 		virtual void                  Unknown66(TESObjectREFR*) override;                                                                                                                                                                                                                                // 66
@@ -150,7 +152,7 @@ namespace Skyrim
 		virtual void                  Unknown95(TESObjectREFR*) override;                                                                                                                                                                                                                                // 95
 		virtual void                  Unknown96(TESObjectREFR*) override;                                                                                                                                                                                                                                // 96
 		virtual void                  Unknown98(TESObjectREFR*) override;                                                                                                                                                                                                                                // 98
-		virtual bool                  IsDead(bool nonEssential) const override;                                                                                                                                                                                                                          // 99
+		virtual bool                  IsDead(bool notEssential) const override;                                                                                                                                                                                                                          // 99
 		virtual void                  Unknown9C(TESObjectREFR*) override;                                                                                                                                                                                                                                // 9C
 		virtual void                  Unknown9D(TESObjectREFR*) override;                                                                                                                                                                                                                                // 9D
 		virtual TESAmmo*              GetEquippedAmmunition() const override;                                                                                                                                                                                                                            // 9E
@@ -181,7 +183,7 @@ namespace Skyrim
 		virtual void                         Unknown1(MagicTarget*) override;                                                      // 1
 		virtual TESObjectREFR*               GetMagicTargetReference() override;                                                   // 2
 		virtual bool                         IsMagicTargetActor() const override;                                                  // 3
-		virtual void                         Unknown4(MagicTarget*) override;                                                      // 4
+		virtual bool                         IsInvulnerable() const override;                                                      // 4
 		virtual void                         Unknown5(MagicTarget*) override;                                                      // 5
 		virtual void                         Unknown6(MagicTarget*) override;                                                      // 6
 		virtual BSSimpleList<ActiveEffect*>* GetActiveEffects() override;                                                          // 7
@@ -309,10 +311,10 @@ namespace Skyrim
 		virtual void                  UnknownEE(Actor*);                                                                                                                         // EE
 		virtual void                  UnknownEF(Actor*);                                                                                                                         // EF
 		virtual void                  UnknownF0(Actor*);                                                                                                                         // F0
-		virtual void                  UnknownF1(Actor*);                                                                                                                         // F1
-		virtual void                  UnknownF2(Actor*);                                                                                                                         // F2
-		virtual void                  UnknownF3(Actor*);                                                                                                                         // F3
-		virtual void                  UnknownF4(Actor*);                                                                                                                         // F4
+		virtual bool                  MoveToHigh();                                                                                                                              // F1
+		virtual bool                  MoveToLow();                                                                                                                               // F2
+		virtual bool                  MoveToMiddleLow();                                                                                                                         // F3
+		virtual bool                  MoveToMiddleHigh();                                                                                                                        // F4
 		virtual void                  UnknownF5(Actor*);                                                                                                                         // F5
 		virtual void                  UnknownF6(Actor*);                                                                                                                         // F6
 		virtual void                  UnknownF7(Actor*);                                                                                                                         // F7
@@ -367,9 +369,12 @@ namespace Skyrim
 
 		// Member functions
 		bool                    AddSpell(SpellItem* spell);
+		float                   AdjustHealthDamageToDifficulty(float damage, float onlyReduceDamage) const;
+		bool                    CanBeKilledBy(Actor* attacker) const;
 		float                   GetActorValueModifier(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue) const;
 		float                   GetArmorRating(InventoryEntryData* inventoryEntryData) const;
 		bhkCharacterController* GetCharacterController() const;
+		ActorHandle             GetCommandingActor() const;
 		bool                    GetControllingActor(NiPointer<Actor>& controllingActor);
 		InventoryEntryData*     GetEquippedAmmunitionInventoryEntryData() const;
 		TESObjectARMO*          GetEquippedShield() const;
@@ -379,19 +384,22 @@ namespace Skyrim
 		HitData*                GetLastHitData() const;
 		NiPoint3&               GetLineOfSightLocation(NiPoint3& result, Utility::Enumeration<LineOfSightLocation, std::uint32_t> lineOfSightLocation) const;
 		float                   GetMaximumWardPower() const;
-		bool                    GetMount(NiPointer<Actor>& mount);
+		bool                    GetMount(NiPointer<Actor>& mount) const;
+		bool                    GetRider(NiPointer<Actor>& rider) const;
 		SoulLevel               GetSoulLevel() const;
 		NiAVObject*             GetTorsoNode() const;
 		float                   GetWeaponDamage(InventoryEntryData* inventoryEntryData) const;
+		void                    HandleActorValueModified(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float oldValue, float deltaValue, Actor* source);
 		LineOfSightLocation     IsActorInLineOfSight(Actor* target, float viewCone = 2 * std::numbers::pi_v<float>) const;
 		bool                    IsDualCasting() const;
 		bool                    IsNPC() const;
+		bool                    IsOnFlyingMount() const;
 		bool                    IsOnMount() const;
 		bool                    IsPlayerTeammate() const;
 		NiAVObject*             IsPositionInLineOfSight(const NiPoint3& target, NiPoint3& result, float viewCone = 2 * std::numbers::pi_v<float>) const;
 		bool                    IsReferenceInLineOfSight(TESObjectREFR* target, float viewCone = 2 * std::numbers::pi_v<float>) const;
 		bool                    IsSneaking() const;
-		void                    ModifyActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float oldValue, float deltaValue, Actor* source);
+		void                    ModifyActorValue(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float value, Actor* source);
 		void                    RemoveActorValueModifiers(Utility::Enumeration<ActorValue, std::uint32_t> actorValue);
 		void                    RemoveBasePerks();
 		void                    SetMaximumWardPower(float maximumWardPower);
@@ -414,7 +422,7 @@ namespace Skyrim
 		std::uint64_t                                     unknown148;                                              // 140, 148
 		std::uint64_t                                     unknown150;                                              // 148, 150
 		std::uint64_t                                     unknown158;                                              // 150, 158
-		std::uint64_t                                     unknown160;                                              // 158, 160
+		CombatController*                                 combatController;                                        // 158, 160
 		std::uint64_t                                     unknown168;                                              // 160, 168
 		std::uint64_t                                     unknown170;                                              // 168, 170
 		std::uint64_t                                     unknown178;                                              // 170, 178
@@ -427,7 +435,7 @@ namespace Skyrim
 		MagicItem*                                        selectedSpells[Utility::ToUnderlying(SlotType::kTotal)]; // 1C0, 1C8
 		TESForm*                                          selectedPower;                                           // 1E0, 1E8
 		std::uint64_t                                     unknown1F0;                                              // 1E8, 1F0
-		std::uint64_t                                     unknown1F8;                                              // 1F0, 1F8
+		TESRace*                                          race;                                                    // 1F0, 1F8
 		float                                             equippedWeight;                                          // 1F8, 200
 		Utility::Enumeration<BooleanFlags, std::uint32_t> booleanFlags;                                            // 1FC, 204
 		std::uint64_t                                     unknown208;                                              // 200, 208
@@ -457,10 +465,12 @@ namespace Skyrim
 	};
 	static_assert(offsetof(Actor, booleanBits) == SKYRIM_RELOCATE(0xE0, 0xE8));
 	static_assert(offsetof(Actor, currentProcess) == SKYRIM_RELOCATE(0xF0, 0xF8));
+	static_assert(offsetof(Actor, combatController) == SKYRIM_RELOCATE(0x158, 0x160));
 	static_assert(offsetof(Actor, castPowers) == SKYRIM_RELOCATE(0x180, 0x188));
 	static_assert(offsetof(Actor, magicCasters) == SKYRIM_RELOCATE(0x1A0, 0x1A8));
 	static_assert(offsetof(Actor, selectedSpells) == SKYRIM_RELOCATE(0x1C0, 0x1C8));
 	static_assert(offsetof(Actor, selectedPower) == SKYRIM_RELOCATE(0x1E0, 0x1E8));
+	static_assert(offsetof(Actor, race) == SKYRIM_RELOCATE(0x1F0, 0x1F8));
 	static_assert(offsetof(Actor, equippedWeight) == SKYRIM_RELOCATE(0x1F8, 0x200));
 	static_assert(offsetof(Actor, booleanFlags) == SKYRIM_RELOCATE(0x1FC, 0x204));
 	static_assert(offsetof(Actor, lastUpdate) == SKYRIM_RELOCATE(0x258, 0x260));

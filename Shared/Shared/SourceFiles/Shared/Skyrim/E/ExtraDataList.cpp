@@ -3,13 +3,14 @@
 #include "Shared/Skyrim/E/ExtraDataList.h"
 
 #include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/B/BSExtraData.h"
 #include "Shared/Skyrim/E/ExtraCharge.h"
 #include "Shared/Skyrim/E/ExtraCount.h"
 #include "Shared/Skyrim/E/ExtraHealth.h"
+#include "Shared/Skyrim/E/ExtraInteraction.h"
 #include "Shared/Skyrim/E/ExtraOwnership.h"
 #include "Shared/Skyrim/E/ExtraPoison.h"
 #include "Shared/Skyrim/E/ExtraSoul.h"
+#include "Shared/Skyrim/R/RefrInteraction.h"
 #include "Shared/Utility/TypeTraits.h"
 
 
@@ -35,6 +36,22 @@ namespace Skyrim
 		const auto* extraHealth = this->GetExtraData<ExtraHealth>(ExtraDataType::kHealth);
 
 		return extraHealth ? extraHealth->health : -1.0F;
+	}
+
+	bool ExtraDataList::GetInteraction(BSTSmartPointer<RefrInteraction>& referenceInteraction) const
+	{
+		const auto* extraInteraction = this->GetExtraData<ExtraInteraction>(ExtraDataType::kInteraction);
+
+		if (extraInteraction)
+		{
+			referenceInteraction = extraInteraction->interaction;
+		}
+		else
+		{
+			referenceInteraction.reset();
+		}
+
+		return static_cast<bool>(referenceInteraction);
 	}
 
 	TESForm* ExtraDataList::GetOwner() const

@@ -16,9 +16,9 @@ namespace ScrambledBugs::Patches
 {
 	void PoisonResistance::Patch(bool& poisonResistance)
 	{
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::Actor::MagicTargetVirtualFunctionTable, 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(PoisonResistance::CheckResistance)));
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::Character::MagicTargetVirtualFunctionTable, 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(PoisonResistance::CheckResistance)));
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::PlayerCharacter::MagicTargetVirtualFunctionTable, 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(PoisonResistance::CheckResistance)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::Actor::MagicTarget::VirtualFunctionTable, 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(PoisonResistance::CheckResistance)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::Character::MagicTarget::VirtualFunctionTable, 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(PoisonResistance::CheckResistance)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::PlayerCharacter::MagicTarget::VirtualFunctionTable, 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(PoisonResistance::CheckResistance)));
 	}
 
 	float PoisonResistance::CheckResistance(Skyrim::MagicTarget* magicTarget, Skyrim::MagicItem* magicItem, Skyrim::Effect* effect, Skyrim::TESBoundObject* item)
@@ -46,7 +46,7 @@ namespace ScrambledBugs::Patches
 		float defaultResistance{ 0.0F };
 
 		float resistance{ 0.0F };
-		auto  resistanceActorValue = effect->baseEffect->resistanceActorValue;
+		auto  resistanceActorValue = effect->effectSetting->resistanceActorValue;
 
 		if (isPoison || spellType == Skyrim::MagicSystem::SpellType::kPoison)
 		{

@@ -2,12 +2,9 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/B/BGSPerkEntry.h"
 #include "Shared/Skyrim/S/SimpleArray.h"
-#include "Shared/Skyrim/T/TESCondition.h"
 #include "Shared/Utility/Enumeration.h"
-#include "Shared/Utility/TypeTraits.h"
 
 
 
@@ -16,6 +13,7 @@ namespace Skyrim
 	class Actor;
 	class BGSEntryPointFunctionData;
 	class BGSPerk;
+	class TESCondition;
 
 	class BGSEntryPointPerkEntry :
 		public BGSPerkEntry // 0
@@ -38,13 +36,7 @@ namespace Skyrim
 		virtual void     RemovePerkEntry(Actor* perkOwner) override;                                      // B
 
 		// Non-member functions
-		template <class... Arguments>
-		static void HandleEntryPoint(Utility::Enumeration<BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Actor* perkOwner, Arguments... arguments)
-		{
-			auto* function{ reinterpret_cast<decltype(&BGSEntryPointPerkEntry::HandleEntryPoint<Arguments...>)>(Addresses::BGSEntryPointPerkEntry::HandleEntryPoint) };
-
-			function(entryPoint, perkOwner, arguments...);
-		}
+		static void HandleEntryPoint(Utility::Enumeration<BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Actor* perkOwner, ...);
 
 		// Member variables
 		Utility::Enumeration<EntryPoint, std::uint8_t> entryPoint;    // 10

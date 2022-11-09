@@ -2,10 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/B/BSString.h"
 #include "Shared/Skyrim/B/BSTSingleton.h"
-#include "Shared/Utility/TypeTraits.h"
 
 
 
@@ -20,13 +18,7 @@ namespace Skyrim
 		static bool        IsConsoleOpen();
 
 		// Member functions
-		template <class... Arguments>
-		void PrintLine(const char* format, Arguments... arguments)
-		{
-			auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&ConsoleLog::PrintLine<Arguments...>)>::type>(Addresses::ConsoleLog::PrintLine) };
-
-			function(this, format, arguments...);
-		}
+		void PrintLine(const char* format, ...);
 
 		// Member variables
 		char          lastMessage[0x400]; // 1

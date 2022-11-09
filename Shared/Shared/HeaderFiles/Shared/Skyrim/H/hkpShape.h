@@ -3,7 +3,6 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/H/hkReferencedObject.h"
-#include "Shared/Skyrim/H/hkVector4.h"
 #include "Shared/Skyrim/H/hkVector4Comparison.h"
 #include "Shared/Skyrim/H/hkpShapeType.h"
 #include "Shared/Utility/Enumeration.h"
@@ -22,6 +21,7 @@ namespace Skyrim
 	class hkpRayHitCollector;
 	class hkpShapeContainer;
 	class hkTransform;
+	class hkVector4;
 
 	class hkpShape :
 		public hkReferencedObject // 0

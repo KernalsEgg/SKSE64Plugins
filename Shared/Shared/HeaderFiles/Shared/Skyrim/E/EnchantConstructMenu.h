@@ -5,7 +5,6 @@
 #include "Shared/Skyrim/B/BSIntrusiveRefCounted.h"
 #include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Skyrim/C/CraftingSubMenu.h"
-#include "Shared/Skyrim/E/Effect.h"
 #include "Shared/Skyrim/F/FormType.h"
 #include "Shared/Skyrim/M/MagicItemTraversalFunctor.h"
 #include "Shared/Utility/Enumeration.h"
@@ -14,6 +13,8 @@
 
 namespace Skyrim
 {
+	struct Effect;
+
 	class EnchantmentItem;
 	class InventoryEntryData;
 	class TESBoundObject;

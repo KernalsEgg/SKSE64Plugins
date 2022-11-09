@@ -21,7 +21,7 @@ namespace Skyrim
 		virtual void  Unknown5(ActorValueOwner*);                                                                                                                                             // 5
 		virtual void  RestoreActorValue(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float value); // 6
 		virtual void  SetActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float value);                                                                                 // 7
-		virtual void  Unknown8(ActorValueOwner*);                                                                                                                                             // 8
+		virtual bool  IsPlayerOwner() const;                                                                                                                                                  // 8
 
 		// Member functions
 		float GetDualCastingEffectiveness(float cost) const;

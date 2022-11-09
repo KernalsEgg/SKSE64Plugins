@@ -11,7 +11,6 @@ namespace Skyrim
 	class Actor;
 	class BGSEquipSlot;
 	class ExtraDataList;
-	class InventoryEntryData;
 	class TESBoundObject;
 
 	class ActorEquipManager :

@@ -21,4 +21,11 @@ namespace Skyrim
 
 		return singleton;
 	}
+
+	SettingT<INISettingCollection>* INISettingCollection::ZKeyDelay()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<INISettingCollection>*>(Addresses::INISettingCollection::ZKeyDelay) };
+
+		return singleton;
+	}
 }

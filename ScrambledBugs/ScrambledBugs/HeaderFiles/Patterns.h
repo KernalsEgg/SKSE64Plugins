@@ -29,9 +29,15 @@ namespace ScrambledBugs::Patterns
 			bool HasWeapon();
 		}
 
+		namespace ProjectileFadeDuration
+		{
+			bool HasFaded();
+			bool HasProcessedImpacts();
+		}
+
 		namespace TerrainDecals
 		{
-			bool FreeCellCollision();
+			bool FreeCellMopp();
 		}
 
 		namespace TrainingMenu

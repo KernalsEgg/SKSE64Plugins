@@ -26,6 +26,7 @@ namespace ScrambledBugs
 			bool  magicEffectFlags{ false };
 			bool  modifyArmorWeightPerkEntryPoint{ false };
 			bool  powerCooldowns{ false };
+			bool  projectileFadeDuration{ false };
 			bool  quickShot{ false };
 			float quickShotPlaybackSpeed{ 0.0F };
 			bool  terrainDecals{ false };
@@ -36,6 +37,16 @@ namespace ScrambledBugs
 		class Patches
 		{
 		public:
+			class DifficultyMultipliers
+			{
+			public:
+				DifficultyMultipliers& Deserialize(const nlohmann::json& jsonDifficultyMultipliers);
+				nlohmann::json         Serialize() const;
+
+				bool commandedActors{ false };
+				bool followers{ false };
+			};
+
 			class PerkEntryPoints
 			{
 			public:
@@ -46,27 +57,37 @@ namespace ScrambledBugs
 				bool castSpells{ false };
 			};
 
+			class SoulGems
+			{
+			public:
+				SoulGems&      Deserialize(const nlohmann::json& jsonSoulGems);
+				nlohmann::json Serialize() const;
+
+				bool black{ false };
+				bool underfilled{ false };
+			};
+
 			Patches&       Deserialize(const nlohmann::json& jsonPatches);
 			nlohmann::json Serialize() const;
 
-			bool            accumulatingMagnitude{ false };
-			bool            alreadyCaughtPickpocketing{ false };
-			bool            attachHitEffectArt{ false };
-			bool            blackSoulGems{ false };
-			bool            cloakHitEffects{ false };
-			bool            equipBestAmmunition{ false };
-			bool            improveMultipleEnchantmentEffects{ false };
-			bool            leveledCharacters{ false };
-			bool            lockpickingExperience{ false };
-			bool            pausedGameHitEffects{ false };
-			PerkEntryPoints perkEntryPoints;
-			bool            poisonResistance{ false };
-			bool            powerAttackStamina{ false };
-			bool            reflectDamage{ false };
-			bool            scrollExperience{ false };
-			bool            staffExperience{ false };
-			bool            steepSlopes{ false };
-			bool            underfilledSoulGems{ false };
+			bool                  accumulatingMagnitude{ false };
+			bool                  alreadyCaughtPickpocketing{ false };
+			bool                  attachHitEffectArt{ false };
+			bool                  cloakHitEffects{ false };
+			DifficultyMultipliers difficultyMultipliers;
+			bool                  equipBestAmmunition{ false };
+			bool                  improveMultipleEnchantmentEffects{ false };
+			bool                  leveledCharacters{ false };
+			bool                  lockpickingExperience{ false };
+			bool                  pausedGameHitEffects{ false };
+			PerkEntryPoints       perkEntryPoints;
+			bool                  poisonResistance{ false };
+			bool                  powerAttackStamina{ false };
+			bool                  reflectDamage{ false };
+			bool                  scrollExperience{ false };
+			SoulGems              soulGems;
+			bool                  staffExperience{ false };
+			bool                  steepSlopes{ false };
 		};
 
 		Settings()                = delete;

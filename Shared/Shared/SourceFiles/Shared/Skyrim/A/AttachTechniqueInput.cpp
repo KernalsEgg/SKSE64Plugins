@@ -6,15 +6,18 @@
 
 
 
-namespace Skyrim::BSAttachTechniques
+namespace Skyrim
 {
-	void AttachTechniqueInput::SetArtObjectRoot(NiNode* artObjectRoot)
+	namespace BSAttachTechniques
 	{
-		this->artObjectRoot.reset(artObjectRoot);
-	}
+		void AttachTechniqueInput::SetArtObjectRoot(NiNode* artObjectRoot)
+		{
+			this->artObjectRoot.reset(artObjectRoot);
+		}
 
-	void AttachTechniqueInput::SetAttachRoot(NiNode* attachRoot)
-	{
-		this->attachRoot.reset(attachRoot);
+		void AttachTechniqueInput::SetAttachRoot(NiNode* attachRoot)
+		{
+			this->attachRoot.reset(attachRoot);
+		}
 	}
 }

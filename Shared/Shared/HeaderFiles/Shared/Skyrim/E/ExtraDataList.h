@@ -4,6 +4,8 @@
 
 #include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/B/BSAtomic.h"
+#include "Shared/Skyrim/B/BSExtraData.h"
+#include "Shared/Skyrim/B/BSTSmartPointer.h"
 #include "Shared/Skyrim/B/BaseExtraList.h"
 #include "Shared/Skyrim/E/ExtraDataType.h"
 #include "Shared/Skyrim/M/MemoryManager.h"
@@ -16,6 +18,7 @@ namespace Skyrim
 {
 	class AlchemyItem;
 	class BSExtraData;
+	class RefrInteraction;
 	class TESForm;
 
 	class ExtraDataList
@@ -94,6 +97,7 @@ namespace Skyrim
 		float        GetCharge() const;
 		std::int16_t GetCount() const;
 		float        GetHealth() const;
+		bool         GetInteraction(BSTSmartPointer<RefrInteraction>& referenceInteraction) const;
 		TESForm*     GetOwner() const;
 		AlchemyItem* GetPoison() const;
 		SoulLevel    GetSoulLevel() const;

@@ -3,13 +3,12 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/bhkSerializable.h"
+#include "Shared/Skyrim/H/hkSimpleProperty.h"
 
 
 
 namespace Skyrim
 {
-	struct hkSimplePropertyValue;
-
 	class hkpWorld;
 
 	class bhkWorldObject :

@@ -45,6 +45,7 @@
     <ClInclude Include="HeaderFiles\Shared\SKSE\Interfaces.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\Addresses.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AccumulatingValueModifierEffect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActivateHandler.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActiveEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Actor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorEquipManager.h" />
@@ -53,7 +54,8 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorState.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValue.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValueOwner.h" />
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AITimestamp.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AITimer.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AITimeStamp.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AlchemyItem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ArrowProjectile.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AssociationType.h" />
@@ -128,6 +130,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSTextureSet.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSVoiceType.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSVolumetricLighting.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSWorldLocation.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkCharacterController.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkCollisionObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\bhkConstraint.h" />
@@ -145,6 +148,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BipedObjectSlot.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BodyPartType.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAnimationGraphChannel.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAnimationGraphEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAtomic.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSBound.h" />
@@ -163,6 +167,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSMaterialObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSMultiBoundNode.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSNiNode.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSPackedTaskQueue.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSPointerHandle.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSSimpleList.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSSoundHandle.h" />
@@ -190,7 +195,9 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CharEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Clouds.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\Color.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CombatController.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CombatReaction.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CombatState.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CommandTable.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConcreteFormFactory.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\ConcussionEffect.h" />
@@ -216,6 +223,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraDataType.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraEnchantment.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraHealth.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraInteraction.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraLevCreaModifier.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraOwnership.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraPoison.h" />
@@ -301,6 +309,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GTexture.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GViewport.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HandleEntryPointVisitor.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HeldStateHandler.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HighProcessData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\HitData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\H\hkArray.h" />
@@ -379,6 +388,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MissileProjectile.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\ModelReferenceEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\Moon.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MountInteraction.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\M\MouseMoveEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiAVObject.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\N\NiBillboardNode.h" />
@@ -422,6 +432,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RefAttachTechniqueInput.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\ReferenceEffectController.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RefrInteraction.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\R\RegSettingCollection.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScaleformTypes.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScrapHeap.h" />
@@ -448,6 +459,8 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\StandardItemData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Stars.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\S\Sun.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SyncQueueObj.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TaskQueueInterface.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TES.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESActorBase.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESActorBaseData.h" />
@@ -528,6 +541,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UI.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UIMessage.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UIMessageQueue.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UnreachableLocation.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\U\UserEvents.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\V\ValueModifierEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\Assembly.h" />
@@ -543,7 +557,6 @@
     <ClInclude Include="HeaderFiles\Shared\Utility\TypeTraits.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HeaderFiles\Shared\Skyrim\M\Main.cpp" />
     <ClCompile Include="SourceFiles\Shared\PrecompiledHeader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">Create</PrecompiledHeader>
@@ -560,11 +573,13 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorState.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\AIProcess.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorValueOwner.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\AITimer.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\AttachTechniqueInput.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BaseExtraList.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSCreatedObjectManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDecalManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDefaultObjectManager.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSEntryPointPerkEntry.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSFootstepManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSImpactDataSet.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSImpactManager.cpp" />
@@ -583,6 +598,8 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSIntrusiveRefCounted.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSStringPool.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\ButtonEvent.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\C\CombatController.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\C\CombatState.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\C\CommandTable.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\C\Console.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\C\ConsoleLog.cpp" />
@@ -633,6 +650,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\I\ItemList.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\MagicItem.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\MagicTarget.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\M\Main.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\MemoryManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiAVObject.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiBinaryStream.cpp" />
@@ -653,12 +671,14 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\PoisonedWeapon.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\P\Precipitation.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\R\ReferenceEffect.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\R\RefrInteraction.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScrapHeap.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\Script.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScriptEventSourceHolder.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\Setting.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\Sky.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\S\SpellItem.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TaskQueueInterface.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TES.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESBoundObject.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESCondition.cpp" />

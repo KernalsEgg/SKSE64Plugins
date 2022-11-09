@@ -40,7 +40,7 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		auto effectSettingFlags = activeEffect->GetBaseEffect()->effectSettingFlags;
+		auto effectSettingFlags = activeEffect->GetEffectSetting()->effectSettingFlags;
 
 		if (effectSettingFlags.none(Skyrim::EffectSetting::Flags::kNoDuration) && effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsDuration))
 		{
@@ -62,9 +62,9 @@ namespace ScrambledBugs::Fixes
 
 		activeEffect->elapsedTime = 0.0F;
 
-		auto* baseEffect = activeEffect->GetBaseEffect();
+		auto* effectSetting = activeEffect->GetEffectSetting();
 
-		if (baseEffect && baseEffect->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kRecover))
+		if (effectSetting && effectSetting->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kRecover))
 		{
 			auto* caster = activeEffect->caster.get().get();
 

@@ -2,9 +2,6 @@
 
 #include "Shared/Skyrim/F/FxDelegateArguments.h"
 
-#include "Shared/Skyrim/F/FxResponseArgumentsBase.h"
-#include "Shared/Skyrim/G/GFxMovieView.h"
-
 
 
 namespace Skyrim

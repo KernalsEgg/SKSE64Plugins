@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Shared/PrecompiledHeader.h"
+
 #include "Shared/Skyrim/G/GAtomic.h"
 #include "Shared/Skyrim/G/GList.h"
 #include "Shared/Skyrim/G/GStatistics.h"

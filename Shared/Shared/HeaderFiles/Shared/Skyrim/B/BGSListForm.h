@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Shared/PrecompiledHeader.h"
+
 #include "Shared/Skyrim/B/BSCoreTypes.h"
 #include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Skyrim/T/TESForm.h"
@@ -8,8 +10,6 @@
 
 namespace Skyrim
 {
-	class TESForm;
-
 	class BGSListForm :
 		public TESForm // 0
 	{

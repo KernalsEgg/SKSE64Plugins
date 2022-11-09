@@ -42,18 +42,18 @@ namespace Skyrim
 		virtual ~GSysAllocPaged(); // 0
 
 		// Add
-		virtual void  GetInformation(Information* information) const   = 0;                                                            // 3
-		virtual void* Allocate(UPInt size, UPInt alignment)            = 0;                                                            // 4
-		virtual bool  Free(void* pointer, UPInt size, UPInt alignment) = 0;                                                            // 5
-		virtual bool  ReallocateInPlace(void* oldPointer, UPInt oldSize, UPInt newSize, UPInt alignment);                              // 6
-		virtual void* AllocateSystemDirect(UPInt size, UPInt alignment, UPInt* actualSize, UPInt* actualAlignment);                    // 7
-		virtual bool  FreeSystemDirect(void* pointer, UPInt size, UPInt alignment);                                                    // 8
-		virtual UPInt GetBase() const;                                                                                                 // 9
-		virtual UPInt GetSize() const;                                                                                                 // A
-		virtual UPInt GetFootprint() const;                                                                                            // B
-		virtual UPInt GetUsedSpace() const;                                                                                            // C
-		virtual void  VisitMemory(GHeapMemoryVisitor* heapMemoryVisitor) const;                                                        // D
-		virtual void  VisitSegments(class GHeapSegmentVisitor* heapSegmentVisitor, UPInt categorySegment, UPInt categoryUnused) const; // E
+		virtual void  GetInformation(Information* information) const   = 0;                                                      // 3
+		virtual void* Allocate(UPInt size, UPInt alignment)            = 0;                                                      // 4
+		virtual bool  Free(void* pointer, UPInt size, UPInt alignment) = 0;                                                      // 5
+		virtual bool  ReallocateInPlace(void* oldPointer, UPInt oldSize, UPInt newSize, UPInt alignment);                        // 6
+		virtual void* AllocateSystemDirect(UPInt size, UPInt alignment, UPInt* actualSize, UPInt* actualAlignment);              // 7
+		virtual bool  FreeSystemDirect(void* pointer, UPInt size, UPInt alignment);                                              // 8
+		virtual UPInt GetBase() const;                                                                                           // 9
+		virtual UPInt GetSize() const;                                                                                           // A
+		virtual UPInt GetFootprint() const;                                                                                      // B
+		virtual UPInt GetUsedSpace() const;                                                                                      // C
+		virtual void  VisitMemory(GHeapMemoryVisitor* heapMemoryVisitor) const;                                                  // D
+		virtual void  VisitSegments(GHeapSegmentVisitor* heapSegmentVisitor, UPInt categorySegment, UPInt categoryUnused) const; // E
 	};
 	static_assert(sizeof(GSysAllocPaged) == 0x8);
 }

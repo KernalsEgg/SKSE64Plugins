@@ -3,10 +3,8 @@
 #include "Shared/Skyrim/I/InventoryChanges.h"
 
 #include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/I/InventoryEntryData.h"
 #include "Shared/Skyrim/T/TESObjectREFR.h"
-#include "Shared/Utility/TypeTraits.h"
 
 
 

@@ -6,12 +6,12 @@
 
 namespace Skyrim
 {
-	struct AITimestamp
+	struct AITimeStamp
 	{
 	public:
 		// Member variables
-		float timestamp; // 0
+		float timeStamp; // 0
 	};
-	static_assert(offsetof(AITimestamp, timestamp) == 0x0);
-	static_assert(sizeof(AITimestamp) == 0x4);
+	static_assert(offsetof(AITimeStamp, timeStamp) == 0x0);
+	static_assert(sizeof(AITimeStamp) == 0x4);
 }

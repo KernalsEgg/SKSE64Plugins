@@ -13,13 +13,13 @@ namespace ScrambledBugs::Fixes
 {
 	void TerrainDecals::Fix(bool& terrainDecals)
 	{
-		if (!Patterns::Fixes::TerrainDecals::FreeCellCollision())
+		if (!Patterns::Fixes::TerrainDecals::FreeCellMopp())
 		{
 			terrainDecals = false;
 
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Fixes::TerrainDecals::FreeCellCollision, Utility::Assembly::NoOperation5);
+		Utility::Memory::SafeWrite(Addresses::Fixes::TerrainDecals::FreeCellMopp, Utility::Assembly::NO_OPERATION_5);
 	}
 }

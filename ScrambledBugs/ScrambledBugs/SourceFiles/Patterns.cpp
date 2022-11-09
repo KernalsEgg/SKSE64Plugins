@@ -66,13 +66,32 @@ namespace ScrambledBugs::Patterns
 			}
 		}
 
-		namespace TerrainDecals
+		namespace ProjectileFadeDuration
 		{
-			bool FreeCellCollision()
+			bool HasFaded()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Fixes::TerrainDecals::FreeCellCollision, // 0x5
-					0xE8ui8, std::optional<std::int32_t>{}              // call TESObjectCELL::FreeCellCollision
+					Addresses::Fixes::ProjectileFadeDuration::HasFaded, // 0x2
+					0x72ui8, 0x32ui8                                    // jb 32
+				);
+			}
+
+			bool HasProcessedImpacts()
+			{
+				return Relocation::AddressLibrary::MatchPattern(
+					Addresses::Fixes::ProjectileFadeDuration::HasProcessedImpacts, // 0x2
+					0x0Fui8, 0x84ui8, 0x183ui32                                    // je 183
+				);
+			}
+		}
+
+		namespace TerrainDecals
+		{
+			bool FreeCellMopp()
+			{
+				return Relocation::AddressLibrary::MatchPattern(
+					Addresses::Fixes::TerrainDecals::FreeCellMopp, // 0x5
+					0xE8ui8, std::optional<std::int32_t>{}         // call TESObjectCELL::FreeCellMopp
 				);
 			}
 		}

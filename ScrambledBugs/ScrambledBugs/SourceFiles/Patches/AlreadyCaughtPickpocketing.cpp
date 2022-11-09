@@ -21,7 +21,7 @@ namespace ScrambledBugs::Patches
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::AlreadyCaughtPickpocketing::IsAngryWithPlayer, Utility::Assembly::NoOperation2);
-		Utility::Memory::SafeWrite(Addresses::Patches::AlreadyCaughtPickpocketing::HasBeenPickpocketed, Utility::Assembly::NoOperation2);
+		Utility::Memory::SafeWrite(Addresses::Patches::AlreadyCaughtPickpocketing::IsAngryWithPlayer, Utility::Assembly::NO_OPERATION_2);
+		Utility::Memory::SafeWrite(Addresses::Patches::AlreadyCaughtPickpocketing::HasBeenPickpocketed, Utility::Assembly::NO_OPERATION_2);
 	}
 }

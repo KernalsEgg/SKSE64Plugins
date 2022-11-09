@@ -2,12 +2,12 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BSFixedString.h"
-
 
 
 namespace Skyrim
 {
+	class BSFixedString;
+
 	class IAnimationGraphManagerHolder
 	{
 	public:

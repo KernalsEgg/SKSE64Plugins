@@ -22,7 +22,7 @@ namespace Skyrim
 			return MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
 		}
 
-		if (activeEffect->GetBaseEffect()->effectArchetype != EffectArchetype::kAccumulateMagnitude)
+		if (activeEffect->GetEffectSetting()->effectArchetype != EffectArchetype::kAccumulateMagnitude)
 		{
 			return MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
 		}

@@ -113,7 +113,7 @@ namespace ScrambledBugs::Patches
 			return Skyrim::MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
 		}
 
-		if (activeEffect->GetBaseEffect()->effectArchetype != Skyrim::EffectArchetype::kAccumulateMagnitude)
+		if (activeEffect->GetEffectSetting()->effectArchetype != Skyrim::EffectArchetype::kAccumulateMagnitude)
 		{
 			return Skyrim::MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
 		}
