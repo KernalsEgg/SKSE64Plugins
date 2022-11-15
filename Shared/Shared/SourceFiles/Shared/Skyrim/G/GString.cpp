@@ -211,7 +211,7 @@ namespace Skyrim
 
 	GString* GString::Constructor(const char* string)
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&GString::Constructor)>::type>(Addresses::GString::Constructor) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GString::Constructor)>::type>(Addresses::GString::Constructor) };
 
 		return function(this, string);
 	}

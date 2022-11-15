@@ -2,9 +2,6 @@
 
 #include "Shared/Skyrim/T/TaskQueueInterface.h"
 
-#include "Shared/Skyrim/Addresses.h"
-#include "Shared/Utility/TypeTraits.h"
-
 
 
 namespace Skyrim
@@ -21,15 +18,5 @@ namespace Skyrim
 		auto* function{ reinterpret_cast<decltype(&TaskQueueInterface::ShouldQueueTask)>(Addresses::TaskQueueInterface::ShouldQueueTask) };
 
 		return function();
-	}
-
-	void TaskQueueInterface::QueueScriptFunctionCall(std::uint32_t flags, TESObjectREFR* reference, ...)
-	{
-		std::va_list arguments;
-		auto*        function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TaskQueueInterface::QueueScriptFunctionCall)>::type>(Addresses::TaskQueueInterface::QueueScriptFunctionCall) };
-
-		va_start(arguments, reference);
-		function(this, flags, reference, arguments);
-		va_end(arguments);
 	}
 }

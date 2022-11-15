@@ -77,7 +77,7 @@ namespace Skyrim
 
 	bool ExtraDataList::IsQuestItem() const
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&ExtraDataList::IsQuestItem)>::type>(Addresses::ExtraDataList::IsQuestItem) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&ExtraDataList::IsQuestItem)>::type>(Addresses::ExtraDataList::IsQuestItem) };
 
 		return function(this);
 	}

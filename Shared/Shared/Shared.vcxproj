@@ -579,7 +579,6 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSCreatedObjectManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDecalManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDefaultObjectManager.cpp" />
-    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSEntryPointPerkEntry.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSFootstepManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSImpactDataSet.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSImpactManager.cpp" />

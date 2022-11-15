@@ -25,7 +25,7 @@ namespace Skyrim
 
 	void UIMessageQueue::AddMessage(const BSFixedString& menuName, Utility::Enumeration<UIMessage::Type, std::uint32_t> type, IUIMessageData* data)
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&UIMessageQueue::AddMessage)>::type>(Addresses::UIMessageQueue::AddMessage) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&UIMessageQueue::AddMessage)>::type>(Addresses::UIMessageQueue::AddMessage) };
 
 		return function(this, menuName, type, data);
 	}

@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	float MagicItem::GetCost(Actor* caster) const
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&MagicItem::GetCost)>::type>(Addresses::MagicItem::GetCost) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&MagicItem::GetCost)>::type>(Addresses::MagicItem::GetCost) };
 
 		return function(this, caster);
 	}

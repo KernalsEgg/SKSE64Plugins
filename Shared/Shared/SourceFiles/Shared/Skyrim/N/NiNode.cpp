@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	std::uint32_t NiNode::AddDecal(const BGSDecalManager::AdditionData& additionData)
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&NiNode::AddDecal)>::type>(Addresses::NiNode::AddDecal) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&NiNode::AddDecal)>::type>(Addresses::NiNode::AddDecal) };
 
 		return function(this, additionData);
 	}

@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	BGSImpactData* BGSImpactDataSet::GetImpactData(BGSMaterialType* materialType) const
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BGSImpactDataSet::GetImpactData)>::type>(Addresses::BGSImpactDataSet::GetImpactData) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSImpactDataSet::GetImpactData)>::type>(Addresses::BGSImpactDataSet::GetImpactData) };
 
 		return function(this, materialType);
 	}

@@ -18,7 +18,7 @@
 #include <cmath>           // std::abs, std::ceil, std::pow, std::sqrt
 #include <compare>         // std::strong_ordering
 #include <concepts>        // std::same_as
-#include <cstdarg>         // std::va_list, va_end, va_start
+#include <cstdarg>         // std::va_list
 #include <cstddef>         // offsetof, std::nullptr_t, std::ptrdiff_t, std::size_t
 #include <cstdint>         // Fixed width integer types
 #include <cstring>         // std::memcpy, std::memmove, std::memset, std::strcmp, std::strlen

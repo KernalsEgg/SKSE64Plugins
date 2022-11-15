@@ -18,7 +18,7 @@ namespace Skyrim
 
 	bool BGSImpactManager::PlaySound(const SoundData& soundData) const
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BGSImpactManager::PlaySound)>::type>(Addresses::BGSImpactManager::PlaySound) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSImpactManager::PlaySound)>::type>(Addresses::BGSImpactManager::PlaySound) };
 
 		return function(this, soundData);
 	}

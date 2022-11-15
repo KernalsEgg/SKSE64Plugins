@@ -32,14 +32,14 @@ namespace Skyrim
 
 	bool Effect::SetDuration(std::uint32_t duration)
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Effect::SetDuration)>::type>(Addresses::Effect::SetDuration) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Effect::SetDuration)>::type>(Addresses::Effect::SetDuration) };
 
 		return function(this, duration);
 	}
 
 	bool Effect::SetMagnitude(float magnitude)
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&Effect::SetMagnitude)>::type>(Addresses::Effect::SetMagnitude) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Effect::SetMagnitude)>::type>(Addresses::Effect::SetMagnitude) };
 
 		return function(this, magnitude);
 	}

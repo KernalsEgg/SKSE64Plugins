@@ -4,7 +4,7 @@
 
 
 
-namespace Math
+namespace Utility::Math
 {
 	template <class T1, class T2>
 		requires(std::is_integral_v<T1>&& std::is_integral_v<T2>)

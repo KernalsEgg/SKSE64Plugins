@@ -18,7 +18,7 @@ namespace Skyrim
 
 	void BGSCreatedObjectManager::DecrementReference(AlchemyItem* potion)
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BGSCreatedObjectManager::DecrementReference)>::type>(Addresses::BGSCreatedObjectManager::DecrementReference) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSCreatedObjectManager::DecrementReference)>::type>(Addresses::BGSCreatedObjectManager::DecrementReference) };
 
 		function(this, potion);
 	}

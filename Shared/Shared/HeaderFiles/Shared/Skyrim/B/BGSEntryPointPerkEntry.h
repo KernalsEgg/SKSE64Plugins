@@ -2,9 +2,11 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/B/BGSPerkEntry.h"
 #include "Shared/Skyrim/S/SimpleArray.h"
 #include "Shared/Utility/Enumeration.h"
+#include "Shared/Utility/TypeTraits.h"
 
 
 
@@ -36,7 +38,13 @@ namespace Skyrim
 		virtual void     RemovePerkEntry(Actor* perkOwner) override;                                      // B
 
 		// Non-member functions
-		static void HandleEntryPoint(Utility::Enumeration<BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Actor* perkOwner, ...);
+		template <class... Arguments>
+		static void HandleEntryPoint(Utility::Enumeration<BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Actor* perkOwner, Arguments... arguments)
+		{
+			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<decltype(&BGSEntryPointPerkEntry::HandleEntryPoint<>)>::type>(Addresses::BGSEntryPointPerkEntry::HandleEntryPoint) };
+
+			function(entryPoint, perkOwner, arguments...);
+		}
 
 		// Member variables
 		Utility::Enumeration<EntryPoint, std::uint8_t> entryPoint;    // 10

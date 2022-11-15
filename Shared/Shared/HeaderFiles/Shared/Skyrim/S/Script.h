@@ -2,10 +2,12 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/C/CommandTable.h"
 #include "Shared/Skyrim/T/TESForm.h"
 #include "Shared/Utility/Enumeration.h"
+#include "Shared/Utility/TypeTraits.h"
 
 
 
@@ -41,7 +43,13 @@ namespace Skyrim
 		virtual void Unknown13(TESForm*) override; // 13
 
 		// Non-member functions
-		static bool ParseParameters(const ScriptParameter* scriptParameters, ScriptFunction::ScriptData* scriptData, std::uint32_t& opcodeOffset, TESObjectREFR* object, TESObjectREFR* containingObject, Script* script, ScriptLocals* scriptLocals, ...);
+		template <class... Arguments>
+		static bool ParseParameters(const ScriptParameter* scriptParameters, ScriptFunction::ScriptData* scriptData, std::uint32_t& opcodeOffset, TESObjectREFR* object, TESObjectREFR* containingObject, Script* script, ScriptLocals* scriptLocals, Arguments... arguments)
+		{
+			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<decltype(&Script::ParseParameters<>)>::type>(Addresses::Script::ParseParameters) };
+
+			return function(scriptParameters, scriptData, opcodeOffset, object, containingObject, script, scriptLocals, arguments...);
+		}
 
 		// Member functions
 		void CompileAndRun(ScriptCompiler* scriptCompiler, Utility::Enumeration<CompilerName, std::uint32_t> type, TESObjectREFR* target);

@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	bhkRigidBody* bhkNiCollisionObject::GetRigidBody() const
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&bhkNiCollisionObject::GetRigidBody)>::type>(Addresses::bhkNiCollisionObject::GetRigidBody) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&bhkNiCollisionObject::GetRigidBody)>::type>(Addresses::bhkNiCollisionObject::GetRigidBody) };
 
 		return function(this);
 	}

@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	void BGSPerk::ApplyPerk(Actor* perkOwner, std::uint8_t removeRank, std::uint8_t applyRank) const
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&BGSPerk::ApplyPerk)>::type>(Addresses::BGSPerk::ApplyPerk) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSPerk::ApplyPerk)>::type>(Addresses::BGSPerk::ApplyPerk) };
 
 		function(this, perkOwner, removeRank, applyRank);
 	}

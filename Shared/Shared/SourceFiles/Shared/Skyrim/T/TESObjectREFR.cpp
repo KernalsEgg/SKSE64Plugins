@@ -26,7 +26,7 @@ namespace Skyrim
 
 	bool TESObjectREFR::Activate(TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount, bool defaultProcessingOnly)
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::Activate)>::type>(Addresses::TESObjectREFR::Activate) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::Activate)>::type>(Addresses::TESObjectREFR::Activate) };
 
 		return function(this, activator, deferred, item, itemCount, defaultProcessingOnly);
 	}
@@ -82,14 +82,14 @@ namespace Skyrim
 
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::GetInventoryChanges)>::type>(Addresses::TESObjectREFR::GetInventoryChanges) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::GetInventoryChanges)>::type>(Addresses::TESObjectREFR::GetInventoryChanges) };
 
 		return function(this);
 	}
 
 	const char* TESObjectREFR::GetReferenceName() const
 	{
-		auto* function{ reinterpret_cast<Utility::MemberFunctionPointer<decltype(&TESObjectREFR::GetReferenceName)>::type>(Addresses::TESObjectREFR::GetReferenceName) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::GetReferenceName)>::type>(Addresses::TESObjectREFR::GetReferenceName) };
 
 		return function(this);
 	}

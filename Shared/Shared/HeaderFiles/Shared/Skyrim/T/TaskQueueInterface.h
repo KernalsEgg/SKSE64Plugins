@@ -2,6 +2,9 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/Addresses.h"
+#include "Shared/Utility/TypeTraits.h"
+
 
 
 namespace Skyrim
@@ -18,7 +21,13 @@ namespace Skyrim
 		static bool                ShouldQueueTask();
 
 		// Member functions
-		void QueueScriptFunctionCall(std::uint32_t flags, TESObjectREFR* reference, ...);
+		template <class... Arguments>
+		void QueueScriptFunctionCall(std::uint32_t flags, TESObjectREFR* reference, Arguments... arguments)
+		{
+			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<Utility::TypeTraits::MakeFunctionPointer<decltype(&TaskQueueInterface::QueueScriptFunctionCall<>)>::type>::type>(Addresses::TaskQueueInterface::QueueScriptFunctionCall) };
+
+			function(this, flags, reference, arguments...);
+		}
 
 		// Member variables
 		BSPackedTaskQueue* packedTaskQueue;          // 0
