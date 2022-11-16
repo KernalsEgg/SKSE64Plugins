@@ -27,7 +27,7 @@ namespace Skyrim
 	{
 		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&NiObjectNET::DeleteExtraDataAt)>::type>(Addresses::NiObjectNET::DeleteExtraDataAt) };
 
-		return function(this, index);
+		function(this, index);
 	}
 
 	NiExtraData* NiObjectNET::GetExtraData(const BSFixedString& name) const
@@ -48,7 +48,7 @@ namespace Skyrim
 	{
 		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&NiObjectNET::RemoveAllExtraData)>::type>(Addresses::NiObjectNET::RemoveAllExtraData) };
 
-		return function(this);
+		function(this);
 	}
 
 	bool NiObjectNET::RemoveExtraData(const BSFixedString& name)

@@ -25,7 +25,7 @@ namespace Utility
 			}
 
 			std::erase_if(this->eventSinks_,
-				[target](const std::function<void(EventArguments...)>& function)
+				[target](const std::function<void(EventArguments...)>& function) -> bool
 				{
 					return function.target() == target;
 				});

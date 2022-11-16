@@ -20,6 +20,6 @@ namespace Skyrim
 	{
 		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&ItemList::Update)>::type>(Addresses::ItemList::Update) };
 
-		return function(this, owner);
+		function(this, owner);
 	}
 }

@@ -27,6 +27,6 @@ namespace Skyrim
 	{
 		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&UIMessageQueue::AddMessage)>::type>(Addresses::UIMessageQueue::AddMessage) };
 
-		return function(this, menuName, type, data);
+		function(this, menuName, type, data);
 	}
 }

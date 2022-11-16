@@ -1,6 +1,6 @@
 #include "PrecompiledHeader.h"
 
-#include "Hooks.h"
+#include "Events.h"
 #include "Shared/SKSE/Interfaces.h"
 #include "Shared/Utility/Log.h"
 
@@ -8,7 +8,7 @@
 
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
-	.pluginVersion   = 1,
+	.pluginVersion   = 2,
 	.pluginName      = "Actor Base Perk Fix",
 	.author          = "KernalsEgg",
 	.addressLibrary  = true,
@@ -50,7 +50,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	SKSE::Cache::GetSingleton().Initialize(loadInterface);
 
-	ActorBasePerkFix::Hooks::Install();
+	ActorBasePerkFix::Events::Register();
 
 	return true;
 }
