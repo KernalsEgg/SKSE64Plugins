@@ -33,13 +33,13 @@ namespace Utility
 
 		void SendEvent(EventArguments... eventArguments) const
 		{
-			for (const auto& eventSink : eventSinks_)
+			for (const auto& eventSink : this->eventSinks_)
 			{
 				eventSink(eventArguments...);
 			}
 		}
 
 	private:
-		std::vector<std::function<void(EventArguments...)>> eventSinks_;
+		std::vector<std::function<void(EventArguments...)>> eventSinks_{};
 	};
 }

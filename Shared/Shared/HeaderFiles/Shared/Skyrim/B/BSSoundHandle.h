@@ -33,11 +33,11 @@ namespace Skyrim
 		};
 
 		// Member variables
-		std::uint32_t                                     soundID{ kInvalidID };               // 0
-		bool                                              assumeSuccess{ false };              // 4
-		std::uint8_t                                      padding5;                            // 5
-		std::uint16_t                                     padding6;                            // 6
-		Utility::Enumeration<AssumedState, std::uint32_t> state{ AssumedState::kInitialized }; // 8
+		std::uint32_t                                     soundID{ BSSoundHandle::kInvalidID }; // 0
+		bool                                              assumeSuccess{ false };               // 4
+		std::uint8_t                                      padding5;                             // 5
+		std::uint16_t                                     padding6;                             // 6
+		Utility::Enumeration<AssumedState, std::uint32_t> state{ AssumedState::kInitialized };  // 8
 	};
 	static_assert(offsetof(BSSoundHandle, soundID) == 0x0);
 	static_assert(offsetof(BSSoundHandle, assumeSuccess) == 0x4);

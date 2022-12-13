@@ -27,6 +27,35 @@ namespace Utility
 			"Critical"
 		};
 
+		static std::ofstream& GetSingleton()
+		{
+			static std::ofstream singleton(
+				std::filesystem::path(Relocation::DynamicLinkLibrary::GetSingleton().GetPath()).replace_extension("log"),
+				std::ios::out | std::ios::trunc);
+
+			return singleton;
+		}
+
+		template <class... Arguments>
+		static void PrintLine(std::size_t level, Message message, const Arguments&... arguments)
+		{
+			std::stringstream stringStream;
+
+			stringStream
+				<< std::vformat(
+					   "[{:%F %T %Ez}] [{}] {}({},{}): {}",
+					   std::make_format_args(
+						   std::chrono::zoned_time(std::chrono::current_zone(), std::chrono::system_clock::now()),
+						   Log::LEVELS[level],
+						   std::filesystem::path(message.sourceLocation.file_name()).filename().string(),
+						   message.sourceLocation.line(),
+						   message.sourceLocation.column(),
+						   std::vformat(message.stringView, std::make_format_args(arguments...))))
+				<< std::endl;
+
+			Log::GetSingleton() << stringStream.rdbuf() << std::flush;
+		}
+
 	public:
 		template <class... Arguments>
 		static void Critical(Message message, const Arguments&... arguments)
@@ -50,36 +79,6 @@ namespace Utility
 		static void Warning(Message message, const Arguments&... arguments)
 		{
 			Log::PrintLine(Log::kWarning, message, arguments...);
-		}
-
-	private:
-		static std::ofstream& GetSingleton()
-		{
-			static std::ofstream singleton(
-				std::filesystem::path(Relocation::DynamicLinkLibrary::GetSingleton().GetPath()).replace_extension("log"),
-				std::ios::out | std::ios::trunc);
-
-			return singleton;
-		}
-
-		template <class... Arguments>
-		static void PrintLine(std::size_t level, Message message, const Arguments&... arguments)
-		{
-			std::stringstream stringStream;
-
-			stringStream
-				<< std::vformat(
-					   "[{:%F %T}] [{}] {}({},{}): {}",
-					   std::make_format_args(
-						   std::chrono::system_clock::now(),
-						   Log::LEVELS[level],
-						   std::filesystem::path(message.sourceLocation.file_name()).filename().string(),
-						   message.sourceLocation.line(),
-						   message.sourceLocation.column(),
-						   std::vformat(message.stringView, std::make_format_args(arguments...))))
-				<< std::endl;
-
-			Log::GetSingleton() << stringStream.rdbuf() << std::flush;
 		}
 	};
 }

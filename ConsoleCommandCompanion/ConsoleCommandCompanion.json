@@ -1,5 +1,5 @@
 {
-	"log": true, /* Logs when a button is pressed or released along with their ID code, input device, and user event to make binding console commands to buttons straightforward. */
+	"log": true, /* Log when a button is pressed or released along with its input device, ID code, and user event to help with binding console commands to buttons. */
 	"events":
 	{
 		"initialize": /* Run when the main menu is opened after launching the game. */
@@ -17,39 +17,112 @@
 				"RunConsoleBatch LoadGame"
 			]
 		},
-		"button": /* You can optionally specify a buttons ID code, input device, and user event. */
+		"button": /* Optionally filter by the buttons ID code, input device, and user event. Multiple buttons can be bound. */
 		{
 			"pressed": /* Run when a button is pressed. */
 			[{
-				"inputDevice": 0, /* Keyboard */
-				"idCode": 58, /* Caps Lock */
+				"consoleCommands":
+				[
+					"SetGlobalTimeMultiplier 0.5"
+				],
+				"filters":
+				[{
+					"inputDevice": 1, /* Mouse */
+					"idCode": 0, /* Left Mouse Button */
+					"userEvent": "Right Attack/Block"
+				}]
+			},
+			{
+				"consoleCommands":
+				[
+					"SetGlobalTimeMultiplier 2.0"
+				],
+				"filters":
+				[{
+					"userEvent": "Sprint"
+				}]
+			},
+			{
 				"consoleCommands":
 				[
 					"ToggleFlyCam 1"
-				]
+				],
+				"filters":
+				[{
+					"inputDevice": 0, /* Keyboard */
+					"idCode": 58 /* Caps Lock */
+				}]
 			},
 			{
-				"userEvent": "Shout",
 				"consoleCommands":
 				[
-					"SetGlobalTimeMultiplier 0.25"
-				]
+					"Player.ModActorValue SpeedMult 300.0"
+				],
+				"filters":
+				[{
+					"inputDevice": 0, /* Keyboard */
+					"idCode": 200 /* Up Arrow */
+				}]
+			},
+			{
+				"consoleCommands":
+				[
+					"Player.ModActorValue SpeedMult -300.0"
+				],
+				"filters":
+				[{
+					"inputDevice": 0, /* Keyboard */
+					"idCode": 208 /* Down Arrow */
+				}]
+			},
+			{
+				"consoleCommands":
+				[
+					"ToggleMenus"
+				],
+				"filters":
+				[{
+					"inputDevice": 0, /* Keyboard */
+					"idCode": 42 /* Left Shift */
+				},
+				{
+					"inputDevice": 0, /* Keyboard */
+					"idCode": 35 /* H */
+				}]
 			}],
 			"released": /* Run when a button is released. */
 			[{
-				"inputDevice": 0, /* Keyboard */
-				"idCode": 58, /* Caps Lock */
+				"consoleCommands":
+				[
+					"SetGlobalTimeMultiplier 1.0"
+				],
+				"filters":
+				[{
+					"inputDevice": 1, /* Mouse */
+					"idCode": 0, /* Left Mouse Button */
+					"userEvent": "Right Attack/Block"
+				}]
+			},
+			{
+				"consoleCommands":
+				[
+					"SetGlobalTimeMultiplier 1.0"
+				],
+				"filters":
+				[{
+					"userEvent": "Sprint"
+				}]
+			},
+			{
 				"consoleCommands":
 				[
 					"ToggleFlyCam 1"
-				]
-			},
-			{
-				"userEvent": "Shout",
-				"consoleCommands":
-				[
-					"SetGlobalTimeMultiplier 1"
-				]
+				],
+				"filters":
+				[{
+					"inputDevice": 0, /* Keyboard */
+					"idCode": 58 /* Caps Lock */
+				}]
 			}]
 		}
 	}

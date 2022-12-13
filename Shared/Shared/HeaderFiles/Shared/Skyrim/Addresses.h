@@ -285,13 +285,16 @@ namespace Skyrim::Addresses
 		}
 	}
 
-	namespace Effect
+	namespace EffectItem
 	{
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0xF8550, 1.6.318.0: SkyrimSE.exe + 0x1028E0</summary>
-		inline const std::uintptr_t SetDuration{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(10924, 11012)) };
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x3C1250, 1.6.318.0: SkyrimSE.exe + 0x3D8CD0</summary>
+		inline const std::uintptr_t GetCost{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(25921, 26504)) };
 
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0xF8490, 1.6.318.0: SkyrimSE.exe + 0x102820</summary>
-		inline const std::uintptr_t SetMagnitude{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(10920, 11008)) };
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xF87F0, 1.6.318.0: SkyrimSE.exe + 0x102B50</summary>
+		inline const std::uintptr_t ResetCost{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(10932, 11021)) };
+
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0xF86A0, 1.6.318.0: SkyrimSE.exe + 0x102A30</summary>
+		inline const std::uintptr_t SetConditions{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(10930, 11018)) };
 	}
 
 	namespace EnchantmentItem
@@ -767,6 +770,9 @@ namespace Skyrim::Addresses
 
 	namespace TESCondition
 	{
+		/// <summary>1.5.97.0: SkyrimSE.exe + 0x444710, 1.6.318.0: SkyrimSE.exe + 0x45D8B0</summary>
+		inline const std::uintptr_t Clear{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(29072, 29886)) };
+
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x4447A0, 1.6.318.0: SkyrimSE.exe + 0x45D940</summary>
 		inline const std::uintptr_t IsTrue{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(29074, 29888)) };
 	}

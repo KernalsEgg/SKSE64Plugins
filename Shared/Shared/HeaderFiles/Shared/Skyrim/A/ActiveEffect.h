@@ -10,7 +10,7 @@
 
 namespace Skyrim
 {
-	struct Effect;
+	struct EffectItem;
 
 	class EffectSetting;
 	class MagicItem;
@@ -93,7 +93,7 @@ namespace Skyrim
 		ActorHandle                                                     caster;            // 34
 		std::uint64_t                                                   unknown38;         // 38
 		MagicItem*                                                      magicItem;         // 40
-		Effect*                                                         effect;            // 48
+		EffectItem*                                                     effect;            // 48
 		MagicTarget*                                                    magicTarget;       // 50
 		TESBoundObject*                                                 source;            // 58
 		std::uint64_t                                                   unknown60;         // 60

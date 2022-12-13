@@ -2,6 +2,9 @@
 
 #include "Settings.h"
 
+#include "Fixes/MorphLimit.h"
+#include "Fixes/MoverLimit.h"
+#include "Fixes/ReplaceStaticArray.h"
 #include "Shared/Relocation/Module.h"
 #include "Shared/Utility/Log.h"
 
@@ -69,6 +72,22 @@ namespace ActorLimitFix
 		}
 
 		return *this;
+	}
+
+	void Settings::Initialize()
+	{
+		Utility::Log::Information("Initializing...\n{}", this->Serialize().dump(1, '\t'));
+
+		if (this->fixes.replaceStaticArray)
+		{
+			ActorLimitFix::Fixes::ReplaceStaticArray::Fix(this->fixes.replaceStaticArray);
+		}
+
+		// Must be installed after ActorLimitFix::Fixes::ReplaceStaticArray
+		ActorLimitFix::Fixes::MorphLimit::Fix(this->fixes.morphLimit, this->fixes.replaceStaticArray);
+		ActorLimitFix::Fixes::MoverLimit::Fix(this->fixes.moverLimit);
+
+		Utility::Log::Information("Initialized.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const

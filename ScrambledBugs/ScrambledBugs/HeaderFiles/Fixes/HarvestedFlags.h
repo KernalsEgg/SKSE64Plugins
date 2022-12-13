@@ -14,8 +14,8 @@ namespace ScrambledBugs::Fixes
 		static void Fix(bool& harvestedFlags);
 
 	private:
-		static void SetHarvestedFlag(Skyrim::TESObjectREFR* reference, bool harvested);
+		static void SetEmpty(Skyrim::TESObjectREFR* reference, bool empty);
 
-		static decltype(&HarvestedFlags::SetHarvestedFlag) setHarvestedFlag_;
+		static decltype(&HarvestedFlags::SetEmpty) setEmpty_;
 	};
 }

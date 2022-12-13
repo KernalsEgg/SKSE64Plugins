@@ -23,15 +23,15 @@ namespace Skyrim
 		{
 			this->hkpShapeRayCastCollectorOutput::Reset();
 
-			this->shapeKeys[0]  = HK_INVALID_SHAPE_KEY;
+			this->shapeKeys[0]  = Skyrim::HK_INVALID_SHAPE_KEY;
 			this->shapeKeyIndex = 0;
 		}
 
 		// Member variables
-		hkpShapeKey   shapeKeys[kMaximumHierarchyDepth]{ HK_INVALID_SHAPE_KEY }; // 20
-		std::int32_t  shapeKeyIndex{ 0 };                                        // 40
-		std::uint32_t padding44;                                                 // 44
-		std::uint64_t padding48;                                                 // 48
+		hkpShapeKey   shapeKeys[hkpShapeRayCastOutput::kMaximumHierarchyDepth]{ Skyrim::HK_INVALID_SHAPE_KEY }; // 20
+		std::int32_t  shapeKeyIndex{ 0 };                                                                       // 40
+		std::uint32_t padding44;                                                                                // 44
+		std::uint64_t padding48;                                                                                // 48
 	};
 	static_assert(offsetof(hkpShapeRayCastOutput, shapeKeys) == 0x20);
 	static_assert(offsetof(hkpShapeRayCastOutput, shapeKeyIndex) == 0x40);

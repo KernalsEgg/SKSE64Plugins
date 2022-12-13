@@ -6,6 +6,27 @@
 
 
 
+namespace VendorRespawnFix
+{
+	bool Initialize()
+	{
+		const auto* serializationInterface = SKSE::Cache::GetSingleton().GetSerializationInterface();
+
+		if (!serializationInterface)
+		{
+			Utility::Log::Critical("Serialization interface not found.");
+
+			return false;
+		}
+
+		serializationInterface->SetUniqueID(Serialization::kUniqueID);
+		serializationInterface->SetLoadCallback(std::addressof(Serialization::LoadGame));
+		serializationInterface->SetSaveCallback(std::addressof(Serialization::SaveGame));
+
+		return true;
+	}
+}
+
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
 	.pluginVersion   = 1,
@@ -50,18 +71,5 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	SKSE::Cache::GetSingleton().Initialize(loadInterface);
 
-	const auto* serializationInterface = SKSE::Cache::GetSingleton().GetSerializationInterface();
-
-	if (!serializationInterface)
-	{
-		Utility::Log::Critical("Serialization interface not found.");
-
-		return false;
-	}
-
-	serializationInterface->SetUniqueID(VendorRespawnFix::Serialization::kUniqueID);
-	serializationInterface->SetLoadCallback(std::addressof(VendorRespawnFix::Serialization::LoadGame));
-	serializationInterface->SetSaveCallback(std::addressof(VendorRespawnFix::Serialization::SaveGame));
-
-	return true;
+	return VendorRespawnFix::Initialize();
 }

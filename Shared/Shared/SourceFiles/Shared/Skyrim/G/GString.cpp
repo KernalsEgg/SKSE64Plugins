@@ -126,7 +126,7 @@ namespace Skyrim
 		return *this;
 	}
 
-	GString::GString(const char* string)
+	GString::GString(const_pointer string)
 	{
 		this->Constructor(string);
 	}
@@ -209,7 +209,7 @@ namespace Skyrim
 		return hash;
 	}
 
-	GString* GString::Constructor(const char* string)
+	GString* GString::Constructor(const_pointer string)
 	{
 		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GString::Constructor)>::type>(Addresses::GString::Constructor) };
 

@@ -32,9 +32,9 @@ namespace Skyrim
 		private:
 			static void Event(InitTESThread* initializeThread);
 
-			decltype(&InitializeThread::Event) event_;
-			Utility::EventSource<>             after_;
-			Utility::EventSource<>             before_;
+			decltype(&InitializeThread::Event) event_{};
+			Utility::EventSource<>             after_{};
+			Utility::EventSource<>             before_{};
 		};
 	}
 }

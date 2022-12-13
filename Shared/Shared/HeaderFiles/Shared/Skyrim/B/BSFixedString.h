@@ -101,8 +101,50 @@ namespace Skyrim
 		}
 
 		// Non-member functions
-		friend constexpr bool operator==(const BSFixedString& left, const BSFixedString& right) noexcept { return left.data_ == right.data_ || left.empty() && right.empty(); }
+		friend constexpr bool operator==(const BSFixedString& left, const BSFixedString& right) noexcept { return left.data_ == right.data_; }
 		friend constexpr bool operator!=(const BSFixedString& left, const BSFixedString& right) noexcept { return !(left == right); }
+
+		friend bool operator==(const BSFixedString& left, const_pointer right)
+		{
+			if (!left.data_)
+			{
+				return !right;
+			}
+
+			return right ? ::_stricmp(left.data_, right) == 0 : false;
+		}
+
+		friend bool operator!=(const BSFixedString& left, const_pointer right) { return !(left == right); }
+		friend bool operator==(const_pointer left, const BSFixedString& right) { return right == left; }
+		friend bool operator!=(const_pointer left, const BSFixedString& right) { return !(left == right); }
+
+		template <class T>
+			requires(std::is_convertible_v<const T&, std::basic_string_view<value_type>> && !std::is_convertible_v<const T&, const_pointer>)
+		friend bool operator==(const BSFixedString& left, const T& right)
+		{
+			return left == static_cast<std::basic_string_view<value_type>>(right).data();
+		}
+
+		template <class T>
+			requires(std::is_convertible_v<const T&, std::basic_string_view<value_type>> && !std::is_convertible_v<const T&, const_pointer>)
+		friend bool operator!=(const BSFixedString& left, const T& right)
+		{
+			return !(left == right);
+		}
+
+		template <class T>
+			requires(std::is_convertible_v<const T&, std::basic_string_view<value_type>> && !std::is_convertible_v<const T&, const_pointer>)
+		friend bool operator==(const T& left, const BSFixedString& right)
+		{
+			return right == left;
+		}
+
+		template <class T>
+			requires(std::is_convertible_v<const T&, std::basic_string_view<value_type>> && !std::is_convertible_v<const T&, const_pointer>)
+		friend bool operator!=(const T& left, const BSFixedString& right)
+		{
+			return !(left == right);
+		}
 
 	private:
 		static constexpr value_type EMPTY[]{ 0 };

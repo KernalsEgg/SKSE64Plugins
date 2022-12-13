@@ -64,6 +64,6 @@ namespace Utility
 	private:
 		std::uintptr_t              address_{ 0 };
 		volatile std::atomic_size_t position_{ 0 };
-		EventSource<std::uintptr_t> commit_;
+		EventSource<std::uintptr_t> commit_{};
 	};
 }

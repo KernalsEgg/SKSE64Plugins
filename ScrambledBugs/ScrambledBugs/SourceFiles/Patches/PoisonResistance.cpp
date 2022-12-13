@@ -21,7 +21,7 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::PlayerCharacter::MagicTarget::VirtualFunctionTable, 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(PoisonResistance::CheckResistance)));
 	}
 
-	float PoisonResistance::CheckResistance(Skyrim::MagicTarget* magicTarget, Skyrim::MagicItem* magicItem, Skyrim::Effect* effect, Skyrim::TESBoundObject* item)
+	float PoisonResistance::CheckResistance(Skyrim::MagicTarget* magicTarget, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect, Skyrim::TESBoundObject* item)
 	{
 		// magicTarget != nullptr
 		// magicItem != nullptr

@@ -32,7 +32,7 @@ namespace PowerAttackNotifications
 
 	Settings& Settings::Deserialize(const nlohmann::json& jsonSettings)
 	{
-		this->notification = jsonSettings.at("notification").get<std::string>();
+		jsonSettings.at("notification").get_to(this->notification);
 
 		return *this;
 	}

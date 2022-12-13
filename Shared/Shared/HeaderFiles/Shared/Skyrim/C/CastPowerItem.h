@@ -57,10 +57,10 @@ namespace Skyrim
 			}
 
 		private:
-			// Member variables
 			pointer current_{ nullptr };
 		};
 
+		// Iterators
 		constexpr iterator<CastPowerItem>       begin() noexcept { return iterator<CastPowerItem>(this); }
 		constexpr iterator<const CastPowerItem> begin() const noexcept { return iterator<const CastPowerItem>(this); }
 		constexpr iterator<const CastPowerItem> cbegin() const noexcept { return this->begin(); }

@@ -1,21 +1,9 @@
 #pragma once
 
-#define NOMINMAX
-#define WIN32_LEAN_AND_MEAN
-
-#include <Windows.h>
-
-#undef MessageBox
-
-#include <DirectXMath.h>
-#include <Psapi.h>
-#include <d3d9types.h>
-#include <memoryapi.h>
-
-#include <algorithm>       // std::find, std::lower_bound, std::max, std::min, std::sort
+#include <algorithm>       // std::find, std::lower_bound, std::min, std::sort
 #include <atomic>          // std::atomic_ref, std::atomic_size_t
 #include <chrono>          // std::chrono
-#include <cmath>           // std::abs, std::ceil, std::pow, std::sqrt
+#include <cmath>           // std::abs, std::pow, std::sqrt
 #include <compare>         // std::strong_ordering
 #include <concepts>        // std::same_as
 #include <cstdarg>         // std::va_list
@@ -39,11 +27,21 @@
 #include <source_location> // std::source_location
 #include <span>            // std::span
 #include <sstream>         // std::stringstream, std::wistringstream
-#include <string>          // _stricmp, _wcsicmp, std::char_traits, std::getline, std::stoi, std::string, std::wstring
+#include <string.h>        // _stricmp, _wcsicmp
+#include <string>          // std::char_traits, std::getline, std::stoi, std::string, std::wstring
 #include <string_view>     // std::basic_string_view, std::string_view
-#include <tuple>           // std::apply, std::tuple
 #include <type_traits>     // Type traits
 #include <utility>         // std::forward, std::move
 #include <vector>          // std::vector
 
-using namespace std::literals;
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+
+#include <Windows.h>
+
+#undef MessageBox
+
+#include <DirectXMath.h>
+#include <Psapi.h>
+#include <d3d9types.h>
+#include <memoryapi.h>

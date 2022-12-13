@@ -6,6 +6,16 @@
 
 
 
+namespace ActorBasePerkFix
+{
+	bool Initialize()
+	{
+		Events::Register();
+
+		return true;
+	}
+}
+
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
 	.pluginVersion   = 2,
@@ -19,7 +29,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 {
 	pluginInformation->informationVersion = SKSE::PluginInformation::kVersion;
 	pluginInformation->name               = "Actor Base Perk Fix";
-	pluginInformation->version            = 1;
+	pluginInformation->version            = 2;
 
 	if (queryInterface->IsEditor())
 	{
@@ -50,7 +60,5 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	SKSE::Cache::GetSingleton().Initialize(loadInterface);
 
-	ActorBasePerkFix::Events::Register();
-
-	return true;
+	return ActorBasePerkFix::Initialize();
 }

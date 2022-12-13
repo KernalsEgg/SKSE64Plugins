@@ -2,6 +2,41 @@
 
 #include "Settings.h"
 
+#include "Fixes/ActivateFurniture.h"
+#include "Fixes/ActorValuePercentage.h"
+#include "Fixes/EnchantmentCost.h"
+#include "Fixes/HarvestedFlags.h"
+#include "Fixes/HitEffectRaceCondition.h"
+#include "Fixes/ImpactEffectCrash.h"
+#include "Fixes/KillCamera.h"
+#include "Fixes/LeftHandPowerAttacks.h"
+#include "Fixes/MagicEffectFlags.h"
+#include "Fixes/ModifyArmorWeightPerkEntryPoint.h"
+#include "Fixes/PowerCooldowns.h"
+#include "Fixes/ProjectileFadeDuration.h"
+#include "Fixes/QuickShot.h"
+#include "Fixes/TerrainDecals.h"
+#include "Fixes/TrainingMenu.h"
+#include "Fixes/WeaponCharge.h"
+#include "Patches/AccumulatingMagnitude.h"
+#include "Patches/AlreadyCaughtPickpocketing.h"
+#include "Patches/AttachHitEffectArt.h"
+#include "Patches/CloakHitEffects.h"
+#include "Patches/DifficultyMultipliers.h"
+#include "Patches/EquipBestAmmunition.h"
+#include "Patches/ImproveMultipleEnchantmentEffects.h"
+#include "Patches/LeveledCharacters.h"
+#include "Patches/LockpickingExperience.h"
+#include "Patches/PausedGameHitEffects.h"
+#include "Patches/PerkEntryPoints/ApplyMultipleSpells.h"
+#include "Patches/PerkEntryPoints/CastSpells.h"
+#include "Patches/PoisonResistance.h"
+#include "Patches/PowerAttackStamina.h"
+#include "Patches/ReflectDamage.h"
+#include "Patches/ScrollExperience.h"
+#include "Patches/SoulGems.h"
+#include "Patches/StaffExperience.h"
+#include "Patches/SteepSlopes.h"
 #include "Shared/Relocation/Module.h"
 #include "Shared/Utility/Log.h"
 
@@ -131,9 +166,9 @@ namespace ScrambledBugs
 			jsonDifficultyMultipliers.at("commandedActors").get_to(this->commandedActors);
 		}
 
-		if (jsonDifficultyMultipliers.contains("followers"))
+		if (jsonDifficultyMultipliers.contains("teammates"))
 		{
-			jsonDifficultyMultipliers.at("followers").get_to(this->followers);
+			jsonDifficultyMultipliers.at("teammates").get_to(this->teammates);
 		}
 
 		return *this;
@@ -144,7 +179,7 @@ namespace ScrambledBugs
 		nlohmann::json jsonDifficultyMultipliers;
 
 		jsonDifficultyMultipliers["commandedActors"] = this->commandedActors;
-		jsonDifficultyMultipliers["followers"]       = this->followers;
+		jsonDifficultyMultipliers["teammates"]       = this->teammates;
 
 		return jsonDifficultyMultipliers;
 	}
@@ -276,14 +311,14 @@ namespace ScrambledBugs
 			jsonPatches.at("scrollExperience").get_to(this->scrollExperience);
 		}
 
-		if (jsonPatches.contains("staffExperience"))
-		{
-			jsonPatches.at("staffExperience").get_to(this->staffExperience);
-		}
-
 		if (jsonPatches.contains("soulGems"))
 		{
 			this->soulGems.Deserialize(jsonPatches.at("soulGems"));
+		}
+
+		if (jsonPatches.contains("staffExperience"))
+		{
+			jsonPatches.at("staffExperience").get_to(this->staffExperience);
 		}
 
 		if (jsonPatches.contains("steepSlopes"))
@@ -302,6 +337,7 @@ namespace ScrambledBugs
 		jsonPatches["alreadyCaughtPickpocketing"]        = this->alreadyCaughtPickpocketing;
 		jsonPatches["attachHitEffectArt"]                = this->attachHitEffectArt;
 		jsonPatches["cloakHitEffects"]                   = this->cloakHitEffects;
+		jsonPatches["difficultyMultipliers"]             = this->difficultyMultipliers.Serialize();
 		jsonPatches["equipBestAmmunition"]               = this->equipBestAmmunition;
 		jsonPatches["improveMultipleEnchantmentEffects"] = this->improveMultipleEnchantmentEffects;
 		jsonPatches["leveledCharacters"]                 = this->leveledCharacters;
@@ -353,6 +389,187 @@ namespace ScrambledBugs
 		}
 
 		return *this;
+	}
+
+	void Settings::Initialize()
+	{
+		Utility::Log::Information("Initializing...\n{}", this->Serialize().dump(1, '\t'));
+
+		if (this->fixes.activateFurniture)
+		{
+			ScrambledBugs::Fixes::ActivateFurniture::Fix(this->fixes.activateFurniture);
+		}
+
+		if (this->fixes.actorValuePercentage)
+		{
+			ScrambledBugs::Fixes::ActorValuePercentage::Fix(this->fixes.actorValuePercentage);
+		}
+
+		if (this->fixes.enchantmentCost)
+		{
+			ScrambledBugs::Fixes::EnchantmentCost::Fix(this->fixes.enchantmentCost);
+		}
+
+		if (this->fixes.harvestedFlags)
+		{
+			ScrambledBugs::Fixes::HarvestedFlags::Fix(this->fixes.harvestedFlags);
+		}
+
+		if (this->fixes.hitEffectRaceCondition)
+		{
+			ScrambledBugs::Fixes::HitEffectRaceCondition::Fix(this->fixes.hitEffectRaceCondition);
+		}
+
+		if (this->fixes.impactEffectCrash)
+		{
+			ScrambledBugs::Fixes::ImpactEffectCrash::Fix(this->fixes.impactEffectCrash);
+		}
+
+		if (this->fixes.killCamera)
+		{
+			ScrambledBugs::Fixes::KillCamera::Fix(this->fixes.killCamera);
+		}
+
+		if (this->fixes.leftHandPowerAttacks)
+		{
+			ScrambledBugs::Fixes::LeftHandPowerAttacks::Fix(this->fixes.leftHandPowerAttacks);
+		}
+
+		if (this->fixes.magicEffectFlags)
+		{
+			ScrambledBugs::Fixes::MagicEffectFlags::Fix(this->fixes.magicEffectFlags);
+		}
+
+		if (this->fixes.modifyArmorWeightPerkEntryPoint)
+		{
+			ScrambledBugs::Fixes::ModifyArmorWeightPerkEntryPoint::Fix(this->fixes.modifyArmorWeightPerkEntryPoint);
+		}
+
+		if (this->fixes.powerCooldowns)
+		{
+			ScrambledBugs::Fixes::PowerCooldowns::Fix(this->fixes.powerCooldowns);
+		}
+
+		if (this->fixes.projectileFadeDuration)
+		{
+			ScrambledBugs::Fixes::ProjectileFadeDuration::Fix(this->fixes.projectileFadeDuration);
+		}
+
+		if (this->fixes.quickShot && this->fixes.quickShotPlaybackSpeed > 0.0F)
+		{
+			ScrambledBugs::Fixes::QuickShot::Fix(this->fixes.quickShot, this->fixes.quickShotPlaybackSpeed);
+		}
+
+		if (this->fixes.terrainDecals)
+		{
+			ScrambledBugs::Fixes::TerrainDecals::Fix(this->fixes.terrainDecals);
+		}
+
+		if (this->fixes.trainingMenu)
+		{
+			ScrambledBugs::Fixes::TrainingMenu::Fix(this->fixes.trainingMenu);
+		}
+
+		if (this->fixes.weaponCharge)
+		{
+			ScrambledBugs::Fixes::WeaponCharge::Fix(this->fixes.weaponCharge);
+		}
+
+		if (this->patches.accumulatingMagnitude)
+		{
+			ScrambledBugs::Patches::AccumulatingMagnitude::Patch(this->patches.accumulatingMagnitude);
+		}
+
+		if (this->patches.alreadyCaughtPickpocketing)
+		{
+			ScrambledBugs::Patches::AlreadyCaughtPickpocketing::Patch(this->patches.alreadyCaughtPickpocketing);
+		}
+
+		if (this->patches.attachHitEffectArt)
+		{
+			ScrambledBugs::Patches::AttachHitEffectArt::Patch(this->patches.attachHitEffectArt);
+		}
+
+		if (this->patches.cloakHitEffects)
+		{
+			ScrambledBugs::Patches::CloakHitEffects::Patch(this->patches.cloakHitEffects);
+		}
+
+		if (this->patches.difficultyMultipliers.commandedActors || this->patches.difficultyMultipliers.teammates)
+		{
+			ScrambledBugs::Patches::DifficultyMultipliers::Patch(this->patches.difficultyMultipliers.commandedActors, this->patches.difficultyMultipliers.teammates);
+		}
+
+		if (this->patches.equipBestAmmunition)
+		{
+			ScrambledBugs::Patches::EquipBestAmmunition::Patch(this->patches.equipBestAmmunition);
+		}
+
+		if (this->patches.improveMultipleEnchantmentEffects)
+		{
+			ScrambledBugs::Patches::ImproveMultipleEnchantmentEffects::Patch(this->patches.improveMultipleEnchantmentEffects);
+		}
+
+		if (this->patches.leveledCharacters)
+		{
+			ScrambledBugs::Patches::LeveledCharacters::Patch(this->patches.leveledCharacters);
+		}
+
+		if (this->patches.lockpickingExperience)
+		{
+			ScrambledBugs::Patches::LockpickingExperience::Patch(this->patches.lockpickingExperience);
+		}
+
+		if (this->patches.pausedGameHitEffects)
+		{
+			ScrambledBugs::Patches::PausedGameHitEffects::Patch(this->patches.pausedGameHitEffects);
+		}
+
+		if (this->patches.perkEntryPoints.applyMultipleSpells)
+		{
+			ScrambledBugs::Patches::PerkEntryPoints::ApplyMultipleSpells::Patch(this->patches.perkEntryPoints.applyMultipleSpells, this->patches.perkEntryPoints.castSpells);
+		}
+		else if (this->patches.perkEntryPoints.castSpells)
+		{
+			ScrambledBugs::Patches::PerkEntryPoints::CastSpells::Patch(this->patches.perkEntryPoints.castSpells);
+		}
+
+		if (this->patches.poisonResistance)
+		{
+			ScrambledBugs::Patches::PoisonResistance::Patch(this->patches.poisonResistance);
+		}
+
+		if (this->patches.powerAttackStamina)
+		{
+			ScrambledBugs::Patches::PowerAttackStamina::Patch(this->patches.powerAttackStamina);
+		}
+
+		if (this->patches.reflectDamage)
+		{
+			ScrambledBugs::Patches::ReflectDamage::Patch(this->patches.reflectDamage);
+		}
+
+		if (this->patches.scrollExperience)
+		{
+			ScrambledBugs::Patches::ScrollExperience::Patch(this->patches.scrollExperience);
+		}
+
+		if (this->patches.soulGems.black || this->patches.soulGems.underfilled)
+		{
+			ScrambledBugs::Patches::SoulGems::Patch(this->patches.soulGems.black, this->patches.soulGems.underfilled);
+		}
+
+		if (this->patches.staffExperience)
+		{
+			ScrambledBugs::Patches::StaffExperience::Patch(this->patches.staffExperience);
+		}
+
+		if (this->patches.steepSlopes)
+		{
+			ScrambledBugs::Patches::SteepSlopes::Patch(this->patches.steepSlopes);
+		}
+
+		Utility::Log::Information("Initialized.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const

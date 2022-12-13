@@ -4,7 +4,7 @@
 
 #include "Addresses.h"
 #include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/E/Effect.h"
+#include "Shared/Skyrim/E/EffectItem.h"
 #include "Shared/Skyrim/G/GameSettingCollection.h"
 #include "Shared/Skyrim/M/MagicTarget.h"
 #include "Shared/Utility/Memory.h"

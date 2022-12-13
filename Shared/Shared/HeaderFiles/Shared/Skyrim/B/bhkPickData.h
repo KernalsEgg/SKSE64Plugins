@@ -16,9 +16,9 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		hkpWorldRayCastInput  rayCastInput;                 // 0
-		hkpWorldRayCastOutput rayCastOutput;                // 30
-		hkVector4             ray;                          // 90
+		hkpWorldRayCastInput  rayCastInput{};               // 0
+		hkpWorldRayCastOutput rayCastOutput{};              // 30
+		hkVector4             ray{};                        // 90
 		hkpRayHitCollector*   rayHitCollectorA0{ nullptr }; // A0
 		hkpRayHitCollector*   rayHitCollectorA8{ nullptr }; // A8
 		hkpRayHitCollector*   rayHitCollectorB0{ nullptr }; // B0

@@ -22,12 +22,9 @@ namespace Skyrim
 		virtual MagicTarget::ForEachActiveEffectVisitor::ReturnType Visit(ActiveEffect* activeEffect) override; // 1
 
 		// Member variables
-		MagicItem*    displacementSpell; // 8
-		SpellItem*    addiction;         // 10
-		bool          displace;          // 18
-		std::uint8_t  padding19;         // 19
-		std::uint16_t padding1A;         // 1A
-		std::uint32_t padding1C;         // 1C
+		MagicItem* displacementSpell; // 8
+		SpellItem* addiction;         // 10
+		bool       displace;          // 18
 	};
 	static_assert(offsetof(FindAppropriateDisplaceEffect, displacementSpell) == 0x8);
 	static_assert(offsetof(FindAppropriateDisplaceEffect, addiction) == 0x10);

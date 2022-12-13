@@ -9,11 +9,21 @@
 
 
 
-void OnInitializeThread()
+namespace Trails
 {
-	Utility::Log::Information("\n{}", Trails::Settings::GetSingleton().Serialize().dump(4));
+	void OnInitializeThread()
+	{
+		Utility::Log::Information("\n{}", Settings::GetSingleton().Serialize().dump(1, '\t'));
 
-	Skyrim::BGSFootstepManager::GetSingleton()->AddEventSink(std::addressof(Trails::Events::FootstepEventSink::GetSingleton()));
+		Skyrim::BGSFootstepManager::GetSingleton()->AddEventSink(std::addressof(Events::FootstepEventSink::GetSingleton()));
+	}
+
+	bool Initialize()
+	{
+		Skyrim::Events::InitializeThread::GetSingleton().After().AddEventSink(Trails::OnInitializeThread);
+
+		return true;
+	}
 }
 
 #ifdef SKYRIM_ANNIVERSARY_EDITION
@@ -60,7 +70,5 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	SKSE::Cache::GetSingleton().Initialize(loadInterface);
 
-	Skyrim::Events::InitializeThread::GetSingleton().After().AddEventSink(OnInitializeThread);
-
-	return true;
+	return Trails::Initialize();
 }

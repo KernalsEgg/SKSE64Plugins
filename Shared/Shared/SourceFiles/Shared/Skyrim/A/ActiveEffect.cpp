@@ -2,7 +2,7 @@
 
 #include "Shared/Skyrim/A/ActiveEffect.h"
 
-#include "Shared/Skyrim/E/Effect.h"
+#include "Shared/Skyrim/E/EffectItem.h"
 #include "Shared/Skyrim/E/EffectSetting.h"
 #include "Shared/Skyrim/F/FindAppropriateDisplaceEffect.h"
 #include "Shared/Skyrim/M/MagicItem.h"
@@ -22,7 +22,7 @@ namespace Skyrim
 
 		if (remainingTime < taperDuration)
 		{
-			if (std::abs(remainingTime) > 0.0001 || taperCurve >= 0.0F)
+			if (std::abs(remainingTime) > 0.0001F || taperCurve >= 0.0F)
 			{
 				magnitude *= std::pow(remainingTime / taperDuration, taperCurve) * taperWeight;
 			}

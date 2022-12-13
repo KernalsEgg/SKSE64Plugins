@@ -13,8 +13,6 @@
 
 namespace Skyrim
 {
-	struct Effect;
-
 	class EnchantmentItem;
 	class InventoryEntryData;
 	class TESBoundObject;
@@ -111,11 +109,11 @@ namespace Skyrim
 				virtual ~CreateEffectFunctor() override; // 0
 
 				// Override (MagicItemTraversalFunctor)
-				virtual MagicItemTraversalFunctor::ReturnType Traverse(Effect* effect) override; // 1
+				virtual MagicItemTraversalFunctor::ReturnType Traverse(EffectItem* effect) override; // 1
 
 				// Member variables
-				BSTArray<Effect>                              effects;          // 10
-				Effect*                                       costliestEffect;  // 28
+				BSTArray<EffectItem>                          effects;          // 10
+				EffectItem*                                   costliestEffect;  // 28
 				EnchantmentEntry*                             enchantmentEntry; // 30
 				EnchantmentItem*                              enchantment;      // 38
 				Utility::Enumeration<FormType, std::uint32_t> formType;         // 40

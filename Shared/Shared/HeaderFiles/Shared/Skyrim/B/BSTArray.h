@@ -343,7 +343,7 @@ namespace Skyrim
 			// Member variables
 			pointer    heap;
 			value_type local[Count]{ 0 };
-		} data_; // 8
+		} data_{}; // 8
 	};
 	static_assert(sizeof(BSTSmallArrayHeapAllocator<void*, 1>) == 0x10);
 

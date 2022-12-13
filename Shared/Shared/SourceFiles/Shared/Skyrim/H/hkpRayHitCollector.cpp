@@ -35,7 +35,7 @@ namespace Skyrim
 			++shapeKeyIndex;
 		}
 
-		buffer[shapeKeyIndex] = HK_INVALID_SHAPE_KEY;
+		buffer[shapeKeyIndex] = Skyrim::HK_INVALID_SHAPE_KEY;
 
 		return shapeKeyIndex + 1;
 	}

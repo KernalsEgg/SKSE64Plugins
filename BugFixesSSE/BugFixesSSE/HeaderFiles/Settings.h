@@ -27,7 +27,7 @@ namespace BugFixesSSE
 
 			bool             magicEffectConditions{ false };
 			bool             movementSpeed{ false };
-			SpeechExperience speechExperience;
+			SpeechExperience speechExperience{};
 		};
 
 		Settings()                = delete;
@@ -44,8 +44,9 @@ namespace BugFixesSSE
 		static Settings& GetSingleton();
 
 		Settings&      Deserialize(const nlohmann::json& jsonSettings);
+		void           Initialize();
 		nlohmann::json Serialize() const;
 
-		Fixes fixes;
+		Fixes fixes{};
 	};
 }

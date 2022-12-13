@@ -10,12 +10,12 @@ namespace ScrambledBugs::Patterns
 	{
 		namespace EnchantmentCost
 		{
-			bool NotEqualTo();
+			bool Compare();
 		}
 
 		namespace HarvestedFlags
 		{
-			bool RemoveHarvestedFlag();
+			bool SetEmpty();
 		}
 
 		namespace ImpactEffectCrash

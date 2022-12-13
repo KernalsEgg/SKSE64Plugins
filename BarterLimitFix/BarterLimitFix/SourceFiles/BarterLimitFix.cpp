@@ -7,6 +7,23 @@
 
 
 
+namespace BarterLimitFix
+{
+	bool Initialize()
+	{
+		if (!Events::Register())
+		{
+			Utility::Log::Critical("Failed to register for events.");
+
+			return false;
+		}
+
+		Utility::Trampoline::GetSingleton().Commit();
+
+		return true;
+	}
+}
+
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
 	.pluginVersion   = 1,
@@ -51,14 +68,5 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	SKSE::Cache::GetSingleton().Initialize(loadInterface);
 
-	if (!BarterLimitFix::Events::Register())
-	{
-		Utility::Log::Critical("Failed to register for events.");
-
-		return false;
-	}
-
-	Utility::Trampoline::GetSingleton().Commit();
-
-	return true;
+	return BarterLimitFix::Initialize();
 }

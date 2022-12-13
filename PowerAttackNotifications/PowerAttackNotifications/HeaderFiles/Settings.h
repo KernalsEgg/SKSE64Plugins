@@ -25,6 +25,6 @@ namespace PowerAttackNotifications
 		Settings&      Deserialize(const nlohmann::json& jsonSettings);
 		nlohmann::json Serialize() const;
 
-		std::string notification;
+		std::string notification{};
 	};
 }

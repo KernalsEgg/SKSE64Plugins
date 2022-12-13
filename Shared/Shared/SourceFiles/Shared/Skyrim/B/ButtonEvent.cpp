@@ -11,8 +11,13 @@ namespace Skyrim
 		return this->value != 0.0F && this->holdDuration == 0.0F;
 	}
 
+	bool ButtonEvent::IsPressing() const
+	{
+		return this->value != 0.0F && this->holdDuration >= 0.0F;
+	}
+
 	bool ButtonEvent::IsReleased() const
 	{
-		return this->value == 0.0F && this->holdDuration != 0.0F;
+		return this->value == 0.0F && this->holdDuration >= 0.0F;
 	}
 }

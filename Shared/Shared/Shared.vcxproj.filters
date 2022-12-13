@@ -543,7 +543,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DirectionalAmbientLighting.h">
       <Filter>Header Files\Shared\Skyrim\D</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\Effect.h">
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectItem.h">
       <Filter>Header Files\Shared\Skyrim\E</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectArchetype.h">
@@ -1751,7 +1751,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSStringPool.cpp">
       <Filter>Source Files\Shared\Skyrim\B</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Shared\Skyrim\E\Effect.cpp">
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EffectItem.cpp">
       <Filter>Source Files\Shared\Skyrim\E</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\EnchantmentItem.cpp">

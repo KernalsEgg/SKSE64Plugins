@@ -12,17 +12,17 @@ namespace ScrambledBugs::Fixes
 {
 	void EnchantmentCost::Fix(bool& enchantmentCost)
 	{
-		if (!Patterns::Fixes::EnchantmentCost::NotEqualTo())
+		if (!Patterns::Fixes::EnchantmentCost::Compare())
 		{
 			enchantmentCost = false;
 
 			return;
 		}
 
-		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::EnchantmentCost::NotEqualTo, reinterpret_cast<std::uintptr_t>(std::addressof(EnchantmentCost::NotEqualTo)));
+		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::EnchantmentCost::Compare, reinterpret_cast<std::uintptr_t>(std::addressof(EnchantmentCost::Compare)));
 	}
 
-	bool EnchantmentCost::NotEqualTo(Skyrim::Effect* left, Skyrim::Effect* right)
+	bool EnchantmentCost::Compare(Skyrim::EffectItem* left, Skyrim::EffectItem* right)
 	{
 		if (left->effectSetting != right->effectSetting)
 		{

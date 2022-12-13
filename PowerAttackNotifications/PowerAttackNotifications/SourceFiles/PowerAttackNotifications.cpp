@@ -8,6 +8,25 @@
 
 
 
+namespace PowerAttackNotifications
+{
+	bool Initialize()
+	{
+		if (!Events::Register())
+		{
+			Utility::Log::Critical("Failed to register for events.");
+
+			return false;
+		}
+
+		Utility::Log::Information("\n{}", Settings::GetSingleton().Serialize().dump(1, '\t'));
+
+		Utility::Trampoline::GetSingleton().Commit();
+
+		return true;
+	}
+}
+
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
 	.pluginVersion   = 1,
@@ -52,18 +71,5 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	SKSE::Cache::GetSingleton().Initialize(loadInterface);
 
-	Utility::Log::Information("Initializing...");
-
-	if (!PowerAttackNotifications::Events::Register())
-	{
-		Utility::Log::Critical("Failed to register for events.");
-
-		return false;
-	}
-
-	Utility::Log::Information("Initialized.\n{}", PowerAttackNotifications::Settings::GetSingleton().Serialize().dump(1, '\t'));
-
-	Utility::Trampoline::GetSingleton().Commit();
-
-	return true;
+	return PowerAttackNotifications::Initialize();
 }

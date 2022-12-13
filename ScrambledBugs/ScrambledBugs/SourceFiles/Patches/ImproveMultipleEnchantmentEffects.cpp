@@ -18,7 +18,7 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(ImproveMultipleEnchantmentEffects::Traverse)));
 	}
 
-	Skyrim::MagicItemTraversalFunctor::ReturnType ImproveMultipleEnchantmentEffects::Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::Effect* effect)
+	Skyrim::MagicItemTraversalFunctor::ReturnType ImproveMultipleEnchantmentEffects::Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect)
 	{
 		auto& createdEffect = createEffectFunctor->effects.emplace_back(*effect);
 
@@ -29,13 +29,13 @@ namespace ScrambledBugs::Patches
 		auto powerAffectsMagnitude = effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsMagnitude);
 		auto powerAffectsDuration  = effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsDuration);
 
-		auto power = 1.0F;
+		float power{ 1.0F };
 
 		auto* enchantmentEntry = createEffectFunctor->enchantmentEntry;
 
 		if (enchantmentEntry)
 		{
-			auto maximumPower = 1.0F;
+			float maximumPower{ 1.0F };
 
 			if (powerAffectsMagnitude)
 			{
@@ -111,7 +111,7 @@ namespace ScrambledBugs::Patches
 		}
 		else if (powerAffectsDuration)
 		{
-			duration = static_cast<std::uint32_t>(std::round(power));
+			duration = static_cast<std::int32_t>(std::round(power));
 		}
 
 		createdEffect.SetMagnitude(magnitude);

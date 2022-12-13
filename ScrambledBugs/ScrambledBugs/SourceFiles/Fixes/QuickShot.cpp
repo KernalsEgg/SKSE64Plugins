@@ -32,8 +32,8 @@ namespace ScrambledBugs::Fixes
 		auto  arrowBowMinimumTime = Skyrim::GameSettingCollection::ArrowBowMinimumTime()->GetFloat();
 
 		float pullTime = player->GetAnimationVariableBool(Skyrim::BSFixedString("bPerkQuickDraw"), perkQuickDraw) && perkQuickDraw ?
-                             drawTime - (arrowBowMinimumTime / QuickShot::quickShotPlaybackSpeed_) :
-                             drawTime - arrowBowMinimumTime;
+		                     drawTime - (arrowBowMinimumTime / QuickShot::quickShotPlaybackSpeed_) :
+		                     drawTime - arrowBowMinimumTime;
 
 		if (pullTime <= 0.0F)
 		{
@@ -55,5 +55,5 @@ namespace ScrambledBugs::Fixes
 		}
 	}
 
-	float QuickShot::quickShotPlaybackSpeed_{ 0.0F };
+	float QuickShot::quickShotPlaybackSpeed_{ 2.0F };
 }

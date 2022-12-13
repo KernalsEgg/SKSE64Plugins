@@ -79,7 +79,7 @@ namespace Skyrim
 
 	private:
 		// Member variables
-		Value       value_;           // 8
+		Value       value_{};         // 8
 		const char* name_{ nullptr }; // 10
 	};
 	static_assert(sizeof(Setting) == 0x18);

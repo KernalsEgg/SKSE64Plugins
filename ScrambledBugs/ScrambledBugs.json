@@ -24,7 +24,7 @@
 		"difficultyMultipliers":
 		{
 			"commandedActors":					false,	/* Reanimated corpses and summoned creatures use the same difficulty multipliers as the player. */
-			"followers":						false	/* Followers use the same difficulty multipliers as the player. */
+			"teammates":						false	/* Teammates use the same difficulty multipliers as the player. */
 		},
 		"perkEntryPoints":
 		{

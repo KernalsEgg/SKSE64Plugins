@@ -25,13 +25,13 @@ namespace ScrambledBugs::Addresses
 		namespace EnchantmentCost
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x5A1070 + 0x72 (35284), 1.6.318.0: SkyrimSE.exe + 0x5C1D20</summary>
-			inline const std::uintptr_t NotEqualTo{ Relocation::AddressLibrary::GetSingleton().GetAddress(36184) + 0x99 }; // BGSCreatedObjectManager::AddEnchantment
+			inline const std::uintptr_t Compare{ Relocation::AddressLibrary::GetSingleton().GetAddress(36184) + 0x99 }; // BGSCreatedObjectManager::AddEnchantment
 		}
 
 		namespace HarvestedFlags
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x278920 + 0x31C (18843), 1.6.318.0: SkyrimSE.exe + 0x28AD80</summary>
-			inline const std::uintptr_t RemoveHarvestedFlag{ Relocation::AddressLibrary::GetSingleton().GetAddress(19286) + 0x345 }; // TESObjectREFR::HandleReferenceReset
+			inline const std::uintptr_t SetEmpty{ Relocation::AddressLibrary::GetSingleton().GetAddress(19286) + 0x345 }; // TESObjectREFR::HandleReferenceReset
 		}
 
 		namespace HitEffectRaceCondition

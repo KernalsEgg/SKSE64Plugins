@@ -64,7 +64,7 @@ namespace Skyrim
 	public:
 		enum class ChangeFlags : std::uint32_t
 		{
-			kHarvested = 1U << 21
+			kEmpty = 1U << 21
 		};
 		static_assert(sizeof(ChangeFlags) == 0x4);
 

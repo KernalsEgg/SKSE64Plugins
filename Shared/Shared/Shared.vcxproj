@@ -212,7 +212,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\Difficulty.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DirectionalAmbientLighting.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\Events.h" />
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\Effect.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectItem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectArchetype.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectSetting.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EnchantConstructMenu.h" />
@@ -604,7 +604,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\C\ConsoleLog.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\C\ContainerMenu.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\Events.cpp" />
-    <ClCompile Include="SourceFiles\Shared\Skyrim\E\Effect.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EffectItem.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\EnchantmentItem.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\ExtraDataList.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindAppropriateDisplaceEffect.cpp" />

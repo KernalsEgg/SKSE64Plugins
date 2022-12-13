@@ -14,7 +14,7 @@
 
 namespace Skyrim
 {
-	struct Effect;
+	struct EffectItem;
 
 	class Actor;
 
@@ -28,7 +28,7 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			Effect*       costliestEffect; // 0
+			EffectItem*   costliestEffect; // 0
 			ActorValue    skill;           // 8
 			float         experience;      // C
 			bool          custom;          // 10
@@ -95,12 +95,12 @@ namespace Skyrim
 		bool       ShouldAdjust() const;
 
 		// Member variables
-		BSTArray<Effect*> effects;      // 58
-		std::int32_t      hostileCount; // 70
-		std::uint32_t     padding74;    // 74
-		std::uint64_t     unknown78;    // 78
-		std::uint64_t     unknown80;    // 80
-		std::uint64_t     unknown88;    // 88
+		BSTArray<EffectItem*> effects;      // 58
+		std::int32_t          hostileCount; // 70
+		std::uint32_t         padding74;    // 74
+		std::uint64_t         unknown78;    // 78
+		std::uint64_t         unknown80;    // 80
+		std::uint64_t         unknown88;    // 88
 	};
 	static_assert(offsetof(MagicItem, effects) == 0x58);
 	static_assert(offsetof(MagicItem, hostileCount) == 0x70);

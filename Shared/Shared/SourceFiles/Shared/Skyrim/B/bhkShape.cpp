@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	std::uint32_t bhkShape::GetMaterialID(hkpShapeKey shapeKey)
 	{
-		if (shapeKey != HK_INVALID_SHAPE_KEY)
+		if (shapeKey != Skyrim::HK_INVALID_SHAPE_KEY)
 		{
 			auto* shapeCollection = this->GetShapeCollection();
 

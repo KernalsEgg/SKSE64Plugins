@@ -315,7 +315,6 @@ namespace Skyrim
 		// Member variables
 		ObjectInterface*                               objectInterface_; // 0
 		Utility::Enumeration<ValueType, std::uint32_t> type_;            // 8
-		std::uint32_t                                  paddingC_;        // C
 		ValueUnion                                     value_;           // 10
 	};
 	static_assert(sizeof(GFxValue) == 0x18);

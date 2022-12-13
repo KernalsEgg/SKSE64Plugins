@@ -9,19 +9,19 @@
 namespace Skyrim
 {
 	template <class T, std::uint32_t Count>
-	class DynamicMemoryManagementPol
+	class DynamicMemoryManagementPolicy
 	{
 	public:
 		using value_type = T;
 
-		constexpr DynamicMemoryManagementPol() noexcept                                  = default;
-		constexpr DynamicMemoryManagementPol(const DynamicMemoryManagementPol&) noexcept = default;
-		constexpr DynamicMemoryManagementPol(DynamicMemoryManagementPol&&) noexcept      = default;
+		constexpr DynamicMemoryManagementPolicy() noexcept                                     = default;
+		constexpr DynamicMemoryManagementPolicy(const DynamicMemoryManagementPolicy&) noexcept = default;
+		constexpr DynamicMemoryManagementPolicy(DynamicMemoryManagementPolicy&&) noexcept      = default;
 
-		constexpr ~DynamicMemoryManagementPol() noexcept = default;
+		constexpr ~DynamicMemoryManagementPolicy() noexcept = default;
 
-		constexpr DynamicMemoryManagementPol& operator=(const DynamicMemoryManagementPol&) noexcept = default;
-		constexpr DynamicMemoryManagementPol& operator=(DynamicMemoryManagementPol&&) noexcept      = default;
+		constexpr DynamicMemoryManagementPolicy& operator=(const DynamicMemoryManagementPolicy&) noexcept = default;
+		constexpr DynamicMemoryManagementPolicy& operator=(DynamicMemoryManagementPolicy&&) noexcept      = default;
 
 		value_type* allocate(std::uint32_t count)
 		{
@@ -45,26 +45,26 @@ namespace Skyrim
 	};
 
 	template <class T, std::uint32_t Count>
-	class FixedLengthMemoryManagementPol
+	class FixedLengthMemoryManagementPolicy
 	{
 	public:
 		using value_type = T;
 
-		constexpr FixedLengthMemoryManagementPol() noexcept = default;
+		constexpr FixedLengthMemoryManagementPolicy() noexcept = default;
 
-		FixedLengthMemoryManagementPol(const FixedLengthMemoryManagementPol& right)
+		FixedLengthMemoryManagementPolicy(const FixedLengthMemoryManagementPolicy& right)
 		{
 			this->copy(right);
 		}
 
-		FixedLengthMemoryManagementPol(FixedLengthMemoryManagementPol&& right)
+		FixedLengthMemoryManagementPolicy(FixedLengthMemoryManagementPolicy&& right)
 		{
 			this->move(std::move(right));
 		}
 
-		~FixedLengthMemoryManagementPol() = default;
+		~FixedLengthMemoryManagementPolicy() = default;
 
-		FixedLengthMemoryManagementPol& operator=(const FixedLengthMemoryManagementPol& right)
+		FixedLengthMemoryManagementPolicy& operator=(const FixedLengthMemoryManagementPolicy& right)
 		{
 			if (this != std::addressof(right))
 			{
@@ -74,7 +74,7 @@ namespace Skyrim
 			return *this;
 		}
 
-		FixedLengthMemoryManagementPol& operator=(FixedLengthMemoryManagementPol&& right)
+		FixedLengthMemoryManagementPolicy& operator=(FixedLengthMemoryManagementPolicy&& right)
 		{
 			if (this != std::addressof(right))
 			{
@@ -94,12 +94,12 @@ namespace Skyrim
 		}
 
 	private:
-		void copy(const FixedLengthMemoryManagementPol& right)
+		void copy(const FixedLengthMemoryManagementPolicy& right)
 		{
 			std::memcpy(this->buffer_, right.buffer_, sizeof(value_type) * Count);
 		}
 
-		void move(FixedLengthMemoryManagementPol&& right)
+		void move(FixedLengthMemoryManagementPolicy&& right)
 		{
 			std::memmove(this->buffer_, right.buffer_, sizeof(value_type) * Count);
 			std::memset(right.buffer_, 0, sizeof(value_type) * Count);
@@ -217,12 +217,13 @@ namespace Skyrim
 		void clear() { this->set_data(BSStringT::EMPTY); }
 
 		// Non-member functions
-		friend bool operator==(const BSStringT& left, const_pointer right) { return (left.data_ == right) || (BSStringT::compare(left.data_, right) == 0); }
+		friend bool operator==(const BSStringT& left, const BSStringT& right) { return BSStringT::compare(left.data(), right.data()) == 0; }
+		friend bool operator!=(const BSStringT& left, const BSStringT& right) { return !(left == right); }
+
+		friend bool operator==(const BSStringT& left, const_pointer right) { return BSStringT::compare(left.data(), right ? right : BSStringT::EMPTY) == 0; }
 		friend bool operator!=(const BSStringT& left, const_pointer right) { return !(left == right); }
 		friend bool operator==(const_pointer left, const BSStringT& right) { return right == left; }
 		friend bool operator!=(const_pointer left, const BSStringT& right) { return !(left == right); }
-		friend bool operator==(const BSStringT& left, const BSStringT& right) { return left == right.data(); }
-		friend bool operator!=(const BSStringT& left, const BSStringT& right) { return !(left == right); }
 
 	private:
 		static constexpr value_type EMPTY[]{ 0 };
@@ -298,6 +299,6 @@ namespace Skyrim
 		size_type capacity_{ 0 };   // A
 	};
 
-	using BSString = BSStringT<char, static_cast<std::uint32_t>(-1), DynamicMemoryManagementPol>;
+	using BSString = BSStringT<char, static_cast<std::uint32_t>(-1), DynamicMemoryManagementPolicy>;
 	static_assert(sizeof(BSString) == 0x10);
 }

@@ -118,7 +118,6 @@ namespace Skyrim
 			}
 
 		private:
-			// Member variables
 			U* current_{ nullptr };
 		};
 

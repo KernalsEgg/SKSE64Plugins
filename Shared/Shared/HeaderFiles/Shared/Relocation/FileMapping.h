@@ -26,7 +26,7 @@ namespace Relocation
 			void           Unmap();
 
 		private:
-			std::uintptr_t address_;
+			std::uintptr_t address_{ 0 };
 		};
 
 		FileMapping()                   = default;
@@ -44,6 +44,6 @@ namespace Relocation
 		bool  Open(std::string_view name);
 
 	private:
-		void* handle_;
+		void* handle_{ nullptr };
 	};
 }

@@ -14,10 +14,10 @@
 
 namespace ScrambledBugs::Patches
 {
-	void DifficultyMultipliers::Patch(bool& commandedActors, bool& followers)
+	void DifficultyMultipliers::Patch(bool& commandedActors, bool& teammates)
 	{
 		DifficultyMultipliers::commandedActors_ = commandedActors;
-		DifficultyMultipliers::followers_       = followers;
+		DifficultyMultipliers::teammates_       = teammates;
 
 		Utility::Memory::SafeWriteAbsoluteJump(Skyrim::Addresses::Actor::AdjustHealthDamageToDifficulty, reinterpret_cast<std::uintptr_t>(std::addressof(DifficultyMultipliers::AdjustHealthDamageToDifficulty)));
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Patches::DifficultyMultipliers::DamageHealth, reinterpret_cast<std::uintptr_t>(std::addressof(DifficultyMultipliers::DamageHealth)));
@@ -27,15 +27,18 @@ namespace ScrambledBugs::Patches
 	{
 		auto* player               = Skyrim::PlayerCharacter::GetSingleton();
 		auto  difficultyMultiplier = Skyrim::PlayerCharacter::GetDifficultyMultiplier(
-			 player->difficulty,
-			 Skyrim::ActorValue::kHealth,
-			 target == player || (DifficultyMultipliers::followers_ && target->IsPlayerTeammate()) || (DifficultyMultipliers::commandedActors_ && target->GetCommandingActor().get().get() == player));
+            player->difficulty,
+            Skyrim::ActorValue::kHealth,
+            target == player || (DifficultyMultipliers::teammates_ && DifficultyMultipliers::IsTeammate(target)) || (DifficultyMultipliers::commandedActors_ && DifficultyMultipliers::IsCommandedActor(target)));
 
 		return std::abs(onlyReduceDamage) <= 0.0001F || difficultyMultiplier < 1.0F ? difficultyMultiplier * damage : damage;
 	}
 
 	bool DifficultyMultipliers::DamageHealth(Skyrim::Actor* target, float damage, Skyrim::Actor* attacker, bool onlyReduceDamage)
 	{
+		// target != nullptr
+		// attacker != nullptr
+
 		if (target->IsInvulnerable() || target->booleanFlags.all(Skyrim::Actor::BooleanFlags::kInKillMove))
 		{
 			return false;
@@ -82,6 +85,16 @@ namespace ScrambledBugs::Patches
 		return target->IsDead(false);
 	}
 
+	bool DifficultyMultipliers::IsCommandedActor(Skyrim::Actor* actor)
+	{
+		return actor->GetCommandingActor().get().get() == Skyrim::PlayerCharacter::GetSingleton();
+	}
+
+	bool DifficultyMultipliers::IsTeammate(Skyrim::Actor* actor)
+	{
+		return actor->IsPlayerTeammate();
+	}
+
 	bool DifficultyMultipliers::commandedActors_{ false };
-	bool DifficultyMultipliers::followers_{ false };
+	bool DifficultyMultipliers::teammates_{ false };
 }

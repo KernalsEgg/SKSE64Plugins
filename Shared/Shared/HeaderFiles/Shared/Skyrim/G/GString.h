@@ -76,7 +76,7 @@ namespace Skyrim
 		GString& operator=(const GString& right);
 		GString& operator=(GString&& right);
 
-		GString(const char* string);
+		GString(const_pointer string);
 
 		// Element access
 		reference       operator[](size_type position);
@@ -101,10 +101,10 @@ namespace Skyrim
 		static UPInt BernsteinHashFunction(const void* dataInput, UPInt size, UPInt seed = 5381);
 
 		// Member functions
-		friend bool operator==(const GString& left, const char* right) { return (left.data() == right) || (std::strcmp(left.data(), right) == 0); }
-		friend bool operator!=(const GString& left, const char* right) { return !(left == right); }
-		friend bool operator==(const char* left, const GString& right) { return right == left; }
-		friend bool operator!=(const char* left, const GString& right) { return !(left == right); }
+		friend bool operator==(const GString& left, const_pointer right) { return (left.data() == right) || (std::strcmp(left.data(), right) == 0); }
+		friend bool operator!=(const GString& left, const_pointer right) { return !(left == right); }
+		friend bool operator==(const_pointer left, const GString& right) { return right == left; }
+		friend bool operator!=(const_pointer left, const GString& right) { return !(left == right); }
 		friend bool operator==(const GString& left, const GString& right) { return left == right.data(); }
 		friend bool operator!=(const GString& left, const GString& right) { return !(left == right); }
 		friend bool operator==(const GString& left, const std::basic_string_view<value_type>& right) { return left == right.data(); }
@@ -116,7 +116,7 @@ namespace Skyrim
 		static constexpr value_type EMPTY[]{ 0 };
 
 		// Member functions
-		GString*        Constructor(const char* string);
+		GString*        Constructor(const_pointer string);
 		DataDescriptor* GetData() const;
 		HeapType        GetHeapType() const;
 		void            SetData(DataDescriptor* dataDescriptor);

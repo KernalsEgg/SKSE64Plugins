@@ -15,22 +15,22 @@ namespace ScrambledBugs::Patterns
 	{
 		namespace EnchantmentCost
 		{
-			bool NotEqualTo()
+			bool Compare()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Fixes::EnchantmentCost::NotEqualTo, // 0x5
-					0xE8ui8, std::optional<std::int32_t>{}         // call Effect::NotEqualTo
+					Addresses::Fixes::EnchantmentCost::Compare, // 0x5
+					0xE8ui8, std::optional<std::int32_t>{}      // call EffectItem::Compare
 				);
 			}
 		}
 
 		namespace HarvestedFlags
 		{
-			bool RemoveHarvestedFlag()
+			bool SetEmpty()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Fixes::HarvestedFlags::RemoveHarvestedFlag, // 0x5
-					0xE8ui8, std::optional<std::int32_t>{}                 // call TESObjectREFR::SetHarvestedFlag
+					Addresses::Fixes::HarvestedFlags::SetEmpty, // 0x5
+					0xE8ui8, std::optional<std::int32_t>{}      // call TESForm::SetEmpty
 				);
 			}
 		}

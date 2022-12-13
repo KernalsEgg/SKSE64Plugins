@@ -2,6 +2,10 @@
 
 #include "Settings.h"
 
+#include "Fixes/MagicEffectConditions.h"
+#include "Fixes/MovementSpeed.h"
+#include "Fixes/SpeechExperience/EnchantedItems.h"
+#include "Fixes/SpeechExperience/ItemStacks.h"
 #include "Shared/Relocation/Module.h"
 #include "Shared/Utility/Log.h"
 
@@ -94,6 +98,34 @@ namespace BugFixesSSE
 		}
 
 		return *this;
+	}
+
+	void Settings::Initialize()
+	{
+		Utility::Log::Information("Initializing...\n{}", this->Serialize().dump(1, '\t'));
+
+		if (this->fixes.magicEffectConditions)
+		{
+			BugFixesSSE::Fixes::MagicEffectConditions::Fix(this->fixes.magicEffectConditions);
+		}
+
+		if (this->fixes.movementSpeed)
+		{
+			BugFixesSSE::Fixes::MovementSpeed::Fix(this->fixes.movementSpeed);
+		}
+
+		if (this->fixes.speechExperience.enchantedItems)
+		{
+			BugFixesSSE::Fixes::SpeechExperience::EnchantedItems::Fix(this->fixes.speechExperience.enchantedItems);
+		}
+
+		// Must be installed after BugFixesSSE::Fixes::Speechcraft::EnchantedItems
+		if (this->fixes.speechExperience.itemStacks)
+		{
+			BugFixesSSE::Fixes::SpeechExperience::ItemStacks::Fix(this->fixes.speechExperience.itemStacks);
+		}
+
+		Utility::Log::Information("Initialized.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const

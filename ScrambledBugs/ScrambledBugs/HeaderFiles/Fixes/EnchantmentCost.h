@@ -2,7 +2,7 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/E/Effect.h"
+#include "Shared/Skyrim/E/EffectItem.h"
 
 
 
@@ -14,6 +14,6 @@ namespace ScrambledBugs::Fixes
 		static void Fix(bool& enchantmentCost);
 
 	private:
-		static bool NotEqualTo(Skyrim::Effect* left, Skyrim::Effect* right);
+		static bool Compare(Skyrim::EffectItem* left, Skyrim::EffectItem* right);
 	};
 }

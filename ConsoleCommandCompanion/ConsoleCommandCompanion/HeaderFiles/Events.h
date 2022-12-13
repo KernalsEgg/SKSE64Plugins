@@ -2,6 +2,7 @@
 
 #include "PrecompiledHeader.h"
 
+#include "Settings.h"
 #include "Shared/Skyrim/B/BSTEventSink.h"
 #include "Shared/Skyrim/B/BSTEventSource.h"
 #include "Shared/Skyrim/I/InputEvent.h"
@@ -9,25 +10,48 @@
 
 
 
-namespace ConsoleCommandCompanion::Events
+namespace ConsoleCommandCompanion
 {
-	class ButtonEventSink :
-		public Skyrim::BSTEventSink<Skyrim::InputEvent*>
+	class Events
 	{
 	public:
-		virtual ~ButtonEventSink() override = default;
-		virtual Skyrim::BSEventNotifyControl ProcessEvent(Skyrim::InputEvent* const* eventArguments, Skyrim::BSTEventSource<Skyrim::InputEvent*>* eventSource) override;
+		class InitializeEventSink
+		{
+		public:
+			static void AddEventSink();
+			static void ProcessEvent();
+		};
 
-		static ButtonEventSink& GetSingleton();
-	};
+		class LoadGameEventSink :
+			public Skyrim::BSTEventSink<Skyrim::TESLoadGameEvent>
+		{
+		public:
+			virtual ~LoadGameEventSink() override = default;
+			virtual Skyrim::BSEventNotifyControl ProcessEvent(const Skyrim::TESLoadGameEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::TESLoadGameEvent>* eventSource) override;
 
-	class LoadGameEventSink :
-		public Skyrim::BSTEventSink<Skyrim::TESLoadGameEvent>
-	{
-	public:
-		virtual ~LoadGameEventSink() override = default;
-		virtual Skyrim::BSEventNotifyControl ProcessEvent(const Skyrim::TESLoadGameEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::TESLoadGameEvent>* eventSource) override;
+			static LoadGameEventSink& GetSingleton();
 
-		static LoadGameEventSink& GetSingleton();
+			void AddEventSink();
+		};
+
+		class ButtonEventSink :
+			public Skyrim::BSTEventSink<Skyrim::InputEvent*>
+		{
+		public:
+			virtual ~ButtonEventSink() override = default;
+			virtual Skyrim::BSEventNotifyControl ProcessEvent(Skyrim::InputEvent* const* eventArguments, Skyrim::BSTEventSource<Skyrim::InputEvent*>* eventSource) override;
+
+			static ButtonEventSink& GetSingleton();
+
+			void AddEventSink();
+
+		private:
+			static bool IsPressed(Skyrim::InputEvent* inputEvents, const Settings::Events::Button::State::Filter& filter);
+			static bool IsPressing(Skyrim::InputEvent* inputEvents, const Settings::Events::Button::State::Filter& filter);
+			static bool IsReleased(Skyrim::InputEvent* inputEvents, const Settings::Events::Button::State::Filter& filter);
+			static void Log(Skyrim::InputEvent* inputEvents);
+		};
+
+		static void ExecuteConsoleCommands(const std::vector<std::string>& consoleCommands);
 	};
 }

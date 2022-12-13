@@ -6,7 +6,7 @@
 
 namespace Skyrim
 {
-	struct Effect;
+	struct EffectItem;
 
 	class MagicItemTraversalFunctor
 	{
@@ -19,8 +19,8 @@ namespace Skyrim
 		static_assert(sizeof(ReturnType) == 0x4);
 
 		// Add
-		virtual ~MagicItemTraversalFunctor();            // 0
-		virtual ReturnType Traverse(Effect* effect) = 0; // 1
+		virtual ~MagicItemTraversalFunctor();                // 0
+		virtual ReturnType Traverse(EffectItem* effect) = 0; // 1
 
 		// Member variables
 		std::uint64_t unknown8; // 8

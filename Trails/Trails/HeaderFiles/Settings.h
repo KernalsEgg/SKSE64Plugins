@@ -97,8 +97,8 @@ namespace Trails
 					return jsonRange;
 				}
 
-				Vector minimum;
-				Vector maximum;
+				Vector minimum{};
+				Vector maximum{};
 			};
 
 			Vector& Deserialize(const nlohmann::json& jsonVector)
@@ -144,7 +144,7 @@ namespace Trails
 			nlohmann::json Serialize() const;
 
 			std::string   nodeName{};
-			Vector<float> offset;
+			Vector<float> offset{};
 		};
 
 		class Rotation
@@ -154,7 +154,7 @@ namespace Trails
 			nlohmann::json Serialize() const;
 
 			std::string  nodeName{};
-			Vector<bool> rotate;
+			Vector<bool> rotate{};
 		};
 
 		class OffsetRotation :
@@ -164,7 +164,7 @@ namespace Trails
 			OffsetRotation& Deserialize(const nlohmann::json& jsonOffsetRotation);
 			nlohmann::json  Serialize() const;
 
-			Vector<float>::Range offset;
+			Vector<float>::Range offset{};
 		};
 
 		class Footstep
@@ -199,15 +199,15 @@ namespace Trails
 				nlohmann::json Serialize() const;
 
 				Skyrim::BGSImpactDataSet* impactEffect{ nullptr };
-				Decal                     decal;
-				RayCast                   rayCast;
+				Decal                     decal{};
+				RayCast                   rayCast{};
 			};
 
 			Footstep&      Deserialize(const nlohmann::json& jsonFootstep);
 			nlohmann::json Serialize() const;
 
-			std::set<std::string>  tags;
-			std::vector<Arguments> arguments;
+			std::set<std::string>  tags{};
+			std::vector<Arguments> arguments{};
 		};
 
 		Settings()                = default;
@@ -226,6 +226,6 @@ namespace Trails
 		Settings&      Deserialize(const nlohmann::json& jsonSettings);
 		nlohmann::json Serialize() const;
 
-		std::map<Skyrim::BGSConstructibleObject*, std::vector<Footstep>> footsteps;
+		std::map<Skyrim::BGSConstructibleObject*, std::vector<Footstep>> footsteps{};
 	};
 }

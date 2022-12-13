@@ -27,7 +27,7 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::FindMaxMagnitudeVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::Visit)));
 	}
 
-	Skyrim::AccumulatingValueModifierEffect* AccumulatingMagnitude::Allocate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::Effect* effect)
+	Skyrim::AccumulatingValueModifierEffect* AccumulatingMagnitude::Allocate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect)
 	{
 		// accumulatingValueModifierEffect != nullptr
 

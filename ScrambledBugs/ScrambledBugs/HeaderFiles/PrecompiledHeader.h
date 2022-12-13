@@ -7,10 +7,7 @@
 #include <filesystem> // std::filesystem::path
 #include <fstream>    // std::ifstream
 #include <memory>     // std::addressof
-#include <optional>   // std::optional
-#include <string>     // std::string
+#include <optional>   // std::make_optional, std::nullopt, std::optional
 #include <utility>    // std::swap
 
 #include <nlohmann/json.hpp>
-
-using namespace std::literals;

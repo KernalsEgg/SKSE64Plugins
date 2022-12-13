@@ -22,15 +22,15 @@ namespace Skyrim
 		{
 			this->hitFraction      = 1.0F;
 			this->extraInformation = -1;
-			this->shapeKey         = HK_INVALID_SHAPE_KEY;
+			this->shapeKey         = Skyrim::HK_INVALID_SHAPE_KEY;
 		}
 
 		// Member variables
-		hkVector4     normal;                           // 0
-		float         hitFraction{ 1.0F };              // 10
-		std::int32_t  extraInformation{ -1 };           // 14
-		hkpShapeKey   shapeKey{ HK_INVALID_SHAPE_KEY }; // 18
-		std::uint32_t padding1C;                        // 1C
+		hkVector4     normal{};                                 // 0
+		float         hitFraction{ 1.0F };                      // 10
+		std::int32_t  extraInformation{ -1 };                   // 14
+		hkpShapeKey   shapeKey{ Skyrim::HK_INVALID_SHAPE_KEY }; // 18
+		std::uint32_t padding1C;                                // 1C
 	};
 	static_assert(offsetof(hkpShapeRayCastCollectorOutput, normal) == 0x0);
 	static_assert(offsetof(hkpShapeRayCastCollectorOutput, hitFraction) == 0x10);

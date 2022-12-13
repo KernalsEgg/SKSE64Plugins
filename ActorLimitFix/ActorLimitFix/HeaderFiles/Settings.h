@@ -34,8 +34,9 @@ namespace ActorLimitFix
 		static Settings& GetSingleton();
 
 		Settings&      Deserialize(const nlohmann::json& jsonSettings);
+		void           Initialize();
 		nlohmann::json Serialize() const;
 
-		Fixes fixes;
+		Fixes fixes{};
 	};
 }

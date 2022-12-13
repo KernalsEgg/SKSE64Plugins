@@ -14,18 +14,18 @@ namespace ScrambledBugs::Fixes
 {
 	void HarvestedFlags::Fix(bool& harvestedFlags)
 	{
-		if (!Patterns::Fixes::HarvestedFlags::RemoveHarvestedFlag())
+		if (!Patterns::Fixes::HarvestedFlags::SetEmpty())
 		{
 			harvestedFlags = false;
 
 			return;
 		}
 
-		HarvestedFlags::setHarvestedFlag_ = reinterpret_cast<decltype(HarvestedFlags::setHarvestedFlag_)>(
-			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::HarvestedFlags::RemoveHarvestedFlag, reinterpret_cast<std::uintptr_t>(std::addressof(HarvestedFlags::SetHarvestedFlag))));
+		HarvestedFlags::setEmpty_ = reinterpret_cast<decltype(HarvestedFlags::setEmpty_)>(
+			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::HarvestedFlags::SetEmpty, reinterpret_cast<std::uintptr_t>(std::addressof(HarvestedFlags::SetEmpty))));
 	}
 
-	void HarvestedFlags::SetHarvestedFlag(Skyrim::TESObjectREFR* reference, bool harvested)
+	void HarvestedFlags::SetEmpty(Skyrim::TESObjectREFR* reference, bool empty)
 	{
 		// reference != nullptr
 
@@ -33,11 +33,11 @@ namespace ScrambledBugs::Fixes
 
 		if (formType == Skyrim::FormType::kTree || formType == Skyrim::FormType::kFlora)
 		{
-			reference->RemoveChanges(Utility::ToUnderlying(Skyrim::TESObjectREFR::ChangeFlags::kHarvested));
+			reference->RemoveChanges(Utility::ToUnderlying(Skyrim::TESObjectREFR::ChangeFlags::kEmpty));
 		}
 
-		HarvestedFlags::setHarvestedFlag_(reference, harvested);
+		HarvestedFlags::setEmpty_(reference, empty);
 	}
 
-	decltype(&HarvestedFlags::SetHarvestedFlag) HarvestedFlags::setHarvestedFlag_{ nullptr };
+	decltype(&HarvestedFlags::SetEmpty) HarvestedFlags::setEmpty_{ nullptr };
 }

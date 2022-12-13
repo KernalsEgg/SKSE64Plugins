@@ -25,7 +25,7 @@ namespace Utility
 		constexpr Enumeration& operator=(Enumeration&&) noexcept      = default;
 
 		template <class... Arguments>
-			requires(std::same_as<Arguments, enumeration_type>&&...)
+			requires(std::same_as<Arguments, enumeration_type> && ...)
 		constexpr Enumeration(Arguments... arguments) noexcept :
 			enumeration_((static_cast<underlying_type>(arguments) | ...))
 		{
@@ -106,28 +106,28 @@ namespace Utility
 		constexpr underlying_type  underlying() const noexcept { return this->enumeration_; }
 
 		template <class... Arguments>
-			requires(std::same_as<Arguments, enumeration_type>&&...)
+			requires(std::same_as<Arguments, enumeration_type> && ...)
 		constexpr bool all(Arguments... arguments) const noexcept
 		{
 			return (this->enumeration_ & (static_cast<underlying_type>(arguments) | ...)) == (static_cast<underlying_type>(arguments) | ...);
 		}
 
 		template <class... Arguments>
-			requires(std::same_as<Arguments, enumeration_type>&&...)
+			requires(std::same_as<Arguments, enumeration_type> && ...)
 		constexpr bool any(Arguments... arguments) const noexcept
 		{
 			return (this->enumeration_ & (static_cast<underlying_type>(arguments) | ...)) != static_cast<underlying_type>(0);
 		}
 
 		template <class... Arguments>
-			requires(std::same_as<Arguments, enumeration_type>&&...)
+			requires(std::same_as<Arguments, enumeration_type> && ...)
 		constexpr bool none(Arguments... arguments) const noexcept
 		{
 			return (this->enumeration_ & (static_cast<underlying_type>(arguments) | ...)) == static_cast<underlying_type>(0);
 		}
 
 		template <class... Arguments>
-			requires(std::same_as<Arguments, enumeration_type>&&...)
+			requires(std::same_as<Arguments, enumeration_type> && ...)
 		constexpr Enumeration& reset(Arguments... arguments) noexcept
 		{
 			this->enumeration_ &= ~(static_cast<underlying_type>(arguments) | ...);
@@ -136,7 +136,7 @@ namespace Utility
 		}
 
 		template <class... Arguments>
-			requires(std::same_as<Arguments, enumeration_type>&&...)
+			requires(std::same_as<Arguments, enumeration_type> && ...)
 		constexpr Enumeration& set(Arguments... arguments) noexcept
 		{
 			this->enumeration_ |= (static_cast<underlying_type>(arguments) | ...);
@@ -145,6 +145,6 @@ namespace Utility
 		}
 
 	private:
-		underlying_type enumeration_;
+		underlying_type enumeration_{};
 	};
 }

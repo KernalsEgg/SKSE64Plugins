@@ -45,7 +45,6 @@ namespace Skyrim
 		class iterator
 		{
 		public:
-			using difference_type   = std::ptrdiff_t;
 			using value_type        = U;
 			using reference         = value_type&;
 			using pointer           = value_type*;
@@ -118,8 +117,7 @@ namespace Skyrim
 			}
 
 		private:
-			// Member variables
-			pointer current_{ nullptr }; // 0
+			pointer current_{ nullptr };
 		};
 
 		constexpr GList() noexcept
@@ -135,6 +133,7 @@ namespace Skyrim
 		constexpr GList& operator=(const GList&) noexcept = delete;
 		constexpr GList& operator=(GList&&) noexcept      = delete;
 
+		// Element access
 		constexpr reference front() noexcept
 		{
 			return *this->root_.next;
@@ -155,6 +154,7 @@ namespace Skyrim
 			return *this->root_.previous;
 		}
 
+		// Iterators
 		constexpr iterator<value_type> begin() noexcept
 		{
 			return iterator<value_type>(this->root_.next);
@@ -215,11 +215,13 @@ namespace Skyrim
 			return this->rend();
 		}
 
+		// Capacity
 		constexpr bool empty() const noexcept
 		{
 			return this->root_.next == std::addressof(this->root_);
 		}
 
+		// Modifiers
 		constexpr void clear() noexcept
 		{
 			this->root_.next     = static_cast<pointer>(std::addressof(this->root_));
@@ -258,7 +260,7 @@ namespace Skyrim
 
 	private:
 		// Member variables
-		GListNode<value_type> root_{ nullptr }; // 0
+		GListNode<value_type> root_{}; // 0
 	};
 	static_assert(sizeof(GList<void*>) == 0x10);
 }

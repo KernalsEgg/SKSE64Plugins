@@ -28,7 +28,7 @@ namespace ScrambledBugs
 			bool  powerCooldowns{ false };
 			bool  projectileFadeDuration{ false };
 			bool  quickShot{ false };
-			float quickShotPlaybackSpeed{ 0.0F };
+			float quickShotPlaybackSpeed{ 2.0F };
 			bool  terrainDecals{ false };
 			bool  trainingMenu{ false };
 			bool  weaponCharge{ false };
@@ -44,7 +44,7 @@ namespace ScrambledBugs
 				nlohmann::json         Serialize() const;
 
 				bool commandedActors{ false };
-				bool followers{ false };
+				bool teammates{ false };
 			};
 
 			class PerkEntryPoints
@@ -74,18 +74,18 @@ namespace ScrambledBugs
 			bool                  alreadyCaughtPickpocketing{ false };
 			bool                  attachHitEffectArt{ false };
 			bool                  cloakHitEffects{ false };
-			DifficultyMultipliers difficultyMultipliers;
+			DifficultyMultipliers difficultyMultipliers{};
 			bool                  equipBestAmmunition{ false };
 			bool                  improveMultipleEnchantmentEffects{ false };
 			bool                  leveledCharacters{ false };
 			bool                  lockpickingExperience{ false };
 			bool                  pausedGameHitEffects{ false };
-			PerkEntryPoints       perkEntryPoints;
+			PerkEntryPoints       perkEntryPoints{};
 			bool                  poisonResistance{ false };
 			bool                  powerAttackStamina{ false };
 			bool                  reflectDamage{ false };
 			bool                  scrollExperience{ false };
-			SoulGems              soulGems;
+			SoulGems              soulGems{};
 			bool                  staffExperience{ false };
 			bool                  steepSlopes{ false };
 		};
@@ -104,9 +104,10 @@ namespace ScrambledBugs
 		static Settings& GetSingleton();
 
 		Settings&      Deserialize(const nlohmann::json& jsonSettings);
+		void           Initialize();
 		nlohmann::json Serialize() const;
 
-		Fixes   fixes;
-		Patches patches;
+		Fixes   fixes{};
+		Patches patches{};
 	};
 }

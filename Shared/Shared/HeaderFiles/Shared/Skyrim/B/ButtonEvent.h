@@ -17,6 +17,7 @@ namespace Skyrim
 
 		// Member functions
 		bool IsPressed() const;
+		bool IsPressing() const;
 		bool IsReleased() const;
 
 		// Member variables

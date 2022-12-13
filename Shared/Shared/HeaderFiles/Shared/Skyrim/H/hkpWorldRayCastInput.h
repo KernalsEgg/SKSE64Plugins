@@ -12,8 +12,8 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		hkVector4     from;                                 // 0
-		hkVector4     to;                                   // 10
+		hkVector4     from{};                               // 0
+		hkVector4     to{};                                 // 10
 		bool          enableShapeCollectionFilter{ false }; // 20
 		std::uint8_t  padding21;                            // 21
 		std::uint16_t padding22;                            // 22

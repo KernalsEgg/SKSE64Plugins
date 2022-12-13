@@ -103,7 +103,6 @@ namespace Skyrim
 			}
 
 		private:
-			// Member variables
 			entry_type* head_{ nullptr };
 			entry_type* tail_{ nullptr };
 		};
