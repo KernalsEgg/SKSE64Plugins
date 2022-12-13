@@ -5,7 +5,6 @@
 #include "Addresses.h"
 #include "Patterns.h"
 #include "Shared/Skyrim/B/BGSEntryPointFunctionDataSpellItem.h"
-#include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Utility/Trampoline.h"
 
 
@@ -78,7 +77,13 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			return;
 		}
 
-		auto* spells = static_cast<Skyrim::BSTArray<Skyrim::SpellItem*>*>(*results);
+		auto* spells = static_cast<std::vector<Skyrim::SpellItem*>*>(*results);
+
+		if (!spells)
+		{
+			return;
+		}
+
 		spells->push_back(spell);
 	}
 
@@ -88,7 +93,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		Skyrim::BSTArray<Skyrim::SpellItem*> bashingSpells;
+		std::vector<Skyrim::SpellItem*> bashingSpells;
 
 		ApplyMultipleSpells::applyBashingSpell_(entryPoint, perkOwner, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(bashingSpells)));
 
@@ -105,7 +110,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		Skyrim::BSTArray<Skyrim::SpellItem*> combatHitSpells;
+		std::vector<Skyrim::SpellItem*> combatHitSpells;
 
 		ApplyMultipleSpells::applyCombatHitSpell_(entryPoint, perkOwner, weapon, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(combatHitSpells)));
 
@@ -122,7 +127,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		Skyrim::BSTArray<Skyrim::SpellItem*> combatHitSpells;
+		std::vector<Skyrim::SpellItem*> combatHitSpells;
 
 		ApplyMultipleSpells::applyCombatHitSpellArrowProjectile_(entryPoint, perkOwner, weapon, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(combatHitSpells)));
 
@@ -139,7 +144,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		Skyrim::BSTArray<Skyrim::SpellItem*> reanimateSpells;
+		std::vector<Skyrim::SpellItem*> reanimateSpells;
 
 		ApplyMultipleSpells::applyReanimateSpell_(entryPoint, perkOwner, spell, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(reanimateSpells)));
 
@@ -154,7 +159,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// perkOwner != nullptr
 		// result != nullptr
 
-		Skyrim::BSTArray<Skyrim::SpellItem*> sneakingSpells;
+		std::vector<Skyrim::SpellItem*> sneakingSpells;
 
 		ApplyMultipleSpells::applySneakingSpell_(entryPoint, perkOwner, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(sneakingSpells)));
 
@@ -171,7 +176,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// attackerWeapon != nullptr
 		// result != nullptr
 
-		Skyrim::BSTArray<Skyrim::SpellItem*> weaponSwingSpells;
+		std::vector<Skyrim::SpellItem*> weaponSwingSpells;
 
 		ApplyMultipleSpells::applyWeaponSwingSpell_(entryPoint, perkOwner, attacker, attackerWeapon, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(weaponSwingSpells)));
 

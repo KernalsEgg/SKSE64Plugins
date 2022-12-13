@@ -9,5 +9,6 @@
 #include <memory>     // std::addressof
 #include <optional>   // std::make_optional, std::nullopt, std::optional
 #include <utility>    // std::swap
+#include <vector>     // std::vector
 
 #include <nlohmann/json.hpp>
