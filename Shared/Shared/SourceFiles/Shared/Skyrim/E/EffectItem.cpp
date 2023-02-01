@@ -25,13 +25,6 @@ namespace Skyrim
 		return *this;
 	}
 
-	float EffectItem::GetCost(float baseCost, std::int32_t area, std::int32_t duration, float magnitude, bool aimed, bool concentration)
-	{
-		auto* function{ reinterpret_cast<decltype(&EffectItem::GetCost)>(Addresses::EffectItem::GetCost) };
-
-		return function(baseCost, area, duration, magnitude, aimed, concentration);
-	}
-
 	void EffectItem::Copy(const EffectItem* right)
 	{
 		this->effectSetting = right->effectSetting;
@@ -48,6 +41,13 @@ namespace Skyrim
 	std::int32_t EffectItem::GetArea() const
 	{
 		return this->effectSetting->effectSettingFlags.all(EffectSetting::Flags::kNoArea) ? 0 : this->area;
+	}
+
+	float EffectItem::GetCost(Actor* caster) const
+	{
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&EffectItem::GetCost)>::type>(Addresses::EffectItem::GetCost) };
+
+		return function(this, caster);
 	}
 
 	std::int32_t EffectItem::GetDuration() const

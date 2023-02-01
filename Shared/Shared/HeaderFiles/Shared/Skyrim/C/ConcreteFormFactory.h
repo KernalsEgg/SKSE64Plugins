@@ -26,9 +26,9 @@ namespace Skyrim
 		FormType    GetFormType() const override; // 3
 
 		// Non-member functions
-		static ConcreteFormFactory* GetConcreteFormFactoryFromFormType()
+		static ConcreteFormFactory* GetFormFactory()
 		{
-			return static_cast<ConcreteFormFactory*>(IFormFactory::GetFormFactoryFromFormType(Form));
+			return static_cast<ConcreteFormFactory*>(IFormFactory::GetFormFactory(Form));
 		}
 
 		// Member functions

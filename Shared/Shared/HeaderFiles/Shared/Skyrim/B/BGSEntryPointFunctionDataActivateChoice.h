@@ -29,12 +29,12 @@ namespace Skyrim
 		virtual ~BGSEntryPointFunctionDataActivateChoice() override; // 0
 
 		// Override (BGSEntryPointFunctionData)
-		virtual Type GetType() const override;                      // 1
-		virtual void Unknown2(BGSEntryPointFunctionData*) override; // 2
-		virtual void Unknown3(BGSEntryPointFunctionData*) override; // 3
-		virtual void Unknown5(BGSEntryPointFunctionData*) override; // 5
-		virtual void Unknown6(BGSEntryPointFunctionData*) override; // 6
-		virtual void Unknown7(BGSEntryPointFunctionData*) override; // 7
+		virtual EntryPointFunctionDataType GetType() const override;                      // 1
+		virtual void                       Unknown2(BGSEntryPointFunctionData*) override; // 2
+		virtual void                       Unknown3(BGSEntryPointFunctionData*) override; // 3
+		virtual void                       Unknown5(BGSEntryPointFunctionData*) override; // 5
+		virtual void                       Unknown6(BGSEntryPointFunctionData*) override; // 6
+		virtual void                       Unknown7(BGSEntryPointFunctionData*) override; // 7
 
 		// Member variables
 		BSFixedString                              buttonLabel;         // 8

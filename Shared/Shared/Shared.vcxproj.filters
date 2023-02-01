@@ -546,7 +546,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectItem.h">
       <Filter>Header Files\Shared\Skyrim\E</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectArchetype.h">
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectArchetypes.h">
       <Filter>Header Files\Shared\Skyrim\E</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectSetting.h">
@@ -1707,6 +1707,21 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\C\CombatState.h">
       <Filter>Header Files\Shared\Skyrim\C</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValueInfo.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPoint.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointFunction.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectREFRFactory.h">
+      <Filter>Header Files\Shared\Skyrim\T</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraLockList.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PrecompiledHeader.cpp">
@@ -2101,6 +2116,24 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\Main.cpp">
       <Filter>Source Files\Shared\Skyrim\M</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EffectSetting.cpp">
+      <Filter>Source Files\Shared\Skyrim\E</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EffectArchetypes.cpp">
+      <Filter>Source Files\Shared\Skyrim\E</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorValueInfo.cpp">
+      <Filter>Source Files\Shared\Skyrim\A</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSEntryPoint.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSEntryPointFunction.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectREFRFactory.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

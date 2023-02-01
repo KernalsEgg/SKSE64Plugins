@@ -19,7 +19,7 @@ namespace BugFixesSSE
 
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
-	.pluginVersion   = 9,
+	.pluginVersion   = 10,
 	.pluginName      = "Bug Fixes SSE",
 	.author          = "meh321 and KernalsEgg",
 	.addressLibrary  = true,

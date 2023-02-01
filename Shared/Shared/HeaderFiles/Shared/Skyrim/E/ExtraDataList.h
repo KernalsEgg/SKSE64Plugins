@@ -98,11 +98,13 @@ namespace Skyrim
 		std::int16_t GetCount() const;
 		float        GetHealth() const;
 		bool         GetInteraction(BSTSmartPointer<RefrInteraction>& referenceInteraction) const;
+		TESForm*     GetLockList() const;
 		TESForm*     GetOwner() const;
 		AlchemyItem* GetPoison() const;
 		SoulLevel    GetSoulLevel() const;
 		bool         IsQuestItem() const;
 		bool         IsWorn(bool eitherHand, bool leftHand) const;
+		void         SetLockList(TESForm* lockList);
 
 		BSExtraData*       GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type);
 		const BSExtraData* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const;

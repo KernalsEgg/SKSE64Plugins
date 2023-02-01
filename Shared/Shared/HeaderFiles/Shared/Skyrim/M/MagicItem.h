@@ -28,17 +28,17 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			EffectItem*   costliestEffect; // 0
-			ActorValue    skill;           // 8
-			float         experience;      // C
-			bool          custom;          // 10
-			std::uint8_t  padding11;       // 11
-			std::uint16_t padding12;       // 12
-			std::uint32_t padding14;       // 14
+			EffectItem*                                     costliestEffect; // 0
+			Utility::Enumeration<ActorValue, std::uint32_t> magicSkill;      // 8
+			float                                           magnitude;       // C
+			bool                                            custom;          // 10
+			std::uint8_t                                    padding11;       // 11
+			std::uint16_t                                   padding12;       // 12
+			std::uint32_t                                   padding14;       // 14
 		};
 		static_assert(offsetof(SkillUsageData, costliestEffect) == 0x0);
-		static_assert(offsetof(SkillUsageData, skill) == 0x8);
-		static_assert(offsetof(SkillUsageData, experience) == 0xC);
+		static_assert(offsetof(SkillUsageData, magicSkill) == 0x8);
+		static_assert(offsetof(SkillUsageData, magnitude) == 0xC);
 		static_assert(offsetof(SkillUsageData, custom) == 0x10);
 		static_assert(sizeof(SkillUsageData) == 0x18);
 
@@ -46,12 +46,12 @@ namespace Skyrim
 		virtual ~MagicItem() override; // 0
 
 		// Override (TESBoundObject)
-		virtual void InitializeData() override;      // 4
-		virtual bool Load(TESFile* file) override;   // 6
-		virtual void Unknown13(TESForm*) override;   // 13
-		virtual void Unknown29(TESForm*) override;   // 29
-		virtual void Unknown2F(TESForm*) override;   // 2F
-		virtual void Unknown3E(TESObject*) override; // 3E
+		virtual void InitializeData() override;                  // 4
+		virtual bool Load(TESFile* file) override;               // 6
+		virtual void Unknown13(TESForm*) override;               // 13
+		virtual void Unknown29(TESForm*) override;               // 29
+		virtual void Unknown2F(TESForm*) override;               // 2F
+		virtual bool IsAutomaticallyCalculated() const override; // 3E
 
 		// Override (BGSKeywordForm)
 		virtual bool HasKeyword(const BGSKeyword* keyword) const override; // 4
@@ -82,17 +82,18 @@ namespace Skyrim
 		virtual void                     Unknown69(MagicItem*) = 0;                               // 69
 		virtual void                     Unknown6A(MagicItem*);                                   // 6A
 		virtual void                     Unknown6B(MagicItem*);                                   // 6B
-		virtual const void*              GetData() const       = 0;                               // 6C
-		virtual void*                    GetData()             = 0;                               // 6D
-		virtual std::uint32_t            GetDataSize() const   = 0;                               // 6E
-		virtual void                     Unknown6F(MagicItem*) = 0;                               // 6F
-		virtual void                     Unknown70(MagicItem*) = 0;                               // 70
+		virtual const void*              GetConstantData() const = 0;                             // 6C
+		virtual void*                    GetData()               = 0;                             // 6D
+		virtual std::uint32_t            GetDataSize() const     = 0;                             // 6E
+		virtual void                     Unknown6F(MagicItem*)   = 0;                             // 6F
+		virtual void                     Unknown70(MagicItem*)   = 0;                             // 70
 
 		// Member functions
-		float      GetCost(Actor* caster) const;
-		ActorValue GetCostActorValue(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource) const;
-		bool       ShouldAddSpell() const;
-		bool       ShouldAdjust() const;
+		float       GetCost(Actor* caster) const;
+		ActorValue  GetCostActorValue(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource) const;
+		EffectItem* GetCostliestEffect(Utility::Enumeration<MagicSystem::Delivery, std::uint32_t> delivery, bool areaOfEffect) const;
+		bool        IsPermanent() const;
+		bool        ShouldAdjustEffects() const;
 
 		// Member variables
 		BSTArray<EffectItem*> effects;      // 58

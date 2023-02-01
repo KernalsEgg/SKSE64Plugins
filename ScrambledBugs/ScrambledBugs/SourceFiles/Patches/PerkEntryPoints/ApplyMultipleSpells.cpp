@@ -49,45 +49,11 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyWeaponSwingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplyMultipleSpells::ApplyWeaponSwingSpell))));
 	}
 
-	void ApplyMultipleSpells::SelectSpell(Skyrim::Actor* perkOwner, Utility::Enumeration<Skyrim::BGSEntryPointFunctionData::ResultType, std::uint32_t> resultType, std::uint8_t resultCount, void** results, Skyrim::BGSEntryPointFunctionData* entryPointFunctionData)
-	{
-		// perkOwner != nullptr
-		// results != nullptr
-		// entryPointFunctionData != nullptr
-
-		if (resultType != Skyrim::BGSEntryPointFunctionData::ResultType::kSpellItem)
-		{
-			return;
-		}
-
-		if (resultCount != *reinterpret_cast<std::uint32_t*>(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::SelectSpellResultCount))
-		{
-			return;
-		}
-
-		if (entryPointFunctionData->GetType() != Skyrim::BGSEntryPointFunctionData::Type::kSpellItem)
-		{
-			return;
-		}
-
-		auto* spell = static_cast<Skyrim::BGSEntryPointFunctionDataSpellItem*>(entryPointFunctionData)->spell;
-
-		if (!spell)
-		{
-			return;
-		}
-
-		auto* spells = static_cast<std::vector<Skyrim::SpellItem*>*>(*results);
-
-		if (!spells)
-		{
-			return;
-		}
-
-		spells->push_back(spell);
-	}
-
-	void ApplyMultipleSpells::ApplyBashingSpell(Utility::Enumeration<Skyrim::BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Skyrim::Actor* perkOwner, Skyrim::Actor* target, Skyrim::SpellItem** result)
+	void ApplyMultipleSpells::ApplyBashingSpell(
+		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
+		Skyrim::Actor*                                                         perkOwner,
+		Skyrim::Actor*                                                         target,
+		Skyrim::SpellItem**                                                    result)
 	{
 		// perkOwner != nullptr
 		// target != nullptr
@@ -103,7 +69,12 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		}
 	}
 
-	void ApplyMultipleSpells::ApplyCombatHitSpell(Utility::Enumeration<Skyrim::BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Skyrim::Actor* perkOwner, Skyrim::TESObjectWEAP* weapon, Skyrim::Actor* target, Skyrim::SpellItem** result)
+	void ApplyMultipleSpells::ApplyCombatHitSpell(
+		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
+		Skyrim::Actor*                                                         perkOwner,
+		Skyrim::TESObjectWEAP*                                                 weapon,
+		Skyrim::Actor*                                                         target,
+		Skyrim::SpellItem**                                                    result)
 	{
 		// perkOwner != nullptr
 		// weapon != nullptr
@@ -120,7 +91,12 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		}
 	}
 
-	void ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile(Utility::Enumeration<Skyrim::BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Skyrim::Actor* perkOwner, Skyrim::TESObjectWEAP* weapon, Skyrim::Actor* target, Skyrim::SpellItem** result)
+	void ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile(
+		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
+		Skyrim::Actor*                                                         perkOwner,
+		Skyrim::TESObjectWEAP*                                                 weapon,
+		Skyrim::Actor*                                                         target,
+		Skyrim::SpellItem**                                                    result)
 	{
 		// perkOwner != nullptr
 		// weapon != nullptr
@@ -137,7 +113,12 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		}
 	}
 
-	void ApplyMultipleSpells::ApplyReanimateSpell(Utility::Enumeration<Skyrim::BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Skyrim::Actor* perkOwner, Skyrim::SpellItem* spell, Skyrim::Actor* target, Skyrim::SpellItem** result)
+	void ApplyMultipleSpells::ApplyReanimateSpell(
+		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
+		Skyrim::Actor*                                                         perkOwner,
+		Skyrim::SpellItem*                                                     spell,
+		Skyrim::Actor*                                                         target,
+		Skyrim::SpellItem**                                                    result)
 	{
 		// perkOwner != nullptr
 		// spell != nullptr
@@ -154,7 +135,10 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		}
 	}
 
-	void ApplyMultipleSpells::ApplySneakingSpell(Utility::Enumeration<Skyrim::BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Skyrim::Actor* perkOwner, Skyrim::SpellItem** result)
+	void ApplyMultipleSpells::ApplySneakingSpell(
+		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
+		Skyrim::Actor*                                                         perkOwner,
+		Skyrim::SpellItem**                                                    result)
 	{
 		// perkOwner != nullptr
 		// result != nullptr
@@ -169,7 +153,12 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		}
 	}
 
-	void ApplyMultipleSpells::ApplyWeaponSwingSpell(Utility::Enumeration<Skyrim::BGSPerkEntry::EntryPoint, std::uint32_t> entryPoint, Skyrim::Actor* perkOwner, Skyrim::Actor* attacker, Skyrim::TESObjectWEAP* attackerWeapon, Skyrim::SpellItem** result)
+	void ApplyMultipleSpells::ApplyWeaponSwingSpell(
+		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
+		Skyrim::Actor*                                                         perkOwner,
+		Skyrim::Actor*                                                         attacker,
+		Skyrim::TESObjectWEAP*                                                 attackerWeapon,
+		Skyrim::SpellItem**                                                    result)
 	{
 		// perkOwner != nullptr
 		// attacker != nullptr
@@ -186,11 +175,54 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		}
 	}
 
+	void ApplyMultipleSpells::SelectSpell(
+		Skyrim::Actor*                                                                             perkOwner,
+		Utility::Enumeration<Skyrim::BGSEntryPointFunction::EntryPointFunctionType, std::uint32_t> entryPointFunctionType,
+		std::uint8_t                                                                               entryPointFunctionTypeArgumentCount,
+		void**                                                                                     entryPointFunctionTypeArguments,
+		Skyrim::BGSEntryPointFunctionData*                                                         entryPointFunctionData)
+	{
+		// perkOwner != nullptr
+		// entryPointFunctionTypeArguments != nullptr
+		// entryPointFunctionData != nullptr
+
+		if (entryPointFunctionType != Skyrim::BGSEntryPointFunction::EntryPointFunctionType::kSpellItem)
+		{
+			return;
+		}
+
+		if (entryPointFunctionTypeArgumentCount != Skyrim::BGSEntryPointFunction::GetEntryPointFunctionTypeArgumentCount(Skyrim::BGSEntryPointFunction::EntryPointFunctionType::kSpellItem))
+		{
+			return;
+		}
+
+		if (entryPointFunctionData->GetType() != Skyrim::BGSEntryPointFunctionData::EntryPointFunctionDataType::kSpellItem)
+		{
+			return;
+		}
+
+		auto* spell = static_cast<Skyrim::BGSEntryPointFunctionDataSpellItem*>(entryPointFunctionData)->spell;
+
+		if (!spell)
+		{
+			return;
+		}
+
+		auto* spells = static_cast<std::vector<Skyrim::SpellItem*>*>(*entryPointFunctionTypeArguments);
+
+		if (!spells)
+		{
+			return;
+		}
+
+		spells->push_back(spell);
+	}
+
+	bool                                                               ApplyMultipleSpells::castSpells_{ false };
 	decltype(&ApplyMultipleSpells::ApplyBashingSpell)                  ApplyMultipleSpells::applyBashingSpell_{ nullptr };
 	decltype(&ApplyMultipleSpells::ApplyCombatHitSpell)                ApplyMultipleSpells::applyCombatHitSpell_{ nullptr };
 	decltype(&ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile) ApplyMultipleSpells::applyCombatHitSpellArrowProjectile_{ nullptr };
 	decltype(&ApplyMultipleSpells::ApplyReanimateSpell)                ApplyMultipleSpells::applyReanimateSpell_{ nullptr };
 	decltype(&ApplyMultipleSpells::ApplySneakingSpell)                 ApplyMultipleSpells::applySneakingSpell_{ nullptr };
 	decltype(&ApplyMultipleSpells::ApplyWeaponSwingSpell)              ApplyMultipleSpells::applyWeaponSwingSpell_{ nullptr };
-	bool                                                               ApplyMultipleSpells::castSpells_{ false };
 }

@@ -56,7 +56,7 @@ namespace ScrambledBugs
 			return false;
 		}
 
-		auto* enchantmentItemData = static_cast<Skyrim::EnchantmentItem::Data*>(enchantment->GetData());
+		const auto* enchantmentItemData = static_cast<const Skyrim::EnchantmentItem::Data*>(enchantment->GetConstantData());
 
 		if (!enchantmentItemData)
 		{
@@ -66,8 +66,8 @@ namespace ScrambledBugs
 		}
 
 		this->formID               = enchantment->formID;
-		this->enchantmentCost      = enchantment->enchantmentItemData.enchantmentCost;
-		this->enchantmentItemFlags = enchantment->enchantmentItemData.enchantmentItemFlags;
+		this->enchantmentCost      = enchantmentItemData->enchantmentCost;
+		this->enchantmentItemFlags = enchantmentItemData->enchantmentItemFlags;
 
 		serializationInterface->WriteRecord(EnchantmentCost::kType, EnchantmentCost::kVersion, *this);
 

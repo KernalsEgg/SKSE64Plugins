@@ -87,7 +87,7 @@ namespace Skyrim
 		virtual void                     Unknown69(MagicItem*) override;                                              // 69
 		virtual void                     Unknown6A(MagicItem*) override;                                              // 6A
 		virtual void                     Unknown6B(MagicItem*) override;                                              // 6B
-		virtual const void*              GetData() const override;                                                    // 6C
+		virtual const void*              GetConstantData() const override;                                            // 6C
 		virtual void*                    GetData() override;                                                          // 6D
 		virtual std::uint32_t            GetDataSize() const override;                                                // 6E
 		virtual void                     Unknown6F(MagicItem*) override;                                              // 6F

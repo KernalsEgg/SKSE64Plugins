@@ -3,7 +3,7 @@
 #include "Patches/ImproveMultipleEnchantmentEffects.h"
 
 #include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/B/BGSEntryPointPerkEntry.h"
+#include "Shared/Skyrim/B/BGSEntryPoint.h"
 #include "Shared/Skyrim/E/EffectSetting.h"
 #include "Shared/Skyrim/E/EnchantmentItem.h"
 #include "Shared/Skyrim/P/PlayerCharacter.h"
@@ -50,7 +50,7 @@ namespace ScrambledBugs::Patches
 			auto  enchantingSkill = player->GetActorValue(Skyrim::ActorValue::kEnchanting);
 
 			maximumPower = Skyrim::EnchantmentItem::ModifyPower(maximumPower, enchantingSkill);
-			Skyrim::BGSEntryPointPerkEntry::HandleEntryPoint(Skyrim::BGSPerkEntry::EntryPoint::kModifyEnchantmentPower, player, enchantmentEntry->enchantment, createEffectFunctor->item, std::addressof(maximumPower));
+			Skyrim::BGSEntryPoint::HandleEntryPoint(Skyrim::BGSEntryPoint::EntryPoint::kModifyEnchantmentPower, player, enchantmentEntry->enchantment, createEffectFunctor->item, std::addressof(maximumPower));
 			maximumPower = std::floor(maximumPower);
 
 			if (effect == createEffectFunctor->costliestEffect)

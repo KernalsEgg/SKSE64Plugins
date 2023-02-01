@@ -7,7 +7,7 @@
 #include "Shared/Skyrim/B/BGSMenuDisplayObject.h"
 #include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
-#include "Shared/Skyrim/E/EffectArchetype.h"
+#include "Shared/Skyrim/E/EffectArchetypes.h"
 #include "Shared/Skyrim/M/MagicSystem.h"
 #include "Shared/Skyrim/S/SoundLevel.h"
 #include "Shared/Skyrim/T/TESCondition.h"
@@ -74,58 +74,61 @@ namespace Skyrim
 		// Override (BGSKeywordForm)
 		virtual bool HasKeyword(const BGSKeyword* keyword) const override; // 4
 
+		// Non-member functions
+		static float GetCost(float baseCost, std::int32_t area, std::int32_t duration, float magnitude, bool aimed, bool concentration);
+
 		// Member variables
-		std::uint64_t                                                 unknown58;                   // 58
-		std::uint64_t                                                 unknown60;                   // 60
-		Utility::Enumeration<Flags, std::uint32_t>                    effectSettingFlags;          // 68
-		float                                                         baseCost;                    // 6C
-		std::uint64_t                                                 unknown70;                   // 70
-		Utility::Enumeration<ActorValue, std::uint32_t>               magicSkill;                  // 78
-		Utility::Enumeration<ActorValue, std::uint32_t>               resistanceActorValue;        // 7C
-		std::uint64_t                                                 unknown80;                   // 80
-		TESObjectLIGH*                                                castingLight;                // 88
-		float                                                         taperWeight;                 // 90
-		std::uint32_t                                                 padding94;                   // 94
-		TESEffectShader*                                              hitShader;                   // 98
-		TESEffectShader*                                              enchantShader;               // A0
-		std::uint32_t                                                 minimumSkillLevel;           // A8
-		std::uint32_t                                                 spellmakingArea;             // AC
-		float                                                         spellmakingCastingTime;      // B0
-		float                                                         taperCurve;                  // B4
-		float                                                         taperDuration;               // B8
-		float                                                         secondAVWeight;              // BC
-		Utility::Enumeration<EffectArchetype, std::uint32_t>          effectArchetype;             // C0
-		std::uint32_t                                                 unknownC4;                   // C4
-		BGSProjectile*                                                projectile;                  // C8
-		BGSExplosion*                                                 explosion;                   // D0
-		Utility::Enumeration<MagicSystem::CastingType, std::uint32_t> castingType;                 // D8
-		Utility::Enumeration<MagicSystem::Delivery, std::uint32_t>    delivery;                    // DC
-		std::uint64_t                                                 unknownE0;                   // E0
-		BGSArtObject*                                                 castingArt;                  // E8
-		BGSArtObject*                                                 hitEffectArt;                // F0
-		BGSImpactDataSet*                                             impactDataSet;               // F8
-		float                                                         skillUsageMultiplier;        // 100
-		std::uint32_t                                                 padding104;                  // 104
-		std::uint64_t                                                 unknown108;                  // 108
-		float                                                         dualCastingScale;            // 110
-		std::uint32_t                                                 padding114;                  // 114
-		BGSArtObject*                                                 enchantArt;                  // 118
-		BGSReferenceEffect*                                           hitVisualEffects;            // 120
-		BGSReferenceEffect*                                           enchantVisualEffects;        // 128
-		SpellItem*                                                    equipAbility;                // 130
-		TESImageSpaceModifier*                                        imageSpaceModifier;          // 138
-		BGSPerk*                                                      perkToApply;                 // 140
-		Utility::Enumeration<SoundLevel, std::uint32_t>               castingSoundLevel;           // 148
-		float                                                         scriptEffectAIDataScore;     // 14C
-		float                                                         scriptEffectAIDataDelayTime; // 150
-		std::uint32_t                                                 padding154;                  // 154
-		BSSimpleList<EffectSetting*>                                  counterEffects;              // 158
-		std::uint64_t                                                 unknown168;                  // 168
-		std::uint64_t                                                 unknown170;                  // 170
-		std::uint64_t                                                 unknown178;                  // 178
-		BSFixedString                                                 magicItemDescription;        // 180
-		std::uint64_t                                                 unknown188;                  // 188
-		TESCondition                                                  conditions;                  // 190
+		std::uint64_t                                                      unknown58;                   // 58
+		std::uint64_t                                                      unknown60;                   // 60
+		Utility::Enumeration<Flags, std::uint32_t>                         effectSettingFlags;          // 68
+		float                                                              baseCost;                    // 6C
+		std::uint64_t                                                      unknown70;                   // 70
+		Utility::Enumeration<ActorValue, std::uint32_t>                    magicSkill;                  // 78
+		Utility::Enumeration<ActorValue, std::uint32_t>                    resistanceActorValue;        // 7C
+		std::uint64_t                                                      unknown80;                   // 80
+		TESObjectLIGH*                                                     castingLight;                // 88
+		float                                                              taperWeight;                 // 90
+		std::uint32_t                                                      padding94;                   // 94
+		TESEffectShader*                                                   hitShader;                   // 98
+		TESEffectShader*                                                   enchantShader;               // A0
+		std::uint32_t                                                      minimumSkillLevel;           // A8
+		std::uint32_t                                                      spellmakingArea;             // AC
+		float                                                              spellmakingCastingTime;      // B0
+		float                                                              taperCurve;                  // B4
+		float                                                              taperDuration;               // B8
+		float                                                              secondAVWeight;              // BC
+		Utility::Enumeration<EffectArchetypes::ArchetypeID, std::uint32_t> effectArchetype;             // C0
+		std::uint32_t                                                      unknownC4;                   // C4
+		BGSProjectile*                                                     projectile;                  // C8
+		BGSExplosion*                                                      explosion;                   // D0
+		Utility::Enumeration<MagicSystem::CastingType, std::uint32_t>      castingType;                 // D8
+		Utility::Enumeration<MagicSystem::Delivery, std::uint32_t>         delivery;                    // DC
+		std::uint64_t                                                      unknownE0;                   // E0
+		BGSArtObject*                                                      castingArt;                  // E8
+		BGSArtObject*                                                      hitEffectArt;                // F0
+		BGSImpactDataSet*                                                  impactDataSet;               // F8
+		float                                                              skillUsageMultiplier;        // 100
+		std::uint32_t                                                      padding104;                  // 104
+		std::uint64_t                                                      unknown108;                  // 108
+		float                                                              dualCastingScale;            // 110
+		std::uint32_t                                                      padding114;                  // 114
+		BGSArtObject*                                                      enchantArt;                  // 118
+		BGSReferenceEffect*                                                hitVisualEffects;            // 120
+		BGSReferenceEffect*                                                enchantVisualEffects;        // 128
+		SpellItem*                                                         equipAbility;                // 130
+		TESImageSpaceModifier*                                             imageSpaceModifier;          // 138
+		BGSPerk*                                                           perkToApply;                 // 140
+		Utility::Enumeration<SoundLevel, std::uint32_t>                    castingSoundLevel;           // 148
+		float                                                              scriptEffectAIDataScore;     // 14C
+		float                                                              scriptEffectAIDataDelayTime; // 150
+		std::uint32_t                                                      padding154;                  // 154
+		BSSimpleList<EffectSetting*>                                       counterEffects;              // 158
+		std::uint64_t                                                      unknown168;                  // 168
+		std::uint64_t                                                      unknown170;                  // 170
+		std::uint64_t                                                      unknown178;                  // 178
+		BSFixedString                                                      magicItemDescription;        // 180
+		std::uint64_t                                                      unknown188;                  // 188
+		TESCondition                                                       conditions;                  // 190
 	};
 	static_assert(offsetof(EffectSetting, effectSettingFlags) == 0x68);
 	static_assert(offsetof(EffectSetting, baseCost) == 0x6C);

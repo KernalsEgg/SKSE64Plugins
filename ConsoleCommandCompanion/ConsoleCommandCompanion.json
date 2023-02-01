@@ -23,7 +23,8 @@
 			[{
 				"consoleCommands":
 				[
-					"SetGlobalTimeMultiplier 0.5"
+					"SetGlobalTimeMultiplier 0.5",
+					"SetGameSetting fDamageWeaponMult 50.0"
 				],
 				"filters":
 				[{
@@ -35,7 +36,8 @@
 			{
 				"consoleCommands":
 				[
-					"SetGlobalTimeMultiplier 2.0"
+					"Player.SetScale 2.0",
+					"Player.SexChange"
 				],
 				"filters":
 				[{
@@ -45,7 +47,8 @@
 			{
 				"consoleCommands":
 				[
-					"ToggleFlyCam 1"
+					"ToggleFlyCam 1",
+					"SetUFOCamSpeedMult 40.0"
 				],
 				"filters":
 				[{
@@ -94,7 +97,8 @@
 			[{
 				"consoleCommands":
 				[
-					"SetGlobalTimeMultiplier 1.0"
+					"SetGlobalTimeMultiplier 1.0",
+					"SetGameSetting fDamageWeaponMult 1.0"
 				],
 				"filters":
 				[{
@@ -106,7 +110,8 @@
 			{
 				"consoleCommands":
 				[
-					"SetGlobalTimeMultiplier 1.0"
+					"Player.SetScale 1.0",
+					"Player.SexChange"
 				],
 				"filters":
 				[{
@@ -116,7 +121,8 @@
 			{
 				"consoleCommands":
 				[
-					"ToggleFlyCam 1"
+					"ToggleFlyCam 1",
+					"SetUFOCamSpeedMult 20.0"
 				],
 				"filters":
 				[{

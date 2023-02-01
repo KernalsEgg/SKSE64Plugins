@@ -3,6 +3,7 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/F/FormType.h"
+#include "Shared/Utility/Enumeration.h"
 
 
 
@@ -39,7 +40,7 @@ namespace Skyrim
 		virtual ObjectCategoryType GetObjectCategoryType() const; // 6
 
 		// Non-member functions
-		static IFormFactory* GetFormFactoryFromFormType(FormType formType);
+		static IFormFactory* GetFormFactory(Utility::Enumeration<FormType, std::uint8_t> formType);
 
 		// Member functions
 		TESForm* Create();

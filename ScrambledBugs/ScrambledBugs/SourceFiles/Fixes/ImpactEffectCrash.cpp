@@ -55,6 +55,6 @@ namespace ScrambledBugs::Fixes
 		}
 	}
 
-	decltype(&ImpactEffectCrash::DecalApplier) ImpactEffectCrash::decalApplier_;
-	decltype(&ImpactEffectCrash::UpdateDecals) ImpactEffectCrash::updateDecals_;
+	decltype(&ImpactEffectCrash::DecalApplier) ImpactEffectCrash::decalApplier_{ nullptr };
+	decltype(&ImpactEffectCrash::UpdateDecals) ImpactEffectCrash::updateDecals_{ nullptr };
 }

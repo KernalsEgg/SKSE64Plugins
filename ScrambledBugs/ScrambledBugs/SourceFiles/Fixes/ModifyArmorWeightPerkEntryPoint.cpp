@@ -4,6 +4,7 @@
 
 #include "Addresses.h"
 #include "Shared/Skyrim/Addresses.h"
+#include "Shared/Skyrim/B/BGSEntryPoint.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/I/InventoryEntryData.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
@@ -29,7 +30,7 @@ namespace ScrambledBugs::Fixes
 	{
 		ModifyArmorWeightPerkEntryPoint::applyPerkEntry_(entryPointPerkEntry, perkOwner);
 
-		if (entryPointPerkEntry->entryPoint == Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight)
+		if (entryPointPerkEntry->entryPoint == Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight)
 		{
 			auto* inventoryChanges = perkOwner->GetInventoryChanges();
 
@@ -90,7 +91,7 @@ namespace ScrambledBugs::Fixes
 										{
 											auto armorWeight = itemWeight;
 
-											Skyrim::BGSEntryPointPerkEntry::HandleEntryPoint(Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight, ownerActor, item, std::addressof(armorWeight));
+											Skyrim::BGSEntryPoint::HandleEntryPoint(Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight, ownerActor, item, std::addressof(armorWeight));
 
 											inventoryWeight += armorWeight;
 											--itemCount;
@@ -148,7 +149,7 @@ namespace ScrambledBugs::Fixes
 									{
 										auto armorWeight = itemWeight;
 
-										Skyrim::BGSEntryPointPerkEntry::HandleEntryPoint(Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight, ownerActor, item, std::addressof(armorWeight));
+										Skyrim::BGSEntryPoint::HandleEntryPoint(Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight, ownerActor, item, std::addressof(armorWeight));
 
 										inventoryWeight += armorWeight;
 										--itemCount;
@@ -177,7 +178,7 @@ namespace ScrambledBugs::Fixes
 	{
 		ModifyArmorWeightPerkEntryPoint::removePerkEntry_(entryPointPerkEntry, perkOwner);
 
-		if (entryPointPerkEntry->entryPoint == Skyrim::BGSPerkEntry::EntryPoint::kModifyArmorWeight)
+		if (entryPointPerkEntry->entryPoint == Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight)
 		{
 			auto* inventoryChanges = perkOwner->GetInventoryChanges();
 
@@ -188,6 +189,6 @@ namespace ScrambledBugs::Fixes
 		}
 	}
 
-	decltype(&ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)  ModifyArmorWeightPerkEntryPoint::applyPerkEntry_;
-	decltype(&ModifyArmorWeightPerkEntryPoint::RemovePerkEntry) ModifyArmorWeightPerkEntryPoint::removePerkEntry_;
+	decltype(&ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)  ModifyArmorWeightPerkEntryPoint::applyPerkEntry_{ nullptr };
+	decltype(&ModifyArmorWeightPerkEntryPoint::RemovePerkEntry) ModifyArmorWeightPerkEntryPoint::removePerkEntry_{ nullptr };
 }

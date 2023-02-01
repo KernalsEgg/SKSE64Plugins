@@ -29,6 +29,7 @@ namespace Skyrim
 		kEnchantment        = 0x9B, // ExtraEnchantment
 		kSoul               = 0x9C, // ExtraSoul
 		kUniqueID           = 0x9F, // ExtraUniqueID
+		kLockList           = 0xA3, // ExtraLockList
 		kInteraction        = 0xA9, // ExtraInteraction
 		kTotal              = 0xB6
 	};

@@ -29,7 +29,7 @@ namespace ScrambledBugs::Fixes
 
 		auto* magicItem = activeEffect->magicItem;
 
-		if (!magicItem || !magicItem->ShouldAddSpell())
+		if (!magicItem || !magicItem->IsPermanent())
 		{
 			return true;
 		}

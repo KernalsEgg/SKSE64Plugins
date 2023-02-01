@@ -25,7 +25,7 @@ namespace ScrambledBugs::Fixes
 
 		auto* magicItem = activeEffect->magicItem;
 
-		if (!magicItem->ShouldAdjust())
+		if (!magicItem->ShouldAdjustEffects())
 		{
 			return;
 		}

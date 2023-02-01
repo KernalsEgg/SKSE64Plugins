@@ -48,5 +48,5 @@ namespace ScrambledBugs::Patches
 		return SteepSlopes::getScale_(actor);
 	}
 
-	decltype(&SteepSlopes::GetScale) SteepSlopes::getScale_;
+	decltype(&SteepSlopes::GetScale) SteepSlopes::getScale_{ nullptr };
 }

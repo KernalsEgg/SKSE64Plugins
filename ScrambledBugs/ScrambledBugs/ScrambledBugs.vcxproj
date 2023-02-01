@@ -42,6 +42,7 @@
     <ClInclude Include="HeaderFiles\Fixes\HarvestedFlags.h" />
     <ClInclude Include="HeaderFiles\Fixes\HitEffectRaceCondition.h" />
     <ClInclude Include="HeaderFiles\Fixes\ImpactEffectCrash.h" />
+    <ClInclude Include="HeaderFiles\Fixes\IsCurrentSpell.h" />
     <ClInclude Include="HeaderFiles\Fixes\KillCamera.h" />
     <ClInclude Include="HeaderFiles\Fixes\LeftHandPowerAttacks.h" />
     <ClInclude Include="HeaderFiles\Fixes\MagicEffectFlags.h" />
@@ -83,6 +84,7 @@
     <ClCompile Include="SourceFiles\Fixes\HarvestedFlags.cpp" />
     <ClCompile Include="SourceFiles\Fixes\HitEffectRaceCondition.cpp" />
     <ClCompile Include="SourceFiles\Fixes\ImpactEffectCrash.cpp" />
+    <ClCompile Include="SourceFiles\Fixes\IsCurrentSpell.cpp" />
     <ClCompile Include="SourceFiles\Fixes\KillCamera.cpp" />
     <ClCompile Include="SourceFiles\Fixes\LeftHandPowerAttacks.cpp" />
     <ClCompile Include="SourceFiles\Fixes\MagicEffectFlags.cpp" />

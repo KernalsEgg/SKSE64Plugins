@@ -18,7 +18,7 @@ namespace LogInventoryItemRotation
 
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
-	.pluginVersion   = 2,
+	.pluginVersion   = 3,
 	.pluginName      = "Log Inventory Item Rotation",
 	.author          = "KernalsEgg",
 	.addressLibrary  = true,
@@ -29,7 +29,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 {
 	pluginInformation->informationVersion = SKSE::PluginInformation::kVersion;
 	pluginInformation->name               = "Log Inventory Item Rotation";
-	pluginInformation->version            = 2;
+	pluginInformation->version            = 3;
 
 	if (queryInterface->IsEditor())
 	{

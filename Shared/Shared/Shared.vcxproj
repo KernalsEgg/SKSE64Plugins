@@ -50,6 +50,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\Actor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorEquipManager.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorRelativeToPlayer.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValueInfo.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AIProcess.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorState.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActorValue.h" />
@@ -84,6 +85,8 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDecalManager.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDefaultObjectManager.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSDestructibleObjectForm.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPoint.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointFunction.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointFunctionData.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointFunctionDataActivateChoice.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BGSEntryPointFunctionDataSpellItem.h" />
@@ -213,7 +216,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DirectionalAmbientLighting.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\Events.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectItem.h" />
-    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectArchetype.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectArchetypes.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectSetting.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EnchantConstructMenu.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EnchantmentItem.h" />
@@ -225,6 +228,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraHealth.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraInteraction.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraLevCreaModifier.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraLockList.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraOwnership.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraPoison.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraSoul.h" />
@@ -515,6 +519,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectLIGH.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectMISC.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectREFR.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectREFRFactory.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectSTAT.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectTREE.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\T\TESObjectWEAP.h" />
@@ -571,6 +576,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\Actor.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorEquipManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorState.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorValueInfo.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\AIProcess.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorValueOwner.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\AITimer.cpp" />
@@ -579,6 +585,8 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSCreatedObjectManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDecalManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSDefaultObjectManager.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSEntryPoint.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSEntryPointFunction.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSFootstepManager.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSImpactDataSet.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\B\BGSImpactManager.cpp" />
@@ -604,7 +612,9 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\C\ConsoleLog.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\C\ContainerMenu.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\Events.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EffectArchetypes.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\EffectItem.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\E\EffectSetting.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\EnchantmentItem.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\ExtraDataList.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindAppropriateDisplaceEffect.cpp" />
@@ -686,6 +696,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESForm.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectCELL.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectREFR.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectREFRFactory.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectWEAP.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESSoulGem.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\U\UI.cpp" />

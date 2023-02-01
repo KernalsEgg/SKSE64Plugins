@@ -7,6 +7,7 @@
 #include "Shared/Skyrim/E/ExtraCount.h"
 #include "Shared/Skyrim/E/ExtraHealth.h"
 #include "Shared/Skyrim/E/ExtraInteraction.h"
+#include "Shared/Skyrim/E/ExtraLockList.h"
 #include "Shared/Skyrim/E/ExtraOwnership.h"
 #include "Shared/Skyrim/E/ExtraPoison.h"
 #include "Shared/Skyrim/E/ExtraSoul.h"
@@ -52,6 +53,13 @@ namespace Skyrim
 		}
 
 		return static_cast<bool>(referenceInteraction);
+	}
+
+	TESForm* ExtraDataList::GetLockList() const
+	{
+		const auto* extraLockList = this->GetExtraData<ExtraLockList>(ExtraDataType::kLockList);
+
+		return extraLockList ? extraLockList->lockList : nullptr;
 	}
 
 	TESForm* ExtraDataList::GetOwner() const
@@ -117,5 +125,12 @@ namespace Skyrim
 		BSReadLockGuard readLockGuard(this->lock_);
 
 		return this->baseExtraList_.HasExtraData(type);
+	}
+
+	void ExtraDataList::SetLockList(TESForm* lockList)
+	{
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&ExtraDataList::SetLockList)>::type>(Addresses::ExtraDataList::SetLockList) };
+
+		function(this, lockList);
 	}
 }

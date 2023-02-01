@@ -10,6 +10,7 @@ namespace Skyrim
 	{
 		enum class CastingSource : std::uint32_t
 		{
+			kNone      = static_cast<std::underlying_type_t<CastingSource>>(-1),
 			kLeftHand  = 0,
 			kRightHand = 1,
 			kOther     = 2,
@@ -32,7 +33,8 @@ namespace Skyrim
 			kTouch          = 1,
 			kAimed          = 2,
 			kTargetActor    = 3,
-			kTargetLocation = 4
+			kTargetLocation = 4,
+			kAny            = 5
 		};
 		static_assert(sizeof(Delivery) == 0x4);
 

@@ -9,9 +9,8 @@
 
 namespace Skyrim
 {
-	struct PoisonedWeapon
+	namespace PoisonedWeapon
 	{
-	public:
 		struct Event
 		{
 		public:
@@ -23,6 +22,5 @@ namespace Skyrim
 
 		// Non-member functions
 		static BSTEventSource<PoisonedWeapon::Event>* GetEventSource();
-	};
-	static_assert(std::is_empty_v<PoisonedWeapon>);
+	}
 }

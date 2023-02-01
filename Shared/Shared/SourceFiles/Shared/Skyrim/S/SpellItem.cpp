@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	void SpellItem::Apply(Actor* target, Actor* caster)
 	{
-		if (this->ShouldAddSpell())
+		if (this->IsPermanent())
 		{
 			target->AddSpell(this);
 		}

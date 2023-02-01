@@ -41,7 +41,7 @@ namespace ScrambledBugs::Patches
 				{
 					auto* extraDataLists = inventoryEntryData->extraDataLists;
 
-					// Check if there are any empty soul gems
+					/* Check if there are any empty soul gems */
 					if (extraDataLists)
 					{
 						for (auto* extraDataList : *extraDataLists)

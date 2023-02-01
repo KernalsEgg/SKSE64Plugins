@@ -34,7 +34,7 @@ namespace ScrambledBugs
 
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
-	.pluginVersion   = 20,
+	.pluginVersion   = 21,
 	.pluginName      = "Scrambled Bugs",
 	.author          = "KernalsEgg",
 	.addressLibrary  = true,

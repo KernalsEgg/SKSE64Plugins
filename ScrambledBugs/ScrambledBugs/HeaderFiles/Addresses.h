@@ -49,6 +49,15 @@ namespace ScrambledBugs::Addresses
 			inline const std::uintptr_t UpdateDecals{ Relocation::AddressLibrary::GetSingleton().GetAddress(15220) + 0x122 };
 		}
 
+		namespace IsCurrentSpell
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DC4340 (671811), 1.6.318.0: SkyrimSE.exe + 0x1E583E0</summary>
+			inline const std::uintptr_t IsCurrentSpellConditionFunction{ Relocation::AddressLibrary::GetSingleton().GetAddress(364766) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DC4330 (671809), 1.6.318.0: SkyrimSE.exe + 0x1E583D0</summary>
+			inline const std::uintptr_t IsCurrentSpellFunction{ Relocation::AddressLibrary::GetSingleton().GetAddress(364764) };
+		}
+
 		namespace KillCamera
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x732400 + 0x261 (42547), 1.6.318.0: SkyrimSE.exe + 0x75D560</summary>
@@ -148,7 +157,7 @@ namespace ScrambledBugs::Addresses
 			inline const std::uintptr_t IsPlayerUpdatePosition{ Relocation::AddressLibrary::GetSingleton().GetAddress(34658) + 0x83 }; // ModelReferenceEffect::UpdatePosition
 
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x6314F0 + 0x6F (37804), 1.6.318.0: SkyrimSE.exe + 0x657450</summary>
-			inline const std::uintptr_t SetNoHitEffectArtFlag{ Relocation::AddressLibrary::GetSingleton().GetAddress(38753) + 0x6F }; // Actor::CastPermanentMagic
+			inline const std::uintptr_t SetCastPermanentMagicFunctorFlags{ Relocation::AddressLibrary::GetSingleton().GetAddress(38753) + 0x6F }; // Actor::CastPermanentMagic
 		}
 
 		namespace CloakHitEffects
@@ -226,9 +235,6 @@ namespace ScrambledBugs::Addresses
 
 				/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DD3B20 (675819), 1.6.318.0: SkyrimSE.exe + 0x1E67C10</summary>
 				inline const std::uintptr_t SelectSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(369199) }; // BGSEntryPointFunction::SelectSpellFunction
-
-				/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DD3BB0 (502190), 1.6.318.0: SkyrimSE.exe + 0x1E67CA0</summary>
-				inline const std::uintptr_t SelectSpellResultCount{ Relocation::AddressLibrary::GetSingleton().GetAddress(369213) };
 			}
 
 			namespace CastSpells

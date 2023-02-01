@@ -163,12 +163,12 @@ namespace ScrambledBugs::Patterns
 				);
 			}
 
-			bool SetNoHitEffectArtFlag()
+			bool SetCastPermanentMagicFunctorFlags()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::AttachHitEffectArt::SetNoHitEffectArtFlag, // 2 + 2 = 0x4
-					0x24ui8, 0xF9ui8,                                              // and al, F9
-					0x0Cui8, 0x01ui8                                               // or al, 1
+					Addresses::Patches::AttachHitEffectArt::SetCastPermanentMagicFunctorFlags, // 2 + 2 = 0x4
+					0x24ui8, 0xF9ui8,                                                          // and al, F9
+					0x0Cui8, 0x01ui8                                                           // or al, 1
 				);
 			}
 		}
@@ -254,7 +254,7 @@ namespace ScrambledBugs::Patterns
 				{
 					return Relocation::AddressLibrary::MatchPattern(
 						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyBashingSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                       // call BGSEntryPointPerkEntry::HandleEntryPoint
+						0xE8ui8, std::optional<std::int32_t>{}                                       // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 
@@ -262,7 +262,7 @@ namespace ScrambledBugs::Patterns
 				{
 					return Relocation::AddressLibrary::MatchPattern(
 						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyCombatHitSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                         // call BGSEntryPointPerkEntry::HandleEntryPoint
+						0xE8ui8, std::optional<std::int32_t>{}                                         // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 
@@ -270,7 +270,7 @@ namespace ScrambledBugs::Patterns
 				{
 					return Relocation::AddressLibrary::MatchPattern(
 						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                                        // call BGSEntryPointPerkEntry::HandleEntryPoint
+						0xE8ui8, std::optional<std::int32_t>{}                                                        // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 
@@ -278,7 +278,7 @@ namespace ScrambledBugs::Patterns
 				{
 					return Relocation::AddressLibrary::MatchPattern(
 						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyReanimateSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                         // call BGSEntryPointPerkEntry::HandleEntryPoint
+						0xE8ui8, std::optional<std::int32_t>{}                                         // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 
@@ -286,7 +286,7 @@ namespace ScrambledBugs::Patterns
 				{
 					return Relocation::AddressLibrary::MatchPattern(
 						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplySneakingSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                        // call BGSEntryPointPerkEntry::HandleEntryPoint
+						0xE8ui8, std::optional<std::int32_t>{}                                        // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 
@@ -294,7 +294,7 @@ namespace ScrambledBugs::Patterns
 				{
 					return Relocation::AddressLibrary::MatchPattern(
 						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyWeaponSwingSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                           // call BGSEntryPointPerkEntry::HandleEntryPoint
+						0xE8ui8, std::optional<std::int32_t>{}                                           // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 			}

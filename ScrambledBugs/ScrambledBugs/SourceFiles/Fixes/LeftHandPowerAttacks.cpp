@@ -4,7 +4,7 @@
 
 #include "Addresses.h"
 #include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/B/BGSEntryPointPerkEntry.h"
+#include "Shared/Skyrim/B/BGSEntryPoint.h"
 #include "Shared/Skyrim/G/GameSettingCollection.h"
 #include "Shared/Skyrim/T/TESObjectWEAP.h"
 #include "Shared/Utility/Memory.h"
@@ -54,7 +54,7 @@ namespace ScrambledBugs::Fixes
 
 			auto powerAttackStamina = ((equippedWeaponWeight * staminaAttackWeaponMultiplier) + staminaAttackWeaponBase) * powerAttackStaminaPenalty;
 
-			Skyrim::BGSEntryPointPerkEntry::HandleEntryPoint(Skyrim::BGSPerkEntry::EntryPoint::kModifyPowerAttackStamina, actor, equippedWeapon, std::addressof(powerAttackStamina));
+			Skyrim::BGSEntryPoint::HandleEntryPoint(Skyrim::BGSEntryPoint::EntryPoint::kModifyPowerAttackStamina, actor, equippedWeapon, std::addressof(powerAttackStamina));
 
 			return powerAttackStamina * attackData->staminaMultiplier;
 		}

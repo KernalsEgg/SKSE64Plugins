@@ -45,7 +45,7 @@ namespace Skyrim
 		virtual void SaveGame(BGSSaveFormBuffer* saveFormBuffer) override; // E
 		virtual void LoadGame(BGSLoadFormBuffer* loadFormBuffer) override; // F
 		virtual void Revert(BGSLoadFormBuffer* loadFormBuffer) override;   // 12
-		virtual void Unknown3E(TESObject*) override;                       // 3E
+		virtual bool IsAutomaticallyCalculated() const override;           // 3E
 		virtual void Unknown3F(TESObject*) override;                       // 3F
 
 		// Override (ActorValueOwner)

@@ -18,7 +18,7 @@ namespace Skyrim
 
 	void Console::ExecuteCommand(std::string_view command, TESObjectREFR* target)
 	{
-		auto* concreteFormFactory = ConcreteFormFactory<Script, FormType::kScript>::GetConcreteFormFactoryFromFormType();
+		auto* concreteFormFactory = ConcreteFormFactory<Script, FormType::kScript>::GetFormFactory();
 
 		if (!concreteFormFactory)
 		{

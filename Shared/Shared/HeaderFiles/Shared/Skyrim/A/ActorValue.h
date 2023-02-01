@@ -9,6 +9,7 @@ namespace Skyrim
 	enum class ActorValue : std::uint32_t
 	{
 		kNone            = static_cast<std::underlying_type_t<ActorValue>>(-1),
+		kOneHanded       = 6,
 		kEnchanting      = 23,
 		kHealth          = 24,
 		kMagicka         = 25,
@@ -20,7 +21,10 @@ namespace Skyrim
 		kMagicResist     = 44,
 		kWardPower       = 63,
 		kRightItemCharge = 64,
-		kLeftItemCharge  = 82
+		kLeftItemCharge  = 82,
+
+		kSkills     = kOneHanded,
+		kSkillCount = kEnchanting - kOneHanded
 	};
 	static_assert(sizeof(ActorValue) == 0x4);
 
@@ -30,5 +34,11 @@ namespace Skyrim
 		kTemporary = 1,
 		kDamage    = 2,
 		kTotal     = 3
+	};
+
+	enum class ActorValueType
+	{
+		kDerivedAttribute = 0,
+		kSkill            = 1
 	};
 }

@@ -29,6 +29,7 @@ namespace Skyrim
 		kProjectile          = 0x32, // BGSProjectile
 		kSoulGem             = 0x34, // TESSoulGem
 		kCell                = 0x3C, // TESObjectCELL
+		kReference           = 0x3D, // TESObjectREFR
 		kActor               = 0x3E, // Actor
 		kImpactDataSet       = 0x65, // BGSImpactDataSet
 		kTotal               = 0x8A

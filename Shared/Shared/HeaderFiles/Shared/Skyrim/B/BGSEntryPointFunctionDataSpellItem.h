@@ -18,9 +18,9 @@ namespace Skyrim
 		virtual ~BGSEntryPointFunctionDataSpellItem() override; // 0
 
 		// Override (BGSEntryPointFunctionData)
-		virtual Type GetType() const override;                      // 1
-		virtual void Unknown2(BGSEntryPointFunctionData*) override; // 2
-		virtual void Unknown3(BGSEntryPointFunctionData*) override; // 3
+		virtual EntryPointFunctionDataType GetType() const override;                      // 1
+		virtual void                       Unknown2(BGSEntryPointFunctionData*) override; // 2
+		virtual void                       Unknown3(BGSEntryPointFunctionData*) override; // 3
 
 		// Member variables
 		SpellItem* spell; // 8

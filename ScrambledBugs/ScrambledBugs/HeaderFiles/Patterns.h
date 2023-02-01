@@ -60,7 +60,7 @@ namespace ScrambledBugs::Patterns
 			bool IsPerspectiveChange();
 			bool IsPlayerReattach();
 			bool IsPlayerUpdatePosition();
-			bool SetNoHitEffectArtFlag();
+			bool SetCastPermanentMagicFunctorFlags();
 		}
 
 		namespace CloakHitEffects

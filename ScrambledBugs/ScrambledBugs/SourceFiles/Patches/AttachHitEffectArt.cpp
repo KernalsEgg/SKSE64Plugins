@@ -21,7 +21,7 @@ namespace ScrambledBugs::Patches
 			!Patterns::Patches::AttachHitEffectArt::IsPerspectiveChange() ||
 			!Patterns::Patches::AttachHitEffectArt::IsPlayerReattach() ||
 			!Patterns::Patches::AttachHitEffectArt::IsPlayerUpdatePosition() ||
-			!Patterns::Patches::AttachHitEffectArt::SetNoHitEffectArtFlag())
+			!Patterns::Patches::AttachHitEffectArt::SetCastPermanentMagicFunctorFlags())
 		{
 			attachHitEffectArt = false;
 
@@ -32,9 +32,10 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerReattach, Utility::Assembly::NO_OPERATION_2);
 		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, Utility::Assembly::NO_OPERATION_6);
 
+		/* Remove the CastPermanentMagicFunctor flag responsible for setting ActiveEffect flags to disable hit effect art */
 		Utility::Memory::SafeWrite(
-			Addresses::Patches::AttachHitEffectArt::SetNoHitEffectArtFlag,
-			std::optional<std::uint8_t>{}, 0xF8ui8, // and al, F8 (1 << 2 (NoHitEffectArt), 1 << 4 (NoInitialFlare))
+			Addresses::Patches::AttachHitEffectArt::SetCastPermanentMagicFunctorFlags,
+			std::optional<std::uint8_t>{}, 0xF8ui8, // and al, F8
 			Utility::Assembly::NO_OPERATION_2       // nop
 		);
 

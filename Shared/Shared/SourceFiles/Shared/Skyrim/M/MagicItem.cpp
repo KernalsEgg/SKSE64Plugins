@@ -43,7 +43,14 @@ namespace Skyrim
 		}
 	}
 
-	bool MagicItem::ShouldAddSpell() const
+	EffectItem* MagicItem::GetCostliestEffect(Utility::Enumeration<MagicSystem::Delivery, std::uint32_t> delivery, bool areaOfEffect) const
+	{
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&MagicItem::GetCostliestEffect)>::type>(Addresses::MagicItem::GetCostliestEffect) };
+
+		return function(this, delivery, areaOfEffect);
+	}
+
+	bool MagicItem::IsPermanent() const
 	{
 		switch (this->GetSpellType())
 		{
@@ -60,7 +67,7 @@ namespace Skyrim
 		}
 	}
 
-	bool MagicItem::ShouldAdjust() const
+	bool MagicItem::ShouldAdjustEffects() const
 	{
 		switch (this->GetSpellType())
 		{

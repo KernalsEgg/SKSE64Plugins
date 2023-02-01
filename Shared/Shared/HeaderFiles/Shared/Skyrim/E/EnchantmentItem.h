@@ -54,23 +54,23 @@ namespace Skyrim
 		virtual ~EnchantmentItem() override; // 0
 
 		// Override (MagicItem)
-		virtual void                     InitializeData() override;       // 4
-		virtual void                     ClearData() override;            // 5
-		virtual void                     Unknown13(TESForm*) override;    // 13
-		virtual MagicSystem::SpellType   GetSpellType() const override;   // 53
-		virtual void                     Unknown54(MagicItem*) override;  // 54
-		virtual MagicSystem::CastingType GetCastingType() const override; // 55
-		virtual void                     Unknown56(MagicItem*) override;  // 56
-		virtual MagicSystem::Delivery    GetDelivery() const override;    // 57
-		virtual void                     Unknown64(MagicItem*) override;  // 64
-		virtual void                     Unknown66(MagicItem*) override;  // 66
-		virtual void                     Unknown68(MagicItem*) override;  // 68
-		virtual void                     Unknown69(MagicItem*) override;  // 69
-		virtual const void*              GetData() const override;        // 6C
-		virtual void*                    GetData() override;              // 6D
-		virtual std::uint32_t            GetDataSize() const override;    // 6E
-		virtual void                     Unknown6F(MagicItem*) override;  // 6F
-		virtual void                     Unknown70(MagicItem*) override;  // 70
+		virtual void                     InitializeData() override;        // 4
+		virtual void                     ClearData() override;             // 5
+		virtual void                     Unknown13(TESForm*) override;     // 13
+		virtual MagicSystem::SpellType   GetSpellType() const override;    // 53
+		virtual void                     Unknown54(MagicItem*) override;   // 54
+		virtual MagicSystem::CastingType GetCastingType() const override;  // 55
+		virtual void                     Unknown56(MagicItem*) override;   // 56
+		virtual MagicSystem::Delivery    GetDelivery() const override;     // 57
+		virtual void                     Unknown64(MagicItem*) override;   // 64
+		virtual void                     Unknown66(MagicItem*) override;   // 66
+		virtual void                     Unknown68(MagicItem*) override;   // 68
+		virtual void                     Unknown69(MagicItem*) override;   // 69
+		virtual const void*              GetConstantData() const override; // 6C
+		virtual void*                    GetData() override;               // 6D
+		virtual std::uint32_t            GetDataSize() const override;     // 6E
+		virtual void                     Unknown6F(MagicItem*) override;   // 6F
+		virtual void                     Unknown70(MagicItem*) override;   // 70
 
 		// Non-member functions
 		static float ModifyPower(float power, float enchantingSkill);

@@ -9,6 +9,7 @@
 
 namespace Skyrim
 {
+	class Actor;
 	class EffectSetting;
 
 	struct EffectItem
@@ -25,12 +26,10 @@ namespace Skyrim
 		EffectItem& operator=(const EffectItem& right);
 		EffectItem& operator=(EffectItem&&) = delete;
 
-		// Non-member functions
-		static float GetCost(float baseCost, std::int32_t area, std::int32_t duration, float magnitude, bool aimed, bool concentration);
-
 		// Member functions
 		void         Copy(const EffectItem* right);
 		std::int32_t GetArea() const;
+		float        GetCost(Actor* caster) const;
 		std::int32_t GetDuration() const;
 		float        GetMagnitude() const;
 		bool         IsHostile() const;

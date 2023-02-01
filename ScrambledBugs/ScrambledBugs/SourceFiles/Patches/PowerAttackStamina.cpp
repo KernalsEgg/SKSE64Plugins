@@ -62,6 +62,6 @@ namespace ScrambledBugs::Patches
 		return stamina >= attackStamina ? 0.0F : attackStamina; // true, false
 	}
 
-	decltype(&PowerAttackStamina::HasAttackStaminaActor)           PowerAttackStamina::getAttackStaminaActor_;
-	decltype(&PowerAttackStamina::HasAttackStaminaPlayerCharacter) PowerAttackStamina::getAttackStaminaPlayerCharacter_;
+	decltype(&PowerAttackStamina::HasAttackStaminaActor)           PowerAttackStamina::getAttackStaminaActor_{ nullptr };
+	decltype(&PowerAttackStamina::HasAttackStaminaPlayerCharacter) PowerAttackStamina::getAttackStaminaPlayerCharacter_{ nullptr };
 }

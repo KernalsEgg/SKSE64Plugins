@@ -19,7 +19,7 @@ namespace ActorLimitFix
 
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
-	.pluginVersion   = 8,
+	.pluginVersion   = 9,
 	.pluginName      = "Actor Limit Fix",
 	.author          = "meh321 and KernalsEgg",
 	.addressLibrary  = true,

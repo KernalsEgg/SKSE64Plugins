@@ -14,6 +14,6 @@ namespace ScrambledBugs::Fixes
 	private:
 		static float GetArrowPower(float drawTime, float bowSpeed);
 
-		static float quickShotPlaybackSpeed_;
+		static float playbackSpeed_;
 	};
 }

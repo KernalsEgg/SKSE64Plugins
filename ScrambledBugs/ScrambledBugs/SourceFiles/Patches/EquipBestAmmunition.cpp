@@ -29,7 +29,7 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWrite(Addresses::Patches::EquipBestAmmunition::CompareDamageContainer, 0x76ui8, std::optional<std::uint8_t>{});                                                                                                                    // jbe 6
 		Utility::Memory::SafeWrite(Addresses::Patches::EquipBestAmmunition::CompareDamageInventoryChanges, 0x76ui8, std::optional<std::uint8_t>{});                                                                                                             // jbe 10
 
-		// Skip ammunition if it is not playable
+		/* Skip ammunition if it is not playable */
 		Utility::Trampoline::GetSingleton().RelativeCall5Branch(
 			Addresses::Patches::EquipBestAmmunition::IsBoltContainer + (8 + 3 + 2),
 			0x24ui8, 0x01ui8,                                                                                                                                                   // and al, 1

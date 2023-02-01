@@ -153,6 +153,9 @@
     <ClInclude Include="HeaderFiles\Fixes\ProjectileFadeDuration.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Fixes\IsCurrentSpell.h">
+      <Filter>Header Files\Fixes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Fixes\ActivateFurniture.cpp">
@@ -273,6 +276,9 @@
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Fixes\ProjectileFadeDuration.cpp">
+      <Filter>Source Files\Fixes</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Fixes\IsCurrentSpell.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
   </ItemGroup>

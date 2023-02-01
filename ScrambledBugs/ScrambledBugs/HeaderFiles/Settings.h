@@ -21,6 +21,7 @@ namespace ScrambledBugs
 			bool  harvestedFlags{ false };
 			bool  hitEffectRaceCondition{ false };
 			bool  impactEffectCrash{ false };
+			bool  isCurrentSpell{ false };
 			bool  killCamera{ false };
 			bool  leftHandPowerAttacks{ false };
 			bool  magicEffectFlags{ false };
@@ -87,6 +88,7 @@ namespace ScrambledBugs
 			bool                  scrollExperience{ false };
 			SoulGems              soulGems{};
 			bool                  staffExperience{ false };
+			bool                  staffExperienceIgnoreEnchantmentCost{ false };
 			bool                  steepSlopes{ false };
 		};
 
