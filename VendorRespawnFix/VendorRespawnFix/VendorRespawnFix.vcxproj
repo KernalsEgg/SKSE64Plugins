@@ -267,10 +267,9 @@
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).log" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-</Command>
+      <Command>copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'">
@@ -290,10 +289,9 @@ copy /Y "$(SolutionDir)$(TargetName).log" "$(Skyrim64Path)\Data\SKSE\Plugins\$(T
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).log" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-</Command>
+      <Command>copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -317,10 +315,9 @@ copy /Y "$(SolutionDir)$(TargetName).log" "$(Skyrim64Path)\Data\SKSE\Plugins\$(T
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).log" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-</Command>
+      <Command>copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">
@@ -344,10 +341,9 @@ copy /Y "$(SolutionDir)$(TargetName).log" "$(Skyrim64Path)\Data\SKSE\Plugins\$(T
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).log" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-</Command>
+      <Command>copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
