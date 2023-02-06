@@ -176,7 +176,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 	}
 
 	void ApplyMultipleSpells::SelectSpell(
-		Skyrim::Actor*                                                                             perkOwner,
+		Skyrim::TESObjectREFR*                                                                     perkOwner,
 		Utility::Enumeration<Skyrim::BGSEntryPointFunction::EntryPointFunctionType, std::uint32_t> entryPointFunctionType,
 		std::uint8_t                                                                               entryPointFunctionTypeArgumentCount,
 		void**                                                                                     entryPointFunctionTypeArguments,

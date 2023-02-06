@@ -16,9 +16,9 @@
 
 namespace ConsoleCommandCompanion
 {
-	void Events::InitializeEventSink::AddEventSink()
+	void Events::InitializeEventSink::RegisterSink()
 	{
-		Skyrim::Events::InitializeThread::GetSingleton().After().AddEventSink(InitializeEventSink::ProcessEvent);
+		Skyrim::Events::InitializeThread::GetSingleton().After().RegisterSink(InitializeEventSink::ProcessEvent);
 	}
 
 	void Events::InitializeEventSink::ProcessEvent()
@@ -32,8 +32,8 @@ namespace ConsoleCommandCompanion
 
 		Events::ExecuteConsoleCommands(Settings::GetSingleton().events.initialize.consoleCommands);
 
-		LoadGameEventSink::GetSingleton().AddEventSink();
-		ButtonEventSink::GetSingleton().AddEventSink();
+		LoadGameEventSink::GetSingleton().RegisterSink();
+		ButtonEventSink::GetSingleton().RegisterSink();
 	}
 
 	Skyrim::BSEventNotifyControl Events::LoadGameEventSink::ProcessEvent(const Skyrim::TESLoadGameEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::TESLoadGameEvent>* eventSource)
@@ -50,9 +50,9 @@ namespace ConsoleCommandCompanion
 		return singleton;
 	}
 
-	void Events::LoadGameEventSink::AddEventSink()
+	void Events::LoadGameEventSink::RegisterSink()
 	{
-		Skyrim::ScriptEventSourceHolder::GetSingleton()->GetEventSource<Skyrim::TESLoadGameEvent>()->AddEventSink(this);
+		Skyrim::ScriptEventSourceHolder::GetSingleton()->GetEventSource<Skyrim::TESLoadGameEvent>()->RegisterSink(this);
 	}
 
 	Skyrim::BSEventNotifyControl Events::ButtonEventSink::ProcessEvent(Skyrim::InputEvent* const* eventArguments, Skyrim::BSTEventSource<Skyrim::InputEvent*>* eventSource)
@@ -133,9 +133,9 @@ namespace ConsoleCommandCompanion
 		return singleton;
 	}
 
-	void Events::ButtonEventSink::AddEventSink()
+	void Events::ButtonEventSink::RegisterSink()
 	{
-		Skyrim::BSInputDeviceManager::GetSingleton()->AddEventSink(this);
+		Skyrim::BSInputDeviceManager::GetSingleton()->RegisterSink(this);
 	}
 
 	bool Events::ButtonEventSink::IsPressed(Skyrim::InputEvent* inputEvents, const Settings::Events::Button::State::Filter& filter)
@@ -275,11 +275,11 @@ namespace ConsoleCommandCompanion
 
 						if (buttonEvent.IsPressed())
 						{
-							Utility::Log::Information("Pressed, Input Device: {}, ID Code: {}, User Event: \"{}\"", buttonEvent.inputDevice.underlying(), buttonEvent.idCode, buttonEvent.GetUserEvent().data());
+							Utility::Log::Information()("Pressed, Input Device: {}, ID Code: {}, User Event: \"{}\"", buttonEvent.inputDevice.underlying(), buttonEvent.idCode, buttonEvent.GetUserEvent().data());
 						}
 						else if (buttonEvent.IsReleased())
 						{
-							Utility::Log::Information("Released, Input Device: {}, ID Code: {}, User Event: \"{}\"", buttonEvent.inputDevice.underlying(), buttonEvent.idCode, buttonEvent.GetUserEvent().data());
+							Utility::Log::Information()("Released, Input Device: {}, ID Code: {}, User Event: \"{}\"", buttonEvent.inputDevice.underlying(), buttonEvent.idCode, buttonEvent.GetUserEvent().data());
 						}
 
 						break;

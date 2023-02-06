@@ -38,8 +38,8 @@ namespace Skyrim
 		// Add
 		virtual ~MagicTarget();                                                                                               // 0
 		virtual void                         Unknown1(MagicTarget*);                                                          // 1
-		virtual TESObjectREFR*               GetMagicTargetReference();                                                       // 2
-		virtual bool                         IsMagicTargetActor() const;                                                      // 3
+		virtual TESObjectREFR*               GetMagicTargetAsReference();                                                     // 2
+		virtual bool                         MagicTargetIsActor() const;                                                      // 3
 		virtual bool                         IsInvulnerable() const;                                                          // 4
 		virtual void                         Unknown5(MagicTarget*);                                                          // 5
 		virtual void                         Unknown6(MagicTarget*) = 0;                                                      // 6
@@ -50,7 +50,7 @@ namespace Skyrim
 		virtual void                         UnknownB(MagicTarget*);                                                          // B
 
 		// Member functions
-		Actor* GetMagicTargetActor();
+		Actor* GetMagicTargetAsActor();
 		void   VisitActiveEffects(ForEachActiveEffectVisitor* visitor);
 
 		// Member variables

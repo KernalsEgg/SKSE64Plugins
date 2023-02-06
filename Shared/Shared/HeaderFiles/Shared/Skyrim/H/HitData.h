@@ -3,8 +3,8 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/ActorValue.h"
-#include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/B/BodyPartType.h"
+#include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/N/NiPoint3.h"
 #include "Shared/Skyrim/N/NiPointer.h"
 #include "Shared/Utility/Enumeration.h"

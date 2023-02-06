@@ -47,4 +47,11 @@ namespace Skyrim
 	{
 		return TESDataHandler::GetSingleton()->IsFormIDCreated(this->formID);
 	}
+
+	void TESForm::SetTemporary()
+	{
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESForm::SetTemporary)>::type>(Addresses::TESForm::SetTemporary) };
+
+		function(this);
+	}
 }

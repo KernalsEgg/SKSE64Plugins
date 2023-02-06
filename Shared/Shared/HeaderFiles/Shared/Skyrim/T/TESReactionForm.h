@@ -2,8 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/B/BaseFormComponent.h"
+#include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/C/CombatReaction.h"
 #include "Shared/Skyrim/F/FormType.h"
 #include "Shared/Utility/Enumeration.h"

@@ -27,13 +27,13 @@ namespace Skyrim
 	public:
 		// Non-member functions
 		static UI*  GetSingleton();
-		static void Notification(const char* notification, const char* sound, bool queueOnce);
 		static void PlaySound(const char* editorID);
+		static void ShowNotification(const char* message, const char* sound, bool queueOnce);
 
 		template <class... Arguments>
-		static void MessageBox(const char* message, void (*messageBoxCallback)(std::int8_t buttonIndex), std::int32_t baseButtonIndex, std::uint32_t warningType, std::int32_t depthPriority, Arguments... arguments)
+		static void ShowMessageBox(const char* message, void (*messageBoxCallback)(std::int8_t buttonIndex), std::int32_t baseButtonIndex, std::uint32_t warningType, std::int32_t depthPriority, Arguments... arguments)
 		{
-			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<decltype(&UI::MessageBox<>)>::type>(Addresses::UI::MessageBox) };
+			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<decltype(&UI::ShowMessageBox<>)>::type>(Addresses::UI::ShowMessageBox) };
 
 			function(message, messageBoxCallback, baseButtonIndex, warningType, depthPriority, arguments...);
 		}
@@ -48,15 +48,15 @@ namespace Skyrim
 		}
 
 		template <class T>
-		void AddEventSink(BSTEventSink<T>* eventSink)
+		void RegisterSink(BSTEventSink<T>* eventSink)
 		{
-			this->GetEventSource<T>()->AddEventSink(eventSink);
+			this->GetEventSource<T>()->RegisterSink(eventSink);
 		}
 
 		template <class T>
-		void RemoveEventSink(BSTEventSink<T>* eventSink)
+		void UnregisterSink(BSTEventSink<T>* eventSink)
 		{
-			this->GetEventSource<T>()->RemoveEventSink(eventSink);
+			this->GetEventSource<T>()->UnregisterSink(eventSink);
 		}
 
 		// Member variables

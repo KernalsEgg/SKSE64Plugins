@@ -39,9 +39,7 @@
 
 #include <Windows.h>
 
-#undef MessageBox
-
-#include <DirectXMath.h>
-#include <Psapi.h>
 #include <d3d9types.h>
+#include <DirectXMath.h>
 #include <memoryapi.h>
+#include <Psapi.h>

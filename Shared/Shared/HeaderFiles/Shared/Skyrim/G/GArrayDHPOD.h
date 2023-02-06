@@ -15,16 +15,16 @@ namespace Skyrim
 {
 	class GMemoryHeap;
 
-	template <class T, std::uint32_t StatisticID = Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory), class SizePolicy = GArrayDefaultPolicy>
+	template <class T, std::uint32_t STATISTIC_ID = Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory), class SizePolicy = GArrayDefaultPolicy>
 	class GArrayDHPOD :
-		public GArrayBase<GArrayDataDH<T, GAllocatorDHPOD<T, StatisticID>, SizePolicy>> // 0
+		public GArrayBase<GArrayDataDH<T, GAllocatorDHPOD<T, STATISTIC_ID>, SizePolicy>> // 0
 	{
 	public:
 		using value_type       = T;
-		using allocator_type   = GAllocatorDH<T, StatisticID>;
+		using allocator_type   = GAllocatorDH<T, STATISTIC_ID>;
 		using size_policy_type = SizePolicy;
-		using self_type        = GArrayDHPOD<T, StatisticID, SizePolicy>;
-		using base_type        = GArrayBase<GArrayDataDH<T, GAllocatorDHPOD<T, StatisticID>, SizePolicy>>;
+		using self_type        = GArrayDHPOD<T, STATISTIC_ID, SizePolicy>;
+		using base_type        = GArrayBase<GArrayDataDH<T, GAllocatorDHPOD<T, STATISTIC_ID>, SizePolicy>>;
 
 		GArrayDHPOD(GMemoryHeap* heap) :
 			base_type(heap)

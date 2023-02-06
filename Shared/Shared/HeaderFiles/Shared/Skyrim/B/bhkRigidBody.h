@@ -2,8 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Skyrim/B/bhkEntity.h"
+#include "Shared/Skyrim/B/BSTArray.h"
 
 
 

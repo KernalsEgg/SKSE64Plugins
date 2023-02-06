@@ -2,8 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/H/hkReferencedObject.h"
 #include "Shared/Skyrim/H/hkpCharacterStateType.h"
+#include "Shared/Skyrim/H/hkReferencedObject.h"
 
 
 

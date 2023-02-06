@@ -214,6 +214,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DeviceConnectEvent.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\Difficulty.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DirectionalAmbientLighting.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DualValueModifierEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\Events.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectItem.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectArchetypes.h" />
@@ -556,8 +557,7 @@
     <ClInclude Include="HeaderFiles\Shared\Utility\Log.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\Math.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\Memory.h" />
-    <ClInclude Include="HeaderFiles\Shared\Utility\Message.h" />
-    <ClInclude Include="HeaderFiles\Shared\Utility\MessageBox.h" />
+    <ClInclude Include="HeaderFiles\Shared\Utility\InformationBox.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\Trampoline.h" />
     <ClInclude Include="HeaderFiles\Shared\Utility\TypeTraits.h" />
   </ItemGroup>
@@ -641,6 +641,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GString.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GTexture.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GViewport.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\HandleEntryPointVisitor.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpClosestRayHitCollector.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpCollidable.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\H\hkpGroupFilter.cpp" />
@@ -702,6 +703,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\U\UI.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\U\UIMessageQueue.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\U\UserEvents.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Utility\Log.cpp" />
     <ClCompile Include="SourceFiles\Shared\Utility\Memory.cpp" />
     <ClCompile Include="SourceFiles\Shared\Utility\Trampoline.cpp" />
   </ItemGroup>

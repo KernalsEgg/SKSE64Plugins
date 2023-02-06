@@ -41,14 +41,14 @@ namespace Trails
 
 				if (!form)
 				{
-					Utility::Log::Error("Form ID: {}, File Name: {}. Form not found.", this->formID, this->fileName);
+					Utility::Log::Error()("Form ID: {}, File Name: {}. Form not found.", this->formID, this->fileName);
 
 					return nullptr;
 				}
 
 				if (form->formType != formType)
 				{
-					Utility::Log::Error("Form ID: {}, File Name: {}. Incorrect form type.", this->formID, this->fileName);
+					Utility::Log::Error()("Form ID: {}, File Name: {}. Incorrect form type.", this->formID, this->fileName);
 
 					return nullptr;
 				}

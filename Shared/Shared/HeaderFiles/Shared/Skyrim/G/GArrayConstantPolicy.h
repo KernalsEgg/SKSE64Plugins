@@ -8,11 +8,11 @@
 
 namespace Skyrim
 {
-	template <std::uint32_t MinimumCapacity = 0, std::uint32_t Granularity = 4, bool NeverShrink = false>
+	template <std::uint32_t MINIMUM_CAPACITY = 0, std::uint32_t GRANULARITY = 4, bool NEVER_SHRINK = false>
 	struct GArrayConstantPolicy
 	{
 	public:
-		using self_type = GArrayConstantPolicy<MinimumCapacity, Granularity, NeverShrink>;
+		using self_type = GArrayConstantPolicy<MINIMUM_CAPACITY, GRANULARITY, NEVER_SHRINK>;
 
 		GArrayConstantPolicy() :
 			capacity_(0)
@@ -27,17 +27,17 @@ namespace Skyrim
 		// Member functions
 		UPInt GetMinimumCapacity() const
 		{
-			return MinimumCapacity;
+			return MINIMUM_CAPACITY;
 		}
 
 		UPInt GetGranularity() const
 		{
-			return Granularity;
+			return GRANULARITY;
 		}
 
 		bool NeverShrinking() const
 		{
-			return NeverShrink;
+			return NEVER_SHRINK;
 		}
 
 		UPInt GetCapacity() const

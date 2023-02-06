@@ -2,8 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BGSLocalizedStringDL.h"
 #include "Shared/Skyrim/B/BaseFormComponent.h"
+#include "Shared/Skyrim/B/BGSLocalizedStringDL.h"
 
 
 

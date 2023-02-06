@@ -4,7 +4,7 @@
 
 #include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Utility/Enumeration.h"
-#include "Shared/Utility/MessageBox.h"
+#include "Shared/Utility/InformationBox.h"
 
 
 
@@ -16,7 +16,7 @@ namespace Relocation
 
 		if (this->format != SKYRIM_RELOCATE(1, 2))
 		{
-			Utility::MessageBox::Error("Unexpected format encountered, {}. Expected {}.", this->format, 1);
+			Utility::InformationBox::Error()("Unexpected format encountered, {}. Expected {}.", this->format, 1);
 		}
 
 		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->productVersion.major)), sizeof(std::int32_t));
@@ -26,7 +26,7 @@ namespace Relocation
 
 		if (this->productVersion != productVersion)
 		{
-			Utility::MessageBox::Error(
+			Utility::InformationBox::Error()(
 				"Unexpected product version encountered, {}.{}.{}.{}. Expected {}.{}.{}.{}.",
 				this->productVersion.major,
 				this->productVersion.minor,
@@ -47,7 +47,7 @@ namespace Relocation
 
 		if (::_stricmp(this->fileName.c_str(), executableFileName.string().c_str()) != 0)
 		{
-			Utility::MessageBox::Error("Unexpected file name encountered, {}. Expected {}.", this->fileName, executableFileName.string());
+			Utility::InformationBox::Error()("Unexpected file name encountered, {}. Expected {}.", this->fileName, executableFileName.string());
 		}
 
 		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->pointerSize)), sizeof(std::int32_t));
@@ -80,7 +80,7 @@ namespace Relocation
 	{
 		if (this->span_.empty())
 		{
-			Utility::MessageBox::Error("No offsets found.");
+			Utility::InformationBox::Error()("No offsets found.");
 		}
 
 		auto iterator = std::lower_bound(
@@ -96,7 +96,7 @@ namespace Relocation
 
 		if (iterator == this->span_.end())
 		{
-			Utility::MessageBox::Error("Identifier not found, {}.", identifier);
+			Utility::InformationBox::Error()("Identifier not found, {}.", identifier);
 		}
 
 		return Executable::GetSingleton().GetAddress() + iterator->offset;
@@ -121,7 +121,7 @@ namespace Relocation
 
 		if (!inputFileStream.is_open())
 		{
-			Utility::MessageBox::Error("Failed to open {}.", inputFileStreamPath.string());
+			Utility::InformationBox::Error()("Failed to open {}.", inputFileStreamPath.string());
 		}
 
 		inputFileStream.exceptions(std::ios::badbit | std::ios::eofbit | std::ios::failbit);
@@ -136,12 +136,12 @@ namespace Relocation
 		{
 			if (!this->fileMapping_.Create(fileMappingName, fileMappingSize))
 			{
-				Utility::MessageBox::Error("Failed to create file mapping.");
+				Utility::InformationBox::Error()("Failed to create file mapping.");
 			}
 
 			if (!this->fileMappingView_.Map(this->fileMapping_.GetHandle(), fileMappingSize))
 			{
-				Utility::MessageBox::Error("Failed to view file mapping.");
+				Utility::InformationBox::Error()("Failed to view file mapping.");
 			}
 
 			this->span_ = std::span<Element>(reinterpret_cast<Element*>(this->fileMappingView_.GetAddress()), header.addressCount);
@@ -159,7 +159,7 @@ namespace Relocation
 		{
 			if (!this->fileMappingView_.Map(this->fileMapping_.GetHandle(), fileMappingSize))
 			{
-				Utility::MessageBox::Error("Failed to view file mapping.");
+				Utility::InformationBox::Error()("Failed to view file mapping.");
 			}
 
 			this->span_ = std::span<Element>(reinterpret_cast<Element*>(this->fileMappingView_.GetAddress()), header.addressCount);
@@ -256,7 +256,7 @@ namespace Relocation
 				}
 				default:
 				{
-					Utility::MessageBox::Error("Unexpected indentifier type encountered, {}.", identifierType.underlying());
+					Utility::InformationBox::Error()("Unexpected indentifier type encountered, {}.", identifierType.underlying());
 
 					break;
 				}
@@ -337,7 +337,7 @@ namespace Relocation
 				}
 				default:
 				{
-					Utility::MessageBox::Error("Unexpected offset type encountered, {}.", (offsetType & 7).underlying());
+					Utility::InformationBox::Error()("Unexpected offset type encountered, {}.", (offsetType & 7).underlying());
 
 					break;
 				}

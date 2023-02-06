@@ -8,15 +8,15 @@
 
 namespace Skyrim
 {
-	template <std::uint32_t StatisticType>
+	template <std::uint32_t STATISTIC_TYPE>
 	class GNewOverrideBase
 	{
 	public:
 		enum
 		{
-			kStatisticType = StatisticType
+			kStatisticType = STATISTIC_TYPE
 		};
 
-		GFC_MEMORY_REDEFINE_NEW(GNewOverrideBase, StatisticType)
+		GFC_MEMORY_REDEFINE_NEW(GNewOverrideBase, STATISTIC_TYPE)
 	};
 }

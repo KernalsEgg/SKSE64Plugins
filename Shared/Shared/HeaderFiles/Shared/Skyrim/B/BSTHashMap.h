@@ -179,7 +179,7 @@ namespace Skyrim
 		using value_type  = key_type;
 	};
 
-	template <std::size_t S, std::size_t A>
+	template <std::size_t SIZE, std::size_t ALIGNMENT>
 	struct BSTScatterTableHeapAllocator
 	{
 	public:

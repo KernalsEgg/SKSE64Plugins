@@ -8,7 +8,7 @@
 
 namespace Skyrim
 {
-	template <class T, std::uint32_t Count>
+	template <class T, std::uint32_t COUNT>
 	class DynamicMemoryManagementPolicy
 	{
 	public:
@@ -25,7 +25,7 @@ namespace Skyrim
 
 		value_type* allocate(std::uint32_t count)
 		{
-			if (count > Count)
+			if (count > COUNT)
 			{
 				return nullptr;
 			}
@@ -44,7 +44,7 @@ namespace Skyrim
 		}
 	};
 
-	template <class T, std::uint32_t Count>
+	template <class T, std::uint32_t COUNT>
 	class FixedLengthMemoryManagementPolicy
 	{
 	public:
@@ -86,7 +86,7 @@ namespace Skyrim
 
 		value_type* allocate(std::uint32_t count)
 		{
-			return count > Count ? nullptr : this->buffer_;
+			return count > COUNT ? nullptr : this->buffer_;
 		}
 
 		void deallocate(value_type* pointer)
@@ -96,26 +96,26 @@ namespace Skyrim
 	private:
 		void copy(const FixedLengthMemoryManagementPolicy& right)
 		{
-			std::memcpy(this->buffer_, right.buffer_, sizeof(value_type) * Count);
+			std::memcpy(this->buffer_, right.buffer_, sizeof(value_type) * COUNT);
 		}
 
 		void move(FixedLengthMemoryManagementPolicy&& right)
 		{
-			std::memmove(this->buffer_, right.buffer_, sizeof(value_type) * Count);
-			std::memset(right.buffer_, 0, sizeof(value_type) * Count);
+			std::memmove(this->buffer_, right.buffer_, sizeof(value_type) * COUNT);
+			std::memset(right.buffer_, 0, sizeof(value_type) * COUNT);
 		}
 
 		// Member variables
-		value_type buffer_[Count]{ 0 }; // 0
+		value_type buffer_[COUNT]{ 0 }; // 0
 	};
 
-	template <class Character, std::uint32_t Count, template <class, std::uint32_t> class Allocator>
+	template <class Character, std::uint32_t COUNT, template <class, std::uint32_t> class Allocator>
 	class BSStringT
 	{
 	public:
 		using value_type      = Character;
 		using traits_type     = std::char_traits<value_type>;
-		using allocator_type  = Allocator<value_type, Count>;
+		using allocator_type  = Allocator<value_type, COUNT>;
 		using size_type       = std::uint16_t;
 		using reference       = value_type&;
 		using const_reference = const value_type&;
@@ -227,7 +227,7 @@ namespace Skyrim
 
 	private:
 		static constexpr value_type EMPTY[]{ 0 };
-		static constexpr size_type  MAXIMUM = static_cast<size_type>(Count);
+		static constexpr size_type  MAXIMUM = static_cast<size_type>(COUNT);
 
 		static int compare(const char* left, const char* right)
 		{

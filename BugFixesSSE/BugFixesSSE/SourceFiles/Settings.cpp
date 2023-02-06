@@ -77,7 +77,7 @@ namespace BugFixesSSE
 		}
 		catch (const nlohmann::json::exception& jsonException)
 		{
-			Utility::Log::Critical("{}", jsonException.what());
+			Utility::Log::Critical()("{}", jsonException.what());
 
 			throw;
 		}
@@ -102,7 +102,7 @@ namespace BugFixesSSE
 
 	void Settings::Initialize()
 	{
-		Utility::Log::Information("Initializing...\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Initializing...\n{}", this->Serialize().dump(1, '\t'));
 
 		if (this->fixes.magicEffectConditions)
 		{
@@ -125,7 +125,7 @@ namespace BugFixesSSE
 			BugFixesSSE::Fixes::SpeechExperience::ItemStacks::Fix(this->fixes.speechExperience.itemStacks);
 		}
 
-		Utility::Log::Information("Initialized.\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Initialized.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const

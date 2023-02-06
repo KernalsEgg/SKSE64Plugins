@@ -11,6 +11,7 @@
 namespace Skyrim
 {
 	class Actor;
+	class TESForm;
 
 	class HandleEntryPointVisitor :
 		public PerkEntryVisitor // 0
@@ -19,22 +20,36 @@ namespace Skyrim
 		// Override (PerkEntryVisitor)
 		virtual PerkEntryVisitor::ReturnType Visit(BGSPerkEntry* perkEntry) override; // 0
 
+		HandleEntryPointVisitor()                               = delete;
+		HandleEntryPointVisitor(const HandleEntryPointVisitor&) = delete;
+		HandleEntryPointVisitor(HandleEntryPointVisitor&&)      = delete;
+
+		~HandleEntryPointVisitor() = default;
+
+		HandleEntryPointVisitor& operator=(const HandleEntryPointVisitor&) = delete;
+		HandleEntryPointVisitor& operator=(HandleEntryPointVisitor&&)      = delete;
+
+		HandleEntryPointVisitor(
+			Utility::Enumeration<BGSEntryPointFunction::EntryPointFunctionType, std::uint32_t> entryPointFunctionType,
+			TESForm**                                                                          conditionFilterArguments,
+			void**                                                                             entryPointFunctionTypeArguments,
+			Actor*                                                                             perkOwner,
+			std::uint8_t                                                                       conditionFilterArgumentCount,
+			std::uint8_t                                                                       entryPointFunctionTypeArgumentCount);
+
 		// Member variables
 		Utility::Enumeration<BGSEntryPointFunction::EntryPointFunctionType, std::uint32_t> entryPointFunctionType;              // 8
-		std::uint32_t                                                                      paddingC;                            // C
-		void*                                                                              entryPointPerkEntryArguments;        // 10
-		void*                                                                              entryPointFunctionTypeArguments;     // 18
+		TESForm**                                                                          conditionFilterArguments;            // 10
+		void**                                                                             entryPointFunctionTypeArguments;     // 18
 		Actor*                                                                             perkOwner;                           // 20
-		std::uint8_t                                                                       entryPointPerkEntryArgumentCount;    // 28
+		std::uint8_t                                                                       conditionFilterArgumentCount;        // 28
 		std::uint8_t                                                                       entryPointFunctionTypeArgumentCount; // 29
-		std::uint16_t                                                                      padding2A;                           // 2A
-		std::uint32_t                                                                      padding2C;                           // 2C
 	};
 	static_assert(offsetof(HandleEntryPointVisitor, entryPointFunctionType) == 0x8);
-	static_assert(offsetof(HandleEntryPointVisitor, entryPointPerkEntryArguments) == 0x10);
+	static_assert(offsetof(HandleEntryPointVisitor, conditionFilterArguments) == 0x10);
 	static_assert(offsetof(HandleEntryPointVisitor, entryPointFunctionTypeArguments) == 0x18);
 	static_assert(offsetof(HandleEntryPointVisitor, perkOwner) == 0x20);
-	static_assert(offsetof(HandleEntryPointVisitor, entryPointPerkEntryArgumentCount) == 0x28);
+	static_assert(offsetof(HandleEntryPointVisitor, conditionFilterArgumentCount) == 0x28);
 	static_assert(offsetof(HandleEntryPointVisitor, entryPointFunctionTypeArgumentCount) == 0x29);
 	static_assert(sizeof(HandleEntryPointVisitor) == 0x30);
 }

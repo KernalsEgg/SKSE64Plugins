@@ -7,7 +7,7 @@
 namespace Utility::Math
 {
 	template <class T1, class T2>
-		requires(std::is_integral_v<T1>&& std::is_integral_v<T2>)
+		requires(std::is_integral_v<T1> && std::is_integral_v<T2>)
 	constexpr T1 Ceiling(T1 value, T2 multiple)
 	{
 		if (multiple == 0)
@@ -21,7 +21,7 @@ namespace Utility::Math
 	}
 
 	template <class T1, class T2>
-		requires(std::is_integral_v<T1>&& std::is_integral_v<T2>)
+		requires(std::is_integral_v<T1> && std::is_integral_v<T2>)
 	constexpr T1 Floor(T1 value, T2 multiple)
 	{
 		if (multiple == 0)

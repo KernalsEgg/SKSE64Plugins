@@ -2,8 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/B/BaseFormComponent.h"
+#include "Shared/Skyrim/B/BSSimpleList.h"
 
 
 
@@ -79,18 +79,18 @@ namespace Skyrim
 				static_assert(sizeof(AggroRadiusBehavior) == 0x6);
 
 				// Member variables
-				std::uint32_t       aggression             : 2;  // 0 (0, 0)
-				std::uint32_t       confidence             : 3;  // 0 (0, 2)
-				std::uint32_t       energy                 : 8;  // 0 (0, 5)
-				std::uint32_t       morality               : 2;  // 0 (1, 5)
-				std::uint32_t       mood                   : 3;  // 0 (1, 7)
-				std::uint32_t       assistance             : 2;  // 0 (2, 2)
-				std::uint32_t       aggroRadiusBehaviorFlag: 1;  // 0 (2, 4)
-				std::uint32_t       padding2Bit5           : 11; // 0 (2, 5)
-				AggroRadiusBehavior aggroRadiusBehavior;         // 4
-				std::uint8_t        noSlowApproach: 1;           // A (A, 0)
-				std::uint8_t        paddingABit1  : 7;           // A (A, 1)
-				std::uint8_t        paddingB;                    // B
+				std::uint32_t       aggression              : 2;  // 0 (0, 0)
+				std::uint32_t       confidence              : 3;  // 0 (0, 2)
+				std::uint32_t       energy                  : 8;  // 0 (0, 5)
+				std::uint32_t       morality                : 2;  // 0 (1, 5)
+				std::uint32_t       mood                    : 3;  // 0 (1, 7)
+				std::uint32_t       assistance              : 2;  // 0 (2, 2)
+				std::uint32_t       aggroRadiusBehaviorFlag : 1;  // 0 (2, 4)
+				std::uint32_t       padding2Bit5            : 11; // 0 (2, 5)
+				AggroRadiusBehavior aggroRadiusBehavior;          // 4
+				std::uint8_t        noSlowApproach : 1;           // A (A, 0)
+				std::uint8_t        paddingABit1   : 7;           // A (A, 1)
+				std::uint8_t        paddingB;                     // B
 			};
 			static_assert(offsetof(AIAttributes, aggroRadiusBehavior) == 0x4);
 			static_assert(sizeof(AIAttributes) == 0xC);

@@ -62,9 +62,9 @@ namespace ScrambledBugs::Patches
 
 			if (magicTarget)
 			{
-				auto* magicTargetActor = magicTarget->GetMagicTargetActor();
+				auto* targetActor = magicTarget->GetMagicTargetAsActor();
 
-				if (magicTargetActor)
+				if (targetActor)
 				{
 					/* Swap the accumulation rate and the maximum magnitude */
 					auto maximumMagnitude = accumulatingValueModifierEffect->GetCurrentMagnitude();
@@ -74,7 +74,7 @@ namespace ScrambledBugs::Patches
 					{
 						/* Update maximum ward power */
 						auto maximumWardPower = AccumulatingMagnitude::FindMaximumWardPower(magicTarget, nullptr);
-						magicTargetActor->SetMaximumWardPower(maximumWardPower);
+						targetActor->SetMaximumWardPower(maximumWardPower);
 
 						if (maximumWardPower > 0.0F)
 						{
@@ -82,14 +82,14 @@ namespace ScrambledBugs::Patches
 						}
 					}
 
-					auto currentMagnitude = magicTargetActor->GetActorValue(accumulatingValueModifierEffect->actorValue);
+					auto currentMagnitude = targetActor->GetActorValue(accumulatingValueModifierEffect->actorValue);
 
 					if (currentMagnitude + accumulationRate > maximumMagnitude)
 					{
 						accumulationRate = maximumMagnitude - currentMagnitude;
 					}
 
-					accumulatingValueModifierEffect->ModifyActorValue(magicTargetActor, accumulationRate, Skyrim::ActorValue::kNone);
+					accumulatingValueModifierEffect->ModifyActorValue(targetActor, accumulationRate, Skyrim::ActorValue::kNone);
 					accumulatingValueModifierEffect->currentMagnitude += accumulationRate;
 				}
 			}

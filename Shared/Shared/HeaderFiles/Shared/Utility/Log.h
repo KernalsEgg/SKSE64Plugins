@@ -3,7 +3,6 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Relocation/Module.h"
-#include "Shared/Utility/Message.h"
 
 
 
@@ -12,7 +11,7 @@ namespace Utility
 	class Log
 	{
 	private:
-		enum
+		enum : std::size_t
 		{
 			kInformation,
 			kWarning,
@@ -27,59 +26,56 @@ namespace Utility
 			"Critical"
 		};
 
+		Log()           = delete;
+		Log(const Log&) = delete;
+		Log(Log&&)      = delete;
+
+		~Log() = default;
+
+		Log& operator=(const Log&) = delete;
+		Log& operator=(Log&&)      = delete;
+
+		explicit Log(std::ofstream&& outputFileStream);
+
+		static Log& GetSingleton();
+
+		template <std::size_t LEVEL>
+		struct Level
+		{
+		public:
+			Level(std::source_location sourceLocation = std::source_location::current()) :
+				sourceLocation_(sourceLocation) {}
+
+			template <class... Arguments>
+			void operator()(std::string_view format, Arguments... arguments)
+			{
+				std::stringstream stringStream;
+
+				stringStream
+					<< std::vformat(
+						   "[{:%F %T}] [{}] {}({},{}): {}",
+						   std::make_format_args(
+							   std::chrono::system_clock::now(),
+							   Log::LEVELS[LEVEL],
+							   std::filesystem::path(this->sourceLocation_.file_name()).filename().string(),
+							   this->sourceLocation_.line(),
+							   this->sourceLocation_.column(),
+							   std::vformat(format, std::make_format_args(arguments...))))
+					<< std::endl;
+
+				Log::GetSingleton().outputFileStream_ << stringStream.rdbuf() << std::flush;
+			}
+
+		private:
+			std::source_location sourceLocation_;
+		};
+
+		std::ofstream outputFileStream_;
+
 	public:
-		template <class... Arguments>
-		static void Critical(Message message, const Arguments&... arguments)
-		{
-			Log::PrintLine(Log::kCritical, message, arguments...);
-		}
-
-		template <class... Arguments>
-		static void Error(Message message, const Arguments&... arguments)
-		{
-			Log::PrintLine(Log::kError, message, arguments...);
-		}
-
-		template <class... Arguments>
-		static void Information(Message message, const Arguments&... arguments)
-		{
-			Log::PrintLine(Log::kInformation, message, arguments...);
-		}
-
-		template <class... Arguments>
-		static void Warning(Message message, const Arguments&... arguments)
-		{
-			Log::PrintLine(Log::kWarning, message, arguments...);
-		}
-
-	private:
-		static std::ofstream& GetSingleton()
-		{
-			static std::ofstream singleton(
-				std::filesystem::path(Relocation::DynamicLinkLibrary::GetSingleton().GetPath()).replace_extension("log"),
-				std::ios::out | std::ios::trunc);
-
-			return singleton;
-		}
-
-		template <class... Arguments>
-		static void PrintLine(std::size_t level, Message message, const Arguments&... arguments)
-		{
-			std::stringstream stringStream;
-
-			stringStream
-				<< std::vformat(
-					   "[{:%F %T}] [{}] {}({},{}): {}",
-					   std::make_format_args(
-						   std::chrono::system_clock::now(),
-						   Log::LEVELS[level],
-						   std::filesystem::path(message.sourceLocation.file_name()).filename().string(),
-						   message.sourceLocation.line(),
-						   message.sourceLocation.column(),
-						   std::vformat(message.stringView, std::make_format_args(arguments...))))
-				<< std::endl;
-
-			Log::GetSingleton() << stringStream.rdbuf() << std::flush;
-		}
+		using Information = Level<Log::kInformation>;
+		using Warning     = Level<Log::kWarning>;
+		using Error       = Level<Log::kError>;
+		using Critical    = Level<Log::kCritical>;
 	};
 }

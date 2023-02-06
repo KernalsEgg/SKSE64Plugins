@@ -2,8 +2,8 @@
 
 #include "Shared/Skyrim/B/bhkWorldObject.h"
 
-#include "Shared/Skyrim/H/hkReferencedObject.h"
 #include "Shared/Skyrim/H/hkpWorldObject.h"
+#include "Shared/Skyrim/H/hkReferencedObject.h"
 
 
 

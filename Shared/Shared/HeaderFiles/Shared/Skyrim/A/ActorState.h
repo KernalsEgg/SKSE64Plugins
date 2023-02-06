@@ -50,22 +50,22 @@ namespace Skyrim
 			static_assert(sizeof(SitSleepState) == 0x4);
 
 			// Member variables
-			std::uint32_t  movingBack    : 1; // 0 (0, 0)
-			std::uint32_t  movingForward : 1; // 0 (0, 1)
-			std::uint32_t  movingRight   : 1; // 0 (0, 2)
-			std::uint32_t  movingLeft    : 1; // 0 (0, 3)
-			std::uint32_t  unknown0Bit4  : 2; // 0 (0, 4)
-			std::uint32_t  walking       : 1; // 0 (0, 6)
-			std::uint32_t  running       : 1; // 0 (0, 7)
-			std::uint32_t  sprinting     : 1; // 0 (1, 0)
-			std::uint32_t  sneaking      : 1; // 0 (1, 1)
-			std::uint32_t  swimming      : 1; // 0 (1, 2)
-			std::uint32_t  unknown1Bit3  : 3; // 0 (1, 3)
-			SitSleepState  sitSleepState : 4; // 0 (1, 6)
-			FlyState       flyState      : 3; // 0 (2, 2)
-			ActorLifeState actorLifeState: 4; // 0 (2, 5)
-			KnockState     knockState    : 3; // 0 (3, 1)
-			AttackState    attackState   : 4; // 0 (3, 4)
+			std::uint32_t  movingBack     : 1; // 0 (0, 0)
+			std::uint32_t  movingForward  : 1; // 0 (0, 1)
+			std::uint32_t  movingRight    : 1; // 0 (0, 2)
+			std::uint32_t  movingLeft     : 1; // 0 (0, 3)
+			std::uint32_t  unknown0Bit4   : 2; // 0 (0, 4)
+			std::uint32_t  walking        : 1; // 0 (0, 6)
+			std::uint32_t  running        : 1; // 0 (0, 7)
+			std::uint32_t  sprinting      : 1; // 0 (1, 0)
+			std::uint32_t  sneaking       : 1; // 0 (1, 1)
+			std::uint32_t  swimming       : 1; // 0 (1, 2)
+			std::uint32_t  unknown1Bit3   : 3; // 0 (1, 3)
+			SitSleepState  sitSleepState  : 4; // 0 (1, 6)
+			FlyState       flyState       : 3; // 0 (2, 2)
+			ActorLifeState actorLifeState : 4; // 0 (2, 5)
+			KnockState     knockState     : 3; // 0 (3, 1)
+			AttackState    attackState    : 4; // 0 (3, 4)
 		};
 		static_assert(sizeof(ActorState1) == 0x4);
 

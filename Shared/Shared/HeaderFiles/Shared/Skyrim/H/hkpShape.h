@@ -2,9 +2,9 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/H/hkpShapeType.h"
 #include "Shared/Skyrim/H/hkReferencedObject.h"
 #include "Shared/Skyrim/H/hkVector4Comparison.h"
-#include "Shared/Skyrim/H/hkpShapeType.h"
 #include "Shared/Utility/Enumeration.h"
 
 

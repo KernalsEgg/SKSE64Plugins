@@ -96,7 +96,7 @@ namespace Skyrim
 	static_assert(offsetof(BSTCommonLLMessageQueue<void*>, tail) == 0x20);
 	static_assert(sizeof(BSTCommonLLMessageQueue<void*>) == 0x28);
 
-	template <class T, std::size_t Count>
+	template <class T, std::size_t COUNT>
 	class BSTCommonStaticMessageQueue :
 		public BSTCommonMessageQueue<T> // 0
 	{
@@ -111,7 +111,7 @@ namespace Skyrim
 
 	public:
 		// Member variables
-		char          queueBuffer[sizeof(T) * Count]; // 10
+		char          queueBuffer[sizeof(T) * COUNT]; // 10
 		std::uint32_t elementCount;                   // ?
 		std::uint32_t pushIndex;                      // ?
 		std::uint32_t popIndex;                       // ?

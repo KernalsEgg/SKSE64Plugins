@@ -4,8 +4,8 @@
 
 #include "Shared/Skyrim/A/ActorValue.h"
 #include "Shared/Skyrim/B/BGSPreloadable.h"
-#include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/B/BodyPartType.h"
+#include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/N/NiPoint3.h"
 #include "Shared/Skyrim/T/TESForm.h"
 #include "Shared/Skyrim/T/TESModel.h"

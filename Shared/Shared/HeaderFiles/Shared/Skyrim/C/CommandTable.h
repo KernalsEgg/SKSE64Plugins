@@ -222,7 +222,7 @@ namespace Skyrim
 
 			// Member variables
 			std::uint16_t length; // 0
-#pragma warning(suppress: 4200)
+#pragma warning(suppress : 4200)
 			char string[0]; // 2
 		};
 		static_assert(offsetof(StringChunk, length) == 0x0);

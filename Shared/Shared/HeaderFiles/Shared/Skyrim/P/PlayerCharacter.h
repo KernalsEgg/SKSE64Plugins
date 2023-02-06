@@ -3,8 +3,8 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Relocation/PreprocessorDirectives.h"
-#include "Shared/Skyrim/A/AITimeStamp.h"
 #include "Shared/Skyrim/A/ActorValue.h"
+#include "Shared/Skyrim/A/AITimeStamp.h"
 #include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/B/BSTArray.h"
@@ -187,7 +187,7 @@ namespace Skyrim
 		virtual void                              UnknownF6(Actor*) override;                                                                                                                         // F6
 		virtual void                              UnknownF7(Actor*) override;                                                                                                                         // F7
 		virtual void                              UnknownF9(Actor*) override;                                                                                                                         // F9
-		virtual void                              UnknownFA(Actor*) override;                                                                                                                         // FA
+		virtual void                              ForEachPerk(PerkEntryVisitor& perkEntryVisitor) const override;                                                                                     // FA
 		virtual void                              UnknownFB(Actor*) override;                                                                                                                         // FB
 		virtual void                              UnknownFC(Actor*) override;                                                                                                                         // FC
 		virtual void                              UnknownFD(Actor*) override;                                                                                                                         // FD

@@ -10,12 +10,20 @@ namespace Utility
 	class EventSource
 	{
 	public:
-		void AddEventSink(std::function<void(EventArguments...)> eventSink)
+		void Notify(EventArguments... eventArguments) const
+		{
+			for (const auto& eventSink : this->eventSinks_)
+			{
+				eventSink(eventArguments...);
+			}
+		}
+
+		void RegisterSink(std::function<void(EventArguments...)> eventSink)
 		{
 			this->eventSinks_.push_back(eventSink);
 		}
 
-		void RemoveEventSink(std::function<void(EventArguments...)> eventSink)
+		void UnregisterSink(std::function<void(EventArguments...)> eventSink)
 		{
 			auto* target = eventSink.target();
 
@@ -25,18 +33,10 @@ namespace Utility
 			}
 
 			std::erase_if(this->eventSinks_,
-				[target](const std::function<void(EventArguments...)>& function) -> bool
+				[target](const std::function<void(EventArguments...)>& eventSink) -> bool
 				{
-					return function.target() == target;
+					return eventSink.target() == target;
 				});
-		}
-
-		void SendEvent(EventArguments... eventArguments) const
-		{
-			for (const auto& eventSink : this->eventSinks_)
-			{
-				eventSink(eventArguments...);
-			}
 		}
 
 	private:

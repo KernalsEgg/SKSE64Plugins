@@ -27,7 +27,7 @@ namespace PowerAttackNotifications
 
 	void Events::StartStaminaMeterBlinking(Utility::Enumeration<Skyrim::ActorValue, std::uint32_t> actorValue)
 	{
-		Skyrim::UI::Notification(Settings::GetSingleton().notification.c_str(), nullptr, true);
+		Skyrim::UI::ShowNotification(Settings::GetSingleton().notification.c_str(), nullptr, true);
 
 		Events::startStaminaMeterBlinking_(actorValue);
 	}

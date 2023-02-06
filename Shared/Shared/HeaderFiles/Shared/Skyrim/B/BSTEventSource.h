@@ -15,73 +15,7 @@ namespace Skyrim
 	{
 	public:
 		// Member functions
-		void AddEventSink(BSTEventSink<T>* eventSink)
-		{
-			if (!eventSink)
-			{
-				return;
-			}
-
-			BSSpinLockGuard lockGuard(this->lock);
-
-			if (this->notifying)
-			{
-				if (std::find(this->pendingRegisters.begin(), this->pendingRegisters.end(), eventSink) == this->pendingRegisters.end())
-				{
-					this->pendingRegisters.push_back(eventSink);
-				}
-			}
-			else
-			{
-				if (std::find(this->eventSinks.begin(), this->eventSinks.end(), eventSink) == this->eventSinks.end())
-				{
-					this->eventSinks.push_back(eventSink);
-				}
-			}
-
-			auto* iterator = std::find(this->pendingUnregisters.begin(), this->pendingUnregisters.end(), eventSink);
-
-			if (iterator != this->pendingUnregisters.end())
-			{
-				this->pendingUnregisters.erase(iterator);
-			}
-		}
-
-		void RemoveEventSink(BSTEventSink<T>* eventSink)
-		{
-			if (!eventSink)
-			{
-				return;
-			}
-
-			BSSpinLockGuard lockGuard(this->lock);
-
-			if (this->notifying)
-			{
-				if (std::find(this->pendingUnregisters.begin(), this->pendingUnregisters.end(), eventSink) == this->pendingUnregisters.end())
-				{
-					this->pendingUnregisters.push_back(eventSink);
-				}
-			}
-			else
-			{
-				auto* iterator = std::find(this->eventSinks.begin(), this->eventSinks.end(), eventSink);
-
-				if (iterator != this->eventSinks.end())
-				{
-					this->eventSinks.erase(iterator);
-				}
-			}
-
-			auto* iterator = std::find(this->pendingRegisters.begin(), this->pendingRegisters.end(), eventSink);
-
-			if (iterator != this->pendingRegisters.end())
-			{
-				this->pendingRegisters.erase(iterator);
-			}
-		}
-
-		void SendEvent(const T* eventArguments)
+		void Notify(const T* eventArguments)
 		{
 			BSSpinLockGuard lockGuard(this->lock);
 
@@ -127,6 +61,72 @@ namespace Skyrim
 				}
 
 				this->pendingUnregisters.clear();
+			}
+		}
+
+		void RegisterSink(BSTEventSink<T>* eventSink)
+		{
+			if (!eventSink)
+			{
+				return;
+			}
+
+			BSSpinLockGuard lockGuard(this->lock);
+
+			if (this->notifying)
+			{
+				if (std::find(this->pendingRegisters.begin(), this->pendingRegisters.end(), eventSink) == this->pendingRegisters.end())
+				{
+					this->pendingRegisters.push_back(eventSink);
+				}
+			}
+			else
+			{
+				if (std::find(this->eventSinks.begin(), this->eventSinks.end(), eventSink) == this->eventSinks.end())
+				{
+					this->eventSinks.push_back(eventSink);
+				}
+			}
+
+			auto* iterator = std::find(this->pendingUnregisters.begin(), this->pendingUnregisters.end(), eventSink);
+
+			if (iterator != this->pendingUnregisters.end())
+			{
+				this->pendingUnregisters.erase(iterator);
+			}
+		}
+
+		void UnregisterSink(BSTEventSink<T>* eventSink)
+		{
+			if (!eventSink)
+			{
+				return;
+			}
+
+			BSSpinLockGuard lockGuard(this->lock);
+
+			if (this->notifying)
+			{
+				if (std::find(this->pendingUnregisters.begin(), this->pendingUnregisters.end(), eventSink) == this->pendingUnregisters.end())
+				{
+					this->pendingUnregisters.push_back(eventSink);
+				}
+			}
+			else
+			{
+				auto* iterator = std::find(this->eventSinks.begin(), this->eventSinks.end(), eventSink);
+
+				if (iterator != this->eventSinks.end())
+				{
+					this->eventSinks.erase(iterator);
+				}
+			}
+
+			auto* iterator = std::find(this->pendingRegisters.begin(), this->pendingRegisters.end(), eventSink);
+
+			if (iterator != this->pendingRegisters.end())
+			{
+				this->pendingRegisters.erase(iterator);
 			}
 		}
 

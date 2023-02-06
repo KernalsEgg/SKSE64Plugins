@@ -131,21 +131,21 @@ namespace Skyrim
 		}
 
 		template <class T>
-		void AddEventSink(BSTEventSink<T>* eventSink)
+		void Notify(T* eventArguments)
 		{
-			this->GetEventSource<T>()->AddEventSink(eventSink);
+			this->GetEventSource<T>()->Notify(eventArguments);
 		}
 
 		template <class T>
-		void RemoveEventSink(BSTEventSink<T>* eventSink)
+		void RegisterSink(BSTEventSink<T>* eventSink)
 		{
-			this->GetEventSource<T>()->RemoveEventSink(eventSink);
+			this->GetEventSource<T>()->RegisterSink(eventSink);
 		}
 
 		template <class T>
-		void SendEvent(T* eventArguments)
+		void UnregisterSink(BSTEventSink<T>* eventSink)
 		{
-			this->GetEventSource<T>()->SendEvent(eventArguments);
+			this->GetEventSource<T>()->UnregisterSink(eventSink);
 		}
 	};
 	static_assert(sizeof(ScriptEventSourceHolder) == 0x1290);

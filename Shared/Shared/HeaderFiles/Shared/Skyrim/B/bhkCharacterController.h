@@ -4,11 +4,11 @@
 
 #include "Shared/Skyrim/B/BSBound.h"
 #include "Shared/Skyrim/B/BSTEventSource.h"
-#include "Shared/Skyrim/H/hkStepInformation.h"
-#include "Shared/Skyrim/H/hkVector4.h"
 #include "Shared/Skyrim/H/hkpCharacterContext.h"
 #include "Shared/Skyrim/H/hkpCharacterStateType.h"
 #include "Shared/Skyrim/H/hkpSurfaceInformation.h"
+#include "Shared/Skyrim/H/hkStepInformation.h"
+#include "Shared/Skyrim/H/hkVector4.h"
 #include "Shared/Skyrim/N/NiRefObject.h"
 #include "Shared/Utility/Enumeration.h"
 

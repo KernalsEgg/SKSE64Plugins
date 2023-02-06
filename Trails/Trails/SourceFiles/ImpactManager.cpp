@@ -9,7 +9,6 @@
 #include "Shared/Skyrim/B/BGSImpactDataSet.h"
 #include "Shared/Skyrim/B/BGSImpactManager.h"
 #include "Shared/Skyrim/B/BGSMaterialType.h"
-#include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/B/bhkCharacterController.h"
 #include "Shared/Skyrim/B/bhkCollisionObject.h"
 #include "Shared/Skyrim/B/bhkPickData.h"
@@ -17,6 +16,7 @@
 #include "Shared/Skyrim/B/bhkShape.h"
 #include "Shared/Skyrim/B/bhkWorld.h"
 #include "Shared/Skyrim/B/bhkWorldObject.h"
+#include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/D/DecalData.h"
 #include "Shared/Skyrim/H/hkBaseTypes.h"
 #include "Shared/Skyrim/H/hkpClosestRayHitCollector.h"
@@ -253,7 +253,7 @@ namespace Trails
 
 		if (source == Skyrim::PlayerCharacter::GetSingleton())
 		{
-			Utility::Log::Information("Material: {}", materialType->materialName.data());
+			Utility::Log::Information()("Material: {}", materialType->materialName.data());
 		}
 
 		auto* impactData = impactEffect->GetImpactData(materialType);
@@ -387,7 +387,7 @@ namespace Trails
 
 				if (source == Skyrim::PlayerCharacter::GetSingleton())
 				{
-					Utility::Log::Information("Land Color: ({}, {}, {}, {})", landColor.red, landColor.green, landColor.blue, landColor.alpha);
+					Utility::Log::Information()("Land Color: ({}, {}, {}, {})", landColor.red, landColor.green, landColor.blue, landColor.alpha);
 				}
 			}
 		}

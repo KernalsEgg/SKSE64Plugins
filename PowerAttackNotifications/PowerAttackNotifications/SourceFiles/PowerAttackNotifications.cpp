@@ -14,12 +14,12 @@ namespace PowerAttackNotifications
 	{
 		if (!Events::Register())
 		{
-			Utility::Log::Critical("Failed to register for events.");
+			Utility::Log::Critical()("Failed to register for events.");
 
 			return false;
 		}
 
-		Utility::Log::Information("\n{}", Settings::GetSingleton().Serialize().dump(1, '\t'));
+		Utility::Log::Information()("\n{}", Settings::GetSingleton().Serialize().dump(1, '\t'));
 
 		Utility::Trampoline::GetSingleton().Commit();
 
@@ -44,7 +44,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 	if (queryInterface->IsEditor())
 	{
-		Utility::Log::Critical("Loading in editor.");
+		Utility::Log::Critical()("Loading in editor.");
 
 		return false;
 	}
@@ -53,7 +53,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 	if (runtimeVersion < Relocation::Version<std::int32_t>(1, 5, 39, 0))
 	{
-		Utility::Log::Critical(
+		Utility::Log::Critical()(
 			"Unsupported runtime version, {}.{}.{}.{}.",
 			runtimeVersion.major,
 			runtimeVersion.minor,

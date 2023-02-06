@@ -33,7 +33,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 	if (queryInterface->IsEditor())
 	{
-		Utility::Log::Critical("Loading in editor.");
+		Utility::Log::Critical()("Loading in editor.");
 
 		return false;
 	}
@@ -42,7 +42,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 	if (runtimeVersion < Relocation::Version<std::int32_t>(1, 5, 39, 0))
 	{
-		Utility::Log::Critical(
+		Utility::Log::Critical()(
 			"Unsupported runtime version, {}.{}.{}.{}.",
 			runtimeVersion.major,
 			runtimeVersion.minor,

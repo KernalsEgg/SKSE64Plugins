@@ -11,8 +11,10 @@ namespace Skyrim
 		kNone                = 0,
 		kGlobal              = 0x9,  // TESGlobal
 		kFaction             = 0xB,  // TESFaction
+		kMagicEffect         = 0x12, // EffectSetting
 		kScript              = 0x13, // Script
 		kEnchantment         = 0x15, // EnchantmentItem
+		kSpell               = 0x16, // SpellItem
 		kScroll              = 0x17, // ScrollItem
 		kArmor               = 0x1A, // TESObjectARMO
 		kBook                = 0x1B, // TESObjectBOOK
@@ -30,7 +32,7 @@ namespace Skyrim
 		kSoulGem             = 0x34, // TESSoulGem
 		kCell                = 0x3C, // TESObjectCELL
 		kReference           = 0x3D, // TESObjectREFR
-		kActor               = 0x3E, // Actor
+		kActor               = 0x3E, // Actor, Character, PlayerCharacter
 		kImpactDataSet       = 0x65, // BGSImpactDataSet
 		kTotal               = 0x8A
 	};

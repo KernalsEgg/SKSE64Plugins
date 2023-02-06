@@ -12,13 +12,13 @@
 namespace Skyrim
 {
 	// Global Allocator
-	template <std::uint32_t StatisticID = Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)>
+	template <std::uint32_t STATISTIC_ID = Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)>
 	class GAllocatorBaseGH
 	{
 	public:
 		enum
 		{
-			kStatisticID = StatisticID
+			kStatisticID = STATISTIC_ID
 		};
 
 		static void* Allocate(const void*, UPInt size)

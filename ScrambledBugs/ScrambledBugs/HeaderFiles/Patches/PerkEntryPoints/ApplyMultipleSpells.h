@@ -7,6 +7,7 @@
 #include "Shared/Skyrim/B/BGSEntryPointFunction.h"
 #include "Shared/Skyrim/B/BGSEntryPointFunctionData.h"
 #include "Shared/Skyrim/S/SpellItem.h"
+#include "Shared/Skyrim/T/TESObjectREFR.h"
 #include "Shared/Skyrim/T/TESObjectWEAP.h"
 #include "Shared/Utility/Enumeration.h"
 
@@ -54,7 +55,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			Skyrim::TESObjectWEAP*                                                 attackerWeapon,
 			Skyrim::SpellItem**                                                    result);
 		static void SelectSpell(
-			Skyrim::Actor*                                                                             perkOwner,
+			Skyrim::TESObjectREFR*                                                                     perkOwner,
 			Utility::Enumeration<Skyrim::BGSEntryPointFunction::EntryPointFunctionType, std::uint32_t> entryPointFunctionType,
 			std::uint8_t                                                                               entryPointFunctionTypeArgumentCount,
 			void**                                                                                     entryPointFunctionTypeArguments,

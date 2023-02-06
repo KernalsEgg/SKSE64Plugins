@@ -8,7 +8,7 @@
 
 namespace Skyrim
 {
-	template <class T, FormType Form>
+	template <class T, FormType FORM_TYPE>
 	class ConcreteFormFactory :
 		public IFormFactory // 0
 	{
@@ -28,7 +28,7 @@ namespace Skyrim
 		// Non-member functions
 		static ConcreteFormFactory* GetFormFactory()
 		{
-			return static_cast<ConcreteFormFactory*>(IFormFactory::GetFormFactory(Form));
+			return static_cast<ConcreteFormFactory*>(IFormFactory::GetFormFactory(FORM_TYPE));
 		}
 
 		// Member functions

@@ -18,7 +18,7 @@ namespace ConsoleCommandCompanion
 		class InitializeEventSink
 		{
 		public:
-			static void AddEventSink();
+			static void RegisterSink();
 			static void ProcessEvent();
 		};
 
@@ -31,7 +31,7 @@ namespace ConsoleCommandCompanion
 
 			static LoadGameEventSink& GetSingleton();
 
-			void AddEventSink();
+			void RegisterSink();
 		};
 
 		class ButtonEventSink :
@@ -43,7 +43,7 @@ namespace ConsoleCommandCompanion
 
 			static ButtonEventSink& GetSingleton();
 
-			void AddEventSink();
+			void RegisterSink();
 
 		private:
 			static bool IsPressed(Skyrim::InputEvent* inputEvents, const Settings::Events::Button::State::Filter& filter);

@@ -2,10 +2,10 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BSIntrusiveRefCounted.h"
-#include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/B/BipedObject.h"
 #include "Shared/Skyrim/B/BipedObjectSlot.h"
+#include "Shared/Skyrim/B/BSIntrusiveRefCounted.h"
+#include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Utility/Convert.h"
 
 

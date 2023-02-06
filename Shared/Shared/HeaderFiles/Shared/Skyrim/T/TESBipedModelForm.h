@@ -2,8 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BGSMessageIcon.h"
 #include "Shared/Skyrim/B/BaseFormComponent.h"
+#include "Shared/Skyrim/B/BGSMessageIcon.h"
 #include "Shared/Skyrim/S/Sex.h"
 #include "Shared/Skyrim/T/TESIcon.h"
 #include "Shared/Skyrim/T/TESModelRDT.h"

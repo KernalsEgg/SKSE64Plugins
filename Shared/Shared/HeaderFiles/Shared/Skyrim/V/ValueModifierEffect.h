@@ -41,9 +41,10 @@ namespace Skyrim
 		virtual void ModifyActorValue(Actor* target, float magnitude, Utility::Enumeration<ActorValue, std::uint32_t> actorValue); // 20
 
 		// Member variables
-		Utility::Enumeration<ActorValue, std::uint32_t> actorValue; // 90
-		std::uint32_t                                   unknown94;  // 94
+		Utility::Enumeration<ActorValue, std::uint32_t> actorValue;        // 90
+		float                                           lastModifiedValue; // 94
 	};
 	static_assert(offsetof(ValueModifierEffect, actorValue) == 0x90);
+	static_assert(offsetof(ValueModifierEffect, lastModifiedValue) == 0x94);
 	static_assert(sizeof(ValueModifierEffect) == 0x98);
 }

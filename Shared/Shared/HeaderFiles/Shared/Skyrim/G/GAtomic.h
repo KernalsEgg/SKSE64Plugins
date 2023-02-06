@@ -120,7 +120,7 @@ namespace Skyrim
 		}
 	};
 
-	template <std::int32_t Size>
+	template <std::int32_t SIZE>
 	struct GAtomicOperationsRaw :
 		public GAtomicOperationsRawBase // 0
 	{

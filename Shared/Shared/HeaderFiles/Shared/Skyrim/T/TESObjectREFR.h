@@ -3,11 +3,11 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Relocation/PreprocessorDirectives.h"
+#include "Shared/Skyrim/B/BipedObjectSlot.h"
 #include "Shared/Skyrim/B/BSHandleRefObject.h"
 #include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/B/BSTEventSink.h"
 #include "Shared/Skyrim/B/BSTSmartPointer.h"
-#include "Shared/Skyrim/B/BipedObjectSlot.h"
 #include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/I/IAnimationGraphManagerHolder.h"
 #include "Shared/Skyrim/M/MagicSystem.h"
@@ -91,35 +91,35 @@ namespace Skyrim
 		virtual ~TESObjectREFR() override; // 0
 
 		// Override (TESForm)
-		virtual void        InitializeData() override;                                      // 4
-		virtual void        ClearData() override;                                           // 5
-		virtual bool        Load(TESFile* file) override;                                   // 6
-		virtual void        Unknown9(TESForm*) override;                                    // 9
-		virtual bool        CheckSaveGame(BGSSaveFormBuffer* saveFormBuffer) override;      // D
-		virtual void        SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;           // E
-		virtual void        LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;           // F
-		virtual void        InitializeLoadGame(BGSLoadFormBuffer* loadFormBuffer) override; // 10
-		virtual void        FinishLoadGame(BGSLoadFormBuffer* loadFormBuffer) override;     // 11
-		virtual void        Revert(BGSLoadFormBuffer* loadFormBuffer) override;             // 12
-		virtual void        Unknown13(TESForm*) override;                                   // 13
-		virtual void        Unknown15(TESForm*) override;                                   // 15
-		virtual void        Unknown16(TESForm*) override;                                   // 16
-		virtual void        Unknown18(TESForm*) override;                                   // 18
-		virtual void        Unknown1A(TESForm*) override;                                   // 1A
-		virtual void        Unknown1B(TESForm*) override;                                   // 1B
-		virtual void        Unknown1D(TESForm*) override;                                   // 1D
-		virtual void        Unknown1F(TESForm*) override;                                   // 1F
-		virtual void        Unknown20(TESForm*) override;                                   // 20
-		virtual void        Unknown21(TESForm*) override;                                   // 21
-		virtual void        Unknown22(TESForm*) override;                                   // 22
-		virtual void        Unknown23(TESForm*) override;                                   // 23
-		virtual void        Unknown24(TESForm*) override;                                   // 24
-		virtual bool        IsWater() const override;                                       // 2A
-		virtual void        Unknown2B(TESForm*) override;                                   // 2B
-		virtual void        Unknown2C(TESForm*) override;                                   // 2C
-		virtual void        Unknown30(TESForm*) override;                                   // 30
-		virtual void        Unknown31(TESForm*) override;                                   // 31
-		virtual const char* GetEditorID() const override;                                   // 32
+		virtual void                 InitializeData() override;                                      // 4
+		virtual void                 ClearData() override;                                           // 5
+		virtual bool                 Load(TESFile* file) override;                                   // 6
+		virtual void                 Unknown9(TESForm*) override;                                    // 9
+		virtual bool                 CheckSaveGame(BGSSaveFormBuffer* saveFormBuffer) override;      // D
+		virtual void                 SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;           // E
+		virtual void                 LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;           // F
+		virtual void                 InitializeLoadGame(BGSLoadFormBuffer* loadFormBuffer) override; // 10
+		virtual void                 FinishLoadGame(BGSLoadFormBuffer* loadFormBuffer) override;     // 11
+		virtual void                 Revert(BGSLoadFormBuffer* loadFormBuffer) override;             // 12
+		virtual void                 Unknown13(TESForm*) override;                                   // 13
+		virtual void                 Unknown15(TESForm*) override;                                   // 15
+		virtual void                 Unknown16(TESForm*) override;                                   // 16
+		virtual void                 Unknown18(TESForm*) override;                                   // 18
+		virtual void                 Unknown1A(TESForm*) override;                                   // 1A
+		virtual void                 Unknown1B(TESForm*) override;                                   // 1B
+		virtual void                 Unknown1D(TESForm*) override;                                   // 1D
+		virtual void                 Unknown1F(TESForm*) override;                                   // 1F
+		virtual void                 Unknown20(TESForm*) override;                                   // 20
+		virtual void                 Unknown21(TESForm*) override;                                   // 21
+		virtual void                 Unknown22(TESForm*) override;                                   // 22
+		virtual void                 Unknown23(TESForm*) override;                                   // 23
+		virtual void                 Unknown24(TESForm*) override;                                   // 24
+		virtual bool                 IsWater() const override;                                       // 2A
+		virtual const TESObjectREFR* AsConstantReference() const override;                           // 2B
+		virtual TESObjectREFR*       AsReference() override;                                         // 2C
+		virtual void                 Unknown30(TESForm*) override;                                   // 30
+		virtual void                 Unknown31(TESForm*) override;                                   // 31
+		virtual const char*          GetEditorID() const override;                                   // 32
 
 		// Override (BSTEventSink<BSAnimationGraphEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* eventArguments, BSTEventSource<BSAnimationGraphEvent>* eventSource) override; // 1
@@ -207,7 +207,7 @@ namespace Skyrim
 		virtual void                              Unknown81(TESObjectREFR*);                                                                                                                                                                                                                 // 81
 		virtual void                              Unknown82(TESObjectREFR*);                                                                                                                                                                                                                 // 82
 		virtual void                              Unknown83(TESObjectREFR*);                                                                                                                                                                                                                 // 83
-		virtual void                              Unknown84(TESObjectREFR*);                                                                                                                                                                                                                 // 84
+		virtual void                              SetObjectReference(TESBoundObject* baseObject);                                                                                                                                                                                            // 84
 		virtual void                              Unknown85(TESObjectREFR*);                                                                                                                                                                                                                 // 85
 		virtual void                              Unknown86(TESObjectREFR*);                                                                                                                                                                                                                 // 86
 		virtual void                              Unknown87(TESObjectREFR*);                                                                                                                                                                                                                 // 87

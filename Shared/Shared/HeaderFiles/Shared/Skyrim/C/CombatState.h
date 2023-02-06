@@ -2,8 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/AITimeStamp.h"
 #include "Shared/Skyrim/A/AITimer.h"
+#include "Shared/Skyrim/A/AITimeStamp.h"
 #include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Skyrim/N/NiPointer.h"
 

@@ -153,11 +153,11 @@ namespace SKSE
 		{
 			if (receiver)
 			{
-				Utility::Log::Error("Failed to dispatch message to {}.", receiver);
+				Utility::Log::Error()("Failed to dispatch message to {}.", receiver);
 			}
 			else
 			{
-				Utility::Log::Error("Failed to dispatch message.");
+				Utility::Log::Error()("Failed to dispatch message.");
 			}
 		}
 
@@ -182,11 +182,11 @@ namespace SKSE
 		{
 			if (sender)
 			{
-				Utility::Log::Error("Failed to register message listener for {}.", sender);
+				Utility::Log::Error()("Failed to register message listener for {}.", sender);
 			}
 			else
 			{
-				Utility::Log::Error("Failed to register message listener.");
+				Utility::Log::Error()("Failed to register message listener.");
 			}
 		}
 

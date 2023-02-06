@@ -2,9 +2,9 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/H/hkVector4.h"
 #include "Shared/Skyrim/H/hkpWorldRayCastInput.h"
 #include "Shared/Skyrim/H/hkpWorldRayCastOutput.h"
+#include "Shared/Skyrim/H/hkVector4.h"
 
 
 

@@ -96,7 +96,7 @@ namespace Skyrim
 		float                                                              spellmakingCastingTime;      // B0
 		float                                                              taperCurve;                  // B4
 		float                                                              taperDuration;               // B8
-		float                                                              secondAVWeight;              // BC
+		float                                                              secondaryActorValueWeight;   // BC
 		Utility::Enumeration<EffectArchetypes::ArchetypeID, std::uint32_t> effectArchetype;             // C0
 		std::uint32_t                                                      unknownC4;                   // C4
 		BGSProjectile*                                                     projectile;                  // C8
@@ -143,7 +143,7 @@ namespace Skyrim
 	static_assert(offsetof(EffectSetting, spellmakingCastingTime) == 0xB0);
 	static_assert(offsetof(EffectSetting, taperCurve) == 0xB4);
 	static_assert(offsetof(EffectSetting, taperDuration) == 0xB8);
-	static_assert(offsetof(EffectSetting, secondAVWeight) == 0xBC);
+	static_assert(offsetof(EffectSetting, secondaryActorValueWeight) == 0xBC);
 	static_assert(offsetof(EffectSetting, effectArchetype) == 0xC0);
 	static_assert(offsetof(EffectSetting, projectile) == 0xC8);
 	static_assert(offsetof(EffectSetting, explosion) == 0xD0);

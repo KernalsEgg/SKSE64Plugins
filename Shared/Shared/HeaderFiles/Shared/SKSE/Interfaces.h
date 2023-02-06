@@ -68,7 +68,7 @@ namespace SKSE
 
 			if (interface && interface->Version() != T::kVersion)
 			{
-				Utility::Log::Warning("Unexpected {} version encountered, {}. Expected {}.", typeid(T).name(), interface->Version(), static_cast<std::uint32_t>(T::kVersion));
+				Utility::Log::Warning()("Unexpected {} version encountered, {}. Expected {}.", typeid(T).name(), interface->Version(), static_cast<std::uint32_t>(T::kVersion));
 			}
 
 			return interface;
@@ -113,18 +113,16 @@ namespace SKSE
 
 		template <class T>
 			requires(!std::is_pointer_v<T>)
-		std::uint32_t ReadRecordData(T& recordData)
-		const
+		std::uint32_t ReadRecordData(T& recordData) const
 		{
 			return this->ReadRecordData(std::addressof(recordData), sizeof(T));
 		}
 
-		template <class T, std::size_t Count>
+		template <class T, std::size_t COUNT>
 			requires(std::is_array_v<T>)
-		std::uint32_t ReadRecordData(T (&recordData)[Count])
-		const
+		std::uint32_t ReadRecordData(T (&recordData)[COUNT]) const
 		{
-			return this->ReadRecordData(std::addressof(recordData), sizeof(T) * Count);
+			return this->ReadRecordData(std::addressof(recordData), sizeof(T) * COUNT);
 		}
 
 		template <class T>
@@ -134,11 +132,11 @@ namespace SKSE
 			return this->WriteRecord(type, version, std::addressof(record), sizeof(T));
 		}
 
-		template <class T, std::size_t Count>
+		template <class T, std::size_t COUNT>
 			requires(std::is_array_v<T>)
-		bool WriteRecord(std::uint32_t type, std::uint32_t version, const T (&record)[Count]) const
+		bool WriteRecord(std::uint32_t type, std::uint32_t version, const T (&record)[COUNT]) const
 		{
-			return this->WriteRecord(type, version, std::addressof(record), sizeof(T) * Count);
+			return this->WriteRecord(type, version, std::addressof(record), sizeof(T) * COUNT);
 		}
 
 		template <class T>
@@ -148,11 +146,11 @@ namespace SKSE
 			return this->WriteRecordData(std::addressof(recordData), sizeof(T));
 		}
 
-		template <class T, std::size_t Count>
+		template <class T, std::size_t COUNT>
 			requires(std::is_array_v<T>)
-		bool WriteRecordData(const T (&recordData)[Count]) const
+		bool WriteRecordData(const T (&recordData)[COUNT]) const
 		{
-			return this->WriteRecordData(std::addressof(recordData), sizeof(T) * Count);
+			return this->WriteRecordData(std::addressof(recordData), sizeof(T) * COUNT);
 		}
 
 	private:
@@ -332,19 +330,19 @@ namespace SKSE
 			kVersion = 1
 		};
 
-		const std::uint32_t dataVersion{ PluginVersionData::kVersion };            // 0
-		std::uint32_t       pluginVersion{ 0 };                                    // 4
-		char                pluginName[256]{};                                     // 8
-		char                author[256]{};                                         // 108
-		char                supportEmail[252]{};                                   // 208
-		std::uint32_t       backwardCompatible16629                 : 1 { false }; // 304 (0, 0)
-		std::uint32_t       reservedVersionIndependenceExtendedFlags: 31 { 0 };    // 304 (0, 1)
-		std::uint32_t       addressLibrary                          : 1 { false }; // 308 (0, 0)
-		std::uint32_t       signatureScanning                       : 1 { false }; // 308 (0, 1)
-		std::uint32_t       compatible16629                         : 1 { false }; // 308 (0, 2)
-		std::uint32_t       reservedVersionIndependenceFlags        : 29 { 0 };    // 308 (0, 3)
-		std::uint32_t       compatibleVersions[16]{};                              // 30C
-		std::uint32_t       minimumSKSEVersion{ 0 };                               // 34C
+		const std::uint32_t dataVersion{ PluginVersionData::kVersion };             // 0
+		std::uint32_t       pluginVersion{ 0 };                                     // 4
+		char                pluginName[256]{};                                      // 8
+		char                author[256]{};                                          // 108
+		char                supportEmail[252]{};                                    // 208
+		std::uint32_t       backwardCompatible16629                  : 1 { false }; // 304 (0, 0)
+		std::uint32_t       reservedVersionIndependenceExtendedFlags : 31 { 0 };    // 304 (0, 1)
+		std::uint32_t       addressLibrary                           : 1 { false }; // 308 (0, 0)
+		std::uint32_t       signatureScanning                        : 1 { false }; // 308 (0, 1)
+		std::uint32_t       compatible16629                          : 1 { false }; // 308 (0, 2)
+		std::uint32_t       reservedVersionIndependenceFlags         : 29 { 0 };    // 308 (0, 3)
+		std::uint32_t       compatibleVersions[16]{};                               // 30C
+		std::uint32_t       minimumSKSEVersion{ 0 };                                // 34C
 	};
 	static_assert(offsetof(PluginVersionData, dataVersion) == 0x0);
 	static_assert(offsetof(PluginVersionData, pluginVersion) == 0x4);

@@ -16,14 +16,14 @@ namespace ConsoleCommandCompanion
 #else
 		if (!Patches::Install())
 		{
-			Utility::Log::Critical("Failed to patch Bethesda.net login.");
+			Utility::Log::Critical()("Failed to patch Bethesda.net login.");
 
 			return false;
 		}
 #endif
-		Events::InitializeEventSink::AddEventSink();
+		Events::InitializeEventSink::RegisterSink();
 
-		Utility::Log::Information("\n{}", Settings::GetSingleton().Serialize().dump(1, '\t'));
+		Utility::Log::Information()("\n{}", Settings::GetSingleton().Serialize().dump(1, '\t'));
 
 		return true;
 	}
@@ -46,7 +46,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 	if (queryInterface->IsEditor())
 	{
-		Utility::Log::Critical("Loading in editor.");
+		Utility::Log::Critical()("Loading in editor.");
 
 		return false;
 	}
@@ -55,7 +55,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 	if (runtimeVersion < Relocation::Version<std::int32_t>(1, 5, 39, 0))
 	{
-		Utility::Log::Critical(
+		Utility::Log::Critical()(
 			"Unsupported runtime version, {}.{}.{}.{}.",
 			runtimeVersion.major,
 			runtimeVersion.minor,

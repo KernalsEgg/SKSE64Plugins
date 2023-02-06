@@ -4,8 +4,8 @@
 
 #include "Shared/Skyrim/A/AIProcess.h"
 #include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/B/BSTSmartPointer.h"
 #include "Shared/Skyrim/B/BipedAnim.h"
+#include "Shared/Skyrim/B/BSTSmartPointer.h"
 #include "Shared/Skyrim/E/ExtraDataList.h"
 #include "Shared/Skyrim/I/InventoryEntryData.h"
 #include "Shared/Skyrim/R/RefrInteraction.h"

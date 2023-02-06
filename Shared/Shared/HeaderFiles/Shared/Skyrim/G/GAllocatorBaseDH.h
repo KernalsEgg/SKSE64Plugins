@@ -12,13 +12,13 @@
 namespace Skyrim
 {
 	// Dynamic-Heap Allocator
-	template <std::uint32_t StatisticID = Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)>
+	template <std::uint32_t STATISTIC_ID = Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)>
 	class GAllocatorBaseDH
 	{
 	public:
 		enum
 		{
-			kStatisticID = StatisticID
+			kStatisticID = STATISTIC_ID
 		};
 
 		static void* Allocate(const void* heap, UPInt size)

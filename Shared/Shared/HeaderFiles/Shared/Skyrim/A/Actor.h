@@ -5,6 +5,7 @@
 #include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/A/ActorState.h"
 #include "Shared/Skyrim/A/ActorValueOwner.h"
+#include "Shared/Skyrim/B/BGSEntryPoint.h"
 #include "Shared/Skyrim/B/BSTEventSink.h"
 #include "Shared/Skyrim/I/IPostAnimationChannelUpdateFunctor.h"
 #include "Shared/Skyrim/M/MagicTarget.h"
@@ -28,6 +29,7 @@ namespace Skyrim
 	class HitData;
 	class InventoryEntryData;
 	class NiAVObject;
+	class PerkEntryVisitor;
 	class SpellItem;
 	class TESForm;
 	class TESObjectARMO;
@@ -137,7 +139,7 @@ namespace Skyrim
 		virtual void                  Unknown7C(TESObjectREFR*) override;                                                                                                                                                                                                                                // 7C
 		virtual void                  Unknown7D(TESObjectREFR*) override;                                                                                                                                                                                                                                // 7D
 		virtual void                  Unknown82(TESObjectREFR*) override;                                                                                                                                                                                                                                // 82
-		virtual void                  Unknown84(TESObjectREFR*) override;                                                                                                                                                                                                                                // 84
+		virtual void                  SetObjectReference(TESBoundObject* baseObject) override;                                                                                                                                                                                                           // 84
 		virtual void                  Unknown85(TESObjectREFR*) override;                                                                                                                                                                                                                                // 85
 		virtual void                  Unknown86(TESObjectREFR*) override;                                                                                                                                                                                                                                // 86
 		virtual void                  Unknown87(TESObjectREFR*) override;                                                                                                                                                                                                                                // 87
@@ -181,8 +183,8 @@ namespace Skyrim
 
 		// Override (MagicTarget)
 		virtual void                         Unknown1(MagicTarget*) override;                                                          // 1
-		virtual TESObjectREFR*               GetMagicTargetReference() override;                                                       // 2
-		virtual bool                         IsMagicTargetActor() const override;                                                      // 3
+		virtual TESObjectREFR*               GetMagicTargetAsReference() override;                                                     // 2
+		virtual bool                         MagicTargetIsActor() const override;                                                      // 3
 		virtual bool                         IsInvulnerable() const override;                                                          // 4
 		virtual void                         Unknown5(MagicTarget*) override;                                                          // 5
 		virtual void                         Unknown6(MagicTarget*) override;                                                          // 6
@@ -320,13 +322,13 @@ namespace Skyrim
 		virtual void                  UnknownF7(Actor*);                                                                                                                         // F7
 		virtual void                  UnknownF8(Actor*);                                                                                                                         // F8
 		virtual void                  UnknownF9(Actor*);                                                                                                                         // F9
-		virtual void                  UnknownFA(Actor*);                                                                                                                         // FA
+		virtual void                  ForEachPerk(PerkEntryVisitor& perkEntryVisitor) const;                                                                                     // FA
 		virtual void                  UnknownFB(Actor*);                                                                                                                         // FB
 		virtual void                  UnknownFC(Actor*);                                                                                                                         // FC
 		virtual void                  UnknownFD(Actor*);                                                                                                                         // FD
 		virtual void                  UnknownFE(Actor*);                                                                                                                         // FE
-		virtual void                  UnknownFF(Actor*);                                                                                                                         // FF
-		virtual void                  Unknown100(Actor*);                                                                                                                        // 100
+		virtual bool                  HasPerkEntries(Utility::Enumeration<BGSEntryPoint::EntryPoint, std::uint8_t> entryPoint) const;                                            // FF
+		virtual void                  ForEachPerkEntry(Utility::Enumeration<BGSEntryPoint::EntryPoint, std::uint8_t> entryPoint, PerkEntryVisitor& perkEntryVisitor) const;      // 100
 		virtual void                  ApplyBasePerks();                                                                                                                          // 101
 		virtual void                  Unknown102(Actor*);                                                                                                                        // 102
 		virtual void                  Unknown103(Actor*);                                                                                                                        // 103

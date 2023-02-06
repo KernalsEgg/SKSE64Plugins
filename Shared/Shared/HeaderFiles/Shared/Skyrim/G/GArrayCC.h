@@ -13,16 +13,16 @@
 
 namespace Skyrim
 {
-	template <class T, std::uint32_t StatisticID = Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory), class SizePolicy = GArrayDefaultPolicy>
+	template <class T, std::uint32_t STATISTIC_ID = Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory), class SizePolicy = GArrayDefaultPolicy>
 	class GArrayCC :
-		public GArrayBase<GArrayDataCC<T, GAllocatorLH<T, StatisticID>, SizePolicy>> // 0
+		public GArrayBase<GArrayDataCC<T, GAllocatorLH<T, STATISTIC_ID>, SizePolicy>> // 0
 	{
 	public:
 		using value_type       = T;
-		using allocator_type   = GAllocatorLH<T, StatisticID>;
+		using allocator_type   = GAllocatorLH<T, STATISTIC_ID>;
 		using size_policy_type = SizePolicy;
-		using self_type        = GArrayCC<T, StatisticID, SizePolicy>;
-		using base_type        = GArrayBase<GArrayDataCC<T, GAllocatorLH<T, StatisticID>, SizePolicy>>;
+		using self_type        = GArrayCC<T, STATISTIC_ID, SizePolicy>;
+		using base_type        = GArrayBase<GArrayDataCC<T, GAllocatorLH<T, STATISTIC_ID>, SizePolicy>>;
 
 		GArrayCC(const value_type& defaultValue) :
 			base_type(defaultValue)

@@ -376,7 +376,7 @@ namespace ScrambledBugs
 		}
 		catch (const nlohmann::json::exception& jsonException)
 		{
-			Utility::Log::Critical("{}", jsonException.what());
+			Utility::Log::Critical()("{}", jsonException.what());
 
 			throw;
 		}
@@ -406,7 +406,7 @@ namespace ScrambledBugs
 
 	void Settings::Initialize()
 	{
-		Utility::Log::Information("Initializing...\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Initializing...\n{}", this->Serialize().dump(1, '\t'));
 
 		if (this->fixes.activateFurniture)
 		{
@@ -587,7 +587,7 @@ namespace ScrambledBugs
 			ScrambledBugs::Patches::SteepSlopes::Patch(this->patches.steepSlopes);
 		}
 
-		Utility::Log::Information("Initialized.\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Initialized.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const

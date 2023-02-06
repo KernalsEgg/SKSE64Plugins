@@ -51,7 +51,7 @@ namespace ActorLimitFix
 		}
 		catch (const nlohmann::json::exception& jsonException)
 		{
-			Utility::Log::Critical("{}", jsonException.what());
+			Utility::Log::Critical()("{}", jsonException.what());
 
 			throw;
 		}
@@ -76,7 +76,7 @@ namespace ActorLimitFix
 
 	void Settings::Initialize()
 	{
-		Utility::Log::Information("Initializing...\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Initializing...\n{}", this->Serialize().dump(1, '\t'));
 
 		if (this->fixes.replaceStaticArray)
 		{
@@ -87,7 +87,7 @@ namespace ActorLimitFix
 		ActorLimitFix::Fixes::MorphLimit::Fix(this->fixes.morphLimit, this->fixes.replaceStaticArray);
 		ActorLimitFix::Fixes::MoverLimit::Fix(this->fixes.moverLimit);
 
-		Utility::Log::Information("Initialized.\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Initialized.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const

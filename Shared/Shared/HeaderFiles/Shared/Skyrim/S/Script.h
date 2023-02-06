@@ -43,6 +43,8 @@ namespace Skyrim
 		virtual void Unknown13(TESForm*) override; // 13
 
 		// Non-member functions
+		static void ClearCachedValues();
+
 		template <class... Arguments>
 		static bool ParseParameters(const ScriptParameter* scriptParameters, ScriptFunction::ScriptData* scriptData, std::uint32_t& opcodeOffset, TESObjectREFR* object, TESObjectREFR* containingObject, Script* script, ScriptLocals* scriptLocals, Arguments... arguments)
 		{

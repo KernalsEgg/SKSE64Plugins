@@ -9,9 +9,9 @@
 
 namespace Skyrim
 {
-	Actor* MagicTarget::GetMagicTargetActor()
+	Actor* MagicTarget::GetMagicTargetAsActor()
 	{
-		return this->IsMagicTargetActor() ? static_cast<Actor*>(this->GetMagicTargetReference()) : nullptr;
+		return this->MagicTargetIsActor() ? static_cast<Actor*>(this->GetMagicTargetAsReference()) : nullptr;
 	}
 
 	void MagicTarget::VisitActiveEffects(ForEachActiveEffectVisitor* visitor)

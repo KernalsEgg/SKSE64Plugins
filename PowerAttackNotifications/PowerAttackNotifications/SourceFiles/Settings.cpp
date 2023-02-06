@@ -17,7 +17,7 @@ namespace PowerAttackNotifications
 		}
 		catch (const nlohmann::json::exception& jsonException)
 		{
-			Utility::Log::Critical("{}", jsonException.what());
+			Utility::Log::Critical()("{}", jsonException.what());
 
 			throw;
 		}

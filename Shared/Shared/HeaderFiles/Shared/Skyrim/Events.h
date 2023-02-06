@@ -30,11 +30,11 @@ namespace Skyrim
 			Utility::EventSource<>& Before() { return this->before_; }
 
 		private:
-			static void Event(InitTESThread* initializeThread);
+			static void Notify(InitTESThread* initializeThread);
 
-			decltype(&InitializeThread::Event) event_{};
-			Utility::EventSource<>             after_{};
-			Utility::EventSource<>             before_{};
+			decltype(&InitializeThread::Notify) notify_{};
+			Utility::EventSource<>              after_{};
+			Utility::EventSource<>              before_{};
 		};
 	}
 }

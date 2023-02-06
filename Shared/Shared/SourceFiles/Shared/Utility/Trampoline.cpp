@@ -4,9 +4,9 @@
 
 #include "Shared/Relocation/Module.h"
 #include "Shared/Utility/Assembly.h"
+#include "Shared/Utility/InformationBox.h"
 #include "Shared/Utility/Log.h"
 #include "Shared/Utility/Math.h"
-#include "Shared/Utility/MessageBox.h"
 
 
 
@@ -27,11 +27,11 @@ namespace Utility
 		::GetSystemInfo(std::addressof(systemInformation));
 
 		std::uintptr_t minimumAddress = moduleAddress + moduleSize >= std::numeric_limits<std::int32_t>::max() ?
-                                            Math::Ceiling(moduleAddress + moduleSize - std::numeric_limits<std::int32_t>::max(), systemInformation.dwAllocationGranularity) :
-                                            0;
+		                                    Math::Ceiling(moduleAddress + moduleSize - std::numeric_limits<std::int32_t>::max(), systemInformation.dwAllocationGranularity) :
+		                                    0;
 		std::uintptr_t maximumAddress = moduleAddress < static_cast<std::uintptr_t>(std::numeric_limits<std::int64_t>::max() - std::numeric_limits<std::int32_t>::max()) ?
-                                            Math::Floor(moduleAddress + std::numeric_limits<std::int32_t>::max(), systemInformation.dwAllocationGranularity) :
-                                            std::numeric_limits<std::int64_t>::max();
+		                                    Math::Floor(moduleAddress + std::numeric_limits<std::int32_t>::max(), systemInformation.dwAllocationGranularity) :
+		                                    std::numeric_limits<std::int64_t>::max();
 
 		::MEMORY_BASIC_INFORMATION memoryBasicInformation;
 		std::uintptr_t             regionAddress;
@@ -40,7 +40,7 @@ namespace Utility
 		{
 			if (!::VirtualQuery(reinterpret_cast<::LPCVOID>(minimumAddress), std::addressof(memoryBasicInformation), sizeof(::MEMORY_BASIC_INFORMATION)))
 			{
-				Utility::Log::Error("VirtualQuery failed, last-error code {}.", ::GetLastError());
+				Utility::Log::Error()("VirtualQuery failed, last-error code {}.", ::GetLastError());
 
 				return 0;
 			}
@@ -62,7 +62,7 @@ namespace Utility
 					}
 					else
 					{
-						Utility::Log::Warning("VirtualAlloc failed, last-error code {}.", ::GetLastError());
+						Utility::Log::Warning()("VirtualAlloc failed, last-error code {}.", ::GetLastError());
 					}
 				}
 			}
@@ -92,10 +92,10 @@ namespace Utility
 
 			if (!this->address_)
 			{
-				MessageBox::Error("Failed to allocate 0x{:X} bytes of memory.", this->position_.load());
+				InformationBox::Error()("Failed to allocate 0x{:X} bytes of memory.", this->position_.load());
 			}
 
-			this->commit_.SendEvent(this->address_);
+			this->commit_.Notify(this->address_);
 		}
 	}
 
@@ -104,7 +104,7 @@ namespace Utility
 		auto result   = Memory::ReadRelativeCall5(address);
 		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
 
-		this->commit_.AddEventSink(
+		this->commit_.RegisterSink(
 			[address, function, position](std::uintptr_t trampolineAddress) -> void
 			{
 				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
@@ -118,7 +118,7 @@ namespace Utility
 	{
 		auto position = this->Reserve(sizeof(std::uintptr_t));
 
-		this->commit_.AddEventSink(
+		this->commit_.RegisterSink(
 			[address, function, position](std::uintptr_t trampolineAddress) -> void
 			{
 				Memory::SafeWrite(trampolineAddress + position, function);
@@ -131,7 +131,7 @@ namespace Utility
 		auto result   = Memory::ReadRelativeJump5(address);
 		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
 
-		this->commit_.AddEventSink(
+		this->commit_.RegisterSink(
 			[address, function, position](std::uintptr_t trampolineAddress) -> void
 			{
 				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
@@ -145,7 +145,7 @@ namespace Utility
 	{
 		auto position = this->Reserve(sizeof(std::uintptr_t));
 
-		this->commit_.AddEventSink(
+		this->commit_.RegisterSink(
 			[address, function, position](std::uintptr_t trampolineAddress) -> void
 			{
 				Memory::SafeWrite(trampolineAddress + position, function);

@@ -3,10 +3,10 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Relocation/PreprocessorDirectives.h"
+#include "Shared/Skyrim/B/BaseExtraList.h"
 #include "Shared/Skyrim/B/BSAtomic.h"
 #include "Shared/Skyrim/B/BSExtraData.h"
 #include "Shared/Skyrim/B/BSTSmartPointer.h"
-#include "Shared/Skyrim/B/BaseExtraList.h"
 #include "Shared/Skyrim/E/ExtraDataType.h"
 #include "Shared/Skyrim/M/MemoryManager.h"
 #include "Shared/Skyrim/S/SoulLevel.h"

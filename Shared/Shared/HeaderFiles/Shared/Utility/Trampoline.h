@@ -40,7 +40,7 @@ namespace Utility
 		{
 			auto position = Trampoline::Reserve(Memory::SizeOf<Arguments...>::Implementation());
 
-			this->commit_.AddEventSink(
+			this->commit_.RegisterSink(
 				[address, arguments..., position](std::uintptr_t trampolineAddress) -> void
 				{
 					Memory::SafeWrite(trampolineAddress + position, arguments...);
@@ -53,7 +53,7 @@ namespace Utility
 		{
 			auto position = Trampoline::Reserve(Memory::SizeOf<Arguments...>::Implementation());
 
-			this->commit_.AddEventSink(
+			this->commit_.RegisterSink(
 				[address, arguments..., position](std::uintptr_t trampolineAddress) -> void
 				{
 					Memory::SafeWrite(trampolineAddress + position, arguments...);

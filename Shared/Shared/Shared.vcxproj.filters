@@ -1152,10 +1152,7 @@
     <ClInclude Include="HeaderFiles\Shared\Utility\Memory.h">
       <Filter>Header Files\Shared\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Utility\Message.h">
-      <Filter>Header Files\Shared\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Utility\MessageBox.h">
+    <ClInclude Include="HeaderFiles\Shared\Utility\InformationBox.h">
       <Filter>Header Files\Shared\Utility</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Utility\Trampoline.h">
@@ -1722,6 +1719,9 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\E\ExtraLockList.h">
       <Filter>Header Files\Shared\Skyrim\E</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DualValueModifierEffect.h">
+      <Filter>Header Files\Shared\Skyrim\D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PrecompiledHeader.cpp">
@@ -2134,6 +2134,12 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectREFRFactory.cpp">
       <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\H\HandleEntryPointVisitor.cpp">
+      <Filter>Source Files\Shared\Skyrim\H</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Utility\Log.cpp">
+      <Filter>Source Files\Shared\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

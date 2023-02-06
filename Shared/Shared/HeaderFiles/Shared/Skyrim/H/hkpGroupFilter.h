@@ -2,8 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/H/hkVector4.h"
 #include "Shared/Skyrim/H/hkpCollisionFilter.h"
+#include "Shared/Skyrim/H/hkVector4.h"
 
 
 

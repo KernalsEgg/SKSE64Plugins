@@ -2,8 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Skyrim/B/BaseFormComponent.h"
+#include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Skyrim/F/FactionRank.h"
 #include "Shared/Utility/Enumeration.h"
 

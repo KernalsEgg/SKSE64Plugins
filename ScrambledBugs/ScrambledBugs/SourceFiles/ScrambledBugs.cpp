@@ -16,7 +16,7 @@ namespace ScrambledBugs
 
 		if (!serializationInterface)
 		{
-			Utility::Log::Critical("Serialization interface not found.");
+			Utility::Log::Critical()("Serialization interface not found.");
 
 			return false;
 		}

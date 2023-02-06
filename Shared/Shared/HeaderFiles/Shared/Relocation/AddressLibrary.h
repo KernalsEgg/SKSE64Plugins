@@ -64,18 +64,28 @@ namespace Relocation
 
 		static const AddressLibrary& GetSingleton();
 
-		template <class... Arguments>
-		static bool MatchPattern(std::uintptr_t address, const Arguments&... arguments)
+		struct MatchPattern
 		{
-			auto result = Utility::Memory::MatchPattern(address, arguments...);
+		public:
+			MatchPattern(std::source_location sourceLocation = std::source_location::current()) :
+				sourceLocation_(sourceLocation) {}
 
-			if (!result)
+			template <class... Arguments>
+			bool operator()(std::uintptr_t address, const Arguments&... arguments)
 			{
-				Utility::Log::Error("Unexpected pattern encountered at {} + 0x{:X}.", Executable::GetSingleton().GetPath().filename().string(), address - Executable::GetSingleton().GetAddress());
+				auto result = Utility::Memory::MatchPattern(address, arguments...);
+
+				if (!result)
+				{
+					Utility::Log::Error(this->sourceLocation_)("Unexpected pattern encountered at {} + 0x{:X}.", Executable::GetSingleton().GetPath().filename().string(), address - Executable::GetSingleton().GetAddress());
+				}
+
+				return result;
 			}
 
-			return result;
-		}
+		private:
+			std::source_location sourceLocation_;
+		};
 
 		void           Dump(const std::filesystem::path& path) const;
 		std::uintptr_t GetAddress(std::uint64_t identifier) const;
@@ -83,10 +93,8 @@ namespace Relocation
 		void           Read(std::ifstream& inputFileStream, const Header& header);
 
 	private:
-		FileMapping       fileMapping_;
-		FileMapping::View fileMappingView_;
-
-	public:
+		FileMapping        fileMapping_;
+		FileMapping::View  fileMappingView_;
 		std::span<Element> span_;
 	};
 }

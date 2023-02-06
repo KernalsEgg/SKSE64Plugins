@@ -13,18 +13,18 @@ namespace Skyrim
 		return *singleton;
 	}
 
-	void UI::Notification(const char* notification, const char* sound, bool queueOnce)
-	{
-		auto* function{ reinterpret_cast<decltype(&UI::Notification)>(Addresses::UI::Notification) };
-
-		function(notification, sound, queueOnce);
-	}
-
 	void UI::PlaySound(const char* editorID)
 	{
 		auto* function{ reinterpret_cast<decltype(&UI::PlaySound)>(Addresses::UI::PlaySound) };
 
 		function(editorID);
+	}
+
+	void UI::ShowNotification(const char* message, const char* sound, bool queueOnce)
+	{
+		auto* function{ reinterpret_cast<decltype(&UI::ShowNotification)>(Addresses::UI::ShowNotification) };
+
+		function(message, sound, queueOnce);
 	}
 
 	bool UI::IsMenuOpen(const BSFixedString& menuName) const
