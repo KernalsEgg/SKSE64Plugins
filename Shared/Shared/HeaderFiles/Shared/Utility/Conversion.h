@@ -4,7 +4,7 @@
 
 
 
-namespace Utility
+namespace Utility::Conversion
 {
 	template <class T>
 		requires(std::is_enum_v<T>)

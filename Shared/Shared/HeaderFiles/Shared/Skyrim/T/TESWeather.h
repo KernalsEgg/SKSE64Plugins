@@ -10,7 +10,7 @@
 #include "Shared/Skyrim/T/TESForm.h"
 #include "Shared/Skyrim/T/TESModel.h"
 #include "Shared/Skyrim/T/TESTexture1024.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -141,43 +141,43 @@ namespace Skyrim
 		virtual void Unknown13(TESForm*) override; // 13
 
 		// Member variables
-		TESTexture1024                            cloudTextures[Utility::ToUnderlying(Layer::kTotal)];                                    // 20, General, Cloud Textures
-		std::int8_t                               cloudSpeedY[Utility::ToUnderlying(Layer::kTotal)];                                      // 220, General, Cloud Textures
-		std::int8_t                               cloudSpeedX[Utility::ToUnderlying(Layer::kTotal)];                                      // 240, General, Cloud Textures
-		Color                                     cloudColors[Utility::ToUnderlying(Layer::kTotal)][Utility::ToUnderlying(Time::kTotal)]; // 260
-		float                                     cloudAlpha[Utility::ToUnderlying(Layer::kTotal)][Utility::ToUnderlying(Time::kTotal)];  // 460, General, Cloud Textures
-		std::uint32_t                             disabledCloudLayers;                                                                    // 660, General, Cloud Textures (bitfield)
-		std::uint8_t                              windSpeed;                                                                              // 664, General
-		std::uint8_t                              unknown665;                                                                             // 665
-		std::uint8_t                              unknown666;                                                                             // 666
-		std::uint8_t                              transitionDelta;                                                                        // 667, General
-		std::uint8_t                              sunGlare;                                                                               // 668, General
-		std::uint8_t                              sunDamage;                                                                              // 669, General
-		std::uint8_t                              precipitationBeginFadeIn;                                                               // 66A, Precipitation, Precipitation
-		std::uint8_t                              precipitationEndFadeOut;                                                                // 66B, Precipitation, Precipitation
-		std::uint8_t                              thunderLightningBeginFadeIn;                                                            // 66C, Precipitation, Thunder/Lightning
-		std::uint8_t                              thunderLightningEndFadeOut;                                                             // 66D, Precipitation, Thunder/Lightning
-		std::uint8_t                              thunderLightningFrequency;                                                              // 66E, Precipitation, Thunder/Lightning
-		Utility::Enumeration<Flags, std::uint8_t> weatherFlags;                                                                           // 66F
-		Color3                                    lightningColor;                                                                         // 670, Precipitation, Lightning Color
-		std::uint8_t                              visualEffectBegin;                                                                      // 673, Effects, Visual Effect
-		std::uint8_t                              visualEffectEnd;                                                                        // 674, Effects, Visual Effect
-		std::uint8_t                              windDirection;                                                                          // 675, General
-		std::uint8_t                              windDirectionRange;                                                                     // 676, General
-		std::uint8_t                              unknown677;                                                                             // 677
-		FogDistance                               fogDistance;                                                                            // 678, General, Fog Distance
-		Color                                     colors[Utility::ToUnderlying(Type::kTotal)][Utility::ToUnderlying(Time::kTotal)];       // 698
-		BSSimpleList<Sound*>                      sounds;                                                                                 // 7A8
-		BSTArray<TESObjectSTAT*>                  skyStatics;                                                                             // 7B8, Effects
-		std::uint32_t                             cloudLayerCount;                                                                        // 7D0
-		std::uint32_t                             padding7D4;                                                                             // 7D4
-		TESImageSpace*                            imageSpaces[Utility::ToUnderlying(Time::kTotal)];                                       // 7D8, General
-		DirectionalAmbientLighting                directionalAmbient[Utility::ToUnderlying(Time::kTotal)];                                // 7F8, General
-		TESModel                                  aurora;                                                                                 // 878, Effects
-		BGSLensFlare*                             sunGlareLensFlare;                                                                      // 8A0, General
-		BGSVolumetricLighting*                    volumetricLighting[Utility::ToUnderlying(Time::kTotal)];                                // 8A8, General
-		BGSShaderParticleGeometryData*            precipitation;                                                                          // 8C8, Precipitation, Precipitation
-		BGSReferenceEffect*                       visualEffect;                                                                           // 8D0, Visual Effect
+		TESTexture1024                            cloudTextures[Utility::Conversion::ToUnderlying(Layer::kTotal)];                                                // 20, General, Cloud Textures
+		std::int8_t                               cloudSpeedY[Utility::Conversion::ToUnderlying(Layer::kTotal)];                                                  // 220, General, Cloud Textures
+		std::int8_t                               cloudSpeedX[Utility::Conversion::ToUnderlying(Layer::kTotal)];                                                  // 240, General, Cloud Textures
+		Color                                     cloudColors[Utility::Conversion::ToUnderlying(Layer::kTotal)][Utility::Conversion::ToUnderlying(Time::kTotal)]; // 260
+		float                                     cloudAlpha[Utility::Conversion::ToUnderlying(Layer::kTotal)][Utility::Conversion::ToUnderlying(Time::kTotal)];  // 460, General, Cloud Textures
+		std::uint32_t                             disabledCloudLayers;                                                                                            // 660, General, Cloud Textures (bitfield)
+		std::uint8_t                              windSpeed;                                                                                                      // 664, General
+		std::uint8_t                              unknown665;                                                                                                     // 665
+		std::uint8_t                              unknown666;                                                                                                     // 666
+		std::uint8_t                              transitionDelta;                                                                                                // 667, General
+		std::uint8_t                              sunGlare;                                                                                                       // 668, General
+		std::uint8_t                              sunDamage;                                                                                                      // 669, General
+		std::uint8_t                              precipitationBeginFadeIn;                                                                                       // 66A, Precipitation, Precipitation
+		std::uint8_t                              precipitationEndFadeOut;                                                                                        // 66B, Precipitation, Precipitation
+		std::uint8_t                              thunderLightningBeginFadeIn;                                                                                    // 66C, Precipitation, Thunder/Lightning
+		std::uint8_t                              thunderLightningEndFadeOut;                                                                                     // 66D, Precipitation, Thunder/Lightning
+		std::uint8_t                              thunderLightningFrequency;                                                                                      // 66E, Precipitation, Thunder/Lightning
+		Utility::Enumeration<Flags, std::uint8_t> weatherFlags;                                                                                                   // 66F
+		Color3                                    lightningColor;                                                                                                 // 670, Precipitation, Lightning Color
+		std::uint8_t                              visualEffectBegin;                                                                                              // 673, Effects, Visual Effect
+		std::uint8_t                              visualEffectEnd;                                                                                                // 674, Effects, Visual Effect
+		std::uint8_t                              windDirection;                                                                                                  // 675, General
+		std::uint8_t                              windDirectionRange;                                                                                             // 676, General
+		std::uint8_t                              unknown677;                                                                                                     // 677
+		FogDistance                               fogDistance;                                                                                                    // 678, General, Fog Distance
+		Color                                     colors[Utility::Conversion::ToUnderlying(Type::kTotal)][Utility::Conversion::ToUnderlying(Time::kTotal)];       // 698
+		BSSimpleList<Sound*>                      sounds;                                                                                                         // 7A8
+		BSTArray<TESObjectSTAT*>                  skyStatics;                                                                                                     // 7B8, Effects
+		std::uint32_t                             cloudLayerCount;                                                                                                // 7D0
+		std::uint32_t                             padding7D4;                                                                                                     // 7D4
+		TESImageSpace*                            imageSpaces[Utility::Conversion::ToUnderlying(Time::kTotal)];                                                   // 7D8, General
+		DirectionalAmbientLighting                directionalAmbient[Utility::Conversion::ToUnderlying(Time::kTotal)];                                            // 7F8, General
+		TESModel                                  aurora;                                                                                                         // 878, Effects
+		BGSLensFlare*                             sunGlareLensFlare;                                                                                              // 8A0, General
+		BGSVolumetricLighting*                    volumetricLighting[Utility::Conversion::ToUnderlying(Time::kTotal)];                                            // 8A8, General
+		BGSShaderParticleGeometryData*            precipitation;                                                                                                  // 8C8, Precipitation, Precipitation
+		BGSReferenceEffect*                       visualEffect;                                                                                                   // 8D0, Visual Effect
 	};
 	static_assert(offsetof(TESWeather, cloudTextures) == 0x20);
 	static_assert(offsetof(TESWeather, cloudSpeedY) == 0x220);

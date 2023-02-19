@@ -22,14 +22,14 @@ namespace Skyrim
 	public:
 		static BSPointerHandle<T> GetHandle(T* pointer)
 		{
-			auto* function{ reinterpret_cast<decltype(&BSPointerHandleManagerInterface::GetHandle)>(Addresses::BSPointerHandleManagerInterface::GetHandle) };
+			auto* function{ reinterpret_cast<decltype(BSPointerHandleManagerInterface::GetHandle)*>(Addresses::BSPointerHandleManagerInterface::GetHandle) };
 
 			return function(pointer);
 		}
 
 		static bool GetSmartPointer(const BSPointerHandle<T>& handle, NiPointer<T>& smartPointer)
 		{
-			auto* function{ reinterpret_cast<decltype(&BSPointerHandleManagerInterface::GetSmartPointer)>(Addresses::BSPointerHandleManagerInterface::GetSmartPointer) };
+			auto* function{ reinterpret_cast<decltype(BSPointerHandleManagerInterface::GetSmartPointer)*>(Addresses::BSPointerHandleManagerInterface::GetSmartPointer) };
 
 			return function(handle, smartPointer);
 		}

@@ -3,7 +3,6 @@
 #include "Events.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -59,7 +58,7 @@ namespace ActorBasePerkFix
 		perk->ApplyPerk(perkOwner, removeRank, applyRank);
 	}
 
-	decltype(&Events::ApplyBasePerksActor)           Events::applyBasePerksActor_{ nullptr };
-	decltype(&Events::ApplyBasePerksCharacter)       Events::applyBasePerksCharacter_{ nullptr };
-	decltype(&Events::ApplyBasePerksPlayerCharacter) Events::applyBasePerksPlayerCharacter_{ nullptr };
+	decltype(Events::ApplyBasePerksActor)*           Events::applyBasePerksActor_{ nullptr };
+	decltype(Events::ApplyBasePerksCharacter)*       Events::applyBasePerksCharacter_{ nullptr };
+	decltype(Events::ApplyBasePerksPlayerCharacter)* Events::applyBasePerksPlayerCharacter_{ nullptr };
 }

@@ -2,14 +2,6 @@
 
 #include "Events.h"
 
-#include "Shared/SKSE/Interfaces.h"
-#include "Shared/Skyrim/B/BSInputDeviceManager.h"
-#include "Shared/Skyrim/B/ButtonEvent.h"
-#include "Shared/Skyrim/C/Console.h"
-#include "Shared/Skyrim/Events.h"
-#include "Shared/Skyrim/I/InterfaceStrings.h"
-#include "Shared/Skyrim/S/ScriptEventSourceHolder.h"
-#include "Shared/Skyrim/U/UI.h"
 #include "Shared/Utility/Log.h"
 
 
@@ -23,7 +15,7 @@ namespace ConsoleCommandCompanion
 
 	void Events::InitializeEventSink::ProcessEvent()
 	{
-		// Create the Console menu to allow batch files to be run
+		/* Create the Console menu to allow batch files to be run */
 		if (!Skyrim::UI::GetSingleton()->IsMenuOpen(Skyrim::InterfaceStrings::GetSingleton()->console))
 		{
 			Skyrim::Console::ExecuteCommand(std::vformat("ShowMenu {}", std::make_format_args(Skyrim::InterfaceStrings::GetSingleton()->console.data())));
@@ -36,11 +28,11 @@ namespace ConsoleCommandCompanion
 		ButtonEventSink::GetSingleton().RegisterSink();
 	}
 
-	Skyrim::BSEventNotifyControl Events::LoadGameEventSink::ProcessEvent(const Skyrim::TESLoadGameEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::TESLoadGameEvent>* eventSource)
+	Skyrim::EventNotifyControl Events::LoadGameEventSink::ProcessEvent(const Skyrim::TESLoadGameEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::TESLoadGameEvent>* eventSource)
 	{
 		Events::ExecuteConsoleCommands(Settings::GetSingleton().events.loadGame.consoleCommands);
 
-		return Skyrim::BSEventNotifyControl::kContinue;
+		return Skyrim::EventNotifyControl::kContinue;
 	}
 
 	Events::LoadGameEventSink& Events::LoadGameEventSink::GetSingleton()
@@ -55,11 +47,11 @@ namespace ConsoleCommandCompanion
 		Skyrim::ScriptEventSourceHolder::GetSingleton()->GetEventSource<Skyrim::TESLoadGameEvent>()->RegisterSink(this);
 	}
 
-	Skyrim::BSEventNotifyControl Events::ButtonEventSink::ProcessEvent(Skyrim::InputEvent* const* eventArguments, Skyrim::BSTEventSource<Skyrim::InputEvent*>* eventSource)
+	Skyrim::EventNotifyControl Events::ButtonEventSink::ProcessEvent(Skyrim::InputEvent* const* eventArguments, Skyrim::BSTEventSource<Skyrim::InputEvent*>* eventSource)
 	{
 		if (!eventArguments)
 		{
-			return Skyrim::BSEventNotifyControl::kContinue;
+			return Skyrim::EventNotifyControl::kContinue;
 		}
 
 		const auto& settings = Settings::GetSingleton();
@@ -123,7 +115,7 @@ namespace ConsoleCommandCompanion
 			}
 		}
 
-		return Skyrim::BSEventNotifyControl::kContinue;
+		return Skyrim::EventNotifyControl::kContinue;
 	}
 
 	Events::ButtonEventSink& Events::ButtonEventSink::GetSingleton()
@@ -293,7 +285,7 @@ namespace ConsoleCommandCompanion
 	{
 		for (const auto& consoleCommand : consoleCommands)
 		{
-			SKSE::Cache::GetSingleton().GetTaskInterface()->AddTask(
+			SKSE::Storage::GetSingleton().GetTaskInterface()->AddTask(
 				[consoleCommand]()
 				{
 					Skyrim::Console::ExecuteCommand(consoleCommand);

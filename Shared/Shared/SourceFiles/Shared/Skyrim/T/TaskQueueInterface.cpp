@@ -15,7 +15,7 @@ namespace Skyrim
 
 	bool TaskQueueInterface::ShouldQueueTask()
 	{
-		auto* function{ reinterpret_cast<decltype(&TaskQueueInterface::ShouldQueueTask)>(Addresses::TaskQueueInterface::ShouldQueueTask) };
+		auto* function{ reinterpret_cast<decltype(TaskQueueInterface::ShouldQueueTask)*>(Addresses::TaskQueueInterface::ShouldQueueTask) };
 
 		return function();
 	}

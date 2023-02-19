@@ -2,9 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/E/ExtraLevCreaModifier.h"
-#include "Shared/Skyrim/T/TESLeveledList.h"
-
 
 
 namespace ScrambledBugs::Patches

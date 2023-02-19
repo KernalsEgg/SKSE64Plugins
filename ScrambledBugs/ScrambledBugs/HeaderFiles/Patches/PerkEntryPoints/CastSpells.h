@@ -2,9 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/S/SpellItem.h"
-
 
 
 namespace ScrambledBugs::Patches::PerkEntryPoints

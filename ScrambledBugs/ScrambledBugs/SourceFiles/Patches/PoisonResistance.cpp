@@ -2,12 +2,6 @@
 
 #include "Patches/PoisonResistance.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/A/AlchemyItem.h"
-#include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/E/EffectSetting.h"
-#include "Shared/Skyrim/G/GameSettingCollection.h"
-#include "Shared/Skyrim/P/PlayerCharacter.h"
 #include "Shared/Utility/Memory.h"
 
 

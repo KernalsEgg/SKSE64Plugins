@@ -2,14 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/AccumulatingValueModifierEffect.h"
-#include "Shared/Skyrim/A/ActiveEffect.h"
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/E/EffectItem.h"
-#include "Shared/Skyrim/F/FindMaxMagnitudeVisitor.h"
-#include "Shared/Skyrim/M/MagicItem.h"
-#include "Shared/Skyrim/M/MagicTarget.h"
-
 
 
 namespace ScrambledBugs::Patches
@@ -20,11 +12,11 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& accumulatingMagnitude);
 
 	private:
-		static Skyrim::AccumulatingValueModifierEffect*                    Allocate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect);
-		static float                                                       FindMaximumWardPower(Skyrim::MagicTarget* magicTarget, Skyrim::ActiveEffect* finishedActiveEffect);
-		static void                                                        UpdateActorValue(Skyrim::AccumulatingValueModifierEffect* accumulatingValueModifierEffect, float frameTime);
-		static Skyrim::MagicTarget::ForEachActiveEffectVisitor::ReturnType Visit(Skyrim::FindMaxMagnitudeVisitor* findMaximumMagnitudeVisitor, Skyrim::ActiveEffect* activeEffect);
+		static Skyrim::AccumulatingValueModifierEffect* Allocate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect);
+		static float                                    FindMaximumWardPower(Skyrim::MagicTarget* magicTarget, Skyrim::ActiveEffect* finishedActiveEffect);
+		static void                                     UpdateActorValue(Skyrim::AccumulatingValueModifierEffect* accumulatingValueModifierEffect, float frameTime);
+		static Skyrim::ForEachResult                    Visit(Skyrim::FindMaxMagnitudeVisitor* findMaximumMagnitudeVisitor, Skyrim::ActiveEffect* activeEffect);
 
-		static decltype(&AccumulatingMagnitude::Allocate) allocate_;
+		static decltype(AccumulatingMagnitude::Allocate)* allocate_;
 	};
 }

@@ -3,9 +3,6 @@
 #include "Fixes/PowerCooldowns.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/B/BSSimpleList.h"
-#include "Shared/Skyrim/C/CastPowerItem.h"
-#include "Shared/Skyrim/S/SpellItem.h"
 #include "Shared/Utility/Memory.h"
 
 

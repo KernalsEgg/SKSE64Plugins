@@ -18,7 +18,7 @@ namespace Skyrim
 			void**                                                      entryPointFunctionTypeArguments,
 			BGSEntryPointFunctionData*                                  entryPointFunctionData)
 		{
-			auto* function{ reinterpret_cast<decltype(&BGSEntryPointFunction::ExecuteFunction)>(Addresses::BGSEntryPointFunction::ExecuteFunction) };
+			auto* function{ reinterpret_cast<decltype(BGSEntryPointFunction::ExecuteFunction)*>(Addresses::BGSEntryPointFunction::ExecuteFunction) };
 
 			function(entryPointFunction, perkOwner, entryPointFunctionType, entryPointFunctionTypeArgumentCount, entryPointFunctionTypeArguments, entryPointFunctionData);
 		}

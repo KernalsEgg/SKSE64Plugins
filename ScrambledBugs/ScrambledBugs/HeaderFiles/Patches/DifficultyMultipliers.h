@@ -2,8 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-
 
 
 namespace ScrambledBugs::Patches

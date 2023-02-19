@@ -6,7 +6,7 @@
 #include "Shared/Skyrim/I/ID.h"
 #include "Shared/Skyrim/T/TESBoundObject.h"
 #include "Shared/Skyrim/T/TESTexture.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -44,12 +44,12 @@ namespace Skyrim
 		virtual void        SetTexturePath(Utility::Enumeration<TextureMap, std::uint32_t> textureMap, const char* texturePath) override;    // 27
 
 		// Member variables
-		TESTexture                                 textures[Utility::ToUnderlying(TextureMap::kTotal)];   // 40
-		DecalData*                                 decalData;                                             // C0
-		Utility::Enumeration<Flags, std::uint16_t> textureSetFlags;                                       // C8
-		std::uint16_t                              paddingCA;                                             // CA
-		BSResource::ID                             textureIDs[Utility::ToUnderlying(TextureMap::kTotal)]; // CC
-		std::uint32_t                              padding12C;                                            // 12C
+		TESTexture                                 textures[Utility::Conversion::ToUnderlying(TextureMap::kTotal)];   // 40
+		DecalData*                                 decalData;                                                         // C0
+		Utility::Enumeration<Flags, std::uint16_t> textureSetFlags;                                                   // C8
+		std::uint16_t                              paddingCA;                                                         // CA
+		BSResource::ID                             textureIDs[Utility::Conversion::ToUnderlying(TextureMap::kTotal)]; // CC
+		std::uint32_t                              padding12C;                                                        // 12C
 	};
 	static_assert(offsetof(BGSTextureSet, textures) == 0x40);
 	static_assert(offsetof(BGSTextureSet, decalData) == 0xC0);

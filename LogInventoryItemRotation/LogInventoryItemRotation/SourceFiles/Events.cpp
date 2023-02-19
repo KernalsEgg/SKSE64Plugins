@@ -3,11 +3,6 @@
 #include "Events.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/I/Inventory3DManager.h"
-#include "Shared/Skyrim/N/NiAVObject.h"
-#include "Shared/Skyrim/N/NiPoint3.h"
-#include "Shared/Skyrim/T/TESForm.h"
-#include "Shared/Skyrim/U/UI.h"
 #include "Shared/Utility/Log.h"
 #include "Shared/Utility/Memory.h"
 

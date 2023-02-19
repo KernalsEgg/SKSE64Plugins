@@ -6,6 +6,16 @@
 
 namespace Relocation
 {
+	FileMapping::View::~View()
+	{
+		this->Unmap();
+	}
+
+	std::uintptr_t FileMapping::View::GetAddress() const
+	{
+		return this->address_;
+	}
+
 	bool FileMapping::View::Map(void* fileMapping, std::size_t size)
 	{
 		this->address_ = reinterpret_cast<std::uintptr_t>(::MapViewOfFile(fileMapping, FILE_MAP_READ | FILE_MAP_WRITE, 0, 0, size));
@@ -16,6 +26,11 @@ namespace Relocation
 	void FileMapping::View::Unmap()
 	{
 		::UnmapViewOfFile(reinterpret_cast<::LPCVOID>(this->address_));
+	}
+
+	FileMapping::~FileMapping()
+	{
+		this->Close();
 	}
 
 	void FileMapping::Close()
@@ -30,6 +45,11 @@ namespace Relocation
 
 		this->handle_ = ::CreateFileMappingA(INVALID_HANDLE_VALUE, nullptr, PAGE_READWRITE, sizeLargeInteger.HighPart, sizeLargeInteger.LowPart, name.data());
 
+		return this->handle_;
+	}
+
+	void* FileMapping::GetHandle() const
+	{
 		return this->handle_;
 	}
 

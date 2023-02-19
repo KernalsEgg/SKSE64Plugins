@@ -3,9 +3,6 @@
 #include "Fixes/QuickShot.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/B/BSFixedString.h"
-#include "Shared/Skyrim/G/GameSettingCollection.h"
-#include "Shared/Skyrim/P/PlayerCharacter.h"
 #include "Shared/Utility/Memory.h"
 
 

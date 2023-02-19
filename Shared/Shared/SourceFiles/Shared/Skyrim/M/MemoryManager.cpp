@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	MemoryManager* MemoryManager::GetSingleton()
 	{
-		auto* function{ reinterpret_cast<decltype(&MemoryManager::GetSingleton)>(Addresses::MemoryManager::GetSingleton) };
+		auto* function{ reinterpret_cast<decltype(MemoryManager::GetSingleton)*>(Addresses::MemoryManager::GetSingleton) };
 
 		return function();
 	}

@@ -74,7 +74,7 @@ namespace Skyrim
 		virtual void Unknown17(ActiveEffect*);       // 17
 		virtual void Unknown18(ActiveEffect*);       // 18
 
-		// Non-member function
+		// Non-member functions
 		static float GetCurrentMagnitude(float magnitude, float remainingTime, float taperDuration, float taperWeight, float taperCurve);
 
 		// Member functions

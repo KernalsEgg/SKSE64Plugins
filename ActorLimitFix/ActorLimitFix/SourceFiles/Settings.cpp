@@ -74,20 +74,20 @@ namespace ActorLimitFix
 		return *this;
 	}
 
-	void Settings::Initialize()
+	void Settings::Load()
 	{
-		Utility::Log::Information()("Initializing...\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Loading...\n{}", this->Serialize().dump(1, '\t'));
 
 		if (this->fixes.replaceStaticArray)
 		{
 			ActorLimitFix::Fixes::ReplaceStaticArray::Fix(this->fixes.replaceStaticArray);
 		}
 
-		// Must be installed after ActorLimitFix::Fixes::ReplaceStaticArray
+		/* Must be installed after ActorLimitFix::Fixes::ReplaceStaticArray */
 		ActorLimitFix::Fixes::MorphLimit::Fix(this->fixes.morphLimit, this->fixes.replaceStaticArray);
 		ActorLimitFix::Fixes::MoverLimit::Fix(this->fixes.moverLimit);
 
-		Utility::Log::Information()("Initialized.\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Loaded.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const

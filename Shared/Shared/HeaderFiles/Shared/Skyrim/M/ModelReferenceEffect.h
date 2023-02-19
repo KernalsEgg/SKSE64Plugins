@@ -55,7 +55,7 @@ namespace Skyrim
 		virtual void UnknownD(IAnimationGraphManagerHolder*) override; // D
 
 		// Override (BSTEventSink<BSAnimationGraphEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* eventArguments, BSTEventSource<BSAnimationGraphEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const BSAnimationGraphEvent* eventArguments, BSTEventSource<BSAnimationGraphEvent>* eventSource) override; // 1
 
 		// Member variables
 		RefAttachTechniqueInput                    attachTechniqueInput;      // 68

@@ -235,16 +235,16 @@ namespace Skyrim
 		virtual void Unknown15(ActorState*) override;    // 15
 
 		// Override (BSTEventSink<MenuOpenCloseEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* eventArguments, BSTEventSource<MenuOpenCloseEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const MenuOpenCloseEvent* eventArguments, BSTEventSource<MenuOpenCloseEvent>* eventSource) override; // 1
 
 		// Override (BSTEventSink<MenuModeChangeEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const MenuModeChangeEvent* eventArguments, BSTEventSource<MenuModeChangeEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const MenuModeChangeEvent* eventArguments, BSTEventSource<MenuModeChangeEvent>* eventSource) override; // 1
 
 		// Override (BSTEventSink<UserEventEnabledEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const UserEventEnabledEvent* eventArguments, BSTEventSource<UserEventEnabledEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const UserEventEnabledEvent* eventArguments, BSTEventSource<UserEventEnabledEvent>* eventSource) override; // 1
 
 		// Override (BSTEventSink<TESTrackedStatisticsEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const TESTrackedStatisticsEvent* eventArguments, BSTEventSource<TESTrackedStatisticsEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const TESTrackedStatisticsEvent* eventArguments, BSTEventSource<TESTrackedStatisticsEvent>* eventSource) override; // 1
 
 		// Add
 		virtual void Unknown12A(PlayerCharacter*); // 12A

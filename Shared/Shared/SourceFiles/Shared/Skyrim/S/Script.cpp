@@ -8,7 +8,7 @@ namespace Skyrim
 {
 	void Script::ClearCachedValues()
 	{
-		auto* function{ reinterpret_cast<decltype(&Script::ClearCachedValues)>(Addresses::Script::ClearCachedValues) };
+		auto* function{ reinterpret_cast<decltype(Script::ClearCachedValues)*>(Addresses::Script::ClearCachedValues) };
 
 		function();
 	}

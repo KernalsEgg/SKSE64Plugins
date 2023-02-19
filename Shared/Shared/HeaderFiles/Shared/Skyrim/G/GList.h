@@ -28,8 +28,7 @@ namespace Skyrim
 	static_assert(offsetof(GListNode<void*>, next) == 0x8);
 	static_assert(sizeof(GListNode<void*>) == 0x10);
 
-	// Doubly-linked intrusive list
-	// Classes must derive from GListNode
+	// Doubly-linked intrusive list, class must derive from GListNode
 	template <class T>
 	class GList
 	{

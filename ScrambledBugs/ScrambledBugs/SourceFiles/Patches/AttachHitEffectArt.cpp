@@ -4,12 +4,8 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Skyrim/N/NiAVObject.h"
-#include "Shared/Skyrim/N/NiNode.h"
-#include "Shared/Skyrim/R/ReferenceEffectController.h"
 #include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
-#include "Shared/Utility/Trampoline.h"
 
 
 
@@ -39,8 +35,8 @@ namespace ScrambledBugs::Patches
 			Utility::Assembly::NO_OPERATION_2       // nop
 		);
 
-		AttachHitEffectArt::getTargetActor_ = reinterpret_cast<decltype(AttachHitEffectArt::getTargetActor_)>(
-			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Patches::AttachHitEffectArt::GetTargetActor, reinterpret_cast<std::uintptr_t>(std::addressof(AttachHitEffectArt::GetTargetActor))));
+		AttachHitEffectArt::getTargetActor_ = reinterpret_cast<decltype(AttachHitEffectArt::getTargetActor_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::AttachHitEffectArt::GetTargetActor));
+		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5(Addresses::Patches::AttachHitEffectArt::GetTargetActor, reinterpret_cast<std::uintptr_t>(std::addressof(AttachHitEffectArt::GetTargetActor)));
 	}
 
 	Skyrim::Actor* AttachHitEffectArt::GetTargetActor(Skyrim::ModelReferenceEffect* modelReferenceEffect)
@@ -77,5 +73,5 @@ namespace ScrambledBugs::Patches
 		return attachRoot != modelReferenceEffect->attachTechniqueInput.attachRoot.get() ? targetActor : nullptr;
 	}
 
-	decltype(&AttachHitEffectArt::GetTargetActor) AttachHitEffectArt::getTargetActor_{ nullptr };
+	decltype(AttachHitEffectArt::GetTargetActor)* AttachHitEffectArt::getTargetActor_{ nullptr };
 }

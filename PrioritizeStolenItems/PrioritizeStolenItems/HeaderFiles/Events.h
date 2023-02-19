@@ -2,13 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/B/BSPointerHandle.h"
-#include "Shared/Skyrim/E/ExtraDataList.h"
-#include "Shared/Skyrim/I/InventoryEntryData.h"
-#include "Shared/Skyrim/N/NiPoint3.h"
-#include "Shared/Skyrim/T/TESBoundObject.h"
-#include "Shared/Skyrim/T/TESObjectREFR.h"
 #include "Shared/Utility/Enumeration.h"
 
 

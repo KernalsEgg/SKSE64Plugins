@@ -31,7 +31,7 @@ namespace Skyrim
 
 	std::uint32_t GFxResource::MakeTypeCode(Utility::Enumeration<ResourceType, std::uint32_t> resourceType, Utility::Enumeration<ResourceUse, std::uint32_t> resourceUse)
 	{
-		return (resourceType.underlying() << Utility::ToUnderlying(ResourceType::kTypeCodeShift)) | resourceUse.underlying();
+		return (resourceType.underlying() << Utility::Conversion::ToUnderlying(ResourceType::kTypeCodeShift)) | resourceUse.underlying();
 	}
 
 	// Based on GTexture
@@ -96,11 +96,11 @@ namespace Skyrim
 
 	GFxResource::ResourceType GFxResource::GetResourceType() const
 	{
-		return static_cast<ResourceType>((this->GetResourceTypeCode() & Utility::ToUnderlying(ResourceType::kTypeCodeMask)) >> Utility::ToUnderlying(ResourceType::kTypeCodeShift));
+		return static_cast<ResourceType>((this->GetResourceTypeCode() & Utility::Conversion::ToUnderlying(ResourceType::kTypeCodeMask)) >> Utility::Conversion::ToUnderlying(ResourceType::kTypeCodeShift));
 	}
 
 	GFxResource::ResourceUse GFxResource::GetResourceUse() const
 	{
-		return static_cast<ResourceUse>(this->GetResourceTypeCode() & Utility::ToUnderlying(ResourceUse::kTypeCodeMask));
+		return static_cast<ResourceUse>(this->GetResourceTypeCode() & Utility::Conversion::ToUnderlying(ResourceUse::kTypeCodeMask));
 	}
 }

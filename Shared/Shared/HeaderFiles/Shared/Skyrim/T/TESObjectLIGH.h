@@ -13,6 +13,7 @@
 #include "Shared/Skyrim/T/TESModelTextureSwap.h"
 #include "Shared/Skyrim/T/TESValueForm.h"
 #include "Shared/Skyrim/T/TESWeightForm.h"
+#include "Shared/Utility/Enumeration.h"
 
 
 

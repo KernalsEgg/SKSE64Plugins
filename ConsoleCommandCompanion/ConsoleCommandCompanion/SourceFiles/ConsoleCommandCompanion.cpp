@@ -3,14 +3,14 @@
 #include "Events.h"
 #include "Patches.h"
 #include "Settings.h"
-#include "Shared/SKSE/Interfaces.h"
+#include "Shared/Relocation/Version.h"
 #include "Shared/Utility/Log.h"
 
 
 
 namespace ConsoleCommandCompanion
 {
-	bool Initialize()
+	bool Load()
 	{
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 #else
@@ -71,7 +71,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
-	SKSE::Cache::GetSingleton().Initialize(loadInterface);
+	SKSE::Storage::GetSingleton().Initialize(loadInterface);
 
-	return ConsoleCommandCompanion::Initialize();
+	return ConsoleCommandCompanion::Load();
 }

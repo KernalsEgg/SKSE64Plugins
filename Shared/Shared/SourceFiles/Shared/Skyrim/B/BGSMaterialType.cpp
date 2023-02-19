@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	BGSMaterialType* BGSMaterialType::GetMaterialTypeFromMaterialID(std::uint32_t materialID)
 	{
-		auto* function{ reinterpret_cast<decltype(&BGSMaterialType::GetMaterialTypeFromMaterialID)>(Addresses::BGSMaterialType::GetMaterialTypeFromMaterialID) };
+		auto* function{ reinterpret_cast<decltype(BGSMaterialType::GetMaterialTypeFromMaterialID)*>(Addresses::BGSMaterialType::GetMaterialTypeFromMaterialID) };
 
 		return function(materialID);
 	}

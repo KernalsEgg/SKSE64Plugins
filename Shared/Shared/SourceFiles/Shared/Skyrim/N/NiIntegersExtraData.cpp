@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	NiIntegersExtraData* NiIntegersExtraData::CreateObject()
 	{
-		auto* function{ reinterpret_cast<decltype(&NiIntegersExtraData::CreateObject)>(Addresses::NiIntegersExtraData::CreateObject) };
+		auto* function{ reinterpret_cast<decltype(NiIntegersExtraData::CreateObject)*>(Addresses::NiIntegersExtraData::CreateObject) };
 
 		return function();
 	}

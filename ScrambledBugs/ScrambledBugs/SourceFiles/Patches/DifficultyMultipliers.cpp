@@ -3,11 +3,6 @@
 #include "Patches/DifficultyMultipliers.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/A/AIProcess.h"
-#include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/C/CombatController.h"
-#include "Shared/Skyrim/P/PlayerCharacter.h"
-#include "Shared/Skyrim/T/TaskQueueInterface.h"
 #include "Shared/Utility/Memory.h"
 
 

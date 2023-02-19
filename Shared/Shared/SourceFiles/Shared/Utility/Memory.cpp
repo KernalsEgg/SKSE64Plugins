@@ -55,6 +55,6 @@ namespace Utility::Memory
 
 	void SafeWriteVirtualFunction(std::uintptr_t address, std::size_t index, std::uintptr_t function)
 	{
-		Memory::SafeWrite(address + (sizeof(std::uintptr_t) * index), function);
+		Memory::SafeWrite(reinterpret_cast<std::uintptr_t>(std::addressof(reinterpret_cast<std::uintptr_t*>(address)[index])), function);
 	}
 }

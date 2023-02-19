@@ -29,7 +29,7 @@ namespace Skyrim
 			constexpr iterator& operator=(const iterator&) noexcept = default;
 			constexpr iterator& operator=(iterator&&) noexcept      = default;
 
-			constexpr iterator(T* current) noexcept :
+			constexpr iterator(pointer current) noexcept :
 				current_(current)
 			{
 			}

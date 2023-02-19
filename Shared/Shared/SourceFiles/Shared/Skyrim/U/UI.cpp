@@ -15,14 +15,14 @@ namespace Skyrim
 
 	void UI::PlaySound(const char* editorID)
 	{
-		auto* function{ reinterpret_cast<decltype(&UI::PlaySound)>(Addresses::UI::PlaySound) };
+		auto* function{ reinterpret_cast<decltype(UI::PlaySound)*>(Addresses::UI::PlaySound) };
 
 		function(editorID);
 	}
 
 	void UI::ShowNotification(const char* message, const char* sound, bool queueOnce)
 	{
-		auto* function{ reinterpret_cast<decltype(&UI::ShowNotification)>(Addresses::UI::ShowNotification) };
+		auto* function{ reinterpret_cast<decltype(UI::ShowNotification)*>(Addresses::UI::ShowNotification) };
 
 		function(message, sound, queueOnce);
 	}

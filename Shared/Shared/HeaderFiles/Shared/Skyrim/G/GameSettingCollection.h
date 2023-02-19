@@ -35,6 +35,12 @@ namespace Skyrim
 		static SettingT<GameSettingCollection>* ArrowBowMinimumTime();
 		static SettingT<GameSettingCollection>* ArrowMinimumPower();
 		static SettingT<GameSettingCollection>* BowDrawTime();
+		static SettingT<GameSettingCollection>* EffectsListDisplayHour();
+		static SettingT<GameSettingCollection>* EffectsListDisplayHours();
+		static SettingT<GameSettingCollection>* EffectsListDisplayMinute();
+		static SettingT<GameSettingCollection>* EffectsListDisplayMinutes();
+		static SettingT<GameSettingCollection>* EffectsListDisplaySecond();
+		static SettingT<GameSettingCollection>* EffectsListDisplaySeconds();
 		static SettingT<GameSettingCollection>* No();
 		static SettingT<GameSettingCollection>* Okay();
 		static SettingT<GameSettingCollection>* PlayerMaximumResistance();
@@ -43,6 +49,7 @@ namespace Skyrim
 		static SettingT<GameSettingCollection>* StaminaAttackWeaponMultiplier();
 		static SettingT<GameSettingCollection>* StaminaBashBase();
 		static SettingT<GameSettingCollection>* StaminaPowerBashBase();
+		static SettingT<GameSettingCollection>* VATSPlayerMagicTimeSlowdownMultiplier();
 		static SettingT<GameSettingCollection>* Yes();
 	};
 	static_assert(sizeof(GameSettingCollection) == 0x140);

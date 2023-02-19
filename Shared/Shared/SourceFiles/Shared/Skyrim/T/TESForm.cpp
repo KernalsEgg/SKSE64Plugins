@@ -10,6 +10,13 @@
 
 namespace Skyrim
 {
+	TESForm* TESForm::GetFormFromEditorID(const char* editorID)
+	{
+		auto* function{ reinterpret_cast<decltype(TESForm::GetFormFromEditorID)*>(Addresses::TESForm::GetFormFromEditorID) };
+
+		return function(editorID);
+	}
+
 	EnchantmentItem* TESForm::GetEnchantment(ExtraDataList* extraDataList)
 	{
 		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESForm::GetEnchantment)>::type>(Addresses::TESForm::GetEnchantment) };

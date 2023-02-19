@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	float PlayerCharacter::GetDifficultyMultiplier(Utility::Enumeration<Difficulty, std::uint32_t> difficulty, Utility::Enumeration<ActorValue, std::uint32_t> actorValue, bool isPlayer)
 	{
-		auto* function{ reinterpret_cast<decltype(&PlayerCharacter::GetDifficultyMultiplier)>(Addresses::PlayerCharacter::GetDifficultyMultiplier) };
+		auto* function{ reinterpret_cast<decltype(PlayerCharacter::GetDifficultyMultiplier)*>(Addresses::PlayerCharacter::GetDifficultyMultiplier) };
 
 		return function(difficulty, actorValue, isPlayer);
 	}
@@ -45,11 +45,11 @@ namespace Skyrim
 	{
 		if (leftHand)
 		{
-			this->flagsBE3.reset(Skyrim::PlayerCharacter::FlagsBE3::kShownInsufficientWeaponChargeMessageLeftHand);
+			this->flagsBE3.reset(PlayerCharacter::FlagsBE3::kShownInsufficientWeaponChargeMessageLeftHand);
 		}
 		else
 		{
-			this->flagsBE3.reset(Skyrim::PlayerCharacter::FlagsBE3::kShownInsufficientWeaponChargeMessageRightHand);
+			this->flagsBE3.reset(PlayerCharacter::FlagsBE3::kShownInsufficientWeaponChargeMessageRightHand);
 		}
 	}
 }

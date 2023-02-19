@@ -2,11 +2,6 @@
 
 #include "DecalManager.h"
 
-#include "Shared/Skyrim/I/INIPrefSettingCollection.h"
-#include "Shared/Skyrim/I/INISettingCollection.h"
-#include "Shared/Skyrim/N/NiAVObject.h"
-#include "Shared/Skyrim/N/NiNode.h"
-
 
 
 namespace Trails

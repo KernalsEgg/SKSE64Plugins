@@ -7,7 +7,7 @@
 #include "Shared/Skyrim/G/GArrayDataDH.h"
 #include "Shared/Skyrim/G/GArrayDefaultPolicy.h"
 #include "Shared/Skyrim/G/GStatistics.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -15,7 +15,7 @@ namespace Skyrim
 {
 	class GMemoryHeap;
 
-	template <class T, std::uint32_t STATISTIC_ID = Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory), class SizePolicy = GArrayDefaultPolicy>
+	template <class T, std::uint32_t STATISTIC_ID = Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory), class SizePolicy = GArrayDefaultPolicy>
 	class GArrayDHPOD :
 		public GArrayBase<GArrayDataDH<T, GAllocatorDHPOD<T, STATISTIC_ID>, SizePolicy>> // 0
 	{

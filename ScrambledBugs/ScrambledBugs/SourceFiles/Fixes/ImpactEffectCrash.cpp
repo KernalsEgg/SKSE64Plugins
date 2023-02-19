@@ -4,7 +4,7 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Utility/Trampoline.h"
+#include "Shared/Utility/Memory.h"
 
 
 
@@ -20,11 +20,13 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		ImpactEffectCrash::decalApplier_ = reinterpret_cast<decltype(ImpactEffectCrash::decalApplier_)>(
-			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::ImpactEffectCrash::DecalApplier, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::DecalApplier))));
+		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
 
-		ImpactEffectCrash::updateDecals_ = reinterpret_cast<decltype(ImpactEffectCrash::updateDecals_)>(
-			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::ImpactEffectCrash::UpdateDecals, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::UpdateDecals))));
+		ImpactEffectCrash::decalApplier_ = reinterpret_cast<decltype(ImpactEffectCrash::decalApplier_)>(Utility::Memory::ReadRelativeCall5(Addresses::Fixes::ImpactEffectCrash::DecalApplier));
+		trampolineInterface->RelativeCall5(Addresses::Fixes::ImpactEffectCrash::DecalApplier, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::DecalApplier)));
+
+		ImpactEffectCrash::updateDecals_ = reinterpret_cast<decltype(ImpactEffectCrash::updateDecals_)>(Utility::Memory::ReadRelativeCall5(Addresses::Fixes::ImpactEffectCrash::UpdateDecals));
+		trampolineInterface->RelativeCall5(Addresses::Fixes::ImpactEffectCrash::UpdateDecals, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::UpdateDecals)));
 	}
 
 	bool ImpactEffectCrash::DecalApplier(Skyrim::BSTempEffectSimpleDecal* temporaryEffectSimpleDecal)
@@ -55,6 +57,6 @@ namespace ScrambledBugs::Fixes
 		}
 	}
 
-	decltype(&ImpactEffectCrash::DecalApplier) ImpactEffectCrash::decalApplier_{ nullptr };
-	decltype(&ImpactEffectCrash::UpdateDecals) ImpactEffectCrash::updateDecals_{ nullptr };
+	decltype(ImpactEffectCrash::DecalApplier)* ImpactEffectCrash::decalApplier_{ nullptr };
+	decltype(ImpactEffectCrash::UpdateDecals)* ImpactEffectCrash::updateDecals_{ nullptr };
 }

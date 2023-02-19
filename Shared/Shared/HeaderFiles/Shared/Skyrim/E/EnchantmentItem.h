@@ -18,9 +18,9 @@ namespace Skyrim
 	public:
 		enum class Flags : std::uint32_t
 		{
-			kNone                       = 0,
-			kDontAutomaticallyCalculate = 1U << 0,
-			kExtendDurationOnRecast     = 1U << 2
+			kNone                   = 0,
+			kCostOverridden         = 1U << 0,
+			kExtendDurationOnRecast = 1U << 2
 		};
 		static_assert(sizeof(Flags) == 0x4);
 
@@ -66,8 +66,8 @@ namespace Skyrim
 		virtual void                     Unknown66(MagicItem*) override;   // 66
 		virtual void                     Unknown68(MagicItem*) override;   // 68
 		virtual void                     Unknown69(MagicItem*) override;   // 69
-		virtual const void*              GetConstantData() const override; // 6C
-		virtual void*                    GetData() override;               // 6D
+		virtual const MagicItem::Data*   GetConstantData() const override; // 6C
+		virtual MagicItem::Data*         GetData() override;               // 6D
 		virtual std::uint32_t            GetDataSize() const override;     // 6E
 		virtual void                     Unknown6F(MagicItem*) override;   // 6F
 		virtual void                     Unknown70(MagicItem*) override;   // 70

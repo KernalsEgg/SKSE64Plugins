@@ -4,9 +4,7 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Skyrim/B/BGSMovementType.h"
-#include "Shared/Utility/Convert.h"
-#include "Shared/Utility/Trampoline.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -23,19 +21,19 @@ namespace BugFixesSSE::Fixes
 
 		auto movementTypeID    = offsetof(Skyrim::BGSMovementType::Data, movementTypeID);
 		auto defaultData       = offsetof(Skyrim::BGSMovementType::Data, defaultData);
-		auto leftWalk          = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kLeft)][Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kWalk)]);
-		auto leftRun           = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kLeft)][Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kRun)]);
-		auto rightWalk         = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kRight)][Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kWalk)]);
-		auto rightRun          = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kRight)][Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kRun)]);
-		auto forwardWalk       = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kForward)][Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kWalk)]);
-		auto forwardRun        = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kForward)][Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kRun)]);
-		auto backWalk          = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kBack)][Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kWalk)]);
-		auto backRun           = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kBack)][Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kRun)]);
-		auto rotateInPlaceWalk = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kRotateInPlace)][Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kWalk)]);
-		auto rotateInPlaceRun  = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kRotateInPlace)][Utility::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kRun)]);
+		auto leftWalk          = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kLeft)][Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kWalk)]);
+		auto leftRun           = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kLeft)][Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kRun)]);
+		auto rightWalk         = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kRight)][Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kWalk)]);
+		auto rightRun          = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kRight)][Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kRun)]);
+		auto forwardWalk       = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kForward)][Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kWalk)]);
+		auto forwardRun        = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kForward)][Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kRun)]);
+		auto backWalk          = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kBack)][Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kWalk)]);
+		auto backRun           = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kBack)][Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kRun)]);
+		auto rotateInPlaceWalk = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kRotateInPlace)][Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kWalk)]);
+		auto rotateInPlaceRun  = offsetof(Skyrim::BGSMovementType::Data::DefaultData, velocity[Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Direction::kRotateInPlace)][Utility::Conversion::ToUnderlying(Skyrim::BGSMovementType::Data::DefaultData::Speed::kRun)]);
 		auto rotateWhileMoving = offsetof(Skyrim::BGSMovementType::Data::DefaultData, rotateWhileMoving);
 
-		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::Fixes::MovementSpeed::CompareMovementType + 0x5,
+		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5Branch(Addresses::Fixes::MovementSpeed::CompareMovementType + 0x5,
 			0x48ui8, 0x39ui8, 0x44ui8, 0x24ui8, static_cast<std::uint8_t>(0x78ui8 + movementTypeID),           // cmp [rsp+78], rax
 			0x0Fui8, 0x85ui8, 0x96ui32,                                                                        // jne 96
 			0x8Bui8, 0x44ui8, 0x24ui8, static_cast<std::uint8_t>(0x38ui8 + defaultData + leftWalk),            // mov eax, [rsp+40]

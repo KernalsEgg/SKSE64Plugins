@@ -6,7 +6,6 @@
 #include "Patterns.h"
 #include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
-#include "Shared/Utility/Trampoline.h"
 
 
 
@@ -27,11 +26,13 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWrite(Addresses::Patches::PowerAttackStamina::HasStaminaActor, Utility::Assembly::NO_OPERATION_2);
 		Utility::Memory::SafeWrite(Addresses::Patches::PowerAttackStamina::HasStaminaPlayerCharacter, Utility::Assembly::NO_OPERATION_2);
 
-		PowerAttackStamina::getAttackStaminaActor_ = reinterpret_cast<decltype(PowerAttackStamina::getAttackStaminaActor_)>(
-			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaActor, reinterpret_cast<std::uintptr_t>(std::addressof(PowerAttackStamina::HasAttackStaminaActor))));
+		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
 
-		PowerAttackStamina::getAttackStaminaPlayerCharacter_ = reinterpret_cast<decltype(PowerAttackStamina::getAttackStaminaPlayerCharacter_)>(
-			Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaPlayerCharacter, reinterpret_cast<std::uintptr_t>(std::addressof(PowerAttackStamina::HasAttackStaminaPlayerCharacter))));
+		PowerAttackStamina::getAttackStaminaActor_ = reinterpret_cast<decltype(PowerAttackStamina::getAttackStaminaActor_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaActor));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaActor, reinterpret_cast<std::uintptr_t>(std::addressof(PowerAttackStamina::HasAttackStaminaActor)));
+
+		PowerAttackStamina::getAttackStaminaPlayerCharacter_ = reinterpret_cast<decltype(PowerAttackStamina::getAttackStaminaPlayerCharacter_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaPlayerCharacter));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaPlayerCharacter, reinterpret_cast<std::uintptr_t>(std::addressof(PowerAttackStamina::HasAttackStaminaPlayerCharacter)));
 	}
 
 	float PowerAttackStamina::HasAttackStaminaActor(Skyrim::ActorValueOwner* actorValueOwner, Skyrim::BGSAttackData* attackData)
@@ -62,6 +63,6 @@ namespace ScrambledBugs::Patches
 		return stamina >= attackStamina ? 0.0F : attackStamina; // true, false
 	}
 
-	decltype(&PowerAttackStamina::HasAttackStaminaActor)           PowerAttackStamina::getAttackStaminaActor_{ nullptr };
-	decltype(&PowerAttackStamina::HasAttackStaminaPlayerCharacter) PowerAttackStamina::getAttackStaminaPlayerCharacter_{ nullptr };
+	decltype(PowerAttackStamina::HasAttackStaminaActor)*           PowerAttackStamina::getAttackStaminaActor_{ nullptr };
+	decltype(PowerAttackStamina::HasAttackStaminaPlayerCharacter)* PowerAttackStamina::getAttackStaminaPlayerCharacter_{ nullptr };
 }

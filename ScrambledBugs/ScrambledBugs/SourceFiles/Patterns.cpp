@@ -4,8 +4,6 @@
 
 #include "Addresses.h"
 #include "Shared/Relocation/AddressLibrary.h"
-#include "Shared/Skyrim/P/Projectile.h"
-#include "Shared/Skyrim/T/TESAmmo.h"
 
 
 

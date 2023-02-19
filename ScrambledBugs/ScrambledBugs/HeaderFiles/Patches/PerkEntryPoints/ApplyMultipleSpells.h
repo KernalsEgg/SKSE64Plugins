@@ -2,13 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/B/BGSEntryPoint.h"
-#include "Shared/Skyrim/B/BGSEntryPointFunction.h"
-#include "Shared/Skyrim/B/BGSEntryPointFunctionData.h"
-#include "Shared/Skyrim/S/SpellItem.h"
-#include "Shared/Skyrim/T/TESObjectREFR.h"
-#include "Shared/Skyrim/T/TESObjectWEAP.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -62,11 +55,11 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			Skyrim::BGSEntryPointFunctionData*                                                         entryPointFunctionData);
 
 		static bool                                                               castSpells_;
-		static decltype(&ApplyMultipleSpells::ApplyBashingSpell)                  applyBashingSpell_;
-		static decltype(&ApplyMultipleSpells::ApplyCombatHitSpell)                applyCombatHitSpell_;
-		static decltype(&ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile) applyCombatHitSpellArrowProjectile_;
-		static decltype(&ApplyMultipleSpells::ApplyReanimateSpell)                applyReanimateSpell_;
-		static decltype(&ApplyMultipleSpells::ApplySneakingSpell)                 applySneakingSpell_;
-		static decltype(&ApplyMultipleSpells::ApplyWeaponSwingSpell)              applyWeaponSwingSpell_;
+		static decltype(ApplyMultipleSpells::ApplyBashingSpell)*                  applyBashingSpell_;
+		static decltype(ApplyMultipleSpells::ApplyCombatHitSpell)*                applyCombatHitSpell_;
+		static decltype(ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile)* applyCombatHitSpellArrowProjectile_;
+		static decltype(ApplyMultipleSpells::ApplyReanimateSpell)*                applyReanimateSpell_;
+		static decltype(ApplyMultipleSpells::ApplySneakingSpell)*                 applySneakingSpell_;
+		static decltype(ApplyMultipleSpells::ApplyWeaponSwingSpell)*              applyWeaponSwingSpell_;
 	};
 }

@@ -3,6 +3,7 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSSimpleList.h"
+#include "Shared/Skyrim/F/ForEachResult.h"
 
 
 
@@ -22,16 +23,9 @@ namespace Skyrim
 		class ForEachActiveEffectVisitor
 		{
 		public:
-			enum class ReturnType : std::uint32_t
-			{
-				kStop     = 0,
-				kContinue = 1
-			};
-			static_assert(sizeof(ReturnType) == 0x4);
-
 			// Add
-			virtual ~ForEachActiveEffectVisitor()                = default; // 0
-			virtual ReturnType Visit(ActiveEffect* activeEffect) = 0;       // 1
+			virtual ~ForEachActiveEffectVisitor()                        = default; // 0
+			virtual ForEachResult operator()(ActiveEffect* activeEffect) = 0;       // 1
 		};
 		static_assert(sizeof(ForEachActiveEffectVisitor) == 0x8);
 
@@ -51,7 +45,7 @@ namespace Skyrim
 
 		// Member functions
 		Actor* GetMagicTargetAsActor();
-		void   VisitActiveEffects(ForEachActiveEffectVisitor* visitor);
+		void   ForEachActiveEffect(ForEachActiveEffectVisitor& visitor);
 
 		// Member variables
 		std::uint64_t unknown8;  // 8

@@ -4,6 +4,7 @@
 
 #include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/B/BSString.h"
+#include "Shared/Skyrim/S/ScriptOutput.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -20,11 +21,6 @@ namespace Skyrim
 	{
 	};
 	static_assert(sizeof(ScriptParameterType) == 0x4);
-
-	enum class ScriptOutput : std::uint32_t
-	{
-	};
-	static_assert(sizeof(ScriptOutput) == 0x4);
 
 	enum class ScriptError : std::uint32_t
 	{

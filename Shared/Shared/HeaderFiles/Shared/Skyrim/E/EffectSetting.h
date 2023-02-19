@@ -98,12 +98,13 @@ namespace Skyrim
 		float                                                              taperDuration;               // B8
 		float                                                              secondaryActorValueWeight;   // BC
 		Utility::Enumeration<EffectArchetypes::ArchetypeID, std::uint32_t> effectArchetype;             // C0
-		std::uint32_t                                                      unknownC4;                   // C4
+		Utility::Enumeration<ActorValue, std::uint32_t>                    primaryActorValue;           // C4
 		BGSProjectile*                                                     projectile;                  // C8
 		BGSExplosion*                                                      explosion;                   // D0
 		Utility::Enumeration<MagicSystem::CastingType, std::uint32_t>      castingType;                 // D8
 		Utility::Enumeration<MagicSystem::Delivery, std::uint32_t>         delivery;                    // DC
-		std::uint64_t                                                      unknownE0;                   // E0
+		Utility::Enumeration<ActorValue, std::uint32_t>                    secondaryActorValue;         // E0
+		std::uint32_t                                                      unknownE4;                   // E4
 		BGSArtObject*                                                      castingArt;                  // E8
 		BGSArtObject*                                                      hitEffectArt;                // F0
 		BGSImpactDataSet*                                                  impactDataSet;               // F8
@@ -145,10 +146,12 @@ namespace Skyrim
 	static_assert(offsetof(EffectSetting, taperDuration) == 0xB8);
 	static_assert(offsetof(EffectSetting, secondaryActorValueWeight) == 0xBC);
 	static_assert(offsetof(EffectSetting, effectArchetype) == 0xC0);
+	static_assert(offsetof(EffectSetting, primaryActorValue) == 0xC4);
 	static_assert(offsetof(EffectSetting, projectile) == 0xC8);
 	static_assert(offsetof(EffectSetting, explosion) == 0xD0);
 	static_assert(offsetof(EffectSetting, castingType) == 0xD8);
 	static_assert(offsetof(EffectSetting, delivery) == 0xDC);
+	static_assert(offsetof(EffectSetting, secondaryActorValue) == 0xE0);
 	static_assert(offsetof(EffectSetting, castingArt) == 0xE8);
 	static_assert(offsetof(EffectSetting, hitEffectArt) == 0xF0);
 	static_assert(offsetof(EffectSetting, impactDataSet) == 0xF8);

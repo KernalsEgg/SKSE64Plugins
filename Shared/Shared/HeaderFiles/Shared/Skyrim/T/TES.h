@@ -33,10 +33,10 @@ namespace Skyrim
 		virtual ~TES() override; // 0
 
 		// Override (BSTEventSink<BSResource::ArchiveStreamOpenedEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSResource::ArchiveStreamOpenedEvent* eventArguments, BSTEventSource<BSResource::ArchiveStreamOpenedEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const BSResource::ArchiveStreamOpenedEvent* eventArguments, BSTEventSource<BSResource::ArchiveStreamOpenedEvent>* eventSource) override; // 1
 
 		// Override (BSTEventSink<PositionPlayerEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* eventArguments, BSTEventSource<PositionPlayerEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const PositionPlayerEvent* eventArguments, BSTEventSource<PositionPlayerEvent>* eventSource) override; // 1
 
 		// Non-member functions
 		static TES* GetSingleton();

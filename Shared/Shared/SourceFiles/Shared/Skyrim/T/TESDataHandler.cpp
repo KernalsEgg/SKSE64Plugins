@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	TESForm* TESDataHandler::GetForm(FormID formID)
 	{
-		auto* function{ reinterpret_cast<decltype(&TESDataHandler::GetForm)>(Addresses::TESDataHandler::GetForm) };
+		auto* function{ reinterpret_cast<decltype(TESDataHandler::GetForm)*>(Addresses::TESDataHandler::GetForm) };
 
 		return function(formID);
 	}

@@ -43,7 +43,7 @@ namespace Skyrim
 		// Add
 		virtual std::int32_t DummyUnused(); // 4
 
-		// Non-member variables
+		// Non-member functions
 		static std::int32_t GetLayerFromFilterInformation(std::uint32_t filterInformation);
 		static std::int32_t GetSubSystemDontCollideWithFromFilterInformation(std::uint32_t filterInformation);
 		static std::int32_t GetSubSystemIDFromFilterInformation(std::uint32_t filterInformation);

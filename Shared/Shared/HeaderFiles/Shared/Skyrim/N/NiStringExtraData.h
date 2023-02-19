@@ -24,7 +24,7 @@ namespace Skyrim
 		virtual void          SaveBinary(NiStream& stream) override;                  // 1B
 		virtual bool          IsEqual(NiObject* object) override;                     // 1C
 
-		// Non-member variables
+		// Non-member functions
 		static NiStringExtraData* CreateObject();
 
 		// Member variables

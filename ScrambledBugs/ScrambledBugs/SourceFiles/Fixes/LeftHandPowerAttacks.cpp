@@ -3,10 +3,6 @@
 #include "Fixes/LeftHandPowerAttacks.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/B/BGSEntryPoint.h"
-#include "Shared/Skyrim/G/GameSettingCollection.h"
-#include "Shared/Skyrim/T/TESObjectWEAP.h"
 #include "Shared/Utility/Memory.h"
 
 

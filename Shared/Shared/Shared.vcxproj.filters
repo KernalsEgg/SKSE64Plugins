@@ -145,6 +145,9 @@
     <Filter Include="Header Files\Shared\Skyrim\L">
       <UniqueIdentifier>{c8fd837b-641c-4c9d-b58d-77b965bdfa2f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Shared\Skyrim\V">
+      <UniqueIdentifier>{1b2ae541-56b8-4119-90cf-da6852b4674b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HeaderFiles\Shared\PrecompiledHeader.h">
@@ -161,12 +164,6 @@
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Relocation\Version.h">
       <Filter>Header Files\Shared\Relocation</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\SKSE\Events.h">
-      <Filter>Header Files\Shared\SKSE</Filter>
-    </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\SKSE\Interfaces.h">
-      <Filter>Header Files\Shared\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Skyrim\A\AccumulatingValueModifierEffect.h">
       <Filter>Header Files\Shared\Skyrim\A</Filter>
@@ -1134,7 +1131,7 @@
     <ClInclude Include="HeaderFiles\Shared\Utility\Assembly.h">
       <Filter>Header Files\Shared\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Shared\Utility\Convert.h">
+    <ClInclude Include="HeaderFiles\Shared\Utility\Conversion.h">
       <Filter>Header Files\Shared\Utility</Filter>
     </ClInclude>
     <ClInclude Include="HeaderFiles\Shared\Utility\Enumeration.h">
@@ -1722,6 +1719,90 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\D\DualValueModifierEffect.h">
       <Filter>Header Files\Shared\Skyrim\D</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\A\ActiveEffectFactory.h">
+      <Filter>Header Files\Shared\Skyrim\A</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EffectItemReplaceTagsFunctor.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\G\GetMagicItemDescriptionFunctor.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\E\EventNotifyControl.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\ForEachResult.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Utility\Format.h">
+      <Filter>Header Files\Shared\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\SlowTimeEffect.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\V\VATS.h">
+      <Filter>Header Files\Shared\Skyrim\V</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\V\VATSCommand.h">
+      <Filter>Header Files\Shared\Skyrim\V</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\B\BSAudioManager.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScriptCompiler.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\S\ScriptOutput.h">
+      <Filter>Header Files\Shared\Skyrim\S</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\ModCallbackEvent.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\CameraEvent.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\CrosshairReferenceEvent.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\ActionEvent.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\NiNodeUpdateEvent.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\PluginHandle.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\PluginInformation.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\Interface.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\SerializationInterface.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\TaskInterface.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\MessagingInterface.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\TrampolineInterface.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\PluginVersionData.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\Storage.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\Skyrim.h">
+      <Filter>Header Files\Shared\Skyrim</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\SKSE\SKSE.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PrecompiledHeader.cpp">
@@ -1735,9 +1816,6 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Relocation\Module.cpp">
       <Filter>Source Files\Shared\Relocation</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFiles\Shared\SKSE\Interfaces.cpp">
-      <Filter>Source Files\Shared\SKSE</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActiveEffect.cpp">
       <Filter>Source Files\Shared\Skyrim\A</Filter>
@@ -2140,6 +2218,39 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Utility\Log.cpp">
       <Filter>Source Files\Shared\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\G\GetMagicItemDescriptionFunctor.cpp">
+      <Filter>Source Files\Shared\Skyrim\G</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\V\VATS.cpp">
+      <Filter>Source Files\Shared\Skyrim\V</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSAudioManager.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\B\BSSoundHandle.cpp">
+      <Filter>Source Files\Shared\Skyrim\B</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\S\ScriptCompiler.cpp">
+      <Filter>Source Files\Shared\Skyrim\S</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\SKSE\Interface.cpp">
+      <Filter>Source Files\Shared\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\SKSE\SerializationInterface.cpp">
+      <Filter>Source Files\Shared\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\SKSE\TaskInterface.cpp">
+      <Filter>Source Files\Shared\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\SKSE\MessagingInterface.cpp">
+      <Filter>Source Files\Shared\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\SKSE\TrampolineInterface.cpp">
+      <Filter>Source Files\Shared\SKSE</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\SKSE\Storage.cpp">
+      <Filter>Source Files\Shared\SKSE</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -30,7 +30,7 @@ namespace Skyrim
 			virtual void Unknown7(CraftingSubMenu*); // 7
 
 			// Override (BSTEventSink<TESFurnitureEvent>)
-			virtual BSEventNotifyControl ProcessEvent(const TESFurnitureEvent* eventArguments, BSTEventSource<TESFurnitureEvent>* eventSource) override; // 1
+			virtual EventNotifyControl ProcessEvent(const TESFurnitureEvent* eventArguments, BSTEventSource<TESFurnitureEvent>* eventSource) override; // 1
 
 			// Member variables
 			std::uint64_t unknown18; // 18

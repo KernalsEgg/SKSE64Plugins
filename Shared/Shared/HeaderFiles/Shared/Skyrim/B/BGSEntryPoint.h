@@ -33,7 +33,8 @@ namespace Skyrim
 			kApplySneakingSpell           = 69,
 			kModifyPlayerMagicSlowdown    = 70,
 			kModifyEnchantmentPower       = 77,
-			kModifyPoisonDoseCount        = 83
+			kModifyPoisonDoseCount        = 83,
+			kTotal                        = 92
 		};
 		static_assert(sizeof(EntryPoint) == 0x4);
 
@@ -44,7 +45,7 @@ namespace Skyrim
 		template <class... Arguments>
 		static void HandleEntryPoint(Utility::Enumeration<EntryPoint, std::uint32_t> entryPoint, Actor* perkOwner, Arguments... arguments)
 		{
-			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<decltype(&BGSEntryPoint::HandleEntryPoint<>)>::type>(Addresses::BGSEntryPoint::HandleEntryPoint) };
+			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<decltype(BGSEntryPoint::HandleEntryPoint<>)*>::type>(Addresses::BGSEntryPoint::HandleEntryPoint) };
 
 			function(entryPoint, perkOwner, arguments...);
 		}

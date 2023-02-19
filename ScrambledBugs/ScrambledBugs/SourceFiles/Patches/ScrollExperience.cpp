@@ -2,7 +2,6 @@
 
 #include "Patches/ScrollExperience.h"
 
-#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Utility/Memory.h"
 
 

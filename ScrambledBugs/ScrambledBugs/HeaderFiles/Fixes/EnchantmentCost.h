@@ -2,8 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/E/EffectItem.h"
-
 
 
 namespace ScrambledBugs::Fixes

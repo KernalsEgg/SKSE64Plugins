@@ -2,8 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/E/ExtraDataList.h"
-
 
 
 namespace BarterLimitFix

@@ -10,7 +10,8 @@
 #include "Shared/Skyrim/G/GRefCountBase.h"
 #include "Shared/Skyrim/G/GStatistics.h"
 #include "Shared/Skyrim/S/ScaleformTypes.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
+#include "Shared/Utility/Enumeration.h"
 
 
 
@@ -86,7 +87,7 @@ namespace Skyrim
 		static_assert(sizeof(ResourceVisitor) == 0x8);
 
 		class MemoryContext :
-			public GRefCountBase<MemoryContext, Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)> // 0
+			public GRefCountBase<MemoryContext, Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)> // 0
 		{
 		public:
 			// Override

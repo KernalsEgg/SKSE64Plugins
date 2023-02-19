@@ -3,6 +3,7 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSSimpleList.h"
+#include "Shared/Skyrim/F/ForEachResult.h"
 
 
 
@@ -20,18 +21,11 @@ namespace Skyrim
 		class IItemChangeVisitor
 		{
 		public:
-			enum class ReturnType : std::uint32_t
-			{
-				kStop     = 0,
-				kContinue = 1
-			};
-			static_assert(sizeof(ReturnType) == 0x4);
-
 			// Add
-			virtual ~IItemChangeVisitor();                                        // 0
-			virtual ReturnType Visit(InventoryEntryData* inventoryEntryData) = 0; // 1
-			virtual void       Unknown2(IItemChangeVisitor*);                     // 2
-			virtual void       Unknown3(IItemChangeVisitor*);                     // 3
+			virtual ~IItemChangeVisitor();                                                // 0
+			virtual ForEachResult operator()(InventoryEntryData* inventoryEntryData) = 0; // 1
+			virtual void          Unknown2(IItemChangeVisitor*);                          // 2
+			virtual void          Unknown3(IItemChangeVisitor*);                          // 3
 		};
 		static_assert(sizeof(IItemChangeVisitor) == 0x8);
 
@@ -43,7 +37,7 @@ namespace Skyrim
 			virtual ~FindBestSoulGemVisitor() override; // 0
 
 			// Override (IItemChangeVisitor)
-			virtual IItemChangeVisitor::ReturnType Visit(InventoryEntryData* inventoryEntryData) override; // 1
+			virtual ForEachResult operator()(InventoryEntryData* inventoryEntryData) override; // 1
 
 			// Member variables
 			Actor*      target;      // 8

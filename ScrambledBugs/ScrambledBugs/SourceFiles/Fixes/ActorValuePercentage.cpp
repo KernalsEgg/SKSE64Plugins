@@ -3,7 +3,6 @@
 #include "Fixes/ActorValuePercentage.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/N/NiPointer.h"
 #include "Shared/Utility/Memory.h"
 
 

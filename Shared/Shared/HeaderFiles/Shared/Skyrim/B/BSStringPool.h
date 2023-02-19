@@ -22,7 +22,7 @@ namespace Skyrim
 
 			// Non-member functions
 			static void Release(const char*& string);
-			// ReleaseW
+			// ReleaseWide
 
 			// Member functions
 			void Acquire();

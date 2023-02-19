@@ -4,7 +4,7 @@
 
 #include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Skyrim/T/TESForm.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -35,7 +35,7 @@ namespace Skyrim
 		virtual void Unknown13(TESForm*) override; // 13
 
 		// Member variables
-		BSTArray<BGSFootstep*> footsteps[Utility::ToUnderlying(MovementState::kTotal)]; // 20
+		BSTArray<BGSFootstep*> footsteps[Utility::Conversion::ToUnderlying(MovementState::kTotal)]; // 20
 	};
 	static_assert(offsetof(BGSFootstepSet, footsteps) == 0x20);
 	static_assert(sizeof(BGSFootstepSet) == 0x98);

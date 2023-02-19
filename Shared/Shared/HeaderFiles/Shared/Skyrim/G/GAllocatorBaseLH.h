@@ -5,14 +5,14 @@
 #include "Shared/Skyrim/G/GMemory.h"
 #include "Shared/Skyrim/G/GStatistics.h"
 #include "Shared/Skyrim/S/ScaleformTypes.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
 namespace Skyrim
 {
 	// Local Allocator
-	template <std::uint32_t STATISTIC_ID = Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)>
+	template <std::uint32_t STATISTIC_ID = Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)>
 	class GAllocatorBaseLH
 	{
 	public:

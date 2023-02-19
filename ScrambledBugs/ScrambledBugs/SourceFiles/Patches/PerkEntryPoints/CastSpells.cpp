@@ -4,7 +4,6 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Utility/Trampoline.h"
 
 
 
@@ -23,11 +22,13 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			return;
 		}
 
-		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyBashingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
-		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyCombatHitSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
-		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyCombatHitSpellArrowProjectile, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
-		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyReanimateSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
-		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyWeaponSwingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
+		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
+
+		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyBashingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyCombatHitSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyCombatHitSpellArrowProjectile, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyReanimateSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyWeaponSwingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
 	}
 
 	void CastSpells::ApplySpell(Skyrim::Actor* target, Skyrim::SpellItem* spell, Skyrim::Actor* caster)

@@ -7,7 +7,7 @@
 #include "Shared/Skyrim/T/TESDescription.h"
 #include "Shared/Skyrim/T/TESForm.h"
 #include "Shared/Skyrim/T/TESFullName.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -67,7 +67,7 @@ namespace Skyrim
 		virtual void          SetEquipSlot(BGSEquipSlot* equipSlot) override; // 5
 
 		// Member variables
-		Word words[Utility::ToUnderlying(WordNumber::kTotal)]; // 60
+		Word words[Utility::Conversion::ToUnderlying(WordNumber::kTotal)]; // 60
 	};
 	static_assert(offsetof(TESShout, words) == 0x60);
 	static_assert(sizeof(TESShout) == 0xA8);

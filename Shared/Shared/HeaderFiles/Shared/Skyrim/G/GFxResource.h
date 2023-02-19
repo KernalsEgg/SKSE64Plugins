@@ -6,7 +6,7 @@
 #include "Shared/Skyrim/G/GFxResourceKey.h"
 #include "Shared/Skyrim/G/GNewOverrideBase.h"
 #include "Shared/Skyrim/G/GStatistics.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -18,7 +18,7 @@ namespace Skyrim
 	class GFxResourceWeakLib;
 
 	class GFxResource :
-		public GNewOverrideBase<Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)> // 0
+		public GNewOverrideBase<Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)> // 0
 	{
 	private:
 		friend class GFxResourceWeakLib;

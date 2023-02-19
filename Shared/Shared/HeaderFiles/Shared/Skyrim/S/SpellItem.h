@@ -26,7 +26,7 @@ namespace Skyrim
 		enum class Flags : std::uint32_t
 		{
 			kNone                       = 0,
-			kDontAutomaticallyCalculate = 1U << 0,
+			kCostOverridden             = 1U << 0,
 			kPlayerStartSpell           = 1U << 17,
 			kAreaEffectIgnoresLOS       = 1U << 19,
 			kIgnoreResistance           = 1U << 20,
@@ -87,8 +87,8 @@ namespace Skyrim
 		virtual void                     Unknown69(MagicItem*) override;                                              // 69
 		virtual void                     Unknown6A(MagicItem*) override;                                              // 6A
 		virtual void                     Unknown6B(MagicItem*) override;                                              // 6B
-		virtual const void*              GetConstantData() const override;                                            // 6C
-		virtual void*                    GetData() override;                                                          // 6D
+		virtual const MagicItem::Data*   GetConstantData() const override;                                            // 6C
+		virtual MagicItem::Data*         GetData() override;                                                          // 6D
 		virtual std::uint32_t            GetDataSize() const override;                                                // 6E
 		virtual void                     Unknown6F(MagicItem*) override;                                              // 6F
 		virtual void                     Unknown70(MagicItem*) override;                                              // 70

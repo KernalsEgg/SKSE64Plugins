@@ -2,9 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/ActorValueOwner.h"
-#include "Shared/Skyrim/B/BGSAttackData.h"
-
 
 
 namespace ScrambledBugs::Fixes

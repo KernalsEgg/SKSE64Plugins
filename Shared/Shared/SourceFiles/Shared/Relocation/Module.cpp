@@ -24,6 +24,21 @@ namespace Relocation
 		return singleton;
 	}
 
+	std::uintptr_t DynamicLinkLibrary::GetAddress() const
+	{
+		return this->address_;
+	}
+
+	const std::filesystem::path& DynamicLinkLibrary::GetPath() const
+	{
+		return this->path_;
+	}
+
+	std::size_t DynamicLinkLibrary::GetSize() const
+	{
+		return this->size_;
+	}
+
 	void DynamicLinkLibrary::SetPath(std::uintptr_t address)
 	{
 		char path[MAX_PATH];
@@ -59,6 +74,11 @@ namespace Relocation
 		static Executable singleton(reinterpret_cast<std::uintptr_t>(::GetModuleHandleA(NULL)));
 
 		return singleton;
+	}
+
+	const Version<std::int32_t>& Executable::GetProductVersion() const
+	{
+		return this->productVersion_;
 	}
 
 	void Executable::SetProductVersion(const std::filesystem::path& path)

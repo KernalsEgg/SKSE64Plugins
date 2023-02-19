@@ -1,9 +1,9 @@
 #include "PrecompiledHeader.h"
 
 #include "Serialization.h"
-#include "Shared/Skyrim/B/BSTArray.h"
-#include "Shared/Skyrim/T/TESDataHandler.h"
-#include "Shared/Utility/Convert.h"
+
+#include "Shared/Utility/Conversion.h"
+#include "Shared/Utility/Log.h"
 
 
 
@@ -65,7 +65,7 @@ namespace VendorRespawnFix
 
 	void Serialization::LoadGame(SKSE::SerializationInterface* serializationInterface)
 	{
-		Utility::Log::Information()("Loading...");
+		Utility::Log::Information()("Loading Game...");
 
 		std::uint32_t type, version, length;
 
@@ -102,20 +102,20 @@ namespace VendorRespawnFix
 			}
 		}
 
-		Utility::Log::Information()("Loaded.");
+		Utility::Log::Information()("Loaded Game.");
 	}
 
 	void Serialization::SaveGame(SKSE::SerializationInterface* serializationInterface)
 	{
-		Utility::Log::Information()("Saving...");
+		Utility::Log::Information()("Saving Game...");
 
-		const auto& factions = Skyrim::TESDataHandler::GetSingleton()->formArrays[Utility::ToUnderlying(Skyrim::FormType::kFaction)];
+		const auto& factions = Skyrim::TESDataHandler::GetSingleton()->formArrays[Utility::Conversion::ToUnderlying(Skyrim::FormType::kFaction)];
 
 		for (auto* faction : factions)
 		{
 			LastDayRespawned().SaveGame(serializationInterface, static_cast<Skyrim::TESFaction*>(faction));
 		}
 
-		Utility::Log::Information()("Saved.");
+		Utility::Log::Information()("Saved Game.");
 	}
 }

@@ -8,6 +8,10 @@
 
 namespace Skyrim
 {
+	struct ScriptLocals;
+
+	class Script;
+
 	class ScriptEffect :
 		public ActiveEffect // 0
 	{
@@ -24,8 +28,10 @@ namespace Skyrim
 		virtual void Finish() override;                       // 15
 
 		// Member variables
-		std::uint64_t unknown90; // 90
-		std::uint64_t unknown98; // 98
+		Script*       script;       // 90
+		ScriptLocals* scriptLocals; // 98
 	};
+	static_assert(offsetof(ScriptEffect, script) == 0x90);
+	static_assert(offsetof(ScriptEffect, scriptLocals) == 0x98);
 	static_assert(sizeof(ScriptEffect) == 0xA0);
 }

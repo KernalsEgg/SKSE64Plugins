@@ -2,9 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/E/EnchantmentItem.h"
-#include "Shared/Skyrim/M/MagicItem.h"
-
 
 
 namespace ScrambledBugs::Patches
@@ -19,6 +16,6 @@ namespace ScrambledBugs::Patches
 		static bool GetSkillUsageDataStaffEnchantment(Skyrim::EnchantmentItem* enchantment, Skyrim::MagicItem::SkillUsageData& skillUsageData);
 
 		static bool                                                     ignoreEnchantmentCost_;
-		static decltype(&StaffExperience::GetSkillUsageDataEnchantment) getSkillUsageDataEnchantment_;
+		static decltype(StaffExperience::GetSkillUsageDataEnchantment)* getSkillUsageDataEnchantment_;
 	};
 }

@@ -10,7 +10,7 @@
 
 namespace Skyrim
 {
-	MagicTarget::ForEachActiveEffectVisitor::ReturnType FindAppropriateDisplaceEffect::Visit(ActiveEffect* activeEffect)
+	ForEachResult FindAppropriateDisplaceEffect::operator()(ActiveEffect* activeEffect)
 	{
 		if (activeEffect && activeEffect->activeEffectFlags.none(ActiveEffect::Flags::kInactive))
 		{
@@ -20,12 +20,12 @@ namespace Skyrim
 			{
 				this->displace = true;
 
-				return MagicTarget::ForEachActiveEffectVisitor::ReturnType::kStop;
+				return ForEachResult::kStop;
 			}
 		}
 
 		this->displace = false;
 
-		return MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
+		return ForEachResult::kContinue;
 	}
 }

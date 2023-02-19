@@ -113,6 +113,9 @@ namespace Skyrim
 		virtual void                 Unknown39(TESForm*);                                                                                                    // 39
 		virtual void                 Unknown3A(TESForm*);                                                                                                    // 3A
 
+		// Non-member functions
+		static TESForm* GetFormFromEditorID(const char* editorID);
+
 		// Member functions
 		EnchantmentItem* GetEnchantment(ExtraDataList* extraDataList);
 		TESFile*         GetFile(std::int32_t index = -1) const;

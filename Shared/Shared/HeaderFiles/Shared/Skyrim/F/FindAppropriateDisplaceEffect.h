@@ -19,12 +19,12 @@ namespace Skyrim
 		virtual ~FindAppropriateDisplaceEffect() override = default; // 0
 
 		// Override (MagicTarget::ForEachActiveEffectVisitor)
-		virtual MagicTarget::ForEachActiveEffectVisitor::ReturnType Visit(ActiveEffect* activeEffect) override; // 1
+		virtual ForEachResult operator()(ActiveEffect* activeEffect) override; // 1
 
 		// Member variables
-		MagicItem* displacementSpell; // 8
-		SpellItem* addiction;         // 10
-		bool       displace;          // 18
+		MagicItem* displacementSpell{ nullptr }; // 8
+		SpellItem* addiction{ nullptr };         // 10
+		bool       displace{ false };            // 18
 	};
 	static_assert(offsetof(FindAppropriateDisplaceEffect, displacementSpell) == 0x8);
 	static_assert(offsetof(FindAppropriateDisplaceEffect, addiction) == 0x10);

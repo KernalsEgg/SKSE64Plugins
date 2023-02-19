@@ -22,9 +22,9 @@ namespace Skyrim
 			auto notifying  = this->notifying;
 			this->notifying = true;
 
-			if (!notifying && !this->pendingRegisters.empty())
+			if (!notifying && !this->pendingRegistrations.empty())
 			{
-				for (auto& eventSink : this->pendingRegisters)
+				for (auto& eventSink : this->pendingRegistrations)
 				{
 					if (std::find(this->eventSinks.begin(), this->eventSinks.end(), eventSink) == this->eventSinks.end())
 					{
@@ -32,14 +32,14 @@ namespace Skyrim
 					}
 				}
 
-				this->pendingRegisters.clear();
+				this->pendingRegistrations.clear();
 			}
 
 			for (auto& eventSink : this->eventSinks)
 			{
-				if (std::find(this->pendingUnregisters.begin(), this->pendingUnregisters.end(), eventSink) == this->pendingUnregisters.end())
+				if (std::find(this->pendingUnregistrations.begin(), this->pendingUnregistrations.end(), eventSink) == this->pendingUnregistrations.end())
 				{
-					if (eventSink->ProcessEvent(eventArguments, this) == BSEventNotifyControl::kStop)
+					if (eventSink->ProcessEvent(eventArguments, this) == EventNotifyControl::kStop)
 					{
 						break;
 					}
@@ -48,9 +48,9 @@ namespace Skyrim
 
 			this->notifying = notifying;
 
-			if (!notifying && !this->pendingUnregisters.empty())
+			if (!notifying && !this->pendingUnregistrations.empty())
 			{
-				for (auto& eventSink : this->pendingUnregisters)
+				for (auto& eventSink : this->pendingUnregistrations)
 				{
 					auto* iterator = std::find(this->eventSinks.begin(), this->eventSinks.end(), eventSink);
 
@@ -60,7 +60,7 @@ namespace Skyrim
 					}
 				}
 
-				this->pendingUnregisters.clear();
+				this->pendingUnregistrations.clear();
 			}
 		}
 
@@ -75,9 +75,9 @@ namespace Skyrim
 
 			if (this->notifying)
 			{
-				if (std::find(this->pendingRegisters.begin(), this->pendingRegisters.end(), eventSink) == this->pendingRegisters.end())
+				if (std::find(this->pendingRegistrations.begin(), this->pendingRegistrations.end(), eventSink) == this->pendingRegistrations.end())
 				{
-					this->pendingRegisters.push_back(eventSink);
+					this->pendingRegistrations.push_back(eventSink);
 				}
 			}
 			else
@@ -88,11 +88,11 @@ namespace Skyrim
 				}
 			}
 
-			auto* iterator = std::find(this->pendingUnregisters.begin(), this->pendingUnregisters.end(), eventSink);
+			auto* iterator = std::find(this->pendingUnregistrations.begin(), this->pendingUnregistrations.end(), eventSink);
 
-			if (iterator != this->pendingUnregisters.end())
+			if (iterator != this->pendingUnregistrations.end())
 			{
-				this->pendingUnregisters.erase(iterator);
+				this->pendingUnregistrations.erase(iterator);
 			}
 		}
 
@@ -107,9 +107,9 @@ namespace Skyrim
 
 			if (this->notifying)
 			{
-				if (std::find(this->pendingUnregisters.begin(), this->pendingUnregisters.end(), eventSink) == this->pendingUnregisters.end())
+				if (std::find(this->pendingUnregistrations.begin(), this->pendingUnregistrations.end(), eventSink) == this->pendingUnregistrations.end())
 				{
-					this->pendingUnregisters.push_back(eventSink);
+					this->pendingUnregistrations.push_back(eventSink);
 				}
 			}
 			else
@@ -122,27 +122,24 @@ namespace Skyrim
 				}
 			}
 
-			auto* iterator = std::find(this->pendingRegisters.begin(), this->pendingRegisters.end(), eventSink);
+			auto* iterator = std::find(this->pendingRegistrations.begin(), this->pendingRegistrations.end(), eventSink);
 
-			if (iterator != this->pendingRegisters.end())
+			if (iterator != this->pendingRegistrations.end())
 			{
-				this->pendingRegisters.erase(iterator);
+				this->pendingRegistrations.erase(iterator);
 			}
 		}
 
 		// Member variables
-		BSTArray<BSTEventSink<T>*> eventSinks;         // 0
-		BSTArray<BSTEventSink<T>*> pendingRegisters;   // 18
-		BSTArray<BSTEventSink<T>*> pendingUnregisters; // 30
-		mutable BSSpinLock         lock;               // 48
-		bool                       notifying;          // 50
-		std::uint8_t               padding51;          // 51
-		std::uint16_t              padding52;          // 52
-		std::uint32_t              padding54;          // 54
+		BSTArray<BSTEventSink<T>*> eventSinks{};             // 0
+		BSTArray<BSTEventSink<T>*> pendingRegistrations{};   // 18
+		BSTArray<BSTEventSink<T>*> pendingUnregistrations{}; // 30
+		mutable BSSpinLock         lock{};                   // 48
+		bool                       notifying{ false };       // 50
 	};
 	static_assert(offsetof(BSTEventSource<void>, eventSinks) == 0x0);
-	static_assert(offsetof(BSTEventSource<void>, pendingRegisters) == 0x18);
-	static_assert(offsetof(BSTEventSource<void>, pendingUnregisters) == 0x30);
+	static_assert(offsetof(BSTEventSource<void>, pendingRegistrations) == 0x18);
+	static_assert(offsetof(BSTEventSource<void>, pendingUnregistrations) == 0x30);
 	static_assert(offsetof(BSTEventSource<void>, lock) == 0x48);
 	static_assert(offsetof(BSTEventSource<void>, notifying) == 0x50);
 	static_assert(sizeof(BSTEventSource<void>) == 0x58);

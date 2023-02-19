@@ -5,7 +5,6 @@
 #include "Addresses.h"
 #include "Shared/Relocation/AddressLibrary.h"
 #include "Shared/Relocation/PreprocessorDirectives.h"
-#include "Shared/Skyrim/I/InventoryEntryData.h"
 
 
 

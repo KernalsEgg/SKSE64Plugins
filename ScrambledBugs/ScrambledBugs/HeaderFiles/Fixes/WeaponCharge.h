@@ -2,10 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/E/ExtraDataList.h"
-#include "Shared/Skyrim/T/TESBoundObject.h"
-
 
 
 namespace ScrambledBugs::Fixes

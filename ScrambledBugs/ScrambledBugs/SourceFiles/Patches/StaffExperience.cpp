@@ -2,13 +2,7 @@
 
 #include "Patches/StaffExperience.h"
 
-#include "Shared/Skyrim/A/ActorValue.h"
-#include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/E/EffectArchetypes.h"
-#include "Shared/Skyrim/E/EffectItem.h"
-#include "Shared/Skyrim/E/EffectSetting.h"
-#include "Shared/Skyrim/M/MagicSystem.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -57,7 +51,7 @@ namespace ScrambledBugs::Patches
 
 		if (!StaffExperience::ignoreEnchantmentCost_ && !enchantment->IsAutomaticallyCalculated())
 		{
-			auto enchantmentCost = static_cast<float>(static_cast<const Skyrim::EnchantmentItem::Data*>(enchantment->GetConstantData())->enchantmentCost);
+			auto enchantmentCost = static_cast<float>(reinterpret_cast<const Skyrim::EnchantmentItem::Data*>(enchantment->GetConstantData())->enchantmentCost);
 
 			if (skillUsage > enchantmentCost)
 			{
@@ -67,13 +61,13 @@ namespace ScrambledBugs::Patches
 
 		auto* costliestEffectSetting = skillUsageData.costliestEffect->effectSetting;
 
-		skillUsageData.magicSkill = costliestEffectSetting->magicSkill;
-		skillUsageData.magnitude  = costliestEffectSetting->skillUsageMultiplier * skillUsage;
-		skillUsageData.custom     = Skyrim::EffectArchetypes::IsFlagSet(costliestEffectSetting->effectArchetype, Skyrim::EffectArchetypes::Archetype::Flags::kCustom);
+		skillUsageData.magicSkill           = costliestEffectSetting->magicSkill;
+		skillUsageData.magnitude            = costliestEffectSetting->skillUsageMultiplier * skillUsage;
+		skillUsageData.customSkillUseReward = Skyrim::EffectArchetypes::IsFlagSet(costliestEffectSetting->effectArchetype, Skyrim::EffectArchetypes::Archetype::Flags::kCustomSkillUseReward);
 
-		return skillUsageData.magicSkill.underlying() - Utility::ToUnderlying(Skyrim::ActorValue::kSkills) <= Utility::ToUnderlying(Skyrim::ActorValue::kSkillCount);
+		return skillUsageData.magicSkill.underlying() - Utility::Conversion::ToUnderlying(Skyrim::ActorValue::kSkills) <= Utility::Conversion::ToUnderlying(Skyrim::ActorValue::kSkillCount);
 	}
 
 	bool                                                     StaffExperience::ignoreEnchantmentCost_{ false };
-	decltype(&StaffExperience::GetSkillUsageDataEnchantment) StaffExperience::getSkillUsageDataEnchantment_{ nullptr };
+	decltype(StaffExperience::GetSkillUsageDataEnchantment)* StaffExperience::getSkillUsageDataEnchantment_{ nullptr };
 }

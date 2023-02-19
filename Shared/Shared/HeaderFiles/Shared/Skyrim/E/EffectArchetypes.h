@@ -25,7 +25,7 @@ namespace Skyrim
 			enum class Flags : std::uint32_t
 			{
 				kNone                         = 0,
-				kCustom                       = 1U << 7,
+				kCustomSkillUseReward         = 1U << 7,
 				kRewardsSkillUseWithoutTarget = 1U << 8
 			};
 			static_assert(sizeof(Flags) == 0x4);

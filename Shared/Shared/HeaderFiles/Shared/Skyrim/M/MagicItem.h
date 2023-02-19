@@ -17,6 +17,7 @@ namespace Skyrim
 	struct EffectItem;
 
 	class Actor;
+	class MagicItemTraversalFunctor;
 
 	class MagicItem :
 		public TESBoundObject, // 0
@@ -24,23 +25,41 @@ namespace Skyrim
 		public BGSKeywordForm  // 40
 	{
 	public:
+		enum class Flags : std::uint32_t
+		{
+			kNone           = 0,
+			kCostOverridden = 1U << 0,
+		};
+		static_assert(sizeof(Flags) == 0x4);
+
 		struct SkillUsageData
 		{
 		public:
 			// Member variables
-			EffectItem*                                     costliestEffect; // 0
-			Utility::Enumeration<ActorValue, std::uint32_t> magicSkill;      // 8
-			float                                           magnitude;       // C
-			bool                                            custom;          // 10
-			std::uint8_t                                    padding11;       // 11
-			std::uint16_t                                   padding12;       // 12
-			std::uint32_t                                   padding14;       // 14
+			EffectItem*                                     costliestEffect;      // 0
+			Utility::Enumeration<ActorValue, std::uint32_t> magicSkill;           // 8
+			float                                           magnitude;            // C
+			bool                                            customSkillUseReward; // 10
+			std::uint8_t                                    padding11;            // 11
+			std::uint16_t                                   padding12;            // 12
+			std::uint32_t                                   padding14;            // 14
 		};
 		static_assert(offsetof(SkillUsageData, costliestEffect) == 0x0);
 		static_assert(offsetof(SkillUsageData, magicSkill) == 0x8);
 		static_assert(offsetof(SkillUsageData, magnitude) == 0xC);
-		static_assert(offsetof(SkillUsageData, custom) == 0x10);
+		static_assert(offsetof(SkillUsageData, customSkillUseReward) == 0x10);
 		static_assert(sizeof(SkillUsageData) == 0x18);
+
+		struct Data
+		{
+		public:
+			// Member variables
+			std::int32_t                               costOverride;   // 0
+			Utility::Enumeration<Flags, std::uint32_t> magicItemFlags; // 4
+		};
+		static_assert(offsetof(Data, costOverride) == 0x0);
+		static_assert(offsetof(Data, magicItemFlags) == 0x4);
+		static_assert(sizeof(Data) == 0x8);
 
 		// Override
 		virtual ~MagicItem() override; // 0
@@ -82,8 +101,8 @@ namespace Skyrim
 		virtual void                     Unknown69(MagicItem*) = 0;                               // 69
 		virtual void                     Unknown6A(MagicItem*);                                   // 6A
 		virtual void                     Unknown6B(MagicItem*);                                   // 6B
-		virtual const void*              GetConstantData() const = 0;                             // 6C
-		virtual void*                    GetData()               = 0;                             // 6D
+		virtual const Data*              GetConstantData() const = 0;                             // 6C
+		virtual Data*                    GetData()               = 0;                             // 6D
 		virtual std::uint32_t            GetDataSize() const     = 0;                             // 6E
 		virtual void                     Unknown6F(MagicItem*)   = 0;                             // 6F
 		virtual void                     Unknown70(MagicItem*)   = 0;                             // 70
@@ -94,6 +113,7 @@ namespace Skyrim
 		EffectItem* GetCostliestEffect(Utility::Enumeration<MagicSystem::Delivery, std::uint32_t> delivery, bool areaOfEffect) const;
 		bool        IsPermanent() const;
 		bool        ShouldAdjustEffects() const;
+		void        Traverse(MagicItemTraversalFunctor& magicItemTraversalFunctor) const;
 
 		// Member variables
 		BSTArray<EffectItem*> effects;      // 58

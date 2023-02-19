@@ -38,10 +38,10 @@ namespace Skyrim
 		virtual ~Main() override; // 0
 
 		// Override (BSTEventSink<PositionPlayerEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* eventArguments, BSTEventSource<PositionPlayerEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const PositionPlayerEvent* eventArguments, BSTEventSource<PositionPlayerEvent>* eventSource) override; // 1
 
 		// Override (BSTEventSink<BSGamerProfileEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSGamerProfileEvent* eventArguments, BSTEventSource<BSGamerProfileEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const BSGamerProfileEvent* eventArguments, BSTEventSource<BSGamerProfileEvent>* eventSource) override; // 1
 
 		// Non-member functions
 		static std::uint32_t GetFrameCount();

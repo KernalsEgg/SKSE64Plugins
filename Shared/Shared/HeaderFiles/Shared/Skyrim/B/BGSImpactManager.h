@@ -53,13 +53,13 @@ namespace Skyrim
 		virtual ~BGSImpactManager() override; // 0
 
 		// Override (BSTEventSink<BGSFootstepEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BGSFootstepEvent* eventArguments, BSTEventSource<BGSFootstepEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const BGSFootstepEvent* eventArguments, BSTEventSource<BGSFootstepEvent>* eventSource) override; // 1
 
 		// Override (BSTEventSink<BGSCombatImpactEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BGSCombatImpactEvent* eventArguments, BSTEventSource<BGSCombatImpactEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const BGSCombatImpactEvent* eventArguments, BSTEventSource<BGSCombatImpactEvent>* eventSource) override; // 1
 
 		// Override (BSTEventSink<BGSCollisionSoundEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BGSCollisionSoundEvent* eventArguments, BSTEventSource<BGSCollisionSoundEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const BGSCollisionSoundEvent* eventArguments, BSTEventSource<BGSCollisionSoundEvent>* eventSource) override; // 1
 
 		// Non-member functions
 		static BGSImpactManager* GetSingleton();

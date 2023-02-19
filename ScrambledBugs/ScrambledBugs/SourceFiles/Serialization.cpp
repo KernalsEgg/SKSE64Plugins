@@ -3,9 +3,6 @@
 #include "Serialization.h"
 
 #include "Settings.h"
-#include "Shared/Skyrim/B/BGSCreatedObjectManager.h"
-#include "Shared/Skyrim/B/BSAtomic.h"
-#include "Shared/Skyrim/T/TESDataHandler.h"
 #include "Shared/Utility/Log.h"
 
 
@@ -32,7 +29,7 @@ namespace ScrambledBugs
 			return false;
 		}
 
-		auto* enchantmentItemData = static_cast<Skyrim::EnchantmentItem::Data*>(enchantment->GetData());
+		auto* enchantmentItemData = reinterpret_cast<Skyrim::EnchantmentItem::Data*>(enchantment->GetData());
 
 		if (!enchantmentItemData)
 		{
@@ -56,7 +53,7 @@ namespace ScrambledBugs
 			return false;
 		}
 
-		const auto* enchantmentItemData = static_cast<const Skyrim::EnchantmentItem::Data*>(enchantment->GetConstantData());
+		const auto* enchantmentItemData = reinterpret_cast<const Skyrim::EnchantmentItem::Data*>(enchantment->GetConstantData());
 
 		if (!enchantmentItemData)
 		{
@@ -76,7 +73,7 @@ namespace ScrambledBugs
 
 	void Serialization::LoadGame(SKSE::SerializationInterface* serializationInterface)
 	{
-		Utility::Log::Information()("Loading...");
+		Utility::Log::Information()("Loading Game...");
 
 		const auto& settings = ScrambledBugs::Settings::GetSingleton();
 
@@ -123,12 +120,12 @@ namespace ScrambledBugs
 			}
 		}
 
-		Utility::Log::Information()("Loaded.");
+		Utility::Log::Information()("Loaded Game.");
 	}
 
 	void Serialization::SaveGame(SKSE::SerializationInterface* serializationInterface)
 	{
-		Utility::Log::Information()("Saving...");
+		Utility::Log::Information()("Saving Game...");
 
 		const auto& settings = ScrambledBugs::Settings::GetSingleton();
 
@@ -148,6 +145,6 @@ namespace ScrambledBugs
 			}
 		}
 
-		Utility::Log::Information()("Saved.");
+		Utility::Log::Information()("Saved Game.");
 	}
 }

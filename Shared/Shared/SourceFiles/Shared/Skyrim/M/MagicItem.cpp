@@ -3,6 +3,7 @@
 #include "Shared/Skyrim/M/MagicItem.h"
 
 #include "Shared/Skyrim/Addresses.h"
+#include "Shared/Skyrim/M/MagicItemTraversalFunctor.h"
 #include "Shared/Utility/TypeTraits.h"
 
 
@@ -85,6 +86,17 @@ namespace Skyrim
 			default:
 			{
 				return true;
+			}
+		}
+	}
+
+	void MagicItem::Traverse(MagicItemTraversalFunctor& magicItemTraversalFunctor) const
+	{
+		for (auto* effect : this->effects)
+		{
+			if (magicItemTraversalFunctor(effect) != ForEachResult::kContinue)
+			{
+				break;
 			}
 		}
 	}

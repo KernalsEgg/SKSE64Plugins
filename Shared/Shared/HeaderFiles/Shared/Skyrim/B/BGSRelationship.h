@@ -4,7 +4,7 @@
 
 #include "Shared/Skyrim/A/AssociationType.h"
 #include "Shared/Skyrim/T/TESForm.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -57,13 +57,13 @@ namespace Skyrim
 		virtual void Unknown13(TESForm*) override;                                   // 13
 
 		// Member variables
-		TESNPC*                                               relationshipNPC[Utility::ToUnderlying(AssociationType::kTotal)]; // 20
-		BGSAssociationType*                                   associationType;                                                 // 30
-		Utility::Enumeration<RelationshipLevel, std::uint8_t> relationshipLevel;                                               // 38
-		std::uint8_t                                          unknown39;                                                       // 39
-		std::uint8_t                                          unknown3A;                                                       // 3A
-		Utility::Enumeration<Flags, std::uint8_t>             relationshipFlags;                                               // 3B
-		std::uint32_t                                         padding3C;                                                       // 3C
+		TESNPC*                                               relationshipNPC[Utility::Conversion::ToUnderlying(AssociationType::kTotal)]; // 20
+		BGSAssociationType*                                   associationType;                                                             // 30
+		Utility::Enumeration<RelationshipLevel, std::uint8_t> relationshipLevel;                                                           // 38
+		std::uint8_t                                          unknown39;                                                                   // 39
+		std::uint8_t                                          unknown3A;                                                                   // 3A
+		Utility::Enumeration<Flags, std::uint8_t>             relationshipFlags;                                                           // 3B
+		std::uint32_t                                         padding3C;                                                                   // 3C
 	};
 	static_assert(offsetof(BGSRelationship, relationshipNPC) == 0x20);
 	static_assert(offsetof(BGSRelationship, associationType) == 0x30);

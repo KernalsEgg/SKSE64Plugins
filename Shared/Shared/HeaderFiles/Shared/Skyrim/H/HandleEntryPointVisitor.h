@@ -18,7 +18,7 @@ namespace Skyrim
 	{
 	public:
 		// Override (PerkEntryVisitor)
-		virtual PerkEntryVisitor::ReturnType Visit(BGSPerkEntry* perkEntry) override; // 0
+		virtual ForEachResult operator()(BGSPerkEntry* perkEntry) override; // 0
 
 		HandleEntryPointVisitor()                               = delete;
 		HandleEntryPointVisitor(const HandleEntryPointVisitor&) = delete;

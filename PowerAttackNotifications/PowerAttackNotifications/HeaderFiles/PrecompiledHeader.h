@@ -8,3 +8,6 @@
 #include <string>     // std::string
 
 #include <nlohmann/json.hpp>
+
+#include "Shared/SKSE/SKSE.h"
+#include "Shared/Skyrim/Skyrim.h"

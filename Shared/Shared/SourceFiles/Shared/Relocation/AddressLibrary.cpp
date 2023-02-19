@@ -70,9 +70,11 @@ namespace Relocation
 	{
 		std::ofstream outputFileStream(path, std::ios::out | std::ios::trunc);
 
+		outputFileStream << "Identifier,Offset";
+
 		for (const auto& element : this->span_)
 		{
-			outputFileStream << std::vformat("{}\t0x{:X}", std::make_format_args(element.identifier, element.offset)) << std::endl;
+			outputFileStream << std::vformat("{},0x{:X}", std::make_format_args(element.identifier, element.offset)) << std::endl;
 		}
 	}
 
@@ -257,8 +259,6 @@ namespace Relocation
 				default:
 				{
 					Utility::InformationBox::Error()("Unexpected indentifier type encountered, {}.", identifierType.underlying());
-
-					break;
 				}
 			}
 
@@ -338,8 +338,6 @@ namespace Relocation
 				default:
 				{
 					Utility::InformationBox::Error()("Unexpected offset type encountered, {}.", (offsetType & 7).underlying());
-
-					break;
 				}
 			}
 

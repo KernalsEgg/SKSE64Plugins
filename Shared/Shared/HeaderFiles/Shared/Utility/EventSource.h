@@ -12,6 +12,8 @@ namespace Utility
 	public:
 		void Notify(EventArguments... eventArguments) const
 		{
+			std::shared_lock sharedLock{ this->sharedMutex_ };
+
 			for (const auto& eventSink : this->eventSinks_)
 			{
 				eventSink(eventArguments...);
@@ -20,11 +22,15 @@ namespace Utility
 
 		void RegisterSink(std::function<void(EventArguments...)> eventSink)
 		{
+			std::unique_lock uniqueLock{ this->sharedMutex_ };
+
 			this->eventSinks_.push_back(eventSink);
 		}
 
 		void UnregisterSink(std::function<void(EventArguments...)> eventSink)
 		{
+			std::unique_lock uniqueLock{ this->sharedMutex_ };
+
 			auto* target = eventSink.target();
 
 			if (!target)
@@ -41,5 +47,6 @@ namespace Utility
 
 	private:
 		std::vector<std::function<void(EventArguments...)>> eventSinks_{};
+		mutable std::shared_mutex                           sharedMutex_{};
 	};
 }

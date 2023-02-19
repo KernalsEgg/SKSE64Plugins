@@ -2,9 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/SKSE/Interfaces.h"
-#include "Shared/Skyrim/B/BSCoreTypes.h"
-#include "Shared/Skyrim/E/EnchantmentItem.h"
 #include "Shared/Utility/Enumeration.h"
 
 

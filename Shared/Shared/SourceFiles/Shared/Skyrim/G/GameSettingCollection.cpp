@@ -17,7 +17,7 @@ namespace Skyrim
 
 	void GameSettingCollection::InitializeCollection()
 	{
-		auto* function{ reinterpret_cast<decltype(&GameSettingCollection::InitializeCollection)>(Addresses::GameSettingCollection::InitializeCollection) };
+		auto* function{ reinterpret_cast<decltype(GameSettingCollection::InitializeCollection)*>(Addresses::GameSettingCollection::InitializeCollection) };
 
 		function();
 	}
@@ -46,6 +46,48 @@ namespace Skyrim
 	SettingT<GameSettingCollection>* GameSettingCollection::BowDrawTime()
 	{
 		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::BowDrawTime) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::EffectsListDisplayHour()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::EffectsListDisplayHour) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::EffectsListDisplayHours()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::EffectsListDisplayHours) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::EffectsListDisplayMinute()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::EffectsListDisplayMinute) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::EffectsListDisplayMinutes()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::EffectsListDisplayMinutes) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::EffectsListDisplaySecond()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::EffectsListDisplaySecond) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::EffectsListDisplaySeconds()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::EffectsListDisplaySeconds) };
 
 		return singleton;
 	}
@@ -102,6 +144,13 @@ namespace Skyrim
 	SettingT<GameSettingCollection>* GameSettingCollection::StaminaPowerBashBase()
 	{
 		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::StaminaPowerBashBase) };
+
+		return singleton;
+	}
+
+	SettingT<GameSettingCollection>* GameSettingCollection::VATSPlayerMagicTimeSlowdownMultiplier()
+	{
+		auto* singleton{ reinterpret_cast<SettingT<GameSettingCollection>*>(Addresses::GameSettingCollection::VATSPlayerMagicTimeSlowdownMultiplier) };
 
 		return singleton;
 	}

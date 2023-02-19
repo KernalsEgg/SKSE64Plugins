@@ -3,8 +3,6 @@
 #include "Fixes/HitEffectRaceCondition.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/E/EffectSetting.h"
-#include "Shared/Skyrim/M/MagicItem.h"
 #include "Shared/Utility/Memory.h"
 
 

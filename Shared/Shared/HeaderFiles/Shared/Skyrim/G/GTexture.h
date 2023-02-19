@@ -8,7 +8,7 @@
 #include "Shared/Skyrim/G/GPoint.h"
 #include "Shared/Skyrim/G/GRectangle.h"
 #include "Shared/Skyrim/G/GStatistics.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -19,7 +19,7 @@ namespace Skyrim
 	class GRenderer;
 
 	class GTexture :
-		public GNewOverrideBase<Utility::ToUnderlying(GStatisticRenderers::kMemory)> // 0
+		public GNewOverrideBase<Utility::Conversion::ToUnderlying(GStatisticRenderers::kMemory)> // 0
 	{
 	public:
 		using Handle = void*;

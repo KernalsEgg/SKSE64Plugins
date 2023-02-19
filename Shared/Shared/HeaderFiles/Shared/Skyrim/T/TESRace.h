@@ -20,7 +20,7 @@
 #include "Shared/Skyrim/T/TESModel.h"
 #include "Shared/Skyrim/T/TESSpellList.h"
 #include "Shared/Skyrim/T/TESTexture.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -285,77 +285,77 @@ namespace Skyrim
 		virtual bool        SetEditorID(const char* editorID) override; // 33
 
 		// Member variables
-		TESModel                                             skeletons[Utility::ToUnderlying(Sex::kTotal)];                               // 98, Body Data
-		SkillBonus                                           skillBonuses[TESRace::kSkillBonusCount];                                     // E8, General Data
-		std::uint16_t                                        paddingF6;                                                                   // F6
-		float                                                heights[Utility::ToUnderlying(Sex::kTotal)];                                 // F8, Body Data
-		float                                                weights[Utility::ToUnderlying(Sex::kTotal)];                                 // 100, Body Data
-		Utility::Enumeration<Flags, std::uint32_t>           raceFlags;                                                                   // 108
-		float                                                startingHealth;                                                              // 10C, General Data
-		float                                                startingMagicka;                                                             // 110, General Data
-		float                                                startingStamina;                                                             // 114, General Data
-		float                                                baseCarryWeight;                                                             // 118, General Data
-		float                                                baseMass;                                                                    // 11C, Body Data
-		float                                                accelerationRate;                                                            // 120, Move Data
-		float                                                decelerationRate;                                                            // 124, Move Data
-		Utility::Enumeration<Size, std::uint32_t>            size;                                                                        // 128, General Data
-		Utility::Enumeration<BipedObjectSlot, std::uint32_t> headBipedObject;                                                             // 12C, Face Data
-		Utility::Enumeration<BipedObjectSlot, std::uint32_t> hairBipedObject;                                                             // 130, Face Data
-		float                                                injuredHealthPercentage;                                                     // 134, Combat Data
-		Utility::Enumeration<BipedObjectSlot, std::uint32_t> shieldBipedObject;                                                           // 138, Body Data
-		float                                                healthRegeneration;                                                          // 13C, General Data
-		float                                                magickaRegeneration;                                                         // 140, General Data
-		float                                                staminaRegeneration;                                                         // 144, General Data
-		float                                                unarmedDamage;                                                               // 148, Combat Data
-		float                                                unarmedReach;                                                                // 14C, Combat Data
-		Utility::Enumeration<BipedObjectSlot, std::uint32_t> bodyBipedObject;                                                             // 150, Body Data
-		float                                                aimAngleTolerance;                                                           // 154, Combat Data
-		float                                                flightRadius;                                                                // 158, General Data
-		float                                                angularAccelerationRate;                                                     // 15C, Move Data
-		float                                                angularTolerance;                                                            // 160, Move Data
-		Utility::Enumeration<Flags2, std::uint32_t>          raceFlags2;                                                                  // 164
-		NiPoint3                                             mountOffsets;                                                                // 168, General Data, Mount Data
-		NiPoint3                                             dismountOffsets;                                                             // 174
-		NiPoint3                                             mountCameraOffsets;                                                          // 180
-		std::uint32_t                                        unknown18C;                                                                  // 18C
-		std::uint32_t                                        unknown190;                                                                  // 190
-		std::uint32_t                                        padding194;                                                                  // 194
-		BGSTextureModel                                      bodyTextures[Utility::ToUnderlying(Sex::kTotal)];                            // 198, Body Data
-		BGSBehaviorGraphModel                                behaviorGraphs[Utility::ToUnderlying(Sex::kTotal)];                          // 1E8, Body Data
-		BSFixedString                                        behaviorGraphRootNames[Utility::ToUnderlying(Sex::kTotal)];                  // 238
-		BSFixedString                                        behaviorGraphProjectNames[Utility::ToUnderlying(Sex::kTotal)];               // 248
-		BGSVoiceType*                                        defaultVoiceTypes[Utility::ToUnderlying(Sex::kTotal)];                       // 258, Body Data
-		BGSBodyPartData*                                     bodyPartData;                                                                // 268, Body Data
-		TESObjectARMO*                                       decapitateArmor[Utility::ToUnderlying(Sex::kTotal)];                         // 270, Body Data
-		std::uint64_t                                        unknown280;                                                                  // 280
-		std::uint64_t                                        unknown288;                                                                  // 288
-		std::uint64_t                                        unknown290;                                                                  // 290
-		std::uint64_t                                        unknown298;                                                                  // 298
-		std::uint64_t                                        unknown2A0;                                                                  // 2A0
-		std::uint64_t                                        unknown2A8;                                                                  // 2A8
-		std::uint64_t                                        unknown2B0;                                                                  // 2B0
-		std::uint64_t                                        unknown2B8;                                                                  // 2B8
-		std::uint64_t                                        unknown2C0;                                                                  // 2C0
-		std::uint64_t                                        unknown2C8;                                                                  // 2C8
-		AttackAnimationArrayMap*                             attacks[Utility::ToUnderlying(Sex::kTotal)];                                 // 2D0, Attack Data
-		BSFixedString                                        editorID;                                                                    // 2E0
-		BGSMaterialType*                                     impactMaterialType;                                                          // 2E8, Blood, When we are hit
-		BGSImpactDataSet*                                    impactDataSet;                                                               // 2F0, Blood, When we hit something else
-		BGSArtObject*                                        decapitateBloodArt;                                                          // 2F8, Blood, When we are hit
-		BGSSoundDescriptorForm*                              openCorse;                                                                   // 300, Blood, Sounds made when looted
-		BGSSoundDescriptorForm*                              closeCorpse;                                                                 // 308, Blood, Sounds made when looted
-		BSFixedString                                        bipedObjectNames[Utility::ToUnderlying(BipedObjectSlot::kCreationKitTotal)]; // 310
-		BSTArray<BGSEquipSlot*>                              equipSlots;                                                                  // 410, Combat Data, Equipment Restrictions
-		Utility::Enumeration<EquipTypes, std::uint32_t>      equipTypes;                                                                  // 428, Combat Data, Equipment Restrictions
-		std::uint32_t                                        unknown42C;                                                                  // 42C
-		BGSEquipSlot*                                        unarmedEquipSlot;                                                            // 430, Combat Data
-		CopiedData                                           copiedData;                                                                  // 438, General Data
-		std::uint64_t                                        unknown448;                                                                  // 448
-		std::uint64_t                                        unknown450;                                                                  // 450
-		std::uint64_t                                        unknown458;                                                                  // 458
-		BSTArray<BSFixedString>                              phonemeTargets;                                                              // 460, Phoneme Mapping
-		BGSMovementType*                                     baseMovementDefaults[Utility::ToUnderlying(MoveType::kTotal)];               // 478, Move Data
-		CharacterGenerationData*                             characterGenerationData[Utility::ToUnderlying(Sex::kTotal)];                 // 4A8
+		TESModel                                             skeletons[Utility::Conversion::ToUnderlying(Sex::kTotal)];                               // 98, Body Data
+		SkillBonus                                           skillBonuses[TESRace::kSkillBonusCount];                                                 // E8, General Data
+		std::uint16_t                                        paddingF6;                                                                               // F6
+		float                                                heights[Utility::Conversion::ToUnderlying(Sex::kTotal)];                                 // F8, Body Data
+		float                                                weights[Utility::Conversion::ToUnderlying(Sex::kTotal)];                                 // 100, Body Data
+		Utility::Enumeration<Flags, std::uint32_t>           raceFlags;                                                                               // 108
+		float                                                startingHealth;                                                                          // 10C, General Data
+		float                                                startingMagicka;                                                                         // 110, General Data
+		float                                                startingStamina;                                                                         // 114, General Data
+		float                                                baseCarryWeight;                                                                         // 118, General Data
+		float                                                baseMass;                                                                                // 11C, Body Data
+		float                                                accelerationRate;                                                                        // 120, Move Data
+		float                                                decelerationRate;                                                                        // 124, Move Data
+		Utility::Enumeration<Size, std::uint32_t>            size;                                                                                    // 128, General Data
+		Utility::Enumeration<BipedObjectSlot, std::uint32_t> headBipedObject;                                                                         // 12C, Face Data
+		Utility::Enumeration<BipedObjectSlot, std::uint32_t> hairBipedObject;                                                                         // 130, Face Data
+		float                                                injuredHealthPercentage;                                                                 // 134, Combat Data
+		Utility::Enumeration<BipedObjectSlot, std::uint32_t> shieldBipedObject;                                                                       // 138, Body Data
+		float                                                healthRegeneration;                                                                      // 13C, General Data
+		float                                                magickaRegeneration;                                                                     // 140, General Data
+		float                                                staminaRegeneration;                                                                     // 144, General Data
+		float                                                unarmedDamage;                                                                           // 148, Combat Data
+		float                                                unarmedReach;                                                                            // 14C, Combat Data
+		Utility::Enumeration<BipedObjectSlot, std::uint32_t> bodyBipedObject;                                                                         // 150, Body Data
+		float                                                aimAngleTolerance;                                                                       // 154, Combat Data
+		float                                                flightRadius;                                                                            // 158, General Data
+		float                                                angularAccelerationRate;                                                                 // 15C, Move Data
+		float                                                angularTolerance;                                                                        // 160, Move Data
+		Utility::Enumeration<Flags2, std::uint32_t>          raceFlags2;                                                                              // 164
+		NiPoint3                                             mountOffsets;                                                                            // 168, General Data, Mount Data
+		NiPoint3                                             dismountOffsets;                                                                         // 174
+		NiPoint3                                             mountCameraOffsets;                                                                      // 180
+		std::uint32_t                                        unknown18C;                                                                              // 18C
+		std::uint32_t                                        unknown190;                                                                              // 190
+		std::uint32_t                                        padding194;                                                                              // 194
+		BGSTextureModel                                      bodyTextures[Utility::Conversion::ToUnderlying(Sex::kTotal)];                            // 198, Body Data
+		BGSBehaviorGraphModel                                behaviorGraphs[Utility::Conversion::ToUnderlying(Sex::kTotal)];                          // 1E8, Body Data
+		BSFixedString                                        behaviorGraphRootNames[Utility::Conversion::ToUnderlying(Sex::kTotal)];                  // 238
+		BSFixedString                                        behaviorGraphProjectNames[Utility::Conversion::ToUnderlying(Sex::kTotal)];               // 248
+		BGSVoiceType*                                        defaultVoiceTypes[Utility::Conversion::ToUnderlying(Sex::kTotal)];                       // 258, Body Data
+		BGSBodyPartData*                                     bodyPartData;                                                                            // 268, Body Data
+		TESObjectARMO*                                       decapitateArmor[Utility::Conversion::ToUnderlying(Sex::kTotal)];                         // 270, Body Data
+		std::uint64_t                                        unknown280;                                                                              // 280
+		std::uint64_t                                        unknown288;                                                                              // 288
+		std::uint64_t                                        unknown290;                                                                              // 290
+		std::uint64_t                                        unknown298;                                                                              // 298
+		std::uint64_t                                        unknown2A0;                                                                              // 2A0
+		std::uint64_t                                        unknown2A8;                                                                              // 2A8
+		std::uint64_t                                        unknown2B0;                                                                              // 2B0
+		std::uint64_t                                        unknown2B8;                                                                              // 2B8
+		std::uint64_t                                        unknown2C0;                                                                              // 2C0
+		std::uint64_t                                        unknown2C8;                                                                              // 2C8
+		AttackAnimationArrayMap*                             attacks[Utility::Conversion::ToUnderlying(Sex::kTotal)];                                 // 2D0, Attack Data
+		BSFixedString                                        editorID;                                                                                // 2E0
+		BGSMaterialType*                                     impactMaterialType;                                                                      // 2E8, Blood, When we are hit
+		BGSImpactDataSet*                                    impactDataSet;                                                                           // 2F0, Blood, When we hit something else
+		BGSArtObject*                                        decapitateBloodArt;                                                                      // 2F8, Blood, When we are hit
+		BGSSoundDescriptorForm*                              openCorse;                                                                               // 300, Blood, Sounds made when looted
+		BGSSoundDescriptorForm*                              closeCorpse;                                                                             // 308, Blood, Sounds made when looted
+		BSFixedString                                        bipedObjectNames[Utility::Conversion::ToUnderlying(BipedObjectSlot::kCreationKitTotal)]; // 310
+		BSTArray<BGSEquipSlot*>                              equipSlots;                                                                              // 410, Combat Data, Equipment Restrictions
+		Utility::Enumeration<EquipTypes, std::uint32_t>      equipTypes;                                                                              // 428, Combat Data, Equipment Restrictions
+		std::uint32_t                                        unknown42C;                                                                              // 42C
+		BGSEquipSlot*                                        unarmedEquipSlot;                                                                        // 430, Combat Data
+		CopiedData                                           copiedData;                                                                              // 438, General Data
+		std::uint64_t                                        unknown448;                                                                              // 448
+		std::uint64_t                                        unknown450;                                                                              // 450
+		std::uint64_t                                        unknown458;                                                                              // 458
+		BSTArray<BSFixedString>                              phonemeTargets;                                                                          // 460, Phoneme Mapping
+		BGSMovementType*                                     baseMovementDefaults[Utility::Conversion::ToUnderlying(MoveType::kTotal)];               // 478, Move Data
+		CharacterGenerationData*                             characterGenerationData[Utility::Conversion::ToUnderlying(Sex::kTotal)];                 // 4A8
 	};
 	static_assert(offsetof(TESRace, skeletons) == 0x98);
 	static_assert(offsetof(TESRace, skillBonuses) == 0xE8);

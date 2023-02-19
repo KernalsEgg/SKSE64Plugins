@@ -3,10 +3,6 @@
 #include "Fixes/MagicEffectFlags.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/E/EffectItem.h"
-#include "Shared/Skyrim/E/EffectSetting.h"
-#include "Shared/Skyrim/M/MagicItem.h"
 #include "Shared/Utility/Memory.h"
 
 

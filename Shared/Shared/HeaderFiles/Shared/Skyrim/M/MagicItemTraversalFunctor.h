@@ -2,6 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/F/ForEachResult.h"
+
 
 
 namespace Skyrim
@@ -11,19 +13,19 @@ namespace Skyrim
 	class MagicItemTraversalFunctor
 	{
 	public:
-		enum class ReturnType : std::uint32_t
-		{
-			kStop     = 0,
-			kContinue = 1
-		};
-		static_assert(sizeof(ReturnType) == 0x4);
-
 		// Add
-		virtual ~MagicItemTraversalFunctor();                // 0
-		virtual ReturnType Traverse(EffectItem* effect) = 0; // 1
+		virtual ~MagicItemTraversalFunctor()                 = default; // 0
+		virtual ForEachResult operator()(EffectItem* effect) = 0;       // 1
 
 		// Member variables
-		std::uint64_t unknown8; // 8
+		union
+		{
+		public:
+			// Member variables
+			float        floatingPoint;
+			std::int32_t integer{ 0 };
+		} result{};
 	};
+	static_assert(offsetof(MagicItemTraversalFunctor, result) == 0x8);
 	static_assert(sizeof(MagicItemTraversalFunctor) == 0x10);
 }

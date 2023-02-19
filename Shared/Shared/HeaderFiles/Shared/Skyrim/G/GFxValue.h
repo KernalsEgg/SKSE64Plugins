@@ -8,7 +8,7 @@
 #include "Shared/Skyrim/G/GNewOverrideBase.h"
 #include "Shared/Skyrim/G/GStatistics.h"
 #include "Shared/Skyrim/G/GString.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -23,7 +23,7 @@ namespace Skyrim
 		friend class GFxMovieRoot;
 
 	public:
-		GFC_MEMORY_REDEFINE_NEW(GFxValue, Utility::ToUnderlying(GStatisticGroup::kGStatisticGroupDefault))
+		GFC_MEMORY_REDEFINE_NEW(GFxValue, Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticGroupDefault))
 
 		enum class ValueTypeControl : std::uint32_t
 		{
@@ -46,10 +46,10 @@ namespace Skyrim
 			kArray         = 7,
 			kDisplayObject = 8,
 
-			kConvertBoolean = Utility::ToUnderlying(ValueTypeControl::kConvertBit) | kBoolean,
-			kConvertNumber  = Utility::ToUnderlying(ValueTypeControl::kConvertBit) | kNumber,
-			kConvertString  = Utility::ToUnderlying(ValueTypeControl::kConvertBit) | kString,
-			kConvertStringW = Utility::ToUnderlying(ValueTypeControl::kConvertBit) | kStringW
+			kConvertBoolean = Utility::Conversion::ToUnderlying(ValueTypeControl::kConvertBit) | kBoolean,
+			kConvertNumber  = Utility::Conversion::ToUnderlying(ValueTypeControl::kConvertBit) | kNumber,
+			kConvertString  = Utility::Conversion::ToUnderlying(ValueTypeControl::kConvertBit) | kString,
+			kConvertStringW = Utility::Conversion::ToUnderlying(ValueTypeControl::kConvertBit) | kStringW
 		};
 		static_assert(sizeof(ValueType) == 0x4);
 
@@ -148,7 +148,7 @@ namespace Skyrim
 		static_assert(sizeof(DisplayInformation) == 0xE8);
 
 		class ObjectInterface :
-			public GNewOverrideBase<Utility::ToUnderlying(GFxStatisticMovieView::kOtherMemory)> // 0
+			public GNewOverrideBase<Utility::Conversion::ToUnderlying(GFxStatisticMovieView::kOtherMemory)> // 0
 		{
 		public:
 			class ObjVisitor

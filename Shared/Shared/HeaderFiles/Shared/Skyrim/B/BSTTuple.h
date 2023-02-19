@@ -2,6 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/M/MemoryManager.h"
+
 
 
 namespace Skyrim
@@ -13,6 +15,8 @@ namespace Skyrim
 	public:
 		using first_type  = T1;
 		using second_type = T2;
+
+		SKYRIM_MEMORY_REDEFINE_NEW();
 
 		// Member functions
 		// 1

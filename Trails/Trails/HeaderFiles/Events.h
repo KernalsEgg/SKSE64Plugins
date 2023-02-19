@@ -2,10 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BGSFootstepEvent.h"
-#include "Shared/Skyrim/B/BSTEventSink.h"
-#include "Shared/Skyrim/B/BSTEventSource.h"
-
 
 
 namespace Trails::Events
@@ -25,7 +21,7 @@ namespace Trails::Events
 		virtual ~FootstepEventSink() override = default; // 0
 
 		// Override (BSTEventSink<BGSFootstepEvent>)
-		virtual Skyrim::BSEventNotifyControl ProcessEvent(const Skyrim::BGSFootstepEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::BGSFootstepEvent>* eventSource) override; // 1
+		virtual Skyrim::EventNotifyControl ProcessEvent(const Skyrim::BGSFootstepEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::BGSFootstepEvent>* eventSource) override; // 1
 
 		// Non-member functions
 		static FootstepEventSink& GetSingleton();

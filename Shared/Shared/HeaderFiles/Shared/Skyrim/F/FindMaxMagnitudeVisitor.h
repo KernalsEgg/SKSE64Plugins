@@ -18,11 +18,11 @@ namespace Skyrim
 		virtual ~FindMaxMagnitudeVisitor() override = default; // 0
 
 		// Override (MagicTarget::ForEachActiveEffectVisitor)
-		virtual MagicTarget::ForEachActiveEffectVisitor::ReturnType Visit(ActiveEffect* activeEffect) override; // 1
+		virtual ForEachResult operator()(ActiveEffect* activeEffect) override; // 1
 
 		// Member variables
-		ActiveEffect* finishedActiveEffect; // 8
-		float         maximumMagnitude;     // 10
+		ActiveEffect* finishedActiveEffect{ nullptr }; // 8
+		float         maximumMagnitude{ -1.0F };       // 10
 	};
 	static_assert(offsetof(FindMaxMagnitudeVisitor, finishedActiveEffect) == 0x8);
 	static_assert(offsetof(FindMaxMagnitudeVisitor, maximumMagnitude) == 0x10);

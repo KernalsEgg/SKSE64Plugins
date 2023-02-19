@@ -2,9 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/I/InventoryChanges.h"
-#include "Shared/Skyrim/I/InventoryEntryData.h"
-
 
 
 namespace ScrambledBugs::Patches
@@ -15,7 +12,7 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& black, bool& underfilled);
 
 	private:
-		static Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType Visit(Skyrim::InventoryChanges::FindBestSoulGemVisitor* findBestSoulGemVisitor, Skyrim::InventoryEntryData* inventoryEntryData);
+		static Skyrim::ForEachResult Visit(Skyrim::InventoryChanges::FindBestSoulGemVisitor* findBestSoulGemVisitor, Skyrim::InventoryEntryData* inventoryEntryData);
 
 		static bool black_;
 		static bool underfilled_;

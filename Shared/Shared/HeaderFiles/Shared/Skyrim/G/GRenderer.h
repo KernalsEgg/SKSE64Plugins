@@ -9,7 +9,7 @@
 #include "Shared/Skyrim/G/GRefCountBase.h"
 #include "Shared/Skyrim/G/GRendererEventHandler.h"
 #include "Shared/Skyrim/G/GStatistics.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -25,7 +25,7 @@ namespace Skyrim
 	class GViewport;
 
 	class GRenderer :
-		public GRefCountBase<GRenderer, Utility::ToUnderlying(GStatisticRenderers::kMemory)> // 0
+		public GRefCountBase<GRenderer, Utility::Conversion::ToUnderlying(GStatisticRenderers::kMemory)> // 0
 	{
 	public:
 		using Point     = GPointF;
@@ -441,7 +441,7 @@ namespace Skyrim
 			static Cxform Identity;
 
 			// Member variables
-			float elements[Utility::ToUnderlying(Color::kTotal)][Utility::ToUnderlying(Operation::kTotal)]{
+			float elements[Utility::Conversion::ToUnderlying(Color::kTotal)][Utility::Conversion::ToUnderlying(Operation::kTotal)]{
 				{ 1.0F, 1.0F },
 				{ 1.0F, 1.0F },
 				{ 0.0F, 0.0F },

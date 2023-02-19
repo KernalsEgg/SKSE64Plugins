@@ -14,6 +14,7 @@
 #include "Shared/Skyrim/N/NiPoint3.h"
 #include "Shared/Skyrim/N/NiPointer.h"
 #include "Shared/Skyrim/T/TESForm.h"
+#include "Shared/Utility/Enumeration.h"
 
 
 
@@ -122,7 +123,7 @@ namespace Skyrim
 		virtual const char*          GetEditorID() const override;                                   // 32
 
 		// Override (BSTEventSink<BSAnimationGraphEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* eventArguments, BSTEventSource<BSAnimationGraphEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const BSAnimationGraphEvent* eventArguments, BSTEventSource<BSAnimationGraphEvent>* eventSource) override; // 1
 
 		// Override (IAnimationGraphManagerHolder)
 		virtual void Unknown2(IAnimationGraphManagerHolder*) override; // 2

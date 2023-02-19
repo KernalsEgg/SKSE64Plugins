@@ -2,10 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BGSConstructibleObject.h"
-#include "Shared/Skyrim/B/BGSImpactDataSet.h"
-#include "Shared/Skyrim/T/TESDataHandler.h"
-#include "Shared/Skyrim/T/TESForm.h"
 #include "Shared/Utility/Log.h"
 
 

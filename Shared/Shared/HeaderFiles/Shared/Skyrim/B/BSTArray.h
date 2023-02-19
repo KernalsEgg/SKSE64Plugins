@@ -59,7 +59,7 @@ namespace Skyrim
 	};
 	static_assert(sizeof(BSTArrayBase) == 0x4);
 
-	// CommonLibSSE incorrectly implements the allocator classes by not considering the size of the type when calling Skyrim::malloc, std::memcpy, std::memmove, and std::memset
+	/* CommonLibSSE incorrectly implements the allocator classes by not considering the size of the type when calling Skyrim::malloc, std::memcpy, std::memmove, and std::memset */
 	template <class T>
 	class BSTArrayHeapAllocator
 	{
@@ -174,7 +174,7 @@ namespace Skyrim
 	};
 	static_assert(sizeof(BSTArrayHeapAllocator<void*>) == 0x10);
 
-	// CommonLibSSE incorrectly implements move, release, and setting allocator traits
+	/* CommonLibSSE incorrectly implements move, release, and setting allocator traits */
 	template <class T, std::uint32_t COUNT>
 	class BSTSmallArrayHeapAllocator
 	{
@@ -486,7 +486,7 @@ namespace Skyrim
 	};
 	static_assert(sizeof(BSScrapArrayAllocator<void*>) == 0x18);
 
-	// CommonLibSSE incorrectly implements the move constructor
+	/* CommonLibSSE incorrectly implements the move constructor */
 	template <class T, class Allocator = BSTArrayHeapAllocator<T>>
 	class BSTArray :
 		public Allocator,   // 0

@@ -2,27 +2,19 @@
 
 #include "Shared/Skyrim/H/HandleEntryPointVisitor.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/B/BGSPerkEntry.h"
+#include "Shared/Skyrim/Addresses.h"
+#include "Shared/Utility/Memory.h"
+#include "Shared/Utility/TypeTraits.h"
 
 
 
 namespace Skyrim
 {
-	PerkEntryVisitor::ReturnType HandleEntryPointVisitor::Visit(BGSPerkEntry* perkEntry)
+	ForEachResult HandleEntryPointVisitor::operator()(BGSPerkEntry* perkEntry)
 	{
-		if (perkEntry && perkEntry->CheckConditionFilters(this->conditionFilterArgumentCount, this->conditionFilterArguments))
-		{
-			BGSEntryPointFunction::ExecuteFunction(
-				perkEntry->GetFunction(),
-				this->perkOwner,
-				this->entryPointFunctionType,
-				this->entryPointFunctionTypeArgumentCount,
-				this->entryPointFunctionTypeArguments,
-				perkEntry->GetFunctionData());
-		}
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&HandleEntryPointVisitor::operator())>::type>(Utility::Memory::ReadVirtualFunction(Addresses::HandleEntryPointVisitor::VirtualFunctionTable, 0x0)) };
 
-		return PerkEntryVisitor::ReturnType::kContinue;
+		return function(this, perkEntry);
 	}
 
 	HandleEntryPointVisitor::HandleEntryPointVisitor(

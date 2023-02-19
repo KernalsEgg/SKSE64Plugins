@@ -3,39 +3,9 @@
 #include "ImpactManager.h"
 
 #include "DecalManager.h"
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/B/BGSDecalManager.h"
-#include "Shared/Skyrim/B/BGSImpactData.h"
-#include "Shared/Skyrim/B/BGSImpactDataSet.h"
-#include "Shared/Skyrim/B/BGSImpactManager.h"
-#include "Shared/Skyrim/B/BGSMaterialType.h"
-#include "Shared/Skyrim/B/bhkCharacterController.h"
-#include "Shared/Skyrim/B/bhkCollisionObject.h"
-#include "Shared/Skyrim/B/bhkPickData.h"
-#include "Shared/Skyrim/B/bhkRigidBody.h"
-#include "Shared/Skyrim/B/bhkShape.h"
-#include "Shared/Skyrim/B/bhkWorld.h"
-#include "Shared/Skyrim/B/bhkWorldObject.h"
-#include "Shared/Skyrim/B/BSFixedString.h"
-#include "Shared/Skyrim/D/DecalData.h"
-#include "Shared/Skyrim/H/hkBaseTypes.h"
-#include "Shared/Skyrim/H/hkpClosestRayHitCollector.h"
-#include "Shared/Skyrim/H/hkpCollidable.h"
-#include "Shared/Skyrim/H/hkpGroupFilter.h"
-#include "Shared/Skyrim/H/hkpShape.h"
-#include "Shared/Skyrim/H/hkpWorldObject.h"
-#include "Shared/Skyrim/N/NiAVObject.h"
-#include "Shared/Skyrim/N/NiColor.h"
-#include "Shared/Skyrim/N/NiMatrix33.h"
-#include "Shared/Skyrim/N/NiNode.h"
-#include "Shared/Skyrim/N/NiPoint3.h"
-#include "Shared/Skyrim/N/NiPointer.h"
-#include "Shared/Skyrim/T/TES.h"
-#include "Shared/Skyrim/T/TESObjectCELL.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 // Remove
-#include "Shared/Skyrim/P/PlayerCharacter.h"
 #include "Shared/Utility/Log.h"
 
 
@@ -178,13 +148,13 @@ namespace Trails
 		std::uint32_t       materialID{ 0 };
 		Skyrim::NiAVObject* target3D{ nullptr };
 
-		auto terrain = Skyrim::hkpGroupFilter::GetSystemGroupFromFilterInformation(rootCollidable->broadPhaseHandle.collisionFilterInformation) == Utility::ToUnderlying(Skyrim::hkpGroupFilter::SystemGroup::kTerrain);
+		auto terrain = Skyrim::hkpGroupFilter::GetSystemGroupFromFilterInformation(rootCollidable->broadPhaseHandle.collisionFilterInformation) == Utility::Conversion::ToUnderlying(Skyrim::hkpGroupFilter::SystemGroup::kTerrain);
 
 		if (terrain)
 		{
 			materialID = Skyrim::TES::GetSingleton()->GetMaterialID(position);
 
-			if (rootCollidable->broadPhaseHandle.type == Utility::ToUnderlying(Skyrim::hkpWorldObject::BroadPhaseType::kEntity))
+			if (rootCollidable->broadPhaseHandle.type == Utility::Conversion::ToUnderlying(Skyrim::hkpWorldObject::BroadPhaseType::kEntity))
 			{
 				auto* owner = rootCollidable->GetOwner<Skyrim::hkpWorldObject>();
 

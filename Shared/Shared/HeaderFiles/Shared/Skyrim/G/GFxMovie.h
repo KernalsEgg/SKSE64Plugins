@@ -4,7 +4,7 @@
 
 #include "Shared/Skyrim/G/GFxPlayerStatistics.h"
 #include "Shared/Skyrim/G/GRefCountBase.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -16,7 +16,7 @@ namespace Skyrim
 	class GFxValue;
 
 	class GFxMovie :
-		public GRefCountBase<GFxMovie, Utility::ToUnderlying(GFxStatisticMovieView::kOtherMemory)> // 0
+		public GRefCountBase<GFxMovie, Utility::Conversion::ToUnderlying(GFxStatisticMovieView::kOtherMemory)> // 0
 	{
 	public:
 		enum class PlayState : std::uint32_t

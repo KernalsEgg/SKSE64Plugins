@@ -3,6 +3,7 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/M/MemoryManager.h"
+#include "Shared/Utility/Format.h"
 
 
 
@@ -110,7 +111,8 @@ namespace Skyrim
 	};
 
 	template <class Character, std::uint32_t COUNT, template <class, std::uint32_t> class Allocator>
-	class BSStringT
+	class BSStringT :
+		public Allocator<Character, COUNT> // 0
 	{
 	public:
 		using value_type      = Character;
@@ -216,6 +218,12 @@ namespace Skyrim
 		// Operations
 		void clear() { this->set_data(BSStringT::EMPTY); }
 
+		template <class... Arguments>
+		void print(const_pointer format, Arguments... arguments)
+		{
+			this->set_data(Utility::Format::Print(format, arguments...).data());
+		}
+
 		// Non-member functions
 		friend bool operator==(const BSStringT& left, const BSStringT& right) { return BSStringT::compare(left.data(), right.data()) == 0; }
 		friend bool operator!=(const BSStringT& left, const BSStringT& right) { return !(left == right); }
@@ -241,12 +249,12 @@ namespace Skyrim
 
 		pointer allocate(std::uint32_t count)
 		{
-			return allocator_type::allocate(count);
+			return this->allocator_type::allocate(count);
 		}
 
 		void deallocate(pointer pointer)
 		{
-			allocator_type::deallocate(pointer);
+			this->allocator_type::deallocate(pointer);
 		}
 
 		bool set_data(const_pointer string, std::uint32_t length = 0)

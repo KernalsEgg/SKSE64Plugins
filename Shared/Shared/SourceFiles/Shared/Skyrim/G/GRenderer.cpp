@@ -60,14 +60,22 @@ namespace Skyrim
 
 	bool GRenderer::Cxform::operator==(const Cxform& right) const
 	{
-		return this->elements[Utility::ToUnderlying(Color::kRed)][Utility::ToUnderlying(Operation::kMultiply)] == right.elements[Utility::ToUnderlying(Color::kRed)][Utility::ToUnderlying(Operation::kMultiply)] &&
-		       this->elements[Utility::ToUnderlying(Color::kGreen)][Utility::ToUnderlying(Operation::kMultiply)] == right.elements[Utility::ToUnderlying(Color::kGreen)][Utility::ToUnderlying(Operation::kMultiply)] &&
-		       this->elements[Utility::ToUnderlying(Color::kBlue)][Utility::ToUnderlying(Operation::kMultiply)] == right.elements[Utility::ToUnderlying(Color::kBlue)][Utility::ToUnderlying(Operation::kMultiply)] &&
-		       this->elements[Utility::ToUnderlying(Color::kAlpha)][Utility::ToUnderlying(Operation::kMultiply)] == right.elements[Utility::ToUnderlying(Color::kAlpha)][Utility::ToUnderlying(Operation::kMultiply)] &&
-		       this->elements[Utility::ToUnderlying(Color::kRed)][Utility::ToUnderlying(Operation::kAdd)] == right.elements[Utility::ToUnderlying(Color::kRed)][Utility::ToUnderlying(Operation::kAdd)] &&
-		       this->elements[Utility::ToUnderlying(Color::kGreen)][Utility::ToUnderlying(Operation::kAdd)] == right.elements[Utility::ToUnderlying(Color::kGreen)][Utility::ToUnderlying(Operation::kAdd)] &&
-		       this->elements[Utility::ToUnderlying(Color::kBlue)][Utility::ToUnderlying(Operation::kAdd)] == right.elements[Utility::ToUnderlying(Color::kBlue)][Utility::ToUnderlying(Operation::kAdd)] &&
-		       this->elements[Utility::ToUnderlying(Color::kAlpha)][Utility::ToUnderlying(Operation::kAdd)] == right.elements[Utility::ToUnderlying(Color::kAlpha)][Utility::ToUnderlying(Operation::kAdd)];
+		return this->elements[Utility::Conversion::ToUnderlying(Color::kRed)][Utility::Conversion::ToUnderlying(Operation::kMultiply)] ==
+		           right.elements[Utility::Conversion::ToUnderlying(Color::kRed)][Utility::Conversion::ToUnderlying(Operation::kMultiply)] &&
+		       this->elements[Utility::Conversion::ToUnderlying(Color::kGreen)][Utility::Conversion::ToUnderlying(Operation::kMultiply)] ==
+		           right.elements[Utility::Conversion::ToUnderlying(Color::kGreen)][Utility::Conversion::ToUnderlying(Operation::kMultiply)] &&
+		       this->elements[Utility::Conversion::ToUnderlying(Color::kBlue)][Utility::Conversion::ToUnderlying(Operation::kMultiply)] ==
+		           right.elements[Utility::Conversion::ToUnderlying(Color::kBlue)][Utility::Conversion::ToUnderlying(Operation::kMultiply)] &&
+		       this->elements[Utility::Conversion::ToUnderlying(Color::kAlpha)][Utility::Conversion::ToUnderlying(Operation::kMultiply)] ==
+		           right.elements[Utility::Conversion::ToUnderlying(Color::kAlpha)][Utility::Conversion::ToUnderlying(Operation::kMultiply)] &&
+		       this->elements[Utility::Conversion::ToUnderlying(Color::kRed)][Utility::Conversion::ToUnderlying(Operation::kAdd)] ==
+		           right.elements[Utility::Conversion::ToUnderlying(Color::kRed)][Utility::Conversion::ToUnderlying(Operation::kAdd)] &&
+		       this->elements[Utility::Conversion::ToUnderlying(Color::kGreen)][Utility::Conversion::ToUnderlying(Operation::kAdd)] ==
+		           right.elements[Utility::Conversion::ToUnderlying(Color::kGreen)][Utility::Conversion::ToUnderlying(Operation::kAdd)] &&
+		       this->elements[Utility::Conversion::ToUnderlying(Color::kBlue)][Utility::Conversion::ToUnderlying(Operation::kAdd)] ==
+		           right.elements[Utility::Conversion::ToUnderlying(Color::kBlue)][Utility::Conversion::ToUnderlying(Operation::kAdd)] &&
+		       this->elements[Utility::Conversion::ToUnderlying(Color::kAlpha)][Utility::Conversion::ToUnderlying(Operation::kAdd)] ==
+		           right.elements[Utility::Conversion::ToUnderlying(Color::kAlpha)][Utility::Conversion::ToUnderlying(Operation::kAdd)];
 	}
 
 	bool GRenderer::BlurFilterParameters::operator==(const BlurFilterParameters& right) const

@@ -20,7 +20,7 @@ namespace Skyrim
 	{
 		auto target = this->targetHandle.get();
 
-		if (target && target->formType == Skyrim::FormType::kActor)
+		if (target && target->formType == FormType::kActor)
 		{
 			targetActor.reset(static_cast<Actor*>(target.get()));
 		}

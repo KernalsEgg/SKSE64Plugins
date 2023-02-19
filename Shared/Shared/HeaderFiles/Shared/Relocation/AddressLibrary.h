@@ -14,7 +14,7 @@ namespace Relocation
 {
 	class AddressLibrary
 	{
-	public:
+	private:
 		enum class ReadType : std::uint8_t
 		{
 			kSetUInt64      = 0,
@@ -51,6 +51,7 @@ namespace Relocation
 		static_assert(offsetof(Element, offset) == 0x8);
 		static_assert(sizeof(Element) == 0x10);
 
+	public:
 		AddressLibrary()                      = delete;
 		AddressLibrary(const AddressLibrary&) = delete;
 		AddressLibrary(AddressLibrary&&)      = delete;
@@ -77,7 +78,10 @@ namespace Relocation
 
 				if (!result)
 				{
-					Utility::Log::Error(this->sourceLocation_)("Unexpected pattern encountered at {} + 0x{:X}.", Executable::GetSingleton().GetPath().filename().string(), address - Executable::GetSingleton().GetAddress());
+					Utility::Log::Error(this->sourceLocation_)(
+						"Unexpected pattern encountered at {} + 0x{:X}.",
+						Executable::GetSingleton().GetPath().filename().string(),
+						address - Executable::GetSingleton().GetAddress());
 				}
 
 				return result;
@@ -89,10 +93,11 @@ namespace Relocation
 
 		void           Dump(const std::filesystem::path& path) const;
 		std::uintptr_t GetAddress(std::uint64_t identifier) const;
-		void           Load(const Version<std::int32_t>& productVersion);
-		void           Read(std::ifstream& inputFileStream, const Header& header);
 
 	private:
+		void Load(const Version<std::int32_t>& productVersion);
+		void Read(std::ifstream& inputFileStream, const Header& header);
+
 		FileMapping        fileMapping_;
 		FileMapping::View  fileMappingView_;
 		std::span<Element> span_;

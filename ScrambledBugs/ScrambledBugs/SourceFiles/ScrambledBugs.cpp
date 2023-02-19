@@ -2,31 +2,44 @@
 
 #include "Serialization.h"
 #include "Settings.h"
-#include "Shared/SKSE/Interfaces.h"
 #include "Shared/Utility/Log.h"
-#include "Shared/Utility/Trampoline.h"
 
 
 
 namespace ScrambledBugs
 {
-	bool Initialize()
+	void PostLoad()
 	{
-		const auto* serializationInterface = SKSE::Cache::GetSingleton().GetSerializationInterface();
+		Settings::GetSingleton().PostLoad();
+	}
 
-		if (!serializationInterface)
+	void MessageHandler(SKSE::MessagingInterface::Message* message)
+	{
+		switch (message->type)
 		{
-			Utility::Log::Critical()("Serialization interface not found.");
+			case SKSE::MessagingInterface::kPostLoad:
+			{
+				ScrambledBugs::PostLoad();
 
+				break;
+			}
+		}
+	}
+
+	bool Load()
+	{
+		if (!SKSE::Storage::GetSingleton().GetMessagingInterface()->RegisterListener(ScrambledBugs::MessageHandler))
+		{
 			return false;
 		}
+
+		const auto* serializationInterface = SKSE::Storage::GetSingleton().GetSerializationInterface();
 
 		serializationInterface->SetUniqueID(ScrambledBugs::Serialization::kUniqueID);
 		serializationInterface->SetLoadCallback(std::addressof(ScrambledBugs::Serialization::LoadGame));
 		serializationInterface->SetSaveCallback(std::addressof(ScrambledBugs::Serialization::SaveGame));
 
-		Settings::GetSingleton().Initialize();
-		Utility::Trampoline::GetSingleton().Commit();
+		Settings::GetSingleton().Load();
 
 		return true;
 	}
@@ -44,7 +57,7 @@ extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Ve
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
-	SKSE::Cache::GetSingleton().Initialize(loadInterface);
+	SKSE::Storage::GetSingleton().Initialize(loadInterface);
 
-	return ScrambledBugs::Initialize();
+	return ScrambledBugs::Load();
 }

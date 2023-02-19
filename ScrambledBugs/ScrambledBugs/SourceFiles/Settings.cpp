@@ -404,9 +404,9 @@ namespace ScrambledBugs
 		return *this;
 	}
 
-	void Settings::Initialize()
+	void Settings::Load()
 	{
-		Utility::Log::Information()("Initializing...\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Loading...\n{}", this->Serialize().dump(1, '\t'));
 
 		if (this->fixes.activateFurniture)
 		{
@@ -523,11 +523,6 @@ namespace ScrambledBugs
 			ScrambledBugs::Patches::EquipBestAmmunition::Patch(this->patches.equipBestAmmunition);
 		}
 
-		if (this->patches.improveMultipleEnchantmentEffects)
-		{
-			ScrambledBugs::Patches::ImproveMultipleEnchantmentEffects::Patch(this->patches.improveMultipleEnchantmentEffects);
-		}
-
 		if (this->patches.leveledCharacters)
 		{
 			ScrambledBugs::Patches::LeveledCharacters::Patch(this->patches.leveledCharacters);
@@ -587,7 +582,19 @@ namespace ScrambledBugs
 			ScrambledBugs::Patches::SteepSlopes::Patch(this->patches.steepSlopes);
 		}
 
-		Utility::Log::Information()("Initialized.\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Loaded.\n{}", this->Serialize().dump(1, '\t'));
+	}
+
+	void Settings::PostLoad()
+	{
+		Utility::Log::Information()("Post Loading...\n{}", this->Serialize().dump(1, '\t'));
+
+		if (this->patches.improveMultipleEnchantmentEffects)
+		{
+			ScrambledBugs::Patches::ImproveMultipleEnchantmentEffects::Patch(this->patches.improveMultipleEnchantmentEffects);
+		}
+
+		Utility::Log::Information()("Post Loaded.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const

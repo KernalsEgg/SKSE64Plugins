@@ -2,10 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/B/BGSEntryPointPerkEntry.h"
-#include "Shared/Skyrim/I/InventoryChanges.h"
-
 
 
 namespace ScrambledBugs::Fixes
@@ -20,7 +16,7 @@ namespace ScrambledBugs::Fixes
 		static float GetInventoryWeight(Skyrim::InventoryChanges* inventoryChanges);
 		static void  RemovePerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner);
 
-		static decltype(&ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)  applyPerkEntry_;
-		static decltype(&ModifyArmorWeightPerkEntryPoint::RemovePerkEntry) removePerkEntry_;
+		static decltype(ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)*  applyPerkEntry_;
+		static decltype(ModifyArmorWeightPerkEntryPoint::RemovePerkEntry)* removePerkEntry_;
 	};
 }

@@ -5,7 +5,7 @@
 #include "Shared/Skyrim/G/GList.h"
 #include "Shared/Skyrim/G/GNewOverrideBase.h"
 #include "Shared/Skyrim/G/GStatistics.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -15,8 +15,8 @@ namespace Skyrim
 	class GRenderer;
 
 	class GRendererEventHandler :
-		protected GListNode<GRendererEventHandler>,                                               // 0
-		public GNewOverrideBase<Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)> // 10
+		protected GListNode<GRendererEventHandler>,                                                           // 0
+		public GNewOverrideBase<Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)> // 10
 	{
 	private:
 		friend struct GListNode<GRendererEventHandler>;

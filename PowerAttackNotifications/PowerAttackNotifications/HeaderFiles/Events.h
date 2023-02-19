@@ -2,7 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/ActorValue.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -17,6 +16,6 @@ namespace PowerAttackNotifications
 	private:
 		static void StartStaminaMeterBlinking(Utility::Enumeration<Skyrim::ActorValue, std::uint32_t> actorValue);
 
-		static decltype(&Events::StartStaminaMeterBlinking) startStaminaMeterBlinking_;
+		static decltype(Events::StartStaminaMeterBlinking)* startStaminaMeterBlinking_;
 	};
 }

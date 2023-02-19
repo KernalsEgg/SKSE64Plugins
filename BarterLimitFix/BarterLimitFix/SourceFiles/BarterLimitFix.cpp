@@ -1,15 +1,14 @@
 #include "PrecompiledHeader.h"
 
 #include "Events.h"
-#include "Shared/SKSE/Interfaces.h"
+#include "Shared/Relocation/Version.h"
 #include "Shared/Utility/Log.h"
-#include "Shared/Utility/Trampoline.h"
 
 
 
 namespace BarterLimitFix
 {
-	bool Initialize()
+	bool Load()
 	{
 		if (!Events::Register())
 		{
@@ -18,15 +17,13 @@ namespace BarterLimitFix
 			return false;
 		}
 
-		Utility::Trampoline::GetSingleton().Commit();
-
 		return true;
 	}
 }
 
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
-	.pluginVersion   = 1,
+	.pluginVersion   = 2,
 	.pluginName      = "Barter Limit Fix",
 	.author          = "KernalsEgg",
 	.addressLibrary  = true,
@@ -37,7 +34,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 {
 	pluginInformation->informationVersion = SKSE::PluginInformation::kVersion;
 	pluginInformation->name               = "Barter Limit Fix";
-	pluginInformation->version            = 1;
+	pluginInformation->version            = 2;
 
 	if (queryInterface->IsEditor())
 	{
@@ -66,7 +63,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
-	SKSE::Cache::GetSingleton().Initialize(loadInterface);
+	SKSE::Storage::GetSingleton().Initialize(loadInterface);
 
-	return BarterLimitFix::Initialize();
+	return BarterLimitFix::Load();
 }

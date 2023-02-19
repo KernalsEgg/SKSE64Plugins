@@ -5,7 +5,7 @@
 #include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/B/BSTSingleton.h"
 #include "Shared/Skyrim/T/TESForm.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -53,8 +53,8 @@ namespace Skyrim
 		}
 
 		// Member variables
-		TESForm* objects[Utility::ToUnderlying(DefaultObjects::kTotal)];           // 20
-		bool     objectInitialized[Utility::ToUnderlying(DefaultObjects::kTotal)]; // B80, B90
+		TESForm* objects[Utility::Conversion::ToUnderlying(DefaultObjects::kTotal)];           // 20
+		bool     objectInitialized[Utility::Conversion::ToUnderlying(DefaultObjects::kTotal)]; // B80, B90
 	};
 	static_assert(offsetof(BGSDefaultObjectManager, objects) == 0x20);
 	static_assert(offsetof(BGSDefaultObjectManager, objectInitialized) == SKYRIM_RELOCATE(0xB80, 0xB90));

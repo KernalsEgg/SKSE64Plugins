@@ -2,8 +2,6 @@
 
 #include "Fixes/ActivateFurniture.h"
 
-#include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/P/PlayerCharacter.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -31,5 +29,5 @@ namespace ScrambledBugs::Fixes
 		return ActivateFurniture::activate_(furniture, target, activator, deferred, item, itemCount);
 	}
 
-	decltype(&ActivateFurniture::Activate) ActivateFurniture::activate_{ nullptr };
+	decltype(ActivateFurniture::Activate)* ActivateFurniture::activate_{ nullptr };
 }

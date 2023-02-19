@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	NiFloatsExtraData* NiFloatsExtraData::CreateObject()
 	{
-		auto* function{ reinterpret_cast<decltype(&NiFloatsExtraData::CreateObject)>(Addresses::NiFloatsExtraData::CreateObject) };
+		auto* function{ reinterpret_cast<decltype(NiFloatsExtraData::CreateObject)*>(Addresses::NiFloatsExtraData::CreateObject) };
 
 		return function();
 	}

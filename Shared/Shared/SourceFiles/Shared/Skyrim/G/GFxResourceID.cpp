@@ -12,7 +12,7 @@ namespace Skyrim
 	}
 
 	GFxResourceID::GFxResourceID() :
-		id_(Utility::ToUnderlying(IDTypeConstants::kInvalidID))
+		id_(Utility::Conversion::ToUnderlying(IDTypeConstants::kInvalidID))
 	{
 	}
 
@@ -64,12 +64,12 @@ namespace Skyrim
 
 	std::uint32_t GFxResourceID::GetIDIndex() const
 	{
-		return this->id_ & Utility::ToUnderlying(IDTypeConstants::kIndexMask);
+		return this->id_ & Utility::Conversion::ToUnderlying(IDTypeConstants::kIndexMask);
 	}
 
 	GFxResourceID::IDType GFxResourceID::GetIDType() const
 	{
-		return static_cast<IDType>(this->id_ & Utility::ToUnderlying(IDTypeConstants::kTypeMask));
+		return static_cast<IDType>(this->id_ & Utility::Conversion::ToUnderlying(IDTypeConstants::kTypeMask));
 	}
 
 	std::uint32_t GFxResourceID::GetIDValue() const

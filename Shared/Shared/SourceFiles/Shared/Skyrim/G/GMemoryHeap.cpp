@@ -2,7 +2,7 @@
 
 #include "Shared/Skyrim/G/GMemoryHeap.h"
 
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -35,11 +35,11 @@ namespace Skyrim
 	GMemoryHeap::RootHeapDescriptor::RootHeapDescriptor() :
 		HeapDescriptor(
 			HeapFlags::kNone,
-			Utility::ToUnderlying(RootHeapParameters::kMinimumAlignment),
-			Utility::ToUnderlying(RootHeapParameters::kGranularity),
-			Utility::ToUnderlying(RootHeapParameters::kReserve),
-			Utility::ToUnderlying(RootHeapParameters::kThreshold),
-			Utility::ToUnderlying(RootHeapParameters::kLimit),
+			Utility::Conversion::ToUnderlying(RootHeapParameters::kMinimumAlignment),
+			Utility::Conversion::ToUnderlying(RootHeapParameters::kGranularity),
+			Utility::Conversion::ToUnderlying(RootHeapParameters::kReserve),
+			Utility::Conversion::ToUnderlying(RootHeapParameters::kThreshold),
+			Utility::Conversion::ToUnderlying(RootHeapParameters::kLimit),
 			GHeapID::kGlobal)
 	{
 	}

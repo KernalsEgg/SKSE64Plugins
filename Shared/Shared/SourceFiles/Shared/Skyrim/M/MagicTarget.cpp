@@ -14,7 +14,7 @@ namespace Skyrim
 		return this->MagicTargetIsActor() ? static_cast<Actor*>(this->GetMagicTargetAsReference()) : nullptr;
 	}
 
-	void MagicTarget::VisitActiveEffects(ForEachActiveEffectVisitor* visitor)
+	void MagicTarget::ForEachActiveEffect(ForEachActiveEffectVisitor& visitor)
 	{
 		auto* activeEffects = this->GetActiveEffects();
 
@@ -27,7 +27,7 @@ namespace Skyrim
 					break;
 				}
 
-				if (visitor->Visit(activeEffect) != ForEachActiveEffectVisitor::ReturnType::kContinue)
+				if (visitor(activeEffect) != ForEachResult::kContinue)
 				{
 					break;
 				}

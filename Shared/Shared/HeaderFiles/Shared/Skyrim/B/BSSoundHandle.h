@@ -32,6 +32,9 @@ namespace Skyrim
 			kEnvelopeSlow = 3
 		};
 
+		// Member functions
+		bool Play();
+
 		// Member variables
 		std::uint32_t                                     soundID{ BSSoundHandle::kInvalidID }; // 0
 		bool                                              assumeSuccess{ false };               // 4

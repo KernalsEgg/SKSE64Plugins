@@ -2,8 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-
 
 
 namespace ScrambledBugs::Patches
@@ -16,6 +14,6 @@ namespace ScrambledBugs::Patches
 	private:
 		static float GetScale(Skyrim::Actor* actor);
 
-		static decltype(&SteepSlopes::GetScale) getScale_;
+		static decltype(SteepSlopes::GetScale)* getScale_;
 	};
 }

@@ -3,12 +3,6 @@
 #include "Fixes/ModifyArmorWeightPerkEntryPoint.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/B/BGSEntryPoint.h"
-#include "Shared/Skyrim/B/BSSimpleList.h"
-#include "Shared/Skyrim/I/InventoryEntryData.h"
-#include "Shared/Skyrim/T/TESBoundObject.h"
-#include "Shared/Skyrim/T/TESContainer.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -56,7 +50,7 @@ namespace ScrambledBugs::Fixes
 		auto* ownerActor = owner && owner->formType == Skyrim::FormType::kActor ? static_cast<Skyrim::Actor*>(owner) : nullptr;
 		auto* container  = owner ? owner->GetContainer() : nullptr;
 
-		// TESContainer
+		/* TESContainer */
 		if (container)
 		{
 			for (auto* containerObject : *container)
@@ -107,7 +101,7 @@ namespace ScrambledBugs::Fixes
 			}
 		}
 
-		// InventoryChanges
+		/* InventoryChanges */
 		auto* inventoryEntryDataList = inventoryChanges->inventoryEntryDataList;
 
 		if (inventoryEntryDataList)
@@ -189,6 +183,6 @@ namespace ScrambledBugs::Fixes
 		}
 	}
 
-	decltype(&ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)  ModifyArmorWeightPerkEntryPoint::applyPerkEntry_{ nullptr };
-	decltype(&ModifyArmorWeightPerkEntryPoint::RemovePerkEntry) ModifyArmorWeightPerkEntryPoint::removePerkEntry_{ nullptr };
+	decltype(ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)*  ModifyArmorWeightPerkEntryPoint::applyPerkEntry_{ nullptr };
+	decltype(ModifyArmorWeightPerkEntryPoint::RemovePerkEntry)* ModifyArmorWeightPerkEntryPoint::removePerkEntry_{ nullptr };
 }

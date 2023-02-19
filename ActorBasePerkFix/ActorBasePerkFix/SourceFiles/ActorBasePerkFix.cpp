@@ -1,14 +1,14 @@
 #include "PrecompiledHeader.h"
 
 #include "Events.h"
-#include "Shared/SKSE/Interfaces.h"
+#include "Shared/Relocation/Version.h"
 #include "Shared/Utility/Log.h"
 
 
 
 namespace ActorBasePerkFix
 {
-	bool Initialize()
+	bool Load()
 	{
 		Events::Register();
 
@@ -58,7 +58,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
-	SKSE::Cache::GetSingleton().Initialize(loadInterface);
+	SKSE::Storage::GetSingleton().Initialize(loadInterface);
 
-	return ActorBasePerkFix::Initialize();
+	return ActorBasePerkFix::Load();
 }

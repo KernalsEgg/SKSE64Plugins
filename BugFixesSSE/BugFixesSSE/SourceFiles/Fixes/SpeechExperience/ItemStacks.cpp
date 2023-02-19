@@ -6,7 +6,6 @@
 #include "Patterns.h"
 #include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
-#include "Shared/Utility/Trampoline.h"
 
 
 
@@ -23,7 +22,9 @@ namespace BugFixesSSE::Fixes::SpeechExperience
 			return;
 		}
 
-		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::Fixes::SpeechExperience::ItemStacks::Buy,
+		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
+
+		trampolineInterface->RelativeCall5Branch(Addresses::Fixes::SpeechExperience::ItemStacks::Buy,
 			0x48ui8, 0x83ui8, 0xECui8, 0x28ui8,                                                                                       // sub rsp, 28
 			Utility::Assembly::AbsoluteCall(Utility::Memory::ReadRelativeCall5(Addresses::Fixes::SpeechExperience::ItemStacks::Buy)), // call InventoryEntryData::GetBaseValue
 			0x0Fui8, 0x57ui8, 0xC9ui8,                                                                                                // xorps xmm1, xmm1
@@ -33,7 +34,7 @@ namespace BugFixesSSE::Fixes::SpeechExperience
 			0xC3ui8                                                                                                                   // ret
 		);
 
-		Utility::Trampoline::GetSingleton().RelativeCall5Branch(Addresses::Fixes::SpeechExperience::ItemStacks::Sell,
+		trampolineInterface->RelativeCall5Branch(Addresses::Fixes::SpeechExperience::ItemStacks::Sell,
 			0x48ui8, 0x83ui8, 0xECui8, 0x28ui8,                                                                                        // sub rsp, 28
 			Utility::Assembly::AbsoluteCall(Utility::Memory::ReadRelativeCall5(Addresses::Fixes::SpeechExperience::ItemStacks::Sell)), // call InventoryEntryData::GetBaseValue
 			0x0Fui8, 0x57ui8, 0xC9ui8,                                                                                                 // xorps xmm1, xmm1

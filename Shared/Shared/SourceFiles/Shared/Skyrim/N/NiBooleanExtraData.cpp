@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	NiBooleanExtraData* NiBooleanExtraData::CreateObject()
 	{
-		auto* function{ reinterpret_cast<decltype(&NiBooleanExtraData::CreateObject)>(Addresses::NiBooleanExtraData::CreateObject) };
+		auto* function{ reinterpret_cast<decltype(NiBooleanExtraData::CreateObject)*>(Addresses::NiBooleanExtraData::CreateObject) };
 
 		return function();
 	}

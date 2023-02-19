@@ -2,45 +2,18 @@
 
 #include "Shared/Skyrim/F/FindMaxMagnitudeVisitor.h"
 
-#include "Shared/Skyrim/A/AccumulatingValueModifierEffect.h"
-#include "Shared/Skyrim/A/ActiveEffect.h"
-#include "Shared/Skyrim/E/EffectSetting.h"
+#include "Shared/Skyrim/Addresses.h"
+#include "Shared/Utility/Memory.h"
+#include "Shared/Utility/TypeTraits.h"
 
 
 
 namespace Skyrim
 {
-	MagicTarget::ForEachActiveEffectVisitor::ReturnType FindMaxMagnitudeVisitor::Visit(ActiveEffect* activeEffect)
+	ForEachResult FindMaxMagnitudeVisitor::operator()(ActiveEffect* activeEffect)
 	{
-		if (!activeEffect)
-		{
-			return MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
-		}
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&FindMaxMagnitudeVisitor::operator())>::type>(Utility::Memory::ReadVirtualFunction(Addresses::FindMaxMagnitudeVisitor::VirtualFunctionTable, 0x1)) };
 
-		if (activeEffect == this->finishedActiveEffect)
-		{
-			return MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
-		}
-
-		if (activeEffect->GetEffectSetting()->effectArchetype != EffectArchetypes::ArchetypeID::kAccumulateMagnitude)
-		{
-			return MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
-		}
-
-		auto* accumulatingValueModifierEffect = static_cast<AccumulatingValueModifierEffect*>(activeEffect);
-
-		if (accumulatingValueModifierEffect->actorValue != ActorValue::kWardPower)
-		{
-			return MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
-		}
-
-		auto maximumMagnitude = accumulatingValueModifierEffect->maximumMagnitude;
-
-		if (maximumMagnitude > this->maximumMagnitude)
-		{
-			this->maximumMagnitude = maximumMagnitude;
-		}
-
-		return MagicTarget::ForEachActiveEffectVisitor::ReturnType::kContinue;
+		return function(this, activeEffect);
 	}
 }

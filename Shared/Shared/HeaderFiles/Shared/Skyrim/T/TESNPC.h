@@ -11,7 +11,7 @@
 #include "Shared/Skyrim/S/SoundLevel.h"
 #include "Shared/Skyrim/T/TESActorBase.h"
 #include "Shared/Skyrim/T/TESRaceForm.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -51,8 +51,8 @@ namespace Skyrim
 		struct Skills
 		{
 		public:
-			std::uint8_t values[Utility::ToUnderlying(Skill::kTotal)];  // 0
-			std::uint8_t offsets[Utility::ToUnderlying(Skill::kTotal)]; // 12
+			std::uint8_t values[Utility::Conversion::ToUnderlying(Skill::kTotal)];  // 0
+			std::uint8_t offsets[Utility::Conversion::ToUnderlying(Skill::kTotal)]; // 12
 		};
 		static_assert(offsetof(Skills, values) == 0x0);
 		static_assert(offsetof(Skills, offsets) == 0x12);
@@ -104,8 +104,8 @@ namespace Skyrim
 			};
 
 			// Member variables
-			float        morphs[Utility::ToUnderlying(Morph::kTotal)];       // 0
-			std::int32_t faceParts[Utility::ToUnderlying(FacePart::kTotal)]; // 4C
+			float        morphs[Utility::Conversion::ToUnderlying(Morph::kTotal)];       // 0
+			std::int32_t faceParts[Utility::Conversion::ToUnderlying(FacePart::kTotal)]; // 4C
 		};
 		static_assert(offsetof(CharacterGenerationMorphs, morphs) == 0x0);
 		static_assert(offsetof(CharacterGenerationMorphs, faceParts) == 0x4C);
@@ -161,7 +161,7 @@ namespace Skyrim
 		virtual void  SetActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float value) override; // 7
 
 		// Override (BSTEventSink<MenuOpenCloseEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* eventArguments, BSTEventSource<MenuOpenCloseEvent>* eventSource) override; // 1
+		virtual EventNotifyControl ProcessEvent(const MenuOpenCloseEvent* eventArguments, BSTEventSource<MenuOpenCloseEvent>* eventSource) override; // 1
 
 		// Member variables
 		Skills                                         skills;                    // 190, Stats

@@ -109,7 +109,7 @@ namespace Skyrim
 				virtual ~CreateEffectFunctor() override; // 0
 
 				// Override (MagicItemTraversalFunctor)
-				virtual MagicItemTraversalFunctor::ReturnType Traverse(EffectItem* effect) override; // 1
+				virtual ForEachResult operator()(EffectItem* effect) override; // 1
 
 				// Member variables
 				BSTArray<EffectItem>                          effects;          // 10

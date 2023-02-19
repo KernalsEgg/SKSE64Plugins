@@ -3,8 +3,6 @@
 #include "Fixes/IsCurrentSpell.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/M/MagicSystem.h"
-#include "Shared/Skyrim/S/SpellItem.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -16,8 +14,8 @@ namespace ScrambledBugs::Fixes
 	{
 		IsCurrentSpell::isCurrentSpellConditionFunction_ = *reinterpret_cast<decltype(IsCurrentSpell::isCurrentSpellConditionFunction_)*>(Addresses::Fixes::IsCurrentSpell::IsCurrentSpellConditionFunction);
 
-		*reinterpret_cast<decltype(&IsCurrentSpell::IsCurrentSpellConditionFunction)*>(Addresses::Fixes::IsCurrentSpell::IsCurrentSpellConditionFunction) = std::addressof(IsCurrentSpell::IsCurrentSpellConditionFunction);
-		*reinterpret_cast<decltype(&IsCurrentSpell::IsCurrentSpellFunction)*>(Addresses::Fixes::IsCurrentSpell::IsCurrentSpellFunction)                   = std::addressof(IsCurrentSpell::IsCurrentSpellFunction);
+		*reinterpret_cast<decltype(IsCurrentSpell::IsCurrentSpellConditionFunction)**>(Addresses::Fixes::IsCurrentSpell::IsCurrentSpellConditionFunction) = std::addressof(IsCurrentSpell::IsCurrentSpellConditionFunction);
+		*reinterpret_cast<decltype(IsCurrentSpell::IsCurrentSpellFunction)**>(Addresses::Fixes::IsCurrentSpell::IsCurrentSpellFunction)                   = std::addressof(IsCurrentSpell::IsCurrentSpellFunction);
 	}
 
 	bool IsCurrentSpell::IsCurrentSpellConditionFunction(Skyrim::TESObjectREFR* object, void* parameter1, void* parameter2, double& result)
@@ -35,6 +33,6 @@ namespace ScrambledBugs::Fixes
 		           false;
 	}
 
-	decltype(&IsCurrentSpell::IsCurrentSpellConditionFunction) IsCurrentSpell::isCurrentSpellConditionFunction_{ nullptr };
-	decltype(&IsCurrentSpell::IsCurrentSpellFunction)          IsCurrentSpell::isCurrentSpellFunction_{ nullptr };
+	decltype(IsCurrentSpell::IsCurrentSpellConditionFunction)* IsCurrentSpell::isCurrentSpellConditionFunction_{ nullptr };
+	decltype(IsCurrentSpell::IsCurrentSpellFunction)*          IsCurrentSpell::isCurrentSpellFunction_{ nullptr };
 }

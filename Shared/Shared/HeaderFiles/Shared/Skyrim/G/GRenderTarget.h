@@ -6,7 +6,7 @@
 #include "Shared/Skyrim/G/GNewOverrideBase.h"
 #include "Shared/Skyrim/G/GStatistics.h"
 #include "Shared/Skyrim/G/GTexture.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -15,7 +15,7 @@ namespace Skyrim
 	class GRenderer;
 
 	class GRenderTarget :
-		public GNewOverrideBase<Utility::ToUnderlying(GStatisticRenderers::kMemory)> // 0
+		public GNewOverrideBase<Utility::Conversion::ToUnderlying(GStatisticRenderers::kMemory)> // 0
 	{
 	public:
 		using ChangeHandler = GTexture::ChangeHandler;

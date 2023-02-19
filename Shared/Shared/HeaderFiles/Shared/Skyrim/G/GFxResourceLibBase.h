@@ -4,7 +4,7 @@
 
 #include "Shared/Skyrim/G/GRefCountBase.h"
 #include "Shared/Skyrim/G/GStatistics.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -13,7 +13,7 @@ namespace Skyrim
 	class GFxResource;
 
 	class GFxResourceLibBase :
-		public GRefCountBase<GFxResourceLibBase, Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)> // 0
+		public GRefCountBase<GFxResourceLibBase, Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)> // 0
 	{
 	public:
 		// Add

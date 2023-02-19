@@ -4,7 +4,7 @@
 
 #include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/G/GMemory.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/TypeTraits.h"
 
 
@@ -13,7 +13,7 @@ namespace Skyrim
 {
 	UPInt GString::DataDescriptor::GetLengthFlagBit()
 	{
-		return static_cast<UPInt>(1) << Utility::ToUnderlying(FlagConstants::kLengthIsSizeShift);
+		return static_cast<UPInt>(1) << Utility::Conversion::ToUnderlying(FlagConstants::kLengthIsSizeShift);
 	}
 
 	void GString::DataDescriptor::AddReference()

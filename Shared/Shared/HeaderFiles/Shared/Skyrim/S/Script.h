@@ -13,6 +13,7 @@
 
 namespace Skyrim
 {
+	class ScriptCompiler;
 	class TESObjectREFR;
 	class TESQuest;
 
@@ -23,11 +24,6 @@ namespace Skyrim
 		kDialogueCompiler     = 2
 	};
 	static_assert(sizeof(CompilerName) == 0x4);
-
-	class ScriptCompiler
-	{
-	};
-	static_assert(std::is_empty_v<ScriptCompiler>);
 
 	class Script :
 		public TESForm // 0
@@ -48,7 +44,7 @@ namespace Skyrim
 		template <class... Arguments>
 		static bool ParseParameters(const ScriptParameter* scriptParameters, ScriptFunction::ScriptData* scriptData, std::uint32_t& opcodeOffset, TESObjectREFR* object, TESObjectREFR* containingObject, Script* script, ScriptLocals* scriptLocals, Arguments... arguments)
 		{
-			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<decltype(&Script::ParseParameters<>)>::type>(Addresses::Script::ParseParameters) };
+			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<decltype(Script::ParseParameters<>)*>::type>(Addresses::Script::ParseParameters) };
 
 			return function(scriptParameters, scriptData, opcodeOffset, object, containingObject, script, scriptLocals, arguments...);
 		}

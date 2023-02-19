@@ -4,23 +4,22 @@
 
 #include "ImpactManager.h"
 #include "Settings.h"
-#include "Shared/SKSE/Interfaces.h"
 
 
 
 namespace Trails::Events
 {
-	Skyrim::BSEventNotifyControl FootstepEventSink::ProcessEvent(const Skyrim::BGSFootstepEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::BGSFootstepEvent>* eventSource)
+	Skyrim::EventNotifyControl FootstepEventSink::ProcessEvent(const Skyrim::BGSFootstepEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::BGSFootstepEvent>* eventSource)
 	{
 		if (!eventArguments)
 		{
-			return Skyrim::BSEventNotifyControl::kContinue;
+			return Skyrim::EventNotifyControl::kContinue;
 		}
 
 		auto        actorHandle = eventArguments->actor;
 		std::string tag         = eventArguments->tag.data();
 
-		SKSE::Cache::GetSingleton().GetTaskInterface()->AddTask(
+		SKSE::Storage::GetSingleton().GetTaskInterface()->AddTask(
 			[actorHandle, tag]()
 			{
 				auto* actor = actorHandle.get().get();
@@ -57,7 +56,7 @@ namespace Trails::Events
 				}
 			});
 
-		return Skyrim::BSEventNotifyControl::kContinue;
+		return Skyrim::EventNotifyControl::kContinue;
 	}
 
 	FootstepEventSink& FootstepEventSink::GetSingleton()

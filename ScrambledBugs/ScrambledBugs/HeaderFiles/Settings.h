@@ -106,7 +106,8 @@ namespace ScrambledBugs
 		static Settings& GetSingleton();
 
 		Settings&      Deserialize(const nlohmann::json& jsonSettings);
-		void           Initialize();
+		void           Load();
+		void           PostLoad();
 		nlohmann::json Serialize() const;
 
 		Fixes   fixes{};

@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	BSTEventSource<PoisonedWeapon::Event>* PoisonedWeapon::GetEventSource()
 	{
-		auto* function{ reinterpret_cast<decltype(&PoisonedWeapon::GetEventSource)>(Addresses::PoisonedWeapon::GetEventSource) };
+		auto* function{ reinterpret_cast<decltype(PoisonedWeapon::GetEventSource)*>(Addresses::PoisonedWeapon::GetEventSource) };
 
 		return function();
 	}

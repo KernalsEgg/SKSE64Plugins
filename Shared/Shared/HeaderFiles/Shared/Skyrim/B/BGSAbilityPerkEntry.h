@@ -18,11 +18,11 @@ namespace Skyrim
 		virtual ~BGSAbilityPerkEntry() override; // 3
 
 		// Override (BGSPerkEntry)
-		virtual Type GetType() const override;                   // 4
-		virtual void Unknown6(BGSPerkEntry*) override;           // 6
-		virtual void Unknown7(BGSPerkEntry*) override;           // 7
-		virtual void ApplyPerkEntry(Actor* perkOwner) override;  // A
-		virtual void RemovePerkEntry(Actor* perkOwner) override; // B
+		virtual PerkEntryType GetType() const override;                   // 4
+		virtual void          Unknown6(BGSPerkEntry*) override;           // 6
+		virtual void          Unknown7(BGSPerkEntry*) override;           // 7
+		virtual void          ApplyPerkEntry(Actor* perkOwner) override;  // A
+		virtual void          RemovePerkEntry(Actor* perkOwner) override; // B
 
 		// Member variables
 		SpellItem* ability; // 10

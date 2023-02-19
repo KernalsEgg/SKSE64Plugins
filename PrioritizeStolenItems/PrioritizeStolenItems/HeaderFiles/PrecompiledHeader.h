@@ -8,3 +8,6 @@
 #include <optional>   // std::optional
 #include <queue>      // std::priority_queue
 #include <utility>    // std::pair
+
+#include "Shared/SKSE/SKSE.h"
+#include "Shared/Skyrim/Skyrim.h"

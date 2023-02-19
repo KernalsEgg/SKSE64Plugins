@@ -2,11 +2,6 @@
 
 #include "Patches/ImproveMultipleEnchantmentEffects.h"
 
-#include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/B/BGSEntryPoint.h"
-#include "Shared/Skyrim/E/EffectSetting.h"
-#include "Shared/Skyrim/E/EnchantmentItem.h"
-#include "Shared/Skyrim/P/PlayerCharacter.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -18,16 +13,16 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(ImproveMultipleEnchantmentEffects::Traverse)));
 	}
 
-	Skyrim::MagicItemTraversalFunctor::ReturnType ImproveMultipleEnchantmentEffects::Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect)
+	Skyrim::ForEachResult ImproveMultipleEnchantmentEffects::Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect)
 	{
 		auto& createdEffect = createEffectFunctor->effects.emplace_back(*effect);
 
 		auto magnitude = effect->GetMagnitude();
 		auto duration  = effect->GetDuration();
 
-		auto effectSettingFlags    = effect->effectSetting->effectSettingFlags;
-		auto powerAffectsMagnitude = effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsMagnitude);
-		auto powerAffectsDuration  = effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsDuration);
+		auto* effectSetting         = effect->effectSetting;
+		auto  powerAffectsMagnitude = effectSetting->effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsMagnitude);
+		auto  powerAffectsDuration  = effectSetting->effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsDuration);
 
 		float power{ 1.0F };
 
@@ -50,7 +45,29 @@ namespace ScrambledBugs::Patches
 			auto  enchantingSkill = player->GetActorValue(Skyrim::ActorValue::kEnchanting);
 
 			maximumPower = Skyrim::EnchantmentItem::ModifyPower(maximumPower, enchantingSkill);
-			Skyrim::BGSEntryPoint::HandleEntryPoint(Skyrim::BGSEntryPoint::EntryPoint::kModifyEnchantmentPower, player, enchantmentEntry->enchantment, createEffectFunctor->item, std::addressof(maximumPower));
+
+			bool modifiedEnchantmentPower{ false };
+
+			Skyrim::BGSEntryPoint::HandleEntryPoint(
+				Skyrim::BGSEntryPoint::EntryPoint::kModifyEnchantmentPower,
+				player,
+				effectSetting,
+				enchantmentEntry->enchantment,
+				nullptr,
+				createEffectFunctor->item,
+				std::addressof(maximumPower),
+				std::addressof(modifiedEnchantmentPower));
+
+			if (!modifiedEnchantmentPower)
+			{
+				Skyrim::BGSEntryPoint::HandleEntryPoint(
+					Skyrim::BGSEntryPoint::EntryPoint::kModifyEnchantmentPower,
+					player,
+					enchantmentEntry->enchantment,
+					createEffectFunctor->item,
+					std::addressof(maximumPower));
+			}
+
 			maximumPower = std::floor(maximumPower);
 
 			if (effect == createEffectFunctor->costliestEffect)
@@ -73,33 +90,43 @@ namespace ScrambledBugs::Patches
 
 				enchantmentEntry->maximumPower = maximumPower;
 
-				if (enchantmentEntry->filterFlag.all(Skyrim::CraftingSubMenus::EnchantConstructMenu::EnchantmentEntry::FilterFlag::kEffectWeapon))
+				switch (enchantmentEntry->filterFlag.get())
 				{
-					enchantmentEntry->power = power;
-				}
-				else if (enchantmentEntry->filterFlag.all(Skyrim::CraftingSubMenus::EnchantConstructMenu::EnchantmentEntry::FilterFlag::kEffectArmor))
-				{
-					power = maximumPower * createEffectFunctor->effectiveness;
-
-					if (power < 1.0F)
+					case Skyrim::CraftingSubMenus::EnchantConstructMenu::CategoryListEntry::FilterFlag::kEffectArmor:
 					{
-						power = 1.0F;
-					}
+						power = maximumPower * createEffectFunctor->effectiveness;
 
-					enchantmentEntry->power = power;
+						if (power < 1.0F)
+						{
+							power = 1.0F;
+						}
+
+						[[fallthrough]];
+					}
+					case Skyrim::CraftingSubMenus::EnchantConstructMenu::CategoryListEntry::FilterFlag::kEffectWeapon:
+					{
+						enchantmentEntry->power = power;
+
+						break;
+					}
 				}
 			}
 			else
 			{
 				power = maximumPower;
 
-				if (enchantmentEntry->filterFlag.all(Skyrim::CraftingSubMenus::EnchantConstructMenu::EnchantmentEntry::FilterFlag::kEffectArmor))
+				switch (enchantmentEntry->filterFlag.get())
 				{
-					power = maximumPower * createEffectFunctor->effectiveness;
-
-					if (power < 1.0F)
+					case Skyrim::CraftingSubMenus::EnchantConstructMenu::CategoryListEntry::FilterFlag::kEffectArmor:
 					{
-						power = 1.0F;
+						power = maximumPower * createEffectFunctor->effectiveness;
+
+						if (power < 1.0F)
+						{
+							power = 1.0F;
+						}
+
+						break;
 					}
 				}
 			}
@@ -117,6 +144,6 @@ namespace ScrambledBugs::Patches
 		createdEffect.SetMagnitude(magnitude);
 		createdEffect.SetDuration(duration);
 
-		return Skyrim::MagicItemTraversalFunctor::ReturnType::kContinue;
+		return Skyrim::ForEachResult::kContinue;
 	}
 }

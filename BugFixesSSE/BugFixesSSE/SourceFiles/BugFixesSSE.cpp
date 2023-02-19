@@ -1,17 +1,14 @@
 #include "PrecompiledHeader.h"
 
 #include "Settings.h"
-#include "Shared/SKSE/Interfaces.h"
-#include "Shared/Utility/Trampoline.h"
 
 
 
 namespace BugFixesSSE
 {
-	bool Initialize()
+	bool Load()
 	{
-		Settings::GetSingleton().Initialize();
-		Utility::Trampoline::GetSingleton().Commit();
+		Settings::GetSingleton().Load();
 
 		return true;
 	}
@@ -29,7 +26,7 @@ extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Ve
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
-	SKSE::Cache::GetSingleton().Initialize(loadInterface);
+	SKSE::Storage::GetSingleton().Initialize(loadInterface);
 
-	return BugFixesSSE::Initialize();
+	return BugFixesSSE::Load();
 }

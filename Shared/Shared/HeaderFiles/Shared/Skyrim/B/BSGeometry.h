@@ -4,7 +4,7 @@
 
 #include "Shared/Skyrim/N/NiAVObject.h"
 #include "Shared/Skyrim/N/NiPointer.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -59,17 +59,17 @@ namespace Skyrim
 		virtual void Unknown37(BSGeometry*); // 37
 
 		// Member variables
-		std::uint64_t                            unknown110;                                   // 110
-		std::uint64_t                            unknown118;                                   // 118
-		NiPointer<NiProperty>                    states[Utility::ToUnderlying(State::kTotal)]; // 120
-		NiPointer<NiSkinInstance>                skinInstance;                                 // 130
-		std::uint64_t                            unknown138;                                   // 138
-		std::uint64_t                            unknown140;                                   // 140
-		std::uint64_t                            unknown148;                                   // 148
-		Utility::Enumeration<Type, std::uint8_t> type;                                         // 150
-		std::uint8_t                             padding151;                                   // 151
-		std::uint16_t                            padding152;                                   // 152
-		std::uint32_t                            padding154;                                   // 154
+		std::uint64_t                            unknown110;                                               // 110
+		std::uint64_t                            unknown118;                                               // 118
+		NiPointer<NiProperty>                    states[Utility::Conversion::ToUnderlying(State::kTotal)]; // 120
+		NiPointer<NiSkinInstance>                skinInstance;                                             // 130
+		std::uint64_t                            unknown138;                                               // 138
+		std::uint64_t                            unknown140;                                               // 140
+		std::uint64_t                            unknown148;                                               // 148
+		Utility::Enumeration<Type, std::uint8_t> type;                                                     // 150
+		std::uint8_t                             padding151;                                               // 151
+		std::uint16_t                            padding152;                                               // 152
+		std::uint32_t                            padding154;                                               // 154
 	};
 	static_assert(offsetof(BSGeometry, states) == 0x120);
 	static_assert(offsetof(BSGeometry, skinInstance) == 0x130);

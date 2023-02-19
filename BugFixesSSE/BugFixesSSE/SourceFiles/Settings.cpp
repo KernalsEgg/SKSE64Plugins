@@ -100,9 +100,9 @@ namespace BugFixesSSE
 		return *this;
 	}
 
-	void Settings::Initialize()
+	void Settings::Load()
 	{
-		Utility::Log::Information()("Initializing...\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Loading...\n{}", this->Serialize().dump(1, '\t'));
 
 		if (this->fixes.magicEffectConditions)
 		{
@@ -119,13 +119,13 @@ namespace BugFixesSSE
 			BugFixesSSE::Fixes::SpeechExperience::EnchantedItems::Fix(this->fixes.speechExperience.enchantedItems);
 		}
 
-		// Must be installed after BugFixesSSE::Fixes::Speechcraft::EnchantedItems
+		/* Must be installed after BugFixesSSE::Fixes::Speechcraft::EnchantedItems */
 		if (this->fixes.speechExperience.itemStacks)
 		{
 			BugFixesSSE::Fixes::SpeechExperience::ItemStacks::Fix(this->fixes.speechExperience.itemStacks);
 		}
 
-		Utility::Log::Information()("Initialized.\n{}", this->Serialize().dump(1, '\t'));
+		Utility::Log::Information()("Loaded.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const

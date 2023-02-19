@@ -2,6 +2,8 @@
 
 #include "Shared/Utility/Log.h"
 
+#include "Shared/Relocation/Module.h"
+
 
 
 namespace Utility

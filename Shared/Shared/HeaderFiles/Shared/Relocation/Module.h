@@ -24,9 +24,9 @@ namespace Relocation
 
 		static const DynamicLinkLibrary& GetSingleton();
 
-		std::uintptr_t               GetAddress() const { return this->address_; }
-		const std::filesystem::path& GetPath() const { return this->path_; }
-		std::size_t                  GetSize() const { return this->size_; }
+		std::uintptr_t               GetAddress() const;
+		const std::filesystem::path& GetPath() const;
+		std::size_t                  GetSize() const;
 
 	protected:
 		void SetPath(std::uintptr_t address);
@@ -54,7 +54,7 @@ namespace Relocation
 
 		static const Executable& GetSingleton();
 
-		const Version<std::int32_t>& GetProductVersion() const { return this->productVersion_; }
+		const Version<std::int32_t>& GetProductVersion() const;
 
 	protected:
 		void SetProductVersion(const std::filesystem::path& path);

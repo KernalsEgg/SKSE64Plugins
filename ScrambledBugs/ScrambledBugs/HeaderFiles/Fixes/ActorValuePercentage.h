@@ -2,8 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/A/ActorValue.h"
 #include "Shared/Utility/Enumeration.h"
 
 

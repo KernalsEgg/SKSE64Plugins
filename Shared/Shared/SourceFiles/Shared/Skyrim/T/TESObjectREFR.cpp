@@ -19,7 +19,7 @@ namespace Skyrim
 {
 	TESObjectREFR* TESObjectREFR::GetReferenceFrom3D(NiAVObject* avObject)
 	{
-		auto* function{ reinterpret_cast<decltype(&TESObjectREFR::GetReferenceFrom3D)>(Addresses::TESObjectREFR::GetReferenceFrom3D) };
+		auto* function{ reinterpret_cast<decltype(TESObjectREFR::GetReferenceFrom3D)*>(Addresses::TESObjectREFR::GetReferenceFrom3D) };
 
 		return function(avObject);
 	}

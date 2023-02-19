@@ -4,7 +4,7 @@
 
 #include "Shared/Skyrim/H/hkpCharacterStateType.h"
 #include "Shared/Skyrim/H/hkReferencedObject.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -20,7 +20,7 @@ namespace Skyrim
 		virtual ~hkpCharacterStateManager() override; // 0
 
 		// Member variables
-		hkpCharacterState* registeredStates[Utility::ToUnderlying(hkpCharacterStateType::kTotal)]; // 10
+		hkpCharacterState* registeredStates[Utility::Conversion::ToUnderlying(hkpCharacterStateType::kTotal)]; // 10
 	};
 	static_assert(offsetof(hkpCharacterStateManager, registeredStates) == 0x10);
 	static_assert(sizeof(hkpCharacterStateManager) == 0x68);

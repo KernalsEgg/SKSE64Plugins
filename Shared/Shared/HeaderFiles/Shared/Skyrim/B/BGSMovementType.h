@@ -4,7 +4,7 @@
 
 #include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/T/TESForm.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -38,8 +38,8 @@ namespace Skyrim
 				};
 
 				// Member variables
-				float velocity[Utility::ToUnderlying(Direction::kTotal)][Utility::ToUnderlying(Speed::kTotal)]; // 0
-				float rotateWhileMoving;                                                                        // 28
+				float velocity[Utility::Conversion::ToUnderlying(Direction::kTotal)][Utility::Conversion::ToUnderlying(Speed::kTotal)]; // 0
+				float rotateWhileMoving;                                                                                                // 28
 			};
 			static_assert(offsetof(DefaultData, velocity) == 0x0);
 			static_assert(offsetof(DefaultData, rotateWhileMoving) == 0x28);

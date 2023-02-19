@@ -4,14 +4,7 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Relocation/Module.h"
-#include "Shared/Skyrim/A/ActorEquipManager.h"
-#include "Shared/Skyrim/B/BSSimpleList.h"
-#include "Shared/Skyrim/I/InventoryChanges.h"
-#include "Shared/Skyrim/P/PlayerCharacter.h"
-#include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
-#include "Shared/Utility/Trampoline.h"
 
 
 
@@ -33,40 +26,42 @@ namespace PrioritizeStolenItems
 			return false;
 		}
 
-		// IsOwnedBy
+		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
+
+		/* IsOwnedBy */
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Events::IsOwnedBy, reinterpret_cast<std::uintptr_t>(std::addressof(Events::IsOwnedBy)));
 
-		// RemoveComponent
+		/* RemoveComponent */
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Events::RemoveComponent, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveComponent)));
 
-		// AddItem
-		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Events::GetExtraDataListToAddItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
-		Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::AddItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::AddItem)));
+		/* AddItem */
+		trampolineInterface->RelativeCall5(Addresses::Events::GetExtraDataListToAddItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
+		trampolineInterface->RelativeCall6(Addresses::Events::AddItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::AddItem)));
 
-		// DropItem
-		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Events::GetExtraDataListToDropItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
-		Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::DropItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::DropItem)));
+		/* DropItem */
+		trampolineInterface->RelativeCall5(Addresses::Events::GetExtraDataListToDropItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
+		trampolineInterface->RelativeCall6(Addresses::Events::DropItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::DropItem)));
 
-		// RemoveItem
-		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Events::GetExtraDataListToRemoveItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
+		/* RemoveItem */
+		trampolineInterface->RelativeCall5(Addresses::Events::GetExtraDataListToRemoveItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
 
 #ifdef SKYRIM_ANNIVERSARY_EDITION
-		Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::RemoveItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
+		trampolineInterface->RelativeCall6(Addresses::Events::RemoveItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
 #else
-		// Mimic a virtual function table
+		/* Mimic a virtual function table */
 		static auto* removeItem{ std::addressof(Events::RemoveItem) };
 
 		Utility::Memory::SafeWrite(Addresses::Events::RemoveItem, 0x48ui8, 0xBEui8, reinterpret_cast<std::uint64_t>(std::addressof(removeItem))); // mov rsi, std::addressof(removeItem)
 #endif
 
-		// SellItem
-		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Events::GetExtraDataListToSellItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
-		Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::SellItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
+		/* SellItem */
+		trampolineInterface->RelativeCall5(Addresses::Events::GetExtraDataListToSellItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::GetExtraDataList)));
+		trampolineInterface->RelativeCall6(Addresses::Events::SellItem, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveItem)));
 
-		// RemoveIngredient
+		/* RemoveIngredient */
 		Utility::Memory::SafeWrite(Addresses::Events::GetIngredient, 0x4Cui8, 0x8Bui8, 0xC7ui8); // mov r8, rdi
 
-		Utility::Trampoline::GetSingleton().RelativeCall6(Addresses::Events::RemoveIngredient, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveIngredient)));
+		trampolineInterface->RelativeCall6(Addresses::Events::RemoveIngredient, reinterpret_cast<std::uintptr_t>(std::addressof(Events::RemoveIngredient)));
 
 		return true;
 	}

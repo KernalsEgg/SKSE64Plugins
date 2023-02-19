@@ -2,8 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/B/BSTempEffectSimpleDecal.h"
-
 
 
 namespace ScrambledBugs::Fixes
@@ -17,7 +15,7 @@ namespace ScrambledBugs::Fixes
 		static bool DecalApplier(Skyrim::BSTempEffectSimpleDecal* temporaryEffectSimpleDecal);
 		static bool UpdateDecals(Skyrim::BSTempEffectSimpleDecal* temporaryEffectSimpleDecal);
 
-		static decltype(&ImpactEffectCrash::DecalApplier) decalApplier_;
-		static decltype(&ImpactEffectCrash::UpdateDecals) updateDecals_;
+		static decltype(ImpactEffectCrash::DecalApplier)* decalApplier_;
+		static decltype(ImpactEffectCrash::UpdateDecals)* updateDecals_;
 	};
 }

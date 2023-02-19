@@ -2,11 +2,6 @@
 
 #include "Patches/SoulGems.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/Addresses.h"
-#include "Shared/Skyrim/B/BSSimpleList.h"
-#include "Shared/Skyrim/E/ExtraDataList.h"
-#include "Shared/Skyrim/T/TESSoulGem.h"
 #include "Shared/Utility/Enumeration.h"
 #include "Shared/Utility/Memory.h"
 
@@ -22,7 +17,7 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::InventoryChanges::FindBestSoulGemVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(SoulGems::Visit)));
 	}
 
-	Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType SoulGems::Visit(Skyrim::InventoryChanges::FindBestSoulGemVisitor* findBestSoulGemVisitor, Skyrim::InventoryEntryData* inventoryEntryData)
+	Skyrim::ForEachResult SoulGems::Visit(Skyrim::InventoryChanges::FindBestSoulGemVisitor* findBestSoulGemVisitor, Skyrim::InventoryEntryData* inventoryEntryData)
 	{
 		// findBestSoulGemVisitor != nullptr
 		// inventoryEntryData != nullptr
@@ -88,8 +83,8 @@ namespace ScrambledBugs::Patches
 									findBestSoulGemVisitor->bestSoulGem = soulGem;
 
 									return soulGemSoulLevelValue == targetSoulLevelValue && (targetIsNPC || !soulGemCanHoldNPCSoul) ?
-									           Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType::kStop :
-									           Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType::kContinue;
+									           Skyrim::ForEachResult::kStop :
+									           Skyrim::ForEachResult::kContinue;
 								}
 							}
 						}
@@ -98,7 +93,7 @@ namespace ScrambledBugs::Patches
 			}
 		}
 
-		return Skyrim::InventoryChanges::IItemChangeVisitor::ReturnType::kContinue;
+		return Skyrim::ForEachResult::kContinue;
 	}
 
 	bool SoulGems::black_{ false };

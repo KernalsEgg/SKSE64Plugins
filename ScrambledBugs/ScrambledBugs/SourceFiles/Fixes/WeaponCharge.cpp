@@ -3,9 +3,6 @@
 #include "Fixes/WeaponCharge.h"
 
 #include "Addresses.h"
-#include "Shared/Skyrim/E/EnchantmentItem.h"
-#include "Shared/Skyrim/M/MagicSystem.h"
-#include "Shared/Skyrim/P/PlayerCharacter.h"
 #include "Shared/Utility/Memory.h"
 
 

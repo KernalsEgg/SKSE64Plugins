@@ -10,7 +10,7 @@
 #include "Shared/Skyrim/T/TESForm.h"
 #include "Shared/Skyrim/T/TESModel.h"
 #include "Shared/Skyrim/T/TESModelPSA.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -128,8 +128,8 @@ namespace Skyrim
 		virtual void Unknown4(BGSPreloadable*) override; // 4
 
 		// Member variables
-		BodyPart*   partData[Utility::ToUnderlying(BodyPartType::kTotal)]; // 50
-		BGSRagdoll* ragdollData;                                           // 80
+		BodyPart*   partData[Utility::Conversion::ToUnderlying(BodyPartType::kTotal)]; // 50
+		BGSRagdoll* ragdollData;                                                       // 80
 	};
 	static_assert(offsetof(BGSBodyPartData, partData) == 0x50);
 	static_assert(offsetof(BGSBodyPartData, ragdollData) == 0x80);

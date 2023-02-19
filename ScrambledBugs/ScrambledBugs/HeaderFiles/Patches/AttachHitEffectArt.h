@@ -2,9 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/A/Actor.h"
-#include "Shared/Skyrim/M/ModelReferenceEffect.h"
-
 
 
 namespace ScrambledBugs::Patches
@@ -17,6 +14,6 @@ namespace ScrambledBugs::Patches
 	private:
 		static Skyrim::Actor* GetTargetActor(Skyrim::ModelReferenceEffect* modelReferenceEffect);
 
-		static decltype(&AttachHitEffectArt::GetTargetActor) getTargetActor_;
+		static decltype(AttachHitEffectArt::GetTargetActor)* getTargetActor_;
 	};
 }

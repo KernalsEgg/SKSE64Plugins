@@ -3,7 +3,7 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/G/GStatistics.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -11,7 +11,7 @@ namespace Skyrim
 {
 	enum class GFxStatisticMovieData : std::uint32_t
 	{
-		kDefault = Utility::ToUnderlying(GStatisticGroup::kGStatisticGroupGFxMovieData),
+		kDefault = Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticGroupGFxMovieData),
 
 		// Movie memory
 		kMemory,
@@ -33,7 +33,7 @@ namespace Skyrim
 
 	enum class GFxStatisticMovieView : std::uint32_t
 	{
-		kDefault = Utility::ToUnderlying(GStatisticGroup::kGStatisticGroupGFxMovieView),
+		kDefault = Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticGroupGFxMovieView),
 
 		// MovieView memory
 		kMemory,
@@ -62,7 +62,7 @@ namespace Skyrim
 
 	enum class GFxStatisticIME : std::uint32_t
 	{
-		kDefault = Utility::ToUnderlying(GStatisticGroup::kGStatisticGroupGFxIME),
+		kDefault = Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticGroupGFxIME),
 
 		kMemory
 	};
@@ -70,7 +70,7 @@ namespace Skyrim
 
 	enum class GFxStatisticFontCache
 	{
-		kDefault = Utility::ToUnderlying(GStatisticGroup::kGStatisticGroupGFxFontCache),
+		kDefault = Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticGroupGFxFontCache),
 
 		kMemory,
 		kBatchMemory,

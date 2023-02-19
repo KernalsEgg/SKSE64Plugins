@@ -4,7 +4,6 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Utility/Memory.h"
 
 

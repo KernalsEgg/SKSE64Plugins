@@ -2,15 +2,14 @@
 
 #include "Events.h"
 #include "Settings.h"
-#include "Shared/SKSE/Interfaces.h"
+#include "Shared/Relocation/Version.h"
 #include "Shared/Utility/Log.h"
-#include "Shared/Utility/Trampoline.h"
 
 
 
 namespace PowerAttackNotifications
 {
-	bool Initialize()
+	bool Load()
 	{
 		if (!Events::Register())
 		{
@@ -20,8 +19,6 @@ namespace PowerAttackNotifications
 		}
 
 		Utility::Log::Information()("\n{}", Settings::GetSingleton().Serialize().dump(1, '\t'));
-
-		Utility::Trampoline::GetSingleton().Commit();
 
 		return true;
 	}
@@ -69,7 +66,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
-	SKSE::Cache::GetSingleton().Initialize(loadInterface);
+	SKSE::Storage::GetSingleton().Initialize(loadInterface);
 
-	return PowerAttackNotifications::Initialize();
+	return PowerAttackNotifications::Load();
 }

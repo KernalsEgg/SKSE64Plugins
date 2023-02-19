@@ -3,7 +3,6 @@
 #include "Settings.h"
 
 #include "Shared/Relocation/Module.h"
-#include "Shared/Skyrim/T/TESFile.h"
 
 
 

@@ -33,7 +33,7 @@ namespace Skyrim
 		template <class... Arguments>
 		static void ShowMessageBox(const char* message, void (*messageBoxCallback)(std::int8_t buttonIndex), std::int32_t baseButtonIndex, std::uint32_t warningType, std::int32_t depthPriority, Arguments... arguments)
 		{
-			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<decltype(&UI::ShowMessageBox<>)>::type>(Addresses::UI::ShowMessageBox) };
+			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<decltype(UI::ShowMessageBox<>)*>::type>(Addresses::UI::ShowMessageBox) };
 
 			function(message, messageBoxCallback, baseButtonIndex, warningType, depthPriority, arguments...);
 		}

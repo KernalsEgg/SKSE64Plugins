@@ -4,7 +4,7 @@
 
 #include "Shared/Skyrim/G/GRefCountBase.h"
 #include "Shared/Skyrim/G/GStatistics.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -12,7 +12,7 @@
 namespace Skyrim
 {
 	class GFxState :
-		public GRefCountBase<GFxState, Utility::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)> // 0
+		public GRefCountBase<GFxState, Utility::Conversion::ToUnderlying(GStatisticGroup::kGStatisticDefaultMemory)> // 0
 	{
 	public:
 		enum class StateType : std::uint32_t

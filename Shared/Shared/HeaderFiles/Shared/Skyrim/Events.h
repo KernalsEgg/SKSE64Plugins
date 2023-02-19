@@ -26,13 +26,13 @@ namespace Skyrim
 
 			static InitializeThread& GetSingleton();
 
-			Utility::EventSource<>& After() { return this->after_; }
-			Utility::EventSource<>& Before() { return this->before_; }
+			Utility::EventSource<>& After();
+			Utility::EventSource<>& Before();
 
 		private:
 			static void Notify(InitTESThread* initializeThread);
 
-			decltype(&InitializeThread::Notify) notify_{};
+			decltype(InitializeThread::Notify)* notify_{};
 			Utility::EventSource<>              after_{};
 			Utility::EventSource<>              before_{};
 		};

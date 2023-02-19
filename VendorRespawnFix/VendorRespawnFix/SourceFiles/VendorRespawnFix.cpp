@@ -1,23 +1,16 @@
 #include "PrecompiledHeader.h"
 
 #include "Serialization.h"
-#include "Shared/SKSE/Interfaces.h"
+#include "Shared/Relocation/Version.h"
 #include "Shared/Utility/Log.h"
 
 
 
 namespace VendorRespawnFix
 {
-	bool Initialize()
+	bool Load()
 	{
-		const auto* serializationInterface = SKSE::Cache::GetSingleton().GetSerializationInterface();
-
-		if (!serializationInterface)
-		{
-			Utility::Log::Critical()("Serialization interface not found.");
-
-			return false;
-		}
+		const auto* serializationInterface = SKSE::Storage::GetSingleton().GetSerializationInterface();
 
 		serializationInterface->SetUniqueID(Serialization::kUniqueID);
 		serializationInterface->SetLoadCallback(std::addressof(Serialization::LoadGame));
@@ -69,7 +62,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
-	SKSE::Cache::GetSingleton().Initialize(loadInterface);
+	SKSE::Storage::GetSingleton().Initialize(loadInterface);
 
-	return VendorRespawnFix::Initialize();
+	return VendorRespawnFix::Load();
 }

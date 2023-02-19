@@ -2,8 +2,6 @@
 
 #include "Fixes/MorphLimit.h"
 
-#include "Shared/Skyrim/I/INISettingCollection.h"
-
 
 
 namespace ActorLimitFix::Fixes

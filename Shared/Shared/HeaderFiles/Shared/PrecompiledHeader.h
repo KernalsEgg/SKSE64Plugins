@@ -6,9 +6,10 @@
 #include <cmath>           // std::abs, std::pow, std::sqrt
 #include <compare>         // std::strong_ordering
 #include <concepts>        // std::same_as
-#include <cstdarg>         // std::va_list
+#include <cstdarg>         // Variadic arguments
 #include <cstddef>         // offsetof, std::nullptr_t, std::ptrdiff_t, std::size_t
 #include <cstdint>         // Fixed width integer types
+#include <cstdio>          // std::snprintf
 #include <cstring>         // std::memcpy, std::memmove, std::memset, std::strcmp, std::strlen
 #include <cwchar>          // std::wcscoll
 #include <exception>       // std::terminate
@@ -20,10 +21,12 @@
 #include <iterator>        // std::bidirectional_iterator_tag, std::forward_iterator_tag, std::reverse_iterator
 #include <limits>          // std::numeric_limits
 #include <memory>          // std::addressof, std::construct_at, std::destroy_at
+#include <mutex>           // std::unique_lock
 #include <new>             // Dynamic memory management
 #include <numbers>         // Mathematical constants
 #include <optional>        // std::optional
 #include <ostream>         // std::endl, std::flush
+#include <shared_mutex>    // std::shared_lock, std::shared_mutex
 #include <source_location> // std::source_location
 #include <span>            // std::span
 #include <sstream>         // std::stringstream, std::wistringstream

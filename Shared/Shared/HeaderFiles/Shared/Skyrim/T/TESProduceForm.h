@@ -3,7 +3,7 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BaseFormComponent.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -36,10 +36,10 @@ namespace Skyrim
 		virtual void Unknown3(BaseFormComponent*) override; // 3
 
 		// Member variables
-		BGSSoundDescriptorForm* harvestSound;                                         // 8
-		TESBoundObject*         ingredient;                                           // 10
-		std::uint8_t            produceChance[Utility::ToUnderlying(Season::kTotal)]; // 18
-		std::uint32_t           padding1C;                                            // 1C
+		BGSSoundDescriptorForm* harvestSound;                                                     // 8
+		TESBoundObject*         ingredient;                                                       // 10
+		std::uint8_t            produceChance[Utility::Conversion::ToUnderlying(Season::kTotal)]; // 18
+		std::uint32_t           padding1C;                                                        // 1C
 	};
 	static_assert(offsetof(TESProduceForm, harvestSound) == 0x8);
 	static_assert(offsetof(TESProduceForm, ingredient) == 0x10);

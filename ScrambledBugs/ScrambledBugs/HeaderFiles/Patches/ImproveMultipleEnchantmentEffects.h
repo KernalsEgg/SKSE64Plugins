@@ -2,10 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Skyrim/E/EffectItem.h"
-#include "Shared/Skyrim/E/EnchantConstructMenu.h"
-#include "Shared/Skyrim/M/MagicItemTraversalFunctor.h"
-
 
 
 namespace ScrambledBugs::Patches
@@ -16,6 +12,6 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& improveMultipleEnchantmentEffects);
 
 	private:
-		static Skyrim::MagicItemTraversalFunctor::ReturnType Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect);
+		static Skyrim::ForEachResult Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect);
 	};
 }

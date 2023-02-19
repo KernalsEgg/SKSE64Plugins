@@ -20,6 +20,61 @@ namespace Utility
 		}
 	}
 
+	Trampoline& Trampoline::GetSingleton()
+	{
+		static Trampoline singleton;
+
+		return singleton;
+	}
+
+	void Trampoline::RelativeCall5(std::uintptr_t address, std::uintptr_t function)
+	{
+		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
+
+		this->commit_.RegisterSink(
+			[address, function, position](std::uintptr_t trampolineAddress) -> void
+			{
+				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
+				Memory::SafeWriteRelativeCall5(address, trampolineAddress + position);
+			});
+	}
+
+	void Trampoline::RelativeCall6(std::uintptr_t address, std::uintptr_t function)
+	{
+		auto position = this->Reserve(sizeof(std::uintptr_t));
+
+		this->commit_.RegisterSink(
+			[address, function, position](std::uintptr_t trampolineAddress) -> void
+			{
+				Memory::SafeWrite(trampolineAddress + position, function);
+				Memory::SafeWriteRelativeCall6(address, trampolineAddress + position);
+			});
+	}
+
+	void Trampoline::RelativeJump5(std::uintptr_t address, std::uintptr_t function)
+	{
+		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
+
+		this->commit_.RegisterSink(
+			[address, function, position](std::uintptr_t trampolineAddress) -> void
+			{
+				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
+				Memory::SafeWriteRelativeJump5(address, trampolineAddress + position);
+			});
+	}
+
+	void Trampoline::RelativeJump6(std::uintptr_t address, std::uintptr_t function)
+	{
+		auto position = this->Reserve(sizeof(std::uintptr_t));
+
+		this->commit_.RegisterSink(
+			[address, function, position](std::uintptr_t trampolineAddress) -> void
+			{
+				Memory::SafeWrite(trampolineAddress + position, function);
+				Memory::SafeWriteRelativeJump6(address, trampolineAddress + position);
+			});
+	}
+
 	/// <summary>https://stackoverflow.com/a/54732489</summary>
 	std::uintptr_t Trampoline::Allocate(std::uintptr_t moduleAddress, std::size_t moduleSize, std::size_t allocationSize)
 	{
@@ -40,7 +95,7 @@ namespace Utility
 		{
 			if (!::VirtualQuery(reinterpret_cast<::LPCVOID>(minimumAddress), std::addressof(memoryBasicInformation), sizeof(::MEMORY_BASIC_INFORMATION)))
 			{
-				Utility::Log::Error()("VirtualQuery failed, last-error code {}.", ::GetLastError());
+				Log::Error()("VirtualQuery failed, last-error code {}.", ::GetLastError());
 
 				return 0;
 			}
@@ -51,7 +106,7 @@ namespace Utility
 			{
 				regionAddress = Math::Ceiling(reinterpret_cast<std::size_t>(memoryBasicInformation.BaseAddress), systemInformation.dwAllocationGranularity);
 
-				// If rounding has not advanced the address to the next region and the region is at least the required size
+				/* If rounding has not advanced the address to the next region and the region is at least the required size */
 				if (regionAddress < minimumAddress && (minimumAddress - regionAddress) >= allocationSize)
 				{
 					auto allocationAddress = reinterpret_cast<std::uintptr_t>(::VirtualAlloc(reinterpret_cast<::LPVOID>(regionAddress), allocationSize, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE));
@@ -62,7 +117,7 @@ namespace Utility
 					}
 					else
 					{
-						Utility::Log::Warning()("VirtualAlloc failed, last-error code {}.", ::GetLastError());
+						Log::Warning()("VirtualAlloc failed, last-error code {}.", ::GetLastError());
 					}
 				}
 			}
@@ -74,13 +129,6 @@ namespace Utility
 	void Trampoline::Free(std::uintptr_t allocationAddress)
 	{
 		::VirtualFree(reinterpret_cast<::LPVOID>(allocationAddress), 0, MEM_RELEASE);
-	}
-
-	Trampoline& Trampoline::GetSingleton()
-	{
-		static Trampoline singleton;
-
-		return singleton;
 	}
 
 	void Trampoline::Commit()
@@ -99,58 +147,19 @@ namespace Utility
 		}
 	}
 
-	std::uintptr_t Trampoline::RelativeCall5(std::uintptr_t address, std::uintptr_t function)
+	std::uintptr_t Trampoline::GetAddress() const
 	{
-		auto result   = Memory::ReadRelativeCall5(address);
-		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
-
-		this->commit_.RegisterSink(
-			[address, function, position](std::uintptr_t trampolineAddress) -> void
-			{
-				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
-				Memory::SafeWriteRelativeCall5(address, trampolineAddress + position);
-			});
-
-		return result;
+		return this->address_;
 	}
 
-	void Trampoline::RelativeCall6(std::uintptr_t address, std::uintptr_t function)
+	EventSource<std::uintptr_t>& Trampoline::GetEventSource()
 	{
-		auto position = this->Reserve(sizeof(std::uintptr_t));
-
-		this->commit_.RegisterSink(
-			[address, function, position](std::uintptr_t trampolineAddress) -> void
-			{
-				Memory::SafeWrite(trampolineAddress + position, function);
-				Memory::SafeWriteRelativeCall6(address, trampolineAddress + position);
-			});
+		return this->commit_;
 	}
 
-	std::uintptr_t Trampoline::RelativeJump5(std::uintptr_t address, std::uintptr_t function)
+	std::size_t Trampoline::GetPosition() const
 	{
-		auto result   = Memory::ReadRelativeJump5(address);
-		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
-
-		this->commit_.RegisterSink(
-			[address, function, position](std::uintptr_t trampolineAddress) -> void
-			{
-				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
-				Memory::SafeWriteRelativeJump5(address, trampolineAddress + position);
-			});
-
-		return result;
-	}
-
-	void Trampoline::RelativeJump6(std::uintptr_t address, std::uintptr_t function)
-	{
-		auto position = this->Reserve(sizeof(std::uintptr_t));
-
-		this->commit_.RegisterSink(
-			[address, function, position](std::uintptr_t trampolineAddress) -> void
-			{
-				Memory::SafeWrite(trampolineAddress + position, function);
-				Memory::SafeWriteRelativeJump6(address, trampolineAddress + position);
-			});
+		return this->position_;
 	}
 
 	std::size_t Trampoline::Reserve(std::size_t size)

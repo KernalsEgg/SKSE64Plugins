@@ -3,7 +3,7 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/S/ScaleformTypes.h"
-#include "Shared/Utility/Convert.h"
+#include "Shared/Utility/Conversion.h"
 
 
 
@@ -31,10 +31,10 @@ namespace Skyrim
 		enum class IDType : std::uint32_t
 		{
 			kNone             = 0,
-			kInternalConstant = (0U << Utility::ToUnderlying(IDTypeConstants::kTypeShift)) | Utility::ToUnderlying(IDTypeConstants::kStatic),
-			kGradientImage    = (1U << Utility::ToUnderlying(IDTypeConstants::kTypeShift)) | Utility::ToUnderlying(IDTypeConstants::kStatic),
-			kDynamicFontImage = (2U << Utility::ToUnderlying(IDTypeConstants::kTypeShift)) | Utility::ToUnderlying(IDTypeConstants::kStatic),
-			kFontImage        = (1U << Utility::ToUnderlying(IDTypeConstants::kTypeShift)) | Utility::ToUnderlying(IDTypeConstants::kExport)
+			kInternalConstant = (0U << Utility::Conversion::ToUnderlying(IDTypeConstants::kTypeShift)) | Utility::Conversion::ToUnderlying(IDTypeConstants::kStatic),
+			kGradientImage    = (1U << Utility::Conversion::ToUnderlying(IDTypeConstants::kTypeShift)) | Utility::Conversion::ToUnderlying(IDTypeConstants::kStatic),
+			kDynamicFontImage = (2U << Utility::Conversion::ToUnderlying(IDTypeConstants::kTypeShift)) | Utility::Conversion::ToUnderlying(IDTypeConstants::kStatic),
+			kFontImage        = (1U << Utility::Conversion::ToUnderlying(IDTypeConstants::kTypeShift)) | Utility::Conversion::ToUnderlying(IDTypeConstants::kExport)
 		};
 		static_assert(sizeof(IDType) == 0x4);
 

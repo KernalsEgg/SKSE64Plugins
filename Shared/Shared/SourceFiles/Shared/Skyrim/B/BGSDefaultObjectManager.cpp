@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	BGSDefaultObjectManager* BGSDefaultObjectManager::GetSingleton()
 	{
-		auto* function{ reinterpret_cast<decltype(&BGSDefaultObjectManager::GetSingleton)>(Addresses::BGSDefaultObjectManager::GetSingleton) };
+		auto* function{ reinterpret_cast<decltype(BGSDefaultObjectManager::GetSingleton)*>(Addresses::BGSDefaultObjectManager::GetSingleton) };
 
 		return function();
 	}

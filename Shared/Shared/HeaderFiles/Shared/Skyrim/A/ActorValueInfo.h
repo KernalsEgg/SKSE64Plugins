@@ -25,9 +25,10 @@ namespace Skyrim
 	public:
 		enum class Flags : std::uint32_t
 		{
-			kMinimum1   = 1U << 2,
-			kMaximum10  = 1U << 3,
-			kMaximum100 = 1U << 4
+			kMinimum1      = 1U << 2,
+			kMaximum10     = 1U << 3,
+			kMaximum100    = 1U << 4,
+			kMultiplyBy100 = 1U << 21
 		};
 		static_assert(sizeof(Flags) == 0x4);
 

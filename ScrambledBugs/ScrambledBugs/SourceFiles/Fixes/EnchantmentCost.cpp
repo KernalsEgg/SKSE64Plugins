@@ -4,7 +4,6 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Utility/Trampoline.h"
 
 
 
@@ -19,7 +18,7 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		Utility::Trampoline::GetSingleton().RelativeCall5(Addresses::Fixes::EnchantmentCost::Compare, reinterpret_cast<std::uintptr_t>(std::addressof(EnchantmentCost::Compare)));
+		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5(Addresses::Fixes::EnchantmentCost::Compare, reinterpret_cast<std::uintptr_t>(std::addressof(EnchantmentCost::Compare)));
 	}
 
 	bool EnchantmentCost::Compare(Skyrim::EffectItem* left, Skyrim::EffectItem* right)
