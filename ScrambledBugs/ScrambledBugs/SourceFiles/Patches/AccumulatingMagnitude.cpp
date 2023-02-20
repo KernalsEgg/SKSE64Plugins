@@ -22,8 +22,8 @@ namespace ScrambledBugs::Patches
 		reinterpret_cast<decltype(AccumulatingMagnitude::Allocate)**>(Addresses::Patches::AccumulatingMagnitude::ActiveEffectAllocateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulateMagnitude)] =
 			std::addressof(AccumulatingMagnitude::Allocate);
 
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::FindMaxMagnitudeVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::FunctionCallOperator)));
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::AccumulatingValueModifierEffect::VirtualFunctionTable, 0x1D, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::UpdateActorValue)));
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::FindMaxMagnitudeVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::Visit)));
 	}
 
 	Skyrim::AccumulatingValueModifierEffect* AccumulatingMagnitude::Allocate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect)
@@ -48,6 +48,43 @@ namespace ScrambledBugs::Patches
 		magicTarget->ForEachActiveEffect(findMaximumMagnitudeVisitor);
 
 		return findMaximumMagnitudeVisitor.maximumMagnitude;
+	}
+
+	Skyrim::ForEachResult AccumulatingMagnitude::FunctionCallOperator(Skyrim::FindMaxMagnitudeVisitor* findMaximumMagnitudeVisitor, Skyrim::ActiveEffect* activeEffect)
+	{
+		// findMaximumMagnitudeVisitor != nullptr
+
+		if (!activeEffect)
+		{
+			return Skyrim::ForEachResult::kContinue;
+		}
+
+		if (activeEffect == findMaximumMagnitudeVisitor->finishedActiveEffect)
+		{
+			return Skyrim::ForEachResult::kContinue;
+		}
+
+		if (activeEffect->GetEffectSetting()->effectArchetype != Skyrim::EffectArchetypes::ArchetypeID::kAccumulateMagnitude)
+		{
+			return Skyrim::ForEachResult::kContinue;
+		}
+
+		auto* accumulatingValueModifierEffect = static_cast<Skyrim::AccumulatingValueModifierEffect*>(activeEffect);
+
+		if (accumulatingValueModifierEffect->actorValue != Skyrim::ActorValue::kWardPower)
+		{
+			return Skyrim::ForEachResult::kContinue;
+		}
+
+		/* Get the accumulation rate instead of the maximum magnitude */
+		auto accumulationRate = accumulatingValueModifierEffect->GetCurrentMagnitude();
+
+		if (accumulationRate > findMaximumMagnitudeVisitor->maximumMagnitude)
+		{
+			findMaximumMagnitudeVisitor->maximumMagnitude = accumulationRate;
+		}
+
+		return Skyrim::ForEachResult::kContinue;
 	}
 
 	void AccumulatingMagnitude::UpdateActorValue(Skyrim::AccumulatingValueModifierEffect* accumulatingValueModifierEffect, float frameTime)
@@ -96,43 +133,6 @@ namespace ScrambledBugs::Patches
 		{
 			accumulatingValueModifierEffect->holdDuration -= frameTime;
 		}
-	}
-
-	Skyrim::ForEachResult AccumulatingMagnitude::Visit(Skyrim::FindMaxMagnitudeVisitor* findMaximumMagnitudeVisitor, Skyrim::ActiveEffect* activeEffect)
-	{
-		// findMaximumMagnitudeVisitor != nullptr
-
-		if (!activeEffect)
-		{
-			return Skyrim::ForEachResult::kContinue;
-		}
-
-		if (activeEffect == findMaximumMagnitudeVisitor->finishedActiveEffect)
-		{
-			return Skyrim::ForEachResult::kContinue;
-		}
-
-		if (activeEffect->GetEffectSetting()->effectArchetype != Skyrim::EffectArchetypes::ArchetypeID::kAccumulateMagnitude)
-		{
-			return Skyrim::ForEachResult::kContinue;
-		}
-
-		auto* accumulatingValueModifierEffect = static_cast<Skyrim::AccumulatingValueModifierEffect*>(activeEffect);
-
-		if (accumulatingValueModifierEffect->actorValue != Skyrim::ActorValue::kWardPower)
-		{
-			return Skyrim::ForEachResult::kContinue;
-		}
-
-		/* Get the accumulation rate instead of the maximum magnitude */
-		auto accumulationRate = accumulatingValueModifierEffect->GetCurrentMagnitude();
-
-		if (accumulationRate > findMaximumMagnitudeVisitor->maximumMagnitude)
-		{
-			findMaximumMagnitudeVisitor->maximumMagnitude = accumulationRate;
-		}
-
-		return Skyrim::ForEachResult::kContinue;
 	}
 
 	decltype(AccumulatingMagnitude::Allocate)* AccumulatingMagnitude::allocate_{ nullptr };

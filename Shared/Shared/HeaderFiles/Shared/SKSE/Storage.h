@@ -24,7 +24,7 @@ namespace SKSE
 	public:
 		static Storage& GetSingleton();
 
-		void Initialize(Interface* interface);
+		void Load(Interface* interface);
 
 		PluginHandle  GetPluginHandle() const;
 		std::uint32_t GetReleaseIndex() const;

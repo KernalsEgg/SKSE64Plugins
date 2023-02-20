@@ -26,7 +26,7 @@ extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Ve
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
-	SKSE::Storage::GetSingleton().Initialize(loadInterface);
+	SKSE::Storage::GetSingleton().Load(loadInterface);
 
 	return ActorLimitFix::Load();
 }

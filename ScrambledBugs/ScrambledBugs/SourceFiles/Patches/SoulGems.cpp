@@ -14,10 +14,10 @@ namespace ScrambledBugs::Patches
 		SoulGems::black_       = black;
 		SoulGems::underfilled_ = underfilled;
 
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::InventoryChanges::FindBestSoulGemVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(SoulGems::Visit)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::InventoryChanges::FindBestSoulGemVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(SoulGems::FunctionCallOperator)));
 	}
 
-	Skyrim::ForEachResult SoulGems::Visit(Skyrim::InventoryChanges::FindBestSoulGemVisitor* findBestSoulGemVisitor, Skyrim::InventoryEntryData* inventoryEntryData)
+	Skyrim::ForEachResult SoulGems::FunctionCallOperator(Skyrim::InventoryChanges::FindBestSoulGemVisitor* findBestSoulGemVisitor, Skyrim::InventoryEntryData* inventoryEntryData)
 	{
 		// findBestSoulGemVisitor != nullptr
 		// inventoryEntryData != nullptr

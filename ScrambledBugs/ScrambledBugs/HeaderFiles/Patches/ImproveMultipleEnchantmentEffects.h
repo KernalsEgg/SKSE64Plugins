@@ -12,6 +12,6 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& improveMultipleEnchantmentEffects);
 
 	private:
-		static Skyrim::ForEachResult Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect);
+		static Skyrim::ForEachResult FunctionCallOperator(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect);
 	};
 }

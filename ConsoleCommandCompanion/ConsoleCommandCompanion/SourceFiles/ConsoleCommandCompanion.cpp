@@ -1,10 +1,14 @@
 #include "PrecompiledHeader.h"
 
 #include "Events.h"
-#include "Patches.h"
 #include "Settings.h"
 #include "Shared/Relocation/Version.h"
 #include "Shared/Utility/Log.h"
+
+#ifdef SKYRIM_ANNIVERSARY_EDITION
+#else
+#	include "Patches.h"
+#endif
 
 
 
@@ -71,7 +75,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
-	SKSE::Storage::GetSingleton().Initialize(loadInterface);
+	SKSE::Storage::GetSingleton().Load(loadInterface);
 
 	return ConsoleCommandCompanion::Load();
 }

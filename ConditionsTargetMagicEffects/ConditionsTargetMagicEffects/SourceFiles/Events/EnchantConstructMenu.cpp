@@ -13,10 +13,10 @@ namespace ConditionsTargetMagicEffects::Events
 		Utility::Memory::SafeWriteVirtualFunction(
 			Skyrim::Addresses::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::VirtualFunctionTable,
 			0x1,
-			reinterpret_cast<std::uintptr_t>(std::addressof(CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::Traverse)));
+			reinterpret_cast<std::uintptr_t>(std::addressof(CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::FunctionCallOperator)));
 	}
 
-	Skyrim::ForEachResult CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect)
+	Skyrim::ForEachResult CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::FunctionCallOperator(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect)
 	{
 		auto& createdEffect = createEffectFunctor->effects.emplace_back(*effect);
 

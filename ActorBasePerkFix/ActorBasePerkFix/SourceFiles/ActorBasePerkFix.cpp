@@ -58,7 +58,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
-	SKSE::Storage::GetSingleton().Initialize(loadInterface);
+	SKSE::Storage::GetSingleton().Load(loadInterface);
 
 	return ActorBasePerkFix::Load();
 }

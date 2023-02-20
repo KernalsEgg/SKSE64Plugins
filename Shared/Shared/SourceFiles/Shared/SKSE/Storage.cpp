@@ -13,7 +13,7 @@ namespace SKSE
 		return singleton;
 	}
 
-	void Storage::Initialize(Interface* interface)
+	void Storage::Load(Interface* interface)
 	{
 		this->pluginHandle_ = interface->GetPluginHandle();
 		this->releaseIndex_ = interface->GetReleaseIndex();

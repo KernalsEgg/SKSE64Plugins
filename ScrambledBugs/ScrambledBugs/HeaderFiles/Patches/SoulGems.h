@@ -12,7 +12,7 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& black, bool& underfilled);
 
 	private:
-		static Skyrim::ForEachResult Visit(Skyrim::InventoryChanges::FindBestSoulGemVisitor* findBestSoulGemVisitor, Skyrim::InventoryEntryData* inventoryEntryData);
+		static Skyrim::ForEachResult FunctionCallOperator(Skyrim::InventoryChanges::FindBestSoulGemVisitor* findBestSoulGemVisitor, Skyrim::InventoryEntryData* inventoryEntryData);
 
 		static bool black_;
 		static bool underfilled_;

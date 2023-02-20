@@ -18,7 +18,7 @@ namespace ConditionsTargetMagicEffects::Events
 				static void Register();
 
 			private:
-				static Skyrim::ForEachResult Traverse(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect);
+				static Skyrim::ForEachResult FunctionCallOperator(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect);
 			};
 		};
 	};
