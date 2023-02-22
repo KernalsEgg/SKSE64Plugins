@@ -7,7 +7,6 @@
 #include "Fixes/SpeechExperience/EnchantedItems.h"
 #include "Fixes/SpeechExperience/ItemStacks.h"
 #include "Shared/Relocation/Module.h"
-#include "Shared/Utility/Log.h"
 
 
 
@@ -77,7 +76,7 @@ namespace BugFixesSSE
 		}
 		catch (const nlohmann::json::exception& jsonException)
 		{
-			Utility::Log::Critical()("{}", jsonException.what());
+			SPDLOG_CRITICAL("{}", jsonException.what());
 
 			throw;
 		}
@@ -102,7 +101,7 @@ namespace BugFixesSSE
 
 	void Settings::Load()
 	{
-		Utility::Log::Information()("Loading...\n{}", this->Serialize().dump(1, '\t'));
+		SPDLOG_INFO("Loading...\n{}", this->Serialize().dump(1, '\t'));
 
 		if (this->fixes.magicEffectConditions)
 		{
@@ -125,7 +124,7 @@ namespace BugFixesSSE
 			BugFixesSSE::Fixes::SpeechExperience::ItemStacks::Fix(this->fixes.speechExperience.itemStacks);
 		}
 
-		Utility::Log::Information()("Loaded.\n{}", this->Serialize().dump(1, '\t'));
+		SPDLOG_INFO("Loaded.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const

@@ -3,7 +3,6 @@
 #include "Settings.h"
 
 #include "Shared/Relocation/Module.h"
-#include "Shared/Utility/Log.h"
 
 
 
@@ -198,7 +197,7 @@ namespace ConsoleCommandCompanion
 		}
 		catch (const nlohmann::json::exception& jsonException)
 		{
-			Utility::Log::Critical()("{}", jsonException.what());
+			SPDLOG_CRITICAL("{}", jsonException.what());
 
 			throw;
 		}

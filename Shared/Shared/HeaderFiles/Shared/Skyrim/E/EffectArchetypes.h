@@ -14,8 +14,9 @@ namespace Skyrim
 	{
 		enum class ArchetypeID : std::uint32_t
 		{
-			kNone                = static_cast<std::underlying_type_t<ArchetypeID>>(-1),
-			kAccumulateMagnitude = 32
+			kNone                  = static_cast<std::underlying_type_t<ArchetypeID>>(-1),
+			kScript                = 1,
+			kAccumulatingMagnitude = 32
 		};
 		static_assert(sizeof(ArchetypeID) == 0x4);
 

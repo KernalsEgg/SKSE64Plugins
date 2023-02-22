@@ -2,8 +2,6 @@
 
 #include "PrecompiledHeader.h"
 
-#include "Shared/Utility/Log.h"
-
 
 
 namespace Trails
@@ -37,14 +35,14 @@ namespace Trails
 
 				if (!form)
 				{
-					Utility::Log::Error()("Form ID: {}, File Name: {}. Form not found.", this->formID, this->fileName);
+					SPDLOG_ERROR("Form ID: {}, File Name: {}. Form not found.", this->formID, this->fileName);
 
 					return nullptr;
 				}
 
 				if (form->formType != formType)
 				{
-					Utility::Log::Error()("Form ID: {}, File Name: {}. Incorrect form type.", this->formID, this->fileName);
+					SPDLOG_ERROR("Form ID: {}, File Name: {}. Incorrect form type.", this->formID, this->fileName);
 
 					return nullptr;
 				}

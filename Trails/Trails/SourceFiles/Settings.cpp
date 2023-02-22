@@ -40,7 +40,7 @@ namespace Trails
 		}
 		catch (const std::exception& exception)
 		{
-			Utility::Log::Critical()("Form ID: {}, File Name: {}, {}", this->formID, this->fileName, exception.what());
+			SPDLOG_CRITICAL("Form ID: {}, File Name: {}, {}", this->formID, this->fileName, exception.what());
 
 			throw;
 		}
@@ -299,7 +299,7 @@ namespace Trails
 
 				try
 				{
-					Utility::Log::Information()("Deserializing {}...", fileName);
+					SPDLOG_INFO("Deserializing {}...", fileName);
 
 					auto localSettings = Settings().Deserialize(nlohmann::json::parse(std::ifstream(path), nullptr, true, true));
 
@@ -308,11 +308,11 @@ namespace Trails
 						globalFootsteps[localFootsteps.first].insert(globalFootsteps[localFootsteps.first].end(), localFootsteps.second.begin(), localFootsteps.second.end());
 					}
 
-					Utility::Log::Information()("Deserialized {}.", fileName);
+					SPDLOG_INFO("Deserialized {}.", fileName);
 				}
 				catch (const nlohmann::json::exception& jsonException)
 				{
-					Utility::Log::Critical()("{}", jsonException.what());
+					SPDLOG_CRITICAL("{}", jsonException.what());
 
 					throw;
 				}

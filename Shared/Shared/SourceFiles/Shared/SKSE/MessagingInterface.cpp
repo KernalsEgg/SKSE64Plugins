@@ -4,7 +4,6 @@
 
 #include "Shared/SKSE/Storage.h"
 #include "Shared/Utility/InformationBox.h"
-#include "Shared/Utility/Log.h"
 
 
 
@@ -18,11 +17,11 @@ namespace SKSE
 		{
 			if (receiver)
 			{
-				Utility::Log::Error()("Failed to dispatch message to {}.", receiver);
+				SPDLOG_ERROR("Failed to dispatch message to {}.", receiver);
 			}
 			else
 			{
-				Utility::Log::Error()("Failed to dispatch message.");
+				SPDLOG_ERROR("Failed to dispatch message.");
 			}
 		}
 
@@ -35,7 +34,7 @@ namespace SKSE
 
 		if (!result)
 		{
-			Utility::InformationBox::Error()("Event dispatcher not found, {}.", dispatcherID.underlying());
+			Utility::InformationBox::Error("Event dispatcher not found, {}.", dispatcherID.underlying());
 		}
 
 		return result;
@@ -54,11 +53,11 @@ namespace SKSE
 		{
 			if (sender)
 			{
-				Utility::Log::Error()("Failed to register message listener for {}.", sender);
+				SPDLOG_ERROR("Failed to register message listener for {}.", sender);
 			}
 			else
 			{
-				Utility::Log::Error()("Failed to register message listener.");
+				SPDLOG_ERROR("Failed to register message listener.");
 			}
 		}
 

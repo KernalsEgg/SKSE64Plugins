@@ -3,7 +3,6 @@
 #include "Events.h"
 
 #include "Addresses.h"
-#include "Shared/Utility/Log.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -71,7 +70,7 @@ namespace LogInventoryItemRotation
 						nullptr,
 						true);
 
-					Utility::Log::Information()(
+					SPDLOG_INFO(
 						"{}: ({}, {}, {})",
 						loadedInventoryModel.modelForm->GetFormName(),
 						Events::AdjustRotation(eulerAngles.x),

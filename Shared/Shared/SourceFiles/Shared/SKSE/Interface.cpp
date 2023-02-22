@@ -39,7 +39,7 @@ namespace SKSE
 
 		if (!result)
 		{
-			Utility::InformationBox::Error()("Interface not found, {}.", id);
+			Utility::InformationBox::Error("Interface not found, {}.", id);
 		}
 
 		return result;

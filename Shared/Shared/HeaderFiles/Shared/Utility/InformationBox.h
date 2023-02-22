@@ -8,23 +8,20 @@
 
 namespace Utility::InformationBox
 {
+	template <class... Arguments>
 	struct Error
 	{
 	public:
-		Error(std::source_location sourceLocation = std::source_location::current()) :
-			sourceLocation_(sourceLocation) {}
-
-		template <class... Arguments>
-		void operator()(std::string_view format, Arguments... arguments)
+		explicit Error(std::string_view format, Arguments... arguments, std::source_location sourceLocation = std::source_location::current())
 		{
 			::MessageBoxA(
 				nullptr,
 				std::vformat(
 					"{}({},{}): {}",
 					std::make_format_args(
-						std::filesystem::path(this->sourceLocation_.file_name()).filename().string(),
-						this->sourceLocation_.line(),
-						this->sourceLocation_.column(),
+						std::filesystem::path(sourceLocation.file_name()).filename().string(),
+						sourceLocation.line(),
+						sourceLocation.column(),
 						std::vformat(format, std::make_format_args(arguments...))))
 					.c_str(),
 				Relocation::DynamicLinkLibrary::GetSingleton().GetPath().filename().string().c_str(),
@@ -32,8 +29,8 @@ namespace Utility::InformationBox
 
 			std::terminate();
 		}
-
-	private:
-		std::source_location sourceLocation_;
 	};
+
+	template <class... Arguments>
+	Error(std::string_view, Arguments...) -> Error<Arguments...>;
 }

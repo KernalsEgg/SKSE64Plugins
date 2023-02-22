@@ -14,7 +14,7 @@ namespace PrioritizeStolenItems::Patterns
 	{
 		bool AddItem()
 		{
-			return Relocation::AddressLibrary::MatchPattern()(
+			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::AddItem, // 0x6
 				0xFFui8, 0x95ui8, 0x2B0ui32 // call [rbp+2B0] (TESObjectREFR::RemoveItem)
 			);
@@ -22,7 +22,7 @@ namespace PrioritizeStolenItems::Patterns
 
 		bool DropItem()
 		{
-			return Relocation::AddressLibrary::MatchPattern()(
+			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::DropItem,
 				SKYRIM_RELOCATE(
 					SKYRIM_VARIADIC_ARGUMENTS(          // 0x6
@@ -33,7 +33,7 @@ namespace PrioritizeStolenItems::Patterns
 
 		bool GetExtraDataListToAddItem()
 		{
-			return Relocation::AddressLibrary::MatchPattern()(
+			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::GetExtraDataListToAddItem, // 0x5
 				0xE8ui8, std::optional<std::int32_t>{}        // call InventoryEntryData::GetExtraDataList
 			);
@@ -41,7 +41,7 @@ namespace PrioritizeStolenItems::Patterns
 
 		bool GetExtraDataListToDropItem()
 		{
-			return Relocation::AddressLibrary::MatchPattern()(
+			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::GetExtraDataListToDropItem, // 0x5
 				0xE8ui8, std::optional<std::int32_t>{}         // call InventoryEntryData::GetExtraDataList
 			);
@@ -49,7 +49,7 @@ namespace PrioritizeStolenItems::Patterns
 
 		bool GetExtraDataListToRemoveItem()
 		{
-			return Relocation::AddressLibrary::MatchPattern()(
+			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::GetExtraDataListToRemoveItem, // 0x5
 				0xE8ui8, std::optional<std::int32_t>{}           // call InventoryEntryData::GetExtraDataList
 			);
@@ -57,7 +57,7 @@ namespace PrioritizeStolenItems::Patterns
 
 		bool GetExtraDataListToSellItem()
 		{
-			return Relocation::AddressLibrary::MatchPattern()(
+			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::GetExtraDataListToSellItem, // 0x5
 				0xE8ui8, std::optional<std::int32_t>{}         // call InventoryEntryData::GetExtraDataList
 			);
@@ -65,7 +65,7 @@ namespace PrioritizeStolenItems::Patterns
 
 		bool GetIngredient()
 		{
-			return Relocation::AddressLibrary::MatchPattern()(
+			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::GetIngredient, // 0x3
 				0x4Cui8, 0x8Bui8, 0x07ui8         // mov r8, [rdi]
 			);
@@ -73,7 +73,7 @@ namespace PrioritizeStolenItems::Patterns
 
 		bool RemoveIngredient()
 		{
-			return Relocation::AddressLibrary::MatchPattern()(
+			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::RemoveIngredient, // 0x6
 				0xFFui8, 0x90ui8, 0x2B0ui32          // call [rax+2B0] (PlayerCharacter::RemoveItem)
 			);
@@ -81,7 +81,7 @@ namespace PrioritizeStolenItems::Patterns
 
 		bool RemoveItem()
 		{
-			return Relocation::AddressLibrary::MatchPattern()(
+			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::RemoveItem,
 				SKYRIM_RELOCATE(
 					SKYRIM_VARIADIC_ARGUMENTS(                 // 0x3 + 0x7 = 0x10
@@ -93,7 +93,7 @@ namespace PrioritizeStolenItems::Patterns
 
 		bool SellItem()
 		{
-			return Relocation::AddressLibrary::MatchPattern()(
+			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::SellItem, // 0x6
 				0xFFui8, 0x96ui8, 0x2B0ui32  // call [rsi+2B0] (PlayerCharacter::RemoveItem)
 			);

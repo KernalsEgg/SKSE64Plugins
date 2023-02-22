@@ -13,7 +13,7 @@ namespace PowerAttackNotifications::Patterns
 	{
 		bool StartStaminaMeterBlinking()
 		{
-			return Relocation::AddressLibrary::MatchPattern()(
+			return Relocation::AddressLibrary::MatchPattern(
 				Addresses::Events::StartStaminaMeterBlinking,
 				0xE8ui8, std::optional<std::int32_t>{} // call SendHUDMessage::SendFlashMeterMessage
 			);

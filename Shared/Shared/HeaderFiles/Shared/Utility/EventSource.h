@@ -22,14 +22,14 @@ namespace Utility
 
 		void RegisterSink(std::function<void(EventArguments...)> eventSink)
 		{
-			std::unique_lock uniqueLock{ this->sharedMutex_ };
+			std::scoped_lock scopedLock{ this->sharedMutex_ };
 
 			this->eventSinks_.push_back(eventSink);
 		}
 
 		void UnregisterSink(std::function<void(EventArguments...)> eventSink)
 		{
-			std::unique_lock uniqueLock{ this->sharedMutex_ };
+			std::scoped_lock scopedLock{ this->sharedMutex_ };
 
 			auto* target = eventSink.target();
 

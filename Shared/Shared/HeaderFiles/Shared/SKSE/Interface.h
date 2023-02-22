@@ -5,7 +5,6 @@
 #include "Shared/Relocation/Version.h"
 #include "Shared/SKSE/PluginHandle.h"
 #include "Shared/SKSE/PluginInformation.h"
-#include "Shared/Utility/Log.h"
 
 
 
@@ -43,7 +42,7 @@ namespace SKSE
 
 			if (result->Version() != T::kVersion)
 			{
-				Utility::Log::Warning()("Unexpected {} version encountered, {}. Expected {}.", typeid(T).name(), result->Version(), static_cast<std::uint32_t>(T::kVersion));
+				SPDLOG_WARN("Unexpected {} version encountered, {}. Expected {}.", typeid(T).name(), result->Version(), static_cast<std::uint32_t>(T::kVersion));
 			}
 
 			return result;

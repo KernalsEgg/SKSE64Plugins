@@ -2,6 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Utility/Conversion.h"
+
 
 
 namespace Utility
@@ -9,7 +11,7 @@ namespace Utility
 	class Log
 	{
 	private:
-		enum : std::size_t
+		enum class Level : std::size_t
 		{
 			kInformation,
 			kWarning,
@@ -37,43 +39,78 @@ namespace Utility
 
 		static Log& GetSingleton();
 
-		template <std::size_t LEVEL>
-		struct Level
+		template <Level LEVEL, class... Arguments>
+		void PrintLine(std::string_view format, Arguments... arguments, std::source_location sourceLocation = std::source_location::current())
 		{
-		public:
-			Level(std::source_location sourceLocation = std::source_location::current()) :
-				sourceLocation_(sourceLocation) {}
+			std::scoped_lock scopedLock{ this->sharedMutex_ };
 
-			template <class... Arguments>
-			void operator()(std::string_view format, Arguments... arguments)
-			{
-				std::stringstream stringStream;
+			this->outputFileStream_
+				<< std::vformat(
+					   "[{:%F %T}] [{}] {}({},{}): {}",
+					   std::make_format_args(
+						   std::chrono::system_clock::now(),
+						   Log::LEVELS[Utility::Conversion::ToUnderlying(LEVEL)],
+						   std::filesystem::path(sourceLocation.file_name()).filename().string(),
+						   sourceLocation.line(),
+						   sourceLocation.column(),
+						   std::vformat(format, std::make_format_args(arguments...))))
+				<< std::endl;
+		}
 
-				stringStream
-					<< std::vformat(
-						   "[{:%F %T}] [{}] {}({},{}): {}",
-						   std::make_format_args(
-							   std::chrono::system_clock::now(),
-							   Log::LEVELS[LEVEL],
-							   std::filesystem::path(this->sourceLocation_.file_name()).filename().string(),
-							   this->sourceLocation_.line(),
-							   this->sourceLocation_.column(),
-							   std::vformat(format, std::make_format_args(arguments...))))
-					<< std::endl;
-
-				Log::GetSingleton().outputFileStream_ << stringStream.rdbuf() << std::flush;
-			}
-
-		private:
-			std::source_location sourceLocation_;
-		};
-
-		std::ofstream outputFileStream_;
+		std::ofstream     outputFileStream_;
+		std::shared_mutex sharedMutex_;
 
 	public:
-		using Information = Level<Log::kInformation>;
-		using Warning     = Level<Log::kWarning>;
-		using Error       = Level<Log::kError>;
-		using Critical    = Level<Log::kCritical>;
+		template <class... Arguments>
+		struct Critical
+		{
+		public:
+			explicit Critical(std::string_view format, Arguments... arguments, std::source_location sourceLocation = std::source_location::current())
+			{
+				Log::GetSingleton().PrintLine<Level::kCritical, Arguments...>(format, arguments..., sourceLocation);
+			}
+		};
+
+		template <class... Arguments>
+		Critical(std::string_view, Arguments...) -> Critical<Arguments...>;
+
+		template <class... Arguments>
+		struct Error
+		{
+		public:
+			explicit Error(std::string_view format, Arguments... arguments, std::source_location sourceLocation = std::source_location::current())
+			{
+				Log::GetSingleton().PrintLine<Level::kError, Arguments...>(format, arguments..., sourceLocation);
+			}
+		};
+
+		template <class... Arguments>
+		Error(std::string_view, Arguments...) -> Error<Arguments...>;
+
+		template <class... Arguments>
+		struct Information
+		{
+		public:
+			explicit Information(std::string_view format, Arguments... arguments, std::source_location sourceLocation = std::source_location::current())
+			{
+				Log::GetSingleton().PrintLine<Level::kInformation, Arguments...>(format, arguments..., sourceLocation);
+			}
+		};
+
+		template <class... Arguments>
+		Information(std::string_view, Arguments...) -> Information<Arguments...>;
+
+		template <class... Arguments>
+		struct Warning
+		{
+		public:
+			explicit Warning(std::string_view format, Arguments... arguments, std::source_location sourceLocation = std::source_location::current())
+			{
+				Log::GetSingleton().PrintLine<Level::kWarning, Arguments...>(format, arguments..., sourceLocation);
+			}
+		};
+
+		template <class... Arguments>
+		Warning(std::string_view, Arguments...) -> Warning<Arguments...>;
 	};
 }

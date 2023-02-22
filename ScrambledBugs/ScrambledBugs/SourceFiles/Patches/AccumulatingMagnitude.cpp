@@ -17,9 +17,9 @@ namespace ScrambledBugs::Patches
 	void AccumulatingMagnitude::Patch(bool& accumulatingMagnitude)
 	{
 		AccumulatingMagnitude::allocate_ =
-			reinterpret_cast<decltype(AccumulatingMagnitude::allocate_)*>(Addresses::Patches::AccumulatingMagnitude::ActiveEffectAllocateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulateMagnitude)];
+			reinterpret_cast<decltype(AccumulatingMagnitude::allocate_)*>(Addresses::Patches::AccumulatingMagnitude::ActiveEffectAllocateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulatingMagnitude)];
 
-		reinterpret_cast<decltype(AccumulatingMagnitude::Allocate)**>(Addresses::Patches::AccumulatingMagnitude::ActiveEffectAllocateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulateMagnitude)] =
+		reinterpret_cast<decltype(AccumulatingMagnitude::Allocate)**>(Addresses::Patches::AccumulatingMagnitude::ActiveEffectAllocateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulatingMagnitude)] =
 			std::addressof(AccumulatingMagnitude::Allocate);
 
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::FindMaxMagnitudeVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::FunctionCallOperator)));
@@ -64,7 +64,7 @@ namespace ScrambledBugs::Patches
 			return Skyrim::ForEachResult::kContinue;
 		}
 
-		if (activeEffect->GetEffectSetting()->effectArchetype != Skyrim::EffectArchetypes::ArchetypeID::kAccumulateMagnitude)
+		if (activeEffect->GetEffectSetting()->effectArchetype != Skyrim::EffectArchetypes::ArchetypeID::kAccumulatingMagnitude)
 		{
 			return Skyrim::ForEachResult::kContinue;
 		}

@@ -3,7 +3,6 @@
 #include "Serialization.h"
 
 #include "Shared/Utility/Conversion.h"
-#include "Shared/Utility/Log.h"
 
 
 
@@ -15,7 +14,7 @@ namespace VendorRespawnFix
 
 		if (!serializationInterface->ResolveFormID(this->formID, this->formID))
 		{
-			Utility::Log::Error()("Failed to resolve form ID, 0x{:X}.", this->formID);
+			SPDLOG_ERROR("Failed to resolve form ID, 0x{:X}.", this->formID);
 
 			return false;
 		}
@@ -24,14 +23,14 @@ namespace VendorRespawnFix
 
 		if (!faction || faction->formType != Skyrim::FormType::kFaction)
 		{
-			Utility::Log::Error()("Faction not found, form ID 0x{:X}.", this->formID);
+			SPDLOG_ERROR("Faction not found, form ID 0x{:X}.", this->formID);
 
 			return false;
 		}
 
 		if (!faction->vendor.merchantContainer)
 		{
-			Utility::Log::Error()("Merchant container not found, form ID 0x{:X}.", this->formID);
+			SPDLOG_ERROR("Merchant container not found, form ID 0x{:X}.", this->formID);
 
 			return false;
 		}
@@ -45,7 +44,7 @@ namespace VendorRespawnFix
 	{
 		if (!faction)
 		{
-			Utility::Log::Error()("Faction not found.");
+			SPDLOG_ERROR("Faction not found.");
 
 			return false;
 		}
@@ -65,7 +64,7 @@ namespace VendorRespawnFix
 
 	void Serialization::LoadGame(SKSE::SerializationInterface* serializationInterface)
 	{
-		Utility::Log::Information()("Loading Game...");
+		SPDLOG_INFO("Loading Game...");
 
 		std::uint32_t type, version, length;
 
@@ -77,14 +76,14 @@ namespace VendorRespawnFix
 				{
 					if (version != LastDayRespawned::kVersion)
 					{
-						Utility::Log::Error()("{} version mismatch, {}.", type, version);
+						SPDLOG_ERROR("{} version mismatch, {}.", type, version);
 
 						continue;
 					}
 
 					if (length != sizeof(LastDayRespawned))
 					{
-						Utility::Log::Error()("{} size mismatch, 0x{:X}.", type, length);
+						SPDLOG_ERROR("{} size mismatch, 0x{:X}.", type, length);
 
 						continue;
 					}
@@ -95,19 +94,19 @@ namespace VendorRespawnFix
 				}
 				default:
 				{
-					Utility::Log::Error()("Type mismatch, {}.", type);
+					SPDLOG_ERROR("Type mismatch, {}.", type);
 
 					break;
 				}
 			}
 		}
 
-		Utility::Log::Information()("Loaded Game.");
+		SPDLOG_INFO("Loaded Game.");
 	}
 
 	void Serialization::SaveGame(SKSE::SerializationInterface* serializationInterface)
 	{
-		Utility::Log::Information()("Saving Game...");
+		SPDLOG_INFO("Saving Game...");
 
 		const auto& factions = Skyrim::TESDataHandler::GetSingleton()->formArrays[Utility::Conversion::ToUnderlying(Skyrim::FormType::kFaction)];
 
@@ -116,6 +115,6 @@ namespace VendorRespawnFix
 			LastDayRespawned().SaveGame(serializationInterface, static_cast<Skyrim::TESFaction*>(faction));
 		}
 
-		Utility::Log::Information()("Saved Game.");
+		SPDLOG_INFO("Saved Game.");
 	}
 }

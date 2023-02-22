@@ -16,7 +16,7 @@ namespace SKSE
 
 		if (!result)
 		{
-			Utility::InformationBox::Error()("Failed to allocate 0x{:X} bytes from the branch pool of the trampoline interface.", size);
+			Utility::InformationBox::Error("Failed to allocate 0x{:X} bytes from the branch pool of the trampoline interface.", size);
 		}
 
 		return result;
@@ -28,7 +28,7 @@ namespace SKSE
 
 		if (!result)
 		{
-			Utility::InformationBox::Error()("Failed to allocate 0x{:X} bytes from the local pool of the trampoline interface.", size);
+			Utility::InformationBox::Error("Failed to allocate 0x{:X} bytes from the local pool of the trampoline interface.", size);
 		}
 
 		return result;

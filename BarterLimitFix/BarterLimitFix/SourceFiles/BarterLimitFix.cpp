@@ -1,18 +1,33 @@
 #include "PrecompiledHeader.h"
 
 #include "Events.h"
-#include "Shared/Relocation/Version.h"
-#include "Shared/Utility/Log.h"
+#include "Shared/Relocation/Module.h"
 
 
 
 namespace BarterLimitFix
 {
+	namespace Log
+	{
+		void Load()
+		{
+			auto path   = std::filesystem::path(Relocation::DynamicLinkLibrary::GetSingleton().GetPath()).replace_extension("log");
+			auto sink   = std::make_shared<spdlog::sinks::basic_file_sink_mt>(path.string(), true);
+			auto logger = std::make_shared<spdlog::logger>("logger", std::move(sink));
+
+			logger->set_level(spdlog::level::info);
+			logger->flush_on(spdlog::level::info);
+
+			spdlog::set_default_logger(std::move(logger));
+			spdlog::set_pattern("[%Y-%m-%d %T.%e %z] [%l] [%t] [%s:%#] %v");
+		}
+	}
+
 	bool Load()
 	{
 		if (!Events::Register())
 		{
-			Utility::Log::Critical()("Failed to register for events.");
+			SPDLOG_CRITICAL("Failed to register for events.");
 
 			return false;
 		}
@@ -36,33 +51,13 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* 
 	pluginInformation->name               = "Barter Limit Fix";
 	pluginInformation->version            = 2;
 
-	if (queryInterface->IsEditor())
-	{
-		Utility::Log::Critical()("Loading in editor.");
-
-		return false;
-	}
-
-	auto runtimeVersion = queryInterface->RuntimeVersion();
-
-	if (runtimeVersion < Relocation::Version<std::int32_t>(1, 5, 39, 0))
-	{
-		Utility::Log::Critical()(
-			"Unsupported runtime version, {}.{}.{}.{}.",
-			runtimeVersion.major,
-			runtimeVersion.minor,
-			runtimeVersion.revision,
-			runtimeVersion.build);
-
-		return false;
-	}
-
 	return true;
 }
 #endif
 
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* loadInterface)
 {
+	BarterLimitFix::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
 
 	return BarterLimitFix::Load();

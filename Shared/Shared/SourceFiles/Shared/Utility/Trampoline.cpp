@@ -5,7 +5,6 @@
 #include "Shared/Relocation/Module.h"
 #include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/InformationBox.h"
-#include "Shared/Utility/Log.h"
 #include "Shared/Utility/Math.h"
 
 
@@ -95,7 +94,7 @@ namespace Utility
 		{
 			if (!::VirtualQuery(reinterpret_cast<::LPCVOID>(minimumAddress), std::addressof(memoryBasicInformation), sizeof(::MEMORY_BASIC_INFORMATION)))
 			{
-				Log::Error()("VirtualQuery failed, last-error code {}.", ::GetLastError());
+				SPDLOG_ERROR("VirtualQuery failed, last-error code {}.", ::GetLastError());
 
 				return 0;
 			}
@@ -117,7 +116,7 @@ namespace Utility
 					}
 					else
 					{
-						Log::Warning()("VirtualAlloc failed, last-error code {}.", ::GetLastError());
+						SPDLOG_WARN("VirtualAlloc failed, last-error code {}.", ::GetLastError());
 					}
 				}
 			}
@@ -140,7 +139,7 @@ namespace Utility
 
 			if (!this->address_)
 			{
-				InformationBox::Error()("Failed to allocate 0x{:X} bytes of memory.", this->position_.load());
+				InformationBox::Error("Failed to allocate 0x{:X} bytes of memory.", this->position_.load());
 			}
 
 			this->commit_.Notify(this->address_);

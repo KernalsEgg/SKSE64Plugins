@@ -2,8 +2,6 @@
 
 #include "Events.h"
 
-#include "Shared/Utility/Log.h"
-
 
 
 namespace ConsoleCommandCompanion
@@ -267,11 +265,11 @@ namespace ConsoleCommandCompanion
 
 						if (buttonEvent.IsPressed())
 						{
-							Utility::Log::Information()("Pressed, Input Device: {}, ID Code: {}, User Event: \"{}\"", buttonEvent.inputDevice.underlying(), buttonEvent.idCode, buttonEvent.GetUserEvent().data());
+							SPDLOG_INFO("Pressed, Input Device: {}, ID Code: {}, User Event: \"{}\"", buttonEvent.inputDevice.underlying(), buttonEvent.idCode, buttonEvent.GetUserEvent().data());
 						}
 						else if (buttonEvent.IsReleased())
 						{
-							Utility::Log::Information()("Released, Input Device: {}, ID Code: {}, User Event: \"{}\"", buttonEvent.inputDevice.underlying(), buttonEvent.idCode, buttonEvent.GetUserEvent().data());
+							SPDLOG_INFO("Released, Input Device: {}, ID Code: {}, User Event: \"{}\"", buttonEvent.inputDevice.underlying(), buttonEvent.idCode, buttonEvent.GetUserEvent().data());
 						}
 
 						break;

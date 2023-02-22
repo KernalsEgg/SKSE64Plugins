@@ -5,9 +5,6 @@
 #include "DecalManager.h"
 #include "Shared/Utility/Conversion.h"
 
-// Remove
-#include "Shared/Utility/Log.h"
-
 
 
 namespace Trails
@@ -223,7 +220,7 @@ namespace Trails
 
 		if (source == Skyrim::PlayerCharacter::GetSingleton())
 		{
-			Utility::Log::Information()("Material: {}", materialType->materialName.data());
+			SPDLOG_INFO("Material: {}", materialType->materialName.data());
 		}
 
 		auto* impactData = impactEffect->GetImpactData(materialType);
@@ -357,7 +354,7 @@ namespace Trails
 
 				if (source == Skyrim::PlayerCharacter::GetSingleton())
 				{
-					Utility::Log::Information()("Land Color: ({}, {}, {}, {})", landColor.red, landColor.green, landColor.blue, landColor.alpha);
+					SPDLOG_INFO("Land Color: ({}, {}, {}, {})", landColor.red, landColor.green, landColor.blue, landColor.alpha);
 				}
 			}
 		}

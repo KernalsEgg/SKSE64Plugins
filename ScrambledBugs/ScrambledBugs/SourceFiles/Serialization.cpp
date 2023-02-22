@@ -3,7 +3,6 @@
 #include "Serialization.h"
 
 #include "Settings.h"
-#include "Shared/Utility/Log.h"
 
 
 
@@ -15,7 +14,7 @@ namespace ScrambledBugs
 
 		if (!serializationInterface->ResolveFormID(this->formID, this->formID))
 		{
-			Utility::Log::Error()("Failed to resolve form ID, 0x{:X}.", this->formID);
+			SPDLOG_ERROR("Failed to resolve form ID, 0x{:X}.", this->formID);
 
 			return false;
 		}
@@ -24,7 +23,7 @@ namespace ScrambledBugs
 
 		if (!enchantment || enchantment->formType != Skyrim::FormType::kEnchantment)
 		{
-			Utility::Log::Error()("Enchantment not found, form ID 0x{:X}.", this->formID);
+			SPDLOG_ERROR("Enchantment not found, form ID 0x{:X}.", this->formID);
 
 			return false;
 		}
@@ -33,7 +32,7 @@ namespace ScrambledBugs
 
 		if (!enchantmentItemData)
 		{
-			Utility::Log::Error()("Data not found, form ID 0x{:X}.", this->formID);
+			SPDLOG_ERROR("Data not found, form ID 0x{:X}.", this->formID);
 
 			return false;
 		}
@@ -48,7 +47,7 @@ namespace ScrambledBugs
 	{
 		if (!enchantment)
 		{
-			Utility::Log::Error()("Enchantment not found.");
+			SPDLOG_ERROR("Enchantment not found.");
 
 			return false;
 		}
@@ -57,7 +56,7 @@ namespace ScrambledBugs
 
 		if (!enchantmentItemData)
 		{
-			Utility::Log::Error()("Data not found.");
+			SPDLOG_ERROR("Data not found.");
 
 			return false;
 		}
@@ -73,7 +72,7 @@ namespace ScrambledBugs
 
 	void Serialization::LoadGame(SKSE::SerializationInterface* serializationInterface)
 	{
-		Utility::Log::Information()("Loading Game...");
+		SPDLOG_INFO("Loading Game...");
 
 		const auto& settings = ScrambledBugs::Settings::GetSingleton();
 
@@ -95,14 +94,14 @@ namespace ScrambledBugs
 
 					if (version != EnchantmentCost::kVersion)
 					{
-						Utility::Log::Error()("{} version mismatch, {}.", type, version);
+						SPDLOG_ERROR("{} version mismatch, {}.", type, version);
 
 						continue;
 					}
 
 					if (length != sizeof(EnchantmentCost))
 					{
-						Utility::Log::Error()("{} size mismatch, 0x{:X}.", type, length);
+						SPDLOG_ERROR("{} size mismatch, 0x{:X}.", type, length);
 
 						continue;
 					}
@@ -113,19 +112,19 @@ namespace ScrambledBugs
 				}
 				default:
 				{
-					Utility::Log::Error()("Type mismatch, {}.", type);
+					SPDLOG_ERROR("Type mismatch, {}.", type);
 
 					break;
 				}
 			}
 		}
 
-		Utility::Log::Information()("Loaded Game.");
+		SPDLOG_INFO("Loaded Game.");
 	}
 
 	void Serialization::SaveGame(SKSE::SerializationInterface* serializationInterface)
 	{
-		Utility::Log::Information()("Saving Game...");
+		SPDLOG_INFO("Saving Game...");
 
 		const auto& settings = ScrambledBugs::Settings::GetSingleton();
 
@@ -145,6 +144,6 @@ namespace ScrambledBugs
 			}
 		}
 
-		Utility::Log::Information()("Saved Game.");
+		SPDLOG_INFO("Saved Game.");
 	}
 }

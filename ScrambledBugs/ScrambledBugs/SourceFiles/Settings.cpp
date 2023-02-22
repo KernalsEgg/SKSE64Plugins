@@ -39,7 +39,6 @@
 #include "Patches/StaffExperience.h"
 #include "Patches/SteepSlopes.h"
 #include "Shared/Relocation/Module.h"
-#include "Shared/Utility/Log.h"
 
 
 
@@ -376,7 +375,7 @@ namespace ScrambledBugs
 		}
 		catch (const nlohmann::json::exception& jsonException)
 		{
-			Utility::Log::Critical()("{}", jsonException.what());
+			SPDLOG_CRITICAL("{}", jsonException.what());
 
 			throw;
 		}
@@ -406,7 +405,7 @@ namespace ScrambledBugs
 
 	void Settings::Load()
 	{
-		Utility::Log::Information()("Loading...\n{}", this->Serialize().dump(1, '\t'));
+		SPDLOG_INFO("Loading...\n{}", this->Serialize().dump(1, '\t'));
 
 		if (this->fixes.activateFurniture)
 		{
@@ -582,19 +581,19 @@ namespace ScrambledBugs
 			ScrambledBugs::Patches::SteepSlopes::Patch(this->patches.steepSlopes);
 		}
 
-		Utility::Log::Information()("Loaded.\n{}", this->Serialize().dump(1, '\t'));
+		SPDLOG_INFO("Loaded.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	void Settings::PostLoad()
 	{
-		Utility::Log::Information()("Post Loading...\n{}", this->Serialize().dump(1, '\t'));
+		SPDLOG_INFO("Post Loading...\n{}", this->Serialize().dump(1, '\t'));
 
 		if (this->patches.improveMultipleEnchantmentEffects)
 		{
 			ScrambledBugs::Patches::ImproveMultipleEnchantmentEffects::Patch(this->patches.improveMultipleEnchantmentEffects);
 		}
 
-		Utility::Log::Information()("Post Loaded.\n{}", this->Serialize().dump(1, '\t'));
+		SPDLOG_INFO("Post Loaded.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const

@@ -13,7 +13,7 @@
 #include <cstring>         // std::memcpy, std::memmove, std::memset, std::strcmp, std::strlen
 #include <cwchar>          // std::wcscoll
 #include <exception>       // std::terminate
-#include <filesystem>      // std::filesystem::path
+#include <filesystem>      // Filesystem library
 #include <format>          // std::make_format_args, std::vformat
 #include <fstream>         // std::ifstream, std::ofstream
 #include <functional>      // std::equal_to, std::function
@@ -21,11 +21,11 @@
 #include <iterator>        // std::bidirectional_iterator_tag, std::forward_iterator_tag, std::reverse_iterator
 #include <limits>          // std::numeric_limits
 #include <memory>          // std::addressof, std::construct_at, std::destroy_at
-#include <mutex>           // std::unique_lock
+#include <mutex>           // std::scoped_lock
 #include <new>             // Dynamic memory management
 #include <numbers>         // Mathematical constants
 #include <optional>        // std::optional
-#include <ostream>         // std::endl, std::flush
+#include <ostream>         // std::endl
 #include <shared_mutex>    // std::shared_lock, std::shared_mutex
 #include <source_location> // std::source_location
 #include <span>            // std::span
@@ -46,3 +46,7 @@
 #include <DirectXMath.h>
 #include <memoryapi.h>
 #include <Psapi.h>
+
+#define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_INFO
+
+#include <spdlog/spdlog.h>

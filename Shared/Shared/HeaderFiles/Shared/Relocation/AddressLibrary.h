@@ -5,7 +5,6 @@
 #include "Shared/Relocation/FileMapping.h"
 #include "Shared/Relocation/Module.h"
 #include "Shared/Relocation/Version.h"
-#include "Shared/Utility/Log.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -65,31 +64,21 @@ namespace Relocation
 
 		static const AddressLibrary& GetSingleton();
 
-		struct MatchPattern
+		template <class... Arguments>
+		static bool MatchPattern(std::uintptr_t address, const Arguments&... arguments)
 		{
-		public:
-			MatchPattern(std::source_location sourceLocation = std::source_location::current()) :
-				sourceLocation_(sourceLocation) {}
+			auto result = Utility::Memory::MatchPattern(address, arguments...);
 
-			template <class... Arguments>
-			bool operator()(std::uintptr_t address, const Arguments&... arguments)
+			if (!result)
 			{
-				auto result = Utility::Memory::MatchPattern(address, arguments...);
-
-				if (!result)
-				{
-					Utility::Log::Error(this->sourceLocation_)(
-						"Unexpected pattern encountered at {} + 0x{:X}.",
-						Executable::GetSingleton().GetPath().filename().string(),
-						address - Executable::GetSingleton().GetAddress());
-				}
-
-				return result;
+				SPDLOG_ERROR(
+					"Unexpected pattern encountered at {} + 0x{:X}.",
+					Executable::GetSingleton().GetPath().filename().string(),
+					address - Executable::GetSingleton().GetAddress());
 			}
 
-		private:
-			std::source_location sourceLocation_;
-		};
+			return result;
+		}
 
 		void           Dump(const std::filesystem::path& path) const;
 		std::uintptr_t GetAddress(std::uint64_t identifier) const;

@@ -6,7 +6,6 @@
 #include "Fixes/MoverLimit.h"
 #include "Fixes/ReplaceStaticArray.h"
 #include "Shared/Relocation/Module.h"
-#include "Shared/Utility/Log.h"
 
 
 
@@ -51,7 +50,7 @@ namespace ActorLimitFix
 		}
 		catch (const nlohmann::json::exception& jsonException)
 		{
-			Utility::Log::Critical()("{}", jsonException.what());
+			SPDLOG_CRITICAL("{}", jsonException.what());
 
 			throw;
 		}
@@ -76,7 +75,7 @@ namespace ActorLimitFix
 
 	void Settings::Load()
 	{
-		Utility::Log::Information()("Loading...\n{}", this->Serialize().dump(1, '\t'));
+		SPDLOG_INFO("Loading...\n{}", this->Serialize().dump(1, '\t'));
 
 		if (this->fixes.replaceStaticArray)
 		{
@@ -87,7 +86,7 @@ namespace ActorLimitFix
 		ActorLimitFix::Fixes::MorphLimit::Fix(this->fixes.morphLimit, this->fixes.replaceStaticArray);
 		ActorLimitFix::Fixes::MoverLimit::Fix(this->fixes.moverLimit);
 
-		Utility::Log::Information()("Loaded.\n{}", this->Serialize().dump(1, '\t'));
+		SPDLOG_INFO("Loaded.\n{}", this->Serialize().dump(1, '\t'));
 	}
 
 	nlohmann::json Settings::Serialize() const
