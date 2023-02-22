@@ -9,6 +9,8 @@
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
 ### Scrambled Bugs
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
+### Shared
+* [spdlog](https://github.com/gabime/spdlog)
 ### Trails
 * [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
 
