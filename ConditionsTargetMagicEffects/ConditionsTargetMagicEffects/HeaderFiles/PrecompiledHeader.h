@@ -6,9 +6,9 @@
 #include <cstddef>    // std::size_t
 #include <cstdint>    // Fixed width integer types
 #include <filesystem> // Filesystem library
-#include <memory>     // std::addressof
+#include <memory>     // std::addressof, std::make_shared
 #include <string>     // std::string
-#include <utility>    // std::cmp_less
+#include <utility>    // std::cmp_less, std::move
 #include <vector>     // std::vector
 
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_INFO

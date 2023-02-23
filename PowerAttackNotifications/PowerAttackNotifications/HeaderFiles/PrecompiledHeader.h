@@ -3,9 +3,10 @@
 #include <cstdint>    // Fixed width integer types
 #include <filesystem> // Filesystem library
 #include <fstream>    // std::ifstream
-#include <memory>     // std::addressof
+#include <memory>     // std::addressof, std::make_shared
 #include <optional>   // std::optional
 #include <string>     // std::string
+#include <utility>    // std::move
 
 #include <nlohmann/json.hpp>
 

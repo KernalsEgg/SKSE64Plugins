@@ -6,9 +6,9 @@
 #include <cstdint>    // Fixed width integer types
 #include <filesystem> // Filesystem library
 #include <fstream>    // std::ifstream
-#include <memory>     // std::addressof
+#include <memory>     // std::addressof, std::make_shared
 #include <optional>   // std::make_optional, std::nullopt, std::optional
-#include <utility>    // std::swap
+#include <utility>    // std::move, std::swap
 #include <vector>     // std::vector
 
 #include <nlohmann/json.hpp>

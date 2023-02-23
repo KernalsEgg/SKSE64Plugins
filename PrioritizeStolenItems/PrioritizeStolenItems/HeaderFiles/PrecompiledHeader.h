@@ -5,10 +5,10 @@
 #include <cstdint>    // Fixed width integer types
 #include <filesystem> // Filesystem library
 #include <functional> // std::function
-#include <memory>     // std::addressof
+#include <memory>     // std::addressof, std::make_shared
 #include <optional>   // std::optional
 #include <queue>      // std::priority_queue
-#include <utility>    // std::pair
+#include <utility>    // std::move, std::pair
 
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_INFO
 

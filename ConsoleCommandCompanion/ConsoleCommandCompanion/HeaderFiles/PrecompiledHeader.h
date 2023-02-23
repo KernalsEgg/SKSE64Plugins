@@ -5,8 +5,10 @@
 #include <filesystem> // Filesystem library
 #include <format>     // std::make_format_args, std::vformat
 #include <fstream>    // std::ifstream
+#include <memory>     // std::make_shared
 #include <optional>   // std::optional
 #include <string>     // std::string
+#include <utility>    // std::move
 #include <vector>     // std::vector
 
 #include <nlohmann/json.hpp>

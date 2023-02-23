@@ -7,12 +7,13 @@
 #include <format>     // std::make_format_args, std::vformat
 #include <fstream>    // std::ifstream
 #include <map>        // std::map
-#include <memory>     // std::addressof
+#include <memory>     // std::addressof, std::make_shared
 #include <numbers>    // Mathematical constants
 #include <random>     // std::mt19937, std::random_device, std::uniform_int_distribution, std::uniform_real_distribution
 #include <set>        // std::set
 #include <string.h>   // _stricmp
 #include <string>     // std::string, std::stoul
+#include <utility>    // std::move
 #include <vector>     // std::vector
 
 #include <nlohmann/json.hpp>
