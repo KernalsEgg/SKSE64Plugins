@@ -21,7 +21,9 @@ namespace Skyrim
 		virtual bool ReadSettings() override;            // 9
 
 		// Non-member functions
-		static SettingT<INIPrefSettingCollection>* Decals();
+		static INIPrefSettingCollection* GetSingleton();
+		static void                      InitializeCollection();
+		static Setting*                  InitializeSetting(const char* name);
 	};
 	static_assert(sizeof(INIPrefSettingCollection) == 0x128);
 }

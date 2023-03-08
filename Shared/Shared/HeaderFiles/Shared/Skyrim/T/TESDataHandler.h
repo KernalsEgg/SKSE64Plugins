@@ -2,6 +2,7 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/B/BSCoreTypes.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/B/BSTArray.h"
@@ -10,6 +11,7 @@
 #include "Shared/Skyrim/N/NiTArray.h"
 #include "Shared/Skyrim/N/NiTList.h"
 #include "Shared/Utility/Conversion.h"
+#include "Shared/Utility/TypeTraits.h"
 
 
 
@@ -19,9 +21,11 @@ namespace Skyrim
 
 	class BGSAddonNode;
 	class InventoryChanges;
+	class NiPoint3;
 	class TESFile;
 	class TESForm;
 	class TESObjectCELL;
+	class TESObjectREFR;
 	class TESRegionList;
 
 	struct TESFileCollection
@@ -58,6 +62,22 @@ namespace Skyrim
 		TESForm* GetFormFromFile(FormID formID, std::string_view fileName) const;
 
 		bool IsFormIDCreated(FormID formID) const;
+
+		template <class T>
+		void EnumerateReferencesCloseToPoint(TESObjectCELL* cell, const NiPoint3& point1, float radius1, const NiPoint3& point2, float radius2, bool (*callback)(TESObjectREFR* reference, T argument), T argument) const
+		{
+			auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESDataHandler::EnumerateReferencesCloseToPoint<T>)>::type>(Addresses::TESDataHandler::EnumerateReferencesCloseToPoint) };
+
+			function(this, cell, point1, radius1, point2, radius2, callback, argument);
+		}
+
+		template <class T>
+		void EnumerateReferencesCloseToReference(TESObjectREFR* reference, float radius1, const NiPoint3& point2, float radius2, bool (*callback)(TESObjectREFR* reference, T argument), T argument) const
+		{
+			auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESDataHandler::EnumerateReferencesCloseToReference<T>)>::type>(Addresses::TESDataHandler::EnumerateReferencesCloseToReference) };
+
+			function(this, reference, radius1, point2, radius2, callback, argument);
+		}
 
 		template <class T>
 		T* GetFormFromFile(FormID formID, std::string_view fileName) const

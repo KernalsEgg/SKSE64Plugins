@@ -29,7 +29,7 @@ namespace SKSE
 		template <class... Arguments>
 		void RelativeCall5Branch(std::uintptr_t address, const Arguments&... arguments) const
 		{
-			auto* trampolineAddress = this->AllocateFromBranchPool(Utility::Memory::SizeOf<Arguments...>::Implementation());
+			auto* trampolineAddress = this->AllocateFromBranchPool(Utility::Memory::SizeOf<Arguments...>::VALUE);
 
 			Utility::Memory::SafeWrite(reinterpret_cast<std::uintptr_t>(trampolineAddress), arguments...);
 			Utility::Memory::SafeWriteRelativeCall5(address, reinterpret_cast<std::uintptr_t>(trampolineAddress));
@@ -38,7 +38,7 @@ namespace SKSE
 		template <class... Arguments>
 		void RelativeJump5Branch(std::uintptr_t address, const Arguments&... arguments) const
 		{
-			auto* trampolineAddress = this->AllocateFromBranchPool(Utility::Memory::SizeOf<Arguments...>::Implementation());
+			auto* trampolineAddress = this->AllocateFromBranchPool(Utility::Memory::SizeOf<Arguments...>::VALUE);
 
 			Utility::Memory::SafeWrite(reinterpret_cast<std::uintptr_t>(trampolineAddress), arguments...);
 			Utility::Memory::SafeWriteRelativeJump5(address, reinterpret_cast<std::uintptr_t>(trampolineAddress));

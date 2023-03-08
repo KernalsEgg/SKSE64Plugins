@@ -42,9 +42,9 @@ namespace ConsoleCommandCompanion
 			void RegisterSink();
 
 		private:
-			static bool IsPressed(Skyrim::InputEvent* inputEvents, const Settings::Events::Button::State::Filter& filter);
-			static bool IsPressing(Skyrim::InputEvent* inputEvents, const Settings::Events::Button::State::Filter& filter);
-			static bool IsReleased(Skyrim::InputEvent* inputEvents, const Settings::Events::Button::State::Filter& filter);
+			static bool IsPressed(Skyrim::InputEvent* inputEvents, const Settings::Button::State::Filter& filter);
+			static bool IsPressing(Skyrim::InputEvent* inputEvents, const Settings::Button::State::Filter& filter);
+			static bool IsReleased(Skyrim::InputEvent* inputEvents, const Settings::Button::State::Filter& filter);
 			static void Log(Skyrim::InputEvent* inputEvents);
 		};
 

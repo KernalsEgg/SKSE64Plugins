@@ -8,10 +8,24 @@
 
 namespace Skyrim
 {
-	SettingT<INIPrefSettingCollection>* INIPrefSettingCollection::Decals()
+	INIPrefSettingCollection* INIPrefSettingCollection::GetSingleton()
 	{
-		auto* singleton{ reinterpret_cast<SettingT<INIPrefSettingCollection>*>(Addresses::INIPrefSettingCollection::Decals) };
+		auto** singleton{ reinterpret_cast<INIPrefSettingCollection**>(Addresses::INIPrefSettingCollection::Singleton) };
 
-		return singleton;
+		return *singleton;
+	}
+
+	void INIPrefSettingCollection::InitializeCollection()
+	{
+		auto* function{ reinterpret_cast<decltype(INIPrefSettingCollection::InitializeCollection)*>(Addresses::INIPrefSettingCollection::InitializeCollection) };
+
+		function();
+	}
+
+	Setting* INIPrefSettingCollection::InitializeSetting(const char* name)
+	{
+		INIPrefSettingCollection::InitializeCollection();
+
+		return INIPrefSettingCollection::GetSingleton()->GetSetting(name);
 	}
 }

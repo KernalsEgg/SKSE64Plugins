@@ -3,29 +3,37 @@
 #include "Shared/Skyrim/I/INISettingCollection.h"
 
 #include "Shared/Skyrim/Addresses.h"
+#include "Shared/Utility/TypeTraits.h"
 
 
 
 namespace Skyrim
 {
-	SettingT<INISettingCollection>* INISettingCollection::ForceAllDecals()
+	INISettingCollection* INISettingCollection::GetSingleton()
 	{
-		auto* singleton{ reinterpret_cast<SettingT<INISettingCollection>*>(Addresses::INISettingCollection::ForceAllDecals) };
+		auto** singleton{ reinterpret_cast<INISettingCollection**>(Addresses::INISettingCollection::Singleton) };
 
-		return singleton;
+		return *singleton;
 	}
 
-	SettingT<INISettingCollection>* INISettingCollection::NumberActorsAllowedToMorph()
+	void INISettingCollection::InitializeCollection()
 	{
-		auto* singleton{ reinterpret_cast<SettingT<INISettingCollection>*>(Addresses::INISettingCollection::NumberActorsAllowedToMorph) };
+		auto* function{ reinterpret_cast<decltype(INISettingCollection::InitializeCollection)*>(Addresses::INISettingCollection::InitializeCollection) };
 
-		return singleton;
+		function();
 	}
 
-	SettingT<INISettingCollection>* INISettingCollection::ZKeyDelay()
+	Setting* INISettingCollection::InitializeSetting(const char* name)
 	{
-		auto* singleton{ reinterpret_cast<SettingT<INISettingCollection>*>(Addresses::INISettingCollection::ZKeyDelay) };
+		INISettingCollection::InitializeCollection();
 
-		return singleton;
+		return INISettingCollection::GetSingleton()->GetSetting(name);
+	}
+
+	Setting* INISettingCollection::GetSetting(const char* name) const
+	{
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&INISettingCollection::GetSetting)>::type>(Addresses::INISettingCollection::GetSetting) };
+
+		return function(this, name);
 	}
 }

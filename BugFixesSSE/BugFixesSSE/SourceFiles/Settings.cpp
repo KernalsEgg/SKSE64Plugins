@@ -14,15 +14,8 @@ namespace BugFixesSSE
 {
 	Settings::Fixes::SpeechExperience& Settings::Fixes::SpeechExperience::Deserialize(const nlohmann::json& jsonSpeechExperience)
 	{
-		if (jsonSpeechExperience.contains("enchantedItems"))
-		{
-			jsonSpeechExperience.at("enchantedItems").get_to(this->enchantedItems);
-		}
-
-		if (jsonSpeechExperience.contains("itemStacks"))
-		{
-			jsonSpeechExperience.at("itemStacks").get_to(this->itemStacks);
-		}
+		jsonSpeechExperience.at("enchantedItems").get_to(this->enchantedItems);
+		jsonSpeechExperience.at("itemStacks").get_to(this->itemStacks);
 
 		return *this;
 	}
@@ -39,20 +32,9 @@ namespace BugFixesSSE
 
 	Settings::Fixes& Settings::Fixes::Deserialize(const nlohmann::json& jsonFixes)
 	{
-		if (jsonFixes.contains("magicEffectConditions"))
-		{
-			jsonFixes.at("magicEffectConditions").get_to(this->magicEffectConditions);
-		}
-
-		if (jsonFixes.contains("movementSpeed"))
-		{
-			jsonFixes.at("movementSpeed").get_to(this->movementSpeed);
-		}
-
-		if (jsonFixes.contains("speechExperience"))
-		{
-			this->speechExperience.Deserialize(jsonFixes.at("speechExperience"));
-		}
+		jsonFixes.at("magicEffectConditions").get_to(this->magicEffectConditions);
+		jsonFixes.at("movementSpeed").get_to(this->movementSpeed);
+		this->speechExperience.Deserialize(jsonFixes.at("speechExperience"));
 
 		return *this;
 	}
@@ -91,10 +73,7 @@ namespace BugFixesSSE
 
 	Settings& Settings::Deserialize(const nlohmann::json& jsonSettings)
 	{
-		if (jsonSettings.contains("fixes"))
-		{
-			this->fixes.Deserialize(jsonSettings.at("fixes"));
-		}
+		this->fixes.Deserialize(jsonSettings.at("fixes"));
 
 		return *this;
 	}

@@ -20,7 +20,7 @@ namespace ConsoleCommandCompanion
 			Skyrim::Console::ExecuteCommand(std::vformat("HideMenu {}", std::make_format_args(Skyrim::InterfaceStrings::GetSingleton()->console.data())));
 		}
 
-		Events::ExecuteConsoleCommands(Settings::GetSingleton().events.initialize.consoleCommands);
+		Events::ExecuteConsoleCommands(Settings::GetSingleton().initialize.consoleCommands);
 
 		LoadGameEventSink::GetSingleton().RegisterSink();
 		ButtonEventSink::GetSingleton().RegisterSink();
@@ -28,7 +28,7 @@ namespace ConsoleCommandCompanion
 
 	Skyrim::EventNotifyControl Events::LoadGameEventSink::ProcessEvent(const Skyrim::TESLoadGameEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::TESLoadGameEvent>* eventSource)
 	{
-		Events::ExecuteConsoleCommands(Settings::GetSingleton().events.loadGame.consoleCommands);
+		Events::ExecuteConsoleCommands(Settings::GetSingleton().loadGame.consoleCommands);
 
 		return Skyrim::EventNotifyControl::kContinue;
 	}
@@ -54,17 +54,17 @@ namespace ConsoleCommandCompanion
 
 		const auto& settings = Settings::GetSingleton();
 
-		if (settings.log)
+		if (settings.button.log)
 		{
 			ButtonEventSink::Log(*eventArguments);
 		}
 
-		for (const auto& pressed : settings.events.button.pressed)
+		for (const auto& pressed : settings.button.pressed)
 		{
 			auto iterator = std::find_if(
 				pressed.filters.begin(),
 				pressed.filters.end(),
-				[eventArguments](const Settings::Events::Button::State::Filter& filter)
+				[eventArguments](const Settings::Button::State::Filter& filter)
 				{
 					return ButtonEventSink::IsPressed(*eventArguments, filter);
 				});
@@ -74,7 +74,7 @@ namespace ConsoleCommandCompanion
 				auto count = std::count_if(
 					pressed.filters.begin(),
 					pressed.filters.end(),
-					[eventArguments](const Settings::Events::Button::State::Filter& filter)
+					[eventArguments](const Settings::Button::State::Filter& filter)
 					{
 						return ButtonEventSink::IsPressing(*eventArguments, filter);
 					});
@@ -86,12 +86,12 @@ namespace ConsoleCommandCompanion
 			}
 		}
 
-		for (const auto& released : settings.events.button.released)
+		for (const auto& released : settings.button.released)
 		{
 			auto iterator = std::find_if(
 				released.filters.begin(),
 				released.filters.end(),
-				[eventArguments](const Settings::Events::Button::State::Filter& filter)
+				[eventArguments](const Settings::Button::State::Filter& filter)
 				{
 					return ButtonEventSink::IsReleased(*eventArguments, filter);
 				});
@@ -101,7 +101,7 @@ namespace ConsoleCommandCompanion
 				auto count = std::count_if(
 					released.filters.begin(),
 					released.filters.end(),
-					[eventArguments](const Settings::Events::Button::State::Filter& filter)
+					[eventArguments](const Settings::Button::State::Filter& filter)
 					{
 						return ButtonEventSink::IsPressing(*eventArguments, filter) || ButtonEventSink::IsReleased(*eventArguments, filter);
 					});
@@ -128,7 +128,7 @@ namespace ConsoleCommandCompanion
 		Skyrim::BSInputDeviceManager::GetSingleton()->RegisterSink(this);
 	}
 
-	bool Events::ButtonEventSink::IsPressed(Skyrim::InputEvent* inputEvents, const Settings::Events::Button::State::Filter& filter)
+	bool Events::ButtonEventSink::IsPressed(Skyrim::InputEvent* inputEvents, const Settings::Button::State::Filter& filter)
 	{
 		if (inputEvents)
 		{
@@ -169,7 +169,7 @@ namespace ConsoleCommandCompanion
 		return false;
 	}
 
-	bool Events::ButtonEventSink::IsPressing(Skyrim::InputEvent* inputEvents, const Settings::Events::Button::State::Filter& filter)
+	bool Events::ButtonEventSink::IsPressing(Skyrim::InputEvent* inputEvents, const Settings::Button::State::Filter& filter)
 	{
 		if (inputEvents)
 		{
@@ -210,7 +210,7 @@ namespace ConsoleCommandCompanion
 		return false;
 	}
 
-	bool Events::ButtonEventSink::IsReleased(Skyrim::InputEvent* inputEvents, const Settings::Events::Button::State::Filter& filter)
+	bool Events::ButtonEventSink::IsReleased(Skyrim::InputEvent* inputEvents, const Settings::Button::State::Filter& filter)
 	{
 		if (inputEvents)
 		{

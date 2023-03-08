@@ -4,7 +4,6 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -18,7 +17,7 @@ namespace ConsoleCommandCompanion
 			return false;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::IsLoggedIn(), Utility::Assembly::NO_OPERATION_2);
+		Utility::Memory::SafeWrite(Addresses::Patches::IsLoggedIn(), std::optional<std::uint8_t>{}, 0x00ui8);
 
 		return true;
 	}

@@ -1,135 +1,132 @@
 {
-	"log": true, /* Log when a button is pressed or released along with its input device, ID code, and user event to help with binding console commands to buttons. */
-	"events":
+	"initialize": /* Run when the main menu is opened after launching the game. */
 	{
-		"initialize": /* Run when the main menu is opened after launching the game. */
-		{
+		"consoleCommands":
+		[
+			"CenterOnCell Riverwood", /* The CenterOnCell console command cannot be run from a batch file. */
+			"RunConsoleBatch Initialize"
+		]
+	},
+	"loadGame": /* Run when loading a save game. */
+	{
+		"consoleCommands":
+		[
+			"RunConsoleBatch LoadGame"
+		]
+	},
+	"button": /* Optionally filter by the buttons ID code, input device, and user event. Multiple buttons can be bound. */
+	{
+		"log": true, /* Log when a button is pressed or released along with its input device, ID code, and user event to help with binding console commands to buttons. */
+		"pressed": /* Run when a button is pressed. */
+		[{
 			"consoleCommands":
 			[
-				"CenterOnCell Riverwood", /* The CenterOnCell console command cannot be run from a batch file. */
-				"RunConsoleBatch Initialize"
-			]
-		},
-		"loadGame": /* Run when loading a save game. */
-		{
-			"consoleCommands":
-			[
-				"RunConsoleBatch LoadGame"
-			]
-		},
-		"button": /* Optionally filter by the buttons ID code, input device, and user event. Multiple buttons can be bound. */
-		{
-			"pressed": /* Run when a button is pressed. */
+				"SetGlobalTimeMultiplier 0.5",
+				"SetGameSetting fDamageWeaponMult 50.0"
+			],
+			"filters":
 			[{
-				"consoleCommands":
-				[
-					"SetGlobalTimeMultiplier 0.5",
-					"SetGameSetting fDamageWeaponMult 50.0"
-				],
-				"filters":
-				[{
-					"inputDevice": 1, /* Mouse */
-					"idCode": 0, /* Left Mouse Button */
-					"userEvent": "Right Attack/Block"
-				}]
-			},
-			{
-				"consoleCommands":
-				[
-					"Player.SetScale 2.0",
-					"Player.SexChange"
-				],
-				"filters":
-				[{
-					"userEvent": "Sprint"
-				}]
-			},
-			{
-				"consoleCommands":
-				[
-					"ToggleFlyCam 1",
-					"SetUFOCamSpeedMult 40.0"
-				],
-				"filters":
-				[{
-					"inputDevice": 0, /* Keyboard */
-					"idCode": 58 /* Caps Lock */
-				}]
-			},
-			{
-				"consoleCommands":
-				[
-					"Player.ModActorValue SpeedMult 300.0"
-				],
-				"filters":
-				[{
-					"inputDevice": 0, /* Keyboard */
-					"idCode": 200 /* Up Arrow */
-				}]
-			},
-			{
-				"consoleCommands":
-				[
-					"Player.ModActorValue SpeedMult -300.0"
-				],
-				"filters":
-				[{
-					"inputDevice": 0, /* Keyboard */
-					"idCode": 208 /* Down Arrow */
-				}]
-			},
-			{
-				"consoleCommands":
-				[
-					"ToggleMenus"
-				],
-				"filters":
-				[{
-					"inputDevice": 0, /* Keyboard */
-					"idCode": 42 /* Left Shift */
-				},
-				{
-					"inputDevice": 0, /* Keyboard */
-					"idCode": 35 /* H */
-				}]
-			}],
-			"released": /* Run when a button is released. */
-			[{
-				"consoleCommands":
-				[
-					"SetGlobalTimeMultiplier 1.0",
-					"SetGameSetting fDamageWeaponMult 1.0"
-				],
-				"filters":
-				[{
-					"inputDevice": 1, /* Mouse */
-					"idCode": 0, /* Left Mouse Button */
-					"userEvent": "Right Attack/Block"
-				}]
-			},
-			{
-				"consoleCommands":
-				[
-					"Player.SetScale 1.0",
-					"Player.SexChange"
-				],
-				"filters":
-				[{
-					"userEvent": "Sprint"
-				}]
-			},
-			{
-				"consoleCommands":
-				[
-					"ToggleFlyCam 1",
-					"SetUFOCamSpeedMult 20.0"
-				],
-				"filters":
-				[{
-					"inputDevice": 0, /* Keyboard */
-					"idCode": 58 /* Caps Lock */
-				}]
+				"inputDevice": 1, /* Mouse */
+				"idCode": 0, /* Left Mouse Button */
+				"userEvent": "Right Attack/Block"
 			}]
-		}
+		},
+		{
+			"consoleCommands":
+			[
+				"Player.SetScale 2.0",
+				"Player.SexChange"
+			],
+			"filters":
+			[{
+				"userEvent": "Sprint"
+			}]
+		},
+		{
+			"consoleCommands":
+			[
+				"ToggleFlyCam 1",
+				"SetUFOCamSpeedMult 40.0"
+			],
+			"filters":
+			[{
+				"inputDevice": 0, /* Keyboard */
+				"idCode": 58 /* Caps Lock */
+			}]
+		},
+		{
+			"consoleCommands":
+			[
+				"Player.ModActorValue SpeedMult 300.0"
+			],
+			"filters":
+			[{
+				"inputDevice": 0, /* Keyboard */
+				"idCode": 200 /* Up Arrow */
+			}]
+		},
+		{
+			"consoleCommands":
+			[
+				"Player.ModActorValue SpeedMult -300.0"
+			],
+			"filters":
+			[{
+				"inputDevice": 0, /* Keyboard */
+				"idCode": 208 /* Down Arrow */
+			}]
+		},
+		{
+			"consoleCommands":
+			[
+				"ToggleMenus"
+			],
+			"filters":
+			[{
+				"inputDevice": 0, /* Keyboard */
+				"idCode": 42 /* Left Shift */
+			},
+			{
+				"inputDevice": 0, /* Keyboard */
+				"idCode": 35 /* H */
+			}]
+		}],
+		"released": /* Run when a button is released. */
+		[{
+			"consoleCommands":
+			[
+				"SetGlobalTimeMultiplier 1.0",
+				"SetGameSetting fDamageWeaponMult 1.0"
+			],
+			"filters":
+			[{
+				"inputDevice": 1, /* Mouse */
+				"idCode": 0, /* Left Mouse Button */
+				"userEvent": "Right Attack/Block"
+			}]
+		},
+		{
+			"consoleCommands":
+			[
+				"Player.SetScale 1.0",
+				"Player.SexChange"
+			],
+			"filters":
+			[{
+				"userEvent": "Sprint"
+			}]
+		},
+		{
+			"consoleCommands":
+			[
+				"ToggleFlyCam 1",
+				"SetUFOCamSpeedMult 20.0"
+			],
+			"filters":
+			[{
+				"inputDevice": 0, /* Keyboard */
+				"idCode": 58 /* Caps Lock */
+			}]
+		}]
 	}
 }

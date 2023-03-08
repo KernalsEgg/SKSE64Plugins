@@ -69,7 +69,7 @@ namespace ScrambledBugs::Patches
 
 			if (Skyrim::TaskQueueInterface::ShouldQueueTask())
 			{
-				Skyrim::TaskQueueInterface::GetSingleton()->QueueScriptFunctionCall(0x116C, target, damage);
+				Skyrim::TaskQueueInterface::GetSingleton()->QueueScriptFunctionCall(Skyrim::ScriptOutput::kDamageObject, target, damage);
 			}
 			else
 			{

@@ -10,40 +10,35 @@ namespace Utility::Memory
 	struct SizeOf
 	{
 	public:
-		static std::size_t Implementation()
-		{
-			return (0 + Memory::SizeOf<First>::Implementation() + Memory::SizeOf<Rest...>::Implementation());
-		}
+		static constexpr std::size_t VALUE = (0 + Memory::SizeOf<First>::VALUE + Memory::SizeOf<Rest...>::VALUE);
 	};
 
 	template <class Last>
 	struct SizeOf<Last>
 	{
 	public:
-		static std::size_t Implementation()
-		{
-			return sizeof(Last);
-		}
+		static constexpr std::size_t VALUE = sizeof(Last);
 	};
 
 	template <class Last, std::size_t COUNT>
 	struct SizeOf<Last[COUNT]>
 	{
 	public:
-		static std::size_t Implementation()
-		{
-			return Memory::SizeOf<Last>::Implementation() * COUNT;
-		}
+		static constexpr std::size_t VALUE = Memory::SizeOf<std::array<Last, COUNT>>::VALUE;
+	};
+
+	template <class Last, std::size_t COUNT>
+	struct SizeOf<std::array<Last, COUNT>>
+	{
+	public:
+		static constexpr std::size_t VALUE = Memory::SizeOf<Last>::VALUE * COUNT;
 	};
 
 	template <class Last>
 	struct SizeOf<std::optional<Last>>
 	{
 	public:
-		static std::size_t Implementation()
-		{
-			return Memory::SizeOf<Last>::Implementation();
-		}
+		static constexpr std::size_t VALUE = Memory::SizeOf<Last>::VALUE;
 	};
 
 	std::uintptr_t ReadRelativeCall5(std::uintptr_t address);
@@ -66,6 +61,9 @@ namespace Utility::Memory
 	template <class Last, std::size_t COUNT>
 	bool MatchPattern(std::uintptr_t address, const Last (&last)[COUNT]);
 
+	template <class Last, std::size_t COUNT>
+	bool MatchPattern(std::uintptr_t address, const std::array<Last, COUNT>& last);
+
 	template <class Last>
 	bool MatchPattern(std::uintptr_t address, const std::optional<Last>& last);
 
@@ -81,6 +79,9 @@ namespace Utility::Memory
 	template <class Last, std::size_t COUNT>
 	void Write(std::uintptr_t address, const Last (&last)[COUNT]);
 
+	template <class Last, std::size_t COUNT>
+	void Write(std::uintptr_t address, const std::array<Last, COUNT>& last);
+
 	template <class Last>
 	void Write(std::uintptr_t address, const std::optional<Last>& last);
 
@@ -92,7 +93,7 @@ namespace Utility::Memory
 			return false;
 		}
 
-		return Memory::MatchPattern(address + Memory::SizeOf<First>::Implementation(), rest...);
+		return Memory::MatchPattern(address + Memory::SizeOf<First>::VALUE, rest...);
 	}
 
 	template <class Last>
@@ -104,9 +105,15 @@ namespace Utility::Memory
 	template <class Last, std::size_t COUNT>
 	bool MatchPattern(std::uintptr_t address, const Last (&last)[COUNT])
 	{
+		return Memory::MatchPattern(address, std::to_array(last));
+	}
+
+	template <class Last, std::size_t COUNT>
+	bool MatchPattern(std::uintptr_t address, const std::array<Last, COUNT>& last)
+	{
 		for (std::size_t index = 0; index < COUNT; ++index)
 		{
-			if (!Memory::MatchPattern(address + (Memory::SizeOf<Last>::Implementation() * index), last[index]))
+			if (!Memory::MatchPattern(address + (Memory::SizeOf<Last>::VALUE * index), last[index]))
 			{
 				return false;
 			}
@@ -126,10 +133,10 @@ namespace Utility::Memory
 	{
 		std::uint32_t oldProtect;
 
-		if (::VirtualProtect(reinterpret_cast<::LPVOID>(address), Memory::SizeOf<Arguments...>::Implementation(), PAGE_EXECUTE_READWRITE, reinterpret_cast<::PDWORD>(std::addressof(oldProtect))))
+		if (::VirtualProtect(reinterpret_cast<::LPVOID>(address), Memory::SizeOf<Arguments...>::VALUE, PAGE_EXECUTE_READWRITE, reinterpret_cast<::PDWORD>(std::addressof(oldProtect))))
 		{
 			Memory::Write(address, arguments...);
-			::VirtualProtect(reinterpret_cast<::LPVOID>(address), Memory::SizeOf<Arguments...>::Implementation(), oldProtect, reinterpret_cast<::PDWORD>(std::addressof(oldProtect)));
+			::VirtualProtect(reinterpret_cast<::LPVOID>(address), Memory::SizeOf<Arguments...>::VALUE, oldProtect, reinterpret_cast<::PDWORD>(std::addressof(oldProtect)));
 		}
 	}
 
@@ -137,7 +144,7 @@ namespace Utility::Memory
 	void Write(std::uintptr_t address, const First& first, const Rest&... rest)
 	{
 		Memory::Write(address, first);
-		Memory::Write(address + Memory::SizeOf<First>::Implementation(), rest...);
+		Memory::Write(address + Memory::SizeOf<First>::VALUE, rest...);
 	}
 
 	template <class Last>
@@ -149,9 +156,15 @@ namespace Utility::Memory
 	template <class Last, std::size_t COUNT>
 	void Write(std::uintptr_t address, const Last (&last)[COUNT])
 	{
+		Memory::Write(address, std::to_array(last));
+	}
+
+	template <class Last, std::size_t COUNT>
+	void Write(std::uintptr_t address, const std::array<Last, COUNT>& last)
+	{
 		for (std::size_t index = 0; index < COUNT; ++index)
 		{
-			Memory::Write(address + (Memory::SizeOf<Last>::Implementation() * index), last[index]);
+			Memory::Write(address + (Memory::SizeOf<Last>::VALUE * index), last[index]);
 		}
 	}
 

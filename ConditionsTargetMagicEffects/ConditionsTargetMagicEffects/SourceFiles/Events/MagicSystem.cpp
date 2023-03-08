@@ -127,9 +127,12 @@ namespace ConditionsTargetMagicEffects::Events
 
 						auto hours = std::floor(convertedDuration);
 
+						static auto* effectsListDisplayHour  = Skyrim::GameSettingCollection::InitializeSetting("sEffectsListDisplayHour");
+						static auto* effectsListDisplayHours = Skyrim::GameSettingCollection::InitializeSetting("sEffectsListDisplayHours");
+
 						durationUnits = hours == 1.0F ?
-						                    Skyrim::GameSettingCollection::EffectsListDisplayHour()->GetString() :
-						                    Skyrim::GameSettingCollection::EffectsListDisplayHours()->GetString();
+						                    effectsListDisplayHour->GetString() :
+						                    effectsListDisplayHours->GetString();
 					}
 					else if (convertedDuration >= 60.0F) // Minutes
 					{
@@ -137,17 +140,23 @@ namespace ConditionsTargetMagicEffects::Events
 
 						auto minutes = std::floor(convertedDuration);
 
+						static auto* effectsListDisplayMinute  = Skyrim::GameSettingCollection::InitializeSetting("sEffectsListDisplayMin");
+						static auto* effectsListDisplayMinutes = Skyrim::GameSettingCollection::InitializeSetting("sEffectsListDisplayMins");
+
 						durationUnits = minutes == 1.0F ?
-						                    Skyrim::GameSettingCollection::EffectsListDisplayMinute()->GetString() :
-						                    Skyrim::GameSettingCollection::EffectsListDisplayMinutes()->GetString();
+						                    effectsListDisplayMinute->GetString() :
+						                    effectsListDisplayMinutes->GetString();
 					}
 					else // Seconds
 					{
 						auto seconds = std::floor(convertedDuration);
 
+						static auto* effectsListDisplaySecond  = Skyrim::GameSettingCollection::InitializeSetting("sEffectsListDisplaySec");
+						static auto* effectsListDisplaySeconds = Skyrim::GameSettingCollection::InitializeSetting("sEffectsListDisplaySecs");
+
 						durationUnits = seconds == 1.0F ?
-						                    Skyrim::GameSettingCollection::EffectsListDisplaySecond()->GetString() :
-						                    Skyrim::GameSettingCollection::EffectsListDisplaySeconds()->GetString();
+						                    effectsListDisplaySecond->GetString() :
+						                    effectsListDisplaySeconds->GetString();
 					}
 
 					buffer += Utility::Format::Print(

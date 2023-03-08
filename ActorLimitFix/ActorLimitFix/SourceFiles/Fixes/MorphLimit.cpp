@@ -10,6 +10,8 @@ namespace ActorLimitFix::Fixes
 	{
 		morphLimit = std::min(morphLimit, replaceStaticArray ? 0x200U : 0x40U);
 
-		Skyrim::INISettingCollection::NumberActorsAllowedToMorph()->SetUnsignedInteger(morphLimit);
+		static auto* numberActorsAllowedToMorph = Skyrim::INISettingCollection::InitializeSetting("uiNumActorsAllowedToMorph:FaceGen");
+
+		numberActorsAllowedToMorph->SetUnsignedInteger(morphLimit);
 	}
 }

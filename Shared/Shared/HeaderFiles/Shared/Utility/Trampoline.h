@@ -31,7 +31,7 @@ namespace Utility
 		template <class... Arguments>
 		void RelativeCall5Branch(std::uintptr_t address, const Arguments&... arguments)
 		{
-			auto position = this->Reserve(Memory::SizeOf<Arguments...>::Implementation());
+			auto position = this->Reserve(Memory::SizeOf<Arguments...>::VALUE);
 
 			this->commit_.RegisterSink(
 				[address, arguments..., position](std::uintptr_t trampolineAddress) -> void
@@ -44,7 +44,7 @@ namespace Utility
 		template <class... Arguments>
 		void RelativeJump5Branch(std::uintptr_t address, const Arguments&... arguments)
 		{
-			auto position = this->Reserve(Memory::SizeOf<Arguments...>::Implementation());
+			auto position = this->Reserve(Memory::SizeOf<Arguments...>::VALUE);
 
 			this->commit_.RegisterSink(
 				[address, arguments..., position](std::uintptr_t trampolineAddress) -> void

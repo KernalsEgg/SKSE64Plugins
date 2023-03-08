@@ -2,7 +2,6 @@
 
 #include "Shared/Skyrim/T/TESDataHandler.h"
 
-#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Skyrim/T/TESFile.h"
 
 

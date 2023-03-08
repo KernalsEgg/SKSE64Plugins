@@ -65,7 +65,7 @@ namespace Skyrim
 			struct AIAttributes
 			{
 			public:
-				struct AggroRadiusBehavior
+				struct AggressionRadiusBehavior
 				{
 				public:
 					// Member variables
@@ -73,26 +73,26 @@ namespace Skyrim
 					std::uint16_t warnAttack; // 2
 					std::uint16_t attack;     // 4
 				};
-				static_assert(offsetof(AggroRadiusBehavior, warn) == 0x0);
-				static_assert(offsetof(AggroRadiusBehavior, warnAttack) == 0x2);
-				static_assert(offsetof(AggroRadiusBehavior, attack) == 0x4);
-				static_assert(sizeof(AggroRadiusBehavior) == 0x6);
+				static_assert(offsetof(AggressionRadiusBehavior, warn) == 0x0);
+				static_assert(offsetof(AggressionRadiusBehavior, warnAttack) == 0x2);
+				static_assert(offsetof(AggressionRadiusBehavior, attack) == 0x4);
+				static_assert(sizeof(AggressionRadiusBehavior) == 0x6);
 
 				// Member variables
-				std::uint32_t       aggression              : 2;  // 0 (0, 0)
-				std::uint32_t       confidence              : 3;  // 0 (0, 2)
-				std::uint32_t       energy                  : 8;  // 0 (0, 5)
-				std::uint32_t       morality                : 2;  // 0 (1, 5)
-				std::uint32_t       mood                    : 3;  // 0 (1, 7)
-				std::uint32_t       assistance              : 2;  // 0 (2, 2)
-				std::uint32_t       aggroRadiusBehaviorFlag : 1;  // 0 (2, 4)
-				std::uint32_t       padding2Bit5            : 11; // 0 (2, 5)
-				AggroRadiusBehavior aggroRadiusBehavior;          // 4
-				std::uint8_t        noSlowApproach : 1;           // A (A, 0)
-				std::uint8_t        paddingABit1   : 7;           // A (A, 1)
-				std::uint8_t        paddingB;                     // B
+				std::uint32_t            aggression                   : 2;  // 0 (0, 0)
+				std::uint32_t            confidence                   : 3;  // 0 (0, 2)
+				std::uint32_t            energy                       : 8;  // 0 (0, 5)
+				std::uint32_t            morality                     : 2;  // 0 (1, 5)
+				std::uint32_t            mood                         : 3;  // 0 (1, 7)
+				std::uint32_t            assistance                   : 2;  // 0 (2, 2)
+				std::uint32_t            aggressionRadiusBehaviorFlag : 1;  // 0 (2, 4)
+				std::uint32_t            padding2Bit5                 : 11; // 0 (2, 5)
+				AggressionRadiusBehavior aggressionRadiusBehavior;          // 4
+				std::uint8_t             noSlowApproach : 1;                // A (A, 0)
+				std::uint8_t             paddingABit1   : 7;                // A (A, 1)
+				std::uint8_t             paddingB;                          // B
 			};
-			static_assert(offsetof(AIAttributes, aggroRadiusBehavior) == 0x4);
+			static_assert(offsetof(AIAttributes, aggressionRadiusBehavior) == 0x4);
 			static_assert(sizeof(AIAttributes) == 0xC);
 
 			// Member variables

@@ -12,11 +12,11 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& accumulatingMagnitude);
 
 	private:
-		static Skyrim::AccumulatingValueModifierEffect* Allocate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect);
 		static float                                    FindMaximumWardPower(Skyrim::MagicTarget* magicTarget, Skyrim::ActiveEffect* finishedActiveEffect);
 		static Skyrim::ForEachResult                    FunctionCallOperator(Skyrim::FindMaxMagnitudeVisitor* findMaximumMagnitudeVisitor, Skyrim::ActiveEffect* activeEffect);
+		static Skyrim::AccumulatingValueModifierEffect* Instantiate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect);
 		static void                                     UpdateActorValue(Skyrim::AccumulatingValueModifierEffect* accumulatingValueModifierEffect, float frameTime);
 
-		static decltype(AccumulatingMagnitude::Allocate)* allocate_;
+		static decltype(AccumulatingMagnitude::Instantiate)* instantiate_;
 	};
 }

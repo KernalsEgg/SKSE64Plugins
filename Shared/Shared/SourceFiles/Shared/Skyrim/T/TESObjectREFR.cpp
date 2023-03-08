@@ -10,7 +10,6 @@
 #include "Shared/Skyrim/T/TESObjectCONT.h"
 #include "Shared/Skyrim/T/TESRace.h"
 #include "Shared/Skyrim/T/TESWorldSpace.h"
-#include "Shared/Utility/Enumeration.h"
 #include "Shared/Utility/TypeTraits.h"
 
 
@@ -111,6 +110,13 @@ namespace Skyrim
 	bool TESObjectREFR::Is3DLoaded() const
 	{
 		return this->GetThirdPerson3D() != nullptr;
+	}
+
+	bool TESObjectREFR::IsCrimeToActivate() const
+	{
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::IsCrimeToActivate)>::type>(Addresses::TESObjectREFR::IsCrimeToActivate) };
+
+		return function(this);
 	}
 
 	bool TESObjectREFR::SameWorldSpace(TESObjectREFR* target, bool compareParentWorldSpace) const

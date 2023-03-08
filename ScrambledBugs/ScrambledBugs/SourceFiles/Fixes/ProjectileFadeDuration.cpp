@@ -20,6 +20,6 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Fixes::ProjectileFadeDuration::HasProcessedImpacts, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 0xDui32);
+		Utility::Memory::SafeWrite(Addresses::Fixes::ProjectileFadeDuration::HasProcessedImpacts, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 0x0Dui32);
 	}
 }

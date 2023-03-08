@@ -4,7 +4,6 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -23,8 +22,8 @@ namespace ScrambledBugs::Patches
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::PowerAttackStamina::HasStaminaActor, Utility::Assembly::NO_OPERATION_2);
-		Utility::Memory::SafeWrite(Addresses::Patches::PowerAttackStamina::HasStaminaPlayerCharacter, Utility::Assembly::NO_OPERATION_2);
+		Utility::Memory::SafeWrite(Addresses::Patches::PowerAttackStamina::HasStaminaActor, std::optional<std::uint8_t>{}, 0x00ui8);
+		Utility::Memory::SafeWrite(Addresses::Patches::PowerAttackStamina::HasStaminaPlayerCharacter, std::optional<std::uint8_t>{}, 0x00ui8);
 
 		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
 

@@ -8,7 +8,7 @@
 
 namespace ConsoleCommandCompanion
 {
-	Settings::Events::Button::State::Filter& Settings::Events::Button::State::Filter::Deserialize(const nlohmann::json& jsonFilter)
+	Settings::Button::State::Filter& Settings::Button::State::Filter::Deserialize(const nlohmann::json& jsonFilter)
 	{
 		if (jsonFilter.contains("inputDevice"))
 		{
@@ -28,7 +28,7 @@ namespace ConsoleCommandCompanion
 		return *this;
 	}
 
-	nlohmann::json Settings::Events::Button::State::Filter::Serialize() const
+	nlohmann::json Settings::Button::State::Filter::Serialize() const
 	{
 		nlohmann::json jsonFilter;
 
@@ -50,7 +50,7 @@ namespace ConsoleCommandCompanion
 		return jsonFilter;
 	}
 
-	Settings::Events::Button::State& Settings::Events::Button::State::Deserialize(const nlohmann::json& jsonState)
+	Settings::Button::State& Settings::Button::State::Deserialize(const nlohmann::json& jsonState)
 	{
 		this->consoleCommands = jsonState.at("consoleCommands").get<std::vector<std::string>>();
 
@@ -66,11 +66,11 @@ namespace ConsoleCommandCompanion
 		return *this;
 	}
 
-	nlohmann::json Settings::Events::Button::State::Serialize() const
+	nlohmann::json Settings::Button::State::Serialize() const
 	{
 		nlohmann::json jsonState;
 
-		jsonState["consoleCommands"] = nlohmann::json(this->consoleCommands);
+		jsonState["consoleCommands"] = this->consoleCommands;
 
 		for (const auto& filter : this->filters)
 		{
@@ -80,8 +80,13 @@ namespace ConsoleCommandCompanion
 		return jsonState;
 	}
 
-	Settings::Events::Button& Settings::Events::Button::Deserialize(const nlohmann::json& jsonButton)
+	Settings::Button& Settings::Button::Deserialize(const nlohmann::json& jsonButton)
 	{
+		if (jsonButton.contains("log"))
+		{
+			this->log = jsonButton.at("log").get<bool>();
+		}
+
 		if (jsonButton.contains("pressed"))
 		{
 			std::vector<State> pressed;
@@ -109,9 +114,11 @@ namespace ConsoleCommandCompanion
 		return *this;
 	}
 
-	nlohmann::json Settings::Events::Button::Serialize() const
+	nlohmann::json Settings::Button::Serialize() const
 	{
 		nlohmann::json jsonButton;
+
+		jsonButton["log"] = this->log;
 
 		for (const auto& pressed : this->pressed)
 		{
@@ -126,67 +133,36 @@ namespace ConsoleCommandCompanion
 		return jsonButton;
 	}
 
-	Settings::Events::Initialize& Settings::Events::Initialize::Deserialize(const nlohmann::json& jsonInitialize)
+	Settings::Initialize& Settings::Initialize::Deserialize(const nlohmann::json& jsonInitialize)
 	{
 		this->consoleCommands = jsonInitialize.at("consoleCommands").get<std::vector<std::string>>();
 
 		return *this;
 	}
 
-	nlohmann::json Settings::Events::Initialize::Serialize() const
+	nlohmann::json Settings::Initialize::Serialize() const
 	{
 		nlohmann::json jsonInitialize;
 
-		jsonInitialize["consoleCommands"] = nlohmann::json(this->consoleCommands);
+		jsonInitialize["consoleCommands"] = this->consoleCommands;
 
 		return jsonInitialize;
 	}
 
-	Settings::Events::LoadGame& Settings::Events::LoadGame::Deserialize(const nlohmann::json& jsonLoadGame)
+	Settings::LoadGame& Settings::LoadGame::Deserialize(const nlohmann::json& jsonLoadGame)
 	{
 		this->consoleCommands = jsonLoadGame.at("consoleCommands").get<std::vector<std::string>>();
 
 		return *this;
 	}
 
-	nlohmann::json Settings::Events::LoadGame::Serialize() const
+	nlohmann::json Settings::LoadGame::Serialize() const
 	{
 		nlohmann::json jsonLoadGame;
 
-		jsonLoadGame["consoleCommands"] = nlohmann::json(this->consoleCommands);
+		jsonLoadGame["consoleCommands"] = this->consoleCommands;
 
 		return jsonLoadGame;
-	}
-
-	Settings::Events& Settings::Events::Deserialize(const nlohmann::json& jsonEvents)
-	{
-		if (jsonEvents.contains("initialize"))
-		{
-			this->initialize.Deserialize(jsonEvents.at("initialize"));
-		}
-
-		if (jsonEvents.contains("loadGame"))
-		{
-			this->loadGame.Deserialize(jsonEvents.at("loadGame"));
-		}
-
-		if (jsonEvents.contains("button"))
-		{
-			this->button.Deserialize(jsonEvents.at("button"));
-		}
-
-		return *this;
-	}
-
-	nlohmann::json Settings::Events::Serialize() const
-	{
-		nlohmann::json jsonEvents;
-
-		jsonEvents["initialize"] = this->initialize.Serialize();
-		jsonEvents["loadGame"]   = this->loadGame.Serialize();
-		jsonEvents["button"]     = this->button.Serialize();
-
-		return jsonEvents;
 	}
 
 	Settings::Settings(const std::filesystem::path& path)
@@ -212,14 +188,19 @@ namespace ConsoleCommandCompanion
 
 	Settings& Settings::Deserialize(const nlohmann::json& jsonSettings)
 	{
-		if (jsonSettings.contains("log"))
+		if (jsonSettings.contains("initialize"))
 		{
-			this->log = jsonSettings.at("log").get<bool>();
+			this->initialize.Deserialize(jsonSettings.at("initialize"));
 		}
 
-		if (jsonSettings.contains("events"))
+		if (jsonSettings.contains("loadGame"))
 		{
-			this->events.Deserialize(jsonSettings.at("events"));
+			this->loadGame.Deserialize(jsonSettings.at("loadGame"));
+		}
+
+		if (jsonSettings.contains("button"))
+		{
+			this->button.Deserialize(jsonSettings.at("button"));
 		}
 
 		return *this;
@@ -229,8 +210,9 @@ namespace ConsoleCommandCompanion
 	{
 		nlohmann::json jsonSettings;
 
-		jsonSettings["log"]    = this->log;
-		jsonSettings["events"] = this->events.Serialize();
+		jsonSettings["initialize"] = this->initialize.Serialize();
+		jsonSettings["loadGame"]   = this->loadGame.Serialize();
+		jsonSettings["button"]     = this->button.Serialize();
 
 		return jsonSettings;
 	}

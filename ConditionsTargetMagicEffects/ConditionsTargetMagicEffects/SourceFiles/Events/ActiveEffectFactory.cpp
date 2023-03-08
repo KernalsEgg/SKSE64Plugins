@@ -61,7 +61,7 @@ namespace ConditionsTargetMagicEffects::Events
 
 		if (targetLevel > checkTargetArguments.magnitude)
 		{
-			checkTargetArguments.result = 2;
+			checkTargetArguments.reportAddTargetFailure = Skyrim::ActiveEffectFactory::CheckTargetArguments::ReportAddTargetFailure::kShowFailure;
 		}
 
 		return targetLevel <= checkTargetArguments.magnitude;

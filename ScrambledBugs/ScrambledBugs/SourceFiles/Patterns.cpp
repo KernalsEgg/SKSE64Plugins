@@ -211,24 +211,24 @@ namespace ScrambledBugs::Patterns
 			bool IsBoltContainer()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::EquipBestAmmunition::IsBoltContainer,                                                   // 8 + 3 + 2 + 2 + 3 = 0x12
-					0x41ui8, 0x0Fui8, 0xB6ui8, 0x80ui8, static_cast<std::uint32_t>(offsetof(Skyrim::TESAmmo, ammunitionFlags)), // movzx eax, byte ptr [r8+118]
-					0xC0ui8, 0xE8ui8, 0x02ui8,                                                                                  // shr al, 2
-					0xF6ui8, 0xD0ui8,                                                                                           // not al
-					0x24ui8, 0x01ui8,                                                                                           // and al, 1
-					0x40ui8, 0x3Aui8, 0xC7ui8                                                                                   // cmp al, dil
+					Addresses::Patches::EquipBestAmmunition::IsBoltContainer,                                                  // 8 + 3 + 2 + 2 + 3 = 0x12
+					0x41ui8, 0x0Fui8, 0xB6ui8, 0x80ui8, static_cast<std::int32_t>(offsetof(Skyrim::TESAmmo, ammunitionFlags)), // movzx eax, byte ptr [r8+118]
+					0xC0ui8, 0xE8ui8, 0x02ui8,                                                                                 // shr al, 2
+					0xF6ui8, 0xD0ui8,                                                                                          // not al
+					0x24ui8, 0x01ui8,                                                                                          // and al, 1
+					0x40ui8, 0x3Aui8, 0xC7ui8                                                                                  // cmp al, dil
 				);
 			}
 
 			bool IsBoltInventoryChanges()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::EquipBestAmmunition::IsBoltInventoryChanges,                                   // 7 + 3 + 2 + 2 + 3 = 0x11
-					0x0Fui8, 0xB6ui8, 0x85ui8, static_cast<std::uint32_t>(offsetof(Skyrim::TESAmmo, ammunitionFlags)), // movzx eax, byte ptr [rbp+118]
-					0xC0ui8, 0xE8ui8, 0x02ui8,                                                                         // shr al, 2
-					0xF6ui8, 0xD0ui8,                                                                                  // not al
-					0x24ui8, 0x01ui8,                                                                                  // and al, 1
-					0x40ui8, 0x3Aui8, 0xC7ui8                                                                          // cmp al, dil
+					Addresses::Patches::EquipBestAmmunition::IsBoltInventoryChanges,                                  // 7 + 3 + 2 + 2 + 3 = 0x11
+					0x0Fui8, 0xB6ui8, 0x85ui8, static_cast<std::int32_t>(offsetof(Skyrim::TESAmmo, ammunitionFlags)), // movzx eax, byte ptr [rbp+118]
+					0xC0ui8, 0xE8ui8, 0x02ui8,                                                                        // shr al, 2
+					0xF6ui8, 0xD0ui8,                                                                                 // not al
+					0x24ui8, 0x01ui8,                                                                                 // and al, 1
+					0x40ui8, 0x3Aui8, 0xC7ui8                                                                         // cmp al, dil
 				);
 			}
 		}

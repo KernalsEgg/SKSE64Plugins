@@ -13,6 +13,26 @@
 
 namespace Skyrim
 {
+	bool ActiveEffect::CheckDisplacementSpellOnTarget() const
+	{
+		auto* magicTarget = this->magicTarget;
+
+		if (!magicTarget)
+		{
+			return false;
+		}
+
+		FindAppropriateDisplaceEffect findAppropriateDisplaceEffect;
+
+		findAppropriateDisplaceEffect.displacementSpell = this->displacementSpell;
+		findAppropriateDisplaceEffect.addiction         = static_cast<SpellItem*>(this->magicItem);
+		findAppropriateDisplaceEffect.displace          = false;
+
+		magicTarget->ForEachActiveEffect(findAppropriateDisplaceEffect);
+
+		return findAppropriateDisplaceEffect.displace;
+	}
+
 	float ActiveEffect::GetCurrentMagnitude(float magnitude, float remainingTime, float taperDuration, float taperWeight, float taperCurve)
 	{
 		if (remainingTime < 0.0F)
@@ -66,25 +86,5 @@ namespace Skyrim
 		auto taperCurve    = noDuration || noMagnitude ? 0.0F : effectSetting->taperCurve;
 
 		return ActiveEffect::GetCurrentMagnitude(this->magnitude, this->duration - this->elapsedTime, taperDuration, taperWeight, taperCurve);
-	}
-
-	bool ActiveEffect::ShouldDisplace() const
-	{
-		auto* magicTarget = this->magicTarget;
-
-		if (!magicTarget)
-		{
-			return false;
-		}
-
-		FindAppropriateDisplaceEffect findAppropriateDisplaceEffect;
-
-		findAppropriateDisplaceEffect.displacementSpell = this->displacementSpell;
-		findAppropriateDisplaceEffect.addiction         = static_cast<SpellItem*>(this->magicItem);
-		findAppropriateDisplaceEffect.displace          = false;
-
-		magicTarget->ForEachActiveEffect(findAppropriateDisplaceEffect);
-
-		return findAppropriateDisplaceEffect.displace;
 	}
 }

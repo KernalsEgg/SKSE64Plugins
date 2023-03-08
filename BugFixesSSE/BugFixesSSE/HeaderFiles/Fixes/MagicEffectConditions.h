@@ -13,6 +13,6 @@ namespace BugFixesSSE::Fixes
 
 	private:
 		static float ActiveEffectConditionUpdateInterval();
-		static void  UpdateConditions(Skyrim::ActiveEffect* activeEffect, float elapsedTimeDelta, bool forceUpdate);
+		static void  EvaluateConditions(Skyrim::ActiveEffect* activeEffect, float elapsedTimeDelta, bool forceUpdate);
 	};
 }

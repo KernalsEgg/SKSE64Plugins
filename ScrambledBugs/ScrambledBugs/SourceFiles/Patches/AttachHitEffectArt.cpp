@@ -4,7 +4,6 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -24,15 +23,15 @@ namespace ScrambledBugs::Patches
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPerspectiveChange, Utility::Assembly::NO_OPERATION_2);
-		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerReattach, Utility::Assembly::NO_OPERATION_2);
-		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, Utility::Assembly::NO_OPERATION_6);
+		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPerspectiveChange, std::optional<std::uint8_t>{}, 0x00ui8);
+		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerReattach, std::optional<std::uint8_t>{}, 0x00ui8);
+		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 0x00ui32);
 
 		/* Remove the CastPermanentMagicFunctor flag responsible for setting ActiveEffect flags to disable hit effect art */
 		Utility::Memory::SafeWrite(
 			Addresses::Patches::AttachHitEffectArt::SetCastPermanentMagicFunctorFlags,
 			std::optional<std::uint8_t>{}, 0xF8ui8, // and al, F8
-			Utility::Assembly::NO_OPERATION_2       // nop
+			std::optional<std::uint8_t>{}, 0x00ui8  // or al, 0
 		);
 
 		AttachHitEffectArt::getTargetActor_ = reinterpret_cast<decltype(AttachHitEffectArt::getTargetActor_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::AttachHitEffectArt::GetTargetActor));

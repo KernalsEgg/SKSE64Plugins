@@ -4,7 +4,6 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
-#include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -20,6 +19,6 @@ namespace ScrambledBugs::Patches
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Patches::LockpickingExperience::HasNotBeenUnlocked, Utility::Assembly::NO_OPERATION_2);
+		Utility::Memory::SafeWrite(Addresses::Patches::LockpickingExperience::HasNotBeenUnlocked, std::optional<std::uint8_t>{}, 0x00ui8);
 	}
 }

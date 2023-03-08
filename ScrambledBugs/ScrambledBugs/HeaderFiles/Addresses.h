@@ -130,7 +130,7 @@ namespace ScrambledBugs::Addresses
 		namespace AccumulatingMagnitude
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F25D50 (516691), 1.6.318.0: SkyrimSE.exe + 0x2FC0140</summary>
-			inline const std::uintptr_t ActiveEffectAllocateFunctions{ Relocation::AddressLibrary::GetSingleton().GetAddress(402892) };
+			inline const std::uintptr_t ActiveEffectInstantiateFunctions{ Relocation::AddressLibrary::GetSingleton().GetAddress(402892) };
 		}
 
 		namespace AlreadyCaughtPickpocketing

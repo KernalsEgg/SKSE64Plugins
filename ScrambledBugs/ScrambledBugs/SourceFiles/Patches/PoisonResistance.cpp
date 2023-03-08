@@ -61,16 +61,16 @@ namespace ScrambledBugs::Patches
 
 		if (actor == Skyrim::PlayerCharacter::GetSingleton())
 		{
-			auto playerMaximumResistance = Skyrim::GameSettingCollection::PlayerMaximumResistance()->GetFloat();
+			static auto* playerMaximumResistance = Skyrim::GameSettingCollection::InitializeSetting("fPlayerMaxResistance");
 
-			if (defaultResistance > playerMaximumResistance)
+			if (defaultResistance > playerMaximumResistance->GetFloat())
 			{
-				defaultResistance = playerMaximumResistance;
+				defaultResistance = playerMaximumResistance->GetFloat();
 			}
 
-			if (resistance > playerMaximumResistance)
+			if (resistance > playerMaximumResistance->GetFloat())
 			{
-				resistance = playerMaximumResistance;
+				resistance = playerMaximumResistance->GetFloat();
 			}
 		}
 

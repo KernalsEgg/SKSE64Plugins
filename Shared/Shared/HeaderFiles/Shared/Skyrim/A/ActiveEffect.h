@@ -78,10 +78,10 @@ namespace Skyrim
 		static float GetCurrentMagnitude(float magnitude, float remainingTime, float taperDuration, float taperWeight, float taperCurve);
 
 		// Member functions
+		bool                 CheckDisplacementSpellOnTarget() const;
 		EffectSetting*       GetEffectSetting();
 		const EffectSetting* GetEffectSetting() const;
 		float                GetCurrentMagnitude() const;
-		bool                 ShouldDisplace() const;
 
 		// Member variables
 		std::uint64_t                                                   unknown8;          // 8

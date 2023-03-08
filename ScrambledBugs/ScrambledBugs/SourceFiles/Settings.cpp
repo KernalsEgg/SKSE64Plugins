@@ -46,95 +46,24 @@ namespace ScrambledBugs
 {
 	Settings::Fixes& Settings::Fixes::Deserialize(const nlohmann::json& jsonFixes)
 	{
-		if (jsonFixes.contains("activateFurniture"))
-		{
-			jsonFixes.at("activateFurniture").get_to(this->activateFurniture);
-		}
-
-		if (jsonFixes.contains("actorValuePercentage"))
-		{
-			jsonFixes.at("actorValuePercentage").get_to(this->actorValuePercentage);
-		}
-
-		if (jsonFixes.contains("enchantmentCost"))
-		{
-			jsonFixes.at("enchantmentCost").get_to(this->enchantmentCost);
-		}
-
-		if (jsonFixes.contains("harvestedFlags"))
-		{
-			jsonFixes.at("harvestedFlags").get_to(this->harvestedFlags);
-		}
-
-		if (jsonFixes.contains("hitEffectRaceCondition"))
-		{
-			jsonFixes.at("hitEffectRaceCondition").get_to(this->hitEffectRaceCondition);
-		}
-
-		if (jsonFixes.contains("impactEffectCrash"))
-		{
-			jsonFixes.at("impactEffectCrash").get_to(this->impactEffectCrash);
-		}
-
-		if (jsonFixes.contains("isCurrentSpell"))
-		{
-			jsonFixes.at("isCurrentSpell").get_to(this->isCurrentSpell);
-		}
-
-		if (jsonFixes.contains("killCamera"))
-		{
-			jsonFixes.at("killCamera").get_to(this->killCamera);
-		}
-
-		if (jsonFixes.contains("leftHandPowerAttacks"))
-		{
-			jsonFixes.at("leftHandPowerAttacks").get_to(this->leftHandPowerAttacks);
-		}
-
-		if (jsonFixes.contains("magicEffectFlags"))
-		{
-			jsonFixes.at("magicEffectFlags").get_to(this->magicEffectFlags);
-		}
-
-		if (jsonFixes.contains("modifyArmorWeightPerkEntryPoint"))
-		{
-			jsonFixes.at("modifyArmorWeightPerkEntryPoint").get_to(this->modifyArmorWeightPerkEntryPoint);
-		}
-
-		if (jsonFixes.contains("powerCooldowns"))
-		{
-			jsonFixes.at("powerCooldowns").get_to(this->powerCooldowns);
-		}
-
-		if (jsonFixes.contains("projectileFadeDuration"))
-		{
-			jsonFixes.at("projectileFadeDuration").get_to(this->projectileFadeDuration);
-		}
-
-		if (jsonFixes.contains("quickShot"))
-		{
-			jsonFixes.at("quickShot").get_to(this->quickShot);
-		}
-
-		if (jsonFixes.contains("quickShotPlaybackSpeed"))
-		{
-			jsonFixes.at("quickShotPlaybackSpeed").get_to(this->quickShotPlaybackSpeed);
-		}
-
-		if (jsonFixes.contains("terrainDecals"))
-		{
-			jsonFixes.at("terrainDecals").get_to(this->terrainDecals);
-		}
-
-		if (jsonFixes.contains("trainingMenu"))
-		{
-			jsonFixes.at("trainingMenu").get_to(this->trainingMenu);
-		}
-
-		if (jsonFixes.contains("weaponCharge"))
-		{
-			jsonFixes.at("weaponCharge").get_to(this->weaponCharge);
-		}
+		jsonFixes.at("activateFurniture").get_to(this->activateFurniture);
+		jsonFixes.at("actorValuePercentage").get_to(this->actorValuePercentage);
+		jsonFixes.at("enchantmentCost").get_to(this->enchantmentCost);
+		jsonFixes.at("harvestedFlags").get_to(this->harvestedFlags);
+		jsonFixes.at("hitEffectRaceCondition").get_to(this->hitEffectRaceCondition);
+		jsonFixes.at("impactEffectCrash").get_to(this->impactEffectCrash);
+		jsonFixes.at("isCurrentSpell").get_to(this->isCurrentSpell);
+		jsonFixes.at("killCamera").get_to(this->killCamera);
+		jsonFixes.at("leftHandPowerAttacks").get_to(this->leftHandPowerAttacks);
+		jsonFixes.at("magicEffectFlags").get_to(this->magicEffectFlags);
+		jsonFixes.at("modifyArmorWeightPerkEntryPoint").get_to(this->modifyArmorWeightPerkEntryPoint);
+		jsonFixes.at("powerCooldowns").get_to(this->powerCooldowns);
+		jsonFixes.at("projectileFadeDuration").get_to(this->projectileFadeDuration);
+		jsonFixes.at("quickShot").get_to(this->quickShot);
+		jsonFixes.at("quickShotPlaybackSpeed").get_to(this->quickShotPlaybackSpeed);
+		jsonFixes.at("terrainDecals").get_to(this->terrainDecals);
+		jsonFixes.at("trainingMenu").get_to(this->trainingMenu);
+		jsonFixes.at("weaponCharge").get_to(this->weaponCharge);
 
 		return *this;
 	}
@@ -167,15 +96,8 @@ namespace ScrambledBugs
 
 	Settings::Patches::DifficultyMultipliers& Settings::Patches::DifficultyMultipliers::Deserialize(const nlohmann::json& jsonDifficultyMultipliers)
 	{
-		if (jsonDifficultyMultipliers.contains("commandedActors"))
-		{
-			jsonDifficultyMultipliers.at("commandedActors").get_to(this->commandedActors);
-		}
-
-		if (jsonDifficultyMultipliers.contains("teammates"))
-		{
-			jsonDifficultyMultipliers.at("teammates").get_to(this->teammates);
-		}
+		jsonDifficultyMultipliers.at("commandedActors").get_to(this->commandedActors);
+		jsonDifficultyMultipliers.at("teammates").get_to(this->teammates);
 
 		return *this;
 	}
@@ -192,15 +114,8 @@ namespace ScrambledBugs
 
 	Settings::Patches::PerkEntryPoints& Settings::Patches::PerkEntryPoints::Deserialize(const nlohmann::json& jsonPerkEntryPoints)
 	{
-		if (jsonPerkEntryPoints.contains("applyMultipleSpells"))
-		{
-			jsonPerkEntryPoints.at("applyMultipleSpells").get_to(this->applyMultipleSpells);
-		}
-
-		if (jsonPerkEntryPoints.contains("castSpells"))
-		{
-			jsonPerkEntryPoints.at("castSpells").get_to(this->castSpells);
-		}
+		jsonPerkEntryPoints.at("applyMultipleSpells").get_to(this->applyMultipleSpells);
+		jsonPerkEntryPoints.at("castSpells").get_to(this->castSpells);
 
 		return *this;
 	}
@@ -217,15 +132,8 @@ namespace ScrambledBugs
 
 	Settings::Patches::SoulGems& Settings::Patches::SoulGems::Deserialize(const nlohmann::json& jsonSoulGems)
 	{
-		if (jsonSoulGems.contains("black"))
-		{
-			jsonSoulGems.at("black").get_to(this->black);
-		}
-
-		if (jsonSoulGems.contains("underfilled"))
-		{
-			jsonSoulGems.at("underfilled").get_to(this->underfilled);
-		}
+		jsonSoulGems.at("black").get_to(this->black);
+		jsonSoulGems.at("underfilled").get_to(this->underfilled);
 
 		return *this;
 	}
@@ -242,100 +150,25 @@ namespace ScrambledBugs
 
 	Settings::Patches& Settings::Patches::Deserialize(const nlohmann::json& jsonPatches)
 	{
-		if (jsonPatches.contains("accumulatingMagnitude"))
-		{
-			jsonPatches.at("accumulatingMagnitude").get_to(this->accumulatingMagnitude);
-		}
-
-		if (jsonPatches.contains("alreadyCaughtPickpocketing"))
-		{
-			jsonPatches.at("alreadyCaughtPickpocketing").get_to(this->alreadyCaughtPickpocketing);
-		}
-
-		if (jsonPatches.contains("attachHitEffectArt"))
-		{
-			jsonPatches.at("attachHitEffectArt").get_to(this->attachHitEffectArt);
-		}
-
-		if (jsonPatches.contains("cloakHitEffects"))
-		{
-			jsonPatches.at("cloakHitEffects").get_to(this->cloakHitEffects);
-		}
-
-		if (jsonPatches.contains("difficultyMultipliers"))
-		{
-			this->difficultyMultipliers.Deserialize(jsonPatches.at("difficultyMultipliers"));
-		}
-
-		if (jsonPatches.contains("equipBestAmmunition"))
-		{
-			jsonPatches.at("equipBestAmmunition").get_to(this->equipBestAmmunition);
-		}
-
-		if (jsonPatches.contains("improveMultipleEnchantmentEffects"))
-		{
-			jsonPatches.at("improveMultipleEnchantmentEffects").get_to(this->improveMultipleEnchantmentEffects);
-		}
-
-		if (jsonPatches.contains("leveledCharacters"))
-		{
-			jsonPatches.at("leveledCharacters").get_to(this->leveledCharacters);
-		}
-
-		if (jsonPatches.contains("lockpickingExperience"))
-		{
-			jsonPatches.at("lockpickingExperience").get_to(this->lockpickingExperience);
-		}
-
-		if (jsonPatches.contains("pausedGameHitEffects"))
-		{
-			jsonPatches.at("pausedGameHitEffects").get_to(this->pausedGameHitEffects);
-		}
-
-		if (jsonPatches.contains("perkEntryPoints"))
-		{
-			this->perkEntryPoints.Deserialize(jsonPatches.at("perkEntryPoints"));
-		}
-
-		if (jsonPatches.contains("poisonResistance"))
-		{
-			jsonPatches.at("poisonResistance").get_to(this->poisonResistance);
-		}
-
-		if (jsonPatches.contains("powerAttackStamina"))
-		{
-			jsonPatches.at("powerAttackStamina").get_to(this->powerAttackStamina);
-		}
-
-		if (jsonPatches.contains("reflectDamage"))
-		{
-			jsonPatches.at("reflectDamage").get_to(this->reflectDamage);
-		}
-
-		if (jsonPatches.contains("scrollExperience"))
-		{
-			jsonPatches.at("scrollExperience").get_to(this->scrollExperience);
-		}
-
-		if (jsonPatches.contains("soulGems"))
-		{
-			this->soulGems.Deserialize(jsonPatches.at("soulGems"));
-		}
-
-		if (jsonPatches.contains("staffExperience"))
-		{
-			jsonPatches.at("staffExperience").get_to(this->staffExperience);
-		}
-
-		if (jsonPatches.contains("staffExperienceIgnoreEnchantmentCost"))
-		{
-			jsonPatches.at("staffExperienceIgnoreEnchantmentCost").get_to(this->staffExperienceIgnoreEnchantmentCost);
-		}
-
-		if (jsonPatches.contains("steepSlopes"))
-		{
-			jsonPatches.at("steepSlopes").get_to(this->steepSlopes);
-		}
+		jsonPatches.at("accumulatingMagnitude").get_to(this->accumulatingMagnitude);
+		jsonPatches.at("alreadyCaughtPickpocketing").get_to(this->alreadyCaughtPickpocketing);
+		jsonPatches.at("attachHitEffectArt").get_to(this->attachHitEffectArt);
+		jsonPatches.at("cloakHitEffects").get_to(this->cloakHitEffects);
+		this->difficultyMultipliers.Deserialize(jsonPatches.at("difficultyMultipliers"));
+		jsonPatches.at("equipBestAmmunition").get_to(this->equipBestAmmunition);
+		jsonPatches.at("improveMultipleEnchantmentEffects").get_to(this->improveMultipleEnchantmentEffects);
+		jsonPatches.at("leveledCharacters").get_to(this->leveledCharacters);
+		jsonPatches.at("lockpickingExperience").get_to(this->lockpickingExperience);
+		jsonPatches.at("pausedGameHitEffects").get_to(this->pausedGameHitEffects);
+		this->perkEntryPoints.Deserialize(jsonPatches.at("perkEntryPoints"));
+		jsonPatches.at("poisonResistance").get_to(this->poisonResistance);
+		jsonPatches.at("powerAttackStamina").get_to(this->powerAttackStamina);
+		jsonPatches.at("reflectDamage").get_to(this->reflectDamage);
+		jsonPatches.at("scrollExperience").get_to(this->scrollExperience);
+		this->soulGems.Deserialize(jsonPatches.at("soulGems"));
+		jsonPatches.at("staffExperience").get_to(this->staffExperience);
+		jsonPatches.at("staffExperienceIgnoreEnchantmentCost").get_to(this->staffExperienceIgnoreEnchantmentCost);
+		jsonPatches.at("steepSlopes").get_to(this->steepSlopes);
 
 		return *this;
 	}
@@ -390,15 +223,8 @@ namespace ScrambledBugs
 
 	Settings& Settings::Deserialize(const nlohmann::json& jsonSettings)
 	{
-		if (jsonSettings.contains("fixes"))
-		{
-			this->fixes.Deserialize(jsonSettings.at("fixes"));
-		}
-
-		if (jsonSettings.contains("patches"))
-		{
-			this->patches.Deserialize(jsonSettings.at("patches"));
-		}
+		this->fixes.Deserialize(jsonSettings.at("fixes"));
+		this->patches.Deserialize(jsonSettings.at("patches"));
 
 		return *this;
 	}

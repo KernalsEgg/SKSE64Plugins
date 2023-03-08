@@ -13,20 +13,9 @@ namespace ActorLimitFix
 {
 	Settings::Fixes& Settings::Fixes::Deserialize(const nlohmann::json& jsonFixes)
 	{
-		if (jsonFixes.contains("morphLimit"))
-		{
-			jsonFixes.at("morphLimit").get_to(this->morphLimit);
-		}
-
-		if (jsonFixes.contains("moverLimit"))
-		{
-			jsonFixes.at("moverLimit").get_to(this->moverLimit);
-		}
-
-		if (jsonFixes.contains("replaceStaticArray"))
-		{
-			jsonFixes.at("replaceStaticArray").get_to(this->replaceStaticArray);
-		}
+		jsonFixes.at("morphLimit").get_to(this->morphLimit);
+		jsonFixes.at("moverLimit").get_to(this->moverLimit);
+		jsonFixes.at("replaceStaticArray").get_to(this->replaceStaticArray);
 
 		return *this;
 	}
@@ -65,10 +54,7 @@ namespace ActorLimitFix
 
 	Settings& Settings::Deserialize(const nlohmann::json& jsonSettings)
 	{
-		if (jsonSettings.contains("fixes"))
-		{
-			this->fixes.Deserialize(jsonSettings.at("fixes"));
-		}
+		this->fixes.Deserialize(jsonSettings.at("fixes"));
 
 		return *this;
 	}

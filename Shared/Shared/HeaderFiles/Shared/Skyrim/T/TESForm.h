@@ -44,6 +44,7 @@ namespace Skyrim
 			kDeleted      = 1U << 5,
 			kFireOff      = 1U << 7,
 			kDisabled     = 1U << 11,
+			kEmpty        = 1U << 13,
 			kDestructible = 1U << 24
 		};
 		static_assert(sizeof(RecordFlags) == 0x4);

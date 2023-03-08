@@ -252,6 +252,7 @@ namespace Skyrim
 		const char*       GetReferenceName() const;
 		BipedObjectSlot   GetShieldObject() const;
 		bool              Is3DLoaded() const;
+		bool              IsCrimeToActivate() const;
 		bool              SameWorldSpace(TESObjectREFR* target, bool compareParentWorldSpace) const;
 		bool              ShouldApplyDecal() const;
 

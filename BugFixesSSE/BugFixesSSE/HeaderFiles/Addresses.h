@@ -13,7 +13,7 @@ namespace BugFixesSSE::Addresses
 		namespace MagicEffectConditions
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x53E3E0 (33287), 1.6.318.0: SkyrimSE.exe + 0x5584D0</summary>
-			inline const std::uintptr_t UpdateConditions{ Relocation::AddressLibrary::GetSingleton().GetAddress(34062) }; // ActiveEffect::UpdateConditions
+			inline const std::uintptr_t EvaluateConditions{ Relocation::AddressLibrary::GetSingleton().GetAddress(34062) }; // ActiveEffect::EvaluateConditions
 		}
 
 		namespace MovementSpeed

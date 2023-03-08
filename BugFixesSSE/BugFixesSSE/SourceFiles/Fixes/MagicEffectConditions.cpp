@@ -11,17 +11,17 @@ namespace BugFixesSSE::Fixes
 {
 	void MagicEffectConditions::Fix(bool& magicEffectConditions)
 	{
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::MagicEffectConditions::UpdateConditions, reinterpret_cast<std::uintptr_t>(std::addressof(MagicEffectConditions::UpdateConditions)));
+		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::MagicEffectConditions::EvaluateConditions, reinterpret_cast<std::uintptr_t>(std::addressof(MagicEffectConditions::EvaluateConditions)));
 	}
 
 	float MagicEffectConditions::ActiveEffectConditionUpdateInterval()
 	{
-		auto activeEffectConditionUpdateInterval = Skyrim::GameSettingCollection::ActiveEffectConditionUpdateInterval()->GetFloat();
+		static auto* activeEffectConditionUpdateInterval = Skyrim::GameSettingCollection::InitializeSetting("fActiveEffectConditionUpdateInterval");
 
-		return activeEffectConditionUpdateInterval > 0.0001F ? activeEffectConditionUpdateInterval : 1.0F;
+		return activeEffectConditionUpdateInterval->GetFloat() > 0.0001F ? activeEffectConditionUpdateInterval->GetFloat() : 1.0F;
 	}
 
-	void MagicEffectConditions::UpdateConditions(Skyrim::ActiveEffect* activeEffect, float elapsedTimeDelta, bool forceUpdate)
+	void MagicEffectConditions::EvaluateConditions(Skyrim::ActiveEffect* activeEffect, float elapsedTimeDelta, bool forceUpdate)
 	{
 		// activeEffect != nullptr
 
@@ -32,31 +32,33 @@ namespace BugFixesSSE::Fixes
 
 		if ((activeEffect->activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kHasConditions) || activeEffect->displacementSpell) && activeEffect->magicTarget && activeEffect->magicTarget->GetMagicTargetAsReference())
 		{
+			auto& conditionUpdateTime = reinterpret_cast<float&>(activeEffect->padding8C);
+
 			if (!forceUpdate)
 			{
 				if (activeEffect->elapsedTime <= 0.0F)
 				{
-					reinterpret_cast<float&>(activeEffect->padding8C) = elapsedTimeDelta;
+					conditionUpdateTime = elapsedTimeDelta;
 
 					return;
 				}
 
 				static const auto activeEffectConditionUpdateInterval = MagicEffectConditions::ActiveEffectConditionUpdateInterval();
 
-				if (reinterpret_cast<float&>(activeEffect->padding8C) > 0.0F && reinterpret_cast<float&>(activeEffect->padding8C) < activeEffectConditionUpdateInterval)
+				if (conditionUpdateTime > 0.0F && conditionUpdateTime < activeEffectConditionUpdateInterval)
 				{
-					reinterpret_cast<float&>(activeEffect->padding8C) += elapsedTimeDelta;
+					conditionUpdateTime += elapsedTimeDelta;
 
 					return;
 				}
 			}
 
-			reinterpret_cast<float&>(activeEffect->padding8C) = elapsedTimeDelta;
+			conditionUpdateTime = elapsedTimeDelta;
 
 			auto* subject = activeEffect->magicTarget->GetMagicTargetAsReference();
 			auto* target  = activeEffect->caster.get().get();
 
-			activeEffect->conditionStatus = activeEffect->effect->conditions.IsTrue(subject, target) && !activeEffect->ShouldDisplace() ?
+			activeEffect->conditionStatus = activeEffect->effect->conditions.IsTrue(subject, target) && !activeEffect->CheckDisplacementSpellOnTarget() ?
 			                                    Skyrim::ActiveEffect::ConditionStatus::kTrue :
 			                                    Skyrim::ActiveEffect::ConditionStatus::kFalse;
 		}

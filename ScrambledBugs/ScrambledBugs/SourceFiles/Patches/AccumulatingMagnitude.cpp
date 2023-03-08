@@ -16,26 +16,14 @@ namespace ScrambledBugs::Patches
 	*/
 	void AccumulatingMagnitude::Patch(bool& accumulatingMagnitude)
 	{
-		AccumulatingMagnitude::allocate_ =
-			reinterpret_cast<decltype(AccumulatingMagnitude::allocate_)*>(Addresses::Patches::AccumulatingMagnitude::ActiveEffectAllocateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulatingMagnitude)];
+		AccumulatingMagnitude::instantiate_ =
+			reinterpret_cast<decltype(AccumulatingMagnitude::instantiate_)*>(Addresses::Patches::AccumulatingMagnitude::ActiveEffectInstantiateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulatingMagnitude)];
 
-		reinterpret_cast<decltype(AccumulatingMagnitude::Allocate)**>(Addresses::Patches::AccumulatingMagnitude::ActiveEffectAllocateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulatingMagnitude)] =
-			std::addressof(AccumulatingMagnitude::Allocate);
+		reinterpret_cast<decltype(AccumulatingMagnitude::Instantiate)**>(Addresses::Patches::AccumulatingMagnitude::ActiveEffectInstantiateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulatingMagnitude)] =
+			std::addressof(AccumulatingMagnitude::Instantiate);
 
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::FindMaxMagnitudeVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::FunctionCallOperator)));
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::AccumulatingValueModifierEffect::VirtualFunctionTable, 0x1D, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::UpdateActorValue)));
-	}
-
-	Skyrim::AccumulatingValueModifierEffect* AccumulatingMagnitude::Allocate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect)
-	{
-		// accumulatingValueModifierEffect != nullptr
-
-		auto* accumulatingValueModifierEffect = AccumulatingMagnitude::allocate_(caster, magicItem, effect);
-
-		/* Swap the accumulation rate and the maximum magnitude */
-		std::swap(accumulatingValueModifierEffect->magnitude, accumulatingValueModifierEffect->maximumMagnitude);
-
-		return accumulatingValueModifierEffect;
 	}
 
 	float AccumulatingMagnitude::FindMaximumWardPower(Skyrim::MagicTarget* magicTarget, Skyrim::ActiveEffect* finishedActiveEffect)
@@ -87,6 +75,18 @@ namespace ScrambledBugs::Patches
 		return Skyrim::ForEachResult::kContinue;
 	}
 
+	Skyrim::AccumulatingValueModifierEffect* AccumulatingMagnitude::Instantiate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect)
+	{
+		// accumulatingValueModifierEffect != nullptr
+
+		auto* accumulatingValueModifierEffect = AccumulatingMagnitude::instantiate_(caster, magicItem, effect);
+
+		/* Swap the accumulation rate and the maximum magnitude */
+		std::swap(accumulatingValueModifierEffect->magnitude, accumulatingValueModifierEffect->maximumMagnitude);
+
+		return accumulatingValueModifierEffect;
+	}
+
 	void AccumulatingMagnitude::UpdateActorValue(Skyrim::AccumulatingValueModifierEffect* accumulatingValueModifierEffect, float frameTime)
 	{
 		// accumulatingValueModifierEffect != nullptr
@@ -135,5 +135,5 @@ namespace ScrambledBugs::Patches
 		}
 	}
 
-	decltype(AccumulatingMagnitude::Allocate)* AccumulatingMagnitude::allocate_{ nullptr };
+	decltype(AccumulatingMagnitude::Instantiate)* AccumulatingMagnitude::instantiate_{ nullptr };
 }

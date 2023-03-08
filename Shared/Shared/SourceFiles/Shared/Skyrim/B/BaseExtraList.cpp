@@ -14,7 +14,7 @@ namespace Skyrim
 
 		if (index < sizeof(PresenceBitField))
 		{
-			std::uint8_t bitMask = 1 << (type.underlying() % 8); // Modulus of 8
+			std::uint8_t bitMask = 1 << (type.underlying() % 8);
 
 			return (bitMask & this->bitField_[index]) != 0;
 		}

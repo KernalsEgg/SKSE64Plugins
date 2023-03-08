@@ -19,10 +19,12 @@ namespace ConditionsTargetMagicEffects::Events
 
 	void SlowTimeEffect::Start(Skyrim::SlowTimeEffect* slowTimeEffect)
 	{
+		static auto* vatsPlayerMagicTimeSlowdownMultiplier = Skyrim::GameSettingCollection::InitializeSetting("fVATSPlayerMagicTimeSlowdownMult");
+
 		auto* targetActor             = slowTimeEffect->magicTarget->GetMagicTargetAsActor();
 		auto* effectSetting           = slowTimeEffect->GetEffectSetting();
 		auto* magicItem               = slowTimeEffect->magicItem;
-		auto  playerMagicTimeSlowdown = Skyrim::GameSettingCollection::VATSPlayerMagicTimeSlowdownMultiplier()->GetFloat();
+		auto  playerMagicTimeSlowdown = vatsPlayerMagicTimeSlowdownMultiplier->GetFloat();
 
 		bool modifiedPlayerMagicSlowdown{ false };
 

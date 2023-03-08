@@ -24,9 +24,12 @@ namespace ScrambledBugs::Fixes
 
 		if (attackDataFlags.all(Skyrim::BGSAttackData::Flags::kBashAttack))
 		{
-			auto staminaBashBase = powerAttack ? Skyrim::GameSettingCollection::StaminaPowerBashBase()->GetFloat() : Skyrim::GameSettingCollection::StaminaBashBase()->GetFloat();
+			static auto* staminaPowerBashBase = Skyrim::GameSettingCollection::InitializeSetting("fStaminaPowerBashBase");
+			static auto* staminaBashBase      = Skyrim::GameSettingCollection::InitializeSetting("fStaminaBashBase");
 
-			return staminaBashBase * attackData->staminaMultiplier;
+			auto bashAttackStamina = powerAttack ? staminaPowerBashBase->GetFloat() : staminaBashBase->GetFloat();
+
+			return bashAttackStamina * attackData->staminaMultiplier;
 		}
 		else
 		{
@@ -44,11 +47,11 @@ namespace ScrambledBugs::Fixes
 				equippedWeapon = Skyrim::TESObjectWEAP::GetUnarmedWeapon();
 			}
 
-			auto staminaAttackWeaponBase       = Skyrim::GameSettingCollection::StaminaAttackWeaponBase()->GetFloat();
-			auto staminaAttackWeaponMultiplier = Skyrim::GameSettingCollection::StaminaAttackWeaponMultiplier()->GetFloat();
-			auto powerAttackStaminaPenalty     = Skyrim::GameSettingCollection::PowerAttackStaminaPenalty()->GetFloat();
+			static auto* staminaAttackWeaponBase       = Skyrim::GameSettingCollection::InitializeSetting("fStaminaAttackWeaponBase");
+			static auto* staminaAttackWeaponMultiplier = Skyrim::GameSettingCollection::InitializeSetting("fStaminaAttackWeaponMult");
+			static auto* powerAttackStaminaPenalty     = Skyrim::GameSettingCollection::InitializeSetting("fPowerAttackStaminaPenalty");
 
-			auto powerAttackStamina = ((equippedWeaponWeight * staminaAttackWeaponMultiplier) + staminaAttackWeaponBase) * powerAttackStaminaPenalty;
+			auto powerAttackStamina = (staminaAttackWeaponBase->GetFloat() + (equippedWeaponWeight * staminaAttackWeaponMultiplier->GetFloat())) * powerAttackStaminaPenalty->GetFloat();
 
 			Skyrim::BGSEntryPoint::HandleEntryPoint(Skyrim::BGSEntryPoint::EntryPoint::kModifyPowerAttackStamina, actor, equippedWeapon, std::addressof(powerAttackStamina));
 

@@ -23,9 +23,12 @@ namespace Skyrim
 		virtual bool Close() override;                        // 6
 
 		// Non-member functions
-		static SettingT<INISettingCollection>* ForceAllDecals();
-		static SettingT<INISettingCollection>* NumberActorsAllowedToMorph();
-		static SettingT<INISettingCollection>* ZKeyDelay();
+		static INISettingCollection* GetSingleton();
+		static void                  InitializeCollection();
+		static Setting*              InitializeSetting(const char* name);
+
+		// Member functions
+		Setting* GetSetting(const char* name) const;
 	};
 	static_assert(sizeof(INISettingCollection) == 0x128);
 }

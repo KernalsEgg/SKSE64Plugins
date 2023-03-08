@@ -32,20 +32,22 @@ namespace ScrambledBugs::Fixes
 
 		bool perkQuickDraw;
 
-		auto* player              = Skyrim::PlayerCharacter::GetSingleton();
-		auto  arrowBowMinimumTime = Skyrim::GameSettingCollection::ArrowBowMinimumTime()->GetFloat();
+		auto*        player              = Skyrim::PlayerCharacter::GetSingleton();
+		static auto* arrowBowMinimumTime = Skyrim::GameSettingCollection::InitializeSetting("fArrowBowMinTime");
 
 		float pullTime = player->GetAnimationVariableBool(Skyrim::BSFixedString("bPerkQuickDraw"), perkQuickDraw) && perkQuickDraw ?
-		                     drawTime - (arrowBowMinimumTime / QuickShot::playbackSpeed_) :
-		                     drawTime - arrowBowMinimumTime;
+		                     drawTime - (arrowBowMinimumTime->GetFloat() / QuickShot::playbackSpeed_) :
+		                     drawTime - arrowBowMinimumTime->GetFloat();
 
 		if (pullTime <= 0.0F)
 		{
-			return Skyrim::GameSettingCollection::ArrowMinimumPower()->GetFloat();
+			static auto* arrowMinimumPower = Skyrim::GameSettingCollection::InitializeSetting("fArrowMinPower");
+
+			return arrowMinimumPower->GetFloat();
 		}
 
-		auto bowDrawTime     = Skyrim::GameSettingCollection::BowDrawTime()->GetFloat();
-		auto maximumPullTime = (bowDrawTime - arrowBowMinimumTime) / bowSpeed;
+		static auto* bowDrawTime     = Skyrim::GameSettingCollection::InitializeSetting("fBowDrawTime");
+		auto         maximumPullTime = (bowDrawTime->GetFloat() - arrowBowMinimumTime->GetFloat()) / bowSpeed;
 
 		if (pullTime >= maximumPullTime)
 		{
@@ -53,9 +55,9 @@ namespace ScrambledBugs::Fixes
 		}
 		else
 		{
-			auto arrowMinimumPower = Skyrim::GameSettingCollection::ArrowMinimumPower()->GetFloat();
+			static auto* arrowMinimumPower = Skyrim::GameSettingCollection::InitializeSetting("fArrowMinPower");
 
-			return arrowMinimumPower + ((pullTime / maximumPullTime) * (1.0F - arrowMinimumPower));
+			return arrowMinimumPower->GetFloat() + ((pullTime / maximumPullTime) * (1.0F - arrowMinimumPower->GetFloat()));
 		}
 	}
 

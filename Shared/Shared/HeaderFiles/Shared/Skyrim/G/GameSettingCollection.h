@@ -30,27 +30,10 @@ namespace Skyrim
 		// Non-member functions
 		static GameSettingCollection* GetSingleton();
 		static void                   InitializeCollection();
+		static Setting*               InitializeSetting(const char* name);
 
-		static SettingT<GameSettingCollection>* ActiveEffectConditionUpdateInterval();
-		static SettingT<GameSettingCollection>* ArrowBowMinimumTime();
-		static SettingT<GameSettingCollection>* ArrowMinimumPower();
-		static SettingT<GameSettingCollection>* BowDrawTime();
-		static SettingT<GameSettingCollection>* EffectsListDisplayHour();
-		static SettingT<GameSettingCollection>* EffectsListDisplayHours();
-		static SettingT<GameSettingCollection>* EffectsListDisplayMinute();
-		static SettingT<GameSettingCollection>* EffectsListDisplayMinutes();
-		static SettingT<GameSettingCollection>* EffectsListDisplaySecond();
-		static SettingT<GameSettingCollection>* EffectsListDisplaySeconds();
-		static SettingT<GameSettingCollection>* No();
-		static SettingT<GameSettingCollection>* Okay();
-		static SettingT<GameSettingCollection>* PlayerMaximumResistance();
-		static SettingT<GameSettingCollection>* PowerAttackStaminaPenalty();
-		static SettingT<GameSettingCollection>* StaminaAttackWeaponBase();
-		static SettingT<GameSettingCollection>* StaminaAttackWeaponMultiplier();
-		static SettingT<GameSettingCollection>* StaminaBashBase();
-		static SettingT<GameSettingCollection>* StaminaPowerBashBase();
-		static SettingT<GameSettingCollection>* VATSPlayerMagicTimeSlowdownMultiplier();
-		static SettingT<GameSettingCollection>* Yes();
+		// Member functions
+		Setting* GetSetting(const char* name) const;
 	};
 	static_assert(sizeof(GameSettingCollection) == 0x140);
 }

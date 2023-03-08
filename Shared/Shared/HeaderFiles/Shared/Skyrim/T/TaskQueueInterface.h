@@ -3,6 +3,8 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/Addresses.h"
+#include "Shared/Skyrim/S/ScriptOutput.h"
+#include "Shared/Utility/Enumeration.h"
 #include "Shared/Utility/TypeTraits.h"
 
 
@@ -22,11 +24,11 @@ namespace Skyrim
 
 		// Member functions
 		template <class... Arguments>
-		void QueueScriptFunctionCall(std::uint32_t flags, TESObjectREFR* reference, Arguments... arguments)
+		void QueueScriptFunctionCall(Utility::Enumeration<ScriptOutput, std::uint32_t> scriptOutput, TESObjectREFR* reference, Arguments... arguments)
 		{
 			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<Utility::TypeTraits::MakeFunctionPointer<decltype(&TaskQueueInterface::QueueScriptFunctionCall<>)>::type>::type>(Addresses::TaskQueueInterface::QueueScriptFunctionCall) };
 
-			function(this, flags, reference, arguments...);
+			function(this, scriptOutput, reference, arguments...);
 		}
 
 		// Member variables

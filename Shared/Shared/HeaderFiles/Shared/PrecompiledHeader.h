@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>       // std::find, std::lower_bound, std::min, std::sort
+#include <array>           // std::array, std::to_array
 #include <atomic>          // std::atomic_ref, std::atomic_size_t
 #include <chrono>          // std::chrono
 #include <cmath>           // std::abs, std::pow, std::sqrt

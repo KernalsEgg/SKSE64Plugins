@@ -10,7 +10,9 @@ namespace Trails
 	{
 		decalManager->unknown14 = true;
 
-		if (Skyrim::INIPrefSettingCollection::Decals()->GetBool())
+		static auto* decals = Skyrim::INIPrefSettingCollection::InitializeSetting("bDecals:Decals");
+
+		if (decals->GetBool())
 		{
 			auto* target3D = creationData.target3D.get();
 
@@ -20,9 +22,11 @@ namespace Trails
 
 				if (target3DNode)
 				{
+					static auto* forceAllDecals = Skyrim::INISettingCollection::InitializeSetting("bForceAllDecals:Decals");
+
 					target3DNode->AddDecal(Skyrim::BGSDecalManager::AdditionData{
 						.creationData               = std::addressof(creationData),
-						.forceDecal                 = forceDecal || Skyrim::INISettingCollection::ForceAllDecals()->GetBool(),
+						.forceDecal                 = forceDecal || forceAllDecals->GetBool(),
 						.unknown9                   = creationData.unknownC0 != 0,
 						.decalCount                 = decalManager->decalCount,
 						.skinDecalCount             = decalManager->skinDecalCount,

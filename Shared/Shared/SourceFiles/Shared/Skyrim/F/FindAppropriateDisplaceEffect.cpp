@@ -2,9 +2,9 @@
 
 #include "Shared/Skyrim/F/FindAppropriateDisplaceEffect.h"
 
-#include "Shared/Skyrim/A/ActiveEffect.h"
-#include "Shared/Skyrim/A/AlchemyItem.h"
-#include "Shared/Skyrim/M/MagicItem.h"
+#include "Shared/Skyrim/Addresses.h"
+#include "Shared/Utility/Memory.h"
+#include "Shared/Utility/TypeTraits.h"
 
 
 
@@ -12,20 +12,8 @@ namespace Skyrim
 {
 	ForEachResult FindAppropriateDisplaceEffect::operator()(ActiveEffect* activeEffect)
 	{
-		if (activeEffect && activeEffect->activeEffectFlags.none(ActiveEffect::Flags::kInactive))
-		{
-			auto* magicItem = activeEffect->magicItem;
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&FindAppropriateDisplaceEffect::operator())>::type>(Utility::Memory::ReadVirtualFunction(Addresses::FindAppropriateDisplaceEffect::VirtualFunctionTable, 0x1)) };
 
-			if (magicItem == this->displacementSpell || (magicItem->GetSpellType() == MagicSystem::SpellType::kPotion && static_cast<AlchemyItem*>(magicItem)->alchemyItemData.addiction == this->addiction))
-			{
-				this->displace = true;
-
-				return ForEachResult::kStop;
-			}
-		}
-
-		this->displace = false;
-
-		return ForEachResult::kContinue;
+		return function(this, activeEffect);
 	}
 }
