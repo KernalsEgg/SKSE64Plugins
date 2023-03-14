@@ -29,6 +29,15 @@ namespace Skyrim
 			inline const std::uintptr_t VirtualFunctionTable{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(257579, 205813)) };
 		}
 
+		namespace ActiveEffectFactory
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F26050, 1.6.318.0: SkyrimSE.exe + 0x2FC0440</summary>
+			inline const std::uintptr_t CheckTargetFunctions{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(516694, 402940)) };
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F25D50, 1.6.318.0: SkyrimSE.exe + 0x2FC0140</summary>
+			inline const std::uintptr_t InstantiateFunctions{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(516691, 402892)) };
+		}
+
 		namespace Actor
 		{
 			namespace MagicTarget
@@ -209,10 +218,10 @@ namespace Skyrim
 		namespace BGSSaveGameBuffer
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x599DB0, 1.6.318.0: SkyrimSE.exe + 0x5BB190</summary>
-			inline const std::uintptr_t Write{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(35163, 36053)) };
+			inline const std::uintptr_t SaveData{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(35163, 36053)) };
 
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x5999B0, 1.6.318.0: SkyrimSE.exe + 0x5BAD90</summary>
-			inline const std::uintptr_t WriteFormID{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(35158, 36048)) };
+			inline const std::uintptr_t SaveFormID{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(35158, 36048)) };
 		}
 
 		namespace bhkNiCollisionObject

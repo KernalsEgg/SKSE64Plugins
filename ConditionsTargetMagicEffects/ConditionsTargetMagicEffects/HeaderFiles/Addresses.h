@@ -26,13 +26,4 @@ namespace ConditionsTargetMagicEffects::Addresses
 		/// <summary>1.5.97.0: SkyrimSE.exe + 0x892CD0, 1.6.318.0: SkyrimSE.exe + 0x8C2D30</summary>
 		inline const std::uintptr_t GetMagicItemDescription{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(51022, 51900)) };
 	}
-
-	namespace Script
-	{
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DC61E0, 1.6.318.0: SkyrimSE.exe + 0x1E5A280</summary>
-		inline const std::uintptr_t EntryPointMagicSpellHasKeywordConditionFunction{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(672433, 365388)) };
-
-		/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DC62D0, 1.6.318.0: SkyrimSE.exe + 0x1E5A370</summary>
-		inline const std::uintptr_t EntryPointMagicSpellHasSkillConditionFunction{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(672452, 365407)) };
-	}
 }

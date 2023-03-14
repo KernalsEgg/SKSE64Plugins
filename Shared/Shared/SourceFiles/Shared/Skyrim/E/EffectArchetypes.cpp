@@ -21,10 +21,5 @@ namespace Skyrim
 
 			return singleton;
 		}
-
-		bool IsFlagSet(Utility::Enumeration<ArchetypeID, std::uint32_t> effectArchetype, Utility::Enumeration<Archetype::Flags, std::uint32_t> flag)
-		{
-			return EffectArchetypes::GetArchetype(effectArchetype)->flags.all(flag.get());
-		}
 	}
 }

@@ -12,10 +12,9 @@ namespace ScrambledBugs::Fixes
 		static void Fix(bool& isCurrentSpell);
 
 	private:
-		static bool IsCurrentSpellConditionFunction(Skyrim::TESObjectREFR* object, void* parameter1, void* parameter2, double& result);
-		static bool IsCurrentSpellFunction(const Skyrim::ScriptParameter* scriptParameters, Skyrim::ScriptFunction::ScriptData* scriptData, Skyrim::TESObjectREFR* object, Skyrim::TESObjectREFR* containingObject, Skyrim::Script* script, Skyrim::ScriptLocals* scriptLocals, double& result, std::uint32_t& opcodeOffset);
+		static Skyrim::ScriptFunction::ConditionFunction IsCurrentSpellConditionFunction;
+		static Skyrim::ScriptFunction::ExecuteFunction   IsCurrentSpellFunction;
 
 		static decltype(IsCurrentSpell::IsCurrentSpellConditionFunction)* isCurrentSpellConditionFunction_;
-		static decltype(IsCurrentSpell::IsCurrentSpellFunction)*          isCurrentSpellFunction_;
 	};
 }

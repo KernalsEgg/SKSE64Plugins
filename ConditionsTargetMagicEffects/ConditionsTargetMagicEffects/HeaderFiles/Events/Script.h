@@ -12,7 +12,7 @@ namespace ConditionsTargetMagicEffects::Events
 		static void Register();
 
 	private:
-		static bool EntryPointMagicSpellHasKeywordConditionFunction(Skyrim::TESObjectREFR* object, void* parameter1, void* parameter2, double& result);
-		static bool EntryPointMagicSpellHasSkillConditionFunction(Skyrim::TESObjectREFR* object, void* parameter1, void* parameter2, double& result);
+		static Skyrim::ScriptFunction::ConditionFunction EntryPointMagicSpellHasKeywordConditionFunction;
+		static Skyrim::ScriptFunction::ConditionFunction EntryPointMagicSpellHasSkillConditionFunction;
 	};
 }

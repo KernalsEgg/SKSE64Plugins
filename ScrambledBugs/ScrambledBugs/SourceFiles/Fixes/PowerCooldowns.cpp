@@ -29,17 +29,17 @@ namespace ScrambledBugs::Fixes
 				++castPowerCount;
 			}
 
-			saveFormBuffer->Write(std::addressof(castPowerCount), sizeof(std::uint32_t));
+			saveFormBuffer->SaveData(std::addressof(castPowerCount), sizeof(std::uint32_t), sizeof(std::uint32_t));
 
 			for (const auto& castPower : *castPowers)
 			{
-				saveFormBuffer->WriteFormID(castPower.power);
-				saveFormBuffer->Write(std::addressof(castPower.cooldown), sizeof(float));
+				saveFormBuffer->SaveFormID(castPower.power, 0);
+				saveFormBuffer->SaveData(std::addressof(castPower.cooldown), sizeof(float), sizeof(float));
 			}
 		}
 		else
 		{
-			saveFormBuffer->Write(std::addressof(castPowerCount), sizeof(std::uint32_t));
+			saveFormBuffer->SaveData(std::addressof(castPowerCount), sizeof(std::uint32_t), sizeof(std::uint32_t));
 		}
 	}
 }

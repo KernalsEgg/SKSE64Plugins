@@ -24,18 +24,16 @@ namespace PowerAttackNotifications
 		}
 	}
 
-	bool Load()
+	void Load()
 	{
 		if (!Events::Register())
 		{
 			SPDLOG_CRITICAL("Failed to register for events.");
 
-			return false;
+			return;
 		}
 
 		SPDLOG_INFO("\n{}", Settings::GetSingleton().Serialize().dump(1, '\t'));
-
-		return true;
 	}
 }
 
@@ -62,6 +60,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	PowerAttackNotifications::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	PowerAttackNotifications::Load();
 
-	return PowerAttackNotifications::Load();
+	return true;
 }

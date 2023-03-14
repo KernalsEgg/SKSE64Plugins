@@ -63,9 +63,10 @@ namespace ScrambledBugs::Patches
 
 		skillUsageData.magicSkill           = costliestEffectSetting->magicSkill;
 		skillUsageData.magnitude            = costliestEffectSetting->skillUsageMultiplier * skillUsage;
-		skillUsageData.customSkillUseReward = Skyrim::EffectArchetypes::IsFlagSet(costliestEffectSetting->effectArchetype, Skyrim::EffectArchetypes::Archetype::Flags::kCustomSkillUseReward);
+		skillUsageData.customSkillUseReward = Skyrim::EffectArchetypes::GetArchetype(costliestEffectSetting->effectArchetype)->flags.all(Skyrim::EffectArchetypes::Archetype::Flags::kCustomSkillUseReward);
 
-		return skillUsageData.magicSkill.underlying() - Utility::Conversion::ToUnderlying(Skyrim::ActorValue::kSkills) <= Utility::Conversion::ToUnderlying(Skyrim::ActorValue::kSkillCount);
+		return Utility::Conversion::ToUnderlying(Skyrim::ActorValue::kSkills) <= skillUsageData.magicSkill.underlying() &&
+		       skillUsageData.magicSkill.underlying() < Utility::Conversion::ToUnderlying(Skyrim::ActorValue::kDerivedAttributes);
 	}
 
 	bool                                                     StaffExperience::ignoreEnchantmentCost_{ false };

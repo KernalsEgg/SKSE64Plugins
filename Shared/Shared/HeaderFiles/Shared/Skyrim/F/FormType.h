@@ -9,6 +9,7 @@ namespace Skyrim
 	enum class FormType
 	{
 		kNone                = 0,
+		kKeyword             = 0x4,  // BGSKeyword
 		kGlobal              = 0x9,  // TESGlobal
 		kFaction             = 0xB,  // TESFaction
 		kMagicEffect         = 0x12, // EffectSetting

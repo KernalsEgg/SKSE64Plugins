@@ -2,7 +2,6 @@
 
 #include "Fixes/IsCurrentSpell.h"
 
-#include "Addresses.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -12,10 +11,19 @@ namespace ScrambledBugs::Fixes
 	/* The IsCurrentSpell condition and console command treat the spell item as the casting source and the casting source as the spell item */
 	void IsCurrentSpell::Fix(bool& isCurrentSpell)
 	{
-		IsCurrentSpell::isCurrentSpellConditionFunction_ = *reinterpret_cast<decltype(IsCurrentSpell::isCurrentSpellConditionFunction_)*>(Addresses::Fixes::IsCurrentSpell::IsCurrentSpellConditionFunction);
+		auto* isCurrentSpellScriptFunction = Skyrim::ScriptCompiler::GetFunctionDefinition(Skyrim::ScriptOutput::kIsCurrentSpell);
 
-		*reinterpret_cast<decltype(IsCurrentSpell::IsCurrentSpellConditionFunction)**>(Addresses::Fixes::IsCurrentSpell::IsCurrentSpellConditionFunction) = std::addressof(IsCurrentSpell::IsCurrentSpellConditionFunction);
-		*reinterpret_cast<decltype(IsCurrentSpell::IsCurrentSpellFunction)**>(Addresses::Fixes::IsCurrentSpell::IsCurrentSpellFunction)                   = std::addressof(IsCurrentSpell::IsCurrentSpellFunction);
+		if (!isCurrentSpellScriptFunction)
+		{
+			isCurrentSpell = false;
+
+			return;
+		}
+
+		IsCurrentSpell::isCurrentSpellConditionFunction_ = isCurrentSpellScriptFunction->conditionFunction;
+
+		isCurrentSpellScriptFunction->conditionFunction = std::addressof(IsCurrentSpell::IsCurrentSpellConditionFunction);
+		isCurrentSpellScriptFunction->executeFunction   = std::addressof(IsCurrentSpell::IsCurrentSpellFunction);
 	}
 
 	bool IsCurrentSpell::IsCurrentSpellConditionFunction(Skyrim::TESObjectREFR* object, void* parameter1, void* parameter2, double& result)
@@ -34,5 +42,4 @@ namespace ScrambledBugs::Fixes
 	}
 
 	decltype(IsCurrentSpell::IsCurrentSpellConditionFunction)* IsCurrentSpell::isCurrentSpellConditionFunction_{ nullptr };
-	decltype(IsCurrentSpell::IsCurrentSpellFunction)*          IsCurrentSpell::isCurrentSpellFunction_{ nullptr };
 }

@@ -23,11 +23,9 @@ namespace ActorLimitFix
 		}
 	}
 
-	bool Load()
+	void Load()
 	{
 		Settings::GetSingleton().Load();
-
-		return true;
 	}
 }
 
@@ -45,6 +43,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	ActorLimitFix::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	ActorLimitFix::Load();
 
-	return ActorLimitFix::Load();
+	return true;
 }

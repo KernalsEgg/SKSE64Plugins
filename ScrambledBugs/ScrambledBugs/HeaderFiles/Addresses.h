@@ -49,15 +49,6 @@ namespace ScrambledBugs::Addresses
 			inline const std::uintptr_t UpdateDecals{ Relocation::AddressLibrary::GetSingleton().GetAddress(15220) + 0x122 };
 		}
 
-		namespace IsCurrentSpell
-		{
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DC4340 (671811), 1.6.318.0: SkyrimSE.exe + 0x1E583E0</summary>
-			inline const std::uintptr_t IsCurrentSpellConditionFunction{ Relocation::AddressLibrary::GetSingleton().GetAddress(364766) };
-
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DC4330 (671809), 1.6.318.0: SkyrimSE.exe + 0x1E583D0</summary>
-			inline const std::uintptr_t IsCurrentSpellFunction{ Relocation::AddressLibrary::GetSingleton().GetAddress(364764) };
-		}
-
 		namespace KillCamera
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x732400 + 0x261 (42547), 1.6.318.0: SkyrimSE.exe + 0x75D560</summary>
@@ -127,12 +118,6 @@ namespace ScrambledBugs::Addresses
 
 	namespace Patches
 	{
-		namespace AccumulatingMagnitude
-		{
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F25D50 (516691), 1.6.318.0: SkyrimSE.exe + 0x2FC0140</summary>
-			inline const std::uintptr_t ActiveEffectInstantiateFunctions{ Relocation::AddressLibrary::GetSingleton().GetAddress(402892) };
-		}
-
 		namespace AlreadyCaughtPickpocketing
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x360C10 + 0x678 (24211), 1.6.318.0: SkyrimSE.exe + 0x377A00</summary>
@@ -280,7 +265,7 @@ namespace ScrambledBugs::Addresses
 		namespace SteepSlopes
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x60EEF0 + 0x1A (37013), 1.6.318.0: SkyrimSE.exe + 0x62F770</summary>
-			inline const std::uintptr_t GetScale{ Relocation::AddressLibrary::GetSingleton().GetAddress(37943) + 0x51 }; // Actor::UpdateMovementType
+			inline const std::uintptr_t GetScale{ Relocation::AddressLibrary::GetSingleton().GetAddress(37943) + 0x51 }; // Actor::ModifyMovementTypeBasedOnCurrentState
 		}
 	}
 }

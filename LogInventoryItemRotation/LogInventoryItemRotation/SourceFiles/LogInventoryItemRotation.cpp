@@ -23,11 +23,9 @@ namespace LogInventoryItemRotation
 		}
 	}
 
-	bool Load()
+	void Load()
 	{
 		Events::Register();
-
-		return true;
 	}
 }
 
@@ -54,6 +52,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	LogInventoryItemRotation::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	LogInventoryItemRotation::Load();
 
-	return LogInventoryItemRotation::Load();
+	return true;
 }

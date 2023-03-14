@@ -31,11 +31,9 @@ namespace Trails
 		Skyrim::BGSFootstepManager::GetSingleton()->RegisterSink(std::addressof(Events::FootstepEventSink::GetSingleton()));
 	}
 
-	bool Load()
+	void Load()
 	{
 		Skyrim::Events::InitializeThread::GetSingleton().After().RegisterSink(Trails::OnInitializeThread);
-
-		return true;
 	}
 }
 
@@ -62,6 +60,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	Trails::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	Trails::Load();
 
-	return Trails::Load();
+	return true;
 }

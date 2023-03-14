@@ -23,16 +23,14 @@ namespace PrioritizeStolenItems
 		}
 	}
 
-	bool Load()
+	void Load()
 	{
 		if (!Events::Register())
 		{
 			SPDLOG_CRITICAL("Failed to register for events.");
 
-			return false;
+			return;
 		}
-
-		return true;
 	}
 }
 
@@ -59,6 +57,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	PrioritizeStolenItems::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	PrioritizeStolenItems::Load();
 
-	return PrioritizeStolenItems::Load();
+	return true;
 }

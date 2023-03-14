@@ -29,7 +29,7 @@ namespace ConsoleCommandCompanion
 		}
 	}
 
-	bool Load()
+	void Load()
 	{
 #ifdef SKYRIM_ANNIVERSARY_EDITION
 #else
@@ -37,14 +37,12 @@ namespace ConsoleCommandCompanion
 		{
 			SPDLOG_CRITICAL("Failed to patch Bethesda.net login.");
 
-			return false;
+			return;
 		}
 #endif
 		Events::InitializeEventSink::RegisterSink();
 
 		SPDLOG_INFO("\n{}", Settings::GetSingleton().Serialize().dump(1, '\t'));
-
-		return true;
 	}
 }
 
@@ -71,6 +69,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	ConsoleCommandCompanion::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	ConsoleCommandCompanion::Load();
 
-	return ConsoleCommandCompanion::Load();
+	return true;
 }

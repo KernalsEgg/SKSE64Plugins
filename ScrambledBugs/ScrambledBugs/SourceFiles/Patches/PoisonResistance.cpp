@@ -51,9 +51,9 @@ namespace ScrambledBugs::Patches
 		}
 		else
 		{
-			defaultResistance = actor->GetActorValue(Skyrim::ActorValue::kMagicResist);
+			defaultResistance = actor->GetActorValue(Skyrim::ActorValue::kMagicResistance);
 
-			if (resistanceActorValue != Skyrim::ActorValue::kNone && resistanceActorValue != Skyrim::ActorValue::kMagicResist)
+			if (resistanceActorValue != Skyrim::ActorValue::kNone && resistanceActorValue != Skyrim::ActorValue::kMagicResistance)
 			{
 				resistance = actor->GetActorValue(resistanceActorValue);
 			}

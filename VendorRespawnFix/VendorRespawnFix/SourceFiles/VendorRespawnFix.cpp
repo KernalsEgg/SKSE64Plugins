@@ -23,15 +23,13 @@ namespace VendorRespawnFix
 		}
 	}
 
-	bool Load()
+	void Load()
 	{
 		const auto* serializationInterface = SKSE::Storage::GetSingleton().GetSerializationInterface();
 
 		serializationInterface->SetUniqueID(Serialization::kUniqueID);
 		serializationInterface->SetLoadCallback(std::addressof(Serialization::LoadGame));
 		serializationInterface->SetSaveCallback(std::addressof(Serialization::SaveGame));
-
-		return true;
 	}
 }
 
@@ -58,6 +56,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	VendorRespawnFix::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	VendorRespawnFix::Load();
 
-	return VendorRespawnFix::Load();
+	return true;
 }

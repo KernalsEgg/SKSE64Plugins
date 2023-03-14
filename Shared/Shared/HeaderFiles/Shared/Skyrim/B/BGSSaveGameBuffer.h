@@ -18,8 +18,8 @@ namespace Skyrim
 		virtual void Unknown3(BGSSaveGameBuffer*); // 3
 
 		// Member functions
-		void Write(const void* source, std::uint32_t length);
-		void WriteFormID(TESForm* form);
+		void SaveData(const void* source, std::uint32_t length, std::uint32_t position);
+		void SaveFormID(TESForm* form, std::uint32_t position);
 
 		// Member variables
 		void*         address;  // 8

@@ -32,7 +32,7 @@ namespace ConditionsTargetMagicEffects
 		}
 	}
 
-	bool Load()
+	void Load()
 	{
 		Events::ActiveEffect::Register();
 		Events::ActiveEffectFactory::Register();
@@ -44,8 +44,6 @@ namespace ConditionsTargetMagicEffects
 		Events::MagicSystem::Register();
 		Events::Script::Register();
 		Events::SlowTimeEffect::Register();
-
-		return true;
 	}
 }
 
@@ -72,6 +70,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	ConditionsTargetMagicEffects::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	ConditionsTargetMagicEffects::Load();
 
-	return ConditionsTargetMagicEffects::Load();
+	return true;
 }

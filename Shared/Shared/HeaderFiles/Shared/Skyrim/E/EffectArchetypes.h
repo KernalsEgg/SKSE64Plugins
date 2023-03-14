@@ -45,6 +45,5 @@ namespace Skyrim
 
 		Archetype* GetArchetype(Utility::Enumeration<ArchetypeID, std::uint32_t> effectArchetype);
 		Archetype* GetArchetypes();
-		bool       IsFlagSet(Utility::Enumeration<ArchetypeID, std::uint32_t> effectArchetype, Utility::Enumeration<Archetype::Flags, std::uint32_t> flag);
 	}
 }

@@ -2,7 +2,6 @@
 
 #include "Events/Script.h"
 
-#include "Addresses.h"
 #include "Shared/Utility/Enumeration.h"
 
 
@@ -11,10 +10,16 @@ namespace ConditionsTargetMagicEffects::Events
 {
 	void Script::Register()
 	{
-		*reinterpret_cast<decltype(Script::EntryPointMagicSpellHasKeywordConditionFunction)**>(Addresses::Script::EntryPointMagicSpellHasKeywordConditionFunction) =
-			std::addressof(Script::EntryPointMagicSpellHasKeywordConditionFunction);
-		*reinterpret_cast<decltype(Script::EntryPointMagicSpellHasSkillConditionFunction)**>(Addresses::Script::EntryPointMagicSpellHasSkillConditionFunction) =
-			std::addressof(Script::EntryPointMagicSpellHasSkillConditionFunction);
+		auto* entryPointMagicSpellHasKeywordScriptFunction = Skyrim::ScriptCompiler::GetFunctionDefinition(Skyrim::ScriptOutput::kEntryPointMagicSpellHasKeyword);
+		auto* entryPointMagicSpellHasSkillScriptFunction   = Skyrim::ScriptCompiler::GetFunctionDefinition(Skyrim::ScriptOutput::kEntryPointMagicSpellHasSkill);
+
+		if (!entryPointMagicSpellHasKeywordScriptFunction || !entryPointMagicSpellHasSkillScriptFunction)
+		{
+			return;
+		}
+
+		entryPointMagicSpellHasKeywordScriptFunction->conditionFunction = std::addressof(Script::EntryPointMagicSpellHasKeywordConditionFunction);
+		entryPointMagicSpellHasSkillScriptFunction->conditionFunction   = std::addressof(Script::EntryPointMagicSpellHasSkillConditionFunction);
 	}
 
 	bool Script::EntryPointMagicSpellHasKeywordConditionFunction(Skyrim::TESObjectREFR* object, void* parameter1, void* parameter2, double& result)

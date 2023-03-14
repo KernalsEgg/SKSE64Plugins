@@ -42,11 +42,11 @@ namespace ScrambledBugs
 		}
 	}
 
-	bool Load()
+	void Load()
 	{
 		if (!SKSE::Storage::GetSingleton().GetMessagingInterface()->RegisterListener(ScrambledBugs::MessageHandler))
 		{
-			return false;
+			return;
 		}
 
 		const auto* serializationInterface = SKSE::Storage::GetSingleton().GetSerializationInterface();
@@ -56,8 +56,6 @@ namespace ScrambledBugs
 		serializationInterface->SetSaveCallback(std::addressof(ScrambledBugs::Serialization::SaveGame));
 
 		Settings::GetSingleton().Load();
-
-		return true;
 	}
 }
 
@@ -75,6 +73,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	ScrambledBugs::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	ScrambledBugs::Load();
 
-	return ScrambledBugs::Load();
+	return true;
 }

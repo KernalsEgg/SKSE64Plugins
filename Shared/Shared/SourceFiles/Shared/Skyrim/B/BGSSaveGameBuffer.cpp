@@ -9,17 +9,17 @@
 
 namespace Skyrim
 {
-	void BGSSaveGameBuffer::Write(const void* source, std::uint32_t length)
+	void BGSSaveGameBuffer::SaveData(const void* source, std::uint32_t length, std::uint32_t position)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSSaveGameBuffer::Write)>::type>(Addresses::BGSSaveGameBuffer::Write) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSSaveGameBuffer::SaveData)>::type>(Addresses::BGSSaveGameBuffer::SaveData) };
 
-		function(this, source, length);
+		function(this, source, length, position);
 	}
 
-	void BGSSaveGameBuffer::WriteFormID(TESForm* form)
+	void BGSSaveGameBuffer::SaveFormID(TESForm* form, std::uint32_t position)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSSaveGameBuffer::WriteFormID)>::type>(Addresses::BGSSaveGameBuffer::WriteFormID) };
+		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSSaveGameBuffer::SaveFormID)>::type>(Addresses::BGSSaveGameBuffer::SaveFormID) };
 
-		function(this, form);
+		function(this, form, position);
 	}
 }

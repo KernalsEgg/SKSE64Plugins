@@ -23,11 +23,9 @@ namespace ActorBasePerkFix
 		}
 	}
 
-	bool Load()
+	void Load()
 	{
 		Events::Register();
-
-		return true;
 	}
 }
 
@@ -54,6 +52,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	ActorBasePerkFix::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	ActorBasePerkFix::Load();
 
-	return ActorBasePerkFix::Load();
+	return true;
 }

@@ -23,11 +23,9 @@ namespace ScriptEffectArchetypeCrashFix
 		}
 	}
 
-	bool Load()
+	void Load()
 	{
 		Events::Register();
-
-		return true;
 	}
 }
 
@@ -54,6 +52,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	ScriptEffectArchetypeCrashFix::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	ScriptEffectArchetypeCrashFix::Load();
 
-	return ScriptEffectArchetypeCrashFix::Load();
+	return true;
 }

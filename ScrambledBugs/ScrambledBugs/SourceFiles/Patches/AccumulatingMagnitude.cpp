@@ -2,7 +2,7 @@
 
 #include "Patches/AccumulatingMagnitude.h"
 
-#include "Addresses.h"
+#include "Shared/Skyrim/Addresses.h"
 #include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Memory.h"
 
@@ -17,9 +17,9 @@ namespace ScrambledBugs::Patches
 	void AccumulatingMagnitude::Patch(bool& accumulatingMagnitude)
 	{
 		AccumulatingMagnitude::instantiate_ =
-			reinterpret_cast<decltype(AccumulatingMagnitude::instantiate_)*>(Addresses::Patches::AccumulatingMagnitude::ActiveEffectInstantiateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulatingMagnitude)];
+			reinterpret_cast<decltype(AccumulatingMagnitude::instantiate_)*>(Skyrim::Addresses::ActiveEffectFactory::InstantiateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulatingMagnitude)];
 
-		reinterpret_cast<decltype(AccumulatingMagnitude::Instantiate)**>(Addresses::Patches::AccumulatingMagnitude::ActiveEffectInstantiateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulatingMagnitude)] =
+		reinterpret_cast<decltype(AccumulatingMagnitude::Instantiate)**>(Skyrim::Addresses::ActiveEffectFactory::InstantiateFunctions)[Utility::Conversion::ToUnderlying(Skyrim::EffectArchetypes::ArchetypeID::kAccumulatingMagnitude)] =
 			std::addressof(AccumulatingMagnitude::Instantiate);
 
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::FindMaxMagnitudeVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(AccumulatingMagnitude::FunctionCallOperator)));

@@ -23,16 +23,14 @@ namespace BarterLimitFix
 		}
 	}
 
-	bool Load()
+	void Load()
 	{
 		if (!Events::Register())
 		{
 			SPDLOG_CRITICAL("Failed to register for events.");
 
-			return false;
+			return;
 		}
-
-		return true;
 	}
 }
 
@@ -59,6 +57,7 @@ extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Load(SKSE::Interface* l
 {
 	BarterLimitFix::Log::Load();
 	SKSE::Storage::GetSingleton().Load(loadInterface);
+	BarterLimitFix::Load();
 
-	return BarterLimitFix::Load();
+	return true;
 }
