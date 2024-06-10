@@ -1,18 +1,18 @@
 ## Build Dependencies
 ### Actor Limit Fix
-* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
+* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
 ### Bug Fixes SSE
-* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
+* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
 ### Console Command Companion
-* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
+* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
 ### Power Attack Notifications
-* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
+* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
 ### Scrambled Bugs
-* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
+* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
 ### Shared
-* [spdlog](https://github.com/gabime/spdlog)
+* [spdlog 1.14.1](https://github.com/gabime/spdlog)
 ### Trails
-* [JSON for Modern C++ 3.11.2](https://github.com/nlohmann/json)
+* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
 
 ## End-User Dependencies
 * [SKSE64](https://github.com/ianpatt/skse64)
