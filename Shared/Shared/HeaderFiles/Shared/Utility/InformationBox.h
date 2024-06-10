@@ -16,13 +16,12 @@ namespace Utility::InformationBox
 		{
 			::MessageBoxA(
 				nullptr,
-				std::vformat(
+				std::format(
 					"{}({},{}): {}",
-					std::make_format_args(
-						std::filesystem::path(sourceLocation.file_name()).filename().string(),
-						sourceLocation.line(),
-						sourceLocation.column(),
-						std::vformat(format, std::make_format_args(arguments...))))
+					std::filesystem::path(sourceLocation.file_name()).filename().string(),
+					sourceLocation.line(),
+					sourceLocation.column(),
+					std::vformat(format, std::make_format_args(arguments...)))
 					.c_str(),
 				Relocation::DynamicLinkLibrary::GetSingleton().GetPath().filename().string().c_str(),
 				MB_OK | MB_ICONERROR);

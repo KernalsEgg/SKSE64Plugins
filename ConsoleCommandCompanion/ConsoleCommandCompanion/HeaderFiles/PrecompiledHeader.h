@@ -3,7 +3,7 @@
 #include <algorithm>  // std::count_if, std::find_if
 #include <cstdint>    // Fixed width integer types
 #include <filesystem> // Filesystem library
-#include <format>     // std::make_format_args, std::vformat
+#include <format>     // std::format
 #include <fstream>    // std::ifstream
 #include <memory>     // std::make_shared
 #include <optional>   // std::optional

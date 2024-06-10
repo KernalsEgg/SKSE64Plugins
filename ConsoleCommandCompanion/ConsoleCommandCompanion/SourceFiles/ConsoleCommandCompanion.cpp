@@ -4,11 +4,6 @@
 #include "Settings.h"
 #include "Shared/Relocation/Module.h"
 
-#ifdef SKYRIM_ANNIVERSARY_EDITION
-#else
-#	include "Patches.h"
-#endif
-
 
 
 namespace ConsoleCommandCompanion
@@ -31,15 +26,6 @@ namespace ConsoleCommandCompanion
 
 	void Load()
 	{
-#ifdef SKYRIM_ANNIVERSARY_EDITION
-#else
-		if (!Patches::Install())
-		{
-			SPDLOG_CRITICAL("Failed to patch Bethesda.net login.");
-
-			return;
-		}
-#endif
 		Events::InitializeEventSink::RegisterSink();
 
 		SPDLOG_INFO("\n{}", Settings::GetSingleton().Serialize().dump(1, '\t'));
@@ -58,8 +44,8 @@ extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Ve
 extern "C" __declspec(dllexport) bool __cdecl SKSEPlugin_Query(SKSE::Interface* queryInterface, SKSE::PluginInformation* pluginInformation)
 {
 	pluginInformation->informationVersion = SKSE::PluginInformation::kVersion;
-	pluginInformation->name = "Console Command Companion";
-	pluginInformation->version = 1;
+	pluginInformation->name               = "Console Command Companion";
+	pluginInformation->version            = 1;
 
 	return true;
 }

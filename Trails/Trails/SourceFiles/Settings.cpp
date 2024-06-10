@@ -85,7 +85,7 @@ namespace Trails
 			return;
 		}
 
-		this->formID = std::vformat("0x{:X}", std::make_format_args(form->formID & (file->recordFlags.all(Skyrim::TESFile::RecordFlags::kSmallFile) ? 0xFFF : 0xFFFFFF)));
+		this->formID = std::format("0x{:X}", form->formID & (file->recordFlags.all(Skyrim::TESFile::RecordFlags::kSmallFile) ? 0xFFF : 0xFFFFFF));
 	}
 
 	Settings::Position& Settings::Position::Deserialize(const nlohmann::json& jsonPosition)

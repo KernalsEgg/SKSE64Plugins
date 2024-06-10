@@ -273,11 +273,11 @@
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)"
-copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)\$(TargetName).json"</Command>
+      <Command>if not exist "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
+copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)\$(TargetName).json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'">
@@ -297,11 +297,11 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)"
-copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)\$(TargetName).json"</Command>
+      <Command>if not exist "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
+copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)\$(TargetName).json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -325,11 +325,11 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)"
-copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)\$(TargetName).json"</Command>
+      <Command>if not exist "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
+copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)\$(TargetName).json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">
@@ -353,11 +353,11 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)"
-copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName)\$(TargetName).json"</Command>
+      <Command>if not exist "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
+copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)\$(TargetName).json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

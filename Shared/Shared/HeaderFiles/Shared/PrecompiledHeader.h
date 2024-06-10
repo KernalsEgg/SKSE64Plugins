@@ -15,7 +15,7 @@
 #include <cwchar>          // std::wcscoll
 #include <exception>       // std::terminate
 #include <filesystem>      // Filesystem library
-#include <format>          // std::make_format_args, std::vformat
+#include <format>          // std::format, std::make_format_args, std::vformat
 #include <fstream>         // std::ifstream, std::ofstream
 #include <functional>      // std::equal_to, std::function
 #include <ios>             // std::ios

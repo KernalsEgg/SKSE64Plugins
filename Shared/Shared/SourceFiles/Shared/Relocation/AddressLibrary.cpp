@@ -3,7 +3,7 @@
 #include "Shared/Relocation/AddressLibrary.h"
 
 #include "Shared/Relocation/PreprocessorDirectives.h"
-#include "Shared/Utility/Enumeration.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/InformationBox.h"
 
 
@@ -14,9 +14,12 @@ namespace Relocation
 	{
 		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->format)), sizeof(std::int32_t));
 
-		if (this->format != SKYRIM_RELOCATE(1, 2))
+		if (this->format != SKYRIM_RELOCATE(Format::kSpecialEdition, Format::kAnniversaryEdition))
 		{
-			Utility::InformationBox::Error("Unexpected format encountered, {}. Expected {}.", this->format, 1);
+			Utility::InformationBox::Error(
+				"Unexpected format encountered, {}. Expected {}.",
+				this->format.underlying(),
+				Utility::Conversion::ToUnderlying(SKYRIM_RELOCATE(Format::kSpecialEdition, Format::kAnniversaryEdition)));
 		}
 
 		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->productVersion.major)), sizeof(std::int32_t));
@@ -47,7 +50,10 @@ namespace Relocation
 
 		if (::_stricmp(this->fileName.c_str(), executableFileName.string().c_str()) != 0)
 		{
-			Utility::InformationBox::Error("Unexpected file name encountered, {}. Expected {}.", this->fileName, executableFileName.string());
+			Utility::InformationBox::Error(
+				"Unexpected file name encountered, {}. Expected {}.",
+				this->fileName,
+				executableFileName.string());
 		}
 
 		inputFileStream.read(reinterpret_cast<char*>(std::addressof(this->pointerSize)), sizeof(std::int32_t));
@@ -74,7 +80,7 @@ namespace Relocation
 
 		for (const auto& element : this->span_)
 		{
-			outputFileStream << std::vformat("{},0x{:X}", std::make_format_args(element.identifier, element.offset)) << std::endl;
+			outputFileStream << std::format("{},0x{:X}", element.identifier, element.offset) << std::endl;
 		}
 	}
 
@@ -88,15 +94,15 @@ namespace Relocation
 		auto iterator = std::lower_bound(
 			this->span_.begin(),
 			this->span_.end(),
-			Element{
+			Pair{
 				.identifier = identifier,
 				.offset     = {} },
-			[](const Element& left, const Element& right)
+			[](const Pair& left, const Pair& right) -> bool
 			{
 				return left.identifier < right.identifier;
 			});
 
-		if (iterator == this->span_.end())
+		if (iterator == this->span_.end() || iterator->identifier != identifier)
 		{
 			Utility::InformationBox::Error("Identifier not found, {}.", identifier);
 		}
@@ -111,13 +117,12 @@ namespace Relocation
 		inputFileStreamPath /= "Data";
 		inputFileStreamPath /= "SKSE";
 		inputFileStreamPath /= "Plugins";
-		inputFileStreamPath /= std::vformat(
+		inputFileStreamPath /= std::format(
 			SKYRIM_RELOCATE("version-{}-{}-{}-{}.bin", "versionlib-{}-{}-{}-{}.bin"),
-			std::make_format_args(
-				productVersion.major,
-				productVersion.minor,
-				productVersion.revision,
-				productVersion.build));
+			productVersion.major,
+			productVersion.minor,
+			productVersion.revision,
+			productVersion.build);
 
 		std::ifstream inputFileStream(inputFileStreamPath, std::ios::in | std::ios::binary);
 
@@ -131,8 +136,8 @@ namespace Relocation
 		Header header;
 		header.Read(inputFileStream, productVersion);
 
-		auto fileMappingSize = static_cast<std::size_t>(sizeof(Element) * header.addressCount);
-		auto fileMappingName = std::vformat("Shared-AddressLibrary-1-{}", std::make_format_args(inputFileStreamPath.stem().string()));
+		auto fileMappingSize = static_cast<std::size_t>(sizeof(Pair) * header.addressCount);
+		auto fileMappingName = std::format("Shared-AddressLibrary-1-{}", inputFileStreamPath.stem().string());
 
 		if (!this->fileMapping_.Open(fileMappingName))
 		{
@@ -146,13 +151,13 @@ namespace Relocation
 				Utility::InformationBox::Error("Failed to view file mapping.");
 			}
 
-			this->span_ = std::span<Element>(reinterpret_cast<Element*>(this->fileMappingView_.GetAddress()), header.addressCount);
+			this->span_ = std::span<Pair>(reinterpret_cast<Pair*>(this->fileMappingView_.GetAddress()), header.addressCount);
 			this->Read(inputFileStream, header);
 
 			std::sort(
 				this->span_.begin(),
 				this->span_.end(),
-				[](const Element& left, const Element& right)
+				[](const Pair& left, const Pair& right)
 				{
 					return left.identifier < right.identifier;
 				});
@@ -164,7 +169,7 @@ namespace Relocation
 				Utility::InformationBox::Error("Failed to view file mapping.");
 			}
 
-			this->span_ = std::span<Element>(reinterpret_cast<Element*>(this->fileMappingView_.GetAddress()), header.addressCount);
+			this->span_ = std::span<Pair>(reinterpret_cast<Pair*>(this->fileMappingView_.GetAddress()), header.addressCount);
 		}
 	}
 
@@ -176,18 +181,18 @@ namespace Relocation
 		std::uint64_t previousIdentifier{ 0 };
 		std::uint64_t previousOffset{ 0 };
 
-		std::uint8_t type;
+		Utility::Enumeration<Packing, std::uint8_t> packing;
 
 		for (auto& element : this->span_)
 		{
-			inputFileStream.read(reinterpret_cast<char*>(std::addressof(type)), sizeof(std::uint8_t));
+			inputFileStream.read(reinterpret_cast<char*>(packing.data()), sizeof(std::uint8_t));
 
-			Utility::Enumeration<ReadType, std::uint8_t> identifierType = type & 0xF;
-			Utility::Enumeration<ReadType, std::uint8_t> offsetType     = type >> 4;
+			auto identifierPacking = packing & Packing::kMask;
+			auto offsetPacking     = packing >> 4;
 
-			switch (identifierType.get())
+			switch (identifierPacking.get())
 			{
-				case ReadType::kSetUInt64:
+				case Packing::kSetUInt64:
 				{
 					std::uint64_t identifier64;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(identifier64)), sizeof(std::uint64_t));
@@ -196,13 +201,13 @@ namespace Relocation
 
 					break;
 				}
-				case ReadType::kAdd1:
+				case Packing::kAdd1:
 				{
 					identifier = previousIdentifier + 1;
 
 					break;
 				}
-				case ReadType::kAddUInt8:
+				case Packing::kAddUInt8:
 				{
 					std::uint8_t identifier8;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(identifier8)), sizeof(std::uint8_t));
@@ -211,7 +216,7 @@ namespace Relocation
 
 					break;
 				}
-				case ReadType::kSubtractUInt8:
+				case Packing::kSubtractUInt8:
 				{
 					std::uint8_t identifier8;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(identifier8)), sizeof(std::uint8_t));
@@ -220,7 +225,7 @@ namespace Relocation
 
 					break;
 				}
-				case ReadType::kAddUInt16:
+				case Packing::kAddUInt16:
 				{
 					std::uint16_t identifier16;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(identifier16)), sizeof(std::uint16_t));
@@ -229,7 +234,7 @@ namespace Relocation
 
 					break;
 				}
-				case ReadType::kSubtractUInt16:
+				case Packing::kSubtractUInt16:
 				{
 					std::uint16_t identifier16;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(identifier16)), sizeof(std::uint16_t));
@@ -238,7 +243,7 @@ namespace Relocation
 
 					break;
 				}
-				case ReadType::kSetUInt16:
+				case Packing::kSetUInt16:
 				{
 					std::uint16_t identifier16;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(identifier16)), sizeof(std::uint16_t));
@@ -247,7 +252,7 @@ namespace Relocation
 
 					break;
 				}
-				case ReadType::kSetUInt32:
+				case Packing::kSetUInt32:
 				{
 					std::uint32_t identifier32;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(identifier32)), sizeof(std::uint32_t));
@@ -258,15 +263,20 @@ namespace Relocation
 				}
 				default:
 				{
-					Utility::InformationBox::Error("Unexpected indentifier type encountered, {}.", identifierType.underlying());
+					Utility::InformationBox::Error(
+						"Unexpected indentifier packing encountered, {}.",
+						identifierPacking.underlying());
 				}
 			}
 
-			auto temporaryOffset = (offsetType & 8) != 0 ? (previousOffset / header.pointerSize) : previousOffset;
-
-			switch ((offsetType & 7).get())
+			if ((offsetPacking & Packing::kPointerSize) != 0)
 			{
-				case ReadType::kSetUInt64:
+				previousOffset /= header.pointerSize;
+			}
+
+			switch ((offsetPacking & Packing::kSetAddSubtractMask).get())
+			{
+				case Packing::kSetUInt64:
 				{
 					std::uint64_t offset64;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(offset64)), sizeof(std::uint64_t));
@@ -275,49 +285,49 @@ namespace Relocation
 
 					break;
 				}
-				case ReadType::kAdd1:
+				case Packing::kAdd1:
 				{
-					offset = temporaryOffset + 1;
+					offset = previousOffset + 1;
 
 					break;
 				}
-				case ReadType::kAddUInt8:
-				{
-					std::uint8_t offset8;
-					inputFileStream.read(reinterpret_cast<char*>(std::addressof(offset8)), sizeof(std::uint8_t));
-
-					offset = temporaryOffset + offset8;
-
-					break;
-				}
-				case ReadType::kSubtractUInt8:
+				case Packing::kAddUInt8:
 				{
 					std::uint8_t offset8;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(offset8)), sizeof(std::uint8_t));
 
-					offset = temporaryOffset - offset8;
+					offset = previousOffset + offset8;
 
 					break;
 				}
-				case ReadType::kAddUInt16:
+				case Packing::kSubtractUInt8:
+				{
+					std::uint8_t offset8;
+					inputFileStream.read(reinterpret_cast<char*>(std::addressof(offset8)), sizeof(std::uint8_t));
+
+					offset = previousOffset - offset8;
+
+					break;
+				}
+				case Packing::kAddUInt16:
 				{
 					std::uint16_t offset16;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(offset16)), sizeof(std::uint16_t));
 
-					offset = temporaryOffset + offset16;
+					offset = previousOffset + offset16;
 
 					break;
 				}
-				case ReadType::kSubtractUInt16:
+				case Packing::kSubtractUInt16:
 				{
 					std::uint16_t offset16;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(offset16)), sizeof(std::uint16_t));
 
-					offset = temporaryOffset - offset16;
+					offset = previousOffset - offset16;
 
 					break;
 				}
-				case ReadType::kSetUInt16:
+				case Packing::kSetUInt16:
 				{
 					std::uint16_t offset16;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(offset16)), sizeof(std::uint16_t));
@@ -326,7 +336,7 @@ namespace Relocation
 
 					break;
 				}
-				case ReadType::kSetUInt32:
+				case Packing::kSetUInt32:
 				{
 					std::uint32_t offset32;
 					inputFileStream.read(reinterpret_cast<char*>(std::addressof(offset32)), sizeof(std::uint32_t));
@@ -337,11 +347,13 @@ namespace Relocation
 				}
 				default:
 				{
-					Utility::InformationBox::Error("Unexpected offset type encountered, {}.", (offsetType & 7).underlying());
+					Utility::InformationBox::Error(
+						"Unexpected offset packing encountered, {}.",
+						(offsetPacking & Packing::kSetAddSubtractMask).underlying());
 				}
 			}
 
-			if ((offsetType & 8) != 0)
+			if ((offsetPacking & Packing::kPointerSize) != 0)
 			{
 				offset *= header.pointerSize;
 			}

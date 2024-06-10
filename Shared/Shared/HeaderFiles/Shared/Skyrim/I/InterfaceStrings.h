@@ -2,6 +2,7 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/B/BSTSingleton.h"
 
@@ -17,84 +18,91 @@ namespace Skyrim
 		static InterfaceStrings* GetSingleton();
 
 		// Member variables
-		std::uint8_t  padding1;                // 1
-		std::uint16_t padding2;                // 2
-		std::uint32_t padding4;                // 4
-		BSFixedString faderData;               // 8, "FaderData"
-		BSFixedString hudData;                 // 10, "HUDData"
-		BSFixedString hudCameraData;           // 18, "HUDCamData"
-		BSFixedString floatingQuestMarkers;    // 20, "FloatingQuestMarkers"
-		BSFixedString consoleData;             // 28, "ConsoleData"
-		BSFixedString quantityData;            // 30, "QuantityData"
-		BSFixedString messageBoxData;          // 38, "MessageBoxData"
-		BSFixedString uiScaleformData;         // 40, "BSUIScaleformData"
-		BSFixedString uiMessageData;           // 48, "BSUIMessageData"
-		BSFixedString uiAnalogData;            // 50, "BSUIAnalogData"
-		BSFixedString inventoryUpdateData;     // 58, "InventoryUpdateData"
-		BSFixedString referenceHandleUIData;   // 60, "RefHandleUIData"
-		BSFixedString formUIData;              // 68, "TESFormUIData"
-		BSFixedString loadingMenuData;         // 70, "LoadingMenuData"
-		BSFixedString kinectStateChangeData;   // 78, "KinectStateChangeData"
-		BSFixedString kinectUserEventData;     // 80, "KinectUserEventData"
-		BSFixedString inventoryMenu;           // 88, "InventoryMenu"
-		BSFixedString console;                 // 90, "Console"
-		BSFixedString dialogueMenu;            // 98, "Dialogue Menu"
-		BSFixedString hudMenu;                 // A0, "HUD Menu"
-		BSFixedString mainMenu;                // A8, "Main Menu"
-		BSFixedString messageBoxMenu;          // B0, "MessageBoxMenu"
-		BSFixedString cursorMenu;              // B8, "Cursor Menu"
-		BSFixedString faderMenu;               // C0, "Fader Menu"
-		BSFixedString magicMenu;               // C8, "MagicMenu"
-		BSFixedString topMenu;                 // D0, "Top Menu"
-		BSFixedString overlayMenu;             // D8, "Overlay Menu"
-		BSFixedString overlayInteractionMenu;  // E0, "Overlay Interaction Menu"
-		BSFixedString loadingMenu;             // E8, "Loading Menu"
-		BSFixedString tweenMenu;               // F0, "TweenMenu"
-		BSFixedString barterMenu;              // F8, "BarterMenu"
-		BSFixedString giftMenu;                // 100, "GiftMenu"
-		BSFixedString debugTextMenu;           // 108, "Debug Text Menu"
-		BSFixedString mapMenu;                 // 110, "MapMenu"
-		BSFixedString lockpickingMenu;         // 118, "Lockpicking Menu"
-		BSFixedString quantityMenu;            // 120, "Quantity Menu"
-		BSFixedString statisticsMenu;          // 128, "StatsMenu"
-		BSFixedString containerMenu;           // 130, "ContainerMenu"
-		BSFixedString sleepWaitMenu;           // 138, "Sleep/Wait Menu"
-		BSFixedString levelUpMenu;             // 140, "LevelUp Menu"
-		BSFixedString journalMenu;             // 148, "Journal Menu"
-		BSFixedString bookMenu;                // 150, "Book Menu"
-		BSFixedString favoritesMenu;           // 158, "FavoritesMenu"
-		BSFixedString raceSexMenu;             // 160, "RaceSex Menu"
-		BSFixedString craftingMenu;            // 168, "Crafting Menu"
-		BSFixedString trainingMenu;            // 170, "Training Menu"
-		BSFixedString mistMenu;                // 178, "Mist Menu"
-		BSFixedString tutorialMenu;            // 180, "Tutorial Menu"
-		BSFixedString creditsMenu;             // 188, "Credits Menu"
-		BSFixedString modManagerMenu;          // 190, "Mod Manager Menu"
-		BSFixedString creationClubMenu;        // 198, "Creation Club Menu"
-		BSFixedString titleSequenceMenu;       // 1A0, "TitleSequence Menu"
-		BSFixedString consoleNativeUIMenu;     // 1A8, "Console Native UI Menu"
-		BSFixedString kinectMenu;              // 1B0, "Kinect Menu"
-		BSFixedString loadWaitSpinner;         // 1B8, "LoadWaitSpinner"
-		BSFixedString streamingInstallMenu;    // 1C0, "StreamingInstallMenu"
-		BSFixedString textWidget;              // 1C8, "TextWidget"
-		BSFixedString buttonBarWidget;         // 1D0, "ButtonBarWidget"
-		BSFixedString graphWidget;             // 1D8, "GraphWidget"
-		BSFixedString textureWidget;           // 1E0, "TextureWidget"
-		BSFixedString uiMenuOK;                // 1E8, "UIMenuOK"
-		BSFixedString uiMenuCancel;            // 1F0, "UIMenuCancel"
-		BSFixedString showText;                // 1F8, "Show Text"
-		BSFixedString hideText;                // 200, "Hide Text"
-		BSFixedString showList;                // 208, "Show List"
-		BSFixedString voiceReady;              // 210, "Voice Ready"
-		BSFixedString dmfoString;              // 218, "DMFOStr"
-		BSFixedString showJournal;             // 220, "Show Journal"
-		BSFixedString journalSettingsSaved;    // 228, "Journal Settings Saved"
-		BSFixedString closeMenu;               // 230, "CloseMenu"
-		BSFixedString closingAllMenus;         // 238, "Closing All Menus"
-		BSFixedString refreshMenu;             // 240, "RefreshMenu"
-		BSFixedString cancelLoading;           // 248, "CancelLoading"
-		BSFixedString menuTextureDegradeEvent; // 250, "Menu Texture Degrade Event"
-		BSFixedString diamondMarker;           // 258, "<img src='DiamondMarker' width='10' height='15' align='baseline' vspace='5'>"
+		std::uint8_t  padding1;               // 1
+		std::uint16_t padding2;               // 2
+		std::uint32_t padding4;               // 4
+		BSFixedString faderData;              // 8, "FaderData"
+		BSFixedString hudData;                // 10, "HUDData"
+		BSFixedString hudCameraData;          // 18, "HUDCamData"
+		BSFixedString floatingQuestMarkers;   // 20, "FloatingQuestMarkers"
+		BSFixedString consoleData;            // 28, "ConsoleData"
+		BSFixedString quantityData;           // 30, "QuantityData"
+		BSFixedString messageBoxData;         // 38, "MessageBoxData"
+		BSFixedString uiScaleformData;        // 40, "BSUIScaleformData"
+		BSFixedString uiMessageData;          // 48, "BSUIMessageData"
+		BSFixedString uiAnalogData;           // 50, "BSUIAnalogData"
+		BSFixedString inventoryUpdateData;    // 58, "InventoryUpdateData"
+		BSFixedString referenceHandleUIData;  // 60, "RefHandleUIData"
+		BSFixedString formUIData;             // 68, "TESFormUIData"
+		BSFixedString loadingMenuData;        // 70, "LoadingMenuData"
+		BSFixedString kinectStateChangeData;  // 78, "KinectStateChangeData"
+		BSFixedString kinectUserEventData;    // 80, "KinectUserEventData"
+		BSFixedString inventoryMenu;          // 88, "InventoryMenu"
+		BSFixedString console;                // 90, "Console"
+		BSFixedString dialogueMenu;           // 98, "Dialogue Menu"
+		BSFixedString hudMenu;                // A0, "HUD Menu"
+		BSFixedString mainMenu;               // A8, "Main Menu"
+		BSFixedString messageBoxMenu;         // B0, "MessageBoxMenu"
+		BSFixedString cursorMenu;             // B8, "Cursor Menu"
+		BSFixedString faderMenu;              // C0, "Fader Menu"
+		BSFixedString magicMenu;              // C8, "MagicMenu"
+		BSFixedString topMenu;                // D0, "Top Menu"
+		BSFixedString overlayMenu;            // D8, "Overlay Menu"
+		BSFixedString overlayInteractionMenu; // E0, "Overlay Interaction Menu"
+		BSFixedString loadingMenu;            // E8, "Loading Menu"
+		BSFixedString tweenMenu;              // F0, "TweenMenu"
+		BSFixedString barterMenu;             // F8, "BarterMenu"
+		BSFixedString giftMenu;               // 100, "GiftMenu"
+		BSFixedString debugTextMenu;          // 108, "Debug Text Menu"
+		BSFixedString mapMenu;                // 110, "MapMenu"
+		BSFixedString lockpickingMenu;        // 118, "Lockpicking Menu"
+		BSFixedString quantityMenu;           // 120, "Quantity Menu"
+		BSFixedString statisticsMenu;         // 128, "StatsMenu"
+		BSFixedString containerMenu;          // 130, "ContainerMenu"
+		BSFixedString sleepWaitMenu;          // 138, "Sleep/Wait Menu"
+		BSFixedString levelUpMenu;            // 140, "LevelUp Menu"
+		BSFixedString journalMenu;            // 148, "Journal Menu"
+		BSFixedString bookMenu;               // 150, "Book Menu"
+		BSFixedString favoritesMenu;          // 158, "FavoritesMenu"
+		BSFixedString raceSexMenu;            // 160, "RaceSex Menu"
+		BSFixedString craftingMenu;           // 168, "Crafting Menu"
+		BSFixedString trainingMenu;           // 170, "Training Menu"
+		BSFixedString mistMenu;               // 178, "Mist Menu"
+		BSFixedString tutorialMenu;           // 180, "Tutorial Menu"
+		BSFixedString creditsMenu;            // 188, "Credits Menu"
+		BSFixedString modManagerMenu;         // 190, "Mod Manager Menu"
+		BSFixedString creationClubMenu;       // 198, "Creation Club Menu"
+#ifdef SKYRIM_ANNIVERSARY_EDITION
+		BSFixedString marketplaceMenu; // 1A0, "Marketplace Menu"
+#endif
+		BSFixedString titleSequenceMenu;       // 1A0, 1A8, "TitleSequence Menu"
+		BSFixedString consoleNativeUIMenu;     // 1A8, 1B0, "Console Native UI Menu"
+		BSFixedString kinectMenu;              // 1B0, 1B8, "Kinect Menu"
+		BSFixedString loadWaitSpinner;         // 1B8, 1C0, "LoadWaitSpinner"
+		BSFixedString streamingInstallMenu;    // 1C0, 1C8, "StreamingInstallMenu"
+		BSFixedString textWidget;              // 1C8, 1D0, "TextWidget"
+		BSFixedString buttonBarWidget;         // 1D0, 1D8, "ButtonBarWidget"
+		BSFixedString graphWidget;             // 1D8, 1E0, "GraphWidget"
+		BSFixedString textureWidget;           // 1E0, 1E8, "TextureWidget"
+		BSFixedString uiMenuOK;                // 1E8, 1F0, "UIMenuOK"
+		BSFixedString uiMenuCancel;            // 1F0, 1F8, "UIMenuCancel"
+		BSFixedString showText;                // 1F8, 200, "Show Text"
+		BSFixedString hideText;                // 200, 208, "Hide Text"
+		BSFixedString showList;                // 208, 210, "Show List"
+		BSFixedString voiceReady;              // 210, 218, "Voice Ready"
+		BSFixedString dmfoString;              // 218, 220, "DMFOStr"
+		BSFixedString showJournal;             // 220, 228, "Show Journal"
+		BSFixedString journalSettingsSaved;    // 228, 230, "Journal Settings Saved"
+		BSFixedString closeMenu;               // 230, 238, "CloseMenu"
+		BSFixedString closingAllMenus;         // 238, 240, "Closing All Menus"
+		BSFixedString refreshMenu;             // 240, 248, "RefreshMenu"
+		BSFixedString cancelLoading;           // 248, 250, "CancelLoading"
+		BSFixedString menuTextureDegradeEvent; // 250, 258, "Menu Texture Degrade Event"
+#ifdef SKYRIM_ANNIVERSARY_EDITION
+		BSFixedString userSettingsLoaded; // 260, "UserSettingsLoaded"
+		BSFixedString activityStarted;    // 268, "ActivityStarted"
+#endif
+		BSFixedString diamondMarker; // 258, 270, "<img src='DiamondMarker' width='10' height='15' align='baseline' vspace='5'>"
 	};
 	static_assert(offsetof(InterfaceStrings, faderData) == 0x8);
 	static_assert(offsetof(InterfaceStrings, hudData) == 0x10);
@@ -147,29 +155,36 @@ namespace Skyrim
 	static_assert(offsetof(InterfaceStrings, creditsMenu) == 0x188);
 	static_assert(offsetof(InterfaceStrings, modManagerMenu) == 0x190);
 	static_assert(offsetof(InterfaceStrings, creationClubMenu) == 0x198);
-	static_assert(offsetof(InterfaceStrings, titleSequenceMenu) == 0x1A0);
-	static_assert(offsetof(InterfaceStrings, consoleNativeUIMenu) == 0x1A8);
-	static_assert(offsetof(InterfaceStrings, kinectMenu) == 0x1B0);
-	static_assert(offsetof(InterfaceStrings, loadWaitSpinner) == 0x1B8);
-	static_assert(offsetof(InterfaceStrings, streamingInstallMenu) == 0x1C0);
-	static_assert(offsetof(InterfaceStrings, textWidget) == 0x1C8);
-	static_assert(offsetof(InterfaceStrings, buttonBarWidget) == 0x1D0);
-	static_assert(offsetof(InterfaceStrings, graphWidget) == 0x1D8);
-	static_assert(offsetof(InterfaceStrings, textureWidget) == 0x1E0);
-	static_assert(offsetof(InterfaceStrings, uiMenuOK) == 0x1E8);
-	static_assert(offsetof(InterfaceStrings, uiMenuCancel) == 0x1F0);
-	static_assert(offsetof(InterfaceStrings, showText) == 0x1F8);
-	static_assert(offsetof(InterfaceStrings, hideText) == 0x200);
-	static_assert(offsetof(InterfaceStrings, showList) == 0x208);
-	static_assert(offsetof(InterfaceStrings, voiceReady) == 0x210);
-	static_assert(offsetof(InterfaceStrings, dmfoString) == 0x218);
-	static_assert(offsetof(InterfaceStrings, showJournal) == 0x220);
-	static_assert(offsetof(InterfaceStrings, journalSettingsSaved) == 0x228);
-	static_assert(offsetof(InterfaceStrings, closeMenu) == 0x230);
-	static_assert(offsetof(InterfaceStrings, closingAllMenus) == 0x238);
-	static_assert(offsetof(InterfaceStrings, refreshMenu) == 0x240);
-	static_assert(offsetof(InterfaceStrings, cancelLoading) == 0x248);
-	static_assert(offsetof(InterfaceStrings, menuTextureDegradeEvent) == 0x250);
-	static_assert(offsetof(InterfaceStrings, diamondMarker) == 0x258);
-	static_assert(sizeof(InterfaceStrings) == 0x260);
+#ifdef SKYRIM_ANNIVERSARY_EDITION
+	static_assert(offsetof(InterfaceStrings, marketplaceMenu) == 0x1A0);
+#endif
+	static_assert(offsetof(InterfaceStrings, titleSequenceMenu) == SKYRIM_RELOCATE(0x1A0, 0x1A8));
+	static_assert(offsetof(InterfaceStrings, consoleNativeUIMenu) == SKYRIM_RELOCATE(0x1A8, 0x1B0));
+	static_assert(offsetof(InterfaceStrings, kinectMenu) == SKYRIM_RELOCATE(0x1B0, 0x1B8));
+	static_assert(offsetof(InterfaceStrings, loadWaitSpinner) == SKYRIM_RELOCATE(0x1B8, 0x1C0));
+	static_assert(offsetof(InterfaceStrings, streamingInstallMenu) == SKYRIM_RELOCATE(0x1C0, 0x1C8));
+	static_assert(offsetof(InterfaceStrings, textWidget) == SKYRIM_RELOCATE(0x1C8, 0x1D0));
+	static_assert(offsetof(InterfaceStrings, buttonBarWidget) == SKYRIM_RELOCATE(0x1D0, 0x1D8));
+	static_assert(offsetof(InterfaceStrings, graphWidget) == SKYRIM_RELOCATE(0x1D8, 0x1E0));
+	static_assert(offsetof(InterfaceStrings, textureWidget) == SKYRIM_RELOCATE(0x1E0, 0x1E8));
+	static_assert(offsetof(InterfaceStrings, uiMenuOK) == SKYRIM_RELOCATE(0x1E8, 0x1F0));
+	static_assert(offsetof(InterfaceStrings, uiMenuCancel) == SKYRIM_RELOCATE(0x1F0, 0x1F8));
+	static_assert(offsetof(InterfaceStrings, showText) == SKYRIM_RELOCATE(0x1F8, 0x200));
+	static_assert(offsetof(InterfaceStrings, hideText) == SKYRIM_RELOCATE(0x200, 0x208));
+	static_assert(offsetof(InterfaceStrings, showList) == SKYRIM_RELOCATE(0x208, 0x210));
+	static_assert(offsetof(InterfaceStrings, voiceReady) == SKYRIM_RELOCATE(0x210, 0x218));
+	static_assert(offsetof(InterfaceStrings, dmfoString) == SKYRIM_RELOCATE(0x218, 0x220));
+	static_assert(offsetof(InterfaceStrings, showJournal) == SKYRIM_RELOCATE(0x220, 0x228));
+	static_assert(offsetof(InterfaceStrings, journalSettingsSaved) == SKYRIM_RELOCATE(0x228, 0x230));
+	static_assert(offsetof(InterfaceStrings, closeMenu) == SKYRIM_RELOCATE(0x230, 0x238));
+	static_assert(offsetof(InterfaceStrings, closingAllMenus) == SKYRIM_RELOCATE(0x238, 0x240));
+	static_assert(offsetof(InterfaceStrings, refreshMenu) == SKYRIM_RELOCATE(0x240, 0x248));
+	static_assert(offsetof(InterfaceStrings, cancelLoading) == SKYRIM_RELOCATE(0x248, 0x250));
+	static_assert(offsetof(InterfaceStrings, menuTextureDegradeEvent) == SKYRIM_RELOCATE(0x250, 0x258));
+#ifdef SKYRIM_ANNIVERSARY_EDITION
+	static_assert(offsetof(InterfaceStrings, userSettingsLoaded) == 0x260);
+	static_assert(offsetof(InterfaceStrings, activityStarted) == 0x268);
+#endif
+	static_assert(offsetof(InterfaceStrings, diamondMarker) == SKYRIM_RELOCATE(0x258, 0x270));
+	static_assert(sizeof(InterfaceStrings) == SKYRIM_RELOCATE(0x260, 0x278));
 }

@@ -102,6 +102,9 @@ namespace Utility
 
 		explicit constexpr operator bool() const noexcept { return this->enumeration_ != static_cast<underlying_type>(0); }
 
+		constexpr underlying_type*       data() noexcept { return std::addressof(this->enumeration_); }
+		constexpr const underlying_type* data() const noexcept { return std::addressof(this->enumeration_); }
+
 		constexpr enumeration_type get() const noexcept { return static_cast<enumeration_type>(this->enumeration_); }
 		constexpr underlying_type  underlying() const noexcept { return this->enumeration_; }
 

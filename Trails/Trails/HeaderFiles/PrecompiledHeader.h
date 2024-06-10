@@ -4,7 +4,7 @@
 #include <cstdint>    // Fixed width integer types
 #include <exception>  // std::exception
 #include <filesystem> // Filesystem library
-#include <format>     // std::make_format_args, std::vformat
+#include <format>     // std::format
 #include <fstream>    // std::ifstream
 #include <map>        // std::map
 #include <memory>     // std::addressof, std::make_shared

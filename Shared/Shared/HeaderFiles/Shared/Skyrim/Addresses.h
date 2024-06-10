@@ -350,7 +350,7 @@ namespace Skyrim
 		namespace Console
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x2F4C31C, 1.6.318.0: SkyrimSE.exe + 0x2FE6FE4</summary>
-			inline const std::uintptr_t SelectedReferenceHandle{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(519394, 405935)) };
+			inline const std::uintptr_t SelectedReferenceHandle{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(519394, 504099)) };
 		}
 
 		namespace ConsoleLog
@@ -932,7 +932,7 @@ namespace Skyrim
 			inline const std::uintptr_t ClearCachedValues{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(21329, 21788)) };
 
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x2E75F0, 1.6.318.0: SkyrimSE.exe + 0x2FBA00</summary>
-			inline const std::uintptr_t CompileAndRun{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(21416, 21890)) };
+			inline const std::uintptr_t CompileAndRun{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(21416, 441582)) };
 
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x2E8400, 1.6.318.0: SkyrimSE.exe + 0x2FC890</summary>
 			inline const std::uintptr_t ParseParameters{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(21425, 21910)) };

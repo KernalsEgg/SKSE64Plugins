@@ -2,6 +2,7 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Skyrim/B/BSTEventSink.h"
 #include "Shared/Skyrim/I/ICellAttachDetachEventSource.h"
 
@@ -73,57 +74,60 @@ namespace Skyrim
 		std::uint64_t  unknown128;   // 128
 		std::uint64_t  unknown130;   // 130
 		std::uint64_t  unknown138;   // 138
-		TESWorldSpace* worldSpace;   // 140
-		std::uint64_t  unknown148;   // 148
-		std::uint64_t  unknown150;   // 150
-		std::uint64_t  unknown158;   // 158
-		std::uint64_t  unknown160;   // 160
-		std::uint64_t  unknown168;   // 168
-		std::uint64_t  unknown170;   // 170
-		std::uint64_t  unknown178;   // 178
-		std::uint64_t  unknown180;   // 180
-		std::uint64_t  unknown188;   // 188
-		std::uint64_t  unknown190;   // 190
-		std::uint64_t  unknown198;   // 198
-		std::uint64_t  unknown1A0;   // 1A0
-		std::uint64_t  unknown1A8;   // 1A8
-		std::uint64_t  unknown1B0;   // 1B0
-		std::uint64_t  unknown1B8;   // 1B8
-		std::uint64_t  unknown1C0;   // 1C0
-		std::uint64_t  unknown1C8;   // 1C8
-		std::uint64_t  unknown1D0;   // 1D0
-		std::uint64_t  unknown1D8;   // 1D8
-		std::uint64_t  unknown1E0;   // 1E0
-		std::uint64_t  unknown1E8;   // 1E8
-		std::uint64_t  unknown1F0;   // 1F0
-		std::uint64_t  unknown1F8;   // 1F8
-		std::uint64_t  unknown200;   // 200
-		std::uint64_t  unknown208;   // 208
-		std::uint64_t  unknown210;   // 210
-		std::uint64_t  unknown218;   // 218
-		std::uint64_t  unknown220;   // 220
-		std::uint64_t  unknown228;   // 228
-		std::uint64_t  unknown230;   // 230
-		std::uint64_t  unknown238;   // 238
-		std::uint64_t  unknown240;   // 240
-		std::uint64_t  unknown248;   // 248
-		std::uint64_t  unknown250;   // 250
-		std::uint64_t  unknown258;   // 258
-		std::uint64_t  unknown260;   // 260
-		std::uint64_t  unknown268;   // 268
-		std::uint64_t  unknown270;   // 270
-		std::uint64_t  unknown278;   // 278
-		std::uint64_t  unknown280;   // 280
-		std::uint64_t  unknown288;   // 288
-		std::uint64_t  unknown290;   // 290
-		std::uint64_t  unknown298;   // 298
-		std::uint64_t  unknown2A0;   // 2A0
-		std::uint64_t  unknown2A8;   // 2A8
-		std::uint64_t  unknown2B0;   // 2B0
+#ifdef SKYRIM_ANNIVERSARY_EDITION
+		std::uint64_t unknown140; // 140
+#endif
+		TESWorldSpace* worldSpace; // 140, 148
+		std::uint64_t  unknown150; // 148, 150
+		std::uint64_t  unknown158; // 150, 158
+		std::uint64_t  unknown160; // 158, 160
+		std::uint64_t  unknown168; // 160, 168
+		std::uint64_t  unknown170; // 168, 170
+		std::uint64_t  unknown178; // 170, 178
+		std::uint64_t  unknown180; // 178, 180
+		std::uint64_t  unknown188; // 180, 188
+		std::uint64_t  unknown190; // 188, 190
+		std::uint64_t  unknown198; // 190, 198
+		std::uint64_t  unknown1A0; // 198, 1A0
+		std::uint64_t  unknown1A8; // 1A0, 1A8
+		std::uint64_t  unknown1B0; // 1A8, 1B0
+		std::uint64_t  unknown1B8; // 1B0, 1B8
+		std::uint64_t  unknown1C0; // 1B8, 1C0
+		std::uint64_t  unknown1C8; // 1C0, 1C8
+		std::uint64_t  unknown1D0; // 1C8, 1D0
+		std::uint64_t  unknown1D8; // 1D0, 1D8
+		std::uint64_t  unknown1E0; // 1D8, 1E0
+		std::uint64_t  unknown1E8; // 1E0, 1E8
+		std::uint64_t  unknown1F0; // 1E8, 1F0
+		std::uint64_t  unknown1F8; // 1F0, 1F8
+		std::uint64_t  unknown200; // 1F8, 200
+		std::uint64_t  unknown208; // 200, 208
+		std::uint64_t  unknown210; // 208, 210
+		std::uint64_t  unknown218; // 210, 218
+		std::uint64_t  unknown220; // 218, 220
+		std::uint64_t  unknown228; // 220, 228
+		std::uint64_t  unknown230; // 228, 230
+		std::uint64_t  unknown238; // 230, 238
+		std::uint64_t  unknown240; // 238, 240
+		std::uint64_t  unknown248; // 240, 248
+		std::uint64_t  unknown250; // 248, 250
+		std::uint64_t  unknown258; // 250, 258
+		std::uint64_t  unknown260; // 258, 260
+		std::uint64_t  unknown268; // 260, 268
+		std::uint64_t  unknown270; // 268, 270
+		std::uint64_t  unknown278; // 270, 278
+		std::uint64_t  unknown280; // 278, 280
+		std::uint64_t  unknown288; // 280, 288
+		std::uint64_t  unknown290; // 288, 290
+		std::uint64_t  unknown298; // 290, 298
+		std::uint64_t  unknown2A0; // 298, 2A0
+		std::uint64_t  unknown2A8; // 2A0, 2A8
+		std::uint64_t  unknown2B0; // 2A8, 2B0
+		std::uint64_t  unknown2B8; // 2B0, 2B8
 	};
 	static_assert(offsetof(TES, gridCells) == 0x78);
 	static_assert(offsetof(TES, interiorCell) == 0xC0);
 	static_assert(offsetof(TES, sky) == 0x100);
-	static_assert(offsetof(TES, worldSpace) == 0x140);
-	static_assert(sizeof(TES) == 0x2B8);
+	static_assert(offsetof(TES, worldSpace) == SKYRIM_RELOCATE(0x140, 0x148));
+	static_assert(sizeof(TES) == SKYRIM_RELOCATE(0x2B8, 0x2C0));
 }

@@ -59,13 +59,12 @@ namespace LogInventoryItemRotation
 					rotationMatrix.RotationMatrixToEulerAnglesXYZ(eulerAngles.x, eulerAngles.y, eulerAngles.z);
 
 					Skyrim::UI::ShowNotification(
-						std::vformat(
+						std::format(
 							"{}: ({}, {}, {})",
-							std::make_format_args(
-								loadedInventoryModel.modelForm->GetFormName(),
-								Events::AdjustRotation(eulerAngles.x),
-								Events::AdjustRotation(eulerAngles.y),
-								Events::AdjustRotation(eulerAngles.z)))
+							loadedInventoryModel.modelForm->GetFormName(),
+							Events::AdjustRotation(eulerAngles.x),
+							Events::AdjustRotation(eulerAngles.y),
+							Events::AdjustRotation(eulerAngles.z))
 							.c_str(),
 						nullptr,
 						true);

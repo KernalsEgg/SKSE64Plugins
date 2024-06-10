@@ -45,15 +45,14 @@ namespace Utility
 			std::scoped_lock scopedLock{ this->sharedMutex_ };
 
 			this->outputFileStream_
-				<< std::vformat(
+				<< std::format(
 					   "[{:%F %T}] [{}] {}({},{}): {}",
-					   std::make_format_args(
-						   std::chrono::system_clock::now(),
-						   Log::LEVELS[Utility::Conversion::ToUnderlying(LEVEL)],
-						   std::filesystem::path(sourceLocation.file_name()).filename().string(),
-						   sourceLocation.line(),
-						   sourceLocation.column(),
-						   std::vformat(format, std::make_format_args(arguments...))))
+					   std::chrono::system_clock::now(),
+					   Log::LEVELS[Utility::Conversion::ToUnderlying(LEVEL)],
+					   std::filesystem::path(sourceLocation.file_name()).filename().string(),
+					   sourceLocation.line(),
+					   sourceLocation.column(),
+					   std::vformat(format, std::make_format_args(arguments...)))
 				<< std::endl;
 		}
 

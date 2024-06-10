@@ -35,19 +35,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeaderFiles\Addresses.h" />
     <ClInclude Include="HeaderFiles\Events.h" />
-    <ClInclude Include="HeaderFiles\Patches.h" />
-    <ClInclude Include="HeaderFiles\Patterns.h" />
     <ClInclude Include="HeaderFiles\PrecompiledHeader.h" />
     <ClInclude Include="HeaderFiles\Settings.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceFiles\Addresses.cpp" />
     <ClCompile Include="SourceFiles\ConsoleCommandCompanion.cpp" />
     <ClCompile Include="SourceFiles\Events.cpp" />
-    <ClCompile Include="SourceFiles\Patches.cpp" />
-    <ClCompile Include="SourceFiles\Patterns.cpp" />
     <ClCompile Include="SourceFiles\PrecompiledHeader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">Create</PrecompiledHeader>
@@ -275,10 +269,10 @@
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).json"</Command>
+      <Command>copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
+copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'">
@@ -298,10 +292,10 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).json"</Command>
+      <Command>copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
+copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -325,10 +319,10 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).json"</Command>
+      <Command>copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
+copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">
@@ -352,10 +346,10 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y nul "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).log"
-copy /Y "$(TargetDir)$(TargetName).dll" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).dll"
-copy /Y "$(TargetDir)$(TargetName).pdb" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(Skyrim64Path)\Data\SKSE\Plugins\$(TargetName).json"</Command>
+      <Command>copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
+copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
+copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
