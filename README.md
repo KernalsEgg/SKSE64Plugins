@@ -15,8 +15,14 @@
 * [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
 
 ## End-User Dependencies
-* [SKSE64](https://github.com/ianpatt/skse64)
-* [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
+* [Address Library](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
+* [Skyrim Script Extender](https://github.com/ianpatt/skse64)
+
+## Development
+* [clang-format 18.1.7](https://github.com/llvm/llvm-project/releases)
+* [vcpkg 2024.05.24](https://github.com/microsoft/vcpkg/releases)
+* [Visual Studio Community 2022 17.10.2](https://visualstudio.microsoft.com/vs/)
+	* Desktop development with C++
 
 ## Credits
 * [CommonLibSSE](https://github.com/Ryan-rsm-McKenzie/CommonLibSSE) by [Ryan McKenzie](https://www.nexusmods.com/skyrimspecialedition/users/5687342)
