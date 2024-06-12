@@ -52,35 +52,41 @@ namespace Skyrim
 
 #define GFC_MEMORY_REDEFINE_NEW_IMPLEMENTATION(className, checkDelete, statisticType) \
 	/* 1 */                                                                           \
-	[[nodiscard]] void* operator new(Skyrim::UPInt size)                              \
+	[[nodiscard]]                                                                     \
+	void* operator new(Skyrim::UPInt size)                                            \
 	{                                                                                 \
 		return GALLOCATE(size);                                                       \
 	}                                                                                 \
                                                                                       \
 	/* 2 */                                                                           \
-	[[nodiscard]] void* operator new[](Skyrim::UPInt size)                            \
+	[[nodiscard]]                                                                     \
+	void* operator new[](Skyrim::UPInt size)                                          \
 	{                                                                                 \
 		return GALLOCATE(size);                                                       \
 	}                                                                                 \
                                                                                       \
 	/* 9 */                                                                           \
-	[[nodiscard]] void* operator new(Skyrim::UPInt /* size */, void* placement)       \
+	[[nodiscard]]                                                                     \
+	void* operator new(Skyrim::UPInt /* size */, void* placement)                     \
 	{                                                                                 \
 		return placement;                                                             \
 	}                                                                                 \
                                                                                       \
 	/* 10 */                                                                          \
-	[[nodiscard]] void* operator new[](Skyrim::UPInt /* size */, void* placement)     \
+	[[nodiscard]]                                                                     \
+	void* operator new[](Skyrim::UPInt /* size */, void* placement)                   \
 	{                                                                                 \
 		return placement;                                                             \
 	}                                                                                 \
                                                                                       \
-	[[nodiscard]] void* operator new(Skyrim::UPInt size, Skyrim::GMemoryHeap* heap)   \
+	[[nodiscard]]                                                                     \
+	void* operator new(Skyrim::UPInt size, Skyrim::GMemoryHeap* heap)                 \
 	{                                                                                 \
 		return GHEAP_ALLOCATE(heap, size);                                            \
 	}                                                                                 \
                                                                                       \
-	[[nodiscard]] void* operator new[](Skyrim::UPInt size, Skyrim::GMemoryHeap* heap) \
+	[[nodiscard]]                                                                     \
+	void* operator new[](Skyrim::UPInt size, Skyrim::GMemoryHeap* heap)               \
 	{                                                                                 \
 		return GHEAP_ALLOCATE(heap, size);                                            \
 	}                                                                                 \

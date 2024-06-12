@@ -6,7 +6,7 @@ AlignConsecutiveAssignments:
     Enabled: true
     AcrossEmptyLines: false
     AcrossComments: false
-    AlignCompound: false
+    AlignCompound: true
     PadOperators: false
 AlignConsecutiveBitFields:
     Enabled: true
@@ -16,21 +16,30 @@ AlignConsecutiveDeclarations:
     Enabled: true
     AcrossEmptyLines: false
     AcrossComments: false
+    AlignFunctionPointers: false
 AlignConsecutiveMacros:
     Enabled: true
     AcrossEmptyLines: false
     AcrossComments: false
+AlignConsecutiveShortCaseStatements:
+    Enabled: true
+    AcrossEmptyLines: false
+    AcrossComments: false
+    #AlignCaseArrows: true
+    AlignCaseColons: false
 AlignEscapedNewlines: Left
 AlignOperands: Align
-AlignTrailingComments: true
-#AlignTrailingComments:
-#    Kind: Always
-#    OverEmptyLines: 0
-AllowAllArgumentsOnNextLine: false
-AllowAllParametersOfDeclarationOnNextLine: false
-AllowShortBlocksOnASingleLine: Empty
+AlignTrailingComments:
+    Kind: Always
+    OverEmptyLines: 0
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowBreakBeforeNoexceptSpecifier: Always
+AllowShortBlocksOnASingleLine: Never
+#AllowShortCaseExpressionOnASingleLine: true
 AllowShortCaseLabelsOnASingleLine: false
-AllowShortEnumsOnASingleLine: false
+AllowShortCompoundRequirementOnASingleLine: true
+AllowShortEnumsOnASingleLine: true
 AllowShortFunctionsOnASingleLine: All
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLambdasOnASingleLine: All
@@ -41,15 +50,19 @@ AlwaysBreakTemplateDeclarations: Yes
 BinPackArguments: true
 BinPackParameters: true
 BitFieldColonSpacing: Both
-#BreakAfterAttributes: Always
+BreakAdjacentStringLiterals: true
+BreakAfterAttributes: Always
+#BreakAfterReturnType: Automatic
 BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Allman
 BreakBeforeConceptDeclarations: Always
-#BreakBeforeInlineASMColon: Always
+BreakBeforeInlineASMColon: Always
 BreakBeforeTernaryOperators: false
 BreakConstructorInitializers: AfterColon
+#BreakFunctionDefinitionParameters: false
 BreakInheritanceList: AfterColon
 BreakStringLiterals: true
+#BreakTemplateDeclarations: Yes
 ColumnLimit: 0
 CompactNamespaces: false
 ConstructorInitializerIndentWidth: 4
@@ -59,7 +72,6 @@ DerivePointerAlignment: false
 DisableFormat: false
 EmptyLineAfterAccessModifier: Never
 EmptyLineBeforeAccessModifier: Always
-ExperimentalAutoDetectBinPacking: false
 FixNamespaceComments: false
 IncludeBlocks: Preserve
 IndentAccessModifiers: false
@@ -70,17 +82,19 @@ IndentGotoLabels: true
 IndentPPDirectives: AfterHash
 IndentRequiresClause: true
 IndentWidth: 4
-IndentWrappedFunctionNames: true
+IndentWrappedFunctionNames: false
 InsertBraces: false
-#InsertNewlineAtEOF: true
-#IntegerLiteralSeparator:
-#    Binary: 0
-#    Decimal: 0
-#    Hex: 0
+InsertNewlineAtEOF: true
+IntegerLiteralSeparator:
+    Binary: 0
+    Decimal: 0
+    Hex: 0
+KeepEmptyLinesAtEOF: false
 KeepEmptyLinesAtTheStartOfBlocks: false
 LambdaBodyIndentation: Signature
 Language: Cpp
-#LineEnding: DeriveCRLF
+LineEnding: DeriveCRLF
+#MainIncludeChar: Quote
 MaxEmptyLinesToKeep: 3
 NamespaceIndentation: All
 PPIndentWidth: -1
@@ -90,14 +104,15 @@ QualifierAlignment: Leave
 ReferenceAlignment: Pointer
 ReflowComments: false
 RemoveBracesLLVM: false
-#RemoveSemicolon: false
+RemoveParentheses: Leave
+RemoveSemicolon: false
 RequiresClausePosition: OwnLine
-#RequiresExpressionIndentation: OuterScope
+RequiresExpressionIndentation: OuterScope
 SeparateDefinitionBlocks: Leave
 ShortNamespaceLines: 0
+SkipMacroDefinitionBody: false
 SortIncludes: CaseInsensitive
-SortUsingDeclarations: true
-#SortUsingDeclarations: Lexicographic
+SortUsingDeclarations: Lexicographic
 SpaceAfterCStyleCast: false
 SpaceAfterLogicalNot: false
 SpaceAfterTemplateKeyword: true
@@ -111,23 +126,15 @@ SpaceBeforeParens: ControlStatements
 SpaceBeforeRangeBasedForLoopColon: true
 SpaceBeforeSquareBrackets: false
 SpaceInEmptyBlock: false
-SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 1
 SpacesInAngles: Never
-SpacesInCStyleCastParentheses: false
-SpacesInConditionalStatement: false
 SpacesInContainerLiterals: true
 SpacesInLineCommentPrefix:
     Minimum: 1
     Maximum: -1
-SpacesInParentheses: false
+SpacesInParens: Never
 SpacesInSquareBrackets: false
 Standard: Latest
 TabWidth: 4
 UseTab: AlignWithSpaces
-
-# Deprecated
-DeriveLineEnding: true
-UseCRLF: true
-
 ...

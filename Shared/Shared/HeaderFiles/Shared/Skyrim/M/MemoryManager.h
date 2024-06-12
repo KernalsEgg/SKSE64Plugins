@@ -156,7 +156,8 @@ namespace Skyrim
 
 #define SKYRIM_MEMORY_REDEFINE_NEW()                                                                \
 	/* 1 */                                                                                         \
-	[[nodiscard]] void* operator new(std::size_t size)                                              \
+	[[nodiscard]]                                                                                   \
+	void* operator new(std::size_t size)                                                            \
 	{                                                                                               \
 		auto* pointer = Skyrim::malloc(size);                                                       \
                                                                                                     \
@@ -169,7 +170,8 @@ namespace Skyrim
 	}                                                                                               \
                                                                                                     \
 	/* 2 */                                                                                         \
-	[[nodiscard]] void* operator new[](std::size_t size)                                            \
+	[[nodiscard]]                                                                                   \
+	void* operator new[](std::size_t size)                                                          \
 	{                                                                                               \
 		auto* pointer = Skyrim::malloc(size);                                                       \
                                                                                                     \
@@ -182,7 +184,8 @@ namespace Skyrim
 	}                                                                                               \
                                                                                                     \
 	/* 3 */                                                                                         \
-	[[nodiscard]] void* operator new(std::size_t size, std::align_val_t alignment)                  \
+	[[nodiscard]]                                                                                   \
+	void* operator new(std::size_t size, std::align_val_t alignment)                                \
 	{                                                                                               \
 		auto* pointer = Skyrim::aligned_malloc(size, static_cast<std::size_t>(alignment));          \
                                                                                                     \
@@ -195,7 +198,8 @@ namespace Skyrim
 	}                                                                                               \
                                                                                                     \
 	/* 4 */                                                                                         \
-	[[nodiscard]] void* operator new[](std::size_t size, std::align_val_t alignment)                \
+	[[nodiscard]]                                                                                   \
+	void* operator new[](std::size_t size, std::align_val_t alignment)                              \
 	{                                                                                               \
 		auto* pointer = Skyrim::aligned_malloc(size, static_cast<std::size_t>(alignment));          \
                                                                                                     \
@@ -208,13 +212,15 @@ namespace Skyrim
 	}                                                                                               \
                                                                                                     \
 	/* 9 */                                                                                         \
-	[[nodiscard]] void* operator new(std::size_t /* size */, void* placement) noexcept              \
+	[[nodiscard]]                                                                                   \
+	void* operator new(std::size_t /* size */, void* placement) noexcept                            \
 	{                                                                                               \
 		return placement;                                                                           \
 	}                                                                                               \
                                                                                                     \
 	/* 10 */                                                                                        \
-	[[nodiscard]] void* operator new[](std::size_t /* size */, void* placement) noexcept            \
+	[[nodiscard]]                                                                                   \
+	void* operator new[](std::size_t /* size */, void* placement) noexcept                          \
 	{                                                                                               \
 		return placement;                                                                           \
 	}                                                                                               \

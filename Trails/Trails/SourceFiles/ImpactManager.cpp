@@ -81,7 +81,7 @@ namespace Trails
 		ray.Normalize();
 
 		originOffset *= originOffsetMagnitude;
-		ray *= rayMagnitude;
+		ray          *= rayMagnitude;
 
 		origin += originOffset;
 
