@@ -66,7 +66,9 @@ namespace Skyrim
 		template <class T>
 		void EnumerateReferencesCloseToPoint(TESObjectCELL* cell, const NiPoint3& point1, float radius1, const NiPoint3& point2, float radius2, bool (*callback)(TESObjectREFR* reference, T argument), T argument) const
 		{
-			auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESDataHandler::EnumerateReferencesCloseToPoint<T>)>::type>(Addresses::TESDataHandler::EnumerateReferencesCloseToPoint) };
+			auto* function{ reinterpret_cast<
+				Utility::TypeTraits::MakeFunctionPointer<decltype(&TESDataHandler::EnumerateReferencesCloseToPoint<T>)>::type>(
+				Addresses::TESDataHandler::EnumerateReferencesCloseToPoint()) };
 
 			function(this, cell, point1, radius1, point2, radius2, callback, argument);
 		}
@@ -74,7 +76,9 @@ namespace Skyrim
 		template <class T>
 		void EnumerateReferencesCloseToReference(TESObjectREFR* reference, float radius1, const NiPoint3& point2, float radius2, bool (*callback)(TESObjectREFR* reference, T argument), T argument) const
 		{
-			auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESDataHandler::EnumerateReferencesCloseToReference<T>)>::type>(Addresses::TESDataHandler::EnumerateReferencesCloseToReference) };
+			auto* function{ reinterpret_cast<
+				Utility::TypeTraits::MakeFunctionPointer<decltype(&TESDataHandler::EnumerateReferencesCloseToReference<T>)>::type>(
+				Addresses::TESDataHandler::EnumerateReferencesCloseToReference()) };
 
 			function(this, reference, radius1, point2, radius2, callback, argument);
 		}

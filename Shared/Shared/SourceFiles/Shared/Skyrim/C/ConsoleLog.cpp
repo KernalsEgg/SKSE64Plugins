@@ -8,7 +8,7 @@ namespace Skyrim
 {
 	ConsoleLog* ConsoleLog::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<ConsoleLog**>(Addresses::ConsoleLog::Singleton) };
+		auto** singleton{ reinterpret_cast<ConsoleLog**>(Addresses::ConsoleLog::Singleton()) };
 
 		return *singleton;
 	}
@@ -23,7 +23,7 @@ namespace Skyrim
 		};
 		static_assert(offsetof(ThreadLocalStorage, isConsoleOpen) == 0x600);
 
-		auto*  tlsIndex                  = reinterpret_cast<std::uint32_t*>(Addresses::ThreadLocalStorageIndex);
+		auto*  tlsIndex                  = reinterpret_cast<std::uint32_t*>(Addresses::ThreadLocalStorageIndex());
 		auto** threadLocalStoragePointer = reinterpret_cast<ThreadLocalStorage**>(::__readgsqword(0x58));
 
 		return threadLocalStoragePointer[*tlsIndex]->isConsoleOpen;

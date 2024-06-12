@@ -29,24 +29,20 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 
 		*reinterpret_cast<decltype(ApplyMultipleSpells::SelectSpell)**>(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::SelectSpell) = std::addressof(ApplyMultipleSpells::SelectSpell);
 
+		ApplyMultipleSpells::applyBashingSpell_                  = reinterpret_cast<decltype(ApplyMultipleSpells::applyBashingSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyBashingSpell));
+		ApplyMultipleSpells::applyCombatHitSpell_                = reinterpret_cast<decltype(ApplyMultipleSpells::applyCombatHitSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyCombatHitSpell));
+		ApplyMultipleSpells::applyCombatHitSpellArrowProjectile_ = reinterpret_cast<decltype(ApplyMultipleSpells::applyCombatHitSpellArrowProjectile_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile));
+		ApplyMultipleSpells::applyReanimateSpell_                = reinterpret_cast<decltype(ApplyMultipleSpells::applyReanimateSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyReanimateSpell));
+		ApplyMultipleSpells::applySneakingSpell_                 = reinterpret_cast<decltype(ApplyMultipleSpells::applySneakingSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplySneakingSpell));
+		ApplyMultipleSpells::applyWeaponSwingSpell_              = reinterpret_cast<decltype(ApplyMultipleSpells::applyWeaponSwingSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyWeaponSwingSpell));
+
 		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
 
-		ApplyMultipleSpells::applyBashingSpell_ = reinterpret_cast<decltype(ApplyMultipleSpells::applyBashingSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyBashingSpell));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyBashingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplyMultipleSpells::ApplyBashingSpell)));
-
-		ApplyMultipleSpells::applyCombatHitSpell_ = reinterpret_cast<decltype(ApplyMultipleSpells::applyCombatHitSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyCombatHitSpell));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyCombatHitSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplyMultipleSpells::ApplyCombatHitSpell)));
-
-		ApplyMultipleSpells::applyCombatHitSpellArrowProjectile_ = reinterpret_cast<decltype(ApplyMultipleSpells::applyCombatHitSpellArrowProjectile_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile, reinterpret_cast<std::uintptr_t>(std::addressof(ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile)));
-
-		ApplyMultipleSpells::applyReanimateSpell_ = reinterpret_cast<decltype(ApplyMultipleSpells::applyReanimateSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyReanimateSpell));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyReanimateSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplyMultipleSpells::ApplyReanimateSpell)));
-
-		ApplyMultipleSpells::applySneakingSpell_ = reinterpret_cast<decltype(ApplyMultipleSpells::applySneakingSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplySneakingSpell));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplySneakingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplyMultipleSpells::ApplySneakingSpell)));
-
-		ApplyMultipleSpells::applyWeaponSwingSpell_ = reinterpret_cast<decltype(ApplyMultipleSpells::applyWeaponSwingSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyWeaponSwingSpell));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyWeaponSwingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplyMultipleSpells::ApplyWeaponSwingSpell)));
 	}
 

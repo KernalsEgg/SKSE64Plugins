@@ -11,7 +11,7 @@ namespace ConditionsTargetMagicEffects::Events
 	void BGSEntryPointPerkEntry::Register()
 	{
 		Utility::Memory::SafeWriteVirtualFunction(
-			Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable,
+			Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable(),
 			0x0,
 			reinterpret_cast<std::uintptr_t>(std::addressof(BGSEntryPointPerkEntry::CheckConditionFilters)));
 	}

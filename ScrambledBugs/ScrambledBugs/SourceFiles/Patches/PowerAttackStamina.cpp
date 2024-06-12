@@ -25,12 +25,12 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWrite(Addresses::Patches::PowerAttackStamina::HasStaminaActor, std::optional<std::uint8_t>{}, 0x00ui8);
 		Utility::Memory::SafeWrite(Addresses::Patches::PowerAttackStamina::HasStaminaPlayerCharacter, std::optional<std::uint8_t>{}, 0x00ui8);
 
+		PowerAttackStamina::getAttackStaminaActor_           = reinterpret_cast<decltype(PowerAttackStamina::getAttackStaminaActor_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaActor));
+		PowerAttackStamina::getAttackStaminaPlayerCharacter_ = reinterpret_cast<decltype(PowerAttackStamina::getAttackStaminaPlayerCharacter_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaPlayerCharacter));
+
 		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
 
-		PowerAttackStamina::getAttackStaminaActor_ = reinterpret_cast<decltype(PowerAttackStamina::getAttackStaminaActor_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaActor));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaActor, reinterpret_cast<std::uintptr_t>(std::addressof(PowerAttackStamina::HasAttackStaminaActor)));
-
-		PowerAttackStamina::getAttackStaminaPlayerCharacter_ = reinterpret_cast<decltype(PowerAttackStamina::getAttackStaminaPlayerCharacter_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaPlayerCharacter));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PowerAttackStamina::GetAttackStaminaPlayerCharacter, reinterpret_cast<std::uintptr_t>(std::addressof(PowerAttackStamina::HasAttackStaminaPlayerCharacter)));
 	}
 

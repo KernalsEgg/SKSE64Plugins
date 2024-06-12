@@ -12,7 +12,9 @@ namespace Skyrim
 {
 	float MagicItem::GetCost(Actor* caster) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&MagicItem::GetCost)>::type>(Addresses::MagicItem::GetCost) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&MagicItem::GetCost)>::type>(
+			Addresses::MagicItem::GetCost()) };
 
 		return function(this, caster);
 	}
@@ -46,7 +48,9 @@ namespace Skyrim
 
 	EffectItem* MagicItem::GetCostliestEffect(Utility::Enumeration<MagicSystem::Delivery, std::uint32_t> delivery, bool areaOfEffect) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&MagicItem::GetCostliestEffect)>::type>(Addresses::MagicItem::GetCostliestEffect) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&MagicItem::GetCostliestEffect)>::type>(
+			Addresses::MagicItem::GetCostliestEffect()) };
 
 		return function(this, delivery, areaOfEffect);
 	}

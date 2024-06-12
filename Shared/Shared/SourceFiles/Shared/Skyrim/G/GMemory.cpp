@@ -96,7 +96,7 @@ namespace Skyrim
 
 	GMemoryHeap*& GMemory::GetGlobalHeapReference()
 	{
-		auto** singleton{ reinterpret_cast<GMemoryHeap**>(Addresses::GMemory::GlobalHeap) };
+		auto** singleton{ reinterpret_cast<GMemoryHeap**>(Addresses::GMemory::GlobalHeap()) };
 
 		return *singleton;
 	}

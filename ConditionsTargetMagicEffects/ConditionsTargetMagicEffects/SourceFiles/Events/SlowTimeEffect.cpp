@@ -12,7 +12,7 @@ namespace ConditionsTargetMagicEffects::Events
 	void SlowTimeEffect::Register()
 	{
 		Utility::Memory::SafeWriteVirtualFunction(
-			Skyrim::Addresses::SlowTimeEffect::VirtualFunctionTable,
+			Skyrim::Addresses::SlowTimeEffect::VirtualFunctionTable(),
 			0x20,
 			reinterpret_cast<std::uintptr_t>(std::addressof(SlowTimeEffect::Start)));
 	}

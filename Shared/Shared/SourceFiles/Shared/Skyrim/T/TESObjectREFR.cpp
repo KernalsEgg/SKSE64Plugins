@@ -18,14 +18,17 @@ namespace Skyrim
 {
 	TESObjectREFR* TESObjectREFR::GetReferenceFrom3D(NiAVObject* avObject)
 	{
-		auto* function{ reinterpret_cast<decltype(TESObjectREFR::GetReferenceFrom3D)*>(Addresses::TESObjectREFR::GetReferenceFrom3D) };
+		auto* function{ reinterpret_cast<decltype(TESObjectREFR::GetReferenceFrom3D)*>(
+			Addresses::TESObjectREFR::GetReferenceFrom3D()) };
 
 		return function(avObject);
 	}
 
 	bool TESObjectREFR::Activate(TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount, bool defaultProcessingOnly)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::Activate)>::type>(Addresses::TESObjectREFR::Activate) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::Activate)>::type>(
+			Addresses::TESObjectREFR::Activate()) };
 
 		return function(this, activator, deferred, item, itemCount, defaultProcessingOnly);
 	}
@@ -81,14 +84,18 @@ namespace Skyrim
 
 	InventoryChanges* TESObjectREFR::GetInventoryChanges()
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::GetInventoryChanges)>::type>(Addresses::TESObjectREFR::GetInventoryChanges) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::GetInventoryChanges)>::type>(
+			Addresses::TESObjectREFR::GetInventoryChanges()) };
 
 		return function(this);
 	}
 
 	const char* TESObjectREFR::GetReferenceName() const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::GetReferenceName)>::type>(Addresses::TESObjectREFR::GetReferenceName) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::GetReferenceName)>::type>(
+			Addresses::TESObjectREFR::GetReferenceName()) };
 
 		return function(this);
 	}
@@ -114,7 +121,9 @@ namespace Skyrim
 
 	bool TESObjectREFR::IsCrimeToActivate() const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::IsCrimeToActivate)>::type>(Addresses::TESObjectREFR::IsCrimeToActivate) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::IsCrimeToActivate)>::type>(
+			Addresses::TESObjectREFR::IsCrimeToActivate()) };
 
 		return function(this);
 	}

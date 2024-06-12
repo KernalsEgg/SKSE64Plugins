@@ -10,7 +10,8 @@ namespace Skyrim
 {
 	ScriptEventSourceHolder* ScriptEventSourceHolder::GetSingleton()
 	{
-		auto* function{ reinterpret_cast<decltype(ScriptEventSourceHolder::GetSingleton)*>(Addresses::ScriptEventSourceHolder::GetSingleton) };
+		auto* function{ reinterpret_cast<decltype(ScriptEventSourceHolder::GetSingleton)*>(
+			Addresses::ScriptEventSourceHolder::GetSingleton()) };
 
 		return function();
 	}

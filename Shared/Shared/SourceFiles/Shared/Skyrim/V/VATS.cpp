@@ -11,21 +11,25 @@ namespace Skyrim
 {
 	VATS* VATS::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<VATS**>(Addresses::VATS::Singleton) };
+		auto** singleton{ reinterpret_cast<VATS**>(Addresses::VATS::Singleton()) };
 
 		return *singleton;
 	}
 
 	float VATS::GetPlayerUpdateMultiplier() const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&VATS::GetPlayerUpdateMultiplier)>::type>(Addresses::VATS::GetPlayerUpdateMultiplier) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&VATS::GetPlayerUpdateMultiplier)>::type>(
+			Addresses::VATS::GetPlayerUpdateMultiplier()) };
 
 		return function(this);
 	}
 
 	void VATS::SetMagicTimeSlowdown(float magicTimeSlowdown, float playerMagicTimeSlowdown)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&VATS::SetMagicTimeSlowdown)>::type>(Addresses::VATS::SetMagicTimeSlowdown) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&VATS::SetMagicTimeSlowdown)>::type>(
+			Addresses::VATS::SetMagicTimeSlowdown()) };
 
 		function(this, magicTimeSlowdown, playerMagicTimeSlowdown);
 	}

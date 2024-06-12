@@ -45,7 +45,9 @@ namespace Skyrim
 
 	float EffectItem::GetCost(Actor* caster) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&EffectItem::GetCost)>::type>(Addresses::EffectItem::GetCost) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&EffectItem::GetCost)>::type>(
+			Addresses::EffectItem::GetCost()) };
 
 		return function(this, caster);
 	}
@@ -67,7 +69,9 @@ namespace Skyrim
 
 	void EffectItem::ResetCost()
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&EffectItem::ResetCost)>::type>(Addresses::EffectItem::ResetCost) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&EffectItem::ResetCost)>::type>(
+			Addresses::EffectItem::ResetCost()) };
 
 		function(this);
 	}
@@ -88,7 +92,9 @@ namespace Skyrim
 
 	void EffectItem::SetConditions(const TESCondition* conditions)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&EffectItem::SetConditions)>::type>(Addresses::EffectItem::SetConditions) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&EffectItem::SetConditions)>::type>(
+			Addresses::EffectItem::SetConditions()) };
 
 		function(this, conditions);
 	}

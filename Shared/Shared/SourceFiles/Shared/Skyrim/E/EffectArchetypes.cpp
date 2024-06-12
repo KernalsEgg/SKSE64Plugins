@@ -17,7 +17,7 @@ namespace Skyrim
 
 		Archetype* GetArchetypes()
 		{
-			auto* singleton{ reinterpret_cast<Archetype*>(Addresses::EffectArchetypes::Archetypes) };
+			auto* singleton{ reinterpret_cast<Archetype*>(Addresses::EffectArchetypes::Archetypes()) };
 
 			return singleton;
 		}

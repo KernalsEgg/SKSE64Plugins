@@ -10,14 +10,15 @@ namespace Skyrim
 {
 	INIPrefSettingCollection* INIPrefSettingCollection::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<INIPrefSettingCollection**>(Addresses::INIPrefSettingCollection::Singleton) };
+		auto** singleton{ reinterpret_cast<INIPrefSettingCollection**>(Addresses::INIPrefSettingCollection::Singleton()) };
 
 		return *singleton;
 	}
 
 	void INIPrefSettingCollection::InitializeCollection()
 	{
-		auto* function{ reinterpret_cast<decltype(INIPrefSettingCollection::InitializeCollection)*>(Addresses::INIPrefSettingCollection::InitializeCollection) };
+		auto* function{ reinterpret_cast<decltype(INIPrefSettingCollection::InitializeCollection)*>(
+			Addresses::INIPrefSettingCollection::InitializeCollection()) };
 
 		function();
 	}

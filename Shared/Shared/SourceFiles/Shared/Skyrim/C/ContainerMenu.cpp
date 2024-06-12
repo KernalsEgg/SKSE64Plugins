@@ -16,7 +16,7 @@ namespace Skyrim
 
 	ObjectReferenceHandle ContainerMenu::GetTargetReferenceHandle()
 	{
-		auto* singleton{ reinterpret_cast<ObjectReferenceHandle*>(Addresses::ContainerMenu::TargetReferenceHandle) };
+		auto* singleton{ reinterpret_cast<ObjectReferenceHandle*>(Addresses::ContainerMenu::TargetReferenceHandle()) };
 
 		return *singleton;
 	}

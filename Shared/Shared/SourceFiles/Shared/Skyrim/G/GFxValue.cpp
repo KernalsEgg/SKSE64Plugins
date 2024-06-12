@@ -273,126 +273,162 @@ namespace Skyrim
 
 	void GFxValue::ObjectInterface::ObjectAddReference(GFxValue* value, void* object)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::ObjectAddReference)>::type>(Addresses::GFxValue::ObjectInterface::ObjectAddReference) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::ObjectAddReference)>::type>(
+			Addresses::GFxValue::ObjectInterface::ObjectAddReference()) };
 
 		function(this, value, object);
 	}
 
 	void GFxValue::ObjectInterface::ObjectRelease(GFxValue* value, void* object)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::ObjectRelease)>::type>(Addresses::GFxValue::ObjectInterface::ObjectRelease) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::ObjectRelease)>::type>(
+			Addresses::GFxValue::ObjectInterface::ObjectRelease()) };
 
 		function(this, value, object);
 	}
 
 	bool GFxValue::ObjectInterface::HasMember(void* data, const char* name, bool isDisplayObject) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::HasMember)>::type>(Addresses::GFxValue::ObjectInterface::HasMember) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::HasMember)>::type>(
+			Addresses::GFxValue::ObjectInterface::HasMember()) };
 
 		return function(this, data, name, isDisplayObject);
 	}
 
 	bool GFxValue::ObjectInterface::GetMember(void* data, const char* name, GFxValue* value, bool isDisplayObject) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::GetMember)>::type>(Addresses::GFxValue::ObjectInterface::GetMember) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::GetMember)>::type>(
+			Addresses::GFxValue::ObjectInterface::GetMember()) };
 
 		return function(this, data, name, value, isDisplayObject);
 	}
 
 	bool GFxValue::ObjectInterface::SetMember(void* data, const char* name, const GFxValue& value, bool isDisplayObject)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::SetMember)>::type>(Addresses::GFxValue::ObjectInterface::SetMember) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::SetMember)>::type>(
+			Addresses::GFxValue::ObjectInterface::SetMember()) };
 
 		return function(this, data, name, value, isDisplayObject);
 	}
 
 	bool GFxValue::ObjectInterface::Invoke(void* data, GFxValue* result, const char* name, const GFxValue* arguments, UPInt argumentCount, bool isDisplayObject)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::Invoke)>::type>(Addresses::GFxValue::ObjectInterface::Invoke) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::Invoke)>::type>(
+			Addresses::GFxValue::ObjectInterface::Invoke()) };
 
 		return function(this, data, result, name, arguments, argumentCount, isDisplayObject);
 	}
 
 	bool GFxValue::ObjectInterface::DeleteMember(void* data, const char* name, bool isDisplayObject)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::DeleteMember)>::type>(Addresses::GFxValue::ObjectInterface::DeleteMember) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::DeleteMember)>::type>(
+			Addresses::GFxValue::ObjectInterface::DeleteMember()) };
 
 		return function(this, data, name, isDisplayObject);
 	}
 
 	std::uint32_t GFxValue::ObjectInterface::GetArraySize(void* data) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::GetArraySize)>::type>(Addresses::GFxValue::ObjectInterface::GetArraySize) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::GetArraySize)>::type>(
+			Addresses::GFxValue::ObjectInterface::GetArraySize()) };
 
 		return function(this, data);
 	}
 
 	bool GFxValue::ObjectInterface::SetArraySize(void* data, std::uint32_t size)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::SetArraySize)>::type>(Addresses::GFxValue::ObjectInterface::SetArraySize) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::SetArraySize)>::type>(
+			Addresses::GFxValue::ObjectInterface::SetArraySize()) };
 
 		return function(this, data, size);
 	}
 
 	bool GFxValue::ObjectInterface::GetElement(void* data, std::uint32_t index, GFxValue* value) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::GetElement)>::type>(Addresses::GFxValue::ObjectInterface::GetElement) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::GetElement)>::type>(
+			Addresses::GFxValue::ObjectInterface::GetElement()) };
 
 		return function(this, data, index, value);
 	}
 
 	bool GFxValue::ObjectInterface::SetElement(void* data, std::uint32_t index, const GFxValue& value)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::SetElement)>::type>(Addresses::GFxValue::ObjectInterface::SetElement) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::SetElement)>::type>(
+			Addresses::GFxValue::ObjectInterface::SetElement()) };
 
 		return function(this, data, index, value);
 	}
 
 	bool GFxValue::ObjectInterface::PushBack(void* data, const GFxValue& value)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::PushBack)>::type>(Addresses::GFxValue::ObjectInterface::PushBack) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::PushBack)>::type>(
+			Addresses::GFxValue::ObjectInterface::PushBack()) };
 
 		return function(this, data, value);
 	}
 
 	bool GFxValue::ObjectInterface::RemoveElements(void* data, std::uint32_t index, std::int32_t count)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::RemoveElements)>::type>(Addresses::GFxValue::ObjectInterface::RemoveElements) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::RemoveElements)>::type>(
+			Addresses::GFxValue::ObjectInterface::RemoveElements()) };
 
 		return function(this, data, index, count);
 	}
 
 	bool GFxValue::ObjectInterface::GetDisplayInformation(void* data, DisplayInformation* displayInformation) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::GetDisplayInformation)>::type>(Addresses::GFxValue::ObjectInterface::GetDisplayInformation) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::GetDisplayInformation)>::type>(
+			Addresses::GFxValue::ObjectInterface::GetDisplayInformation()) };
 
 		return function(this, data, displayInformation);
 	}
 
 	bool GFxValue::ObjectInterface::SetDisplayInformation(void* data, const DisplayInformation& displayInformation)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::SetDisplayInformation)>::type>(Addresses::GFxValue::ObjectInterface::SetDisplayInformation) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::SetDisplayInformation)>::type>(
+			Addresses::GFxValue::ObjectInterface::SetDisplayInformation()) };
 
 		return function(this, data, displayInformation);
 	}
 
 	bool GFxValue::ObjectInterface::SetText(void* data, const char* text, bool isHTML)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::SetText)>::type>(Addresses::GFxValue::ObjectInterface::SetText) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::SetText)>::type>(
+			Addresses::GFxValue::ObjectInterface::SetText()) };
 
 		return function(this, data, text, isHTML);
 	}
 
 	bool GFxValue::ObjectInterface::AttachMovie(void* data, GFxValue* movieClip, const char* symbolName, const char* instanceName, std::int32_t depth, const GFxValue* initializeObject)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::AttachMovie)>::type>(Addresses::GFxValue::ObjectInterface::AttachMovie) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::AttachMovie)>::type>(
+			Addresses::GFxValue::ObjectInterface::AttachMovie()) };
 
 		return function(this, data, movieClip, symbolName, instanceName, depth, initializeObject);
 	}
 
 	bool GFxValue::ObjectInterface::GotoAndPlay(void* data, const char* frame, bool stop)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::GotoAndPlay)>::type>(Addresses::GFxValue::ObjectInterface::GotoAndPlay) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GFxValue::ObjectInterface::GotoAndPlay)>::type>(
+			Addresses::GFxValue::ObjectInterface::GotoAndPlay()) };
 
 		return function(this, data, frame, stop);
 	}

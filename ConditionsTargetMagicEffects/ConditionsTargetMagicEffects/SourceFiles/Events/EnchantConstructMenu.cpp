@@ -11,7 +11,7 @@ namespace ConditionsTargetMagicEffects::Events
 	void CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::Register()
 	{
 		Utility::Memory::SafeWriteVirtualFunction(
-			Skyrim::Addresses::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::VirtualFunctionTable,
+			Skyrim::Addresses::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::VirtualFunctionTable(),
 			0x1,
 			reinterpret_cast<std::uintptr_t>(std::addressof(CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::FunctionCallOperator)));
 	}

@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	InterfaceStrings* InterfaceStrings::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<InterfaceStrings**>(Addresses::InterfaceStrings::Singleton) };
+		auto** singleton{ reinterpret_cast<InterfaceStrings**>(Addresses::InterfaceStrings::Singleton()) };
 
 		return *singleton;
 	}

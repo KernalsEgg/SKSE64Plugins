@@ -10,7 +10,8 @@ namespace Skyrim
 {
 	float EnchantmentItem::ModifyPower(float power, float enchantingSkill)
 	{
-		auto* function{ reinterpret_cast<decltype(EnchantmentItem::ModifyPower)*>(Addresses::EnchantmentItem::ModifyPower) };
+		auto* function{ reinterpret_cast<decltype(EnchantmentItem::ModifyPower)*>(
+			Addresses::EnchantmentItem::ModifyPower()) };
 
 		return function(power, enchantingSkill);
 	}

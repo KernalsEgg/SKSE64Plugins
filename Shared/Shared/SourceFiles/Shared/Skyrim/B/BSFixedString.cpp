@@ -76,7 +76,9 @@ namespace Skyrim
 
 	BSFixedString* BSFixedString::Initialize(const_pointer string)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BSFixedString::Initialize)>::type>(Addresses::BSFixedString::Initialize) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&BSFixedString::Initialize)>::type>(
+			Addresses::BSFixedString::Initialize()) };
 
 		return function(this, string);
 	}

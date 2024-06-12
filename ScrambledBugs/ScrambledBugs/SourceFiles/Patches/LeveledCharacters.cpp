@@ -11,7 +11,9 @@ namespace ScrambledBugs::Patches
 {
 	void LeveledCharacters::Patch(bool& leveledCharacters)
 	{
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Patches::LeveledCharacters::GetAllBelowForce, reinterpret_cast<std::uintptr_t>(std::addressof(LeveledCharacters::GetAllBelowForce)));
+		Utility::Memory::SafeWriteAbsoluteJump(
+			Addresses::Patches::LeveledCharacters::GetAllBelowForce,
+			reinterpret_cast<std::uintptr_t>(std::addressof(LeveledCharacters::GetAllBelowForce)));
 	}
 
 	Skyrim::TESLeveledList::AllBelowForce LeveledCharacters::GetAllBelowForce(Skyrim::ExtraLevCreaModifier* extraLeveledCreatureModifier)

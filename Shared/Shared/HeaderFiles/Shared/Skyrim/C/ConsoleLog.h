@@ -23,7 +23,10 @@ namespace Skyrim
 		template <class... Arguments>
 		void PrintLine(const char* format, Arguments... arguments)
 		{
-			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<Utility::TypeTraits::MakeFunctionPointer<decltype(&ConsoleLog::PrintLine<>)>::type>::type>(Addresses::ConsoleLog::PrintLine) };
+			auto* function{ reinterpret_cast<
+				Utility::TypeTraits::AddVariadicArguments<
+					Utility::TypeTraits::MakeFunctionPointer<decltype(&ConsoleLog::PrintLine<>)>::type>::type>(
+				Addresses::ConsoleLog::PrintLine()) };
 
 			function(this, format, arguments...);
 		}

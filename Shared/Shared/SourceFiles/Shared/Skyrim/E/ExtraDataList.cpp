@@ -85,7 +85,9 @@ namespace Skyrim
 
 	bool ExtraDataList::IsQuestItem() const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&ExtraDataList::IsQuestItem)>::type>(Addresses::ExtraDataList::IsQuestItem) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&ExtraDataList::IsQuestItem)>::type>(
+			Addresses::ExtraDataList::IsQuestItem()) };
 
 		return function(this);
 	}
@@ -129,7 +131,9 @@ namespace Skyrim
 
 	void ExtraDataList::SetLockList(TESForm* lockList)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&ExtraDataList::SetLockList)>::type>(Addresses::ExtraDataList::SetLockList) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&ExtraDataList::SetLockList)>::type>(
+			Addresses::ExtraDataList::SetLockList()) };
 
 		function(this, lockList);
 	}

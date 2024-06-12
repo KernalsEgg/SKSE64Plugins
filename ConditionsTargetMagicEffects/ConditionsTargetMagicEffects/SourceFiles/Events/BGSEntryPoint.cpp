@@ -12,7 +12,7 @@ namespace ConditionsTargetMagicEffects::Events
 	void BGSEntryPoint::Register()
 	{
 		Utility::Memory::SafeWriteAbsoluteJump(
-			Skyrim::Addresses::BGSEntryPoint::HandleEntryPoint,
+			Skyrim::Addresses::BGSEntryPoint::HandleEntryPoint(),
 			reinterpret_cast<std::uintptr_t>(std::addressof(BGSEntryPoint::HandleEntryPoint)));
 	}
 

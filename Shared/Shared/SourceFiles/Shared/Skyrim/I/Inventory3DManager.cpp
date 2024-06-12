@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	Inventory3DManager* Inventory3DManager::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<Inventory3DManager**>(Addresses::Inventory3DManager::Singleton) };
+		auto** singleton{ reinterpret_cast<Inventory3DManager**>(Addresses::Inventory3DManager::Singleton()) };
 
 		return *singleton;
 	}

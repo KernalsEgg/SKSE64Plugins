@@ -14,7 +14,7 @@ namespace ScrambledBugs::Patches
 		DifficultyMultipliers::commandedActors_ = commandedActors;
 		DifficultyMultipliers::teammates_       = teammates;
 
-		Utility::Memory::SafeWriteAbsoluteJump(Skyrim::Addresses::Actor::AdjustHealthDamageToDifficulty, reinterpret_cast<std::uintptr_t>(std::addressof(DifficultyMultipliers::AdjustHealthDamageToDifficulty)));
+		Utility::Memory::SafeWriteAbsoluteJump(Skyrim::Addresses::Actor::AdjustHealthDamageToDifficulty(), reinterpret_cast<std::uintptr_t>(std::addressof(DifficultyMultipliers::AdjustHealthDamageToDifficulty)));
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Patches::DifficultyMultipliers::DamageHealth, reinterpret_cast<std::uintptr_t>(std::addressof(DifficultyMultipliers::DamageHealth)));
 	}
 
@@ -24,7 +24,9 @@ namespace ScrambledBugs::Patches
 		auto  difficultyMultiplier = Skyrim::PlayerCharacter::GetDifficultyMultiplier(
             player->difficulty,
             Skyrim::ActorValue::kHealth,
-            target == player || (DifficultyMultipliers::teammates_ && DifficultyMultipliers::IsTeammate(target)) || (DifficultyMultipliers::commandedActors_ && DifficultyMultipliers::IsCommandedActor(target)));
+            target == player ||
+                (DifficultyMultipliers::teammates_ && DifficultyMultipliers::IsTeammate(target)) ||
+                (DifficultyMultipliers::commandedActors_ && DifficultyMultipliers::IsCommandedActor(target)));
 
 		return std::abs(onlyReduceDamage) <= 0.0001F || difficultyMultiplier < 1.0F ? difficultyMultiplier * damage : damage;
 	}

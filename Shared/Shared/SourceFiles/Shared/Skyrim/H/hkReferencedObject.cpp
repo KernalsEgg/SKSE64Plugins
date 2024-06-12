@@ -11,7 +11,9 @@ namespace Skyrim
 {
 	void hkReferencedObject::AddReference() const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&hkReferencedObject::AddReference)>::type>(Addresses::hkReferencedObject::AddReference) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&hkReferencedObject::AddReference)>::type>(
+			Addresses::hkReferencedObject::AddReference()) };
 
 		function(this);
 	}
@@ -28,7 +30,9 @@ namespace Skyrim
 
 	void hkReferencedObject::RemoveReference() const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&hkReferencedObject::RemoveReference)>::type>(Addresses::hkReferencedObject::RemoveReference) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&hkReferencedObject::RemoveReference)>::type>(
+			Addresses::hkReferencedObject::RemoveReference()) };
 
 		function(this);
 	}

@@ -10,14 +10,15 @@ namespace Skyrim
 {
 	TESForm* TESDataHandler::GetForm(FormID formID)
 	{
-		auto* function{ reinterpret_cast<decltype(TESDataHandler::GetForm)*>(Addresses::TESDataHandler::GetForm) };
+		auto* function{ reinterpret_cast<decltype(TESDataHandler::GetForm)*>(
+			Addresses::TESDataHandler::GetForm()) };
 
 		return function(formID);
 	}
 
 	TESDataHandler* TESDataHandler::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<TESDataHandler**>(Addresses::TESDataHandler::Singleton) };
+		auto** singleton{ reinterpret_cast<TESDataHandler**>(Addresses::TESDataHandler::Singleton()) };
 
 		return *singleton;
 	}

@@ -18,7 +18,9 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5(Addresses::Fixes::EnchantmentCost::Compare, reinterpret_cast<std::uintptr_t>(std::addressof(EnchantmentCost::Compare)));
+		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5(
+			Addresses::Fixes::EnchantmentCost::Compare,
+			reinterpret_cast<std::uintptr_t>(std::addressof(EnchantmentCost::Compare)));
 	}
 
 	bool EnchantmentCost::Compare(Skyrim::EffectItem* left, Skyrim::EffectItem* right)

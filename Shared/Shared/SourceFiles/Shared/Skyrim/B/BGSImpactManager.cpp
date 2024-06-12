@@ -11,14 +11,16 @@ namespace Skyrim
 {
 	BGSImpactManager* BGSImpactManager::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<BGSImpactManager**>(Addresses::BGSImpactManager::Singleton) };
+		auto** singleton{ reinterpret_cast<BGSImpactManager**>(Addresses::BGSImpactManager::Singleton()) };
 
 		return *singleton;
 	}
 
 	bool BGSImpactManager::PlaySound(const SoundData& soundData) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSImpactManager::PlaySound)>::type>(Addresses::BGSImpactManager::PlaySound) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSImpactManager::PlaySound)>::type>(
+			Addresses::BGSImpactManager::PlaySound()) };
 
 		return function(this, soundData);
 	}

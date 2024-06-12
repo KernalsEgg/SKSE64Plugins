@@ -19,8 +19,12 @@ namespace ScrambledBugs::Patches
 			return;
 		}
 
-		SteepSlopes::getScale_ = reinterpret_cast<decltype(SteepSlopes::getScale_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::SteepSlopes::GetScale));
-		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5(Addresses::Patches::SteepSlopes::GetScale, reinterpret_cast<std::uintptr_t>(std::addressof(SteepSlopes::GetScale)));
+		SteepSlopes::getScale_ = reinterpret_cast<decltype(SteepSlopes::getScale_)>(
+			Utility::Memory::ReadRelativeCall5(
+				Addresses::Patches::SteepSlopes::GetScale));
+		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5(
+			Addresses::Patches::SteepSlopes::GetScale,
+			reinterpret_cast<std::uintptr_t>(std::addressof(SteepSlopes::GetScale)));
 	}
 
 	float SteepSlopes::GetScale(Skyrim::Actor* actor)

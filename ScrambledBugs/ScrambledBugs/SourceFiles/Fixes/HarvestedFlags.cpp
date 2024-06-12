@@ -20,8 +20,12 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		HarvestedFlags::setEmpty_ = reinterpret_cast<decltype(HarvestedFlags::setEmpty_)>(Utility::Memory::ReadRelativeCall5(Addresses::Fixes::HarvestedFlags::SetEmpty));
-		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5(Addresses::Fixes::HarvestedFlags::SetEmpty, reinterpret_cast<std::uintptr_t>(std::addressof(HarvestedFlags::SetEmpty)));
+		HarvestedFlags::setEmpty_ = reinterpret_cast<decltype(HarvestedFlags::setEmpty_)>(
+			Utility::Memory::ReadRelativeCall5(
+				Addresses::Fixes::HarvestedFlags::SetEmpty));
+		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5(
+			Addresses::Fixes::HarvestedFlags::SetEmpty,
+			reinterpret_cast<std::uintptr_t>(std::addressof(HarvestedFlags::SetEmpty)));
 	}
 
 	void HarvestedFlags::SetEmpty(Skyrim::TESObjectREFR* reference, bool empty)

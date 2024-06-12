@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	const NiPoint3& Precipitation::GetRainDirection()
 	{
-		auto* singleton{ reinterpret_cast<NiPoint3*>(Addresses::Precipitation::RainDirection) };
+		auto* singleton{ reinterpret_cast<NiPoint3*>(Addresses::Precipitation::RainDirection()) };
 
 		return *singleton;
 	}

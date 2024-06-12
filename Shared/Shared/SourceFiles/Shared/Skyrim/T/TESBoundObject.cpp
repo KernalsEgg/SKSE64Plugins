@@ -11,7 +11,9 @@ namespace Skyrim
 {
 	float TESBoundObject::GetWeight() const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESBoundObject::GetWeight)>::type>(Addresses::TESBoundObject::GetWeight) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESBoundObject::GetWeight)>::type>(
+			Addresses::TESBoundObject::GetWeight()) };
 
 		return function(this);
 	}

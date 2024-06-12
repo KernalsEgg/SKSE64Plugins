@@ -10,7 +10,10 @@ namespace ScrambledBugs::Patches
 {
 	void ImproveMultipleEnchantmentEffects::Patch(bool& improveMultipleEnchantmentEffects)
 	{
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(ImproveMultipleEnchantmentEffects::FunctionCallOperator)));
+		Utility::Memory::SafeWriteVirtualFunction(
+			Skyrim::Addresses::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::VirtualFunctionTable(),
+			0x1,
+			reinterpret_cast<std::uintptr_t>(std::addressof(ImproveMultipleEnchantmentEffects::FunctionCallOperator)));
 	}
 
 	Skyrim::ForEachResult ImproveMultipleEnchantmentEffects::FunctionCallOperator(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect)

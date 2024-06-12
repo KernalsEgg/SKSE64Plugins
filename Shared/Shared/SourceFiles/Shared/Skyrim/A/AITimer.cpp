@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	float AITimer::GetTimer()
 	{
-		auto* singleton{ reinterpret_cast<float*>(Addresses::AITimer::Timer) };
+		auto* singleton{ reinterpret_cast<float*>(Addresses::AITimer::Timer()) };
 
 		return *singleton;
 	}

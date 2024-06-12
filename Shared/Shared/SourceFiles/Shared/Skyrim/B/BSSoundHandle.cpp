@@ -11,7 +11,9 @@ namespace Skyrim
 {
 	bool BSSoundHandle::Play()
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BSSoundHandle::Play)>::type>(Addresses::BSSoundHandle::Play) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&BSSoundHandle::Play)>::type>(
+			Addresses::BSSoundHandle::Play()) };
 
 		return function(this);
 	}

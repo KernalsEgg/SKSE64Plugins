@@ -12,7 +12,11 @@ namespace Skyrim
 {
 	ForEachResult FindAppropriateDisplaceEffect::operator()(ActiveEffect* activeEffect)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&FindAppropriateDisplaceEffect::operator())>::type>(Utility::Memory::ReadVirtualFunction(Addresses::FindAppropriateDisplaceEffect::VirtualFunctionTable, 0x1)) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&FindAppropriateDisplaceEffect::operator())>::type>(
+			Utility::Memory::ReadVirtualFunction(
+				Addresses::FindAppropriateDisplaceEffect::VirtualFunctionTable(),
+				0x1)) };
 
 		return function(this, activeEffect);
 	}

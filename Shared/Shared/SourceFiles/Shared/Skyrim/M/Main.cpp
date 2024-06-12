@@ -10,14 +10,14 @@ namespace Skyrim
 {
 	std::uint32_t Main::GetFrameCount()
 	{
-		auto* singleton{ reinterpret_cast<std::uint32_t*>(Addresses::Main::FrameCount) };
+		auto* singleton{ reinterpret_cast<std::uint32_t*>(Addresses::Main::FrameCount()) };
 
 		return *singleton;
 	}
 
 	Main* Main::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<Main**>(Addresses::Main::Singleton) };
+		auto** singleton{ reinterpret_cast<Main**>(Addresses::Main::Singleton()) };
 
 		return *singleton;
 	}

@@ -10,11 +10,23 @@ namespace ScrambledBugs::Fixes
 {
 	void ActivateFurniture::Fix(bool& activateFurniture)
 	{
-		ActivateFurniture::activate_ = reinterpret_cast<decltype(ActivateFurniture::activate_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::TESFurniture::VirtualFunctionTable, 0x37));
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::TESFurniture::VirtualFunctionTable, 0x37, reinterpret_cast<std::uintptr_t>(std::addressof(ActivateFurniture::Activate)));
+		ActivateFurniture::activate_ = reinterpret_cast<decltype(ActivateFurniture::activate_)>(
+			Utility::Memory::ReadVirtualFunction(
+				Skyrim::Addresses::TESFurniture::VirtualFunctionTable(),
+				0x37));
+		Utility::Memory::SafeWriteVirtualFunction(
+			Skyrim::Addresses::TESFurniture::VirtualFunctionTable(),
+			0x37,
+			reinterpret_cast<std::uintptr_t>(std::addressof(ActivateFurniture::Activate)));
 	}
 
-	bool ActivateFurniture::Activate(Skyrim::TESFurniture* furniture, Skyrim::TESObjectREFR* target, Skyrim::TESObjectREFR* activator, bool deferred, Skyrim::TESBoundObject* item, std::int32_t itemCount)
+	bool ActivateFurniture::Activate(
+		Skyrim::TESFurniture*   furniture,
+		Skyrim::TESObjectREFR*  target,
+		Skyrim::TESObjectREFR*  activator,
+		bool                    deferred,
+		Skyrim::TESBoundObject* item,
+		std::int32_t            itemCount)
 	{
 		if (activator)
 		{

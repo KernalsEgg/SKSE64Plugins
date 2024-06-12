@@ -11,7 +11,9 @@ namespace Skyrim
 {
 	float ActorValueOwner::GetDualCastingEffectiveness(float cost) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&ActorValueOwner::GetDualCastingEffectiveness)>::type>(Addresses::ActorValueOwner::GetDualCastingEffectiveness) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&ActorValueOwner::GetDualCastingEffectiveness)>::type>(
+			Addresses::ActorValueOwner::GetDualCastingEffectiveness()) };
 
 		return function(this, cost);
 	}

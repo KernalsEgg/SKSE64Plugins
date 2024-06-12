@@ -96,7 +96,9 @@ namespace Skyrim
 
 	const char* InventoryEntryData::GetName() const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&InventoryEntryData::GetName)>::type>(Addresses::InventoryEntryData::GetName) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&InventoryEntryData::GetName)>::type>(
+			Addresses::InventoryEntryData::GetName()) };
 
 		return function(this);
 	}
@@ -128,7 +130,9 @@ namespace Skyrim
 
 	std::int32_t InventoryEntryData::GetValue() const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&InventoryEntryData::GetValue)>::type>(Addresses::InventoryEntryData::GetValue) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&InventoryEntryData::GetValue)>::type>(
+			Addresses::InventoryEntryData::GetValue()) };
 
 		return function(this);
 	}
@@ -158,7 +162,9 @@ namespace Skyrim
 
 	bool InventoryEntryData::IsOwnedBy(Actor* actor, TESForm* owner, bool defaultOwnership) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&InventoryEntryData::IsOwnedBy)>::type>(Addresses::InventoryEntryData::IsOwnedBy) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&InventoryEntryData::IsOwnedBy)>::type>(
+			Addresses::InventoryEntryData::IsOwnedBy()) };
 
 		return function(this, actor, owner, defaultOwnership);
 	}

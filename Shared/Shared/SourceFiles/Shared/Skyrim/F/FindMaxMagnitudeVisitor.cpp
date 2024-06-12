@@ -12,7 +12,11 @@ namespace Skyrim
 {
 	ForEachResult FindMaxMagnitudeVisitor::operator()(ActiveEffect* activeEffect)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&FindMaxMagnitudeVisitor::operator())>::type>(Utility::Memory::ReadVirtualFunction(Addresses::FindMaxMagnitudeVisitor::VirtualFunctionTable, 0x1)) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&FindMaxMagnitudeVisitor::operator())>::type>(
+			Utility::Memory::ReadVirtualFunction(
+				Addresses::FindMaxMagnitudeVisitor::VirtualFunctionTable(),
+				0x1)) };
 
 		return function(this, activeEffect);
 	}

@@ -11,7 +11,9 @@ namespace ScrambledBugs::Fixes
 {
 	void LeftHandPowerAttacks::Fix(bool& leftHandPowerAttacks)
 	{
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::LeftHandPowerAttacks::GetAttackStamina, reinterpret_cast<std::uintptr_t>(std::addressof(LeftHandPowerAttacks::GetAttackStamina)));
+		Utility::Memory::SafeWriteAbsoluteJump(
+			Addresses::Fixes::LeftHandPowerAttacks::GetAttackStamina,
+			reinterpret_cast<std::uintptr_t>(std::addressof(LeftHandPowerAttacks::GetAttackStamina)));
 	}
 
 	float LeftHandPowerAttacks::GetAttackStamina(Skyrim::ActorValueOwner* actorValueOwner, Skyrim::BGSAttackData* attackData)

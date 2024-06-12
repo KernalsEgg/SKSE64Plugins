@@ -13,7 +13,7 @@ namespace Skyrim
 
 	BGSEntryPoint* BGSEntryPoint::GetEntryPoints()
 	{
-		auto* singleton{ reinterpret_cast<BGSEntryPoint*>(Addresses::BGSEntryPoint::EntryPoints) };
+		auto* singleton{ reinterpret_cast<BGSEntryPoint*>(Addresses::BGSEntryPoint::EntryPoints()) };
 
 		return singleton;
 	}

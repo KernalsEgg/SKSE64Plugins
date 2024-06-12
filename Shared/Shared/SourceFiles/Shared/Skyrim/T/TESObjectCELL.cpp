@@ -11,14 +11,18 @@ namespace Skyrim
 {
 	BSTempEffectParticle* TESObjectCELL::CreateTemporaryEffectParticle(float duration, const char* model, const NiPoint3& normal, const NiPoint3& position, float scale, std::uint32_t flags, NiAVObject* target3D)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectCELL::CreateTemporaryEffectParticle)>::type>(Addresses::TESObjectCELL::CreateTemporaryEffectParticle) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectCELL::CreateTemporaryEffectParticle)>::type>(
+			Addresses::TESObjectCELL::CreateTemporaryEffectParticle()) };
 
 		return function(this, duration, model, normal, position, scale, flags, target3D);
 	}
 
 	bhkWorld* TESObjectCELL::GetHavokWorld() const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectCELL::GetHavokWorld)>::type>(Addresses::TESObjectCELL::GetHavokWorld) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectCELL::GetHavokWorld)>::type>(
+			Addresses::TESObjectCELL::GetHavokWorld()) };
 
 		return function(this);
 	}

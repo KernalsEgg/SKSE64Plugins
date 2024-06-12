@@ -12,7 +12,11 @@ namespace Skyrim
 {
 	ForEachResult HandleEntryPointVisitor::operator()(BGSPerkEntry* perkEntry)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&HandleEntryPointVisitor::operator())>::type>(Utility::Memory::ReadVirtualFunction(Addresses::HandleEntryPointVisitor::VirtualFunctionTable, 0x0)) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&HandleEntryPointVisitor::operator())>::type>(
+			Utility::Memory::ReadVirtualFunction(
+				Addresses::HandleEntryPointVisitor::VirtualFunctionTable(),
+				0x0)) };
 
 		return function(this, perkEntry);
 	}

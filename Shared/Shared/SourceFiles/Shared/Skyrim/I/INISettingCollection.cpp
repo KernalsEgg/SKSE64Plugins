@@ -11,14 +11,15 @@ namespace Skyrim
 {
 	INISettingCollection* INISettingCollection::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<INISettingCollection**>(Addresses::INISettingCollection::Singleton) };
+		auto** singleton{ reinterpret_cast<INISettingCollection**>(Addresses::INISettingCollection::Singleton()) };
 
 		return *singleton;
 	}
 
 	void INISettingCollection::InitializeCollection()
 	{
-		auto* function{ reinterpret_cast<decltype(INISettingCollection::InitializeCollection)*>(Addresses::INISettingCollection::InitializeCollection) };
+		auto* function{ reinterpret_cast<decltype(INISettingCollection::InitializeCollection)*>(
+			Addresses::INISettingCollection::InitializeCollection()) };
 
 		function();
 	}
@@ -32,7 +33,9 @@ namespace Skyrim
 
 	Setting* INISettingCollection::GetSetting(const char* name) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&INISettingCollection::GetSetting)>::type>(Addresses::INISettingCollection::GetSetting) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&INISettingCollection::GetSetting)>::type>(
+			Addresses::INISettingCollection::GetSetting()) };
 
 		return function(this, name);
 	}

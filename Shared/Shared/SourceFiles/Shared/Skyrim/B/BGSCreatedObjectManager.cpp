@@ -11,14 +11,16 @@ namespace Skyrim
 {
 	BGSCreatedObjectManager* BGSCreatedObjectManager::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<BGSCreatedObjectManager**>(Addresses::BGSCreatedObjectManager::Singleton) };
+		auto** singleton{ reinterpret_cast<BGSCreatedObjectManager**>(Addresses::BGSCreatedObjectManager::Singleton()) };
 
 		return *singleton;
 	}
 
 	void BGSCreatedObjectManager::DecrementReference(AlchemyItem* potion)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSCreatedObjectManager::DecrementReference)>::type>(Addresses::BGSCreatedObjectManager::DecrementReference) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSCreatedObjectManager::DecrementReference)>::type>(
+			Addresses::BGSCreatedObjectManager::DecrementReference()) };
 
 		function(this, potion);
 	}

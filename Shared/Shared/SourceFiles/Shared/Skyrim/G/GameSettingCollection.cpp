@@ -11,14 +11,15 @@ namespace Skyrim
 {
 	GameSettingCollection* GameSettingCollection::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<GameSettingCollection**>(Addresses::GameSettingCollection::Singleton) };
+		auto** singleton{ reinterpret_cast<GameSettingCollection**>(Addresses::GameSettingCollection::Singleton()) };
 
 		return *singleton;
 	}
 
 	void GameSettingCollection::InitializeCollection()
 	{
-		auto* function{ reinterpret_cast<decltype(GameSettingCollection::InitializeCollection)*>(Addresses::GameSettingCollection::InitializeCollection) };
+		auto* function{ reinterpret_cast<decltype(GameSettingCollection::InitializeCollection)*>(
+			Addresses::GameSettingCollection::InitializeCollection()) };
 
 		function();
 	}
@@ -32,7 +33,9 @@ namespace Skyrim
 
 	Setting* GameSettingCollection::GetSetting(const char* name) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&GameSettingCollection::GetSetting)>::type>(Addresses::GameSettingCollection::GetSetting) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&GameSettingCollection::GetSetting)>::type>(
+			Addresses::GameSettingCollection::GetSetting()) };
 
 		return function(this, name);
 	}

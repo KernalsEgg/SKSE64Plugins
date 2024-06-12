@@ -10,7 +10,8 @@ namespace Skyrim
 {
 	IFormFactory* IFormFactory::GetFormFactory(Utility::Enumeration<FormType, std::uint8_t> formType)
 	{
-		auto* function{ reinterpret_cast<decltype(IFormFactory::GetFormFactory)*>(Addresses::IFormFactory::GetFormFactory) };
+		auto* function{ reinterpret_cast<decltype(IFormFactory::GetFormFactory)*>(
+			Addresses::IFormFactory::GetFormFactory()) };
 
 		return function(formType);
 	}

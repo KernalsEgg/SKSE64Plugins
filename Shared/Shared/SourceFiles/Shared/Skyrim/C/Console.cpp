@@ -48,7 +48,7 @@ namespace Skyrim
 
 	ObjectReferenceHandle Console::GetSelectedReferenceHandle()
 	{
-		auto* singleton{ reinterpret_cast<ObjectReferenceHandle*>(Addresses::Console::SelectedReferenceHandle) };
+		auto* singleton{ reinterpret_cast<ObjectReferenceHandle*>(Addresses::Console::SelectedReferenceHandle()) };
 
 		return *singleton;
 	}

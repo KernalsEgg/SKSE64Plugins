@@ -14,7 +14,10 @@ namespace ScrambledBugs::Patches
 		SoulGems::black_       = black;
 		SoulGems::underfilled_ = underfilled;
 
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::InventoryChanges::FindBestSoulGemVisitor::VirtualFunctionTable, 0x1, reinterpret_cast<std::uintptr_t>(std::addressof(SoulGems::FunctionCallOperator)));
+		Utility::Memory::SafeWriteVirtualFunction(
+			Skyrim::Addresses::InventoryChanges::FindBestSoulGemVisitor::VirtualFunctionTable(),
+			0x1,
+			reinterpret_cast<std::uintptr_t>(std::addressof(SoulGems::FunctionCallOperator)));
 	}
 
 	Skyrim::ForEachResult SoulGems::FunctionCallOperator(Skyrim::InventoryChanges::FindBestSoulGemVisitor* findBestSoulGemVisitor, Skyrim::InventoryEntryData* inventoryEntryData)
@@ -77,7 +80,8 @@ namespace ScrambledBugs::Patches
 								                                      std::make_optional(Utility::Enumeration<Skyrim::TESSoulGem::RecordFlags, std::uint32_t>(bestSoulGem->recordFlags).all(Skyrim::TESSoulGem::RecordFlags::kCanHoldNPCSoul)) :
 								                                      std::nullopt;
 
-								if (!bestSoulGem || bestSoulGemSoulLevelValue.value() > soulGemSoulLevelValue ||
+								if (!bestSoulGem ||
+									bestSoulGemSoulLevelValue.value() > soulGemSoulLevelValue ||
 									(!targetIsNPC && bestSoulGemSoulLevelValue.value() == soulGemSoulLevelValue && bestSoulGemCanHoldNPCSoul.value() && !soulGemCanHoldNPCSoul))
 								{
 									findBestSoulGemVisitor->bestSoulGem = soulGem;

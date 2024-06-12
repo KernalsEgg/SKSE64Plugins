@@ -11,13 +11,13 @@ namespace ActorBasePerkFix
 {
 	void Events::Register()
 	{
-		Events::applyBasePerksActor_           = reinterpret_cast<decltype(Events::applyBasePerksActor_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::Actor::VirtualFunctionTable, 0x101));
-		Events::applyBasePerksCharacter_       = reinterpret_cast<decltype(Events::applyBasePerksCharacter_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::Character::VirtualFunctionTable, 0x101));
-		Events::applyBasePerksPlayerCharacter_ = reinterpret_cast<decltype(Events::applyBasePerksPlayerCharacter_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::PlayerCharacter::VirtualFunctionTable, 0x101));
+		Events::applyBasePerksActor_           = reinterpret_cast<decltype(Events::applyBasePerksActor_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::Actor::VirtualFunctionTable(), 0x101));
+		Events::applyBasePerksCharacter_       = reinterpret_cast<decltype(Events::applyBasePerksCharacter_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::Character::VirtualFunctionTable(), 0x101));
+		Events::applyBasePerksPlayerCharacter_ = reinterpret_cast<decltype(Events::applyBasePerksPlayerCharacter_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::PlayerCharacter::VirtualFunctionTable(), 0x101));
 
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::Actor::VirtualFunctionTable, 0x101, reinterpret_cast<std::uintptr_t>(std::addressof(Events::ApplyBasePerksActor)));
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::Character::VirtualFunctionTable, 0x101, reinterpret_cast<std::uintptr_t>(std::addressof(Events::ApplyBasePerksCharacter)));
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::PlayerCharacter::VirtualFunctionTable, 0x101, reinterpret_cast<std::uintptr_t>(std::addressof(Events::ApplyBasePerksPlayerCharacter)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::Actor::VirtualFunctionTable(), 0x101, reinterpret_cast<std::uintptr_t>(std::addressof(Events::ApplyBasePerksActor)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::Character::VirtualFunctionTable(), 0x101, reinterpret_cast<std::uintptr_t>(std::addressof(Events::ApplyBasePerksCharacter)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::PlayerCharacter::VirtualFunctionTable(), 0x101, reinterpret_cast<std::uintptr_t>(std::addressof(Events::ApplyBasePerksPlayerCharacter)));
 
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::TaskQueueInterface::QueueApplyPerk, reinterpret_cast<std::uintptr_t>(std::addressof(Events::QueueApplyPerk)));
 	}

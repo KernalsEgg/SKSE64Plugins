@@ -21,35 +21,45 @@ namespace Skyrim
 {
 	bool Actor::AddSpell(SpellItem* spell)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::AddSpell)>::type>(Addresses::Actor::AddSpell) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::AddSpell)>::type>(
+			Addresses::Actor::AddSpell()) };
 
 		return function(this, spell);
 	}
 
 	float Actor::AdjustHealthDamageToDifficulty(float damage, float onlyReduceDamage) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::AdjustHealthDamageToDifficulty)>::type>(Addresses::Actor::AdjustHealthDamageToDifficulty) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::AdjustHealthDamageToDifficulty)>::type>(
+			Addresses::Actor::AdjustHealthDamageToDifficulty()) };
 
 		return function(this, damage, onlyReduceDamage);
 	}
 
 	bool Actor::CanBeKilledBy(Actor* attacker) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::CanBeKilledBy)>::type>(Addresses::Actor::CanBeKilledBy) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::CanBeKilledBy)>::type>(
+			Addresses::Actor::CanBeKilledBy()) };
 
 		return function(this, attacker);
 	}
 
 	float Actor::GetActorValueModifier(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetActorValueModifier)>::type>(Addresses::Actor::GetActorValueModifier) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetActorValueModifier)>::type>(
+			Addresses::Actor::GetActorValueModifier()) };
 
 		return function(this, actorValueModifier, actorValue);
 	}
 
 	float Actor::GetArmorRating(InventoryEntryData* inventoryEntryData) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetArmorRating)>::type>(Addresses::Actor::GetArmorRating) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetArmorRating)>::type>(
+			Addresses::Actor::GetArmorRating()) };
 
 		return function(this, inventoryEntryData);
 	}
@@ -70,7 +80,9 @@ namespace Skyrim
 
 	bool Actor::GetControllingActor(NiPointer<Actor>& controllingActor)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetControllingActor)>::type>(Addresses::Actor::GetControllingActor) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetControllingActor)>::type>(
+			Addresses::Actor::GetControllingActor()) };
 
 		return function(this, controllingActor);
 	}
@@ -154,7 +166,9 @@ namespace Skyrim
 
 	NiPoint3& Actor::GetLineOfSightLocation(NiPoint3& result, Utility::Enumeration<LineOfSightLocation, std::uint32_t> lineOfSightLocation) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetLineOfSightLocation)>::type>(Addresses::Actor::GetLineOfSightLocation) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetLineOfSightLocation)>::type>(
+			Addresses::Actor::GetLineOfSightLocation()) };
 
 		return function(this, result, lineOfSightLocation);
 	}
@@ -208,7 +222,9 @@ namespace Skyrim
 
 	SoulLevel Actor::GetSoulLevel() const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetSoulLevel)>::type>(Addresses::Actor::GetSoulLevel) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetSoulLevel)>::type>(
+			Addresses::Actor::GetSoulLevel()) };
 
 		return function(this);
 	}
@@ -222,21 +238,27 @@ namespace Skyrim
 
 	float Actor::GetWeaponDamage(InventoryEntryData* inventoryEntryData) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetWeaponDamage)>::type>(Addresses::Actor::GetWeaponDamage) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::GetWeaponDamage)>::type>(
+			Addresses::Actor::GetWeaponDamage()) };
 
 		return function(this, inventoryEntryData);
 	}
 
 	void Actor::HandleActorValueModified(Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float oldValue, float deltaValue, Actor* source)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::HandleActorValueModified)>::type>(Addresses::Actor::HandleActorValueModified) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::HandleActorValueModified)>::type>(
+			Addresses::Actor::HandleActorValueModified()) };
 
 		function(this, actorValue, oldValue, deltaValue, source);
 	}
 
 	Actor::LineOfSightLocation Actor::IsActorInLineOfSight(Actor* target, float viewCone) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::IsActorInLineOfSight)>::type>(Addresses::Actor::IsActorInLineOfSight) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::IsActorInLineOfSight)>::type>(
+			Addresses::Actor::IsActorInLineOfSight()) };
 
 		return function(this, target, viewCone);
 	}
@@ -286,14 +308,18 @@ namespace Skyrim
 
 	NiAVObject* Actor::IsPositionInLineOfSight(const NiPoint3& target, NiPoint3& result, float viewCone) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::IsPositionInLineOfSight)>::type>(Addresses::Actor::IsPositionInLineOfSight) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::IsPositionInLineOfSight)>::type>(
+			Addresses::Actor::IsPositionInLineOfSight()) };
 
 		return function(this, target, result, viewCone);
 	}
 
 	bool Actor::IsReferenceInLineOfSight(TESObjectREFR* target, float viewCone) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::IsReferenceInLineOfSight)>::type>(Addresses::Actor::IsReferenceInLineOfSight) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::IsReferenceInLineOfSight)>::type>(
+			Addresses::Actor::IsReferenceInLineOfSight()) };
 
 		return function(this, target, viewCone);
 	}
@@ -305,21 +331,27 @@ namespace Skyrim
 
 	void Actor::ModifyActorValue(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue, float value, Actor* source)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::ModifyActorValue)>::type>(Addresses::Actor::ModifyActorValue) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::ModifyActorValue)>::type>(
+			Addresses::Actor::ModifyActorValue()) };
 
 		function(this, actorValueModifier, actorValue, value, source);
 	}
 
 	void Actor::RemoveActorValueModifiers(Utility::Enumeration<ActorValue, std::uint32_t> actorValue)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::RemoveActorValueModifiers)>::type>(Addresses::Actor::RemoveActorValueModifiers) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::RemoveActorValueModifiers)>::type>(
+			Addresses::Actor::RemoveActorValueModifiers()) };
 
 		function(this, actorValue);
 	}
 
 	void Actor::RemoveBasePerks()
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::RemoveBasePerks)>::type>(Addresses::Actor::RemoveBasePerks) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::RemoveBasePerks)>::type>(
+			Addresses::Actor::RemoveBasePerks()) };
 
 		function(this);
 	}
@@ -338,7 +370,9 @@ namespace Skyrim
 
 	void Actor::SetSelectedSpell(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource, MagicItem* selectedSpell)
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::SetSelectedSpell)>::type>(Addresses::Actor::SetSelectedSpell) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::SetSelectedSpell)>::type>(
+			Addresses::Actor::SetSelectedSpell()) };
 
 		function(this, castingSource, selectedSpell);
 	}

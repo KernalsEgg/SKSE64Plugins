@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	BGSFootstepManager* BGSFootstepManager::GetSingleton()
 	{
-		auto** singleton{ reinterpret_cast<BGSFootstepManager**>(Addresses::BGSFootstepManager::Singleton) };
+		auto** singleton{ reinterpret_cast<BGSFootstepManager**>(Addresses::BGSFootstepManager::Singleton()) };
 
 		return *singleton;
 	}

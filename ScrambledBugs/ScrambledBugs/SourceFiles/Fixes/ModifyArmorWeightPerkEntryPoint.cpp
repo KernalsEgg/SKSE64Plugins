@@ -11,13 +11,15 @@ namespace ScrambledBugs::Fixes
 {
 	void ModifyArmorWeightPerkEntryPoint::Fix(bool& modifyArmorWeightPerkEntryPoint)
 	{
-		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::ModifyArmorWeightPerkEntryPoint::GetInventoryWeight, reinterpret_cast<std::uintptr_t>(std::addressof(ModifyArmorWeightPerkEntryPoint::GetInventoryWeight)));
+		Utility::Memory::SafeWriteAbsoluteJump(
+			Addresses::Fixes::ModifyArmorWeightPerkEntryPoint::GetInventoryWeight,
+			reinterpret_cast<std::uintptr_t>(std::addressof(ModifyArmorWeightPerkEntryPoint::GetInventoryWeight)));
 
-		ModifyArmorWeightPerkEntryPoint::applyPerkEntry_ = reinterpret_cast<decltype(ModifyArmorWeightPerkEntryPoint::applyPerkEntry_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xA));
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)));
+		ModifyArmorWeightPerkEntryPoint::applyPerkEntry_  = reinterpret_cast<decltype(ModifyArmorWeightPerkEntryPoint::applyPerkEntry_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable(), 0xA));
+		ModifyArmorWeightPerkEntryPoint::removePerkEntry_ = reinterpret_cast<decltype(ModifyArmorWeightPerkEntryPoint::removePerkEntry_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable(), 0xB));
 
-		ModifyArmorWeightPerkEntryPoint::removePerkEntry_ = reinterpret_cast<decltype(ModifyArmorWeightPerkEntryPoint::removePerkEntry_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xB));
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable, 0xB, reinterpret_cast<std::uintptr_t>(std::addressof(ModifyArmorWeightPerkEntryPoint::RemovePerkEntry)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable(), 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::BGSEntryPointPerkEntry::VirtualFunctionTable(), 0xB, reinterpret_cast<std::uintptr_t>(std::addressof(ModifyArmorWeightPerkEntryPoint::RemovePerkEntry)));
 	}
 
 	void ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner)
@@ -85,7 +87,11 @@ namespace ScrambledBugs::Fixes
 										{
 											auto armorWeight = itemWeight;
 
-											Skyrim::BGSEntryPoint::HandleEntryPoint(Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight, ownerActor, item, std::addressof(armorWeight));
+											Skyrim::BGSEntryPoint::HandleEntryPoint(
+												Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight,
+												ownerActor,
+												item,
+												std::addressof(armorWeight));
 
 											inventoryWeight += armorWeight;
 											--itemCount;
@@ -143,7 +149,11 @@ namespace ScrambledBugs::Fixes
 									{
 										auto armorWeight = itemWeight;
 
-										Skyrim::BGSEntryPoint::HandleEntryPoint(Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight, ownerActor, item, std::addressof(armorWeight));
+										Skyrim::BGSEntryPoint::HandleEntryPoint(
+											Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight,
+											ownerActor,
+											item,
+											std::addressof(armorWeight));
 
 										inventoryWeight += armorWeight;
 										--itemCount;
@@ -162,7 +172,11 @@ namespace ScrambledBugs::Fixes
 
 		if (ownerActor)
 		{
-			ownerActor->HandleActorValueModified(Skyrim::ActorValue::kInventoryWeight, inventoryChanges->previousInventoryWeight, inventoryWeight - inventoryChanges->previousInventoryWeight, nullptr);
+			ownerActor->HandleActorValueModified(
+				Skyrim::ActorValue::kInventoryWeight,
+				inventoryChanges->previousInventoryWeight,
+				inventoryWeight - inventoryChanges->previousInventoryWeight,
+				nullptr);
 		}
 
 		return inventoryChanges->currentInventoryWeight;

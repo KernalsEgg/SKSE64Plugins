@@ -11,8 +11,8 @@ namespace ConditionsTargetMagicEffects::Events
 {
 	void DualValueModifierEffect::Register()
 	{
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::DualValueModifierEffect::VirtualFunctionTable, 0x0, reinterpret_cast<std::uintptr_t>(std::addressof(DualValueModifierEffect::AdjustForPerks)));
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::EnhanceWeaponEffect::VirtualFunctionTable, 0x0, reinterpret_cast<std::uintptr_t>(std::addressof(DualValueModifierEffect::AdjustForPerks)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::DualValueModifierEffect::VirtualFunctionTable(), 0x0, reinterpret_cast<std::uintptr_t>(std::addressof(DualValueModifierEffect::AdjustForPerks)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::EnhanceWeaponEffect::VirtualFunctionTable(), 0x0, reinterpret_cast<std::uintptr_t>(std::addressof(DualValueModifierEffect::AdjustForPerks)));
 	}
 
 	void DualValueModifierEffect::AdjustForPerks(Skyrim::DualValueModifierEffect* dualValueModifierEffect, Skyrim::Actor* caster, Skyrim::MagicTarget* magicTarget)

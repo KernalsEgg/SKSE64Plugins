@@ -26,7 +26,10 @@ namespace Skyrim
 		template <class... Arguments>
 		void QueueScriptFunctionCall(Utility::Enumeration<ScriptOutput, std::uint32_t> scriptOutput, TESObjectREFR* reference, Arguments... arguments)
 		{
-			auto* function{ reinterpret_cast<Utility::TypeTraits::AddVariadicArguments<Utility::TypeTraits::MakeFunctionPointer<decltype(&TaskQueueInterface::QueueScriptFunctionCall<>)>::type>::type>(Addresses::TaskQueueInterface::QueueScriptFunctionCall) };
+			auto* function{ reinterpret_cast<
+				Utility::TypeTraits::AddVariadicArguments<
+					Utility::TypeTraits::MakeFunctionPointer<decltype(&TaskQueueInterface::QueueScriptFunctionCall<>)>::type>::type>(
+				Addresses::TaskQueueInterface::QueueScriptFunctionCall()) };
 
 			function(this, scriptOutput, reference, arguments...);
 		}

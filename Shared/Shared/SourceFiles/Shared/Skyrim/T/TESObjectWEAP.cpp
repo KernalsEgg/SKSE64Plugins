@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	TESObjectWEAP* TESObjectWEAP::GetUnarmedWeapon()
 	{
-		auto** singleton{ reinterpret_cast<TESObjectWEAP**>(Addresses::TESObjectWEAP::UnarmedWeapon) };
+		auto** singleton{ reinterpret_cast<TESObjectWEAP**>(Addresses::TESObjectWEAP::UnarmedWeapon()) };
 
 		return *singleton;
 	}

@@ -16,14 +16,18 @@ namespace Skyrim
 
 	void TESCondition::Clear()
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESCondition::Clear)>::type>(Addresses::TESCondition::Clear) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESCondition::Clear)>::type>(
+			Addresses::TESCondition::Clear()) };
 
 		function(this);
 	}
 
 	bool TESCondition::IsTrue(TESObjectREFR* subject, TESObjectREFR* target) const
 	{
-		auto* function{ reinterpret_cast<Utility::TypeTraits::MakeFunctionPointer<decltype(&TESCondition::IsTrue)>::type>(Addresses::TESCondition::IsTrue) };
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESCondition::IsTrue)>::type>(
+			Addresses::TESCondition::IsTrue()) };
 
 		return function(this, subject, target);
 	}

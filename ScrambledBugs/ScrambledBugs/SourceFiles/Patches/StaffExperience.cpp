@@ -13,9 +13,14 @@ namespace ScrambledBugs::Patches
 	{
 		StaffExperience::ignoreEnchantmentCost_ = staffExperienceIgnoreEnchantmentCost;
 
-		StaffExperience::getSkillUsageDataEnchantment_ = reinterpret_cast<decltype(StaffExperience::getSkillUsageDataEnchantment_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::EnchantmentItem::VirtualFunctionTable, 0x60));
-
-		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::EnchantmentItem::VirtualFunctionTable, 0x60, reinterpret_cast<std::uintptr_t>(std::addressof(StaffExperience::GetSkillUsageDataEnchantment)));
+		StaffExperience::getSkillUsageDataEnchantment_ = reinterpret_cast<decltype(StaffExperience::getSkillUsageDataEnchantment_)>(
+			Utility::Memory::ReadVirtualFunction(
+				Skyrim::Addresses::EnchantmentItem::VirtualFunctionTable(),
+				0x60));
+		Utility::Memory::SafeWriteVirtualFunction(
+			Skyrim::Addresses::EnchantmentItem::VirtualFunctionTable(),
+			0x60,
+			reinterpret_cast<std::uintptr_t>(std::addressof(StaffExperience::GetSkillUsageDataEnchantment)));
 	}
 
 	bool StaffExperience::GetSkillUsageDataEnchantment(Skyrim::EnchantmentItem* enchantment, Skyrim::MagicItem::SkillUsageData& skillUsageData)
