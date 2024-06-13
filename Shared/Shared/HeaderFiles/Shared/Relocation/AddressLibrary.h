@@ -94,7 +94,6 @@ namespace Relocation
 			return result;
 		}
 
-		void           Dump(const std::filesystem::path& path) const;
 		std::uintptr_t GetAddress(std::uint64_t identifier) const;
 
 	private:

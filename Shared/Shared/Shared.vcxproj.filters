@@ -2252,5 +2252,8 @@
     <ClCompile Include="SourceFiles\Shared\SKSE\Storage.cpp">
       <Filter>Source Files\Shared\SKSE</Filter>
     </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\Addresses.cpp">
+      <Filter>Source Files\Shared\Skyrim</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

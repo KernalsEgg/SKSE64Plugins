@@ -20,21 +20,13 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
+		ImpactEffectCrash::decalApplier_ = reinterpret_cast<decltype(ImpactEffectCrash::decalApplier_)>(Utility::Memory::ReadRelativeCall5(Addresses::Fixes::ImpactEffectCrash::DecalApplier));
+		ImpactEffectCrash::updateDecals_ = reinterpret_cast<decltype(ImpactEffectCrash::updateDecals_)>(Utility::Memory::ReadRelativeCall5(Addresses::Fixes::ImpactEffectCrash::UpdateDecals));
+
 		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
 
-		ImpactEffectCrash::decalApplier_ = reinterpret_cast<decltype(ImpactEffectCrash::decalApplier_)>(
-			Utility::Memory::ReadRelativeCall5(
-				Addresses::Fixes::ImpactEffectCrash::DecalApplier));
-		trampolineInterface->RelativeCall5(
-			Addresses::Fixes::ImpactEffectCrash::DecalApplier,
-			reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::DecalApplier)));
-
-		ImpactEffectCrash::updateDecals_ = reinterpret_cast<decltype(ImpactEffectCrash::updateDecals_)>(
-			Utility::Memory::ReadRelativeCall5(
-				Addresses::Fixes::ImpactEffectCrash::UpdateDecals));
-		trampolineInterface->RelativeCall5(
-			Addresses::Fixes::ImpactEffectCrash::UpdateDecals,
-			reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::UpdateDecals)));
+		trampolineInterface->RelativeCall5(Addresses::Fixes::ImpactEffectCrash::DecalApplier, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::DecalApplier)));
+		trampolineInterface->RelativeCall5(Addresses::Fixes::ImpactEffectCrash::UpdateDecals, reinterpret_cast<std::uintptr_t>(std::addressof(ImpactEffectCrash::UpdateDecals)));
 	}
 
 	bool ImpactEffectCrash::DecalApplier(Skyrim::BSTempEffectSimpleDecal* temporaryEffectSimpleDecal)

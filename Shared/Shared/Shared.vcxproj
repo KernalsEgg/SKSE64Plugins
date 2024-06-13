@@ -603,6 +603,7 @@
     <ClCompile Include="SourceFiles\Shared\SKSE\Storage.cpp" />
     <ClCompile Include="SourceFiles\Shared\SKSE\TaskInterface.cpp" />
     <ClCompile Include="SourceFiles\Shared\SKSE\TrampolineInterface.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\Addresses.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActiveEffect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\Actor.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\A\ActorEquipManager.cpp" />

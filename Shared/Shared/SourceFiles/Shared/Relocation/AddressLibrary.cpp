@@ -72,18 +72,6 @@ namespace Relocation
 		return singleton;
 	}
 
-	void AddressLibrary::Dump(const std::filesystem::path& path) const
-	{
-		std::ofstream outputFileStream(path, std::ios::out | std::ios::trunc);
-
-		outputFileStream << "Identifier,Offset";
-
-		for (const auto& element : this->span_)
-		{
-			outputFileStream << std::format("{},0x{:X}", element.identifier, element.offset) << std::endl;
-		}
-	}
-
 	std::uintptr_t AddressLibrary::GetAddress(std::uint64_t identifier) const
 	{
 		if (this->span_.empty())
