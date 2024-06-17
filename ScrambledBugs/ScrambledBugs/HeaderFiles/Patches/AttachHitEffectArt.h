@@ -12,8 +12,10 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& attachHitEffectArt);
 
 	private:
-		static Skyrim::Actor* GetTargetActor(Skyrim::ModelReferenceEffect* modelReferenceEffect);
+		static bool GetStackable(Skyrim::ModelReferenceEffect* modelReferenceEffect);
+		static bool GetStackableMatch(Skyrim::ModelReferenceEffect* modelReferenceEffect, Skyrim::BSTempEffect* temporaryEffect);
+		static void Pop(Skyrim::ModelReferenceEffect* modelReferenceEffect);
 
-		static decltype(AttachHitEffectArt::GetTargetActor)* getTargetActor_;
+		static decltype(AttachHitEffectArt::Pop)* pop_;
 	};
 }

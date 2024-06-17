@@ -20,15 +20,15 @@ namespace Skyrim
 		virtual ~ReferenceEffect() override; // 0
 
 		// Override (BSTempEffect)
-		virtual const NiRTTI* GetRTTI() const override;          // 2
-		virtual void          Unknown27(BSTempEffect*) override; // 27
-		virtual void          Unknown28(BSTempEffect*) override; // 28
-		virtual void          Unknown2A(BSTempEffect*) override; // 2A
-		virtual void          Unknown2B(BSTempEffect*) override; // 2B
-		virtual void          Unknown2C(BSTempEffect*) override; // 2C
-		virtual void          Unknown2D(BSTempEffect*) override; // 2D
-		virtual void          Unknown2E(BSTempEffect*) override; // 2E
-		virtual void          Unknown2F(BSTempEffect*) override; // 2F
+		virtual const NiRTTI*      GetRTTI() const override;          // 2
+		virtual void               Unknown27(BSTempEffect*) override; // 27
+		virtual void               Unknown28(BSTempEffect*) override; // 28
+		virtual void               Unknown2A(BSTempEffect*) override; // 2A
+		virtual void               Unknown2B(BSTempEffect*) override; // 2B
+		virtual BSTempEffect::Type GetType() const override;          // 2C
+		virtual void               Unknown2D(BSTempEffect*) override; // 2D
+		virtual void               Unknown2E(BSTempEffect*) override; // 2E
+		virtual void               Unknown2F(BSTempEffect*) override; // 2F
 
 		// Add
 		virtual void Unknown36(ReferenceEffect*); // 36

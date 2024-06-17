@@ -100,17 +100,13 @@ namespace Relocation
 
 	void AddressLibrary::Load(const Version<std::int32_t>& productVersion)
 	{
-		std::filesystem::path inputFileStreamPath = Executable::GetSingleton().GetPath().parent_path();
-
-		inputFileStreamPath /= "Data";
-		inputFileStreamPath /= "SKSE";
-		inputFileStreamPath /= "Plugins";
-		inputFileStreamPath /= std::format(
-			SKYRIM_RELOCATE("version-{}-{}-{}-{}.bin", "versionlib-{}-{}-{}-{}.bin"),
-			productVersion.major,
-			productVersion.minor,
-			productVersion.revision,
-			productVersion.build);
+		std::filesystem::path inputFileStreamPath = Executable::GetSingleton().GetPath().parent_path() / "Data" / "SKSE" / "Plugins" /
+		                                            std::format(
+														SKYRIM_RELOCATE("version-{}-{}-{}-{}.bin", "versionlib-{}-{}-{}-{}.bin"),
+														productVersion.major,
+														productVersion.minor,
+														productVersion.revision,
+														productVersion.build);
 
 		std::ifstream inputFileStream(inputFileStreamPath, std::ios::in | std::ios::binary);
 

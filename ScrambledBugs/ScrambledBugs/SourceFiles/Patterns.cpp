@@ -129,38 +129,6 @@ namespace ScrambledBugs::Patterns
 
 		namespace AttachHitEffectArt
 		{
-			bool GetTargetActor()
-			{
-				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::AttachHitEffectArt::GetTargetActor, // 0x5
-					0xE8ui8, std::optional<std::int32_t>{}                  // call ReferenceEffect::GetTargetActor
-				);
-			}
-
-			bool IsPerspectiveChange()
-			{
-				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::AttachHitEffectArt::IsPerspectiveChange, // 0x2
-					0x74ui8, 0x6Fui8                                             // je 6F
-				);
-			}
-
-			bool IsPlayerReattach()
-			{
-				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::AttachHitEffectArt::IsPlayerReattach, // 0x2
-					0x75ui8, 0x4Bui8                                          // jne 4B
-				);
-			}
-
-			bool IsPlayerUpdatePosition()
-			{
-				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, // 0x6
-					0x0Fui8, 0x85ui8, 0xA8ui32                                      // jne A8
-				);
-			}
-
 			bool SetCastPermanentMagicFunctorFlags()
 			{
 				return Relocation::AddressLibrary::MatchPattern(

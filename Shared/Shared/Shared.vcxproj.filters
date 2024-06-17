@@ -2255,5 +2255,8 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\Addresses.cpp">
       <Filter>Source Files\Shared\Skyrim</Filter>
     </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\M\ModelReferenceEffect.cpp">
+      <Filter>Source Files\Shared\Skyrim\M</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

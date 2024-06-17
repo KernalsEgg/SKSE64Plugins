@@ -100,7 +100,7 @@ namespace ScrambledBugs::Addresses
 		namespace TerrainDecals
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x271BE0 + 0xE7 (18711), 1.6.318.0: SkyrimSE.exe + 0x27FC50</summary>
-			inline const std::uintptr_t FreeCellMopp{ Relocation::AddressLibrary::GetSingleton().GetAddress(19130) + 0x24E }; // TESObjectCELL::Detach
+			inline const std::uintptr_t FreeCellMopp{ Relocation::AddressLibrary::GetSingleton().GetAddress(19130) + 0x24E }; // TESObjectCELL::DetachHavok
 		}
 
 		namespace TrainingMenu
@@ -129,18 +129,6 @@ namespace ScrambledBugs::Addresses
 
 		namespace AttachHitEffectArt
 		{
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x558F20 + 0x1E (33872), 1.6.318.0: SkyrimSE.exe + 0x573E60</summary>
-			inline const std::uintptr_t GetTargetActor{ Relocation::AddressLibrary::GetSingleton().GetAddress(34658) + 0xB9 }; // ModelReferenceEffect::UpdatePosition
-
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x558220 + 0x9A (33862), 1.6.318.0: SkyrimSE.exe + 0x573E60</summary>
-			inline const std::uintptr_t IsPerspectiveChange{ Relocation::AddressLibrary::GetSingleton().GetAddress(34658) + 0xA9 }; // ModelReferenceEffect::UpdatePosition
-
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x558F20 + 0x32 (33872), 1.6.318.0: SkyrimSE.exe + 0x573E60</summary>
-			inline const std::uintptr_t IsPlayerReattach{ Relocation::AddressLibrary::GetSingleton().GetAddress(34658) + 0xCD }; // ModelReferenceEffect::UpdatePosition
-
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x558220 + 0x7C (33862), 1.6.318.0: SkyrimSE.exe + 0x573E60</summary>
-			inline const std::uintptr_t IsPlayerUpdatePosition{ Relocation::AddressLibrary::GetSingleton().GetAddress(34658) + 0x83 }; // ModelReferenceEffect::UpdatePosition
-
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x6314F0 + 0x6F (37804), 1.6.318.0: SkyrimSE.exe + 0x657450</summary>
 			inline const std::uintptr_t SetCastPermanentMagicFunctorFlags{ Relocation::AddressLibrary::GetSingleton().GetAddress(38753) + 0x6F }; // Actor::CastPermanentMagic
 		}

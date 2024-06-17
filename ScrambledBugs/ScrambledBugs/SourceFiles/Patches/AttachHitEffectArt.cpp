@@ -12,20 +12,12 @@ namespace ScrambledBugs::Patches
 {
 	void AttachHitEffectArt::Patch(bool& attachHitEffectArt)
 	{
-		if (!Patterns::Patches::AttachHitEffectArt::GetTargetActor() ||
-			!Patterns::Patches::AttachHitEffectArt::IsPerspectiveChange() ||
-			!Patterns::Patches::AttachHitEffectArt::IsPlayerReattach() ||
-			!Patterns::Patches::AttachHitEffectArt::IsPlayerUpdatePosition() ||
-			!Patterns::Patches::AttachHitEffectArt::SetCastPermanentMagicFunctorFlags())
+		if (!Patterns::Patches::AttachHitEffectArt::SetCastPermanentMagicFunctorFlags())
 		{
 			attachHitEffectArt = false;
 
 			return;
 		}
-
-		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPerspectiveChange, std::optional<std::uint8_t>{}, 0x00ui8);
-		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerReattach, std::optional<std::uint8_t>{}, 0x00ui8);
-		Utility::Memory::SafeWrite(Addresses::Patches::AttachHitEffectArt::IsPlayerUpdatePosition, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, 0x00ui32);
 
 		/* Remove the CastPermanentMagicFunctor flag responsible for setting ActiveEffect flags to disable hit effect art */
 		Utility::Memory::SafeWrite(
@@ -34,47 +26,29 @@ namespace ScrambledBugs::Patches
 			std::optional<std::uint8_t>{}, 0x00ui8  // or al, 0
 		);
 
-		AttachHitEffectArt::getTargetActor_ = reinterpret_cast<decltype(AttachHitEffectArt::getTargetActor_)>(
-			Utility::Memory::ReadRelativeCall5(
-				Addresses::Patches::AttachHitEffectArt::GetTargetActor));
-		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5(
-			Addresses::Patches::AttachHitEffectArt::GetTargetActor,
-			reinterpret_cast<std::uintptr_t>(std::addressof(AttachHitEffectArt::GetTargetActor)));
+		AttachHitEffectArt::pop_ = reinterpret_cast<decltype(AttachHitEffectArt::pop_)>(Utility::Memory::ReadVirtualFunction(Skyrim::Addresses::ModelReferenceEffect::VirtualFunctionTable(), 0x35));
+
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::ModelReferenceEffect::VirtualFunctionTable(), 0x32, reinterpret_cast<std::uintptr_t>(std::addressof(AttachHitEffectArt::GetStackable)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::ModelReferenceEffect::VirtualFunctionTable(), 0x33, reinterpret_cast<std::uintptr_t>(std::addressof(AttachHitEffectArt::GetStackableMatch)));
+		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::ModelReferenceEffect::VirtualFunctionTable(), 0x35, reinterpret_cast<std::uintptr_t>(std::addressof(AttachHitEffectArt::Pop)));
 	}
 
-	Skyrim::Actor* AttachHitEffectArt::GetTargetActor(Skyrim::ModelReferenceEffect* modelReferenceEffect)
+	bool AttachHitEffectArt::GetStackable(Skyrim::ModelReferenceEffect* modelReferenceEffect)
 	{
-		// modelReferenceEffect != nullptr
-		// modelReferenceEffect->controller != nullptr
-
-		auto* targetActor = AttachHitEffectArt::getTargetActor_(modelReferenceEffect);
-
-		if (!targetActor)
-		{
-			return nullptr;
-		}
-
-		auto* attachObject = modelReferenceEffect->controller->GetAttachRoot();
-
-		if (!attachObject)
-		{
-			attachObject = targetActor->GetCurrent3D();
-		}
-
-		Skyrim::NiNode* attachRoot{ nullptr };
-
-		if (attachObject)
-		{
-			attachRoot = attachObject->AsNiNode();
-
-			if (!attachRoot)
-			{
-				attachRoot = attachObject->parentNode;
-			}
-		}
-
-		return attachRoot != modelReferenceEffect->attachTechniqueInput.attachRoot.get() ? targetActor : nullptr;
+		return true;
 	}
 
-	decltype(AttachHitEffectArt::GetTargetActor)* AttachHitEffectArt::getTargetActor_{ nullptr };
+	bool AttachHitEffectArt::GetStackableMatch(Skyrim::ModelReferenceEffect* left, Skyrim::BSTempEffect* right)
+	{
+		return true;
+	}
+
+	void AttachHitEffectArt::Pop(Skyrim::ModelReferenceEffect* modelReferenceEffect)
+	{
+		AttachHitEffectArt::pop_(modelReferenceEffect);
+
+		modelReferenceEffect->SwitchFirstThirdPerson();
+	}
+
+	decltype(AttachHitEffectArt::Pop)* AttachHitEffectArt::pop_{ nullptr };
 }

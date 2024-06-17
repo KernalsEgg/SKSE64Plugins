@@ -697,6 +697,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\MagicTarget.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\Main.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\MemoryManager.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\M\ModelReferenceEffect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiAVObject.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiBinaryStream.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\N\NiBooleanExtraData.cpp" />

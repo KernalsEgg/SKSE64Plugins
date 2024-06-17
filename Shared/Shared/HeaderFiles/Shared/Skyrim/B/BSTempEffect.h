@@ -14,6 +14,22 @@ namespace Skyrim
 		public NiObject // 0
 	{
 	public:
+		enum class Type : std::uint32_t
+		{
+			kTerrainEffect                = 0,
+			kTemporaryEffectWeaponBlood   = 1,
+			kTemporaryEffectGeometryDecal = 3,
+			kTemporaryEffectParticle      = 4,
+			kTemporaryEffectDebris        = 5,
+			kTemporaryEffectSPG           = 6,
+			kTemporaryEffect              = 7,
+			kReferenceEffect              = 8,
+			kModelReferenceEffect         = 9,
+			kShaderReferenceEffect        = 10,
+			kSummonPlacementEffect        = 11
+		};
+		static_assert(sizeof(Type) == 0x4);
+
 		// Override
 		virtual ~BSTempEffect() override; // 0
 
@@ -41,23 +57,23 @@ namespace Skyrim
 		virtual bhkLimitedHingeConstraint*    AsBhkLimitedHingeConstraint() override;    // 16
 
 		// Add
-		virtual void Unknown25(BSTempEffect*); // 25
-		virtual void Unknown26(BSTempEffect*); // 26
-		virtual void Unknown27(BSTempEffect*); // 27
-		virtual void Unknown28(BSTempEffect*); // 28
-		virtual void Unknown29(BSTempEffect*); // 29
-		virtual void Unknown2A(BSTempEffect*); // 2A
-		virtual void Unknown2B(BSTempEffect*); // 2B
-		virtual void Unknown2C(BSTempEffect*); // 2C
-		virtual void Unknown2D(BSTempEffect*); // 2D
-		virtual void Unknown2E(BSTempEffect*); // 2E
-		virtual void Unknown2F(BSTempEffect*); // 2F
-		virtual void Unknown30(BSTempEffect*); // 30
-		virtual void Unknown31(BSTempEffect*); // 31
-		virtual void Unknown32(BSTempEffect*); // 32
-		virtual void Unknown33(BSTempEffect*); // 33
-		virtual void Unknown34(BSTempEffect*); // 34
-		virtual void Unknown35(BSTempEffect*); // 35
+		virtual void Unknown25(BSTempEffect*);                     // 25
+		virtual void Unknown26(BSTempEffect*);                     // 26
+		virtual void Unknown27(BSTempEffect*);                     // 27
+		virtual void Unknown28(BSTempEffect*);                     // 28
+		virtual void Unknown29(BSTempEffect*);                     // 29
+		virtual void Unknown2A(BSTempEffect*);                     // 2A
+		virtual void Unknown2B(BSTempEffect*);                     // 2B
+		virtual Type GetType() const;                              // 2C
+		virtual void Unknown2D(BSTempEffect*);                     // 2D
+		virtual void Unknown2E(BSTempEffect*);                     // 2E
+		virtual void Unknown2F(BSTempEffect*);                     // 2F
+		virtual void Unknown30(BSTempEffect*);                     // 30
+		virtual void Unknown31(BSTempEffect*);                     // 31
+		virtual bool GetStackable() const;                         // 32
+		virtual bool GetStackableMatch(BSTempEffect* right) const; // 33
+		virtual void Push();                                       // 34
+		virtual void Pop();                                        // 35
 
 		// Member variables
 		float          lifetime;    // 10

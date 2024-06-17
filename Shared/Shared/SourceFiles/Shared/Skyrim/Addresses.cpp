@@ -1516,6 +1516,25 @@ namespace Skyrim
 			}
 		}
 
+		namespace ModelReferenceEffect
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x558F20, 1.6.318.0: SkyrimSE.exe + 0x574B80</summary>
+			std::uintptr_t SwitchFirstThirdPerson()
+			{
+				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(33872, 34668)) };
+
+				return address;
+			}
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x163A640, 1.6.318.0: SkyrimSE.exe + 0x1730678</summary>
+			std::uintptr_t VirtualFunctionTable()
+			{
+				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(257844, 205960)) };
+
+				return address;
+			}
+		}
+
 		namespace NiAVObject
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0xD41970, 1.6.318.0: SkyrimSE.exe + 0xD79A80</summary>

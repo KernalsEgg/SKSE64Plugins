@@ -521,6 +521,12 @@ namespace Skyrim
 			std::uintptr_t Reallocate();
 		}
 
+		namespace ModelReferenceEffect
+		{
+			std::uintptr_t SwitchFirstThirdPerson();
+			std::uintptr_t VirtualFunctionTable();
+		}
+
 		namespace NiAVObject
 		{
 			std::uintptr_t GetBoneFromName();

@@ -56,10 +56,6 @@ namespace ScrambledBugs::Patterns
 
 		namespace AttachHitEffectArt
 		{
-			bool GetTargetActor();
-			bool IsPerspectiveChange();
-			bool IsPlayerReattach();
-			bool IsPlayerUpdatePosition();
 			bool SetCastPermanentMagicFunctorFlags();
 		}
 
