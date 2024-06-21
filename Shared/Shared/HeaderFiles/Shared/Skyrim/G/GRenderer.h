@@ -196,7 +196,7 @@ namespace Skyrim
 		enum class FilterSupport : std::uint32_t
 		{
 			kNone      = 0,
-			kOk        = 1U << 0,
+			kOkay      = 1U << 0,
 			kMultipass = 1U << 1,
 			kSlow      = 1U << 2
 		};

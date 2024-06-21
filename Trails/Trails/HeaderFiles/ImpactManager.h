@@ -11,6 +11,6 @@ namespace Trails
 	class ImpactManager
 	{
 	public:
-		static bool PlayImpactEffect(Skyrim::TESObjectREFR* source, const Settings::Footstep::Arguments& arguments);
+		static bool PlayImpactEffect(Skyrim::TESObjectREFR* reference, const Settings::Footprint& footprint);
 	};
 }

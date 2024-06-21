@@ -30,11 +30,13 @@ namespace Skyrim
 		InventoryEntryData& operator=(InventoryEntryData&& right);
 
 		// Member functions
+		void           AddExtraDataList(ExtraDataList* extraDataList);
 		float          GetHealth() const;
 		const char*    GetName() const;
 		AlchemyItem*   GetPoison() const;
 		std::int32_t   GetValue() const;
 		ExtraDataList* GetWornExtraDataList(bool eitherHand, bool leftHand) const;
+		bool           IsLeveledItem() const;
 		bool           IsOwnedBy(Actor* actor, TESForm* owner, bool defaultOwnership) const;
 		bool           IsQuestItem() const;
 		bool           IsWorn(bool eitherHand, bool leftHand) const;

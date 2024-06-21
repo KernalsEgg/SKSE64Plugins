@@ -203,7 +203,7 @@ namespace Skyrim
 
 		for (hash = seed; size; hash = byte ^ (33 * hash))
 		{
-			byte = static_cast<const std::uint8_t*>(dataInput)[size-- - 1];
+			byte = static_cast<const std::uint8_t*>(dataInput)[--size];
 		}
 
 		return hash;

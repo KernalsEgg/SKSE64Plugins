@@ -1,20 +1,17 @@
 #pragma once
 
-#include <algorithm>  // std::max, std::min
-#include <cstdint>    // Fixed width integer types
-#include <exception>  // std::exception
-#include <filesystem> // Filesystem library
-#include <format>     // std::format
-#include <fstream>    // std::ifstream
-#include <map>        // std::map
-#include <memory>     // std::addressof, std::make_shared
-#include <numbers>    // Mathematical constants
-#include <random>     // std::mt19937, std::random_device, std::uniform_int_distribution, std::uniform_real_distribution
-#include <set>        // std::set
-#include <string.h>   // _stricmp
-#include <string>     // std::string, std::stoul
-#include <utility>    // std::move
-#include <vector>     // std::vector
+#include <algorithm>   // std::max, std::min
+#include <cstdint>     // Fixed width integer types
+#include <filesystem>  // Filesystem library
+#include <fstream>     // std::ifstream
+#include <map>         // std::map, std::multimap
+#include <memory>      // std::addressof, std::make_shared
+#include <numbers>     // Mathematical constants
+#include <random>      // std::mt19937, std::random_device, std::uniform_int_distribution, std::uniform_real_distribution
+#include <string.h>    // _stricmp, _strnicmp, _wcsicmp, _wcsnicmp
+#include <string>      // std::basic_string, std::string
+#include <string_view> // std::string_view, std::wstring_view
+#include <utility>     // std::move
 
 #include <nlohmann/json.hpp>
 

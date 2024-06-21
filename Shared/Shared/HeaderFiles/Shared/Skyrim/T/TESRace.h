@@ -78,7 +78,7 @@ namespace Skyrim
 			kNoBloodDecal                 = 1U << 14, // Blood, When we are hit
 			kUsesHeadTrackAnimations      = 1U << 15, // General Data, Movement
 			kSpellsAlignWithMagicNode     = 1U << 16, // General Data
-			kUseWorldRaycastsForFootIK    = 1U << 17, // General Data
+			kUseWorldRayCastsForFootIK    = 1U << 17, // General Data
 			kAllowRagdollCollision        = 1U << 18, // General Data
 			kRegenerateHealthInCombat     = 1U << 19, // General Data
 			kCantOpenDoors                = 1U << 20, // General Data

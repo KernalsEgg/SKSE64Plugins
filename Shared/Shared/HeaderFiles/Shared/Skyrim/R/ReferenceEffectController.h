@@ -40,7 +40,6 @@ namespace Skyrim
 		virtual void             Unknown16(ReferenceEffectController*);    // 16
 		virtual void             Unknown17(ReferenceEffectController*);    // 17
 		virtual TESObjectREFR*   GetFacingTarget();                        // 18
-		virtual void             Unknown18(ReferenceEffectController*);    // 18
 		virtual void             Unknown19(ReferenceEffectController*);    // 19
 		virtual void             Unknown1A(ReferenceEffectController*);    // 1A
 		virtual void             Unknown1B(ReferenceEffectController*);    // 1B

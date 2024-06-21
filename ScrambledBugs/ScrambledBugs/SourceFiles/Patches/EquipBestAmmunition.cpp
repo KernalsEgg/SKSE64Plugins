@@ -3,7 +3,6 @@
 #include "Patches/EquipBestAmmunition.h"
 
 #include "Addresses.h"
-#include "Patterns.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -12,42 +11,135 @@ namespace ScrambledBugs::Patches
 {
 	void EquipBestAmmunition::Patch(bool& equipBestAmmunition)
 	{
-		if (!Patterns::Patches::EquipBestAmmunition::CompareDamageContainer() ||
-			!Patterns::Patches::EquipBestAmmunition::CompareDamageInventoryChanges() ||
-			!Patterns::Patches::EquipBestAmmunition::InitializeDamage() ||
-			!Patterns::Patches::EquipBestAmmunition::IsBoltContainer() ||
-			!Patterns::Patches::EquipBestAmmunition::IsBoltInventoryChanges())
-		{
-			equipBestAmmunition = false;
+		Utility::Memory::SafeWriteAbsoluteJump(
+			Addresses::Patches::EquipBestAmmunition::GetWorstAmmunition,
+			reinterpret_cast<std::uintptr_t>(std::addressof(EquipBestAmmunition::GetBestAmmunition)));
+	}
 
-			return;
+	Skyrim::InventoryEntryData* EquipBestAmmunition::GetBestAmmunition(Skyrim::InventoryChanges* inventoryChanges, bool crossbow)
+	{
+		Skyrim::TESAmmo* bestAmmunition{ nullptr };
+
+		auto* owner     = inventoryChanges->owner;
+		auto* container = owner ? owner->GetContainer() : nullptr;
+
+		if (container)
+		{
+			for (auto* containerObject : *container)
+			{
+				if (!containerObject)
+				{
+					continue;
+				}
+
+				auto* boundObject = containerObject->object;
+
+				if (boundObject && boundObject->formType == Skyrim::FormType::kAmmunition)
+				{
+					auto* ammunition = static_cast<Skyrim::TESAmmo*>(boundObject);
+					auto  bolt       = ammunition->ammunitionFlags.none(Skyrim::TESAmmo::Flags::kArrow);
+
+					if (bolt == crossbow && ammunition->IsPlayable())
+					{
+						auto* inventoryEntryData = inventoryChanges->GetInventoryEntryData(ammunition);
+
+						if (!inventoryEntryData || containerObject->count + inventoryEntryData->itemCountDelta > 0 || containerObject->count < 0)
+						{
+							if (!bestAmmunition || ammunition->damage > bestAmmunition->damage)
+							{
+								bestAmmunition = ammunition;
+							}
+						}
+					}
+				}
+			}
 		}
 
-		Utility::Memory::SafeWrite(
-			Addresses::Patches::EquipBestAmmunition::InitializeDamage,
-			std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, std::optional<std::uint8_t>{}, static_cast<std::int32_t>(Addresses::Patches::EquipBestAmmunition::FloatMinimumValue - (Addresses::Patches::EquipBestAmmunition::InitializeDamage + 0x8))); // movss xmm6, -std::numeric_limits<float>::max()
-		Utility::Memory::SafeWrite(Addresses::Patches::EquipBestAmmunition::CompareDamageContainer, 0x76ui8, std::optional<std::uint8_t>{});                                                                                                                                                        // jbe 6
-		Utility::Memory::SafeWrite(Addresses::Patches::EquipBestAmmunition::CompareDamageInventoryChanges, 0x76ui8, std::optional<std::uint8_t>{});                                                                                                                                                 // jbe 10
+		auto* inventoryEntryDataList = inventoryChanges->inventoryEntryDataList;
 
-		/* Skip ammunition if it is not playable */
-		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
+		if (inventoryEntryDataList)
+		{
+			for (auto* inventoryEntryData : *inventoryEntryDataList)
+			{
+				if (!inventoryEntryData)
+				{
+					continue;
+				}
 
-		trampolineInterface->RelativeCall5Branch(
-			Addresses::Patches::EquipBestAmmunition::IsBoltContainer + (8 + 3 + 2),
-			0x24ui8, 0x01ui8,                                                                                                                                                  // and al, 1
-			0x40ui8, 0x3Aui8, 0xC7ui8,                                                                                                                                         // cmp al, dil
-			0x75ui8, 0x08ui8,                                                                                                                                                  // jne 8
-			0x41ui8, 0xF6ui8, 0x80ui8, static_cast<std::int32_t>(offsetof(Skyrim::TESAmmo, ammunitionFlags)), static_cast<std::uint8_t>(Skyrim::TESAmmo::Flags::kNonPlayable), // test byte ptr [r8+118], 2
-			0xC3ui8                                                                                                                                                            // ret
-		);
+				auto* boundObject = inventoryEntryData->item;
 
-		trampolineInterface->RelativeCall5Branch(
-			Addresses::Patches::EquipBestAmmunition::IsBoltInventoryChanges + (7 + 3 + 2),
-			0x24ui8, 0x01ui8,                                                                                                                                         // and al, 1
-			0x40ui8, 0x3Aui8, 0xC7ui8,                                                                                                                                // cmp al, dil
-			0x75ui8, 0x07ui8,                                                                                                                                         // jne 7
-			0xF6ui8, 0x85ui8, static_cast<std::int32_t>(offsetof(Skyrim::TESAmmo, ammunitionFlags)), static_cast<std::uint8_t>(Skyrim::TESAmmo::Flags::kNonPlayable), // test byte ptr [rbp+118], 2
-			0xC3ui8                                                                                                                                                   // ret
-		);
+				if (boundObject && boundObject->formType == Skyrim::FormType::kAmmunition)
+				{
+					auto* ammunition = static_cast<Skyrim::TESAmmo*>(boundObject);
+					auto  bolt       = ammunition->ammunitionFlags.none(Skyrim::TESAmmo::Flags::kArrow);
+
+					if (bolt == crossbow && ammunition->IsPlayable())
+					{
+						if (inventoryEntryData->IsLeveledItem() && inventoryEntryData->itemCountDelta < 0)
+						{
+							continue;
+						}
+
+						if (!inventoryEntryData->itemCountDelta)
+						{
+							continue;
+						}
+
+						if (container && container->HasItem(ammunition))
+						{
+							continue;
+						}
+
+						if (!bestAmmunition || ammunition->damage > bestAmmunition->damage)
+						{
+							bestAmmunition = ammunition;
+						}
+					}
+				}
+			}
+		}
+
+		auto* inventoryEntryData     = inventoryChanges->GetInventoryEntryData(bestAmmunition);
+		auto* bestInventoryEntryData = bestAmmunition ? new Skyrim::InventoryEntryData() : nullptr;
+
+		if (bestInventoryEntryData)
+		{
+			if (inventoryEntryData)
+			{
+				bestInventoryEntryData->item = inventoryEntryData->item;
+
+				if (inventoryEntryData->extraDataLists)
+				{
+					bestInventoryEntryData->AddExtraDataList(inventoryEntryData->extraDataLists->front());
+				}
+
+				auto* bestExtraDataLists = bestInventoryEntryData->extraDataLists;
+
+				if (bestExtraDataLists && bestExtraDataLists->front() && !bestExtraDataLists->front()->Stackable(true))
+				{
+					bestInventoryEntryData->itemCountDelta = inventoryEntryData->itemCountDelta;
+				}
+				else
+				{
+					bestInventoryEntryData->itemCountDelta = inventoryEntryData->itemCountDelta;
+
+					if (container)
+					{
+						bestInventoryEntryData->itemCountDelta += container->GetItemCount(bestAmmunition);
+					}
+				}
+			}
+			else if (bestAmmunition)
+			{
+				bestInventoryEntryData->item = bestAmmunition;
+
+				if (container)
+				{
+					bestInventoryEntryData->itemCountDelta = std::abs(container->GetItemCount(bestAmmunition));
+				}
+			}
+		}
+
+		return bestInventoryEntryData;
 	}
 }

@@ -979,6 +979,17 @@ namespace Skyrim
 			}
 		}
 
+		namespace FixedStrings
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x104AD0, 1.6.318.0: SkyrimSE.exe + 0x10EA60</summary>
+			std::uintptr_t GetSingleton()
+			{
+				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(11308, 11437)) };
+
+				return address;
+			}
+		}
+
 		namespace FrenzyEffect
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x163DB00, 1.6.318.0: SkyrimSE.exe + 0x1733B70</summary>
@@ -1672,6 +1683,14 @@ namespace Skyrim
 			std::uintptr_t AddDecal()
 			{
 				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(15060, 15234)) };
+
+				return address;
+			}
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0xC57980, 1.6.318.0: SkyrimSE.exe + 0xC7EE30</summary>
+			std::uintptr_t CreateObject()
+			{
+				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(68935, 70286)) };
 
 				return address;
 			}

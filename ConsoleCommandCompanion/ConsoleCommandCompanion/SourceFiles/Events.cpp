@@ -16,8 +16,8 @@ namespace ConsoleCommandCompanion
 		/* Create the Console menu to allow batch files to be run */
 		if (!Skyrim::UI::GetSingleton()->IsMenuOpen(Skyrim::InterfaceStrings::GetSingleton()->console))
 		{
-			Skyrim::Console::ExecuteCommand(std::format("ShowMenu {}", Skyrim::InterfaceStrings::GetSingleton()->console.data()));
-			Skyrim::Console::ExecuteCommand(std::format("HideMenu {}", Skyrim::InterfaceStrings::GetSingleton()->console.data()));
+			Skyrim::Console::ExecuteCommand(std::format("ShowMenu {}", Skyrim::InterfaceStrings::GetSingleton()->console.data()).c_str());
+			Skyrim::Console::ExecuteCommand(std::format("HideMenu {}", Skyrim::InterfaceStrings::GetSingleton()->console.data()).c_str());
 		}
 
 		Events::ExecuteConsoleCommands(Settings::GetSingleton().initialize.consoleCommands);
@@ -286,7 +286,7 @@ namespace ConsoleCommandCompanion
 			SKSE::Storage::GetSingleton().GetTaskInterface()->AddTask(
 				[consoleCommand]()
 				{
-					Skyrim::Console::ExecuteCommand(consoleCommand);
+					Skyrim::Console::ExecuteCommand(consoleCommand.c_str());
 				});
 		}
 	}

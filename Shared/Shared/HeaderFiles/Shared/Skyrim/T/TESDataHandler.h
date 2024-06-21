@@ -10,6 +10,7 @@
 #include "Shared/Skyrim/F/FormType.h"
 #include "Shared/Skyrim/N/NiTArray.h"
 #include "Shared/Skyrim/N/NiTList.h"
+#include "Shared/Skyrim/T/TESForm.h"
 #include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/TypeTraits.h"
 
@@ -23,7 +24,6 @@ namespace Skyrim
 	class InventoryChanges;
 	class NiPoint3;
 	class TESFile;
-	class TESForm;
 	class TESObjectCELL;
 	class TESObjectREFR;
 	class TESRegionList;
@@ -48,20 +48,14 @@ namespace Skyrim
 		static TESDataHandler* GetSingleton();
 
 		// Member functions
-		const TESFile*              GetFile(std::string_view fileName) const;
-		std::optional<std::uint8_t> GetFileIndex(std::string_view fileName) const;
+		const TESFile* GetCompiledFile(const char* fileName) const;
+		const TESFile* GetCompiledFile(std::uint8_t compileIndex) const;
+		const TESFile* GetCompiledSmallFile(const char* fileName) const;
+		const TESFile* GetCompiledSmallFile(std::uint16_t compileIndex) const;
+		const TESFile* GetFile(const char* fileName) const;
 
-		const TESFile*              GetLoadedFile(std::string_view fileName) const;
-		const TESFile*              GetLoadedFile(std::uint8_t index) const;
-		std::optional<std::uint8_t> GetLoadedFileIndex(std::string_view fileName) const;
-
-		const TESFile*              GetLoadedLightFile(std::string_view fileName) const;
-		const TESFile*              GetLoadedLightFile(std::uint16_t index) const;
-		std::optional<std::uint8_t> GetLoadedLightFileIndex(std::string_view fileName) const;
-
-		TESForm* GetFormFromFile(FormID formID, std::string_view fileName) const;
-
-		bool IsFormIDCreated(FormID formID) const;
+		TESForm* GetFormFromFile(FormID formID, const char* fileName) const;
+		bool     IsFormIDCreated(FormID formID) const;
 
 		template <class T>
 		void EnumerateReferencesCloseToPoint(TESObjectCELL* cell, const NiPoint3& point1, float radius1, const NiPoint3& point2, float radius2, bool (*callback)(TESObjectREFR* reference, T argument), T argument) const
@@ -83,10 +77,12 @@ namespace Skyrim
 			function(this, reference, radius1, point2, radius2, callback, argument);
 		}
 
-		template <class T>
-		T* GetFormFromFile(FormID formID, std::string_view fileName) const
+		template <class T, FormType FORM_TYPE>
+		T* GetFormFromFile(FormID formID, const char* fileName) const
 		{
-			return static_cast<T*>(this->GetFormFromFile(formID, fileName));
+			auto* form = this->GetFormFromFile(formID, fileName);
+
+			return form && form->formType == FORM_TYPE ? static_cast<T*>(form) : nullptr;
 		}
 
 		// Member variables

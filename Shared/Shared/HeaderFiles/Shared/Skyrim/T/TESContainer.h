@@ -16,7 +16,7 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		std::uint32_t       count;              // 0
+		std::int32_t        count;              // 0
 		std::uint32_t       padding4;           // 4
 		TESBoundObject*     object;             // 8
 		ContainerItemExtra* containerItemExtra; // 10
@@ -75,7 +75,8 @@ namespace Skyrim
 		constexpr size_type size() const noexcept { return this->containerObjectCount_; }
 
 		// Member functions
-		bool HasItem(TESBoundObject* item) const;
+		std::int32_t GetItemCount(TESBoundObject* item) const;
+		bool         HasItem(TESBoundObject* item) const;
 
 	private:
 		// Member variables

@@ -9,6 +9,14 @@
 
 namespace Skyrim
 {
+	NiNode* NiNode::CreateObject()
+	{
+		auto* function{ reinterpret_cast<decltype(NiNode::CreateObject)*>(
+			Addresses::NiNode::CreateObject()) };
+
+		return function();
+	}
+
 	std::uint32_t NiNode::AddDecal(const BGSDecalManager::AdditionData& additionData)
 	{
 		auto* function{ reinterpret_cast<

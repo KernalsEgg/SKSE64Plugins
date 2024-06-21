@@ -1803,6 +1803,9 @@
     <ClInclude Include="HeaderFiles\Shared\SKSE\SKSE.h">
       <Filter>Header Files\Shared\SKSE</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FixedStrings.h">
+      <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Shared\PrecompiledHeader.cpp">
@@ -2257,6 +2260,12 @@
     </ClCompile>
     <ClCompile Include="SourceFiles\Shared\Skyrim\M\ModelReferenceEffect.cpp">
       <Filter>Source Files\Shared\Skyrim\M</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\F\FixedStrings.cpp">
+      <Filter>Source Files\Shared\Skyrim\F</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESFile.cpp">
+      <Filter>Source Files\Shared\Skyrim\T</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -64,15 +64,6 @@ namespace ScrambledBugs::Patterns
 			bool IsNotCostliestEffect();
 		}
 
-		namespace EquipBestAmmunition
-		{
-			bool CompareDamageContainer();
-			bool CompareDamageInventoryChanges();
-			bool InitializeDamage();
-			bool IsBoltContainer();
-			bool IsBoltInventoryChanges();
-		}
-
 		namespace LockpickingExperience
 		{
 			bool HasNotBeenUnlocked();

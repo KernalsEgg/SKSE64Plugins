@@ -257,6 +257,7 @@
     <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FindAppropriateDisplaceEffect.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FindMaxMagnitudeVisitor.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FirstPersonState.h" />
+    <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FixedStrings.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\F\ForEachResult.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FormType.h" />
     <ClInclude Include="HeaderFiles\Shared\Skyrim\F\FxDelegateArguments.h" />
@@ -653,6 +654,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\E\ExtraDataList.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindAppropriateDisplaceEffect.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\F\FindMaxMagnitudeVisitor.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\F\FixedStrings.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\F\FxDelegateArguments.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GameSettingCollection.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\G\GArrayDefaultPolicy.cpp" />
@@ -731,6 +733,7 @@
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESCondition.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESContainer.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESDataHandler.cpp" />
+    <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESFile.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESForm.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectCELL.cpp" />
     <ClCompile Include="SourceFiles\Shared\Skyrim\T\TESObjectREFR.cpp" />

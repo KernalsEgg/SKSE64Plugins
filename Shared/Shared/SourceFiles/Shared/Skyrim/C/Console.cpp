@@ -12,12 +12,12 @@
 
 namespace Skyrim
 {
-	void Console::ExecuteCommand(std::string_view command)
+	void Console::ExecuteCommand(const char* command)
 	{
 		Console::ExecuteCommand(command, Console::GetSelectedReference().get());
 	}
 
-	void Console::ExecuteCommand(std::string_view command, TESObjectREFR* target)
+	void Console::ExecuteCommand(const char* command, TESObjectREFR* target)
 	{
 		auto* concreteFormFactory = ConcreteFormFactory<Script, FormType::kScript>::GetFormFactory();
 
@@ -33,7 +33,7 @@ namespace Skyrim
 			return;
 		}
 
-		script->SetCommand(command.data());
+		script->SetCommand(command);
 
 		ScriptCompiler scriptCompiler;
 		script->CompileAndRun(std::addressof(scriptCompiler), CompilerName::kSystemWindowCompiler, target);

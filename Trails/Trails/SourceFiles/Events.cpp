@@ -29,29 +29,23 @@ namespace Trails::Events
 					return;
 				}
 
-				for (const auto& footsteps : Settings::GetSingleton().footsteps)
+				for (const auto& [conditions, footprints] : Settings::GetSingleton().footsteps)
 				{
-					if (!footsteps.first)
+					if (!conditions)
 					{
 						continue;
 					}
 
-					if (!footsteps.first->matchConditions.IsTrue(actor, nullptr))
+					if (!conditions->matchConditions.IsTrue(actor, actor))
 					{
 						continue;
 					}
 
-					for (const auto& footstep : footsteps.second)
-					{
-						if (!footstep.tags.contains(tag))
-						{
-							continue;
-						}
+					auto footprintsRange = footprints.equal_range(tag);
 
-						for (const auto& arguments : footstep.arguments)
-						{
-							ImpactManager::PlayImpactEffect(actor, arguments);
-						}
+					for (auto footprintsIterator = footprintsRange.first; footprintsIterator != footprintsRange.second; ++footprintsIterator)
+					{
+						ImpactManager::PlayImpactEffect(actor, footprintsIterator->second);
 					}
 				}
 			});

@@ -2,6 +2,8 @@
 
 #include "PrecompiledHeader.h"
 
+#include "CaseInsensitiveString.h"
+
 
 
 namespace Trails
@@ -26,109 +28,51 @@ namespace Trails
 			Form&          Deserialize(const nlohmann::json& jsonForm);
 			nlohmann::json Serialize() const;
 
-			Skyrim::FormID GetFormID() const;
-
-			template <class T>
-			T* GetForm(Skyrim::FormType formType) const
+			template <class T, Skyrim::FormType FORM_TYPE>
+			T* GetForm() const
 			{
-				auto* form = Skyrim::TESDataHandler::GetSingleton()->GetFormFromFile<T>(this->GetFormID(), this->fileName);
-
-				if (!form)
-				{
-					SPDLOG_ERROR("Form ID: {}, File Name: {}. Form not found.", this->formID, this->fileName);
-
-					return nullptr;
-				}
-
-				if (form->formType != formType)
-				{
-					SPDLOG_ERROR("Form ID: {}, File Name: {}. Incorrect form type.", this->formID, this->fileName);
-
-					return nullptr;
-				}
-
-				return form;
+				return Skyrim::TESDataHandler::GetSingleton()->GetFormFromFile<T, FORM_TYPE>(this->formID, this->fileName.c_str());
 			}
 
 		private:
-			void SetFileName(Skyrim::TESForm* form);
-			void SetFormID(Skyrim::TESForm* form);
+			std::string   GetFileName(Skyrim::TESForm* form) const;
+			std::uint32_t GetFormID(Skyrim::TESForm* form) const;
 
 		public:
-			std::string formID{};
-			std::string fileName{};
+			std::uint32_t formID{ 0 };
+			std::string   fileName{};
 		};
 
-		template <class T>
+		class Transform
+		{
+		public:
+			Transform&     Deserialize(const nlohmann::json& jsonTransform);
+			nlohmann::json Serialize() const;
+
+			bool x{ false };
+			bool y{ false };
+			bool z{ false };
+		};
+
 		class Vector
 		{
 		public:
-			class Range
-			{
-			public:
-				Range& Deserialize(const nlohmann::json& jsonRange)
-				{
-					if (jsonRange.contains("minimum"))
-					{
-						this->minimum.Deserialize(jsonRange.at("minimum"));
-					}
+			Vector&        Deserialize(const nlohmann::json& jsonVector);
+			nlohmann::json Serialize() const;
 
-					if (jsonRange.contains("maximum"))
-					{
-						this->maximum.Deserialize(jsonRange.at("maximum"));
-					}
+			float x{ 0.0F };
+			float y{ 0.0F };
+			float z{ 0.0F };
+		};
 
-					return *this;
-				}
+		class Distribution
+		{
+		public:
+			Distribution&  Deserialize(const nlohmann::json& jsonDistribution);
+			nlohmann::json Serialize() const;
 
-				nlohmann::json Serialize() const
-				{
-					nlohmann::json jsonRange;
-
-					jsonRange["minimum"] = this->minimum.Serialize();
-					jsonRange["maximum"] = this->maximum.Serialize();
-
-					return jsonRange;
-				}
-
-				Vector minimum{};
-				Vector maximum{};
-			};
-
-			Vector& Deserialize(const nlohmann::json& jsonVector)
-			{
-				if (jsonVector.contains("x"))
-				{
-					jsonVector.at("x").get_to(this->x);
-				}
-
-				if (jsonVector.contains("y"))
-				{
-					jsonVector.at("y").get_to(this->y);
-				}
-
-				if (jsonVector.contains("z"))
-				{
-					jsonVector.at("z").get_to(this->z);
-				}
-
-				return *this;
-			}
-
-			nlohmann::json Serialize() const
-			{
-				nlohmann::json jsonVector;
-
-				jsonVector["x"] = this->x;
-				jsonVector["y"] = this->y;
-				jsonVector["z"] = this->z;
-
-				return jsonVector;
-			}
-
-			T x{};
-			T y{};
-			T z{};
+			Vector minimum{};
+			Vector maximum{};
 		};
 
 		class Position
@@ -137,8 +81,8 @@ namespace Trails
 			Position&      Deserialize(const nlohmann::json& jsonPosition);
 			nlohmann::json Serialize() const;
 
-			std::string   nodeName{};
-			Vector<float> offset{};
+			std::string nodeName{};
+			Vector      offset{};
 		};
 
 		class Rotation
@@ -147,62 +91,55 @@ namespace Trails
 			Rotation&      Deserialize(const nlohmann::json& jsonRotation);
 			nlohmann::json Serialize() const;
 
-			std::string  nodeName{};
-			Vector<bool> rotate{};
+			std::string nodeName{};
+			Transform   rotate{};
 		};
 
-		class OffsetRotation :
+		class RandomizedRotation :
 			public Rotation
 		{
 		public:
-			OffsetRotation& Deserialize(const nlohmann::json& jsonOffsetRotation);
-			nlohmann::json  Serialize() const;
+			RandomizedRotation& Deserialize(const nlohmann::json& jsonRandomizedRotation);
+			nlohmann::json      Serialize() const;
 
-			Vector<float>::Range offset{};
+			Distribution offset{};
 		};
 
-		class Footstep
+		class Footprint
 		{
 		public:
-			class Arguments
+			class Decal
 			{
 			public:
-				class Decal
-				{
-				public:
-					Decal&         Deserialize(const nlohmann::json& jsonDecal);
-					nlohmann::json Serialize() const;
-
-					bool           force{ false };
-					bool           useLandColor{ true };
-					OffsetRotation rotation{ "", { false, false, true }, { { 0.0F, 0.0F, -10.0F }, { 0.0F, 0.0F, 10.0F } } };
-				};
-
-				class RayCast
-				{
-				public:
-					RayCast&       Deserialize(const nlohmann::json& jsonRayCast);
-					nlohmann::json Serialize() const;
-
-					Position      origin{ "", { 0.0F, 0.0F, 32.0F } };
-					Vector<float> ray{ 0.0F, 0.0F, -64.0F };
-					Rotation      rotation{ "", { false, false, false } };
-				};
-
-				Arguments&     Deserialize(const nlohmann::json& jsonArguments);
+				Decal&         Deserialize(const nlohmann::json& jsonDecal);
 				nlohmann::json Serialize() const;
 
-				Skyrim::BGSImpactDataSet* impactEffect{ nullptr };
-				Decal                     decal{};
-				RayCast                   rayCast{};
+				bool               force{ false };
+				bool               landColor{ false };
+				RandomizedRotation rotation{};
 			};
 
-			Footstep&      Deserialize(const nlohmann::json& jsonFootstep);
+			class RayCast
+			{
+			public:
+				RayCast&       Deserialize(const nlohmann::json& jsonRayCast);
+				nlohmann::json Serialize() const;
+
+				Position origin{};
+				Vector   ray{};
+				Rotation rotation{};
+			};
+
+			Footprint&     Deserialize(const nlohmann::json& jsonFootprint);
 			nlohmann::json Serialize() const;
 
-			std::set<std::string>  tags{};
-			std::vector<Arguments> arguments{};
+			Skyrim::BGSImpactDataSet* impactDataSet{ nullptr };
+			RayCast                   rayCast{};
+			Decal                     decal{};
 		};
+
+		using footprints_type = std::multimap<std::string, Footprint, CaseInsensitiveString::Less<std::string_view>>;
+		using footsteps_type  = std::map<Skyrim::BGSConstructibleObject*, footprints_type>;
 
 		Settings()                = default;
 		Settings(const Settings&) = default;
@@ -213,13 +150,13 @@ namespace Trails
 		Settings& operator=(const Settings&) = default;
 		Settings& operator=(Settings&&)      = default;
 
-		explicit Settings(const std::filesystem::path& path);
+		explicit Settings(const std::filesystem::path& directory);
 
 		static Settings& GetSingleton();
 
-		Settings&      Deserialize(const nlohmann::json& jsonSettings);
+		Settings&      Deserialize(const nlohmann::json& jsonSettings, const nlohmann::json& jsonTemplates);
 		nlohmann::json Serialize() const;
 
-		std::map<Skyrim::BGSConstructibleObject*, std::vector<Footstep>> footsteps{};
+		footsteps_type footsteps{};
 	};
 }

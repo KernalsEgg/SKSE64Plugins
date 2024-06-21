@@ -9,21 +9,21 @@
 
 namespace Trails
 {
-	bool ImpactManager::PlayImpactEffect(Skyrim::TESObjectREFR* source, const Settings::Footstep::Arguments& arguments)
+	bool ImpactManager::PlayImpactEffect(Skyrim::TESObjectREFR* reference, const Settings::Footprint& footprint)
 	{
-		if (!source)
+		if (!reference)
 		{
 			return false;
 		}
 
-		auto* impactEffect = arguments.impactEffect;
+		auto* impactDataSet = footprint.impactDataSet;
 
-		if (!impactEffect)
+		if (!impactDataSet)
 		{
 			return false;
 		}
 
-		auto* parentCell = source->parentCell;
+		auto* parentCell = reference->parentCell;
 
 		if (!parentCell)
 		{
@@ -37,26 +37,26 @@ namespace Trails
 			return false;
 		}
 
-		const auto& rayCast  = arguments.rayCast;
-		auto*       source3D = source->GetThirdPerson3D();
+		const auto& rayCast     = footprint.rayCast;
+		auto*       reference3D = reference->GetThirdPerson3D();
 
-		auto  originNodeName = rayCast.origin.nodeName;
-		auto* originNode     = originNodeName.empty() || !source3D ? nullptr : source3D->GetBoneFromName(Skyrim::BSFixedString(originNodeName), true);
-		auto  origin         = originNode ? originNode->currentWorldTransform.translation : source->position;
+		Skyrim::BSFixedString originNodeName = rayCast.origin.nodeName;
+		auto*                 originNode     = originNodeName.empty() || !reference3D ? nullptr : reference3D->GetBoneFromName(originNodeName, true);
+		auto                  origin         = originNode ? originNode->currentWorldTransform.translation : reference->position;
 
-		auto originOffset = Skyrim::NiPoint3(rayCast.origin.offset.x, rayCast.origin.offset.y, rayCast.origin.offset.z);
-		auto ray          = Skyrim::NiPoint3(rayCast.ray.x, rayCast.ray.y, rayCast.ray.z);
-
-		auto originOffsetMagnitude = originOffset.Magnitude();
-		auto rayMagnitude          = ray.Magnitude();
-
-		originOffset.Normalize();
-		ray.Normalize();
+		Skyrim::NiPoint3 originOffset = { rayCast.origin.offset.x, rayCast.origin.offset.y, rayCast.origin.offset.z };
+		Skyrim::NiPoint3 ray          = { rayCast.ray.x, rayCast.ray.y, rayCast.ray.z };
 
 		if (rayCast.rotation.rotate.x || rayCast.rotation.rotate.y || rayCast.rotation.rotate.z)
 		{
-			auto  rotationNodeName = rayCast.rotation.nodeName;
-			auto* rotationNode     = rotationNodeName.empty() || !source3D ? nullptr : source3D->GetBoneFromName(Skyrim::BSFixedString(rotationNodeName), true);
+			auto originOffsetMagnitude = originOffset.Magnitude();
+			auto rayMagnitude          = ray.Magnitude();
+
+			originOffset.Normalize();
+			ray.Normalize();
+
+			Skyrim::BSFixedString rotationNodeName = rayCast.rotation.nodeName;
+			auto*                 rotationNode     = rotationNodeName.empty() || !reference3D ? nullptr : reference3D->GetBoneFromName(rotationNodeName, true);
 
 			Skyrim::NiPoint3 eulerAngles;
 
@@ -66,22 +66,25 @@ namespace Trails
 			}
 			else
 			{
-				eulerAngles = source->rotation;
+				eulerAngles = reference->rotation;
 			}
 
 			Skyrim::NiMatrix33 rotationMatrix;
 
-			rotationMatrix.EulerAnglesToRotationMatrixZXY(rayCast.rotation.rotate.z ? eulerAngles.z : 0.0F, rayCast.rotation.rotate.x ? eulerAngles.x : 0.0F, rayCast.rotation.rotate.y ? eulerAngles.y : 0.0F);
+			rotationMatrix.EulerAnglesToRotationMatrixZXY(
+				rayCast.rotation.rotate.z ? eulerAngles.z : 0.0F,
+				rayCast.rotation.rotate.x ? eulerAngles.x : 0.0F,
+				rayCast.rotation.rotate.y ? eulerAngles.y : 0.0F);
 
 			originOffset = rotationMatrix * originOffset;
 			ray          = rotationMatrix * ray;
+
+			originOffset.Normalize();
+			ray.Normalize();
+
+			originOffset *= originOffsetMagnitude;
+			ray          *= rayMagnitude;
 		}
-
-		originOffset.Normalize();
-		ray.Normalize();
-
-		originOffset *= originOffsetMagnitude;
-		ray          *= rayMagnitude;
 
 		origin += originOffset;
 
@@ -90,39 +93,56 @@ namespace Trails
 
 		pickData.rayHitCollectorA8 = std::addressof(closestRayHitCollector);
 
-		auto havokWorldScale            = Skyrim::bhkWorld::GetScale();
-		pickData.rayCastInput.from.quad = ::_mm_setr_ps(origin.x * havokWorldScale, origin.y * havokWorldScale, origin.z * havokWorldScale, 0.0F);
-		pickData.ray.quad               = ::_mm_setr_ps(ray.x * havokWorldScale, ray.y * havokWorldScale, ray.z * havokWorldScale, 0.0F);
+		auto havokWorldScale = Skyrim::bhkWorld::GetScale();
 
-		if (source->formType == Skyrim::FormType::kActor)
+		pickData.rayCastInput.from.quad = ::_mm_setr_ps(
+			origin.x * havokWorldScale,
+			origin.y * havokWorldScale,
+			origin.z * havokWorldScale,
+			0.0F);
+
+		pickData.ray.quad = ::_mm_setr_ps(
+			ray.x * havokWorldScale,
+			ray.y * havokWorldScale,
+			ray.z * havokWorldScale,
+			0.0F);
+
+		switch (reference->formType.get())
 		{
-			auto* characterController = static_cast<Skyrim::Actor*>(source)->GetCharacterController();
-
-			if (characterController)
+			case Skyrim::FormType::kActor:
 			{
-				characterController->GetCollisionFilterInformation(pickData.rayCastInput.filterInformation);
-			}
-		}
-		else
-		{
-			if (source3D)
-			{
-				auto* collisionObject = source3D->GetCollisionObject();
+				auto* characterController = static_cast<Skyrim::Actor*>(reference)->GetCharacterController();
 
-				if (collisionObject)
+				if (characterController)
 				{
-					auto* rigidBody = collisionObject->GetRigidBody();
+					characterController->GetCollisionFilterInformation(pickData.rayCastInput.filterInformation);
+				}
 
-					if (rigidBody)
+				break;
+			}
+			default:
+			{
+				if (reference3D)
+				{
+					auto* collisionObject = reference3D->GetCollisionObject();
+
+					if (collisionObject)
 					{
-						auto* referencedObject = static_cast<Skyrim::hkpWorldObject*>(rigidBody->referencedObject.get());
+						auto* rigidBody = collisionObject->GetRigidBody();
 
-						if (referencedObject)
+						if (rigidBody)
 						{
-							pickData.rayCastInput.filterInformation = referencedObject->collidable.broadPhaseHandle.collisionFilterInformation;
+							auto* referencedObject = static_cast<Skyrim::hkpWorldObject*>(rigidBody->referencedObject.get());
+
+							if (referencedObject)
+							{
+								pickData.rayCastInput.filterInformation = referencedObject->collidable.broadPhaseHandle.collisionFilterInformation;
+							}
 						}
 					}
 				}
+
+				break;
 			}
 		}
 
@@ -140,12 +160,18 @@ namespace Trails
 		}
 
 		auto position = origin + (ray * rayHit.hitFraction);
-		auto normal   = Skyrim::NiPoint3(rayHit.normal.quad.m128_f32[0], rayHit.normal.quad.m128_f32[1], rayHit.normal.quad.m128_f32[2]);
+
+		Skyrim::NiPoint3 normal = {
+			rayHit.normal.quad.m128_f32[0],
+			rayHit.normal.quad.m128_f32[1],
+			rayHit.normal.quad.m128_f32[2]
+		};
 
 		std::uint32_t       materialID{ 0 };
 		Skyrim::NiAVObject* target3D{ nullptr };
 
-		auto terrain = Skyrim::hkpGroupFilter::GetSystemGroupFromFilterInformation(rootCollidable->broadPhaseHandle.collisionFilterInformation) == Utility::Conversion::ToUnderlying(Skyrim::hkpGroupFilter::SystemGroup::kTerrain);
+		auto terrain = Skyrim::hkpGroupFilter::GetSystemGroupFromFilterInformation(rootCollidable->broadPhaseHandle.collisionFilterInformation) ==
+		               Utility::Conversion::ToUnderlying(Skyrim::hkpGroupFilter::SystemGroup::kTerrain);
 
 		if (terrain)
 		{
@@ -218,12 +244,7 @@ namespace Trails
 			return false;
 		}
 
-		if (source == Skyrim::PlayerCharacter::GetSingleton())
-		{
-			SPDLOG_INFO("Material: {}", materialType->materialName.data());
-		}
-
-		auto* impactData = impactEffect->GetImpactData(materialType);
+		auto* impactData = impactDataSet->GetImpactData(materialType);
 
 		if (!impactData)
 		{
@@ -275,12 +296,12 @@ namespace Trails
 		creationData.height = heightDistribution(randomNumberGenerator);
 		creationData.depth  = decalData.depth;
 
-		const auto& decal = arguments.decal;
+		const auto& decal = footprint.decal;
 
 		if (decal.rotation.rotate.x || decal.rotation.rotate.y || decal.rotation.rotate.z)
 		{
-			auto  rotationNodeName = decal.rotation.nodeName;
-			auto* rotationNode     = rotationNodeName.empty() || !source3D ? nullptr : source3D->GetBoneFromName(Skyrim::BSFixedString(rotationNodeName), true);
+			Skyrim::BSFixedString rotationNodeName = decal.rotation.nodeName;
+			auto*                 rotationNode     = rotationNodeName.empty() || !reference3D ? nullptr : reference3D->GetBoneFromName(rotationNodeName, true);
 
 			Skyrim::NiPoint3 eulerAngles;
 
@@ -290,40 +311,34 @@ namespace Trails
 			}
 			else
 			{
-				eulerAngles = source->rotation;
+				eulerAngles = reference->rotation;
 			}
 
 			if ((decal.rotation.offset.minimum.x || decal.rotation.offset.maximum.x) && (decal.rotation.offset.maximum.x >= decal.rotation.offset.minimum.x))
 			{
-				auto minimumX = decal.rotation.offset.minimum.x * (std::numbers::pi_v<float> / 180.0F);
-				auto maximumX = decal.rotation.offset.maximum.x * (std::numbers::pi_v<float> / 180.0F);
+				std::uniform_real_distribution xDistribution(decal.rotation.offset.minimum.x, decal.rotation.offset.maximum.x);
 
-				std::uniform_real_distribution xDistribution(minimumX, maximumX);
-
-				eulerAngles.x += xDistribution(randomNumberGenerator);
+				eulerAngles.x += xDistribution(randomNumberGenerator) * (std::numbers::pi_v<float> / 180.0F);
 			}
 
 			if ((decal.rotation.offset.minimum.y || decal.rotation.offset.maximum.y) && (decal.rotation.offset.maximum.y >= decal.rotation.offset.minimum.y))
 			{
-				auto minimumY = decal.rotation.offset.minimum.y * (std::numbers::pi_v<float> / 180.0F);
-				auto maximumY = decal.rotation.offset.maximum.y * (std::numbers::pi_v<float> / 180.0F);
+				std::uniform_real_distribution yDistribution(decal.rotation.offset.minimum.y, decal.rotation.offset.maximum.y);
 
-				std::uniform_real_distribution yDistribution(minimumY, maximumY);
-
-				eulerAngles.y += yDistribution(randomNumberGenerator);
+				eulerAngles.y += yDistribution(randomNumberGenerator) * (std::numbers::pi_v<float> / 180.0F);
 			}
 
 			if ((decal.rotation.offset.minimum.z || decal.rotation.offset.maximum.z) && (decal.rotation.offset.maximum.z >= decal.rotation.offset.minimum.z))
 			{
-				auto minimumZ = decal.rotation.offset.minimum.z * (std::numbers::pi_v<float> / 180.0F);
-				auto maximumZ = decal.rotation.offset.maximum.z * (std::numbers::pi_v<float> / 180.0F);
+				std::uniform_real_distribution zDistribution(decal.rotation.offset.minimum.z, decal.rotation.offset.maximum.z);
 
-				std::uniform_real_distribution zDistribution(minimumZ, maximumZ);
-
-				eulerAngles.z += zDistribution(randomNumberGenerator);
+				eulerAngles.z += zDistribution(randomNumberGenerator) * (std::numbers::pi_v<float> / 180.0F);
 			}
 
-			creationData.rotation.EulerAnglesToRotationMatrixZXY(decal.rotation.rotate.z ? eulerAngles.z : 0.0F, decal.rotation.rotate.x ? eulerAngles.x : 0.0F, decal.rotation.rotate.y ? eulerAngles.y : 0.0F);
+			creationData.rotation.EulerAnglesToRotationMatrixZXY(
+				decal.rotation.rotate.z ? eulerAngles.z : 0.0F,
+				decal.rotation.rotate.x ? eulerAngles.x : 0.0F,
+				decal.rotation.rotate.y ? eulerAngles.y : 0.0F);
 		}
 
 		if (!target)
@@ -341,7 +356,7 @@ namespace Trails
 			static_cast<float>(decalData.color.green) / 255.0F,
 			static_cast<float>(decalData.color.blue) / 255.0F);
 
-		if (terrain && decal.useLandColor)
+		if (terrain && decal.landColor)
 		{
 			Skyrim::NiColorA landColor;
 
@@ -351,11 +366,6 @@ namespace Trails
 					std::min(std::max(landColor.red, 0.0F), 1.0F),
 					std::min(std::max(landColor.green, 0.0F), 1.0F),
 					std::min(std::max(landColor.blue, 0.0F), 1.0F));
-
-				if (source == Skyrim::PlayerCharacter::GetSingleton())
-				{
-					SPDLOG_INFO("Land Color: ({}, {}, {}, {})", landColor.red, landColor.green, landColor.blue, landColor.alpha);
-				}
 			}
 		}
 

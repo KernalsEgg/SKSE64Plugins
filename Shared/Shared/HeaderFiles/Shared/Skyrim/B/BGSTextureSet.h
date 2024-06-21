@@ -23,7 +23,7 @@ namespace Skyrim
 		{
 			kNone                   = 0,
 			kNoSpecularMap          = 1U << 0,
-			kFacegenTextures        = 1U << 1,
+			kFaceGenerationTextures = 1U << 1,
 			kHasModelSpaceNormalMap = 1U << 2
 		};
 		static_assert(sizeof(Flags) == 0x2);

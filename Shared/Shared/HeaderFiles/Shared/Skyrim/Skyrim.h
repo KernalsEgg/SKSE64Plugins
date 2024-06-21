@@ -203,6 +203,7 @@
 #include "Shared/Skyrim/F/FindAppropriateDisplaceEffect.h"
 #include "Shared/Skyrim/F/FindMaxMagnitudeVisitor.h"
 #include "Shared/Skyrim/F/FirstPersonState.h"
+#include "Shared/Skyrim/F/FixedStrings.h"
 #include "Shared/Skyrim/F/ForEachResult.h"
 #include "Shared/Skyrim/F/FormType.h"
 #include "Shared/Skyrim/F/FxDelegateArguments.h"

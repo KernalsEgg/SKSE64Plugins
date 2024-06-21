@@ -35,6 +35,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HeaderFiles\CaseInsensitiveString.h" />
     <ClInclude Include="HeaderFiles\DecalManager.h" />
     <ClInclude Include="HeaderFiles\Events.h" />
     <ClInclude Include="HeaderFiles\ImpactManager.h" />

@@ -51,6 +51,9 @@ namespace Skyrim
 		virtual void Unknown3C(NiNode*); // 3C
 		virtual void Unknown3D(NiNode*); // 3D
 
+		// Non-member functions
+		static NiNode* CreateObject();
+
 		// Member functions
 		std::uint32_t AddDecal(const BGSDecalManager::AdditionData& additionData);
 

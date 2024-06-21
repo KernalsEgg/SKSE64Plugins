@@ -102,9 +102,11 @@ namespace Skyrim
 		TESForm*     GetOwner() const;
 		AlchemyItem* GetPoison() const;
 		SoulLevel    GetSoulLevel() const;
+		bool         IsLeveledItem() const;
 		bool         IsQuestItem() const;
 		bool         IsWorn(bool eitherHand, bool leftHand) const;
 		void         SetLockList(TESForm* lockList);
+		bool         Stackable(bool worn) const;
 
 		BSExtraData*       GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type);
 		const BSExtraData* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const;

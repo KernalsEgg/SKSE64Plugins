@@ -67,6 +67,21 @@ namespace Skyrim
 		return *this;
 	}
 
+	void InventoryEntryData::AddExtraDataList(ExtraDataList* extraDataList)
+	{
+		if (!extraDataList)
+		{
+			return;
+		}
+
+		if (!this->extraDataLists)
+		{
+			this->extraDataLists = new BSSimpleList<ExtraDataList*>();
+		}
+
+		this->extraDataLists->push_front(extraDataList);
+	}
+
 	float InventoryEntryData::GetHealth() const
 	{
 		float result{ 1.0F };
@@ -158,6 +173,29 @@ namespace Skyrim
 		}
 
 		return nullptr;
+	}
+
+	bool InventoryEntryData::IsLeveledItem() const
+	{
+		auto* extraDataLists = this->extraDataLists;
+
+		if (extraDataLists)
+		{
+			for (auto* extraDataList : *extraDataLists)
+			{
+				if (!extraDataList)
+				{
+					break;
+				}
+
+				if (extraDataList->IsLeveledItem())
+				{
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 	bool InventoryEntryData::IsOwnedBy(Actor* actor, TESForm* owner, bool defaultOwnership) const

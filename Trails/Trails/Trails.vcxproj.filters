@@ -30,6 +30,9 @@
     <ClInclude Include="HeaderFiles\DecalManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HeaderFiles\CaseInsensitiveString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\Trails.cpp">

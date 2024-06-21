@@ -8,10 +8,10 @@
 
 namespace Trails
 {
-	Settings::Form::Form(Skyrim::TESForm* form)
+	Settings::Form::Form(Skyrim::TESForm* form) :
+		formID(this->GetFormID(form)),
+		fileName(this->GetFileName(form))
 	{
-		this->SetFormID(form);
-		this->SetFileName(form);
 	}
 
 	Settings::Form& Settings::Form::Deserialize(const nlohmann::json& jsonForm)
@@ -24,7 +24,7 @@ namespace Trails
 
 	nlohmann::json Settings::Form::Serialize() const
 	{
-		nlohmann::json jsonForm;
+		nlohmann::json jsonForm{};
 
 		jsonForm["formID"]   = this->formID;
 		jsonForm["fileName"] = this->fileName;
@@ -32,60 +32,125 @@ namespace Trails
 		return jsonForm;
 	}
 
-	Skyrim::FormID Settings::Form::GetFormID() const
-	{
-		try
-		{
-			return std::stoul(this->formID, nullptr, 0x10);
-		}
-		catch (const std::exception& exception)
-		{
-			SPDLOG_CRITICAL("Form ID: {}, File Name: {}, {}", this->formID, this->fileName, exception.what());
-
-			throw;
-		}
-	}
-
-	void Settings::Form::SetFileName(Skyrim::TESForm* form)
+	std::string Settings::Form::GetFileName(Skyrim::TESForm* form) const
 	{
 		if (!form)
 		{
-			this->fileName = {};
-
-			return;
+			return {};
 		}
 
 		auto* file = form->GetFile(0);
 
 		if (!file)
 		{
-			this->fileName = {};
-
-			return;
+			return {};
 		}
 
-		this->fileName = file->fileName;
+		return file->fileName;
 	}
 
-	void Settings::Form::SetFormID(Skyrim::TESForm* form)
+	std::uint32_t Settings::Form::GetFormID(Skyrim::TESForm* form) const
 	{
 		if (!form)
 		{
-			this->formID = {};
-
-			return;
+			return {};
 		}
 
 		auto* file = form->GetFile(0);
 
 		if (!file)
 		{
-			this->formID = {};
-
-			return;
+			return {};
 		}
 
-		this->formID = std::format("0x{:X}", form->formID & (file->recordFlags.all(Skyrim::TESFile::RecordFlags::kSmallFile) ? 0xFFF : 0xFFFFFF));
+		return form->formID & (file->IsSmallFile() ? 0xFFF : 0xFFFFFF);
+	}
+
+	Settings::Transform& Settings::Transform::Deserialize(const nlohmann::json& jsonTransform)
+	{
+		if (jsonTransform.contains("x"))
+		{
+			jsonTransform.at("x").get_to(this->x);
+		}
+
+		if (jsonTransform.contains("y"))
+		{
+			jsonTransform.at("y").get_to(this->y);
+		}
+
+		if (jsonTransform.contains("z"))
+		{
+			jsonTransform.at("z").get_to(this->z);
+		}
+
+		return *this;
+	}
+
+	nlohmann::json Settings::Transform::Serialize() const
+	{
+		nlohmann::json jsonTransform;
+
+		jsonTransform["x"] = this->x;
+		jsonTransform["y"] = this->y;
+		jsonTransform["z"] = this->z;
+
+		return jsonTransform;
+	}
+
+	Settings::Vector& Settings::Vector::Deserialize(const nlohmann::json& jsonVector)
+	{
+		if (jsonVector.contains("x"))
+		{
+			jsonVector.at("x").get_to(this->x);
+		}
+
+		if (jsonVector.contains("y"))
+		{
+			jsonVector.at("y").get_to(this->y);
+		}
+
+		if (jsonVector.contains("z"))
+		{
+			jsonVector.at("z").get_to(this->z);
+		}
+
+		return *this;
+	}
+
+	nlohmann::json Settings::Vector::Serialize() const
+	{
+		nlohmann::json jsonVector;
+
+		jsonVector["x"] = this->x;
+		jsonVector["y"] = this->y;
+		jsonVector["z"] = this->z;
+
+		return jsonVector;
+	}
+
+	Settings::Distribution& Settings::Distribution::Deserialize(const nlohmann::json& jsonDistribution)
+	{
+		if (jsonDistribution.contains("minimum"))
+		{
+			this->minimum.Deserialize(jsonDistribution.at("minimum"));
+		}
+
+		if (jsonDistribution.contains("maximum"))
+		{
+			this->maximum.Deserialize(jsonDistribution.at("maximum"));
+		}
+
+		return *this;
+	}
+
+	nlohmann::json Settings::Distribution::Serialize() const
+	{
+		nlohmann::json jsonDistribution;
+
+		jsonDistribution["minimum"] = this->minimum.Serialize();
+		jsonDistribution["maximum"] = this->maximum.Serialize();
+
+		return jsonDistribution;
 	}
 
 	Settings::Position& Settings::Position::Deserialize(const nlohmann::json& jsonPosition)
@@ -105,7 +170,7 @@ namespace Trails
 
 	nlohmann::json Settings::Position::Serialize() const
 	{
-		nlohmann::json jsonPosition;
+		nlohmann::json jsonPosition{};
 
 		jsonPosition["nodeName"] = this->nodeName;
 		jsonPosition["offset"]   = this->offset.Serialize();
@@ -130,7 +195,7 @@ namespace Trails
 
 	nlohmann::json Settings::Rotation::Serialize() const
 	{
-		nlohmann::json jsonRotation;
+		nlohmann::json jsonRotation{};
 
 		jsonRotation["nodeName"] = this->nodeName;
 		jsonRotation["rotate"]   = this->rotate.Serialize();
@@ -138,37 +203,39 @@ namespace Trails
 		return jsonRotation;
 	}
 
-	Settings::OffsetRotation& Settings::OffsetRotation::Deserialize(const nlohmann::json& jsonOffsetRotation)
+	Settings::RandomizedRotation& Settings::RandomizedRotation::Deserialize(const nlohmann::json& jsonRandomizedRotation)
 	{
-		this->Rotation::Deserialize(jsonOffsetRotation);
+		this->Rotation::Deserialize(jsonRandomizedRotation);
 
-		if (jsonOffsetRotation.contains("offset"))
+		if (jsonRandomizedRotation.contains("offset"))
 		{
-			this->offset.Deserialize(jsonOffsetRotation.at("offset"));
+			this->offset.Deserialize(jsonRandomizedRotation.at("offset"));
 		}
 
 		return *this;
 	}
 
-	nlohmann::json Settings::OffsetRotation::Serialize() const
+	nlohmann::json Settings::RandomizedRotation::Serialize() const
 	{
-		auto jsonOffsetRotation = this->Rotation::Serialize();
+		nlohmann::json jsonRandomizedRotation{};
 
-		jsonOffsetRotation["offset"] = this->offset.Serialize();
+		jsonRandomizedRotation.update(this->Rotation::Serialize());
 
-		return jsonOffsetRotation;
+		jsonRandomizedRotation["offset"] = this->offset.Serialize();
+
+		return jsonRandomizedRotation;
 	}
 
-	Settings::Footstep::Arguments::Decal& Settings::Footstep::Arguments::Decal::Deserialize(const nlohmann::json& jsonDecal)
+	Settings::Footprint::Decal& Settings::Footprint::Decal::Deserialize(const nlohmann::json& jsonDecal)
 	{
 		if (jsonDecal.contains("force"))
 		{
 			jsonDecal.at("force").get_to(this->force);
 		}
 
-		if (jsonDecal.contains("useLandColor"))
+		if (jsonDecal.contains("landColor"))
 		{
-			jsonDecal.at("useLandColor").get_to(this->useLandColor);
+			jsonDecal.at("landColor").get_to(this->landColor);
 		}
 
 		if (jsonDecal.contains("rotation"))
@@ -179,18 +246,18 @@ namespace Trails
 		return *this;
 	}
 
-	nlohmann::json Settings::Footstep::Arguments::Decal::Serialize() const
+	nlohmann::json Settings::Footprint::Decal::Serialize() const
 	{
-		nlohmann::json jsonDecal;
+		nlohmann::json jsonDecal{};
 
-		jsonDecal["force"]        = this->force;
-		jsonDecal["useLandColor"] = this->useLandColor;
-		jsonDecal["rotation"]     = this->rotation.Serialize();
+		jsonDecal["force"]     = this->force;
+		jsonDecal["landColor"] = this->landColor;
+		jsonDecal["rotation"]  = this->rotation.Serialize();
 
 		return jsonDecal;
 	}
 
-	Settings::Footstep::Arguments::RayCast& Settings::Footstep::Arguments::RayCast::Deserialize(const nlohmann::json& jsonRayCast)
+	Settings::Footprint::RayCast& Settings::Footprint::RayCast::Deserialize(const nlohmann::json& jsonRayCast)
 	{
 		if (jsonRayCast.contains("origin"))
 		{
@@ -210,9 +277,9 @@ namespace Trails
 		return *this;
 	}
 
-	nlohmann::json Settings::Footstep::Arguments::RayCast::Serialize() const
+	nlohmann::json Settings::Footprint::RayCast::Serialize() const
 	{
-		nlohmann::json jsonRayCast;
+		nlohmann::json jsonRayCast{};
 
 		jsonRayCast["origin"]   = this->origin.Serialize();
 		jsonRayCast["ray"]      = this->ray.Serialize();
@@ -221,125 +288,97 @@ namespace Trails
 		return jsonRayCast;
 	}
 
-	Settings::Footstep::Arguments& Settings::Footstep::Arguments::Deserialize(const nlohmann::json& jsonArguments)
+	Settings::Footprint& Settings::Footprint::Deserialize(const nlohmann::json& jsonFootprint)
 	{
-		this->impactEffect = Settings::Form().Deserialize(jsonArguments.at("impactEffect")).GetForm<Skyrim::BGSImpactDataSet>(Skyrim::FormType::kImpactDataSet);
-
-		if (jsonArguments.contains("decal"))
+		if (jsonFootprint.contains("impactDataSet"))
 		{
-			this->decal.Deserialize(jsonArguments.at("decal"));
+			this->impactDataSet = Form().Deserialize(jsonFootprint.at("impactDataSet")).GetForm<Skyrim::BGSImpactDataSet, Skyrim::FormType::kImpactDataSet>();
 		}
 
-		if (jsonArguments.contains("rayCast"))
+		if (jsonFootprint.contains("rayCast"))
 		{
-			this->rayCast.Deserialize(jsonArguments.at("rayCast"));
+			this->rayCast.Deserialize(jsonFootprint.at("rayCast"));
+		}
+
+		if (jsonFootprint.contains("decal"))
+		{
+			this->decal.Deserialize(jsonFootprint.at("decal"));
 		}
 
 		return *this;
 	}
 
-	nlohmann::json Settings::Footstep::Arguments::Serialize() const
+	nlohmann::json Settings::Footprint::Serialize() const
 	{
-		nlohmann::json jsonArguments;
+		nlohmann::json jsonFootprint{};
 
-		jsonArguments["impactEffect"] = Settings::Form(this->impactEffect).Serialize();
-		jsonArguments["decal"]        = this->decal.Serialize();
-		jsonArguments["rayCast"]      = this->rayCast.Serialize();
+		jsonFootprint["impactDataSet"] = Form(this->impactDataSet).Serialize();
+		jsonFootprint["rayCast"]       = this->rayCast.Serialize();
+		jsonFootprint["decal"]         = this->decal.Serialize();
 
-		return jsonArguments;
-	}
-
-	Settings::Footstep& Settings::Footstep::Deserialize(const nlohmann::json& jsonFootstep)
-	{
-		jsonFootstep.at("tags").get_to(this->tags);
-
-		std::vector<Settings::Footstep::Arguments> arguments;
-
-		for (const auto& jsonArguments : jsonFootstep.at("arguments"))
-		{
-			arguments.push_back(Settings::Footstep::Arguments().Deserialize(jsonArguments));
-		}
-
-		this->arguments = arguments;
-
-		return *this;
-	}
-
-	nlohmann::json Settings::Footstep::Serialize() const
-	{
-		nlohmann::json jsonFootstep;
-
-		jsonFootstep["tags"] = nlohmann::json(this->tags);
-
-		for (const auto& arguments : this->arguments)
-		{
-			jsonFootstep["arguments"].push_back(arguments.Serialize());
-		}
-
-		return jsonFootstep;
+		return jsonFootprint;
 	}
 
 	Settings::Settings(const std::filesystem::path& directory)
 	{
-		std::map<Skyrim::BGSConstructibleObject*, std::vector<Settings::Footstep>> globalFootsteps;
+		footsteps_type footsteps{};
 
-		if (std::filesystem::is_directory(directory))
+		if (std::filesystem::exists(directory) && std::filesystem::is_directory(directory))
 		{
 			for (const auto& directoryEntry : std::filesystem::directory_iterator(directory))
 			{
-				auto path      = directoryEntry.path();
-				auto extension = path.extension().string();
+				const auto& path = directoryEntry.path();
 
-				if (::_stricmp(extension.c_str(), ".json") != 0)
+				if (std::filesystem::is_regular_file(path) && path.extension() == ".json")
 				{
-					continue;
-				}
-
-				auto fileName = path.filename().string();
-
-				try
-				{
-					SPDLOG_INFO("Deserializing {}...", fileName);
-
-					auto localSettings = Settings().Deserialize(nlohmann::json::parse(std::ifstream(path), nullptr, true, true));
-
-					for (const auto& localFootsteps : localSettings.footsteps)
+					try
 					{
-						globalFootsteps[localFootsteps.first].insert(globalFootsteps[localFootsteps.first].end(), localFootsteps.second.begin(), localFootsteps.second.end());
+						SPDLOG_INFO("Deserializing {}...", path.filename().string());
+
+						auto json     = nlohmann::json::parse(std::ifstream(path), nullptr, true, true);
+						auto settings = Settings().Deserialize(json.at("settings"), json.at("templates"));
+
+						for (auto& [conditions, footprints] : settings.footsteps)
+						{
+							footsteps[conditions].merge(footprints);
+						}
+
+						SPDLOG_INFO("Deserialized {}.", path.filename().string());
 					}
+					catch (const nlohmann::json::exception& jsonException)
+					{
+						SPDLOG_CRITICAL("{}", jsonException.what());
 
-					SPDLOG_INFO("Deserialized {}.", fileName);
-				}
-				catch (const nlohmann::json::exception& jsonException)
-				{
-					SPDLOG_CRITICAL("{}", jsonException.what());
-
-					throw;
+						throw;
+					}
 				}
 			}
 		}
 
-		this->footsteps = globalFootsteps;
+		this->footsteps = footsteps;
 	}
 
 	Settings& Settings::GetSingleton()
 	{
-		static Settings settings(std::filesystem::path(Relocation::DynamicLinkLibrary::GetSingleton().GetPath()).replace_extension());
+		static Settings settings(Relocation::DynamicLinkLibrary::GetSingleton().GetPath().parent_path() / Relocation::DynamicLinkLibrary::GetSingleton().GetPath().stem());
 
 		return settings;
 	}
 
-	Settings& Settings::Deserialize(const nlohmann::json& jsonSettings)
+	Settings& Settings::Deserialize(const nlohmann::json& jsonSettings, const nlohmann::json& jsonTemplates)
 	{
-		std::map<Skyrim::BGSConstructibleObject*, std::vector<Settings::Footstep>> footsteps;
+		footsteps_type footsteps{};
 
 		for (const auto& jsonSetting : jsonSettings)
 		{
-			auto* conditions = Settings::Form().Deserialize(jsonSetting.at("conditions")).GetForm<Skyrim::BGSConstructibleObject>(Skyrim::FormType::kConstructibleObject);
+			auto* conditions = Form().Deserialize(jsonSetting.at("conditions")).GetForm<Skyrim::BGSConstructibleObject, Skyrim::FormType::kConstructibleObject>();
 
-			for (const auto& jsonFootstep : jsonSetting.at("footsteps"))
+			for (const auto& [tag, jsonFootprints] : jsonSetting.at("footsteps").items())
 			{
-				footsteps[conditions].push_back(Settings::Footstep().Deserialize(jsonFootstep));
+				for (const auto& jsonFootprint : jsonFootprints)
+				{
+					footsteps[conditions].emplace(tag, Footprint().Deserialize(jsonTemplates.at(tag)).Deserialize(jsonFootprint));
+				}
 			}
 		}
 
@@ -350,17 +389,26 @@ namespace Trails
 
 	nlohmann::json Settings::Serialize() const
 	{
-		nlohmann::json jsonSettings;
+		nlohmann::json jsonSettings{};
 
-		for (const auto& footsteps : this->footsteps)
+		for (const auto& [conditions, footprints] : this->footsteps)
 		{
-			nlohmann::json jsonSetting;
+			nlohmann::json jsonSetting{};
 
-			jsonSetting["conditions"] = Settings::Form(footsteps.first).Serialize();
+			jsonSetting["conditions"] = Form(conditions).Serialize();
 
-			for (const auto& footstep : footsteps.second)
+			for (auto tagsIterator = footprints.begin(); tagsIterator != footprints.end(); tagsIterator = footprints.upper_bound(tagsIterator->first))
 			{
-				jsonSetting["footsteps"].push_back(footstep.Serialize());
+				nlohmann::json jsonFootstep{};
+
+				auto footprintsRange = footprints.equal_range(tagsIterator->first);
+
+				for (auto footprintsIterator = footprintsRange.first; footprintsIterator != footprintsRange.second; ++footprintsIterator)
+				{
+					jsonFootstep[footprintsIterator->first].push_back(footprintsIterator->second.Serialize());
+				}
+
+				jsonSetting["footsteps"].push_back(jsonFootstep);
 			}
 
 			jsonSettings.push_back(jsonSetting);

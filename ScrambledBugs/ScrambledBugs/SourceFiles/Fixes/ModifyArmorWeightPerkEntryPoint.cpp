@@ -57,6 +57,11 @@ namespace ScrambledBugs::Fixes
 		{
 			for (auto* containerObject : *container)
 			{
+				if (!containerObject)
+				{
+					break;
+				}
+
 				auto* item = containerObject->object;
 
 				if (item)

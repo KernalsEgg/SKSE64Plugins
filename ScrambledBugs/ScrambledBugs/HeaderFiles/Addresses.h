@@ -147,23 +147,8 @@ namespace ScrambledBugs::Addresses
 
 		namespace EquipBestAmmunition
 		{
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1E3090 + 0x11A (15846), 1.6.318.0: SkyrimSE.exe + 0x1EE7F0</summary>
-			inline const std::uintptr_t CompareDamageContainer{ Relocation::AddressLibrary::GetSingleton().GetAddress(16086) + 0x11A }; // InventoryChanges::GetWorstAmmunition
-
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1E3090 + 0x1E1 (15846), 1.6.318.0: SkyrimSE.exe + 0x1EE7F0</summary>
-			inline const std::uintptr_t CompareDamageInventoryChanges{ Relocation::AddressLibrary::GetSingleton().GetAddress(16086) + 0x1E1 }; // InventoryChanges::GetWorstAmmunition
-
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1536BB4 (230697), 1.6.318.0: SkyrimSE.exe + 0x162DF5C</summary>
-			inline const std::uintptr_t FloatMinimumValue{ Relocation::AddressLibrary::GetSingleton().GetAddress(187412) };
-
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1E3090 + 0x5F (15846), 1.6.318.0: SkyrimSE.exe + 0x1EE7F0</summary>
-			inline const std::uintptr_t InitializeDamage{ Relocation::AddressLibrary::GetSingleton().GetAddress(16086) + 0x5F }; // InventoryChanges::GetWorstAmmunition
-
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1E3090 + 0xAE (15846), 1.6.318.0: SkyrimSE.exe + 0x1EE7F0</summary>
-			inline const std::uintptr_t IsBoltContainer{ Relocation::AddressLibrary::GetSingleton().GetAddress(16086) + 0xAE }; // InventoryChanges::GetWorstAmmunition
-
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1E3090 + 0x162 (15846), 1.6.318.0: SkyrimSE.exe + 0x1EE7F0</summary>
-			inline const std::uintptr_t IsBoltInventoryChanges{ Relocation::AddressLibrary::GetSingleton().GetAddress(16086) + 0x162 }; // InventoryChanges::GetWorstAmmunition
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1E3090 (15846), 1.6.318.0: SkyrimSE.exe + 0x1EE7F0</summary>
+			inline const std::uintptr_t GetWorstAmmunition{ Relocation::AddressLibrary::GetSingleton().GetAddress(16086) }; // InventoryChanges::GetWorstAmmunition
 		}
 
 		namespace LeveledCharacters

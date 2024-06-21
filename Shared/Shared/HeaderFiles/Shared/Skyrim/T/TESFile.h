@@ -2,6 +2,7 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/B/BSCoreTypes.h"
 #include "Shared/Skyrim/B/BSSimpleList.h"
 #include "Shared/Skyrim/B/BSString.h"
 #include "Shared/Utility/Enumeration.h"
@@ -19,6 +20,11 @@ namespace Skyrim
 			kSmallFile = 1U << 9
 		};
 		static_assert(sizeof(RecordFlags) == 0x4);
+
+		// Member functions
+		void AdjustFormIDFileIndex(FormID& formID) const;
+		bool IsCompiledFile() const;
+		bool IsSmallFile() const;
 
 		// Member variables
 		std::uint64_t                                    unknown0;              // 0

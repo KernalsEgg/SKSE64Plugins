@@ -358,6 +358,11 @@ namespace Skyrim
 			std::uintptr_t VirtualFunctionTable();
 		}
 
+		namespace FixedStrings
+		{
+			std::uintptr_t GetSingleton();
+		}
+
 		namespace FrenzyEffect
 		{
 			std::uintptr_t VirtualFunctionTable();
@@ -579,6 +584,7 @@ namespace Skyrim
 		namespace NiNode
 		{
 			std::uintptr_t AddDecal();
+			std::uintptr_t CreateObject();
 		}
 
 		namespace NiObjectNET
