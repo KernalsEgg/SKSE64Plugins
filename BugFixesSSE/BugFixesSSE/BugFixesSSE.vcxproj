@@ -35,29 +35,29 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeaderFiles\Addresses.h" />
-    <ClInclude Include="HeaderFiles\Fixes\MagicEffectConditions.h" />
-    <ClInclude Include="HeaderFiles\Fixes\SpeechExperience\EnchantedItems.h" />
-    <ClInclude Include="HeaderFiles\Fixes\SpeechExperience\ItemStacks.h" />
-    <ClInclude Include="HeaderFiles\Fixes\MovementSpeed.h" />
-    <ClInclude Include="HeaderFiles\Patterns.h" />
-    <ClInclude Include="HeaderFiles\PrecompiledHeader.h" />
-    <ClInclude Include="HeaderFiles\Settings.h" />
+    <ClInclude Include="Include\Addresses.h" />
+    <ClInclude Include="Include\Fixes\MagicEffectConditions.h" />
+    <ClInclude Include="Include\Fixes\SpeechExperience\EnchantedItems.h" />
+    <ClInclude Include="Include\Fixes\SpeechExperience\ItemStacks.h" />
+    <ClInclude Include="Include\Fixes\MovementSpeed.h" />
+    <ClInclude Include="Include\Patterns.h" />
+    <ClInclude Include="Include\PrecompiledHeader.h" />
+    <ClInclude Include="Include\Settings.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceFiles\BugFixesSSE.cpp" />
-    <ClCompile Include="SourceFiles\Fixes\MagicEffectConditions.cpp" />
-    <ClCompile Include="SourceFiles\Fixes\SpeechExperience\EnchantedItems.cpp" />
-    <ClCompile Include="SourceFiles\Fixes\SpeechExperience\ItemStacks.cpp" />
-    <ClCompile Include="SourceFiles\Fixes\MovementSpeed.cpp" />
-    <ClCompile Include="SourceFiles\Patterns.cpp" />
-    <ClCompile Include="SourceFiles\PrecompiledHeader.cpp">
+    <ClCompile Include="Source\BugFixesSSE.cpp" />
+    <ClCompile Include="Source\Fixes\MagicEffectConditions.cpp" />
+    <ClCompile Include="Source\Fixes\SpeechExperience\EnchantedItems.cpp" />
+    <ClCompile Include="Source\Fixes\SpeechExperience\ItemStacks.cpp" />
+    <ClCompile Include="Source\Fixes\MovementSpeed.cpp" />
+    <ClCompile Include="Source\Patterns.cpp" />
+    <ClCompile Include="Source\PrecompiledHeader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Settings.cpp" />
+    <ClCompile Include="Source\Settings.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -269,7 +269,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -292,7 +292,7 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -317,7 +317,7 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -344,7 +344,7 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

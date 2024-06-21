@@ -35,18 +35,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeaderFiles\PrecompiledHeader.h" />
-    <ClInclude Include="HeaderFiles\Serialization.h" />
+    <ClInclude Include="Include\PrecompiledHeader.h" />
+    <ClInclude Include="Include\Serialization.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceFiles\PrecompiledHeader.cpp">
+    <ClCompile Include="Source\PrecompiledHeader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Serialization.cpp" />
-    <ClCompile Include="SourceFiles\VendorRespawnFix.cpp" />
+    <ClCompile Include="Source\Serialization.cpp" />
+    <ClCompile Include="Source\VendorRespawnFix.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -258,7 +258,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -280,7 +280,7 @@ copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKS
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -304,7 +304,7 @@ copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKS
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -330,7 +330,7 @@ copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKS
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

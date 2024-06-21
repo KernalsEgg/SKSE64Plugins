@@ -33,252 +33,252 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeaderFiles\Addresses.h">
+    <ClInclude Include="Include\Addresses.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\ActivateFurniture.h">
+    <ClInclude Include="Include\Fixes\ActivateFurniture.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\ActorValuePercentage.h">
+    <ClInclude Include="Include\Fixes\ActorValuePercentage.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\EnchantmentCost.h">
+    <ClInclude Include="Include\Fixes\EnchantmentCost.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\HarvestedFlags.h">
+    <ClInclude Include="Include\Fixes\HarvestedFlags.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\HitEffectRaceCondition.h">
+    <ClInclude Include="Include\Fixes\HitEffectRaceCondition.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\ImpactEffectCrash.h">
+    <ClInclude Include="Include\Fixes\ImpactEffectCrash.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\KillCamera.h">
+    <ClInclude Include="Include\Fixes\KillCamera.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\LeftHandPowerAttacks.h">
+    <ClInclude Include="Include\Fixes\LeftHandPowerAttacks.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\MagicEffectFlags.h">
+    <ClInclude Include="Include\Fixes\MagicEffectFlags.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\ModifyArmorWeightPerkEntryPoint.h">
+    <ClInclude Include="Include\Fixes\ModifyArmorWeightPerkEntryPoint.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\QuickShot.h">
+    <ClInclude Include="Include\Fixes\QuickShot.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\TerrainDecals.h">
+    <ClInclude Include="Include\Fixes\TerrainDecals.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\TrainingMenu.h">
+    <ClInclude Include="Include\Fixes\TrainingMenu.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\WeaponCharge.h">
+    <ClInclude Include="Include\Fixes\WeaponCharge.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\AccumulatingMagnitude.h">
+    <ClInclude Include="Include\Patches\AccumulatingMagnitude.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\AlreadyCaughtPickpocketing.h">
+    <ClInclude Include="Include\Patches\AlreadyCaughtPickpocketing.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\AttachHitEffectArt.h">
+    <ClInclude Include="Include\Patches\AttachHitEffectArt.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\CloakHitEffects.h">
+    <ClInclude Include="Include\Patches\CloakHitEffects.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\EquipBestAmmunition.h">
+    <ClInclude Include="Include\Patches\EquipBestAmmunition.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\ImproveMultipleEnchantmentEffects.h">
+    <ClInclude Include="Include\Patches\ImproveMultipleEnchantmentEffects.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\LeveledCharacters.h">
+    <ClInclude Include="Include\Patches\LeveledCharacters.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\LockpickingExperience.h">
+    <ClInclude Include="Include\Patches\LockpickingExperience.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\PausedGameHitEffects.h">
+    <ClInclude Include="Include\Patches\PausedGameHitEffects.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\PerkEntryPoints\ApplyMultipleSpells.h">
+    <ClInclude Include="Include\Patches\PerkEntryPoints\ApplyMultipleSpells.h">
       <Filter>Header Files\Patches\PerkEntryPoints</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\PerkEntryPoints\CastSpells.h">
+    <ClInclude Include="Include\Patches\PerkEntryPoints\CastSpells.h">
       <Filter>Header Files\Patches\PerkEntryPoints</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\PoisonResistance.h">
+    <ClInclude Include="Include\Patches\PoisonResistance.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\PowerAttackStamina.h">
+    <ClInclude Include="Include\Patches\PowerAttackStamina.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\ReflectDamage.h">
+    <ClInclude Include="Include\Patches\ReflectDamage.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\ScrollExperience.h">
+    <ClInclude Include="Include\Patches\ScrollExperience.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\SoulGems.h">
+    <ClInclude Include="Include\Patches\SoulGems.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\StaffExperience.h">
+    <ClInclude Include="Include\Patches\StaffExperience.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\SteepSlopes.h">
+    <ClInclude Include="Include\Patches\SteepSlopes.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patterns.h">
+    <ClInclude Include="Include\Patterns.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\PrecompiledHeader.h">
+    <ClInclude Include="Include\PrecompiledHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Serialization.h">
+    <ClInclude Include="Include\Serialization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Settings.h">
+    <ClInclude Include="Include\Settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\PowerCooldowns.h">
+    <ClInclude Include="Include\Fixes\PowerCooldowns.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patches\DifficultyMultipliers.h">
+    <ClInclude Include="Include\Patches\DifficultyMultipliers.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\ProjectileFadeDuration.h">
+    <ClInclude Include="Include\Fixes\ProjectileFadeDuration.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\IsCurrentSpell.h">
+    <ClInclude Include="Include\Fixes\IsCurrentSpell.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceFiles\Fixes\ActivateFurniture.cpp">
+    <ClCompile Include="Source\Fixes\ActivateFurniture.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\ActorValuePercentage.cpp">
+    <ClCompile Include="Source\Fixes\ActorValuePercentage.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\EnchantmentCost.cpp">
+    <ClCompile Include="Source\Fixes\EnchantmentCost.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\HarvestedFlags.cpp">
+    <ClCompile Include="Source\Fixes\HarvestedFlags.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\HitEffectRaceCondition.cpp">
+    <ClCompile Include="Source\Fixes\HitEffectRaceCondition.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\ImpactEffectCrash.cpp">
+    <ClCompile Include="Source\Fixes\ImpactEffectCrash.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\KillCamera.cpp">
+    <ClCompile Include="Source\Fixes\KillCamera.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\LeftHandPowerAttacks.cpp">
+    <ClCompile Include="Source\Fixes\LeftHandPowerAttacks.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\MagicEffectFlags.cpp">
+    <ClCompile Include="Source\Fixes\MagicEffectFlags.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\ModifyArmorWeightPerkEntryPoint.cpp">
+    <ClCompile Include="Source\Fixes\ModifyArmorWeightPerkEntryPoint.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\QuickShot.cpp">
+    <ClCompile Include="Source\Fixes\QuickShot.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\TerrainDecals.cpp">
+    <ClCompile Include="Source\Fixes\TerrainDecals.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\TrainingMenu.cpp">
+    <ClCompile Include="Source\Fixes\TrainingMenu.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\WeaponCharge.cpp">
+    <ClCompile Include="Source\Fixes\WeaponCharge.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\AccumulatingMagnitude.cpp">
+    <ClCompile Include="Source\Patches\AccumulatingMagnitude.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\AlreadyCaughtPickpocketing.cpp">
+    <ClCompile Include="Source\Patches\AlreadyCaughtPickpocketing.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\AttachHitEffectArt.cpp">
+    <ClCompile Include="Source\Patches\AttachHitEffectArt.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\CloakHitEffects.cpp">
+    <ClCompile Include="Source\Patches\CloakHitEffects.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\EquipBestAmmunition.cpp">
+    <ClCompile Include="Source\Patches\EquipBestAmmunition.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\ImproveMultipleEnchantmentEffects.cpp">
+    <ClCompile Include="Source\Patches\ImproveMultipleEnchantmentEffects.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\LeveledCharacters.cpp">
+    <ClCompile Include="Source\Patches\LeveledCharacters.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\LockpickingExperience.cpp">
+    <ClCompile Include="Source\Patches\LockpickingExperience.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\PausedGameHitEffects.cpp">
+    <ClCompile Include="Source\Patches\PausedGameHitEffects.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\PerkEntryPoints\ApplyMultipleSpells.cpp">
+    <ClCompile Include="Source\Patches\PerkEntryPoints\ApplyMultipleSpells.cpp">
       <Filter>Source Files\Patches\PerkEntryPoints</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\PerkEntryPoints\CastSpells.cpp">
+    <ClCompile Include="Source\Patches\PerkEntryPoints\CastSpells.cpp">
       <Filter>Source Files\Patches\PerkEntryPoints</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\PoisonResistance.cpp">
+    <ClCompile Include="Source\Patches\PoisonResistance.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\PowerAttackStamina.cpp">
+    <ClCompile Include="Source\Patches\PowerAttackStamina.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\ReflectDamage.cpp">
+    <ClCompile Include="Source\Patches\ReflectDamage.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\ScrollExperience.cpp">
+    <ClCompile Include="Source\Patches\ScrollExperience.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\SoulGems.cpp">
+    <ClCompile Include="Source\Patches\SoulGems.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\StaffExperience.cpp">
+    <ClCompile Include="Source\Patches\StaffExperience.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\SteepSlopes.cpp">
+    <ClCompile Include="Source\Patches\SteepSlopes.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patterns.cpp">
+    <ClCompile Include="Source\Patterns.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\PrecompiledHeader.cpp">
+    <ClCompile Include="Source\PrecompiledHeader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\ScrambledBugs.cpp">
+    <ClCompile Include="Source\ScrambledBugs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Serialization.cpp">
+    <ClCompile Include="Source\Serialization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Settings.cpp">
+    <ClCompile Include="Source\Settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\PowerCooldowns.cpp">
+    <ClCompile Include="Source\Fixes\PowerCooldowns.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patches\DifficultyMultipliers.cpp">
+    <ClCompile Include="Source\Patches\DifficultyMultipliers.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\ProjectileFadeDuration.cpp">
+    <ClCompile Include="Source\Fixes\ProjectileFadeDuration.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\IsCurrentSpell.cpp">
+    <ClCompile Include="Source\Fixes\IsCurrentSpell.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
   </ItemGroup>

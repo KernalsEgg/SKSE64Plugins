@@ -21,84 +21,84 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeaderFiles\PrecompiledHeader.h">
+    <ClInclude Include="Include\PrecompiledHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Addresses.h">
+    <ClInclude Include="Include\Addresses.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events\BGSEntryPoint.h">
+    <ClInclude Include="Include\Events\BGSEntryPoint.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events\BGSEntryPointPerkEntry.h">
+    <ClInclude Include="Include\Events\BGSEntryPointPerkEntry.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events\ActiveEffect.h">
+    <ClInclude Include="Include\Events\ActiveEffect.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events\Script.h">
+    <ClInclude Include="Include\Events\Script.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events\ActiveEffectFactory.h">
+    <ClInclude Include="Include\Events\ActiveEffectFactory.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events\MagicSystem.h">
+    <ClInclude Include="Include\Events\MagicSystem.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events\EffectItemReplaceTagsFunctor.h">
+    <ClInclude Include="Include\Events\EffectItemReplaceTagsFunctor.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events\EnchantConstructMenu.h">
+    <ClInclude Include="Include\Events\EnchantConstructMenu.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events\DualValueModifierEffect.h">
+    <ClInclude Include="Include\Events\DualValueModifierEffect.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events\ScriptEffect.h">
+    <ClInclude Include="Include\Events\ScriptEffect.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events\SlowTimeEffect.h">
+    <ClInclude Include="Include\Events\SlowTimeEffect.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceFiles\ConditionsTargetMagicEffects.cpp">
+    <ClCompile Include="Source\ConditionsTargetMagicEffects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\PrecompiledHeader.cpp">
+    <ClCompile Include="Source\PrecompiledHeader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events\BGSEntryPoint.cpp">
+    <ClCompile Include="Source\Events\BGSEntryPoint.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events\BGSEntryPointPerkEntry.cpp">
+    <ClCompile Include="Source\Events\BGSEntryPointPerkEntry.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events\ActiveEffect.cpp">
+    <ClCompile Include="Source\Events\ActiveEffect.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events\Script.cpp">
+    <ClCompile Include="Source\Events\Script.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events\ActiveEffectFactory.cpp">
+    <ClCompile Include="Source\Events\ActiveEffectFactory.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events\MagicSystem.cpp">
+    <ClCompile Include="Source\Events\MagicSystem.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events\EffectItemReplaceTagsFunctor.cpp">
+    <ClCompile Include="Source\Events\EffectItemReplaceTagsFunctor.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events\EnchantConstructMenu.cpp">
+    <ClCompile Include="Source\Events\EnchantConstructMenu.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events\DualValueModifierEffect.cpp">
+    <ClCompile Include="Source\Events\DualValueModifierEffect.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events\ScriptEffect.cpp">
+    <ClCompile Include="Source\Events\ScriptEffect.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events\SlowTimeEffect.cpp">
+    <ClCompile Include="Source\Events\SlowTimeEffect.cpp">
       <Filter>Source Files\Events</Filter>
     </ClCompile>
   </ItemGroup>

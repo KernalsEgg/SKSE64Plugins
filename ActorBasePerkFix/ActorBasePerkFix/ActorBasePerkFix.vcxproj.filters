@@ -15,24 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeaderFiles\PrecompiledHeader.h">
+    <ClInclude Include="Include\PrecompiledHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Events.h">
+    <ClInclude Include="Include\Events.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Addresses.h">
+    <ClInclude Include="Include\Addresses.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceFiles\ActorBasePerkFix.cpp">
+    <ClCompile Include="Source\ActorBasePerkFix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\PrecompiledHeader.cpp">
+    <ClCompile Include="Source\PrecompiledHeader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Events.cpp">
+    <ClCompile Include="Source\Events.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

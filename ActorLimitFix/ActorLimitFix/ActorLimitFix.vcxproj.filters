@@ -21,48 +21,48 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeaderFiles\Addresses.h">
+    <ClInclude Include="Include\Addresses.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\MorphLimit.h">
+    <ClInclude Include="Include\Fixes\MorphLimit.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\MoverLimit.h">
+    <ClInclude Include="Include\Fixes\MoverLimit.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Fixes\ReplaceStaticArray.h">
+    <ClInclude Include="Include\Fixes\ReplaceStaticArray.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Patterns.h">
+    <ClInclude Include="Include\Patterns.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\PrecompiledHeader.h">
+    <ClInclude Include="Include\PrecompiledHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeaderFiles\Settings.h">
+    <ClInclude Include="Include\Settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceFiles\ActorLimitFix.cpp">
+    <ClCompile Include="Source\ActorLimitFix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\MorphLimit.cpp">
+    <ClCompile Include="Source\Fixes\MorphLimit.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\MoverLimit.cpp">
+    <ClCompile Include="Source\Fixes\MoverLimit.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Fixes\ReplaceStaticArray.cpp">
+    <ClCompile Include="Source\Fixes\ReplaceStaticArray.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Patterns.cpp">
+    <ClCompile Include="Source\Patterns.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\PrecompiledHeader.cpp">
+    <ClCompile Include="Source\PrecompiledHeader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\Settings.cpp">
+    <ClCompile Include="Source\Settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

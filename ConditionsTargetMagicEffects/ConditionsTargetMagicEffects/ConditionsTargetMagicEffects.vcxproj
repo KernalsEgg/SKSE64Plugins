@@ -35,34 +35,34 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeaderFiles\Addresses.h" />
-    <ClInclude Include="HeaderFiles\Events\ActiveEffect.h" />
-    <ClInclude Include="HeaderFiles\Events\ActiveEffectFactory.h" />
-    <ClInclude Include="HeaderFiles\Events\BGSEntryPoint.h" />
-    <ClInclude Include="HeaderFiles\Events\BGSEntryPointPerkEntry.h" />
-    <ClInclude Include="HeaderFiles\Events\DualValueModifierEffect.h" />
-    <ClInclude Include="HeaderFiles\Events\EffectItemReplaceTagsFunctor.h" />
-    <ClInclude Include="HeaderFiles\Events\EnchantConstructMenu.h" />
-    <ClInclude Include="HeaderFiles\Events\MagicSystem.h" />
-    <ClInclude Include="HeaderFiles\Events\Script.h" />
-    <ClInclude Include="HeaderFiles\Events\ScriptEffect.h" />
-    <ClInclude Include="HeaderFiles\Events\SlowTimeEffect.h" />
-    <ClInclude Include="HeaderFiles\PrecompiledHeader.h" />
+    <ClInclude Include="Include\Addresses.h" />
+    <ClInclude Include="Include\Events\ActiveEffect.h" />
+    <ClInclude Include="Include\Events\ActiveEffectFactory.h" />
+    <ClInclude Include="Include\Events\BGSEntryPoint.h" />
+    <ClInclude Include="Include\Events\BGSEntryPointPerkEntry.h" />
+    <ClInclude Include="Include\Events\DualValueModifierEffect.h" />
+    <ClInclude Include="Include\Events\EffectItemReplaceTagsFunctor.h" />
+    <ClInclude Include="Include\Events\EnchantConstructMenu.h" />
+    <ClInclude Include="Include\Events\MagicSystem.h" />
+    <ClInclude Include="Include\Events\Script.h" />
+    <ClInclude Include="Include\Events\ScriptEffect.h" />
+    <ClInclude Include="Include\Events\SlowTimeEffect.h" />
+    <ClInclude Include="Include\PrecompiledHeader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceFiles\ConditionsTargetMagicEffects.cpp" />
-    <ClCompile Include="SourceFiles\Events\ActiveEffect.cpp" />
-    <ClCompile Include="SourceFiles\Events\ActiveEffectFactory.cpp" />
-    <ClCompile Include="SourceFiles\Events\BGSEntryPoint.cpp" />
-    <ClCompile Include="SourceFiles\Events\BGSEntryPointPerkEntry.cpp" />
-    <ClCompile Include="SourceFiles\Events\DualValueModifierEffect.cpp" />
-    <ClCompile Include="SourceFiles\Events\EffectItemReplaceTagsFunctor.cpp" />
-    <ClCompile Include="SourceFiles\Events\EnchantConstructMenu.cpp" />
-    <ClCompile Include="SourceFiles\Events\MagicSystem.cpp" />
-    <ClCompile Include="SourceFiles\Events\Script.cpp" />
-    <ClCompile Include="SourceFiles\Events\ScriptEffect.cpp" />
-    <ClCompile Include="SourceFiles\Events\SlowTimeEffect.cpp" />
-    <ClCompile Include="SourceFiles\PrecompiledHeader.cpp">
+    <ClCompile Include="Source\ConditionsTargetMagicEffects.cpp" />
+    <ClCompile Include="Source\Events\ActiveEffect.cpp" />
+    <ClCompile Include="Source\Events\ActiveEffectFactory.cpp" />
+    <ClCompile Include="Source\Events\BGSEntryPoint.cpp" />
+    <ClCompile Include="Source\Events\BGSEntryPointPerkEntry.cpp" />
+    <ClCompile Include="Source\Events\DualValueModifierEffect.cpp" />
+    <ClCompile Include="Source\Events\EffectItemReplaceTagsFunctor.cpp" />
+    <ClCompile Include="Source\Events\EnchantConstructMenu.cpp" />
+    <ClCompile Include="Source\Events\MagicSystem.cpp" />
+    <ClCompile Include="Source\Events\Script.cpp" />
+    <ClCompile Include="Source\Events\ScriptEffect.cpp" />
+    <ClCompile Include="Source\Events\SlowTimeEffect.cpp" />
+    <ClCompile Include="Source\PrecompiledHeader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -255,7 +255,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -277,7 +277,7 @@ copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKS
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -301,7 +301,7 @@ copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKS
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -327,7 +327,7 @@ copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKS
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>PrecompiledHeader.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>HeaderFiles;..\..\Shared\Shared\HeaderFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Include;..\..\Shared\Shared\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

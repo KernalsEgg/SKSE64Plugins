@@ -1,57 +1,63 @@
 {
 	"fixes":
 	{
-		"activateFurniture":					true,	/* Prevent the camera from breaking by blocking the activation of furniture while mounted. */
-		"actorValuePercentage":					true,	/* Calculate the percentage of an actor value using both permanent and temporary modifiers. */
-		"enchantmentCost":						true,	/* Save the charge and value of player created enchantments. */
-		"harvestedFlags":						true,	/* Save whether the ingredients from flora and trees have respawned after being harvested. */
-		"hitEffectRaceCondition":				true,	/* Eliminate a race condition that prevents hit effects from being applied if an actors mesh is loaded after their magic effects are updated. */
-		"impactEffectCrash":					true,	/* Prevent a crash that occurs when you load a save game in which an impact effect has been placed that uses a now uninstalled texture set. */
-		"isCurrentSpell":						true,	/* Fixes the IsCurrentSpell condition and console command. */
-		"killCamera":							true,	/* Prevent firing the Apply Combat Hit Spell perk entry point when the kill camera simulates the trajectory of an arrow. */
-		"leftHandPowerAttacks":					true,	/* Calculate the stamina required to perform a left hand power attack using the weapon in your left hand. */
-		"magicEffectFlags":						true,	/* Flags are respected when scaling the duration and magnitude of a magic effect with its effectiveness. */
-		"modifyArmorWeightPerkEntryPoint":		true,	/* Modify the weight of only worn armor with the Mod Armor Weight perk entry point. */
-		"powerCooldowns":						true,	/* Save the cooldowns of all powers. */
-		"projectileFadeDuration":				true,	/* Projectiles are destroyed even if they have not been updated before they fade. */
-		"quickShot":							true,	/* Account for the Quick Shot perk when calculating the power of an arrow fired by the player. */
-		"quickShotPlaybackSpeed":				2.0,	/* The playback speed of the nocking animation when the player has the Quick Shot perk. */
-		"terrainDecals":						true,	/* Apply decals to terrain in cells that have been partially unloaded. */
-		"trainingMenu":							true,	/* Display the correct cost of a lesson in the training menu when the relevant skill is buffed or debuffed. */
-		"weaponCharge":							true	/* Magic effects can always fully recharge equipped enchanted weapons. */
+		"quickShot":
+		{
+			"quickShot":					true,	/* Calculate the power of arrows fired by the player using the Quick Shot perk. */
+			"playbackSpeed":				2.0		/* The playback speed of the nocking animation when the player has the Quick Shot perk. */
+		},
+		"activateFurniture":				true,	/* Prevent the camera from breaking when activating furniture while mounted. */
+		"actorValuePercentage":				true,	/* Calculate percentages of actor values using permanent and also temporary modifiers. */
+		"enchantmentCost":					true,	/* Save the charge and value of player created enchantments. */
+		"hitEffectRaceCondition":			true,	/* Remove a race condition that can prevent hit effects from being attached when actors are loaded. */
+		"ingredientRespawn":				true,	/* Save whether the ingredients that have been harvested from flora and trees have respawned. */
+		"impactEffectCrash":				true,	/* Prevent a crash that occurs when loading save games that have impact effects with uninstalled texture sets. */
+		"isCurrentSpell":					true,	/* Restore the IsCurrentSpell condition and console command. */
+		"killCamera":						true,	/* Prevent handling the Apply Combat Hit Spell perk entry point when the kill camera simulates the trajectory of arrows. */
+		"leftHandPowerAttacks":				true,	/* Calculate the stamina required to perform left handed power attacks using left handed weapons. */
+		"magicEffectFlags":					false,	/* Respect magic effect flags when power affects duration and magnitude. */
+		"modifyArmorWeightPerkEntryPoint":	true,	/* The weight of only worn armor is modified by the Mod Armor Weight perk entry point. */
+		"powerCooldowns":					true,	/* Save the cooldowns of all powers. */
+		"projectileFadeDuration":			true,	/* Projectiles that fade before updating are also destroyed. */
+		"terrainImpactEffects":				true,	/* Play impact effects on terrain even in cells that have been partially unloaded. */
+		"trainingMenu":						true,	/* The training menu shows the correct cost of lessons when the skill is buffed or debuffed. */
+		"weaponCharge":						true	/* Magic effects can always completely recharge equipped enchanted weapons. */
 	},
 	"patches":
 	{
 		"difficultyMultipliers":
 		{
-			"commandedActors":					false,	/* Reanimated corpses and summoned creatures use the same difficulty multipliers as the player. */
-			"teammates":						false	/* Teammates use the same difficulty multipliers as the player. */
+			"commandedActors":				false,	/* Reanimated thralls and summoned creatures use the same difficulty multipliers as the player. */
+			"teammates":					false	/* Teammates use the same difficulty multipliers as the player. */
 		},
 		"perkEntryPoints":
 		{
-			"applyMultipleSpells":				false,	/* Apply any number of spells at once using perk entry points. */
-			"castSpells":						true	/* Spells applied by perk entry points are cast by the source on the target. */
+			"applySpells":					false,	/* Apply any number of spells at once using perk entry points. */
+			"castSpells":					true	/* Spells applied by perk entry points are cast on the target by the source and not the target. */
 		},
 		"soulGems":
 		{
-			"black":							false,	/* Trap only black souls in black soul gems. */
-			"underfilled":						false	/* Trap only souls of the appropriate size in soul gems. */
+			"black":						false,	/* Trap only black souls in black soul gems. */
+			"underfilled":					false	/* Trap only souls of the same size in soul gems. */
 		},
-		"accumulatingMagnitude":				false,	/* The maximum magnitude of accumulating magnitude magic effects scales with effectiveness instead of the rate of accumulation. */
-		"alreadyCaughtPickpocketing":			false,	/* Pickpocket an actor even if they have already caught you. */
-		"attachHitEffectArt":					false,	/* Always attach hit effect art to actors. */
-		"cloakHitEffects":						false,	/* Each of a spells magic effects can apply hit effects even if it was cast by a cloak magic effect. */
-		"equipBestAmmunition":					false,	/* Automatically equip your best playable arrows or bolts when you equip a bow or crossbow. */
-		"improveMultipleEnchantmentEffects":	true,	/* Your skill in enchanting improves each of an enchantments effects. */
-		"leveledCharacters":					false,	/* Very hard leveled characters can be the same level as hard leveled characters. */
-		"lockpickingExperience":				true,	/* Earn experience each time you pick a lock. */
-		"pausedGameHitEffects":					true,	/* Apply any number of hit effects to the player while the game is paused. */
-		"poisonResistance":						false,	/* Poisons are not always resisted by poison resistance. */
-		"powerAttackStamina":					false,	/* Power attacks and bashes can only be performed with the required stamina. */
-		"reflectDamage":						true,	/* Reflect any amount of damage. */
-		"scrollExperience":						false,	/* Earn experience when using scrolls. */
-		"staffExperience":						false,	/* Earn experience when using staves. */
-		"staffExperienceIgnoreEnchantmentCost":	false,	/* Ignore enchantment cost when earning experience using staves. */
-		"steepSlopes":							false	/* Move slower on slopes than on flat surfaces. Requires the Movement Speed fix in Bug Fixes SSE. */
+		"staffExperience":
+		{
+			"staffExperience":				false,	/* Earn experience when using staves. */
+			"ignoreEnchantmentCost":		false	/* Ignore enchantment cost when earning experience using staves. */
+		},
+		"accumulatingMagnitude":			false,	/* The power of accumulating magnitude magic effects affects the maximum magnitude and not the rate of accumulation. */
+		"alreadyCaughtPickpocketing":		false,	/* Pickpocket actors even when you have already been caught. */
+		"attachHitEffectArt":				false,	/* Reattach hit effect art when actors reload. */
+		"cloakHitEffects":					false,	/* Each of a spells magic effects can attach hit effects even when cast by cloak magic effects. */
+		"deferredHitEffects":				true,	/* Attach any number of hit effects to the player while the game is paused. */
+		"enchantmentEffectPower":			true,	/* The power of enchantments affects all magic effects. */
+		"equipBestAmmunition":				false,	/* Automatically equip the best playable arrows or bolts when equipping bows or crossbows respectively. */
+		"leveledCharacters":				false,	/* Very hard leveled characters can be the same level as hard leveled characters. */
+		"lockpickingExperience":			true,	/* Earn experience each time a lock is picked. */
+		"poisonResistance":					false,	/* Poisons are not always resisted by poison resistance. */
+		"powerAttackStamina":				false,	/* Power attacks and bashes can only be performed with the required stamina. */
+		"reflectDamage":					true,	/* Reflect any amount of damage. */
+		"scrollExperience":					false,	/* Earn experience when using scrolls. */
+		"steepSlopes":						false	/* Move slower on slopes than on flat surfaces. Requires the Movement Speed fix in Bug Fixes SSE. */
 	}
 }
