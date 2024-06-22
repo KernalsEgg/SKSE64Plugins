@@ -39,7 +39,7 @@
     <ClInclude Include="Include\Fixes\ActivateFurniture.h" />
     <ClInclude Include="Include\Fixes\ActorValuePercentage.h" />
     <ClInclude Include="Include\Fixes\EnchantmentCost.h" />
-    <ClInclude Include="Include\Fixes\HarvestedFlags.h" />
+    <ClInclude Include="Include\Fixes\IngredientRespawn.h" />
     <ClInclude Include="Include\Fixes\HitEffectRaceCondition.h" />
     <ClInclude Include="Include\Fixes\ImpactEffectCrash.h" />
     <ClInclude Include="Include\Fixes\IsCurrentSpell.h" />
@@ -50,7 +50,7 @@
     <ClInclude Include="Include\Fixes\PowerCooldowns.h" />
     <ClInclude Include="Include\Fixes\ProjectileFadeDuration.h" />
     <ClInclude Include="Include\Fixes\QuickShot.h" />
-    <ClInclude Include="Include\Fixes\TerrainDecals.h" />
+    <ClInclude Include="Include\Fixes\TerrainImpactEffects.h" />
     <ClInclude Include="Include\Fixes\TrainingMenu.h" />
     <ClInclude Include="Include\Fixes\WeaponCharge.h" />
     <ClInclude Include="Include\Patches\AccumulatingMagnitude.h" />
@@ -59,11 +59,11 @@
     <ClInclude Include="Include\Patches\CloakHitEffects.h" />
     <ClInclude Include="Include\Patches\DifficultyMultipliers.h" />
     <ClInclude Include="Include\Patches\EquipBestAmmunition.h" />
-    <ClInclude Include="Include\Patches\ImproveMultipleEnchantmentEffects.h" />
+    <ClInclude Include="Include\Patches\EnchantmentEffectPower.h" />
     <ClInclude Include="Include\Patches\LeveledCharacters.h" />
     <ClInclude Include="Include\Patches\LockpickingExperience.h" />
-    <ClInclude Include="Include\Patches\PausedGameHitEffects.h" />
-    <ClInclude Include="Include\Patches\PerkEntryPoints\ApplyMultipleSpells.h" />
+    <ClInclude Include="Include\Patches\DeferredHitEffects.h" />
+    <ClInclude Include="Include\Patches\PerkEntryPoints\ApplySpells.h" />
     <ClInclude Include="Include\Patches\PerkEntryPoints\CastSpells.h" />
     <ClInclude Include="Include\Patches\PoisonResistance.h" />
     <ClInclude Include="Include\Patches\PowerAttackStamina.h" />
@@ -81,7 +81,7 @@
     <ClCompile Include="Source\Fixes\ActivateFurniture.cpp" />
     <ClCompile Include="Source\Fixes\ActorValuePercentage.cpp" />
     <ClCompile Include="Source\Fixes\EnchantmentCost.cpp" />
-    <ClCompile Include="Source\Fixes\HarvestedFlags.cpp" />
+    <ClCompile Include="Source\Fixes\IngredientRespawn.cpp" />
     <ClCompile Include="Source\Fixes\HitEffectRaceCondition.cpp" />
     <ClCompile Include="Source\Fixes\ImpactEffectCrash.cpp" />
     <ClCompile Include="Source\Fixes\IsCurrentSpell.cpp" />
@@ -92,7 +92,7 @@
     <ClCompile Include="Source\Fixes\PowerCooldowns.cpp" />
     <ClCompile Include="Source\Fixes\ProjectileFadeDuration.cpp" />
     <ClCompile Include="Source\Fixes\QuickShot.cpp" />
-    <ClCompile Include="Source\Fixes\TerrainDecals.cpp" />
+    <ClCompile Include="Source\Fixes\TerrainImpactEffects.cpp" />
     <ClCompile Include="Source\Fixes\TrainingMenu.cpp" />
     <ClCompile Include="Source\Fixes\WeaponCharge.cpp" />
     <ClCompile Include="Source\Patches\AccumulatingMagnitude.cpp" />
@@ -101,11 +101,11 @@
     <ClCompile Include="Source\Patches\CloakHitEffects.cpp" />
     <ClCompile Include="Source\Patches\DifficultyMultipliers.cpp" />
     <ClCompile Include="Source\Patches\EquipBestAmmunition.cpp" />
-    <ClCompile Include="Source\Patches\ImproveMultipleEnchantmentEffects.cpp" />
+    <ClCompile Include="Source\Patches\EnchantmentEffectPower.cpp" />
     <ClCompile Include="Source\Patches\LeveledCharacters.cpp" />
     <ClCompile Include="Source\Patches\LockpickingExperience.cpp" />
-    <ClCompile Include="Source\Patches\PausedGameHitEffects.cpp" />
-    <ClCompile Include="Source\Patches\PerkEntryPoints\ApplyMultipleSpells.cpp" />
+    <ClCompile Include="Source\Patches\DeferredHitEffects.cpp" />
+    <ClCompile Include="Source\Patches\PerkEntryPoints\ApplySpells.cpp" />
     <ClCompile Include="Source\Patches\PerkEntryPoints\CastSpells.cpp" />
     <ClCompile Include="Source\Patches\PoisonResistance.cpp" />
     <ClCompile Include="Source\Patches\PowerAttackStamina.cpp" />

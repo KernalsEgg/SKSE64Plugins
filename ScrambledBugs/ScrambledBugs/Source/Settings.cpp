@@ -5,9 +5,9 @@
 #include "Fixes/ActivateFurniture.h"
 #include "Fixes/ActorValuePercentage.h"
 #include "Fixes/EnchantmentCost.h"
-#include "Fixes/HarvestedFlags.h"
 #include "Fixes/HitEffectRaceCondition.h"
 #include "Fixes/ImpactEffectCrash.h"
+#include "Fixes/IngredientRespawn.h"
 #include "Fixes/IsCurrentSpell.h"
 #include "Fixes/KillCamera.h"
 #include "Fixes/LeftHandPowerAttacks.h"
@@ -16,20 +16,20 @@
 #include "Fixes/PowerCooldowns.h"
 #include "Fixes/ProjectileFadeDuration.h"
 #include "Fixes/QuickShot.h"
-#include "Fixes/TerrainDecals.h"
+#include "Fixes/TerrainImpactEffects.h"
 #include "Fixes/TrainingMenu.h"
 #include "Fixes/WeaponCharge.h"
 #include "Patches/AccumulatingMagnitude.h"
 #include "Patches/AlreadyCaughtPickpocketing.h"
 #include "Patches/AttachHitEffectArt.h"
 #include "Patches/CloakHitEffects.h"
+#include "Patches/DeferredHitEffects.h"
 #include "Patches/DifficultyMultipliers.h"
+#include "Patches/EnchantmentEffectPower.h"
 #include "Patches/EquipBestAmmunition.h"
-#include "Patches/ImproveMultipleEnchantmentEffects.h"
 #include "Patches/LeveledCharacters.h"
 #include "Patches/LockpickingExperience.h"
-#include "Patches/PausedGameHitEffects.h"
-#include "Patches/PerkEntryPoints/ApplyMultipleSpells.h"
+#include "Patches/PerkEntryPoints/ApplySpells.h"
 #include "Patches/PerkEntryPoints/CastSpells.h"
 #include "Patches/PoisonResistance.h"
 #include "Patches/PowerAttackStamina.h"
@@ -44,14 +44,32 @@
 
 namespace ScrambledBugs
 {
+	Settings::Fixes::QuickShot& Settings::Fixes::QuickShot::Deserialize(const nlohmann::json& jsonQuickShot)
+	{
+		jsonQuickShot.at("playbackSpeed").get_to(this->playbackSpeed);
+		jsonQuickShot.at("quickShot").get_to(this->quickShot);
+
+		return *this;
+	}
+
+	nlohmann::json Settings::Fixes::QuickShot::Serialize() const
+	{
+		nlohmann::json jsonQuickShot;
+
+		jsonQuickShot["playbackSpeed"] = this->playbackSpeed;
+		jsonQuickShot["quickShot"]     = this->quickShot;
+
+		return jsonQuickShot;
+	}
+
 	Settings::Fixes& Settings::Fixes::Deserialize(const nlohmann::json& jsonFixes)
 	{
 		jsonFixes.at("activateFurniture").get_to(this->activateFurniture);
 		jsonFixes.at("actorValuePercentage").get_to(this->actorValuePercentage);
 		jsonFixes.at("enchantmentCost").get_to(this->enchantmentCost);
-		jsonFixes.at("harvestedFlags").get_to(this->harvestedFlags);
 		jsonFixes.at("hitEffectRaceCondition").get_to(this->hitEffectRaceCondition);
 		jsonFixes.at("impactEffectCrash").get_to(this->impactEffectCrash);
+		jsonFixes.at("ingredientRespawn").get_to(this->ingredientRespawn);
 		jsonFixes.at("isCurrentSpell").get_to(this->isCurrentSpell);
 		jsonFixes.at("killCamera").get_to(this->killCamera);
 		jsonFixes.at("leftHandPowerAttacks").get_to(this->leftHandPowerAttacks);
@@ -59,9 +77,8 @@ namespace ScrambledBugs
 		jsonFixes.at("modifyArmorWeightPerkEntryPoint").get_to(this->modifyArmorWeightPerkEntryPoint);
 		jsonFixes.at("powerCooldowns").get_to(this->powerCooldowns);
 		jsonFixes.at("projectileFadeDuration").get_to(this->projectileFadeDuration);
-		jsonFixes.at("quickShot").get_to(this->quickShot);
-		jsonFixes.at("quickShotPlaybackSpeed").get_to(this->quickShotPlaybackSpeed);
-		jsonFixes.at("terrainDecals").get_to(this->terrainDecals);
+		this->quickShot.Deserialize(jsonFixes.at("quickShot"));
+		jsonFixes.at("terrainImpactEffects").get_to(this->terrainImpactEffects);
 		jsonFixes.at("trainingMenu").get_to(this->trainingMenu);
 		jsonFixes.at("weaponCharge").get_to(this->weaponCharge);
 
@@ -75,9 +92,9 @@ namespace ScrambledBugs
 		jsonFixes["activateFurniture"]               = this->activateFurniture;
 		jsonFixes["actorValuePercentage"]            = this->actorValuePercentage;
 		jsonFixes["enchantmentCost"]                 = this->enchantmentCost;
-		jsonFixes["harvestedFlags"]                  = this->harvestedFlags;
 		jsonFixes["hitEffectRaceCondition"]          = this->hitEffectRaceCondition;
 		jsonFixes["impactEffectCrash"]               = this->impactEffectCrash;
+		jsonFixes["ingredientRespawn"]               = this->ingredientRespawn;
 		jsonFixes["isCurrentSpell"]                  = this->isCurrentSpell;
 		jsonFixes["killCamera"]                      = this->killCamera;
 		jsonFixes["leftHandPowerAttacks"]            = this->leftHandPowerAttacks;
@@ -85,9 +102,8 @@ namespace ScrambledBugs
 		jsonFixes["modifyArmorWeightPerkEntryPoint"] = this->modifyArmorWeightPerkEntryPoint;
 		jsonFixes["powerCooldowns"]                  = this->powerCooldowns;
 		jsonFixes["projectileFadeDuration"]          = this->projectileFadeDuration;
-		jsonFixes["quickShot"]                       = this->quickShot;
-		jsonFixes["quickShotPlaybackSpeed"]          = this->quickShotPlaybackSpeed;
-		jsonFixes["terrainDecals"]                   = this->terrainDecals;
+		jsonFixes["quickShot"]                       = this->quickShot.Serialize();
+		jsonFixes["terrainImpactEffects"]            = this->terrainImpactEffects;
 		jsonFixes["trainingMenu"]                    = this->trainingMenu;
 		jsonFixes["weaponCharge"]                    = this->weaponCharge;
 
@@ -114,7 +130,7 @@ namespace ScrambledBugs
 
 	Settings::Patches::PerkEntryPoints& Settings::Patches::PerkEntryPoints::Deserialize(const nlohmann::json& jsonPerkEntryPoints)
 	{
-		jsonPerkEntryPoints.at("applyMultipleSpells").get_to(this->applyMultipleSpells);
+		jsonPerkEntryPoints.at("applySpells").get_to(this->applySpells);
 		jsonPerkEntryPoints.at("castSpells").get_to(this->castSpells);
 
 		return *this;
@@ -124,8 +140,8 @@ namespace ScrambledBugs
 	{
 		nlohmann::json jsonPerkEntryPoints;
 
-		jsonPerkEntryPoints["applyMultipleSpells"] = this->applyMultipleSpells;
-		jsonPerkEntryPoints["castSpells"]          = this->castSpells;
+		jsonPerkEntryPoints["applySpells"] = this->applySpells;
+		jsonPerkEntryPoints["castSpells"]  = this->castSpells;
 
 		return jsonPerkEntryPoints;
 	}
@@ -148,26 +164,43 @@ namespace ScrambledBugs
 		return jsonSoulGems;
 	}
 
+	Settings::Patches::StaffExperience& Settings::Patches::StaffExperience::Deserialize(const nlohmann::json& jsonStaffExperience)
+	{
+		jsonStaffExperience.at("ignoreEnchantmentCost").get_to(this->ignoreEnchantmentCost);
+		jsonStaffExperience.at("staffExperience").get_to(this->staffExperience);
+
+		return *this;
+	}
+
+	nlohmann::json Settings::Patches::StaffExperience::Serialize() const
+	{
+		nlohmann::json jsonStaffExperience;
+
+		jsonStaffExperience["ignoreEnchantmentCost"] = this->ignoreEnchantmentCost;
+		jsonStaffExperience["staffExperience"]       = this->staffExperience;
+
+		return jsonStaffExperience;
+	}
+
 	Settings::Patches& Settings::Patches::Deserialize(const nlohmann::json& jsonPatches)
 	{
 		jsonPatches.at("accumulatingMagnitude").get_to(this->accumulatingMagnitude);
 		jsonPatches.at("alreadyCaughtPickpocketing").get_to(this->alreadyCaughtPickpocketing);
 		jsonPatches.at("attachHitEffectArt").get_to(this->attachHitEffectArt);
 		jsonPatches.at("cloakHitEffects").get_to(this->cloakHitEffects);
+		jsonPatches.at("deferredHitEffects").get_to(this->deferredHitEffects);
 		this->difficultyMultipliers.Deserialize(jsonPatches.at("difficultyMultipliers"));
+		jsonPatches.at("enchantmentEffectPower").get_to(this->enchantmentEffectPower);
 		jsonPatches.at("equipBestAmmunition").get_to(this->equipBestAmmunition);
-		jsonPatches.at("improveMultipleEnchantmentEffects").get_to(this->improveMultipleEnchantmentEffects);
 		jsonPatches.at("leveledCharacters").get_to(this->leveledCharacters);
 		jsonPatches.at("lockpickingExperience").get_to(this->lockpickingExperience);
-		jsonPatches.at("pausedGameHitEffects").get_to(this->pausedGameHitEffects);
 		this->perkEntryPoints.Deserialize(jsonPatches.at("perkEntryPoints"));
 		jsonPatches.at("poisonResistance").get_to(this->poisonResistance);
 		jsonPatches.at("powerAttackStamina").get_to(this->powerAttackStamina);
 		jsonPatches.at("reflectDamage").get_to(this->reflectDamage);
 		jsonPatches.at("scrollExperience").get_to(this->scrollExperience);
 		this->soulGems.Deserialize(jsonPatches.at("soulGems"));
-		jsonPatches.at("staffExperience").get_to(this->staffExperience);
-		jsonPatches.at("staffExperienceIgnoreEnchantmentCost").get_to(this->staffExperienceIgnoreEnchantmentCost);
+		this->staffExperience.Deserialize(jsonPatches.at("staffExperience"));
 		jsonPatches.at("steepSlopes").get_to(this->steepSlopes);
 
 		return *this;
@@ -177,25 +210,24 @@ namespace ScrambledBugs
 	{
 		nlohmann::json jsonPatches;
 
-		jsonPatches["accumulatingMagnitude"]                = this->accumulatingMagnitude;
-		jsonPatches["alreadyCaughtPickpocketing"]           = this->alreadyCaughtPickpocketing;
-		jsonPatches["attachHitEffectArt"]                   = this->attachHitEffectArt;
-		jsonPatches["cloakHitEffects"]                      = this->cloakHitEffects;
-		jsonPatches["difficultyMultipliers"]                = this->difficultyMultipliers.Serialize();
-		jsonPatches["equipBestAmmunition"]                  = this->equipBestAmmunition;
-		jsonPatches["improveMultipleEnchantmentEffects"]    = this->improveMultipleEnchantmentEffects;
-		jsonPatches["leveledCharacters"]                    = this->leveledCharacters;
-		jsonPatches["lockpickingExperience"]                = this->lockpickingExperience;
-		jsonPatches["pausedGameHitEffects"]                 = this->pausedGameHitEffects;
-		jsonPatches["perkEntryPoints"]                      = this->perkEntryPoints.Serialize();
-		jsonPatches["poisonResistance"]                     = this->poisonResistance;
-		jsonPatches["powerAttackStamina"]                   = this->powerAttackStamina;
-		jsonPatches["reflectDamage"]                        = this->reflectDamage;
-		jsonPatches["scrollExperience"]                     = this->scrollExperience;
-		jsonPatches["soulGems"]                             = this->soulGems.Serialize();
-		jsonPatches["staffExperience"]                      = this->staffExperience;
-		jsonPatches["staffExperienceIgnoreEnchantmentCost"] = this->staffExperienceIgnoreEnchantmentCost;
-		jsonPatches["steepSlopes"]                          = this->steepSlopes;
+		jsonPatches["accumulatingMagnitude"]      = this->accumulatingMagnitude;
+		jsonPatches["alreadyCaughtPickpocketing"] = this->alreadyCaughtPickpocketing;
+		jsonPatches["attachHitEffectArt"]         = this->attachHitEffectArt;
+		jsonPatches["cloakHitEffects"]            = this->cloakHitEffects;
+		jsonPatches["deferredHitEffects"]         = this->deferredHitEffects;
+		jsonPatches["difficultyMultipliers"]      = this->difficultyMultipliers.Serialize();
+		jsonPatches["enchantmentEffectPower"]     = this->enchantmentEffectPower;
+		jsonPatches["equipBestAmmunition"]        = this->equipBestAmmunition;
+		jsonPatches["leveledCharacters"]          = this->leveledCharacters;
+		jsonPatches["lockpickingExperience"]      = this->lockpickingExperience;
+		jsonPatches["perkEntryPoints"]            = this->perkEntryPoints.Serialize();
+		jsonPatches["poisonResistance"]           = this->poisonResistance;
+		jsonPatches["powerAttackStamina"]         = this->powerAttackStamina;
+		jsonPatches["reflectDamage"]              = this->reflectDamage;
+		jsonPatches["scrollExperience"]           = this->scrollExperience;
+		jsonPatches["soulGems"]                   = this->soulGems.Serialize();
+		jsonPatches["staffExperience"]            = this->staffExperience.Serialize();
+		jsonPatches["steepSlopes"]                = this->steepSlopes;
 
 		return jsonPatches;
 	}
@@ -229,6 +261,16 @@ namespace ScrambledBugs
 		return *this;
 	}
 
+	nlohmann::json Settings::Serialize() const
+	{
+		nlohmann::json jsonSettings;
+
+		jsonSettings["fixes"]   = this->fixes.Serialize();
+		jsonSettings["patches"] = this->patches.Serialize();
+
+		return jsonSettings;
+	}
+
 	void Settings::Load()
 	{
 		SPDLOG_INFO("Loading...\n{}", this->Serialize().dump(1, '\t'));
@@ -248,11 +290,6 @@ namespace ScrambledBugs
 			ScrambledBugs::Fixes::EnchantmentCost::Fix(this->fixes.enchantmentCost);
 		}
 
-		if (this->fixes.harvestedFlags)
-		{
-			ScrambledBugs::Fixes::HarvestedFlags::Fix(this->fixes.harvestedFlags);
-		}
-
 		if (this->fixes.hitEffectRaceCondition)
 		{
 			ScrambledBugs::Fixes::HitEffectRaceCondition::Fix(this->fixes.hitEffectRaceCondition);
@@ -261,6 +298,11 @@ namespace ScrambledBugs
 		if (this->fixes.impactEffectCrash)
 		{
 			ScrambledBugs::Fixes::ImpactEffectCrash::Fix(this->fixes.impactEffectCrash);
+		}
+
+		if (this->fixes.ingredientRespawn)
+		{
+			ScrambledBugs::Fixes::IngredientRespawn::Fix(this->fixes.ingredientRespawn);
 		}
 
 		if (this->fixes.isCurrentSpell)
@@ -298,14 +340,14 @@ namespace ScrambledBugs
 			ScrambledBugs::Fixes::ProjectileFadeDuration::Fix(this->fixes.projectileFadeDuration);
 		}
 
-		if (this->fixes.quickShot)
+		if (this->fixes.quickShot.quickShot)
 		{
-			ScrambledBugs::Fixes::QuickShot::Fix(this->fixes.quickShot, this->fixes.quickShotPlaybackSpeed);
+			ScrambledBugs::Fixes::QuickShot::Fix(this->fixes.quickShot.quickShot, this->fixes.quickShot.playbackSpeed);
 		}
 
-		if (this->fixes.terrainDecals)
+		if (this->fixes.terrainImpactEffects)
 		{
-			ScrambledBugs::Fixes::TerrainDecals::Fix(this->fixes.terrainDecals);
+			ScrambledBugs::Fixes::TerrainImpactEffects::Fix(this->fixes.terrainImpactEffects);
 		}
 
 		if (this->fixes.trainingMenu)
@@ -338,6 +380,11 @@ namespace ScrambledBugs
 			ScrambledBugs::Patches::CloakHitEffects::Patch(this->patches.cloakHitEffects);
 		}
 
+		if (this->patches.deferredHitEffects)
+		{
+			ScrambledBugs::Patches::DeferredHitEffects::Patch(this->patches.deferredHitEffects);
+		}
+
 		if (this->patches.difficultyMultipliers.commandedActors || this->patches.difficultyMultipliers.teammates)
 		{
 			ScrambledBugs::Patches::DifficultyMultipliers::Patch(this->patches.difficultyMultipliers.commandedActors, this->patches.difficultyMultipliers.teammates);
@@ -358,14 +405,9 @@ namespace ScrambledBugs
 			ScrambledBugs::Patches::LockpickingExperience::Patch(this->patches.lockpickingExperience);
 		}
 
-		if (this->patches.pausedGameHitEffects)
+		if (this->patches.perkEntryPoints.applySpells)
 		{
-			ScrambledBugs::Patches::PausedGameHitEffects::Patch(this->patches.pausedGameHitEffects);
-		}
-
-		if (this->patches.perkEntryPoints.applyMultipleSpells)
-		{
-			ScrambledBugs::Patches::PerkEntryPoints::ApplyMultipleSpells::Patch(this->patches.perkEntryPoints.applyMultipleSpells, this->patches.perkEntryPoints.castSpells);
+			ScrambledBugs::Patches::PerkEntryPoints::ApplySpells::Patch(this->patches.perkEntryPoints.applySpells, this->patches.perkEntryPoints.castSpells);
 		}
 		else if (this->patches.perkEntryPoints.castSpells)
 		{
@@ -397,9 +439,9 @@ namespace ScrambledBugs
 			ScrambledBugs::Patches::SoulGems::Patch(this->patches.soulGems.black, this->patches.soulGems.underfilled);
 		}
 
-		if (this->patches.staffExperience)
+		if (this->patches.staffExperience.staffExperience)
 		{
-			ScrambledBugs::Patches::StaffExperience::Patch(this->patches.staffExperience, this->patches.staffExperienceIgnoreEnchantmentCost);
+			ScrambledBugs::Patches::StaffExperience::Patch(this->patches.staffExperience.staffExperience, this->patches.staffExperience.ignoreEnchantmentCost);
 		}
 
 		if (this->patches.steepSlopes)
@@ -414,21 +456,11 @@ namespace ScrambledBugs
 	{
 		SPDLOG_INFO("Post Loading...\n{}", this->Serialize().dump(1, '\t'));
 
-		if (this->patches.improveMultipleEnchantmentEffects)
+		if (this->patches.enchantmentEffectPower)
 		{
-			ScrambledBugs::Patches::ImproveMultipleEnchantmentEffects::Patch(this->patches.improveMultipleEnchantmentEffects);
+			ScrambledBugs::Patches::EnchantmentEffectPower::Patch(this->patches.enchantmentEffectPower);
 		}
 
 		SPDLOG_INFO("Post Loaded.\n{}", this->Serialize().dump(1, '\t'));
-	}
-
-	nlohmann::json Settings::Serialize() const
-	{
-		nlohmann::json jsonSettings;
-
-		jsonSettings["fixes"]   = this->fixes.Serialize();
-		jsonSettings["patches"] = this->patches.Serialize();
-
-		return jsonSettings;
 	}
 }

@@ -3,8 +3,8 @@
 	{
 		"quickShot":
 		{
-			"quickShot":					true,	/* Calculate the power of arrows fired by the player using the Quick Shot perk. */
-			"playbackSpeed":				2.0		/* The playback speed of the nocking animation when the player has the Quick Shot perk. */
+			"playbackSpeed":				2.0,	/* The playback speed of the nocking animation when the player has the Quick Shot perk. */
+			"quickShot":					true	/* Calculate the power of arrows fired by the player using the Quick Shot perk. */
 		},
 		"activateFurniture":				true,	/* Prevent the camera from breaking when activating furniture while mounted. */
 		"actorValuePercentage":				true,	/* Calculate percentages of actor values using permanent and also temporary modifiers. */
@@ -42,8 +42,8 @@
 		},
 		"staffExperience":
 		{
-			"staffExperience":				false,	/* Earn experience when using staves. */
-			"ignoreEnchantmentCost":		false	/* Ignore enchantment cost when earning experience using staves. */
+			"ignoreEnchantmentCost":		false,	/* Ignore enchantment cost when earning experience using staves. */
+			"staffExperience":				false	/* Earn experience when using staves. */
 		},
 		"accumulatingMagnitude":			false,	/* The power of accumulating magnitude magic effects affects the maximum magnitude and not the rate of accumulation. */
 		"alreadyCaughtPickpocketing":		false,	/* Pickpocket actors even when you have already been caught. */

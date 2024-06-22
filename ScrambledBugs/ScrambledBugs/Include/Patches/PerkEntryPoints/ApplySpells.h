@@ -8,10 +8,10 @@
 
 namespace ScrambledBugs::Patches::PerkEntryPoints
 {
-	class ApplyMultipleSpells
+	class ApplySpells
 	{
 	public:
-		static void Patch(bool& applyMultipleSpells, bool& castSpells);
+		static void Patch(bool& applySpells, bool& castSpells);
 
 	private:
 		static void ApplyBashingSpell(
@@ -54,12 +54,12 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			void**                                                                                     entryPointFunctionTypeArguments,
 			Skyrim::BGSEntryPointFunctionData*                                                         entryPointFunctionData);
 
-		static bool                                                               castSpells_;
-		static decltype(ApplyMultipleSpells::ApplyBashingSpell)*                  applyBashingSpell_;
-		static decltype(ApplyMultipleSpells::ApplyCombatHitSpell)*                applyCombatHitSpell_;
-		static decltype(ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile)* applyCombatHitSpellArrowProjectile_;
-		static decltype(ApplyMultipleSpells::ApplyReanimateSpell)*                applyReanimateSpell_;
-		static decltype(ApplyMultipleSpells::ApplySneakingSpell)*                 applySneakingSpell_;
-		static decltype(ApplyMultipleSpells::ApplyWeaponSwingSpell)*              applyWeaponSwingSpell_;
+		static bool                                                       castSpells_;
+		static decltype(ApplySpells::ApplyBashingSpell)*                  applyBashingSpell_;
+		static decltype(ApplySpells::ApplyCombatHitSpell)*                applyCombatHitSpell_;
+		static decltype(ApplySpells::ApplyCombatHitSpellArrowProjectile)* applyCombatHitSpellArrowProjectile_;
+		static decltype(ApplySpells::ApplyReanimateSpell)*                applyReanimateSpell_;
+		static decltype(ApplySpells::ApplySneakingSpell)*                 applySneakingSpell_;
+		static decltype(ApplySpells::ApplyWeaponSwingSpell)*              applyWeaponSwingSpell_;
 	};
 }

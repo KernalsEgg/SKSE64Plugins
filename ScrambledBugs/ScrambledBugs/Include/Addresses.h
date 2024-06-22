@@ -28,12 +28,6 @@ namespace ScrambledBugs::Addresses
 			inline const std::uintptr_t Compare{ Relocation::AddressLibrary::GetSingleton().GetAddress(36184) + 0x99 }; // BGSCreatedObjectManager::AddEnchantment
 		}
 
-		namespace HarvestedFlags
-		{
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x278920 + 0x31C (18843), 1.6.318.0: SkyrimSE.exe + 0x28AD80</summary>
-			inline const std::uintptr_t SetEmpty{ Relocation::AddressLibrary::GetSingleton().GetAddress(19286) + 0x345 }; // TESObjectREFR::HandleReferenceReset
-		}
-
 		namespace HitEffectRaceCondition
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x53E670 (33289), 1.6.318.0: SkyrimSE.exe + 0x5587B0</summary>
@@ -47,6 +41,12 @@ namespace ScrambledBugs::Addresses
 
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1AE520 + 0x12D (15045), 1.6.318.0: SkyrimSE.exe + 0x1B9B70</summary>
 			inline const std::uintptr_t UpdateDecals{ Relocation::AddressLibrary::GetSingleton().GetAddress(15220) + 0x122 };
+		}
+
+		namespace IngredientRespawn
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x278920 + 0x31C (18843), 1.6.318.0: SkyrimSE.exe + 0x28AD80</summary>
+			inline const std::uintptr_t SetEmpty{ Relocation::AddressLibrary::GetSingleton().GetAddress(19286) + 0x345 }; // TESObjectREFR::HandleReferenceReset
 		}
 
 		namespace KillCamera
@@ -97,7 +97,7 @@ namespace ScrambledBugs::Addresses
 			inline const std::uintptr_t GetArrowPower{ Relocation::AddressLibrary::GetSingleton().GetAddress(26435) }; // ArrowProjectile::GetArrowPower
 		}
 
-		namespace TerrainDecals
+		namespace TerrainImpactEffects
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x271BE0 + 0xE7 (18711), 1.6.318.0: SkyrimSE.exe + 0x27FC50</summary>
 			inline const std::uintptr_t FreeCellMopp{ Relocation::AddressLibrary::GetSingleton().GetAddress(19130) + 0x24E }; // TESObjectCELL::DetachHavok
@@ -139,6 +139,12 @@ namespace ScrambledBugs::Addresses
 			inline const std::uintptr_t IsNotCostliestEffect{ Relocation::AddressLibrary::GetSingleton().GetAddress(34250) + 0x15 }; // CloakEffectCallbackFunctor::ModifyActiveEffect
 		}
 
+		namespace DeferredHitEffects
+		{
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x6A31E0 (39432), 1.6.318.0: SkyrimSE.exe + 0x6CB900</summary>
+			inline const std::uintptr_t AllowHitEffects{ Relocation::AddressLibrary::GetSingleton().GetAddress(40508) }; // PlayerCharacter::AllowHitEffects
+		}
+
 		namespace DifficultyMultipliers
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x5D6300 (36345), 1.6.318.0: SkyrimSE.exe + 0x5FAC30</summary>
@@ -163,15 +169,9 @@ namespace ScrambledBugs::Addresses
 			inline const std::uintptr_t HasNotBeenUnlocked{ Relocation::AddressLibrary::GetSingleton().GetAddress(51968) + 0x2C }; // LockpickingMenu::OnLockOpen
 		}
 
-		namespace PausedGameHitEffects
-		{
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x6A31E0 (39432), 1.6.318.0: SkyrimSE.exe + 0x6CB900</summary>
-			inline const std::uintptr_t AllowHitEffects{ Relocation::AddressLibrary::GetSingleton().GetAddress(40508) }; // PlayerCharacter::AllowHitEffects
-		}
-
 		namespace PerkEntryPoints
 		{
-			namespace ApplyMultipleSpells
+			namespace ApplySpells
 			{
 				/// <summary>1.5.97.0: SkyrimSE.exe + 0x628C20 + 0x40E (37673), 1.6.318.0: SkyrimSE.exe + 0x64E760</summary>
 				inline const std::uintptr_t ApplyBashingSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(38627) + 0x4FA }; // Actor::CombatHit

@@ -1,6 +1,6 @@
 #include "PrecompiledHeader.h"
 
-#include "Patches/ImproveMultipleEnchantmentEffects.h"
+#include "Patches/EnchantmentEffectPower.h"
 
 #include "Shared/Utility/Memory.h"
 
@@ -8,15 +8,15 @@
 
 namespace ScrambledBugs::Patches
 {
-	void ImproveMultipleEnchantmentEffects::Patch(bool& improveMultipleEnchantmentEffects)
+	void EnchantmentEffectPower::Patch(bool& enchantmentEffectPower)
 	{
 		Utility::Memory::SafeWriteVirtualFunction(
 			Skyrim::Addresses::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor::VirtualFunctionTable(),
 			0x1,
-			reinterpret_cast<std::uintptr_t>(std::addressof(ImproveMultipleEnchantmentEffects::FunctionCallOperator)));
+			reinterpret_cast<std::uintptr_t>(std::addressof(EnchantmentEffectPower::FunctionCallOperator)));
 	}
 
-	Skyrim::ForEachResult ImproveMultipleEnchantmentEffects::FunctionCallOperator(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect)
+	Skyrim::ForEachResult EnchantmentEffectPower::FunctionCallOperator(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect)
 	{
 		auto& createdEffect = createEffectFunctor->effects.emplace_back(*effect);
 

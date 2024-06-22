@@ -9,16 +9,16 @@
 
 namespace ScrambledBugs::Fixes
 {
-	void QuickShot::Fix(bool& quickShot, float& quickShotPlaybackSpeed)
+	void QuickShot::Fix(bool& quickShot, float& playbackSpeed)
 	{
-		if (quickShotPlaybackSpeed <= 0.0F)
+		if (playbackSpeed <= 0.0F)
 		{
 			quickShot = false;
 
 			return;
 		}
 
-		QuickShot::playbackSpeed_ = quickShotPlaybackSpeed;
+		QuickShot::playbackSpeed_ = playbackSpeed;
 
 		Utility::Memory::SafeWriteAbsoluteJump(Addresses::Fixes::QuickShot::GetArrowPower, reinterpret_cast<std::uintptr_t>(std::addressof(QuickShot::GetArrowPower)));
 	}

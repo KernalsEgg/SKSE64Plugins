@@ -9,9 +9,9 @@
 
 namespace ScrambledBugs::Patches
 {
-	void StaffExperience::Patch(bool& staffExperience, bool& staffExperienceIgnoreEnchantmentCost)
+	void StaffExperience::Patch(bool& staffExperience, bool& ignoreEnchantmentCost)
 	{
-		StaffExperience::ignoreEnchantmentCost_ = staffExperienceIgnoreEnchantmentCost;
+		StaffExperience::ignoreEnchantmentCost_ = ignoreEnchantmentCost;
 
 		StaffExperience::getSkillUsageDataEnchantment_ = reinterpret_cast<decltype(StaffExperience::getSkillUsageDataEnchantment_)>(
 			Utility::Memory::ReadVirtualFunction(

@@ -6,14 +6,14 @@
 
 namespace ScrambledBugs::Fixes
 {
-	class HarvestedFlags
+	class IngredientRespawn
 	{
 	public:
-		static void Fix(bool& harvestedFlags);
+		static void Fix(bool& ingredientRespawn);
 
 	private:
 		static void SetEmpty(Skyrim::TESObjectREFR* reference, bool empty);
 
-		static decltype(HarvestedFlags::SetEmpty)* setEmpty_;
+		static decltype(IngredientRespawn::SetEmpty)* setEmpty_;
 	};
 }

@@ -45,7 +45,7 @@
     <ClInclude Include="Include\Fixes\EnchantmentCost.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Fixes\HarvestedFlags.h">
+    <ClInclude Include="Include\Fixes\IngredientRespawn.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
     <ClInclude Include="Include\Fixes\HitEffectRaceCondition.h">
@@ -69,7 +69,7 @@
     <ClInclude Include="Include\Fixes\QuickShot.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Fixes\TerrainDecals.h">
+    <ClInclude Include="Include\Fixes\TerrainImpactEffects.h">
       <Filter>Header Files\Fixes</Filter>
     </ClInclude>
     <ClInclude Include="Include\Fixes\TrainingMenu.h">
@@ -93,7 +93,7 @@
     <ClInclude Include="Include\Patches\EquipBestAmmunition.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Patches\ImproveMultipleEnchantmentEffects.h">
+    <ClInclude Include="Include\Patches\EnchantmentEffectPower.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
     <ClInclude Include="Include\Patches\LeveledCharacters.h">
@@ -102,10 +102,10 @@
     <ClInclude Include="Include\Patches\LockpickingExperience.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Patches\PausedGameHitEffects.h">
+    <ClInclude Include="Include\Patches\DeferredHitEffects.h">
       <Filter>Header Files\Patches</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Patches\PerkEntryPoints\ApplyMultipleSpells.h">
+    <ClInclude Include="Include\Patches\PerkEntryPoints\ApplySpells.h">
       <Filter>Header Files\Patches\PerkEntryPoints</Filter>
     </ClInclude>
     <ClInclude Include="Include\Patches\PerkEntryPoints\CastSpells.h">
@@ -167,7 +167,7 @@
     <ClCompile Include="Source\Fixes\EnchantmentCost.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Fixes\HarvestedFlags.cpp">
+    <ClCompile Include="Source\Fixes\IngredientRespawn.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
     <ClCompile Include="Source\Fixes\HitEffectRaceCondition.cpp">
@@ -191,7 +191,7 @@
     <ClCompile Include="Source\Fixes\QuickShot.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Fixes\TerrainDecals.cpp">
+    <ClCompile Include="Source\Fixes\TerrainImpactEffects.cpp">
       <Filter>Source Files\Fixes</Filter>
     </ClCompile>
     <ClCompile Include="Source\Fixes\TrainingMenu.cpp">
@@ -215,7 +215,7 @@
     <ClCompile Include="Source\Patches\EquipBestAmmunition.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Patches\ImproveMultipleEnchantmentEffects.cpp">
+    <ClCompile Include="Source\Patches\EnchantmentEffectPower.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
     <ClCompile Include="Source\Patches\LeveledCharacters.cpp">
@@ -224,10 +224,10 @@
     <ClCompile Include="Source\Patches\LockpickingExperience.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Patches\PausedGameHitEffects.cpp">
+    <ClCompile Include="Source\Patches\DeferredHitEffects.cpp">
       <Filter>Source Files\Patches</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Patches\PerkEntryPoints\ApplyMultipleSpells.cpp">
+    <ClCompile Include="Source\Patches\PerkEntryPoints\ApplySpells.cpp">
       <Filter>Source Files\Patches\PerkEntryPoints</Filter>
     </ClCompile>
     <ClCompile Include="Source\Patches\PerkEntryPoints\CastSpells.cpp">

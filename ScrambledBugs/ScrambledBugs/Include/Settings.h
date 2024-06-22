@@ -12,27 +12,36 @@ namespace ScrambledBugs
 		class Fixes
 		{
 		public:
+			class QuickShot
+			{
+			public:
+				QuickShot&     Deserialize(const nlohmann::json& jsonQuickShot);
+				nlohmann::json Serialize() const;
+
+				float playbackSpeed{ 2.0F };
+				bool  quickShot{ false };
+			};
+
 			Fixes&         Deserialize(const nlohmann::json& jsonFixes);
 			nlohmann::json Serialize() const;
 
-			bool  activateFurniture{ false };
-			bool  actorValuePercentage{ false };
-			bool  enchantmentCost{ false };
-			bool  harvestedFlags{ false };
-			bool  hitEffectRaceCondition{ false };
-			bool  impactEffectCrash{ false };
-			bool  isCurrentSpell{ false };
-			bool  killCamera{ false };
-			bool  leftHandPowerAttacks{ false };
-			bool  magicEffectFlags{ false };
-			bool  modifyArmorWeightPerkEntryPoint{ false };
-			bool  powerCooldowns{ false };
-			bool  projectileFadeDuration{ false };
-			bool  quickShot{ false };
-			float quickShotPlaybackSpeed{ 2.0F };
-			bool  terrainDecals{ false };
-			bool  trainingMenu{ false };
-			bool  weaponCharge{ false };
+			bool      activateFurniture{ false };
+			bool      actorValuePercentage{ false };
+			bool      enchantmentCost{ false };
+			bool      hitEffectRaceCondition{ false };
+			bool      impactEffectCrash{ false };
+			bool      ingredientRespawn{ false };
+			bool      isCurrentSpell{ false };
+			bool      killCamera{ false };
+			bool      leftHandPowerAttacks{ false };
+			bool      magicEffectFlags{ false };
+			bool      modifyArmorWeightPerkEntryPoint{ false };
+			bool      powerCooldowns{ false };
+			bool      projectileFadeDuration{ false };
+			QuickShot quickShot{};
+			bool      terrainImpactEffects{ false };
+			bool      trainingMenu{ false };
+			bool      weaponCharge{ false };
 		};
 
 		class Patches
@@ -54,7 +63,7 @@ namespace ScrambledBugs
 				PerkEntryPoints& Deserialize(const nlohmann::json& jsonPerkEntryPoints);
 				nlohmann::json   Serialize() const;
 
-				bool applyMultipleSpells{ false };
+				bool applySpells{ false };
 				bool castSpells{ false };
 			};
 
@@ -68,6 +77,16 @@ namespace ScrambledBugs
 				bool underfilled{ false };
 			};
 
+			class StaffExperience
+			{
+			public:
+				StaffExperience& Deserialize(const nlohmann::json& jsonStaffExperience);
+				nlohmann::json   Serialize() const;
+
+				bool ignoreEnchantmentCost{ false };
+				bool staffExperience{ false };
+			};
+
 			Patches&       Deserialize(const nlohmann::json& jsonPatches);
 			nlohmann::json Serialize() const;
 
@@ -75,20 +94,19 @@ namespace ScrambledBugs
 			bool                  alreadyCaughtPickpocketing{ false };
 			bool                  attachHitEffectArt{ false };
 			bool                  cloakHitEffects{ false };
+			bool                  deferredHitEffects{ false };
 			DifficultyMultipliers difficultyMultipliers{};
+			bool                  enchantmentEffectPower{ false };
 			bool                  equipBestAmmunition{ false };
-			bool                  improveMultipleEnchantmentEffects{ false };
 			bool                  leveledCharacters{ false };
 			bool                  lockpickingExperience{ false };
-			bool                  pausedGameHitEffects{ false };
 			PerkEntryPoints       perkEntryPoints{};
 			bool                  poisonResistance{ false };
 			bool                  powerAttackStamina{ false };
 			bool                  reflectDamage{ false };
 			bool                  scrollExperience{ false };
 			SoulGems              soulGems{};
-			bool                  staffExperience{ false };
-			bool                  staffExperienceIgnoreEnchantmentCost{ false };
+			StaffExperience       staffExperience{};
 			bool                  steepSlopes{ false };
 		};
 
@@ -106,9 +124,10 @@ namespace ScrambledBugs
 		static Settings& GetSingleton();
 
 		Settings&      Deserialize(const nlohmann::json& jsonSettings);
-		void           Load();
-		void           PostLoad();
 		nlohmann::json Serialize() const;
+
+		void Load();
+		void PostLoad();
 
 		Fixes   fixes{};
 		Patches patches{};

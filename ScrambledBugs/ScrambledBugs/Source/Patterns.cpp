@@ -22,17 +22,6 @@ namespace ScrambledBugs::Patterns
 			}
 		}
 
-		namespace HarvestedFlags
-		{
-			bool SetEmpty()
-			{
-				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Fixes::HarvestedFlags::SetEmpty, // 0x5
-					0xE8ui8, std::optional<std::int32_t>{}      // call TESForm::SetEmpty
-				);
-			}
-		}
-
 		namespace ImpactEffectCrash
 		{
 			bool DecalApplier()
@@ -48,6 +37,17 @@ namespace ScrambledBugs::Patterns
 				return Relocation::AddressLibrary::MatchPattern(
 					Addresses::Fixes::ImpactEffectCrash::UpdateDecals, // 0x5
 					0xE8ui8, std::optional<std::int32_t>{}             // call BSTempEffectSimpleDecal::Apply
+				);
+			}
+		}
+
+		namespace IngredientRespawn
+		{
+			bool SetEmpty()
+			{
+				return Relocation::AddressLibrary::MatchPattern(
+					Addresses::Fixes::IngredientRespawn::SetEmpty, // 0x5
+					0xE8ui8, std::optional<std::int32_t>{}         // call TESForm::SetEmpty
 				);
 			}
 		}
@@ -83,13 +83,13 @@ namespace ScrambledBugs::Patterns
 			}
 		}
 
-		namespace TerrainDecals
+		namespace TerrainImpactEffects
 		{
 			bool FreeCellMopp()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Fixes::TerrainDecals::FreeCellMopp, // 0x5
-					0xE8ui8, std::optional<std::int32_t>{}         // call TESObjectCELL::FreeCellMopp
+					Addresses::Fixes::TerrainImpactEffects::FreeCellMopp, // 0x5
+					0xE8ui8, std::optional<std::int32_t>{}                // call TESObjectCELL::FreeCellMopp
 				);
 			}
 		}
@@ -163,53 +163,53 @@ namespace ScrambledBugs::Patterns
 
 		namespace PerkEntryPoints
 		{
-			namespace ApplyMultipleSpells
+			namespace ApplySpells
 			{
 				bool ApplyBashingSpell()
 				{
 					return Relocation::AddressLibrary::MatchPattern(
-						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyBashingSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                       // call BGSEntryPoint::HandleEntryPoint
+						Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyBashingSpell, // 0x5
+						0xE8ui8, std::optional<std::int32_t>{}                               // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 
 				bool ApplyCombatHitSpell()
 				{
 					return Relocation::AddressLibrary::MatchPattern(
-						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyCombatHitSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                         // call BGSEntryPoint::HandleEntryPoint
+						Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyCombatHitSpell, // 0x5
+						0xE8ui8, std::optional<std::int32_t>{}                                 // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 
 				bool ApplyCombatHitSpellArrowProjectile()
 				{
 					return Relocation::AddressLibrary::MatchPattern(
-						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyCombatHitSpellArrowProjectile, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                                        // call BGSEntryPoint::HandleEntryPoint
+						Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyCombatHitSpellArrowProjectile, // 0x5
+						0xE8ui8, std::optional<std::int32_t>{}                                                // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 
 				bool ApplyReanimateSpell()
 				{
 					return Relocation::AddressLibrary::MatchPattern(
-						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyReanimateSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                         // call BGSEntryPoint::HandleEntryPoint
+						Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyReanimateSpell, // 0x5
+						0xE8ui8, std::optional<std::int32_t>{}                                 // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 
 				bool ApplySneakingSpell()
 				{
 					return Relocation::AddressLibrary::MatchPattern(
-						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplySneakingSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                        // call BGSEntryPoint::HandleEntryPoint
+						Addresses::Patches::PerkEntryPoints::ApplySpells::ApplySneakingSpell, // 0x5
+						0xE8ui8, std::optional<std::int32_t>{}                                // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 
 				bool ApplyWeaponSwingSpell()
 				{
 					return Relocation::AddressLibrary::MatchPattern(
-						Addresses::Patches::PerkEntryPoints::ApplyMultipleSpells::ApplyWeaponSwingSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                           // call BGSEntryPoint::HandleEntryPoint
+						Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyWeaponSwingSpell, // 0x5
+						0xE8ui8, std::optional<std::int32_t>{}                                   // call BGSEntryPoint::HandleEntryPoint
 					);
 				}
 			}

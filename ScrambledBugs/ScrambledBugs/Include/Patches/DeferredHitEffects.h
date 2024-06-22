@@ -6,10 +6,10 @@
 
 namespace ScrambledBugs::Patches
 {
-	class PausedGameHitEffects
+	class DeferredHitEffects
 	{
 	public:
-		static void Patch(bool& pausedGameHitEffects);
+		static void Patch(bool& deferredHitEffects);
 
 	private:
 		static bool AllowHitEffects(Skyrim::ActiveEffect* activeEffect);

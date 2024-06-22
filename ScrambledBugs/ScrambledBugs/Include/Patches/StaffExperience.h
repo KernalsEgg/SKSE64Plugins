@@ -9,7 +9,7 @@ namespace ScrambledBugs::Patches
 	class StaffExperience
 	{
 	public:
-		static void Patch(bool& staffExperience, bool& staffExperienceIgnoreEnchantmentCost);
+		static void Patch(bool& staffExperience, bool& ignoreEnchantmentCost);
 
 	private:
 		static bool GetSkillUsageDataEnchantment(Skyrim::EnchantmentItem* enchantment, Skyrim::MagicItem::SkillUsageData& skillUsageData);

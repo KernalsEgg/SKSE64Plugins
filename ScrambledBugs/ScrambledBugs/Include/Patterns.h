@@ -13,15 +13,15 @@ namespace ScrambledBugs::Patterns
 			bool Compare();
 		}
 
-		namespace HarvestedFlags
-		{
-			bool SetEmpty();
-		}
-
 		namespace ImpactEffectCrash
 		{
 			bool DecalApplier();
 			bool UpdateDecals();
+		}
+
+		namespace IngredientRespawn
+		{
+			bool SetEmpty();
 		}
 
 		namespace KillCamera
@@ -35,7 +35,7 @@ namespace ScrambledBugs::Patterns
 			bool HasProcessedImpacts();
 		}
 
-		namespace TerrainDecals
+		namespace TerrainImpactEffects
 		{
 			bool FreeCellMopp();
 		}
@@ -71,7 +71,7 @@ namespace ScrambledBugs::Patterns
 
 		namespace PerkEntryPoints
 		{
-			namespace ApplyMultipleSpells
+			namespace ApplySpells
 			{
 				bool ApplyBashingSpell();
 				bool ApplyCombatHitSpell();
