@@ -141,6 +141,7 @@ namespace Trails
 		using footprints_type = std::multimap<std::string, Footprint, CaseInsensitiveString::Less<std::string_view>>;
 		using footsteps_type  = std::map<Skyrim::BGSConstructibleObject*, footprints_type>;
 
+	private:
 		Settings()                = default;
 		Settings(const Settings&) = default;
 		Settings(Settings&&)      = default;
@@ -150,6 +151,7 @@ namespace Trails
 		Settings& operator=(const Settings&) = default;
 		Settings& operator=(Settings&&)      = default;
 
+	public:
 		explicit Settings(const std::filesystem::path& directory);
 
 		static Settings& GetSingleton();

@@ -10,12 +10,12 @@
 		"actorValuePercentage":				true,	/* Calculate percentages of actor values using permanent and also temporary modifiers. */
 		"enchantmentCost":					true,	/* Save the charge and value of player created enchantments. */
 		"hitEffectRaceCondition":			true,	/* Remove a race condition that can prevent hit effects from being attached when actors are loaded. */
-		"ingredientRespawn":				true,	/* Save whether the ingredients that have been harvested from flora and trees have respawned. */
 		"impactEffectCrash":				true,	/* Prevent a crash that occurs when loading save games that have impact effects with uninstalled texture sets. */
+		"ingredientRespawn":				true,	/* Save whether the ingredients that have been harvested from flora and trees have respawned. */
 		"isCurrentSpell":					true,	/* Restore the IsCurrentSpell condition and console command. */
 		"killCamera":						true,	/* Prevent handling the Apply Combat Hit Spell perk entry point when the kill camera simulates the trajectory of arrows. */
 		"leftHandPowerAttacks":				true,	/* Calculate the stamina required to perform left handed power attacks using left handed weapons. */
-		"magicEffectFlags":					false,	/* Respect magic effect flags when power affects duration and magnitude. */
+		"magicEffectFlags":					true,	/* Respect magic effect flags when power affects duration and magnitude. */
 		"modifyArmorWeightPerkEntryPoint":	true,	/* The weight of only worn armor is modified by the Mod Armor Weight perk entry point. */
 		"powerCooldowns":					true,	/* Save the cooldowns of all powers. */
 		"projectileFadeDuration":			true,	/* Projectiles that fade before updating are also destroyed. */

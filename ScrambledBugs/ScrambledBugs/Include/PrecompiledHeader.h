@@ -4,6 +4,7 @@
 #include <cmath>      // std::abs, std::floor, std::round
 #include <cstddef>    // offsetof
 #include <cstdint>    // Fixed width integer types
+#include <exception>  // std::exception
 #include <filesystem> // Filesystem library
 #include <fstream>    // std::ifstream
 #include <memory>     // std::addressof, std::make_shared

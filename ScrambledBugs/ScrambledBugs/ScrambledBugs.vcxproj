@@ -344,10 +344,12 @@
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+      <Command>if not exist "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
 copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
 copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).json"</Command>
+robocopy /E /R:0 "$(SolutionDir)Settings" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+if %errorlevel% leq 1 exit 0 else exit %errorlevel%</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugAnniversaryEdition|x64'">
@@ -367,10 +369,12 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+      <Command>if not exist "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
 copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
 copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).json"</Command>
+robocopy /E /R:0 "$(SolutionDir)Settings" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+if %errorlevel% leq 1 exit 0 else exit %errorlevel%</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -394,10 +398,12 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+      <Command>if not exist "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
 copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
 copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).json"</Command>
+robocopy /E /R:0 "$(SolutionDir)Settings" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+if %errorlevel% leq 1 exit 0 else exit %errorlevel%</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseAnniversaryEdition|x64'">
@@ -421,10 +427,12 @@ copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\
       <AdditionalDependencies>..\$(Platform)\$(Configuration)\Shared.lib;Version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
+      <Command>if not exist "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)" mkdir "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+copy /Y nul "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).log"
 copy /Y "$(TargetDir)$(TargetName).dll" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).dll"
 copy /Y "$(TargetDir)$(TargetName).pdb" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).pdb"
-copy /Y "$(SolutionDir)$(TargetName).json" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName).json"</Command>
+robocopy /E /R:0 "$(SolutionDir)Settings" "$(SKYRIM_SPECIAL_EDITION_PATH)\Data\SKSE\Plugins\$(TargetName)"
+if %errorlevel% leq 1 exit 0 else exit %errorlevel%</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

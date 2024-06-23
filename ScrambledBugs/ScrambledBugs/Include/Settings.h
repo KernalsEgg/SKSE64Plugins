@@ -15,33 +15,33 @@ namespace ScrambledBugs
 			class QuickShot
 			{
 			public:
-				QuickShot&     Deserialize(const nlohmann::json& jsonQuickShot);
+				QuickShot&     Deserialize(const std::filesystem::path& directory);
 				nlohmann::json Serialize() const;
 
-				float playbackSpeed{ 2.0F };
-				bool  quickShot{ false };
+				float playbackSpeed{};
+				bool  quickShot{};
 			};
 
-			Fixes&         Deserialize(const nlohmann::json& jsonFixes);
+			Fixes&         Deserialize(const std::filesystem::path& directory);
 			nlohmann::json Serialize() const;
 
-			bool      activateFurniture{ false };
-			bool      actorValuePercentage{ false };
-			bool      enchantmentCost{ false };
-			bool      hitEffectRaceCondition{ false };
-			bool      impactEffectCrash{ false };
-			bool      ingredientRespawn{ false };
-			bool      isCurrentSpell{ false };
-			bool      killCamera{ false };
-			bool      leftHandPowerAttacks{ false };
-			bool      magicEffectFlags{ false };
-			bool      modifyArmorWeightPerkEntryPoint{ false };
-			bool      powerCooldowns{ false };
-			bool      projectileFadeDuration{ false };
 			QuickShot quickShot{};
-			bool      terrainImpactEffects{ false };
-			bool      trainingMenu{ false };
-			bool      weaponCharge{ false };
+			bool      activateFurniture{};
+			bool      actorValuePercentage{};
+			bool      enchantmentCost{};
+			bool      hitEffectRaceCondition{};
+			bool      impactEffectCrash{};
+			bool      ingredientRespawn{};
+			bool      isCurrentSpell{};
+			bool      killCamera{};
+			bool      leftHandPowerAttacks{};
+			bool      magicEffectFlags{};
+			bool      modifyArmorWeightPerkEntryPoint{};
+			bool      powerCooldowns{};
+			bool      projectileFadeDuration{};
+			bool      terrainImpactEffects{};
+			bool      trainingMenu{};
+			bool      weaponCharge{};
 		};
 
 		class Patches
@@ -50,64 +50,64 @@ namespace ScrambledBugs
 			class DifficultyMultipliers
 			{
 			public:
-				DifficultyMultipliers& Deserialize(const nlohmann::json& jsonDifficultyMultipliers);
+				DifficultyMultipliers& Deserialize(const std::filesystem::path& directory);
 				nlohmann::json         Serialize() const;
 
-				bool commandedActors{ false };
-				bool teammates{ false };
+				bool commandedActors{};
+				bool teammates{};
 			};
 
 			class PerkEntryPoints
 			{
 			public:
-				PerkEntryPoints& Deserialize(const nlohmann::json& jsonPerkEntryPoints);
+				PerkEntryPoints& Deserialize(const std::filesystem::path& directory);
 				nlohmann::json   Serialize() const;
 
-				bool applySpells{ false };
-				bool castSpells{ false };
+				bool applySpells{};
+				bool castSpells{};
 			};
 
 			class SoulGems
 			{
 			public:
-				SoulGems&      Deserialize(const nlohmann::json& jsonSoulGems);
+				SoulGems&      Deserialize(const std::filesystem::path& directory);
 				nlohmann::json Serialize() const;
 
-				bool black{ false };
-				bool underfilled{ false };
+				bool black{};
+				bool underfilled{};
 			};
 
 			class StaffExperience
 			{
 			public:
-				StaffExperience& Deserialize(const nlohmann::json& jsonStaffExperience);
+				StaffExperience& Deserialize(const std::filesystem::path& directory);
 				nlohmann::json   Serialize() const;
 
-				bool ignoreEnchantmentCost{ false };
-				bool staffExperience{ false };
+				bool ignoreEnchantmentCost{};
+				bool staffExperience{};
 			};
 
-			Patches&       Deserialize(const nlohmann::json& jsonPatches);
+			Patches&       Deserialize(const std::filesystem::path& directory);
 			nlohmann::json Serialize() const;
 
-			bool                  accumulatingMagnitude{ false };
-			bool                  alreadyCaughtPickpocketing{ false };
-			bool                  attachHitEffectArt{ false };
-			bool                  cloakHitEffects{ false };
-			bool                  deferredHitEffects{ false };
 			DifficultyMultipliers difficultyMultipliers{};
-			bool                  enchantmentEffectPower{ false };
-			bool                  equipBestAmmunition{ false };
-			bool                  leveledCharacters{ false };
-			bool                  lockpickingExperience{ false };
 			PerkEntryPoints       perkEntryPoints{};
-			bool                  poisonResistance{ false };
-			bool                  powerAttackStamina{ false };
-			bool                  reflectDamage{ false };
-			bool                  scrollExperience{ false };
 			SoulGems              soulGems{};
 			StaffExperience       staffExperience{};
-			bool                  steepSlopes{ false };
+			bool                  accumulatingMagnitude{};
+			bool                  alreadyCaughtPickpocketing{};
+			bool                  attachHitEffectArt{};
+			bool                  cloakHitEffects{};
+			bool                  deferredHitEffects{};
+			bool                  enchantmentEffectPower{};
+			bool                  equipBestAmmunition{};
+			bool                  leveledCharacters{};
+			bool                  lockpickingExperience{};
+			bool                  poisonResistance{};
+			bool                  powerAttackStamina{};
+			bool                  reflectDamage{};
+			bool                  scrollExperience{};
+			bool                  steepSlopes{};
 		};
 
 		Settings()                = delete;
@@ -119,11 +119,13 @@ namespace ScrambledBugs
 		Settings& operator=(const Settings&) = delete;
 		Settings& operator=(Settings&&)      = delete;
 
-		explicit Settings(const std::filesystem::path& path);
+		explicit Settings(const std::filesystem::path& directory);
 
+		static void      Deserialize(const std::filesystem::path& path, bool& boolean);
+		static void      Deserialize(const std::filesystem::path& path, float& number);
 		static Settings& GetSingleton();
 
-		Settings&      Deserialize(const nlohmann::json& jsonSettings);
+		Settings&      Deserialize(const std::filesystem::path& directory);
 		nlohmann::json Serialize() const;
 
 		void Load();

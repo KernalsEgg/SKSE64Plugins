@@ -360,7 +360,7 @@ namespace Trails
 
 	Settings& Settings::GetSingleton()
 	{
-		static Settings settings(Relocation::DynamicLinkLibrary::GetSingleton().GetPath().parent_path() / Relocation::DynamicLinkLibrary::GetSingleton().GetPath().stem());
+		static Settings settings(std::filesystem::path(Relocation::DynamicLinkLibrary::GetSingleton().GetPath()).replace_extension());
 
 		return settings;
 	}
