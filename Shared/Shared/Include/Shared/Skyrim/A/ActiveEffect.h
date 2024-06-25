@@ -26,14 +26,14 @@ namespace Skyrim
 			kNoHitShader        = 1U << 1,
 			kNoHitEffectArt     = 1U << 2,
 			kNoInitialFlare     = 1U << 4,
-			kApplyingHitEffects = 1U << 5,
-			kApplyingSounds     = 1U << 6,
-			kHasConditions      = 1U << 7,
+			kApplyingSounds     = 1U << 5,
+			kApplyingHitEffects = 1U << 6,
+			kConditional        = 1U << 7,
 			kRecover            = 1U << 9,
 			kDualCasted         = 1U << 12,
 			kInactive           = 1U << 15,
-			kAppliedEffects     = 1U << 16,
-			kRemovedEffects     = 1U << 17,
+			kAppliedHitEffects  = 1U << 16,
+			kRemovingHitEffects = 1U << 17,
 			kDispelled          = 1U << 18,
 			kWornOff            = 1U << 31
 		};
@@ -93,7 +93,7 @@ namespace Skyrim
 		ActorHandle                                                     caster;            // 34
 		std::uint64_t                                                   unknown38;         // 38
 		MagicItem*                                                      magicItem;         // 40
-		EffectItem*                                                     effect;            // 48
+		EffectItem*                                                     effectItem;        // 48
 		MagicTarget*                                                    magicTarget;       // 50
 		TESBoundObject*                                                 source;            // 58
 		std::uint64_t                                                   unknown60;         // 60
@@ -110,7 +110,7 @@ namespace Skyrim
 	};
 	static_assert(offsetof(ActiveEffect, caster) == 0x34);
 	static_assert(offsetof(ActiveEffect, magicItem) == 0x40);
-	static_assert(offsetof(ActiveEffect, effect) == 0x48);
+	static_assert(offsetof(ActiveEffect, effectItem) == 0x48);
 	static_assert(offsetof(ActiveEffect, magicTarget) == 0x50);
 	static_assert(offsetof(ActiveEffect, source) == 0x58);
 	static_assert(offsetof(ActiveEffect, displacementSpell) == 0x68);

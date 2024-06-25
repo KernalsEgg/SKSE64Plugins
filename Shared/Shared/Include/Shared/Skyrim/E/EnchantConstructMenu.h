@@ -73,11 +73,11 @@ namespace Skyrim
 				virtual void Unknown4(CategoryListEntry*) override; // 4
 
 				// Member variables
-				EnchantmentItem* enchantment;  // 18
-				float            power;        // 20
-				float            maximumPower; // 24
+				EnchantmentItem* enchantmentItem; // 18
+				float            power;           // 20
+				float            maximumPower;    // 24
 			};
-			static_assert(offsetof(EnchantmentEntry, enchantment) == 0x18);
+			static_assert(offsetof(EnchantmentEntry, enchantmentItem) == 0x18);
 			static_assert(offsetof(EnchantmentEntry, power) == 0x20);
 			static_assert(offsetof(EnchantmentEntry, maximumPower) == 0x24);
 			static_assert(sizeof(EnchantmentEntry) == 0x28);
@@ -109,23 +109,23 @@ namespace Skyrim
 				virtual ~CreateEffectFunctor() override; // 0
 
 				// Override (MagicItemTraversalFunctor)
-				virtual ForEachResult operator()(EffectItem* effect) override; // 1
+				virtual ForEachResult operator()(EffectItem* effectItem) override; // 1
 
 				// Member variables
-				BSTArray<EffectItem>                          effects;          // 10
-				EffectItem*                                   costliestEffect;  // 28
-				EnchantmentEntry*                             enchantmentEntry; // 30
-				EnchantmentItem*                              enchantment;      // 38
-				Utility::Enumeration<FormType, std::uint32_t> formType;         // 40
-				std::uint32_t                                 padding44;        // 44
-				TESBoundObject*                               boundObject;      // 48
-				float                                         effectiveness;    // 50
-				std::uint32_t                                 padding54;        // 54
+				BSTArray<EffectItem>                          effectItems;         // 10
+				EffectItem*                                   costliestEffectItem; // 28
+				EnchantmentEntry*                             enchantmentEntry;    // 30
+				EnchantmentItem*                              enchantmentItem;     // 38
+				Utility::Enumeration<FormType, std::uint32_t> formType;            // 40
+				std::uint32_t                                 padding44;           // 44
+				TESBoundObject*                               boundObject;         // 48
+				float                                         effectiveness;       // 50
+				std::uint32_t                                 padding54;           // 54
 			};
-			static_assert(offsetof(CreateEffectFunctor, effects) == 0x10);
-			static_assert(offsetof(CreateEffectFunctor, costliestEffect) == 0x28);
+			static_assert(offsetof(CreateEffectFunctor, effectItems) == 0x10);
+			static_assert(offsetof(CreateEffectFunctor, costliestEffectItem) == 0x28);
 			static_assert(offsetof(CreateEffectFunctor, enchantmentEntry) == 0x30);
-			static_assert(offsetof(CreateEffectFunctor, enchantment) == 0x38);
+			static_assert(offsetof(CreateEffectFunctor, enchantmentItem) == 0x38);
 			static_assert(offsetof(CreateEffectFunctor, formType) == 0x40);
 			static_assert(offsetof(CreateEffectFunctor, boundObject) == 0x48);
 			static_assert(offsetof(CreateEffectFunctor, effectiveness) == 0x50);

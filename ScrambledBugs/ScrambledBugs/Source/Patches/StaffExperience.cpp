@@ -23,40 +23,40 @@ namespace ScrambledBugs::Patches
 			reinterpret_cast<std::uintptr_t>(std::addressof(StaffExperience::GetSkillUsageDataEnchantment)));
 	}
 
-	bool StaffExperience::GetSkillUsageDataEnchantment(Skyrim::EnchantmentItem* enchantment, Skyrim::MagicItem::SkillUsageData& skillUsageData)
+	bool StaffExperience::GetSkillUsageDataEnchantment(Skyrim::EnchantmentItem* enchantmentItem, Skyrim::MagicItem::SkillUsageData& skillUsageData)
 	{
-		// enchantment != nullptr
+		// enchantmentItem != nullptr
 
-		switch (enchantment->GetSpellType())
+		switch (enchantmentItem->GetSpellType())
 		{
 			case Skyrim::MagicSystem::SpellType::kStaffEnchantment:
 			{
-				return StaffExperience::GetSkillUsageDataStaffEnchantment(enchantment, skillUsageData);
+				return StaffExperience::GetSkillUsageDataStaffEnchantment(enchantmentItem, skillUsageData);
 			}
 			default:
 			{
-				return StaffExperience::getSkillUsageDataEnchantment_(enchantment, skillUsageData);
+				return StaffExperience::getSkillUsageDataEnchantment_(enchantmentItem, skillUsageData);
 			}
 		}
 	}
 
-	bool StaffExperience::GetSkillUsageDataStaffEnchantment(Skyrim::EnchantmentItem* enchantment, Skyrim::MagicItem::SkillUsageData& skillUsageData)
+	bool StaffExperience::GetSkillUsageDataStaffEnchantment(Skyrim::EnchantmentItem* enchantmentItem, Skyrim::MagicItem::SkillUsageData& skillUsageData)
 	{
-		if (!skillUsageData.costliestEffect)
+		if (!skillUsageData.costliestEffectItem)
 		{
-			skillUsageData.costliestEffect = enchantment->GetCostliestEffect(Skyrim::MagicSystem::Delivery::kAny, false);
+			skillUsageData.costliestEffectItem = enchantmentItem->GetCostliestEffectItem(Skyrim::MagicSystem::Delivery::kAny, false);
 
-			if (!skillUsageData.costliestEffect)
+			if (!skillUsageData.costliestEffectItem)
 			{
 				return false;
 			}
 		}
 
-		auto skillUsage = skillUsageData.costliestEffect->GetCost(nullptr);
+		auto skillUsage = skillUsageData.costliestEffectItem->GetCost(nullptr);
 
-		if (!StaffExperience::ignoreEnchantmentCost_ && !enchantment->IsAutomaticallyCalculated())
+		if (!StaffExperience::ignoreEnchantmentCost_ && !enchantmentItem->IsAutomaticallyCalculated())
 		{
-			auto enchantmentCost = static_cast<float>(reinterpret_cast<const Skyrim::EnchantmentItem::Data*>(enchantment->GetConstantData())->enchantmentCost);
+			auto enchantmentCost = static_cast<float>(reinterpret_cast<const Skyrim::EnchantmentItem::Data*>(enchantmentItem->GetConstantData())->enchantmentCost);
 
 			if (skillUsage > enchantmentCost)
 			{
@@ -64,7 +64,7 @@ namespace ScrambledBugs::Patches
 			}
 		}
 
-		auto* costliestEffectSetting = skillUsageData.costliestEffect->effectSetting;
+		auto* costliestEffectSetting = skillUsageData.costliestEffectItem->effectSetting;
 
 		skillUsageData.magicSkill           = costliestEffectSetting->magicSkill;
 		skillUsageData.magnitude            = costliestEffectSetting->skillUsageMultiplier * skillUsage;

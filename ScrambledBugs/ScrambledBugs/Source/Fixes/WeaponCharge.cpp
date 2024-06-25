@@ -12,11 +12,11 @@ namespace ScrambledBugs::Fixes
 	void WeaponCharge::Fix(bool& weaponCharge)
 	{
 		Utility::Memory::SafeWriteAbsoluteJump(
-			Addresses::Fixes::WeaponCharge::UpdateEquippedEnchantmentCharge,
-			reinterpret_cast<std::uintptr_t>(std::addressof(WeaponCharge::UpdateEquippedEnchantmentCharge)));
+			Addresses::Fixes::WeaponCharge::RefreshEquippedActorValueCharge,
+			reinterpret_cast<std::uintptr_t>(std::addressof(WeaponCharge::RefreshEquippedActorValueCharge)));
 	}
 
-	void WeaponCharge::UpdateEquippedEnchantmentCharge(Skyrim::Actor* actor, Skyrim::TESBoundObject* boundObject, Skyrim::ExtraDataList* extraDataList, bool leftHand)
+	void WeaponCharge::RefreshEquippedActorValueCharge(Skyrim::Actor* actor, Skyrim::TESBoundObject* boundObject, Skyrim::ExtraDataList* extraDataList, bool leftHand)
 	{
 		if (!boundObject)
 		{
@@ -27,23 +27,23 @@ namespace ScrambledBugs::Fixes
 
 		if (actor == player)
 		{
-			player->ResetInsufficientWeaponChargeMessage(leftHand);
+			player->ResetInsufficientChargeMessage(leftHand);
 		}
 
-		auto* enchantment = boundObject->GetEnchantment(extraDataList);
+		auto* enchantmentItem = boundObject->GetEnchantmentItem(extraDataList);
 
-		if (!enchantment)
+		if (!enchantmentItem)
 		{
 			return;
 		}
 
-		if (enchantment->GetCastingType() == Skyrim::MagicSystem::CastingType::kConstantEffect)
+		if (enchantmentItem->GetCastingType() == Skyrim::MagicSystem::CastingType::kConstantEffect)
 		{
 			return;
 		}
 
 		auto castingSource  = leftHand ? Skyrim::MagicSystem::CastingSource::kLeftHand : Skyrim::MagicSystem::CastingSource::kRightHand;
-		auto costActorValue = enchantment->GetCostActorValue(castingSource);
+		auto costActorValue = enchantmentItem->GetCostActorValue(castingSource);
 
 		if (costActorValue != Skyrim::ActorValue::kNone)
 		{
@@ -59,6 +59,6 @@ namespace ScrambledBugs::Fixes
 			}
 		}
 
-		actor->SetSelectedSpell(castingSource, enchantment);
+		actor->SetSelectedSpell(castingSource, enchantmentItem);
 	}
 }

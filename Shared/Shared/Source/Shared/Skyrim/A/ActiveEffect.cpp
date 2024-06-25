@@ -61,12 +61,12 @@ namespace Skyrim
 
 	EffectSetting* ActiveEffect::GetEffectSetting()
 	{
-		return this->effect->effectSetting;
+		return this->effectItem->effectSetting;
 	}
 
 	const EffectSetting* ActiveEffect::GetEffectSetting() const
 	{
-		return this->effect->effectSetting;
+		return this->effectItem->effectSetting;
 	}
 
 	float ActiveEffect::GetCurrentMagnitude() const

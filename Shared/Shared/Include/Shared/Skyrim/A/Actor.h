@@ -182,17 +182,17 @@ namespace Skyrim
 		virtual bool GetAnimationVariableBool(const BSFixedString& variableName, bool& value) const override;            // 12
 
 		// Override (MagicTarget)
-		virtual void                         Unknown1(MagicTarget*) override;                                                                 // 1
-		virtual TESObjectREFR*               GetMagicTargetAsReference() override;                                                            // 2
-		virtual bool                         MagicTargetIsActor() const override;                                                             // 3
-		virtual bool                         IsInvulnerable() const override;                                                                 // 4
-		virtual void                         Unknown5(MagicTarget*) override;                                                                 // 5
-		virtual void                         Unknown6(MagicTarget*) override;                                                                 // 6
-		virtual BSSimpleList<ActiveEffect*>* GetActiveEffects() override;                                                                     // 7
-		virtual void                         Unknown8(MagicTarget*) override;                                                                 // 8
-		virtual void                         Unknown9(MagicTarget*) override;                                                                 // 9
-		virtual float                        CheckResistance(MagicItem* magicItem, EffectItem* effect, TESBoundObject* boundObject) override; // A
-		virtual void                         UnknownB(MagicTarget*) override;                                                                 // B
+		virtual void                         Unknown1(MagicTarget*) override;                                                                     // 1
+		virtual TESObjectREFR*               GetMagicTargetAsReference() override;                                                                // 2
+		virtual bool                         MagicTargetIsActor() const override;                                                                 // 3
+		virtual bool                         IsInvulnerable() const override;                                                                     // 4
+		virtual void                         Unknown5(MagicTarget*) override;                                                                     // 5
+		virtual void                         Unknown6(MagicTarget*) override;                                                                     // 6
+		virtual BSSimpleList<ActiveEffect*>* GetActiveEffects() override;                                                                         // 7
+		virtual void                         Unknown8(MagicTarget*) override;                                                                     // 8
+		virtual void                         Unknown9(MagicTarget*) override;                                                                     // 9
+		virtual float                        CheckResistance(MagicItem* magicItem, EffectItem* effectItem, TESBoundObject* boundObject) override; // A
+		virtual void                         UnknownB(MagicTarget*) override;                                                                     // B
 
 		// Override (ActorValueOwner)
 		virtual float GetActorValue(Utility::Enumeration<ActorValue, std::uint32_t> actorValue) override;                                                                                              // 1

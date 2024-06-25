@@ -12,8 +12,8 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& staffExperience, bool& ignoreEnchantmentCost);
 
 	private:
-		static bool GetSkillUsageDataEnchantment(Skyrim::EnchantmentItem* enchantment, Skyrim::MagicItem::SkillUsageData& skillUsageData);
-		static bool GetSkillUsageDataStaffEnchantment(Skyrim::EnchantmentItem* enchantment, Skyrim::MagicItem::SkillUsageData& skillUsageData);
+		static bool GetSkillUsageDataEnchantment(Skyrim::EnchantmentItem* enchantmentItem, Skyrim::MagicItem::SkillUsageData& skillUsageData);
+		static bool GetSkillUsageDataStaffEnchantment(Skyrim::EnchantmentItem* enchantmentItem, Skyrim::MagicItem::SkillUsageData& skillUsageData);
 
 		static bool                                                     ignoreEnchantmentCost_;
 		static decltype(StaffExperience::GetSkillUsageDataEnchantment)* getSkillUsageDataEnchantment_;

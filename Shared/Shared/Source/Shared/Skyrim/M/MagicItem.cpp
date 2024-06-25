@@ -10,6 +10,28 @@
 
 namespace Skyrim
 {
+	bool MagicItem::Adjustable() const
+	{
+		switch (this->GetSpellType())
+		{
+			case MagicSystem::SpellType::kDisease:
+			case MagicSystem::SpellType::kAbility:
+			case MagicSystem::SpellType::kIngredient:
+			case MagicSystem::SpellType::kAddiction:
+			{
+				return false;
+			}
+			case MagicSystem::SpellType::kEnchantment:
+			{
+				return this->GetCastingType() != MagicSystem::CastingType::kConstantEffect;
+			}
+			default:
+			{
+				return true;
+			}
+		}
+	}
+
 	float MagicItem::GetCost(Actor* caster) const
 	{
 		auto* function{ reinterpret_cast<
@@ -46,11 +68,11 @@ namespace Skyrim
 		}
 	}
 
-	EffectItem* MagicItem::GetCostliestEffect(Utility::Enumeration<MagicSystem::Delivery, std::uint32_t> delivery, bool areaOfEffect) const
+	EffectItem* MagicItem::GetCostliestEffectItem(Utility::Enumeration<MagicSystem::Delivery, std::uint32_t> delivery, bool areaOfEffect) const
 	{
 		auto* function{ reinterpret_cast<
-			Utility::TypeTraits::MakeFunctionPointer<decltype(&MagicItem::GetCostliestEffect)>::type>(
-			Addresses::MagicItem::GetCostliestEffect()) };
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&MagicItem::GetCostliestEffectItem)>::type>(
+			Addresses::MagicItem::GetCostliestEffectItem()) };
 
 		return function(this, delivery, areaOfEffect);
 	}
@@ -72,33 +94,11 @@ namespace Skyrim
 		}
 	}
 
-	bool MagicItem::ShouldAdjustEffects() const
-	{
-		switch (this->GetSpellType())
-		{
-			case MagicSystem::SpellType::kDisease:
-			case MagicSystem::SpellType::kAbility:
-			case MagicSystem::SpellType::kIngredient:
-			case MagicSystem::SpellType::kAddiction:
-			{
-				return false;
-			}
-			case MagicSystem::SpellType::kEnchantment:
-			{
-				return this->GetCastingType() != MagicSystem::CastingType::kConstantEffect;
-			}
-			default:
-			{
-				return true;
-			}
-		}
-	}
-
 	void MagicItem::Traverse(MagicItemTraversalFunctor& magicItemTraversalFunctor) const
 	{
-		for (auto* effect : this->effects)
+		for (auto* effectItem : this->effectItems)
 		{
-			if (magicItemTraversalFunctor(effect) != ForEachResult::kContinue)
+			if (magicItemTraversalFunctor(effectItem) != ForEachResult::kContinue)
 			{
 				break;
 			}

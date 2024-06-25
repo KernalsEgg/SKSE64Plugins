@@ -14,8 +14,8 @@ namespace Skyrim
 	{
 	public:
 		// Add
-		virtual ~MagicItemTraversalFunctor()                 = default; // 0
-		virtual ForEachResult operator()(EffectItem* effect) = 0;       // 1
+		virtual ~MagicItemTraversalFunctor()                     = default; // 0
+		virtual ForEachResult operator()(EffectItem* effectItem) = 0;       // 1
 
 		// Member variables
 		union

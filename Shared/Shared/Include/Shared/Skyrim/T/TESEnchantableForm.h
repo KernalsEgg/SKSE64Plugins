@@ -28,12 +28,12 @@ namespace Skyrim
 		virtual MagicSystem::CastingType GetCastingType() const; // 4
 
 		// Member variables
-		EnchantmentItem*                                              enchantment;       // 8
+		EnchantmentItem*                                              enchantmentItem;   // 8
 		Utility::Enumeration<MagicSystem::CastingType, std::uint16_t> castingType;       // 10
 		std::uint16_t                                                 enchantmentAmount; // 12
 		std::uint32_t                                                 padding14;         // 14
 	};
-	static_assert(offsetof(TESEnchantableForm, enchantment) == 0x8);
+	static_assert(offsetof(TESEnchantableForm, enchantmentItem) == 0x8);
 	static_assert(offsetof(TESEnchantableForm, castingType) == 0x10);
 	static_assert(offsetof(TESEnchantableForm, enchantmentAmount) == 0x12);
 	static_assert(sizeof(TESEnchantableForm) == 0x18);

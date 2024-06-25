@@ -18,11 +18,11 @@ namespace Skyrim
 		return function(editorID);
 	}
 
-	EnchantmentItem* TESForm::GetEnchantment(ExtraDataList* extraDataList)
+	EnchantmentItem* TESForm::GetEnchantmentItem(ExtraDataList* extraDataList)
 	{
 		auto* function{ reinterpret_cast<
-			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESForm::GetEnchantment)>::type>(
-			Addresses::TESForm::GetEnchantment()) };
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESForm::GetEnchantmentItem)>::type>(
+			Addresses::TESForm::GetEnchantmentItem()) };
 
 		return function(this, extraDataList);
 	}

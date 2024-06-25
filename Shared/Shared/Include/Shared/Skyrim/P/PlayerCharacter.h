@@ -96,11 +96,11 @@ namespace Skyrim
 
 		enum class FlagsBE3 : std::uint8_t
 		{
-			kNone                                          = 0,
-			kThirdPerson                                   = 1U << 0,
-			kShownInsufficientWeaponChargeMessageLeftHand  = 1U << 2,
-			kShownInsufficientWeaponChargeMessageRightHand = 1U << 3,
-			kInCombat                                      = 1U << 5
+			kNone                                    = 0,
+			kThirdPerson                             = 1U << 0,
+			kShownInsufficientChargeMessageLeftHand  = 1U << 2,
+			kShownInsufficientChargeMessageRightHand = 1U << 3,
+			kInCombat                                = 1U << 5
 		};
 		static_assert(sizeof(FlagsBE3) == 0x1);
 
@@ -260,7 +260,7 @@ namespace Skyrim
 		// Member functions
 		Actor* GetActorDoingPlayerCommand() const;
 		bool   GetAutomaticAimActor(NiPointer<Actor>& automaticAimActor) const;
-		void   ResetInsufficientWeaponChargeMessage(bool leftHand);
+		void   ResetInsufficientChargeMessage(bool leftHand);
 
 		// Member variables
 		std::uint64_t                                                unknown3E0;                  // 3D8, 3E0

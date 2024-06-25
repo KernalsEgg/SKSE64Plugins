@@ -42,15 +42,15 @@ namespace Skyrim
 		return static_cast<bool>(automaticAimActor);
 	}
 
-	void PlayerCharacter::ResetInsufficientWeaponChargeMessage(bool leftHand)
+	void PlayerCharacter::ResetInsufficientChargeMessage(bool leftHand)
 	{
 		if (leftHand)
 		{
-			this->flagsBE3.reset(PlayerCharacter::FlagsBE3::kShownInsufficientWeaponChargeMessageLeftHand);
+			this->flagsBE3.reset(PlayerCharacter::FlagsBE3::kShownInsufficientChargeMessageLeftHand);
 		}
 		else
 		{
-			this->flagsBE3.reset(PlayerCharacter::FlagsBE3::kShownInsufficientWeaponChargeMessageRightHand);
+			this->flagsBE3.reset(PlayerCharacter::FlagsBE3::kShownInsufficientChargeMessageRightHand);
 		}
 	}
 }

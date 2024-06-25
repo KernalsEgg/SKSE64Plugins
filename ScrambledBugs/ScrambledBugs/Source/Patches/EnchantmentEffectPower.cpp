@@ -16,14 +16,14 @@ namespace ScrambledBugs::Patches
 			reinterpret_cast<std::uintptr_t>(std::addressof(EnchantmentEffectPower::FunctionCallOperator)));
 	}
 
-	Skyrim::ForEachResult EnchantmentEffectPower::FunctionCallOperator(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect)
+	Skyrim::ForEachResult EnchantmentEffectPower::FunctionCallOperator(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effectItem)
 	{
-		auto& createdEffect = createEffectFunctor->effects.emplace_back(*effect);
+		auto& createdEffect = createEffectFunctor->effectItems.emplace_back(*effectItem);
 
-		auto magnitude = effect->GetMagnitude();
-		auto duration  = effect->GetDuration();
+		auto magnitude = effectItem->GetMagnitude();
+		auto duration  = effectItem->GetDuration();
 
-		auto* effectSetting         = effect->effectSetting;
+		auto* effectSetting         = effectItem->effectSetting;
 		auto  powerAffectsMagnitude = effectSetting->effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsMagnitude);
 		auto  powerAffectsDuration  = effectSetting->effectSettingFlags.all(Skyrim::EffectSetting::Flags::kPowerAffectsDuration);
 
@@ -55,7 +55,7 @@ namespace ScrambledBugs::Patches
 				Skyrim::BGSEntryPoint::EntryPoint::kModifyEnchantmentPower,
 				player,
 				effectSetting,
-				enchantmentEntry->enchantment,
+				enchantmentEntry->enchantmentItem,
 				nullptr,
 				createEffectFunctor->boundObject,
 				std::addressof(maximumPower),
@@ -66,14 +66,14 @@ namespace ScrambledBugs::Patches
 				Skyrim::BGSEntryPoint::HandleEntryPoint(
 					Skyrim::BGSEntryPoint::EntryPoint::kModifyEnchantmentPower,
 					player,
-					enchantmentEntry->enchantment,
+					enchantmentEntry->enchantmentItem,
 					createEffectFunctor->boundObject,
 					std::addressof(maximumPower));
 			}
 
 			maximumPower = std::floor(maximumPower);
 
-			if (effect == createEffectFunctor->costliestEffect)
+			if (effectItem == createEffectFunctor->costliestEffectItem)
 			{
 				power = enchantmentEntry->power;
 

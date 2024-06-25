@@ -75,12 +75,12 @@ namespace ConditionsTargetMagicEffects::Events
 			}
 			else
 			{
-				auto* magicItem       = static_cast<Skyrim::MagicItem*>(object->baseObject);
-				auto* costliestEffect = magicItem->GetCostliestEffect(Skyrim::MagicSystem::Delivery::kAny, false);
+				auto* magicItem           = static_cast<Skyrim::MagicItem*>(object->baseObject);
+				auto* costliestEffectItem = magicItem->GetCostliestEffectItem(Skyrim::MagicSystem::Delivery::kAny, false);
 
 				Utility::Enumeration<Skyrim::ActorValue, std::uint32_t> magicSkill = static_cast<std::uint32_t>(reinterpret_cast<std::uintptr_t>(parameter1));
 
-				if (costliestEffect->effectSetting->magicSkill == magicSkill)
+				if (costliestEffectItem->effectSetting->magicSkill == magicSkill)
 				{
 					result = 1.0;
 				}

@@ -1457,7 +1457,7 @@ namespace Skyrim
 			}
 
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x101CC0, 1.6.318.0: SkyrimSE.exe + 0x10BF30</summary>
-			std::uintptr_t GetCostliestEffect()
+			std::uintptr_t GetCostliestEffectItem()
 			{
 				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(11216, 11335)) };
 
@@ -2238,7 +2238,7 @@ namespace Skyrim
 		namespace TESForm
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x190D50, 1.6.318.0: SkyrimSE.exe + 0x19B880</summary>
-			std::uintptr_t GetEnchantment()
+			std::uintptr_t GetEnchantmentItem()
 			{
 				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(14411, 14563)) };
 

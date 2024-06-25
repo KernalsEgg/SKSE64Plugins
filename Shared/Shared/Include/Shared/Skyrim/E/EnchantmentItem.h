@@ -36,7 +36,7 @@ namespace Skyrim
 			Utility::Enumeration<MagicSystem::SpellType, std::uint32_t>   type;                 // 14
 			float                                                         chargeTime;           // 18
 			std::uint32_t                                                 padding1C;            // 1C
-			EnchantmentItem*                                              baseEnchantment;      // 20
+			EnchantmentItem*                                              baseEnchantmentItem;  // 20
 			BGSListForm*                                                  wornRestrictions;     // 28
 		};
 		static_assert(offsetof(Data, enchantmentCost) == 0x0);
@@ -46,7 +46,7 @@ namespace Skyrim
 		static_assert(offsetof(Data, delivery) == 0x10);
 		static_assert(offsetof(Data, type) == 0x14);
 		static_assert(offsetof(Data, chargeTime) == 0x18);
-		static_assert(offsetof(Data, baseEnchantment) == 0x20);
+		static_assert(offsetof(Data, baseEnchantmentItem) == 0x20);
 		static_assert(offsetof(Data, wornRestrictions) == 0x28);
 		static_assert(sizeof(Data) == 0x30);
 

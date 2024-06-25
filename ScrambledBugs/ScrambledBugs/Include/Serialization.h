@@ -26,7 +26,7 @@ namespace ScrambledBugs
 			};
 
 			bool LoadGame(SKSE::SerializationInterface* serializationInterface);
-			bool SaveGame(SKSE::SerializationInterface* serializationInterface, Skyrim::EnchantmentItem* enchantment);
+			bool SaveGame(SKSE::SerializationInterface* serializationInterface, Skyrim::MagicItem* magicItem);
 
 			Skyrim::FormID                                                      formID;               // 0
 			std::int32_t                                                        enchantmentCost;      // 4

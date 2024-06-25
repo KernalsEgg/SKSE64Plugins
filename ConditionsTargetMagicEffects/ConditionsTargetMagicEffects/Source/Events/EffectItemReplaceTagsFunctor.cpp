@@ -18,19 +18,19 @@ namespace ConditionsTargetMagicEffects::Events
 
 	const char* EffectItemReplaceTagsFunctor::ReplaceTagsWithText(Skyrim::EffectItemReplaceTagsFunctor* effectItemReplaceTagsFunctor, const char* tag, const char* capitalize, const char* globalEditorID)
 	{
-		auto* effect = effectItemReplaceTagsFunctor->effect;
+		auto* effectItem = effectItemReplaceTagsFunctor->effectItem;
 
-		if (effect)
+		if (effectItem)
 		{
 			if (::_stricmp(tag, "MAG") == 0)
 			{
-				auto* effectSetting = effect->effectSetting;
+				auto* effectSetting = effectItem->effectSetting;
 
 				if (effectSetting->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kNoMagnitude))
 				{
 					auto* player    = Skyrim::PlayerCharacter::GetSingleton();
 					auto* magicItem = effectItemReplaceTagsFunctor->magicItem;
-					auto  magnitude = effect->GetMagnitude();
+					auto  magnitude = effectItem->GetMagnitude();
 
 					bool modifiedSpellMagnitude{ false };
 
@@ -75,13 +75,13 @@ namespace ConditionsTargetMagicEffects::Events
 			}
 			else if (::_stricmp(tag, "DUR") == 0)
 			{
-				auto* effectSetting = effect->effectSetting;
+				auto* effectSetting = effectItem->effectSetting;
 
 				if (effectSetting->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kNoDuration))
 				{
 					auto* player    = Skyrim::PlayerCharacter::GetSingleton();
 					auto* magicItem = effectItemReplaceTagsFunctor->magicItem;
-					auto  duration  = static_cast<float>(effect->GetDuration());
+					auto  duration  = static_cast<float>(effectItem->GetDuration());
 
 					bool modifiedSpellDuration{ false };
 
@@ -114,9 +114,9 @@ namespace ConditionsTargetMagicEffects::Events
 			}
 			else if (::_stricmp(tag, "AREA") == 0)
 			{
-				if (effect->effectSetting->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kNoArea))
+				if (effectItem->effectSetting->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kNoArea))
 				{
-					auto area = effect->GetArea();
+					auto area = effectItem->GetArea();
 
 					effectItemReplaceTagsFunctor->tag.print(
 						"%s%d%s",

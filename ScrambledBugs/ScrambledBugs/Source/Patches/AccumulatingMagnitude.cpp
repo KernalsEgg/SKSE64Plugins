@@ -10,8 +10,8 @@
 namespace ScrambledBugs::Patches
 {
 	/*
-	* Swap the maximum magnitude and the accumulation rate (magnitude) of AccumulatingValueModifierEffects
-	* The maximum magnitude of AccumulatingValueModifierEffects therefore scales with effectiveness instead of the accumulation rate
+	* Swap the maximum magnitude and the accumulation rate (magnitude) of accumulating magnitude magic effects
+	* The power of accumulating magnitude magic effects then affects the maximum magnitude and not the accumulation rate (magnitude)
 	*/
 	void AccumulatingMagnitude::Patch(bool& accumulatingMagnitude)
 	{
@@ -74,11 +74,11 @@ namespace ScrambledBugs::Patches
 		return Skyrim::ForEachResult::kContinue;
 	}
 
-	Skyrim::AccumulatingValueModifierEffect* AccumulatingMagnitude::Instantiate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect)
+	Skyrim::AccumulatingValueModifierEffect* AccumulatingMagnitude::Instantiate(Skyrim::Actor* caster, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effectItem)
 	{
 		// accumulatingValueModifierEffect != nullptr
 
-		auto* accumulatingValueModifierEffect = AccumulatingMagnitude::instantiate_(caster, magicItem, effect);
+		auto* accumulatingValueModifierEffect = AccumulatingMagnitude::instantiate_(caster, magicItem, effectItem);
 
 		/* Swap the accumulation rate and the maximum magnitude */
 		std::swap(accumulatingValueModifierEffect->magnitude, accumulatingValueModifierEffect->maximumMagnitude);

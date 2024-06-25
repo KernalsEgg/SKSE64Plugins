@@ -19,7 +19,7 @@ namespace Skyrim
 		virtual ~GetMagicItemDescriptionFunctor() override = default; // 0
 
 		// Override (MagicItemTraversalFunctor)
-		virtual ForEachResult operator()(EffectItem* effect) override; // 1
+		virtual ForEachResult operator()(EffectItem* effectItem) override; // 1
 
 		// Member variables
 		BSString*   magicItemDescription{ nullptr }; // 10

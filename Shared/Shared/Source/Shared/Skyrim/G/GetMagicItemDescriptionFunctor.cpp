@@ -10,7 +10,7 @@
 
 namespace Skyrim
 {
-	ForEachResult GetMagicItemDescriptionFunctor::operator()(EffectItem* effect)
+	ForEachResult GetMagicItemDescriptionFunctor::operator()(EffectItem* effectItem)
 	{
 		auto* function{ reinterpret_cast<
 			Utility::TypeTraits::MakeFunctionPointer<decltype(&GetMagicItemDescriptionFunctor::operator())>::type>(
@@ -18,6 +18,6 @@ namespace Skyrim
 				Addresses::GetMagicItemDescriptionFunctor::VirtualFunctionTable(),
 				0x1)) };
 
-		return function(this, effect);
+		return function(this, effectItem);
 	}
 }

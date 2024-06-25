@@ -25,7 +25,7 @@ namespace ScrambledBugs::Addresses
 		namespace EnchantmentCost
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x5A1070 + 0x72 (35284), 1.6.318.0: SkyrimSE.exe + 0x5C1D20</summary>
-			inline const std::uintptr_t Compare{ Relocation::AddressLibrary::GetSingleton().GetAddress(36184) + 0x99 }; // BGSCreatedObjectManager::AddEnchantment
+			inline const std::uintptr_t Compare{ Relocation::AddressLibrary::GetSingleton().GetAddress(36184) + 0x99 }; // BGSCreatedObjectManager::AddEnchantmentItem
 		}
 
 		namespace HitEffectRaceCondition
@@ -112,7 +112,7 @@ namespace ScrambledBugs::Addresses
 		namespace WeaponCharge
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x6313D0 (37803), 1.6.318.0: SkyrimSE.exe + 0x6572D0</summary>
-			inline const std::uintptr_t UpdateEquippedEnchantmentCharge{ Relocation::AddressLibrary::GetSingleton().GetAddress(38752) }; // Actor::UpdateEquippedEnchantmentCharge
+			inline const std::uintptr_t RefreshEquippedActorValueCharge{ Relocation::AddressLibrary::GetSingleton().GetAddress(38752) }; // Actor::RefreshEquippedActorValueCharge
 		}
 	}
 

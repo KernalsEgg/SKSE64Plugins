@@ -21,12 +21,12 @@ namespace ScrambledBugs::Fixes
 
 		auto* magicItem = activeEffect->magicItem;
 
-		if (!magicItem->ShouldAdjustEffects())
+		if (!magicItem->Adjustable())
 		{
 			return;
 		}
 
-		if (requiresHostility && !activeEffect->effect->IsHostile())
+		if (requiresHostility && !activeEffect->effectItem->IsHostile())
 		{
 			return;
 		}

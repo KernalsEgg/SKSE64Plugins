@@ -19,16 +19,16 @@ namespace ScrambledBugs
 			return false;
 		}
 
-		auto* enchantment = static_cast<Skyrim::EnchantmentItem*>(Skyrim::TESDataHandler::GetForm(this->formID));
+		auto* enchantmentItem = static_cast<Skyrim::EnchantmentItem*>(Skyrim::TESDataHandler::GetForm(this->formID));
 
-		if (!enchantment || enchantment->formType != Skyrim::FormType::kEnchantment)
+		if (!enchantmentItem || enchantmentItem->formType != Skyrim::FormType::kEnchantment)
 		{
 			SPDLOG_ERROR("Enchantment not found, form ID 0x{:X}.", this->formID);
 
 			return false;
 		}
 
-		auto* enchantmentItemData = reinterpret_cast<Skyrim::EnchantmentItem::Data*>(enchantment->GetData());
+		auto* enchantmentItemData = reinterpret_cast<Skyrim::EnchantmentItem::Data*>(enchantmentItem->GetData());
 
 		if (!enchantmentItemData)
 		{
@@ -43,16 +43,17 @@ namespace ScrambledBugs
 		return true;
 	}
 
-	bool Serialization::EnchantmentCost::SaveGame(SKSE::SerializationInterface* serializationInterface, Skyrim::EnchantmentItem* enchantment)
+	bool Serialization::EnchantmentCost::SaveGame(SKSE::SerializationInterface* serializationInterface, Skyrim::MagicItem* magicItem)
 	{
-		if (!enchantment)
+		if (!magicItem || magicItem->formType != Skyrim::FormType::kEnchantment)
 		{
 			SPDLOG_ERROR("Enchantment not found.");
 
 			return false;
 		}
 
-		const auto* enchantmentItemData = reinterpret_cast<const Skyrim::EnchantmentItem::Data*>(enchantment->GetConstantData());
+		auto*       enchantmentItem     = static_cast<Skyrim::EnchantmentItem*>(magicItem);
+		const auto* enchantmentItemData = reinterpret_cast<const Skyrim::EnchantmentItem::Data*>(enchantmentItem->GetConstantData());
 
 		if (!enchantmentItemData)
 		{
@@ -61,7 +62,7 @@ namespace ScrambledBugs
 			return false;
 		}
 
-		this->formID               = enchantment->formID;
+		this->formID               = enchantmentItem->formID;
 		this->enchantmentCost      = enchantmentItemData->enchantmentCost;
 		this->enchantmentItemFlags = enchantmentItemData->enchantmentItemFlags;
 
@@ -133,14 +134,14 @@ namespace ScrambledBugs
 			auto*                   createdObjectManager = Skyrim::BGSCreatedObjectManager::GetSingleton();
 			Skyrim::BSSpinLockGuard lockGuard(createdObjectManager->lock);
 
-			for (const auto& armorEnchantment : createdObjectManager->armorEnchantments)
+			for (const auto& createdArmorEnchantmentItem : createdObjectManager->createdArmorEnchantmentItems)
 			{
-				EnchantmentCost().SaveGame(serializationInterface, armorEnchantment.enchantment);
+				EnchantmentCost().SaveGame(serializationInterface, createdArmorEnchantmentItem.magicItem);
 			}
 
-			for (const auto& weaponEnchantment : createdObjectManager->weaponEnchantments)
+			for (const auto& createdWeaponEnchantmentItem : createdObjectManager->createdWeaponEnchantmentItems)
 			{
-				EnchantmentCost().SaveGame(serializationInterface, weaponEnchantment.enchantment);
+				EnchantmentCost().SaveGame(serializationInterface, createdWeaponEnchantmentItem.magicItem);
 			}
 		}
 

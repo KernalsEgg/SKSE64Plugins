@@ -39,12 +39,12 @@ namespace ScrambledBugs::Fixes
 			return true;
 		}
 
-		if (activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kHasConditions))
+		if (activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kConditional))
 		{
 			return true;
 		}
 
-		if (activeEffectFlags.none(Skyrim::ActiveEffect::Flags::kAppliedEffects))
+		if (activeEffectFlags.none(Skyrim::ActiveEffect::Flags::kAppliedHitEffects))
 		{
 			return true;
 		}

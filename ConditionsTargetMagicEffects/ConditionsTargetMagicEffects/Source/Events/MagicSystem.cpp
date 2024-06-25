@@ -44,9 +44,9 @@ namespace ConditionsTargetMagicEffects::Events
 
 			auto* player = Skyrim::PlayerCharacter::GetSingleton();
 
-			for (auto* effect : magicItem->effects)
+			for (auto* effectItem : magicItem->effectItems)
 			{
-				auto* effectSetting = effect->effectSetting;
+				auto* effectSetting = effectItem->effectSetting;
 
 				if (effectSetting->effectSettingFlags.all(Skyrim::EffectSetting::Flags::kHideInUI))
 				{
@@ -58,8 +58,8 @@ namespace ConditionsTargetMagicEffects::Events
 					buffer += " ";
 				}
 
-				auto duration  = static_cast<float>(effect->GetDuration());
-				auto magnitude = effect->GetMagnitude();
+				auto duration  = static_cast<float>(effectItem->GetDuration());
+				auto magnitude = effectItem->GetMagnitude();
 
 				bool modifiedSpellDuration{ false };
 				bool modifiedSpellMagnitude{ false };

@@ -118,7 +118,7 @@ namespace Skyrim
 		static TESForm* GetFormFromEditorID(const char* editorID);
 
 		// Member functions
-		EnchantmentItem* GetEnchantment(ExtraDataList* extraDataList);
+		EnchantmentItem* GetEnchantmentItem(ExtraDataList* extraDataList);
 		TESFile*         GetFile(std::int32_t index = -1) const;
 		const char*      GetFormName() const;
 		std::uint16_t    GetMaximumCharge(ExtraDataList* extraDataList) const;

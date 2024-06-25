@@ -508,7 +508,7 @@ namespace Skyrim
 		namespace MagicItem
 		{
 			std::uintptr_t GetCost();
-			std::uintptr_t GetCostliestEffect();
+			std::uintptr_t GetCostliestEffectItem();
 		}
 
 		namespace Main
@@ -776,7 +776,7 @@ namespace Skyrim
 
 		namespace TESForm
 		{
-			std::uintptr_t GetEnchantment();
+			std::uintptr_t GetEnchantmentItem();
 			std::uintptr_t GetFormFromEditorID();
 			std::uintptr_t GetFormName();
 			std::uintptr_t GetMaximumCharge();

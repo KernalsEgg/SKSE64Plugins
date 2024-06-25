@@ -15,11 +15,11 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::PlayerCharacter::MagicTarget::VirtualFunctionTable(), 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(PoisonResistance::CheckResistance)));
 	}
 
-	float PoisonResistance::CheckResistance(Skyrim::MagicTarget* magicTarget, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect, Skyrim::TESBoundObject* boundObject)
+	float PoisonResistance::CheckResistance(Skyrim::MagicTarget* magicTarget, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effectItem, Skyrim::TESBoundObject* boundObject)
 	{
 		// magicTarget != nullptr
 		// magicItem != nullptr
-		// effect != nullptr
+		// effectItem != nullptr
 
 		if (magicItem->hostileCount <= 0 || (boundObject && boundObject->formType == Skyrim::FormType::kArmor))
 		{
@@ -30,7 +30,7 @@ namespace ScrambledBugs::Patches
 		auto* potion    = spellType == Skyrim::MagicSystem::SpellType::kPotion ? static_cast<Skyrim::AlchemyItem*>(magicItem) : nullptr;
 		auto  isPoison  = potion && potion->IsPoison();
 
-		if ((potion && !isPoison && !effect->IsHostile()) || (spellType == Skyrim::MagicSystem::SpellType::kIngredient && magicItem->IsFood()))
+		if ((potion && !isPoison && !effectItem->IsHostile()) || (spellType == Skyrim::MagicSystem::SpellType::kIngredient && magicItem->IsFood()))
 		{
 			return 1.0F;
 		}
@@ -40,7 +40,7 @@ namespace ScrambledBugs::Patches
 		float defaultResistance{ 0.0F };
 
 		float resistance{ 0.0F };
-		auto  resistanceActorValue = effect->effectSetting->resistanceActorValue;
+		auto  resistanceActorValue = effectItem->effectSetting->resistanceActorValue;
 
 		if (isPoison || spellType == Skyrim::MagicSystem::SpellType::kPoison)
 		{

@@ -12,6 +12,6 @@ namespace ScrambledBugs::Fixes
 		static void Fix(bool& weaponCharge);
 
 	private:
-		static void UpdateEquippedEnchantmentCharge(Skyrim::Actor* actor, Skyrim::TESBoundObject* boundObject, Skyrim::ExtraDataList* extraDataList, bool leftHand);
+		static void RefreshEquippedActorValueCharge(Skyrim::Actor* actor, Skyrim::TESBoundObject* boundObject, Skyrim::ExtraDataList* extraDataList, bool leftHand);
 	};
 }

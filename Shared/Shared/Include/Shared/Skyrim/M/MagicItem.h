@@ -36,7 +36,7 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			EffectItem*                                     costliestEffect;      // 0
+			EffectItem*                                     costliestEffectItem;  // 0
 			Utility::Enumeration<ActorValue, std::uint32_t> magicSkill;           // 8
 			float                                           magnitude;            // C
 			bool                                            customSkillUseReward; // 10
@@ -44,7 +44,7 @@ namespace Skyrim
 			std::uint16_t                                   padding12;            // 12
 			std::uint32_t                                   padding14;            // 14
 		};
-		static_assert(offsetof(SkillUsageData, costliestEffect) == 0x0);
+		static_assert(offsetof(SkillUsageData, costliestEffectItem) == 0x0);
 		static_assert(offsetof(SkillUsageData, magicSkill) == 0x8);
 		static_assert(offsetof(SkillUsageData, magnitude) == 0xC);
 		static_assert(offsetof(SkillUsageData, customSkillUseReward) == 0x10);
@@ -108,22 +108,22 @@ namespace Skyrim
 		virtual void                     Unknown70(MagicItem*)   = 0;                             // 70
 
 		// Member functions
+		bool        Adjustable() const;
 		float       GetCost(Actor* caster) const;
 		ActorValue  GetCostActorValue(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource) const;
-		EffectItem* GetCostliestEffect(Utility::Enumeration<MagicSystem::Delivery, std::uint32_t> delivery, bool areaOfEffect) const;
+		EffectItem* GetCostliestEffectItem(Utility::Enumeration<MagicSystem::Delivery, std::uint32_t> delivery, bool areaOfEffect) const;
 		bool        IsPermanent() const;
-		bool        ShouldAdjustEffects() const;
 		void        Traverse(MagicItemTraversalFunctor& magicItemTraversalFunctor) const;
 
 		// Member variables
-		BSTArray<EffectItem*> effects;      // 58
+		BSTArray<EffectItem*> effectItems;  // 58
 		std::int32_t          hostileCount; // 70
 		std::uint32_t         padding74;    // 74
 		std::uint64_t         unknown78;    // 78
 		std::uint64_t         unknown80;    // 80
 		std::uint64_t         unknown88;    // 88
 	};
-	static_assert(offsetof(MagicItem, effects) == 0x58);
+	static_assert(offsetof(MagicItem, effectItems) == 0x58);
 	static_assert(offsetof(MagicItem, hostileCount) == 0x70);
 	static_assert(sizeof(MagicItem) == 0x90);
 }

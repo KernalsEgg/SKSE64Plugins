@@ -12,6 +12,6 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& enchantmentEffectPower);
 
 	private:
-		static Skyrim::ForEachResult FunctionCallOperator(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effect);
+		static Skyrim::ForEachResult FunctionCallOperator(Skyrim::CraftingSubMenus::EnchantConstructMenu::CreateEffectFunctor* createEffectFunctor, Skyrim::EffectItem* effectItem);
 	};
 }
