@@ -1,20 +1,20 @@
 ## Build Dependencies
 ### Actor Limit Fix
-* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
+* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json/releases)
 ### Bug Fixes SSE
-* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
+* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json/releases)
 ### Console Command Companion
-* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
+* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json/releases)
 ### Scrambled Bugs
-* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
+* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json/releases)
 ### Shared
-* [spdlog 1.14.1](https://github.com/gabime/spdlog)
+* [spdlog 1.14.1](https://github.com/gabime/spdlog/releases)
 ### Trails
-* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
+* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json/releases)
 
 ## End-User Dependencies
 * [Address Library](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
-* [Skyrim Script Extender](https://github.com/ianpatt/skse64)
+* [Skyrim Script Extender](https://www.nexusmods.com/skyrimspecialedition/mods/30379)
 
 ## Development
 * [clang-format 18.1.7](https://github.com/llvm/llvm-project/releases)
@@ -28,7 +28,7 @@
 * [.NET Script Framework](https://www.nexusmods.com/skyrimspecialedition/mods/21294) by [meh321](https://www.nexusmods.com/skyrimspecialedition/users/2964753)
 * [SKSE64](https://github.com/ianpatt/skse64) by [ianpatt](https://www.nexusmods.com/skyrimspecialedition/users/2166624)
 
-I would also like to thank the regulars on the SkyrimRE Discord server for their help over time.
+I would also like to thank the regulars on the xSE RE Discord server for their help over time.
 * [aers](https://www.nexusmods.com/skyrimspecialedition/users/2025634)
 * [Ahzaab](https://www.nexusmods.com/skyrimspecialedition/users/368196)
 * [Al](https://github.com/Al12rs)
