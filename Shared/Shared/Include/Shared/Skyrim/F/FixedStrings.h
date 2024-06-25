@@ -202,7 +202,7 @@ namespace Skyrim
 		BSFixedString forceIdleStop;                             // 5C0, "bForceIdleStop" (AnimationVariableIDNames)
 		BSFixedString constraintOffset;                          // 5C8, "ConstraintOffset" (ConstraintOffset)
 		BSFixedString left;                                      // 5D0, "Left" (Left)
-		BSFixedString pickUp;                                    // 5D8, "PickUp" (Pickup)
+		BSFixedString pickup;                                    // 5D8, "PickUp" (Pickup)
 		BSFixedString tweenerStartEvent;                         // 5E0, "PathTweenerStart" (TweenerStartEvent)
 		BSFixedString tweenerEndEvent;                           // 5E8, "PathTweenerEnd" (TweenerEndEvent)
 	};

@@ -33,6 +33,17 @@ namespace Skyrim
 	class TESContainer;
 	class TESObjectCELL;
 
+	enum class ItemRemoveReason : std::uint32_t
+	{
+		kRemove    = 0,
+		kSteal     = 1,
+		kSell      = 2,
+		kDrop      = 3,
+		kContainer = 4,
+		kTeammate  = 5
+	};
+	static_assert(sizeof(ItemRemoveReason) == 0x4);
+
 	struct LoadedReferenceData
 	{
 	public:
@@ -76,17 +87,6 @@ namespace Skyrim
 			kTargeted = 1U << 18
 		};
 		static_assert(sizeof(RecordFlags) == 0x4);
-
-		enum class RemoveItemReason : std::uint32_t
-		{
-			kRemove    = 0,
-			kSteal     = 1,
-			kSell      = 2,
-			kDrop      = 3,
-			kContainer = 4,
-			kTeammate  = 5
-		};
-		static_assert(sizeof(RemoveItemReason) == 0x4);
 
 		// Override
 		virtual ~TESObjectREFR() override; // 0
@@ -162,7 +162,7 @@ namespace Skyrim
 		virtual void                              Unknown53(TESObjectREFR*);                                                                                                                                                                                                                                      // 53
 		virtual void                              Unknown54(TESObjectREFR*);                                                                                                                                                                                                                                      // 54
 		virtual void                              Unknown55(TESObjectREFR*);                                                                                                                                                                                                                                      // 55
-		virtual ObjectReferenceHandle             RemoveBoundObject(TESBoundObject* boundObject, std::uint32_t boundObjectCount, Utility::Enumeration<RemoveItemReason, std::uint32_t> reason, ExtraDataList* extraDataList, TESObjectREFR* moveToReference, const NiPoint3* position, const NiPoint3* rotation); // 56
+		virtual ObjectReferenceHandle             RemoveBoundObject(TESBoundObject* boundObject, std::uint32_t boundObjectCount, Utility::Enumeration<ItemRemoveReason, std::uint32_t> reason, ExtraDataList* extraDataList, TESObjectREFR* moveToReference, const NiPoint3* position, const NiPoint3* rotation); // 56
 		virtual void                              Unknown57(TESObjectREFR*);                                                                                                                                                                                                                                      // 57
 		virtual void                              Unknown58(TESObjectREFR*);                                                                                                                                                                                                                                      // 58
 		virtual void                              Unknown59(TESObjectREFR*);                                                                                                                                                                                                                                      // 59

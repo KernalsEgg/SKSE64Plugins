@@ -45,7 +45,7 @@ namespace Skyrim
 		std::uint64_t   unknown78;             // 78
 		std::uint64_t   unknown80;             // 80
 		std::uint64_t   unknown88;             // 88
-		TESBoundObject* selectedItem;          // 90
+		TESBoundObject* selectedBoundObject;   // 90
 		ExtraDataList*  selectedExtraDataList; // 98
 		std::uint32_t   selectedFilterFlag;    // A0
 		std::uint32_t   paddingA4;             // A4
@@ -60,7 +60,7 @@ namespace Skyrim
 	static_assert(offsetof(ContainerMenu, itemList) == 0x48);
 	static_assert(offsetof(ContainerMenu, itemCard) == 0x50);
 	static_assert(offsetof(ContainerMenu, bottomBar) == 0x58);
-	static_assert(offsetof(ContainerMenu, selectedItem) == 0x90);
+	static_assert(offsetof(ContainerMenu, selectedBoundObject) == 0x90);
 	static_assert(offsetof(ContainerMenu, selectedExtraDataList) == 0x98);
 	static_assert(offsetof(ContainerMenu, selectedFilterFlag) == 0xA0);
 	static_assert(offsetof(ContainerMenu, pcControlsReady) == 0xB9);
