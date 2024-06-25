@@ -15,13 +15,13 @@ namespace ScrambledBugs::Patches
 		Utility::Memory::SafeWriteVirtualFunction(Skyrim::Addresses::PlayerCharacter::MagicTarget::VirtualFunctionTable(), 0xA, reinterpret_cast<std::uintptr_t>(std::addressof(PoisonResistance::CheckResistance)));
 	}
 
-	float PoisonResistance::CheckResistance(Skyrim::MagicTarget* magicTarget, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect, Skyrim::TESBoundObject* item)
+	float PoisonResistance::CheckResistance(Skyrim::MagicTarget* magicTarget, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect, Skyrim::TESBoundObject* boundObject)
 	{
 		// magicTarget != nullptr
 		// magicItem != nullptr
 		// effect != nullptr
 
-		if (magicItem->hostileCount <= 0 || (item && item->formType == Skyrim::FormType::kArmor))
+		if (magicItem->hostileCount <= 0 || (boundObject && boundObject->formType == Skyrim::FormType::kArmor))
 		{
 			return 1.0F;
 		}

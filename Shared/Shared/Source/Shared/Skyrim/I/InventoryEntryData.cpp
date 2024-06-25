@@ -11,8 +11,8 @@
 namespace Skyrim
 {
 	InventoryEntryData::InventoryEntryData(const InventoryEntryData& right) :
-		item(right.item),
-		itemCountDelta(right.itemCountDelta)
+		boundObject(right.boundObject),
+		countDelta(right.countDelta)
 	{
 		if (right.extraDataLists)
 		{
@@ -21,13 +21,13 @@ namespace Skyrim
 	}
 
 	InventoryEntryData::InventoryEntryData(InventoryEntryData&& right) :
-		item(right.item),
+		boundObject(right.boundObject),
 		extraDataLists(right.extraDataLists),
-		itemCountDelta(right.itemCountDelta)
+		countDelta(right.countDelta)
 	{
-		right.item           = nullptr;
+		right.boundObject    = nullptr;
 		right.extraDataLists = nullptr;
-		right.itemCountDelta = 0;
+		right.countDelta     = 0;
 	}
 
 	InventoryEntryData::~InventoryEntryData()
@@ -41,9 +41,9 @@ namespace Skyrim
 		{
 			delete this->extraDataLists;
 
-			this->item           = right.item;
+			this->boundObject    = right.boundObject;
 			this->extraDataLists = right.extraDataLists ? new BSSimpleList<ExtraDataList*>(*right.extraDataLists) : nullptr;
-			this->itemCountDelta = right.itemCountDelta;
+			this->countDelta     = right.countDelta;
 		}
 
 		return *this;
@@ -55,13 +55,13 @@ namespace Skyrim
 		{
 			delete this->extraDataLists;
 
-			this->item           = right.item;
+			this->boundObject    = right.boundObject;
 			this->extraDataLists = right.extraDataLists;
-			this->itemCountDelta = right.itemCountDelta;
+			this->countDelta     = right.countDelta;
 
-			right.item           = nullptr;
+			right.boundObject    = nullptr;
 			right.extraDataLists = nullptr;
-			right.itemCountDelta = 0;
+			right.countDelta     = 0;
 		}
 
 		return *this;
@@ -175,7 +175,7 @@ namespace Skyrim
 		return nullptr;
 	}
 
-	bool InventoryEntryData::IsLeveledItem() const
+	bool InventoryEntryData::IsLeveledBoundObject() const
 	{
 		auto* extraDataLists = this->extraDataLists;
 
@@ -188,7 +188,7 @@ namespace Skyrim
 					break;
 				}
 
-				if (extraDataList->IsLeveledItem())
+				if (extraDataList->IsLeveledBoundObject())
 				{
 					return true;
 				}
@@ -207,7 +207,7 @@ namespace Skyrim
 		return function(this, actor, owner, defaultOwnership);
 	}
 
-	bool InventoryEntryData::IsQuestItem() const
+	bool InventoryEntryData::IsQuestBoundObject() const
 	{
 		auto* extraDataLists = this->extraDataLists;
 
@@ -220,7 +220,7 @@ namespace Skyrim
 					break;
 				}
 
-				if (extraDataList->IsQuestItem())
+				if (extraDataList->IsQuestBoundObject())
 				{
 					return true;
 				}

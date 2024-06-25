@@ -21,8 +21,8 @@ namespace Skyrim
 		static ActorEquipManager* GetSingleton();
 
 		// Member functions
-		void EquipItem(Actor* actor, TESBoundObject* item, ExtraDataList* extraDataList, std::uint32_t itemCount, BGSEquipSlot* equipSlot, bool queueEquip, bool forceEquip, bool playSounds, bool applyNow);
-		bool UnequipItem(Actor* actor, TESBoundObject* item, ExtraDataList* extraDataList, std::uint32_t itemCount, BGSEquipSlot* equipSlot, bool queueEquip, bool forceEquip, bool playSounds, bool applyNow, BGSEquipSlot* replacementEquipSlot);
+		void EquipBoundObject(Actor* actor, TESBoundObject* boundObject, ExtraDataList* extraDataList, std::uint32_t boundObjectCount, BGSEquipSlot* equipSlot, bool queueEquip, bool forceEquip, bool playSounds, bool applyNow);
+		bool UnequipBoundObject(Actor* actor, TESBoundObject* boundObject, ExtraDataList* extraDataList, std::uint32_t boundObjectCount, BGSEquipSlot* equipSlot, bool queueEquip, bool forceEquip, bool playSounds, bool applyNow, BGSEquipSlot* replacementEquipSlot);
 
 		// Member variables
 		bool initialized; // 1

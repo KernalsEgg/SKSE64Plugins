@@ -19,13 +19,13 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		TESForm*            object;             // 0
+		TESForm*            form;               // 0
 		std::uint16_t       count;              // 8
 		std::uint16_t       level;              // A
 		std::uint32_t       paddingC;           // C
 		ContainerItemExtra* containerItemExtra; // 10
 	};
-	static_assert(offsetof(LeveledObject, object) == 0x0);
+	static_assert(offsetof(LeveledObject, form) == 0x0);
 	static_assert(offsetof(LeveledObject, count) == 0x8);
 	static_assert(offsetof(LeveledObject, level) == 0xA);
 	static_assert(offsetof(LeveledObject, containerItemExtra) == 0x10);

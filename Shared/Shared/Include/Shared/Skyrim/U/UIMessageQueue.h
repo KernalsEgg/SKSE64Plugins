@@ -26,7 +26,7 @@ namespace Skyrim
 		};
 
 		// Non-member functions
-		static void            AddInventoryUpdateMessage(TESObjectREFR* reference, TESBoundObject* item);
+		static void            AddInventoryUpdateMessage(TESObjectREFR* reference, TESBoundObject* boundObject);
 		static UIMessageQueue* GetSingleton();
 
 		// Member functions

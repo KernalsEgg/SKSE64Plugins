@@ -61,5 +61,5 @@ namespace ScrambledBugs::Fixes
 		}
 	}
 
-	float QuickShot::playbackSpeed_{ 2.0F };
+	float QuickShot::playbackSpeed_{};
 }

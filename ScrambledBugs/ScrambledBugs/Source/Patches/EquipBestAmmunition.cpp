@@ -32,7 +32,7 @@ namespace ScrambledBugs::Patches
 					continue;
 				}
 
-				auto* boundObject = containerObject->object;
+				auto* boundObject = containerObject->boundObject;
 
 				if (boundObject && boundObject->formType == Skyrim::FormType::kAmmunition)
 				{
@@ -43,7 +43,7 @@ namespace ScrambledBugs::Patches
 					{
 						auto* inventoryEntryData = inventoryChanges->GetInventoryEntryData(ammunition);
 
-						if (!inventoryEntryData || containerObject->count + inventoryEntryData->itemCountDelta > 0 || containerObject->count < 0)
+						if (!inventoryEntryData || containerObject->count + inventoryEntryData->countDelta > 0 || containerObject->count < 0)
 						{
 							if (!bestAmmunition || ammunition->damage > bestAmmunition->damage)
 							{
@@ -66,7 +66,7 @@ namespace ScrambledBugs::Patches
 					continue;
 				}
 
-				auto* boundObject = inventoryEntryData->item;
+				auto* boundObject = inventoryEntryData->boundObject;
 
 				if (boundObject && boundObject->formType == Skyrim::FormType::kAmmunition)
 				{
@@ -75,17 +75,17 @@ namespace ScrambledBugs::Patches
 
 					if (bolt == crossbow && ammunition->IsPlayable())
 					{
-						if (inventoryEntryData->IsLeveledItem() && inventoryEntryData->itemCountDelta < 0)
+						if (inventoryEntryData->IsLeveledBoundObject() && inventoryEntryData->countDelta < 0)
 						{
 							continue;
 						}
 
-						if (!inventoryEntryData->itemCountDelta)
+						if (!inventoryEntryData->countDelta)
 						{
 							continue;
 						}
 
-						if (container && container->HasItem(ammunition))
+						if (container && container->HasBoundObject(ammunition))
 						{
 							continue;
 						}
@@ -106,7 +106,7 @@ namespace ScrambledBugs::Patches
 		{
 			if (inventoryEntryData)
 			{
-				bestInventoryEntryData->item = inventoryEntryData->item;
+				bestInventoryEntryData->boundObject = inventoryEntryData->boundObject;
 
 				if (inventoryEntryData->extraDataLists)
 				{
@@ -117,25 +117,25 @@ namespace ScrambledBugs::Patches
 
 				if (bestExtraDataLists && bestExtraDataLists->front() && !bestExtraDataLists->front()->Stackable(true))
 				{
-					bestInventoryEntryData->itemCountDelta = inventoryEntryData->itemCountDelta;
+					bestInventoryEntryData->countDelta = inventoryEntryData->countDelta;
 				}
 				else
 				{
-					bestInventoryEntryData->itemCountDelta = inventoryEntryData->itemCountDelta;
+					bestInventoryEntryData->countDelta = inventoryEntryData->countDelta;
 
 					if (container)
 					{
-						bestInventoryEntryData->itemCountDelta += container->GetItemCount(bestAmmunition);
+						bestInventoryEntryData->countDelta += container->GetBoundObjectCount(bestAmmunition);
 					}
 				}
 			}
 			else if (bestAmmunition)
 			{
-				bestInventoryEntryData->item = bestAmmunition;
+				bestInventoryEntryData->boundObject = bestAmmunition;
 
 				if (container)
 				{
-					bestInventoryEntryData->itemCountDelta = std::abs(container->GetItemCount(bestAmmunition));
+					bestInventoryEntryData->countDelta = std::abs(container->GetBoundObjectCount(bestAmmunition));
 				}
 			}
 		}

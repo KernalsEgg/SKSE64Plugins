@@ -60,15 +60,15 @@ namespace Skyrim
 		virtual ~TESObjectLIGH() override;
 
 		// Override (TESBoundAnimObject)
-		virtual void InitializeData() override;                                                                                                       // 4
-		virtual bool Load(TESFile* file) override;                                                                                                    // 6
-		virtual void SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;                                                                            // E
-		virtual void LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                                                            // F
-		virtual void Unknown13(TESForm*) override;                                                                                                    // 13
-		virtual bool Activate(TESObjectREFR* target, TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount) override; // 37
-		virtual void Unknown41(TESObject*) override;                                                                                                  // 41
-		virtual void Unknown47(TESObject*) override;                                                                                                  // 47
-		virtual void Unknown4A(TESBoundObject*) override;                                                                                             // 4A
+		virtual void InitializeData() override;                                                                                                                     // 4
+		virtual bool Load(TESFile* file) override;                                                                                                                  // 6
+		virtual void SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;                                                                                          // E
+		virtual void LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                                                                          // F
+		virtual void Unknown13(TESForm*) override;                                                                                                                  // 13
+		virtual bool Activate(TESObjectREFR* target, TESObjectREFR* activator, bool deferred, TESBoundObject* boundObject, std::int32_t boundObjectCount) override; // 37
+		virtual void Unknown41(TESObject*) override;                                                                                                                // 41
+		virtual void Unknown47(TESObject*) override;                                                                                                                // 47
+		virtual void Unknown4A(TESBoundObject*) override;                                                                                                           // 4A
 
 		// Override (BGSEquipType)
 		virtual BGSEquipSlot* GetEquipSlot() const override;                  // 4

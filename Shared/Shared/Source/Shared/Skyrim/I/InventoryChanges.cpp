@@ -10,7 +10,7 @@
 
 namespace Skyrim
 {
-	InventoryEntryData* InventoryChanges::GetInventoryEntryData(TESBoundObject* item) const
+	InventoryEntryData* InventoryChanges::GetInventoryEntryData(TESBoundObject* boundObject) const
 	{
 		auto* inventoryEntryDataList = this->inventoryEntryDataList;
 
@@ -23,7 +23,7 @@ namespace Skyrim
 					break;
 				}
 
-				if (inventoryEntryData->item == item)
+				if (inventoryEntryData->boundObject == boundObject)
 				{
 					return inventoryEntryData;
 				}

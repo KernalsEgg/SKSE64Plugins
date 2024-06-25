@@ -12,6 +12,6 @@ namespace ScrambledBugs::Patches
 		static void Patch(bool& poisonResistance);
 
 	private:
-		static float CheckResistance(Skyrim::MagicTarget* magicTarget, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect, Skyrim::TESBoundObject* item);
+		static float CheckResistance(Skyrim::MagicTarget* magicTarget, Skyrim::MagicItem* magicItem, Skyrim::EffectItem* effect, Skyrim::TESBoundObject* boundObject);
 	};
 }

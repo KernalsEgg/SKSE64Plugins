@@ -83,16 +83,16 @@ namespace Skyrim
 		return extraSoul ? extraSoul->soul.get() : SoulLevel::kNone;
 	}
 
-	bool ExtraDataList::IsLeveledItem() const
+	bool ExtraDataList::IsLeveledBoundObject() const
 	{
 		return this->HasExtraData(ExtraDataType::kLeveledItem);
 	}
 
-	bool ExtraDataList::IsQuestItem() const
+	bool ExtraDataList::IsQuestBoundObject() const
 	{
 		auto* function{ reinterpret_cast<
-			Utility::TypeTraits::MakeFunctionPointer<decltype(&ExtraDataList::IsQuestItem)>::type>(
-			Addresses::ExtraDataList::IsQuestItem()) };
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&ExtraDataList::IsQuestBoundObject)>::type>(
+			Addresses::ExtraDataList::IsQuestBoundObject()) };
 
 		return function(this);
 	}

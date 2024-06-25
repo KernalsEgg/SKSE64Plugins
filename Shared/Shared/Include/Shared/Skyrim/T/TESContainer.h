@@ -18,11 +18,11 @@ namespace Skyrim
 		// Member variables
 		std::int32_t        count;              // 0
 		std::uint32_t       padding4;           // 4
-		TESBoundObject*     object;             // 8
+		TESBoundObject*     boundObject;        // 8
 		ContainerItemExtra* containerItemExtra; // 10
 	};
 	static_assert(offsetof(ContainerObject, count) == 0x0);
-	static_assert(offsetof(ContainerObject, object) == 0x8);
+	static_assert(offsetof(ContainerObject, boundObject) == 0x8);
 	static_assert(offsetof(ContainerObject, containerItemExtra) == 0x10);
 	static_assert(sizeof(ContainerObject) == 0x18);
 
@@ -75,8 +75,8 @@ namespace Skyrim
 		constexpr size_type size() const noexcept { return this->containerObjectCount_; }
 
 		// Member functions
-		std::int32_t GetItemCount(TESBoundObject* item) const;
-		bool         HasItem(TESBoundObject* item) const;
+		std::int32_t GetBoundObjectCount(TESBoundObject* boundObject) const;
+		bool         HasBoundObject(TESBoundObject* boundObject) const;
 
 	private:
 		// Member variables

@@ -58,9 +58,9 @@ namespace Skyrim
 
 		namespace ActorEquipManager
 		{
-			std::uintptr_t EquipItem();
+			std::uintptr_t EquipBoundObject();
 			std::uintptr_t Singleton();
-			std::uintptr_t UnequipItem();
+			std::uintptr_t UnequipBoundObject();
 		}
 
 		namespace ActorValueInfo
@@ -344,7 +344,7 @@ namespace Skyrim
 
 		namespace ExtraDataList
 		{
-			std::uintptr_t IsQuestItem();
+			std::uintptr_t IsQuestBoundObject();
 			std::uintptr_t SetLockList();
 		}
 

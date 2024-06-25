@@ -30,18 +30,18 @@ namespace Skyrim
 		static_assert(sizeof(ForEachActiveEffectVisitor) == 0x8);
 
 		// Add
-		virtual ~MagicTarget();                                                                                               // 0
-		virtual void                         Unknown1(MagicTarget*);                                                          // 1
-		virtual TESObjectREFR*               GetMagicTargetAsReference();                                                     // 2
-		virtual bool                         MagicTargetIsActor() const;                                                      // 3
-		virtual bool                         IsInvulnerable() const;                                                          // 4
-		virtual void                         Unknown5(MagicTarget*);                                                          // 5
-		virtual void                         Unknown6(MagicTarget*) = 0;                                                      // 6
-		virtual BSSimpleList<ActiveEffect*>* GetActiveEffects()     = 0;                                                      // 7
-		virtual void                         Unknown8(MagicTarget*);                                                          // 8
-		virtual void                         Unknown9(MagicTarget*);                                                          // 9
-		virtual float                        CheckResistance(MagicItem* magicItem, EffectItem* effect, TESBoundObject* item); // A
-		virtual void                         UnknownB(MagicTarget*);                                                          // B
+		virtual ~MagicTarget();                                                                                                      // 0
+		virtual void                         Unknown1(MagicTarget*);                                                                 // 1
+		virtual TESObjectREFR*               GetMagicTargetAsReference();                                                            // 2
+		virtual bool                         MagicTargetIsActor() const;                                                             // 3
+		virtual bool                         IsInvulnerable() const;                                                                 // 4
+		virtual void                         Unknown5(MagicTarget*);                                                                 // 5
+		virtual void                         Unknown6(MagicTarget*) = 0;                                                             // 6
+		virtual BSSimpleList<ActiveEffect*>* GetActiveEffects()     = 0;                                                             // 7
+		virtual void                         Unknown8(MagicTarget*);                                                                 // 8
+		virtual void                         Unknown9(MagicTarget*);                                                                 // 9
+		virtual float                        CheckResistance(MagicItem* magicItem, EffectItem* effect, TESBoundObject* boundObject); // A
+		virtual void                         UnknownB(MagicTarget*);                                                                 // B
 
 		// Member functions
 		Actor* GetMagicTargetAsActor();

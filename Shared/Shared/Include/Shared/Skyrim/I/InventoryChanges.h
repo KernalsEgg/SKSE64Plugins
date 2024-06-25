@@ -48,7 +48,7 @@ namespace Skyrim
 		static_assert(sizeof(FindBestSoulGemVisitor) == 0x18);
 
 		// Member functions
-		InventoryEntryData* GetInventoryEntryData(TESBoundObject* item) const;
+		InventoryEntryData* GetInventoryEntryData(TESBoundObject* boundObject) const;
 		void                ResetWeight();
 
 		// Member variables

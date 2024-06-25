@@ -62,7 +62,7 @@ namespace ConditionsTargetMagicEffects::Events
 				effectSetting,
 				enchantmentEntry->enchantment,
 				nullptr,
-				createEffectFunctor->item,
+				createEffectFunctor->boundObject,
 				std::addressof(maximumPower),
 				std::addressof(modifiedEnchantmentPower));
 
@@ -72,7 +72,7 @@ namespace ConditionsTargetMagicEffects::Events
 					Skyrim::BGSEntryPoint::EntryPoint::kModifyEnchantmentPower,
 					player,
 					enchantmentEntry->enchantment,
-					createEffectFunctor->item,
+					createEffectFunctor->boundObject,
 					std::addressof(maximumPower));
 			}
 

@@ -224,7 +224,7 @@ namespace Skyrim
 		namespace ActorEquipManager
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x637A80, 1.6.318.0: SkyrimSE.exe + 0x65D710</summary>
-			std::uintptr_t EquipItem()
+			std::uintptr_t EquipBoundObject()
 			{
 				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37938, 38894)) };
 
@@ -240,7 +240,7 @@ namespace Skyrim
 			}
 
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x638190, 1.6.318.0: SkyrimSE.exe + 0x65DF00</summary>
-			std::uintptr_t UnequipItem()
+			std::uintptr_t UnequipBoundObject()
 			{
 				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37945, 38901)) };
 
@@ -941,7 +941,7 @@ namespace Skyrim
 		namespace ExtraDataList
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x126650, 1.6.318.0: SkyrimSE.exe + 0x12D230</summary>
-			std::uintptr_t IsQuestItem()
+			std::uintptr_t IsQuestBoundObject()
 			{
 				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(11913, 12052)) };
 

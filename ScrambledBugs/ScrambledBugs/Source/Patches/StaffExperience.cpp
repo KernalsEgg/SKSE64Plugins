@@ -74,6 +74,6 @@ namespace ScrambledBugs::Patches
 		       skillUsageData.magicSkill.underlying() < Utility::Conversion::ToUnderlying(Skyrim::ActorValue::kDerivedAttributes);
 	}
 
-	bool                                                     StaffExperience::ignoreEnchantmentCost_{ false };
+	bool                                                     StaffExperience::ignoreEnchantmentCost_{};
 	decltype(StaffExperience::GetSkillUsageDataEnchantment)* StaffExperience::getSkillUsageDataEnchantment_{ nullptr };
 }

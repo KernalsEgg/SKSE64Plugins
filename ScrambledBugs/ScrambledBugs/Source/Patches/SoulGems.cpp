@@ -25,15 +25,15 @@ namespace ScrambledBugs::Patches
 		// findBestSoulGemVisitor != nullptr
 		// inventoryEntryData != nullptr
 
-		auto* item = inventoryEntryData->item;
+		auto* boundObject = inventoryEntryData->boundObject;
 
-		if (item && item->formType == Skyrim::FormType::kSoulGem)
+		if (boundObject && boundObject->formType == Skyrim::FormType::kSoulGem)
 		{
-			auto* soulGem = static_cast<Skyrim::TESSoulGem*>(item);
+			auto* soulGem = static_cast<Skyrim::TESSoulGem*>(boundObject);
 
 			if (soulGem->soul == Skyrim::SoulLevel::kNone)
 			{
-				auto soulGemCountDelta = inventoryEntryData->itemCountDelta;
+				auto soulGemCountDelta = inventoryEntryData->countDelta;
 
 				if (soulGemCountDelta)
 				{
@@ -100,6 +100,6 @@ namespace ScrambledBugs::Patches
 		return Skyrim::ForEachResult::kContinue;
 	}
 
-	bool SoulGems::black_{ false };
-	bool SoulGems::underfilled_{ false };
+	bool SoulGems::black_{};
+	bool SoulGems::underfilled_{};
 }

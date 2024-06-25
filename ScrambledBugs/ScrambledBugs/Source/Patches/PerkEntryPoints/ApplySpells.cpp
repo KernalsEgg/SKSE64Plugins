@@ -215,7 +215,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		spells->push_back(spell);
 	}
 
-	bool                                                       ApplySpells::castSpells_{ false };
+	bool                                                       ApplySpells::castSpells_{};
 	decltype(ApplySpells::ApplyBashingSpell)*                  ApplySpells::applyBashingSpell_{ nullptr };
 	decltype(ApplySpells::ApplyCombatHitSpell)*                ApplySpells::applyCombatHitSpell_{ nullptr };
 	decltype(ApplySpells::ApplyCombatHitSpellArrowProjectile)* ApplySpells::applyCombatHitSpellArrowProjectile_{ nullptr };

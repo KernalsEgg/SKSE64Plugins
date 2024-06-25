@@ -103,9 +103,9 @@ namespace Skyrim
 			return nullptr;
 		}
 
-		auto* item = inventoryEntryData->item;
+		auto* boundObject = inventoryEntryData->boundObject;
 
-		return (item && item->formType == FormType::kAmmunition) ? inventoryEntryData : nullptr;
+		return (boundObject && boundObject->formType == FormType::kAmmunition) ? inventoryEntryData : nullptr;
 	}
 
 	TESObjectARMO* Actor::GetEquippedShield() const
@@ -119,14 +119,14 @@ namespace Skyrim
 
 		auto shieldObject = thirdPersonBiped->GetShieldObject();
 
-		return shieldObject ? static_cast<TESObjectARMO*>(shieldObject->item) : nullptr;
+		return shieldObject ? static_cast<TESObjectARMO*>(shieldObject->boundObject) : nullptr;
 	}
 
 	TESObjectWEAP* Actor::GetEquippedWeapon(bool leftHand) const
 	{
 		auto* inventoryEntryData = this->GetEquippedWeaponInventoryEntryData(leftHand);
 
-		return inventoryEntryData ? static_cast<TESObjectWEAP*>(inventoryEntryData->item) : nullptr;
+		return inventoryEntryData ? static_cast<TESObjectWEAP*>(inventoryEntryData->boundObject) : nullptr;
 	}
 
 	InventoryEntryData* Actor::GetEquippedWeaponInventoryEntryData(bool leftHand) const
@@ -145,9 +145,9 @@ namespace Skyrim
 			return nullptr;
 		}
 
-		auto* item = inventoryEntryData->item;
+		auto* boundObject = inventoryEntryData->boundObject;
 
-		return (item && item->formType == FormType::kWeapon) ? inventoryEntryData : nullptr;
+		return (boundObject && boundObject->formType == FormType::kWeapon) ? inventoryEntryData : nullptr;
 	}
 
 	NiAVObject* Actor::GetHeadNode() const

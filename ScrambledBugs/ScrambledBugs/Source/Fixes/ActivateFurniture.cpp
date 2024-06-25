@@ -25,8 +25,8 @@ namespace ScrambledBugs::Fixes
 		Skyrim::TESObjectREFR*  target,
 		Skyrim::TESObjectREFR*  activator,
 		bool                    deferred,
-		Skyrim::TESBoundObject* item,
-		std::int32_t            itemCount)
+		Skyrim::TESBoundObject* boundObject,
+		std::int32_t            boundObjectCount)
 	{
 		if (activator)
 		{
@@ -38,7 +38,7 @@ namespace ScrambledBugs::Fixes
 			}
 		}
 
-		return ActivateFurniture::activate_(furniture, target, activator, deferred, item, itemCount);
+		return ActivateFurniture::activate_(furniture, target, activator, deferred, boundObject, boundObjectCount);
 	}
 
 	decltype(ActivateFurniture::Activate)* ActivateFurniture::activate_{ nullptr };

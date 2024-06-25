@@ -16,21 +16,21 @@ namespace Skyrim
 		return *singleton;
 	}
 
-	void ActorEquipManager::EquipItem(Actor* actor, TESBoundObject* item, ExtraDataList* extraDataList, std::uint32_t itemCount, BGSEquipSlot* equipSlot, bool queueEquip, bool forceEquip, bool playSounds, bool applyNow)
+	void ActorEquipManager::EquipBoundObject(Actor* actor, TESBoundObject* boundObject, ExtraDataList* extraDataList, std::uint32_t boundObjectCount, BGSEquipSlot* equipSlot, bool queueEquip, bool forceEquip, bool playSounds, bool applyNow)
 	{
 		auto* function{ reinterpret_cast<
-			Utility::TypeTraits::MakeFunctionPointer<decltype(&ActorEquipManager::EquipItem)>::type>(
-			Addresses::ActorEquipManager::EquipItem()) };
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&ActorEquipManager::EquipBoundObject)>::type>(
+			Addresses::ActorEquipManager::EquipBoundObject()) };
 
-		function(this, actor, item, extraDataList, itemCount, equipSlot, queueEquip, forceEquip, playSounds, applyNow);
+		function(this, actor, boundObject, extraDataList, boundObjectCount, equipSlot, queueEquip, forceEquip, playSounds, applyNow);
 	}
 
-	bool ActorEquipManager::UnequipItem(Actor* actor, TESBoundObject* item, ExtraDataList* extraDataList, std::uint32_t itemCount, BGSEquipSlot* equipSlot, bool queueEquip, bool forceEquip, bool playSounds, bool applyNow, BGSEquipSlot* replacementEquipSlot)
+	bool ActorEquipManager::UnequipBoundObject(Actor* actor, TESBoundObject* boundObject, ExtraDataList* extraDataList, std::uint32_t boundObjectCount, BGSEquipSlot* equipSlot, bool queueEquip, bool forceEquip, bool playSounds, bool applyNow, BGSEquipSlot* replacementEquipSlot)
 	{
 		auto* function{ reinterpret_cast<
-			Utility::TypeTraits::MakeFunctionPointer<decltype(&ActorEquipManager::UnequipItem)>::type>(
-			Addresses::ActorEquipManager::UnequipItem()) };
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&ActorEquipManager::UnequipBoundObject)>::type>(
+			Addresses::ActorEquipManager::UnequipBoundObject()) };
 
-		return function(this, actor, item, extraDataList, itemCount, equipSlot, queueEquip, forceEquip, playSounds, applyNow, replacementEquipSlot);
+		return function(this, actor, boundObject, extraDataList, boundObjectCount, equipSlot, queueEquip, forceEquip, playSounds, applyNow, replacementEquipSlot);
 	}
 }

@@ -92,6 +92,6 @@ namespace ScrambledBugs::Patches
 		return actor->IsPlayerTeammate();
 	}
 
-	bool DifficultyMultipliers::commandedActors_{ false };
-	bool DifficultyMultipliers::teammates_{ false };
+	bool DifficultyMultipliers::commandedActors_{};
+	bool DifficultyMultipliers::teammates_{};
 }

@@ -110,19 +110,19 @@ namespace ScrambledBugs::Patterns
 	{
 		namespace AlreadyCaughtPickpocketing
 		{
-			bool IsAngryWithPlayer()
-			{
-				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Patches::AlreadyCaughtPickpocketing::IsAngryWithPlayer, // 0x2
-					0x75ui8, 0x30ui8                                                   // jne 30
-				);
-			}
-
 			bool HasBeenPickpocketed()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
 					Addresses::Patches::AlreadyCaughtPickpocketing::HasBeenPickpocketed, // 0x2
 					0x75ui8, 0x14ui8                                                     // jne 14
+				);
+			}
+
+			bool IsAngryWithPlayer()
+			{
+				return Relocation::AddressLibrary::MatchPattern(
+					Addresses::Patches::AlreadyCaughtPickpocketing::IsAngryWithPlayer, // 0x2
+					0x75ui8, 0x30ui8                                                   // jne 30
 				);
 			}
 		}

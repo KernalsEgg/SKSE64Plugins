@@ -37,6 +37,21 @@ namespace ScrambledBugs::Fixes
 		}
 	}
 
+	void ModifyArmorWeightPerkEntryPoint::RemovePerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner)
+	{
+		ModifyArmorWeightPerkEntryPoint::removePerkEntry_(entryPointPerkEntry, perkOwner);
+
+		if (entryPointPerkEntry->entryPoint == Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight)
+		{
+			auto* inventoryChanges = perkOwner->GetInventoryChanges();
+
+			if (inventoryChanges)
+			{
+				inventoryChanges->ResetWeight();
+			}
+		}
+	}
+
 	float ModifyArmorWeightPerkEntryPoint::GetInventoryWeight(Skyrim::InventoryChanges* inventoryChanges)
 	{
 		// inventoryChanges != nullptr
@@ -52,7 +67,6 @@ namespace ScrambledBugs::Fixes
 		auto* ownerActor = owner && owner->formType == Skyrim::FormType::kActor ? static_cast<Skyrim::Actor*>(owner) : nullptr;
 		auto* container  = owner ? owner->GetContainer() : nullptr;
 
-		/* TESContainer */
 		if (container)
 		{
 			for (auto* containerObject : *container)
@@ -62,57 +76,54 @@ namespace ScrambledBugs::Fixes
 					break;
 				}
 
-				auto* item = containerObject->object;
+				auto* boundObject = containerObject->boundObject;
 
-				if (item)
+				if (!boundObject)
 				{
-					auto itemWeight = item->GetWeight();
-
-					if (itemWeight > 0.0F)
-					{
-						auto* inventoryEntryData = inventoryChanges->GetInventoryEntryData(item);
-						auto  itemCount          = containerObject->count;
-
-						if (inventoryEntryData)
-						{
-							if (inventoryEntryData->IsQuestItem())
-							{
-								continue;
-							}
-
-							itemCount += inventoryEntryData->itemCountDelta;
-
-							if (itemCount > 0)
-							{
-								if (ownerActor)
-								{
-									if (item->formType == Skyrim::FormType::kArmor)
-									{
-										if (inventoryEntryData->IsWorn(true, false))
-										{
-											auto armorWeight = itemWeight;
-
-											Skyrim::BGSEntryPoint::HandleEntryPoint(
-												Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight,
-												ownerActor,
-												item,
-												std::addressof(armorWeight));
-
-											inventoryWeight += armorWeight;
-											--itemCount;
-										}
-									}
-								}
-							}
-						}
-
-						inventoryWeight += itemCount * itemWeight;
-					}
+					continue;
 				}
+
+				auto* inventoryEntryData = inventoryChanges->GetInventoryEntryData(boundObject);
+
+				if (inventoryEntryData && inventoryEntryData->IsQuestBoundObject())
+				{
+					continue;
+				}
+
+				auto boundObjectWeight = boundObject->GetWeight();
+
+				if (boundObjectWeight <= 0.0F)
+				{
+					continue;
+				}
+
+				auto boundObjectCount = containerObject->count;
+
+				if (inventoryEntryData)
+				{
+					boundObjectCount += inventoryEntryData->countDelta;
+				}
+
+				if (boundObjectCount <= 0)
+				{
+					continue;
+				}
+
+				if (ownerActor && boundObject->formType == Skyrim::FormType::kArmor && inventoryEntryData && inventoryEntryData->IsWorn(true, false))
+				{
+					auto* armor       = static_cast<Skyrim::TESObjectARMO*>(boundObject);
+					auto  armorWeight = boundObjectWeight;
+
+					Skyrim::BGSEntryPoint::HandleEntryPoint(Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight, ownerActor, armor, std::addressof(armorWeight));
+
+					inventoryWeight += armorWeight;
+					--boundObjectCount;
+				}
+
+				inventoryWeight += boundObjectWeight * boundObjectCount;
 			}
 		}
 
-		/* InventoryChanges */
 		auto* inventoryEntryDataList = inventoryChanges->inventoryEntryDataList;
 
 		if (inventoryEntryDataList)
@@ -124,52 +135,49 @@ namespace ScrambledBugs::Fixes
 					break;
 				}
 
-				auto* item = inventoryEntryData->item;
+				auto* boundObject = inventoryEntryData->boundObject;
 
-				if (item)
+				if (!boundObject)
 				{
-					if (container && container->HasItem(item))
-					{
-						continue;
-					}
-
-					if (inventoryEntryData->IsQuestItem())
-					{
-						continue;
-					}
-
-					auto itemWeight = item->GetWeight();
-
-					if (itemWeight > 0.0F)
-					{
-						auto itemCount = inventoryEntryData->itemCountDelta;
-
-						if (itemCount > 0)
-						{
-							if (ownerActor)
-							{
-								if (item->formType == Skyrim::FormType::kArmor)
-								{
-									if (inventoryEntryData->IsWorn(true, false))
-									{
-										auto armorWeight = itemWeight;
-
-										Skyrim::BGSEntryPoint::HandleEntryPoint(
-											Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight,
-											ownerActor,
-											item,
-											std::addressof(armorWeight));
-
-										inventoryWeight += armorWeight;
-										--itemCount;
-									}
-								}
-							}
-
-							inventoryWeight += itemCount * itemWeight;
-						}
-					}
+					continue;
 				}
+
+				if (container && container->HasBoundObject(boundObject))
+				{
+					continue;
+				}
+
+				if (inventoryEntryData->IsQuestBoundObject())
+				{
+					continue;
+				}
+
+				auto boundObjectWeight = boundObject->GetWeight();
+
+				if (boundObjectWeight <= 0.0F)
+				{
+					continue;
+				}
+
+				auto boundObjectCount = inventoryEntryData->countDelta;
+
+				if (boundObjectCount <= 0)
+				{
+					continue;
+				}
+
+				if (ownerActor && boundObject->formType == Skyrim::FormType::kArmor && inventoryEntryData->IsWorn(true, false))
+				{
+					auto* armor       = static_cast<Skyrim::TESObjectARMO*>(boundObject);
+					auto  armorWeight = boundObjectWeight;
+
+					Skyrim::BGSEntryPoint::HandleEntryPoint(Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight, ownerActor, armor, std::addressof(armorWeight));
+
+					inventoryWeight += armorWeight;
+					--boundObjectCount;
+				}
+
+				inventoryWeight += boundObjectWeight * boundObjectCount;
 			}
 		}
 
@@ -185,21 +193,6 @@ namespace ScrambledBugs::Fixes
 		}
 
 		return inventoryChanges->currentInventoryWeight;
-	}
-
-	void ModifyArmorWeightPerkEntryPoint::RemovePerkEntry(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, Skyrim::Actor* perkOwner)
-	{
-		ModifyArmorWeightPerkEntryPoint::removePerkEntry_(entryPointPerkEntry, perkOwner);
-
-		if (entryPointPerkEntry->entryPoint == Skyrim::BGSEntryPoint::EntryPoint::kModifyArmorWeight)
-		{
-			auto* inventoryChanges = perkOwner->GetInventoryChanges();
-
-			if (inventoryChanges)
-			{
-				inventoryChanges->ResetWeight();
-			}
-		}
 	}
 
 	decltype(ModifyArmorWeightPerkEntryPoint::ApplyPerkEntry)*  ModifyArmorWeightPerkEntryPoint::applyPerkEntry_{ nullptr };

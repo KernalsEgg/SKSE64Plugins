@@ -71,18 +71,18 @@ namespace Skyrim
 		virtual ~TESObjectACTI() override; // 0
 
 		// Override (TESBoundAnimObject)
-		virtual void InitializeData() override;                                                                                                       // 4
-		virtual void ClearData() override;                                                                                                            // 5
-		virtual bool Load(TESFile* file) override;                                                                                                    // 6
-		virtual void SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;                                                                            // E
-		virtual void LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                                                            // F
-		virtual void Unknown13(TESForm*) override;                                                                                                    // 13
-		virtual void Unknown22(TESForm*) override;                                                                                                    // 22
-		virtual bool IsWater() const override;                                                                                                        // 2A
-		virtual bool Activate(TESObjectREFR* target, TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount) override; // 37
-		virtual void Unknown3D(TESObject*) override;                                                                                                  // 3D
-		virtual void Unknown4C(TESBoundObject*) override;                                                                                             // 4C
-		virtual void Unknown4D(TESBoundObject*) override;                                                                                             // 4D
+		virtual void InitializeData() override;                                                                                                                     // 4
+		virtual void ClearData() override;                                                                                                                          // 5
+		virtual bool Load(TESFile* file) override;                                                                                                                  // 6
+		virtual void SaveGame(BGSSaveFormBuffer* saveFormBuffer) override;                                                                                          // E
+		virtual void LoadGame(BGSLoadFormBuffer* loadFormBuffer) override;                                                                                          // F
+		virtual void Unknown13(TESForm*) override;                                                                                                                  // 13
+		virtual void Unknown22(TESForm*) override;                                                                                                                  // 22
+		virtual bool IsWater() const override;                                                                                                                      // 2A
+		virtual bool Activate(TESObjectREFR* target, TESObjectREFR* activator, bool deferred, TESBoundObject* boundObject, std::int32_t boundObjectCount) override; // 37
+		virtual void Unknown3D(TESObject*) override;                                                                                                                // 3D
+		virtual void Unknown4C(TESBoundObject*) override;                                                                                                           // 4C
+		virtual void Unknown4D(TESBoundObject*) override;                                                                                                           // 4D
 
 		// Member variables
 		Sounds                                     sounds;         // A8

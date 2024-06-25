@@ -27,7 +27,7 @@ namespace Skyrim
 		}
 
 		auto* shieldObject = std::addressof(this->bipedObjects[shieldObjectSlot.underlying()]);
-		auto* shield       = shieldObject->item;
+		auto* shield       = shieldObject->boundObject;
 
 		return shield && shield->formType == FormType::kArmor ? shieldObject : nullptr;
 	}

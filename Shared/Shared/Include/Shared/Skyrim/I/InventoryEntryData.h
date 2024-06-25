@@ -36,18 +36,18 @@ namespace Skyrim
 		AlchemyItem*   GetPoison() const;
 		std::int32_t   GetValue() const;
 		ExtraDataList* GetWornExtraDataList(bool eitherHand, bool leftHand) const;
-		bool           IsLeveledItem() const;
+		bool           IsLeveledBoundObject() const;
 		bool           IsOwnedBy(Actor* actor, TESForm* owner, bool defaultOwnership) const;
-		bool           IsQuestItem() const;
+		bool           IsQuestBoundObject() const;
 		bool           IsWorn(bool eitherHand, bool leftHand) const;
 
 		// Member variables
-		TESBoundObject*               item{ nullptr };           // 0
-		BSSimpleList<ExtraDataList*>* extraDataLists{ nullptr }; // 8, Each item in the stack has a separate ExtraDataList
-		std::int32_t                  itemCountDelta{ 0 };       // 10
+		TESBoundObject*               boundObject{ nullptr };    // 0
+		BSSimpleList<ExtraDataList*>* extraDataLists{ nullptr }; // 8, Each item in a stack has a list
+		std::int32_t                  countDelta{ 0 };           // 10
 	};
-	static_assert(offsetof(InventoryEntryData, item) == 0x0);
+	static_assert(offsetof(InventoryEntryData, boundObject) == 0x0);
 	static_assert(offsetof(InventoryEntryData, extraDataLists) == 0x8);
-	static_assert(offsetof(InventoryEntryData, itemCountDelta) == 0x10);
+	static_assert(offsetof(InventoryEntryData, countDelta) == 0x10);
 	static_assert(sizeof(InventoryEntryData) == 0x18);
 }

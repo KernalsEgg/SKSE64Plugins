@@ -16,9 +16,9 @@ namespace ScrambledBugs::Fixes
 			reinterpret_cast<std::uintptr_t>(std::addressof(WeaponCharge::UpdateEquippedEnchantmentCharge)));
 	}
 
-	void WeaponCharge::UpdateEquippedEnchantmentCharge(Skyrim::Actor* actor, Skyrim::TESBoundObject* item, Skyrim::ExtraDataList* extraDataList, bool leftHand)
+	void WeaponCharge::UpdateEquippedEnchantmentCharge(Skyrim::Actor* actor, Skyrim::TESBoundObject* boundObject, Skyrim::ExtraDataList* extraDataList, bool leftHand)
 	{
-		if (!item)
+		if (!boundObject)
 		{
 			return;
 		}
@@ -30,7 +30,7 @@ namespace ScrambledBugs::Fixes
 			player->ResetInsufficientWeaponChargeMessage(leftHand);
 		}
 
-		auto* enchantment = item->GetEnchantment(extraDataList);
+		auto* enchantment = boundObject->GetEnchantment(extraDataList);
 
 		if (!enchantment)
 		{
@@ -49,7 +49,7 @@ namespace ScrambledBugs::Fixes
 		{
 			actor->RemoveActorValueModifiers(costActorValue);
 
-			auto maximumCharge = item->GetMaximumCharge(extraDataList);
+			auto maximumCharge = boundObject->GetMaximumCharge(extraDataList);
 			actor->SetActorValue(costActorValue, maximumCharge);
 
 			if (extraDataList && extraDataList->HasExtraData(Skyrim::ExtraDataType::kCharge))

@@ -120,11 +120,11 @@ namespace ScrambledBugs::Addresses
 	{
 		namespace AlreadyCaughtPickpocketing
 		{
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x360C10 + 0x678 (24211), 1.6.318.0: SkyrimSE.exe + 0x377A00</summary>
-			inline const std::uintptr_t IsAngryWithPlayer{ Relocation::AddressLibrary::GetSingleton().GetAddress(24715) + 0x695 }; // TESNPC::Activate
-
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x360C10 + 0x694 (24211), 1.6.318.0: SkyrimSE.exe + 0x377A00</summary>
 			inline const std::uintptr_t HasBeenPickpocketed{ Relocation::AddressLibrary::GetSingleton().GetAddress(24715) + 0x6B1 }; // TESNPC::Activate
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x360C10 + 0x678 (24211), 1.6.318.0: SkyrimSE.exe + 0x377A00</summary>
+			inline const std::uintptr_t IsAngryWithPlayer{ Relocation::AddressLibrary::GetSingleton().GetAddress(24715) + 0x695 }; // TESNPC::Activate
 		}
 
 		namespace AttachHitEffectArt

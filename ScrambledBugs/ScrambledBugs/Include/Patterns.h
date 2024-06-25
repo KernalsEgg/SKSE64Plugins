@@ -50,8 +50,8 @@ namespace ScrambledBugs::Patterns
 	{
 		namespace AlreadyCaughtPickpocketing
 		{
-			bool IsAngryWithPlayer();
 			bool HasBeenPickpocketed();
+			bool IsAngryWithPlayer();
 		}
 
 		namespace AttachHitEffectArt

@@ -118,7 +118,7 @@ namespace Skyrim
 				EnchantmentItem*                              enchantment;      // 38
 				Utility::Enumeration<FormType, std::uint32_t> formType;         // 40
 				std::uint32_t                                 padding44;        // 44
-				TESBoundObject*                               item;             // 48
+				TESBoundObject*                               boundObject;      // 48
 				float                                         effectiveness;    // 50
 				std::uint32_t                                 padding54;        // 54
 			};
@@ -127,7 +127,7 @@ namespace Skyrim
 			static_assert(offsetof(CreateEffectFunctor, enchantmentEntry) == 0x30);
 			static_assert(offsetof(CreateEffectFunctor, enchantment) == 0x38);
 			static_assert(offsetof(CreateEffectFunctor, formType) == 0x40);
-			static_assert(offsetof(CreateEffectFunctor, item) == 0x48);
+			static_assert(offsetof(CreateEffectFunctor, boundObject) == 0x48);
 			static_assert(offsetof(CreateEffectFunctor, effectiveness) == 0x50);
 			static_assert(sizeof(CreateEffectFunctor) == 0x58);
 

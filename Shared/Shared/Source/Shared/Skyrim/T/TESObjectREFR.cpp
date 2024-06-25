@@ -24,13 +24,13 @@ namespace Skyrim
 		return function(avObject);
 	}
 
-	bool TESObjectREFR::Activate(TESObjectREFR* activator, bool deferred, TESBoundObject* item, std::int32_t itemCount, bool defaultProcessingOnly)
+	bool TESObjectREFR::Activate(TESObjectREFR* activator, bool deferred, TESBoundObject* boundObject, std::int32_t boundObjectCount, bool defaultProcessingOnly)
 	{
 		auto* function{ reinterpret_cast<
 			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::Activate)>::type>(
 			Addresses::TESObjectREFR::Activate()) };
 
-		return function(this, activator, deferred, item, itemCount, defaultProcessingOnly);
+		return function(this, activator, deferred, boundObject, boundObjectCount, defaultProcessingOnly);
 	}
 
 	TESContainer* TESObjectREFR::GetContainer() const

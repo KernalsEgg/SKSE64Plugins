@@ -6,26 +6,26 @@
 
 namespace Skyrim
 {
-	std::int32_t TESContainer::GetItemCount(TESBoundObject* item) const
+	std::int32_t TESContainer::GetBoundObjectCount(TESBoundObject* boundObject) const
 	{
-		std::int32_t itemCount{ 0 };
+		std::int32_t boundObjectCount{ 0 };
 
 		for (auto* containerObject : *this)
 		{
-			if (containerObject->object == item)
+			if (containerObject->boundObject == boundObject)
 			{
-				itemCount += containerObject->count;
+				boundObjectCount += containerObject->count;
 			}
 		}
 
-		return itemCount;
+		return boundObjectCount;
 	}
 
-	bool TESContainer::HasItem(TESBoundObject* item) const
+	bool TESContainer::HasBoundObject(TESBoundObject* boundObject) const
 	{
 		for (auto* containerObject : *this)
 		{
-			if (containerObject->object == item)
+			if (containerObject->boundObject == boundObject)
 			{
 				return true;
 			}
