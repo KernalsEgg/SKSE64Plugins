@@ -5,8 +5,6 @@
 * [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
 ### Console Command Companion
 * [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
-### Power Attack Notifications
-* [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
 ### Scrambled Bugs
 * [JSON for Modern C++ 3.11.3](https://github.com/nlohmann/json)
 ### Shared
@@ -21,15 +19,16 @@
 ## Development
 * [clang-format 18.1.7](https://github.com/llvm/llvm-project/releases)
 * [vcpkg 2024.05.24](https://github.com/microsoft/vcpkg/releases)
-* [Visual Studio Community 2022 17.10.2](https://visualstudio.microsoft.com/vs/)
+* [Visual Studio Community 2022 17.10.3](https://visualstudio.microsoft.com/vs/)
 	* Desktop development with C++
 
 ## Credits
 * [CommonLibSSE](https://github.com/Ryan-rsm-McKenzie/CommonLibSSE) by [Ryan McKenzie](https://www.nexusmods.com/skyrimspecialedition/users/5687342)
+* [CommonLibSSE](https://github.com/powerof3/CommonLibSSE) forked by [powerofthree](https://www.nexusmods.com/skyrimspecialedition/users/2148728)
 * [.NET Script Framework](https://www.nexusmods.com/skyrimspecialedition/mods/21294) by [meh321](https://www.nexusmods.com/skyrimspecialedition/users/2964753)
 * [SKSE64](https://github.com/ianpatt/skse64) by [ianpatt](https://www.nexusmods.com/skyrimspecialedition/users/2166624)
 
-I would also like to thank the regulars on the SkyrimRE Discord server for their help over time, including:
+I would also like to thank the regulars on the SkyrimRE Discord server for their help over time.
 * [aers](https://www.nexusmods.com/skyrimspecialedition/users/2025634)
 * [Ahzaab](https://www.nexusmods.com/skyrimspecialedition/users/368196)
 * [Al](https://github.com/Al12rs)
@@ -46,7 +45,6 @@ I would also like to thank the regulars on the SkyrimRE Discord server for their
 * [Maxsu](https://www.nexusmods.com/skyrimspecialedition/users/47103898)
 * [Nukem](https://www.nexusmods.com/skyrimspecialedition/users/4995023)
 * [Parapets](https://www.nexusmods.com/skyrimspecialedition/users/39501725)
-* [powerofthree](https://www.nexusmods.com/skyrimspecialedition/users/2148728)
 * [Project579](https://www.nexusmods.com/skyrimspecialedition/users/30390750)
 * [Qudix](https://www.nexusmods.com/skyrimspecialedition/users/46589442)
 * [shad0wshayd3](https://www.nexusmods.com/fallout4/users/5232181)
