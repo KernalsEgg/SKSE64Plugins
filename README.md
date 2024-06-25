@@ -14,7 +14,7 @@
 
 ## End-User Dependencies
 * [Address Library](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
-* [Skyrim Script Extender](https://www.nexusmods.com/skyrimspecialedition/mods/30379)
+* [Skyrim Script Extender (SKSE64)](https://www.nexusmods.com/skyrimspecialedition/mods/30379)
 
 ## Development
 * [clang-format 18.1.7](https://github.com/llvm/llvm-project/releases)
