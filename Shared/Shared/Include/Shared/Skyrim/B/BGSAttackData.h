@@ -35,7 +35,7 @@ namespace Skyrim
 		BSFixedString                              event;             // 10
 		float                                      damageMultiplier;  // 18
 		float                                      attackChance;      // 1C
-		SpellItem*                                 attackSpell;       // 20
+		SpellItem*                                 attackSpellItem;   // 20
 		Utility::Enumeration<Flags, std::uint32_t> attackDataFlags;   // 28
 		float                                      attackAngle;       // 2C
 		float                                      strikeAngle;       // 30
@@ -49,7 +49,7 @@ namespace Skyrim
 	static_assert(offsetof(BGSAttackData, event) == 0x10);
 	static_assert(offsetof(BGSAttackData, damageMultiplier) == 0x18);
 	static_assert(offsetof(BGSAttackData, attackChance) == 0x1C);
-	static_assert(offsetof(BGSAttackData, attackSpell) == 0x20);
+	static_assert(offsetof(BGSAttackData, attackSpellItem) == 0x20);
 	static_assert(offsetof(BGSAttackData, attackDataFlags) == 0x28);
 	static_assert(offsetof(BGSAttackData, attackAngle) == 0x2C);
 	static_assert(offsetof(BGSAttackData, strikeAngle) == 0x30);

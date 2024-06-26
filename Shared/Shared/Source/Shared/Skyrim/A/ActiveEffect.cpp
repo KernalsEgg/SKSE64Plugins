@@ -13,7 +13,7 @@
 
 namespace Skyrim
 {
-	bool ActiveEffect::CheckDisplacementSpellOnTarget() const
+	bool ActiveEffect::CheckDisplacement() const
 	{
 		auto* magicTarget = this->magicTarget;
 
@@ -24,9 +24,9 @@ namespace Skyrim
 
 		FindAppropriateDisplaceEffect findAppropriateDisplaceEffect;
 
-		findAppropriateDisplaceEffect.displacementSpell = this->displacementSpell;
-		findAppropriateDisplaceEffect.addiction         = static_cast<SpellItem*>(this->magicItem);
-		findAppropriateDisplaceEffect.displace          = false;
+		findAppropriateDisplaceEffect.displacementMagicItem = this->displacementMagicItem;
+		findAppropriateDisplaceEffect.addiction             = static_cast<SpellItem*>(this->magicItem);
+		findAppropriateDisplaceEffect.displace              = false;
 
 		magicTarget->ForEachActiveEffect(findAppropriateDisplaceEffect);
 

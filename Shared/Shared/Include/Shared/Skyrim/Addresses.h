@@ -36,7 +36,7 @@ namespace Skyrim
 				std::uintptr_t VirtualFunctionTable();
 			}
 
-			std::uintptr_t AddSpell();
+			std::uintptr_t AddSpellItem();
 			std::uintptr_t AdjustHealthDamageToDifficulty();
 			std::uintptr_t CanBeKilledBy();
 			std::uintptr_t GetActorValueModifier();
@@ -52,7 +52,7 @@ namespace Skyrim
 			std::uintptr_t ModifyActorValue();
 			std::uintptr_t RemoveActorValueModifiers();
 			std::uintptr_t RemoveBasePerks();
-			std::uintptr_t SetSelectedSpell();
+			std::uintptr_t SetSelectedMagicItem();
 			std::uintptr_t VirtualFunctionTable();
 		}
 

@@ -77,7 +77,7 @@ namespace Skyrim
 			}
 
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x62F560, 1.6.318.0: SkyrimSE.exe + 0x655190</summary>
-			std::uintptr_t AddSpell()
+			std::uintptr_t AddSpellItem()
 			{
 				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37771, 38716)) };
 
@@ -205,7 +205,7 @@ namespace Skyrim
 			}
 
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x632270, 1.6.318.0: SkyrimSE.exe + 0x658170</summary>
-			std::uintptr_t SetSelectedSpell()
+			std::uintptr_t SetSelectedMagicItem()
 			{
 				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(37819, 38768)) };
 

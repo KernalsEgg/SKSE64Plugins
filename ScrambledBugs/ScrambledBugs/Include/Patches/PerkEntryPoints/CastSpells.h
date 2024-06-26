@@ -12,6 +12,6 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		static void Patch(bool& castSpells);
 
 	private:
-		static void ApplySpell(Skyrim::Actor* target, Skyrim::SpellItem* spell, Skyrim::Actor* caster);
+		static void ApplySpellItem(Skyrim::Actor* target, Skyrim::SpellItem* spellItem, Skyrim::Actor* caster);
 	};
 }

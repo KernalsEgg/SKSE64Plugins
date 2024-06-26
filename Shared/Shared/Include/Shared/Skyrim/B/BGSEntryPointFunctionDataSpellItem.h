@@ -23,8 +23,8 @@ namespace Skyrim
 		virtual void                       Unknown3(BGSEntryPointFunctionData*) override; // 3
 
 		// Member variables
-		SpellItem* spell; // 8
+		SpellItem* spellItem; // 8
 	};
-	static_assert(offsetof(BGSEntryPointFunctionDataSpellItem, spell) == 0x8);
+	static_assert(offsetof(BGSEntryPointFunctionDataSpellItem, spellItem) == 0x8);
 	static_assert(sizeof(BGSEntryPointFunctionDataSpellItem) == 0x10);
 }

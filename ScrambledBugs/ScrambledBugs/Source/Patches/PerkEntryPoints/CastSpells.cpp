@@ -24,19 +24,19 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 
 		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
 
-		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyBashingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
-		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyCombatHitSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
-		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyCombatHitSpellArrowProjectile, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
-		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyReanimateSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
-		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyWeaponSwingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpell)));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyBashingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpellItem)));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyCombatHitSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpellItem)));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyCombatHitSpellArrowProjectile, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpellItem)));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyReanimateSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpellItem)));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::CastSpells::ApplyWeaponSwingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(CastSpells::ApplySpellItem)));
 	}
 
-	void CastSpells::ApplySpell(Skyrim::Actor* target, Skyrim::SpellItem* spell, Skyrim::Actor* caster)
+	void CastSpells::ApplySpellItem(Skyrim::Actor* target, Skyrim::SpellItem* spellItem, Skyrim::Actor* caster)
 	{
 		// target != nullptr
-		// spell != nullptr
+		// spellItem != nullptr
 		// caster != nullptr
 
-		spell->Apply(target, caster);
+		spellItem->Apply(target, caster);
 	}
 }

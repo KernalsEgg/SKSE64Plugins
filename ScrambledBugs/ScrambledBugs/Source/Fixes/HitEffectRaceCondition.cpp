@@ -49,17 +49,17 @@ namespace ScrambledBugs::Fixes
 			return true;
 		}
 
-		if (activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kApplyingHitEffects))
-		{
-			return true;
-		}
-
 		if (activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kApplyingSounds))
 		{
 			return true;
 		}
 
-		if (activeEffect->displacementSpell)
+		if (activeEffectFlags.all(Skyrim::ActiveEffect::Flags::kApplyingHitEffects))
+		{
+			return true;
+		}
+
+		if (activeEffect->displacementMagicItem)
 		{
 			return true;
 		}

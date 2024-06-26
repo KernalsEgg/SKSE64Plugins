@@ -177,7 +177,7 @@ namespace ScrambledBugs::Addresses
 				inline const std::uintptr_t ApplyBashingSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(38627) + 0x4FA }; // Actor::CombatHit
 
 				/// <summary>1.5.97.0: SkyrimSE.exe + 0x6310A0 + 0x61 (37799), 1.6.318.0: SkyrimSE.exe + 0x656EE0</summary>
-				inline const std::uintptr_t ApplyCombatHitSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(38748) + 0x5B }; // Actor::ApplyWeaponHitSpells
+				inline const std::uintptr_t ApplyCombatHitSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(38748) + 0x5B }; // Actor::ApplyWeaponHitSpellItems
 
 				/// <summary>1.5.97.0: SkyrimSE.exe + 0x732400 + 0x28B (42547), 1.6.318.0: SkyrimSE.exe + 0x75D560</summary>
 				inline const std::uintptr_t ApplyCombatHitSpellArrowProjectile{ Relocation::AddressLibrary::GetSingleton().GetAddress(43710) + 0x2F6 }; // ArrowProjectile::AddImpact
@@ -201,7 +201,7 @@ namespace ScrambledBugs::Addresses
 				inline const std::uintptr_t ApplyBashingSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(38627) + 0x517 }; // Actor::CombatHit
 
 				/// <summary>1.5.97.0: SkyrimSE.exe + 0x6310A0 + 0x79 (37799), 1.6.318.0: SkyrimSE.exe + 0x656EE0</summary>
-				inline const std::uintptr_t ApplyCombatHitSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(38748) + 0x73 }; // Actor::ApplyWeaponHitSpells
+				inline const std::uintptr_t ApplyCombatHitSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(38748) + 0x73 }; // Actor::ApplyWeaponHitSpellItems
 
 				/// <summary>1.5.97.0: SkyrimSE.exe + 0x732400 + 0x2A7 (42547), 1.6.318.0: SkyrimSE.exe + 0x75D560</summary>
 				inline const std::uintptr_t ApplyCombatHitSpellArrowProjectile{ Relocation::AddressLibrary::GetSingleton().GetAddress(43710) + 0x312 }; // ArrowProjectile::AddImpact

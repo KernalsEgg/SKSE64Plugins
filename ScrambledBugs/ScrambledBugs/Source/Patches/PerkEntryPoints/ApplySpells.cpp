@@ -56,13 +56,13 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> bashingSpells;
+		std::vector<Skyrim::SpellItem*> bashingSpellItems;
 
-		ApplySpells::applyBashingSpell_(entryPoint, perkOwner, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(bashingSpells)));
+		ApplySpells::applyBashingSpell_(entryPoint, perkOwner, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(bashingSpellItems)));
 
-		for (auto* bashingSpell : bashingSpells)
+		for (auto* bashingSpellItem : bashingSpellItems)
 		{
-			bashingSpell->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
+			bashingSpellItem->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
 		}
 	}
 
@@ -78,13 +78,13 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> combatHitSpells;
+		std::vector<Skyrim::SpellItem*> combatHitSpellItems;
 
-		ApplySpells::applyCombatHitSpell_(entryPoint, perkOwner, weapon, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(combatHitSpells)));
+		ApplySpells::applyCombatHitSpell_(entryPoint, perkOwner, weapon, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(combatHitSpellItems)));
 
-		for (auto* combatHitSpell : combatHitSpells)
+		for (auto* combatHitSpellItem : combatHitSpellItems)
 		{
-			combatHitSpell->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
+			combatHitSpellItem->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
 		}
 	}
 
@@ -100,35 +100,35 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> combatHitSpells;
+		std::vector<Skyrim::SpellItem*> combatHitSpellItems;
 
-		ApplySpells::applyCombatHitSpellArrowProjectile_(entryPoint, perkOwner, weapon, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(combatHitSpells)));
+		ApplySpells::applyCombatHitSpellArrowProjectile_(entryPoint, perkOwner, weapon, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(combatHitSpellItems)));
 
-		for (auto* combatHitSpell : combatHitSpells)
+		for (auto* combatHitSpellItem : combatHitSpellItems)
 		{
-			combatHitSpell->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
+			combatHitSpellItem->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
 		}
 	}
 
 	void ApplySpells::ApplyReanimateSpell(
 		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
 		Skyrim::Actor*                                                         perkOwner,
-		Skyrim::SpellItem*                                                     spell,
+		Skyrim::SpellItem*                                                     spellItem,
 		Skyrim::Actor*                                                         target,
 		Skyrim::SpellItem**                                                    result)
 	{
 		// perkOwner != nullptr
-		// spell != nullptr
+		// spellItem != nullptr
 		// target != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> reanimateSpells;
+		std::vector<Skyrim::SpellItem*> reanimateSpellItems;
 
-		ApplySpells::applyReanimateSpell_(entryPoint, perkOwner, spell, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(reanimateSpells)));
+		ApplySpells::applyReanimateSpell_(entryPoint, perkOwner, spellItem, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(reanimateSpellItems)));
 
-		for (auto* reanimateSpell : reanimateSpells)
+		for (auto* reanimateSpellItem : reanimateSpellItems)
 		{
-			reanimateSpell->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
+			reanimateSpellItem->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
 		}
 	}
 
@@ -140,13 +140,13 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// perkOwner != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> sneakingSpells;
+		std::vector<Skyrim::SpellItem*> sneakingSpellItems;
 
-		ApplySpells::applySneakingSpell_(entryPoint, perkOwner, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(sneakingSpells)));
+		ApplySpells::applySneakingSpell_(entryPoint, perkOwner, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(sneakingSpellItems)));
 
-		for (auto* sneakingSpell : sneakingSpells)
+		for (auto* sneakingSpellItem : sneakingSpellItems)
 		{
-			sneakingSpell->Apply(perkOwner, perkOwner);
+			sneakingSpellItem->Apply(perkOwner, perkOwner);
 		}
 	}
 
@@ -162,13 +162,13 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// attackerWeapon != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> weaponSwingSpells;
+		std::vector<Skyrim::SpellItem*> weaponSwingSpellItems;
 
-		ApplySpells::applyWeaponSwingSpell_(entryPoint, perkOwner, attacker, attackerWeapon, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(weaponSwingSpells)));
+		ApplySpells::applyWeaponSwingSpell_(entryPoint, perkOwner, attacker, attackerWeapon, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(weaponSwingSpellItems)));
 
-		for (auto* weaponSwingSpell : weaponSwingSpells)
+		for (auto* weaponSwingSpellItem : weaponSwingSpellItems)
 		{
-			weaponSwingSpell->Apply(perkOwner, ApplySpells::castSpells_ ? attacker : perkOwner);
+			weaponSwingSpellItem->Apply(perkOwner, ApplySpells::castSpells_ ? attacker : perkOwner);
 		}
 	}
 
@@ -198,21 +198,21 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			return;
 		}
 
-		auto* spell = static_cast<Skyrim::BGSEntryPointFunctionDataSpellItem*>(entryPointFunctionData)->spell;
+		auto* spellItem = static_cast<Skyrim::BGSEntryPointFunctionDataSpellItem*>(entryPointFunctionData)->spellItem;
 
-		if (!spell)
+		if (!spellItem)
 		{
 			return;
 		}
 
-		auto* spells = static_cast<std::vector<Skyrim::SpellItem*>*>(*entryPointFunctionTypeArguments);
+		auto* spellItems = static_cast<std::vector<Skyrim::SpellItem*>*>(*entryPointFunctionTypeArguments);
 
-		if (!spells)
+		if (!spellItems)
 		{
 			return;
 		}
 
-		spells->push_back(spell);
+		spellItems->push_back(spellItem);
 	}
 
 	bool                                                       ApplySpells::castSpells_{};

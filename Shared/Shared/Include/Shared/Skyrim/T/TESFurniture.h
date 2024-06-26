@@ -99,15 +99,15 @@ namespace Skyrim
 		virtual void Unknown4D(TESBoundObject*) override;                                                                                                           // 4D
 
 		// Member variables
-		BSTArray<Marker>                           activeMarkers;   // C8, Active markers are added only if they either have a keyword or disabled entry point(s), or unknown4 is set
-		WorkbenchData                              workbenchData;   // E0
-		std::uint16_t                              paddingE2;       // E2
-		Utility::Enumeration<Flags, std::uint32_t> furnitureFlags;  // E4
-		SpellItem*                                 associatedSpell; // E8
+		BSTArray<Marker>                           activeMarkers;       // C8, Active markers are added only if they either have a keyword or disabled entry point(s), or unknown4 is set
+		WorkbenchData                              workbenchData;       // E0
+		std::uint16_t                              paddingE2;           // E2
+		Utility::Enumeration<Flags, std::uint32_t> furnitureFlags;      // E4
+		SpellItem*                                 associatedSpellItem; // E8
 	};
 	static_assert(offsetof(TESFurniture, activeMarkers) == 0xC8);
 	static_assert(offsetof(TESFurniture, workbenchData) == 0xE0);
 	static_assert(offsetof(TESFurniture, furnitureFlags) == 0xE4);
-	static_assert(offsetof(TESFurniture, associatedSpell) == 0xE8);
+	static_assert(offsetof(TESFurniture, associatedSpellItem) == 0xE8);
 	static_assert(sizeof(TESFurniture) == 0xF0);
 }

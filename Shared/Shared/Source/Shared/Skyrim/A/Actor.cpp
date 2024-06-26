@@ -19,13 +19,13 @@
 
 namespace Skyrim
 {
-	bool Actor::AddSpell(SpellItem* spell)
+	bool Actor::AddSpellItem(SpellItem* spellItem)
 	{
 		auto* function{ reinterpret_cast<
-			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::AddSpell)>::type>(
-			Addresses::Actor::AddSpell()) };
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::AddSpellItem)>::type>(
+			Addresses::Actor::AddSpellItem()) };
 
-		return function(this, spell);
+		return function(this, spellItem);
 	}
 
 	float Actor::AdjustHealthDamageToDifficulty(float damage, float onlyReduceDamage) const
@@ -368,12 +368,12 @@ namespace Skyrim
 		currentProcess->SetMaximumWardPower(maximumWardPower);
 	}
 
-	void Actor::SetSelectedSpell(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource, MagicItem* selectedSpell)
+	void Actor::SetSelectedMagicItem(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource, MagicItem* selectedMagicItem)
 	{
 		auto* function{ reinterpret_cast<
-			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::SetSelectedSpell)>::type>(
-			Addresses::Actor::SetSelectedSpell()) };
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&Actor::SetSelectedMagicItem)>::type>(
+			Addresses::Actor::SetSelectedMagicItem()) };
 
-		function(this, castingSource, selectedSpell);
+		function(this, castingSource, selectedMagicItem);
 	}
 }

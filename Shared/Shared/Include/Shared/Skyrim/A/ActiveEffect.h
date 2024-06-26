@@ -78,42 +78,42 @@ namespace Skyrim
 		static float GetCurrentMagnitude(float magnitude, float remainingTime, float taperDuration, float taperWeight, float taperCurve);
 
 		// Member functions
-		bool                 CheckDisplacementSpellOnTarget() const;
+		bool                 CheckDisplacement() const;
 		EffectSetting*       GetEffectSetting();
 		const EffectSetting* GetEffectSetting() const;
 		float                GetCurrentMagnitude() const;
 
 		// Member variables
-		std::uint64_t                                                   unknown8;          // 8
-		std::uint64_t                                                   unknown10;         // 10
-		std::uint64_t                                                   unknown18;         // 18
-		std::uint64_t                                                   unknown20;         // 20
-		std::uint64_t                                                   unknown28;         // 28
-		std::uint32_t                                                   unknown30;         // 30
-		ActorHandle                                                     caster;            // 34
-		std::uint64_t                                                   unknown38;         // 38
-		MagicItem*                                                      magicItem;         // 40
-		EffectItem*                                                     effectItem;        // 48
-		MagicTarget*                                                    magicTarget;       // 50
-		TESBoundObject*                                                 source;            // 58
-		std::uint64_t                                                   unknown60;         // 60
-		MagicItem*                                                      displacementSpell; // 68
-		float                                                           elapsedTime;       // 70
-		float                                                           duration;          // 74
-		float                                                           magnitude;         // 78
-		Utility::Enumeration<Flags, std::uint32_t>                      activeEffectFlags; // 7C
-		Utility::Enumeration<ConditionStatus, std::uint32_t>            conditionStatus;   // 80
-		std::uint16_t                                                   uniqueID;          // 84
-		std::uint16_t                                                   padding86;         // 86
-		Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource;     // 88
-		std::uint32_t                                                   padding8C;         // 8C
+		std::uint64_t                                                   unknown8;              // 8
+		std::uint64_t                                                   unknown10;             // 10
+		std::uint64_t                                                   unknown18;             // 18
+		std::uint64_t                                                   unknown20;             // 20
+		std::uint64_t                                                   unknown28;             // 28
+		std::uint32_t                                                   unknown30;             // 30
+		ActorHandle                                                     caster;                // 34
+		std::uint64_t                                                   unknown38;             // 38
+		MagicItem*                                                      magicItem;             // 40
+		EffectItem*                                                     effectItem;            // 48
+		MagicTarget*                                                    magicTarget;           // 50
+		TESBoundObject*                                                 source;                // 58
+		std::uint64_t                                                   unknown60;             // 60
+		MagicItem*                                                      displacementMagicItem; // 68
+		float                                                           elapsedTime;           // 70
+		float                                                           duration;              // 74
+		float                                                           magnitude;             // 78
+		Utility::Enumeration<Flags, std::uint32_t>                      activeEffectFlags;     // 7C
+		Utility::Enumeration<ConditionStatus, std::uint32_t>            conditionStatus;       // 80
+		std::uint16_t                                                   uniqueID;              // 84
+		std::uint16_t                                                   padding86;             // 86
+		Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource;         // 88
+		std::uint32_t                                                   padding8C;             // 8C
 	};
 	static_assert(offsetof(ActiveEffect, caster) == 0x34);
 	static_assert(offsetof(ActiveEffect, magicItem) == 0x40);
 	static_assert(offsetof(ActiveEffect, effectItem) == 0x48);
 	static_assert(offsetof(ActiveEffect, magicTarget) == 0x50);
 	static_assert(offsetof(ActiveEffect, source) == 0x58);
-	static_assert(offsetof(ActiveEffect, displacementSpell) == 0x68);
+	static_assert(offsetof(ActiveEffect, displacementMagicItem) == 0x68);
 	static_assert(offsetof(ActiveEffect, elapsedTime) == 0x70);
 	static_assert(offsetof(ActiveEffect, duration) == 0x74);
 	static_assert(offsetof(ActiveEffect, magnitude) == 0x78);

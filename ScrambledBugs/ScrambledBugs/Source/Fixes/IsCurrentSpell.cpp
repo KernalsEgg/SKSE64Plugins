@@ -36,8 +36,21 @@ namespace ScrambledBugs::Fixes
 		Skyrim::SpellItem*                                                      spellItem{ nullptr };
 		Utility::Enumeration<Skyrim::MagicSystem::CastingSource, std::uint32_t> castingSource{ Skyrim::MagicSystem::CastingSource::kNone };
 
-		return Skyrim::Script::ParseParameters(scriptParameters, scriptData, opcodeOffset, object, containingObject, script, scriptLocals, std::addressof(spellItem), std::addressof(castingSource)) ?
-		           IsCurrentSpell::IsCurrentSpellConditionFunction(object, spellItem, reinterpret_cast<void*>(static_cast<std::uintptr_t>(castingSource.underlying())), result) :
+		return Skyrim::Script::ParseParameters(
+				   scriptParameters,
+				   scriptData,
+				   opcodeOffset,
+				   object,
+				   containingObject,
+				   script,
+				   scriptLocals,
+				   std::addressof(spellItem),
+				   std::addressof(castingSource)) ?
+		           IsCurrentSpell::IsCurrentSpellConditionFunction(
+					   object,
+					   spellItem,
+					   reinterpret_cast<void*>(static_cast<std::uintptr_t>(castingSource.underlying())),
+					   result) :
 		           false;
 	}
 

@@ -45,12 +45,12 @@ namespace Skyrim
 		public:
 			// Member variables
 			TESWordOfPower* word;         // 0
-			SpellItem*      spell;        // 8
+			SpellItem*      spellItem;    // 8
 			float           recoveryTime; // 10
 			std::uint32_t   padding14;    // 14
 		};
 		static_assert(offsetof(Word, word) == 0x0);
-		static_assert(offsetof(Word, spell) == 0x8);
+		static_assert(offsetof(Word, spellItem) == 0x8);
 		static_assert(offsetof(Word, recoveryTime) == 0x10);
 		static_assert(sizeof(Word) == 0x18);
 

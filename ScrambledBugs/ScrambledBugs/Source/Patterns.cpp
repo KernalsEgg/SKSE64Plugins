@@ -220,7 +220,7 @@ namespace ScrambledBugs::Patterns
 				{
 					return Relocation::AddressLibrary::MatchPattern(
 						Addresses::Patches::PerkEntryPoints::CastSpells::ApplyBashingSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                              // call Actor::ApplySpell
+						0xE8ui8, std::optional<std::int32_t>{}                              // call Actor::ApplySpellItem
 					);
 				}
 
@@ -228,7 +228,7 @@ namespace ScrambledBugs::Patterns
 				{
 					return Relocation::AddressLibrary::MatchPattern(
 						Addresses::Patches::PerkEntryPoints::CastSpells::ApplyCombatHitSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                // call Actor::ApplySpell
+						0xE8ui8, std::optional<std::int32_t>{}                                // call Actor::ApplySpellItem
 					);
 				}
 
@@ -236,7 +236,7 @@ namespace ScrambledBugs::Patterns
 				{
 					return Relocation::AddressLibrary::MatchPattern(
 						Addresses::Patches::PerkEntryPoints::CastSpells::ApplyCombatHitSpellArrowProjectile, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                               // call Actor::ApplySpell
+						0xE8ui8, std::optional<std::int32_t>{}                                               // call Actor::ApplySpellItem
 					);
 				}
 
@@ -244,7 +244,7 @@ namespace ScrambledBugs::Patterns
 				{
 					return Relocation::AddressLibrary::MatchPattern(
 						Addresses::Patches::PerkEntryPoints::CastSpells::ApplyReanimateSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                // call Actor::ApplySpell
+						0xE8ui8, std::optional<std::int32_t>{}                                // call Actor::ApplySpellItem
 					);
 				}
 
@@ -252,7 +252,7 @@ namespace ScrambledBugs::Patterns
 				{
 					return Relocation::AddressLibrary::MatchPattern(
 						Addresses::Patches::PerkEntryPoints::CastSpells::ApplyWeaponSwingSpell, // 0x5
-						0xE8ui8, std::optional<std::int32_t>{}                                  // call Actor::ApplySpell
+						0xE8ui8, std::optional<std::int32_t>{}                                  // call Actor::ApplySpellItem
 					);
 				}
 			}

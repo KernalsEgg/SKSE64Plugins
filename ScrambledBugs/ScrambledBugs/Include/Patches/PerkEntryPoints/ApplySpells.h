@@ -34,7 +34,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		static void ApplyReanimateSpell(
 			Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
 			Skyrim::Actor*                                                         perkOwner,
-			Skyrim::SpellItem*                                                     spell,
+			Skyrim::SpellItem*                                                     spellItem,
 			Skyrim::Actor*                                                         target,
 			Skyrim::SpellItem**                                                    result);
 		static void ApplySneakingSpell(

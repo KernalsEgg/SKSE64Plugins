@@ -50,7 +50,7 @@ namespace Skyrim
 		NiPointer<BGSAttackData>                          attackData;                     // 28
 		TESObjectWEAP*                                    weapon;                         // 30
 		SpellItem*                                        criticalEffect;                 // 38
-		SpellItem*                                        attackSpell;                    // 40
+		SpellItem*                                        attackSpellItem;                // 40
 		VATSCommand*                                      vatsCommand;                    // 48
 		float                                             damageAfterResistances;         // 50
 		float                                             damageBeforeResistances;        // 54
@@ -77,7 +77,7 @@ namespace Skyrim
 	static_assert(offsetof(HitData, attackData) == 0x28);
 	static_assert(offsetof(HitData, weapon) == 0x30);
 	static_assert(offsetof(HitData, criticalEffect) == 0x38);
-	static_assert(offsetof(HitData, attackSpell) == 0x40);
+	static_assert(offsetof(HitData, attackSpellItem) == 0x40);
 	static_assert(offsetof(HitData, vatsCommand) == 0x48);
 	static_assert(offsetof(HitData, damageAfterResistances) == 0x50);
 	static_assert(offsetof(HitData, damageBeforeResistances) == 0x54);

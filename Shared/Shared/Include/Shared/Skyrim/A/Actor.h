@@ -370,7 +370,7 @@ namespace Skyrim
 		virtual void                  Unknown127(Actor*);                                                                                                                                             // 127
 
 		// Member functions
-		bool                    AddSpell(SpellItem* spell);
+		bool                    AddSpellItem(SpellItem* spellItem);
 		float                   AdjustHealthDamageToDifficulty(float damage, float onlyReduceDamage) const;
 		bool                    CanBeKilledBy(Actor* attacker) const;
 		float                   GetActorValueModifier(Utility::Enumeration<ActorValueModifier, std::uint32_t> actorValueModifier, Utility::Enumeration<ActorValue, std::uint32_t> actorValue) const;
@@ -405,72 +405,72 @@ namespace Skyrim
 		void                    RemoveActorValueModifiers(Utility::Enumeration<ActorValue, std::uint32_t> actorValue);
 		void                    RemoveBasePerks();
 		void                    SetMaximumWardPower(float maximumWardPower);
-		void                    SetSelectedSpell(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource, MagicItem* selectedSpell);
+		void                    SetSelectedMagicItem(Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource, MagicItem* selectedMagicItem);
 
 		// Member variables
-		Utility::Enumeration<BooleanBits, std::uint32_t>  booleanBits;                                                         // E0, E8
-		std::uint32_t                                     unknownEC;                                                           // E4, EC
-		std::uint64_t                                     unknownF0;                                                           // E8, F0
-		AIProcess*                                        currentProcess;                                                      // F0, F8
-		std::uint64_t                                     unknown100;                                                          // F8, 100
-		std::uint64_t                                     unknown108;                                                          // 100, 108
-		std::uint64_t                                     unknown110;                                                          // 108, 110
-		std::uint64_t                                     unknown118;                                                          // 110, 118
-		std::uint64_t                                     unknown120;                                                          // 118, 120
-		std::uint64_t                                     unknown128;                                                          // 120, 128
-		std::uint64_t                                     unknown130;                                                          // 128, 130
-		std::uint64_t                                     unknown138;                                                          // 130, 138
-		std::uint64_t                                     unknown140;                                                          // 138, 140
-		std::uint64_t                                     unknown148;                                                          // 140, 148
-		std::uint64_t                                     unknown150;                                                          // 148, 150
-		std::uint64_t                                     unknown158;                                                          // 150, 158
-		CombatController*                                 combatController;                                                    // 158, 160
-		std::uint64_t                                     unknown168;                                                          // 160, 168
-		std::uint64_t                                     unknown170;                                                          // 168, 170
-		std::uint64_t                                     unknown178;                                                          // 170, 178
-		std::uint64_t                                     unknown180;                                                          // 178, 180
-		CastPowerItem*                                    castPowers;                                                          // 180, 188
-		std::uint64_t                                     unknown190;                                                          // 188, 190
-		std::uint64_t                                     unknown198;                                                          // 190, 198
-		std::uint64_t                                     unknown1A0;                                                          // 198, 1A0
-		ActorMagicCaster*                                 magicCasters[Utility::Conversion::ToUnderlying(SlotType::kTotal)];   // 1A0, 1A8
-		MagicItem*                                        selectedSpells[Utility::Conversion::ToUnderlying(SlotType::kTotal)]; // 1C0, 1C8
-		TESForm*                                          selectedPower;                                                       // 1E0, 1E8
-		std::uint64_t                                     unknown1F0;                                                          // 1E8, 1F0
-		TESRace*                                          race;                                                                // 1F0, 1F8
-		float                                             equippedWeight;                                                      // 1F8, 200
-		Utility::Enumeration<BooleanFlags, std::uint32_t> booleanFlags;                                                        // 1FC, 204
-		std::uint64_t                                     unknown208;                                                          // 200, 208
-		std::uint64_t                                     unknown210;                                                          // 208, 210
-		std::uint64_t                                     unknown218;                                                          // 210, 218
-		std::uint64_t                                     unknown220;                                                          // 218, 220
-		std::uint64_t                                     unknown228;                                                          // 220, 228
-		std::uint64_t                                     unknown230;                                                          // 228, 230
-		std::uint64_t                                     unknown238;                                                          // 230, 238
-		std::uint64_t                                     unknown240;                                                          // 238, 240
-		std::uint64_t                                     unknown248;                                                          // 240, 248
-		std::uint64_t                                     unknown250;                                                          // 248, 250
-		std::uint64_t                                     unknown258;                                                          // 250, 258
-		float                                             lastUpdate;                                                          // 258, 260
-		std::uint32_t                                     unknown264;                                                          // 25C, 264
-		std::uint64_t                                     unknown268;                                                          // 260, 268
-		float                                             armorRating;                                                         // 268, 270
-		float                                             totalArmorBaseFactor;                                                // 26C, 274
-		std::uint64_t                                     unknown278;                                                          // 270, 278
-		std::uint64_t                                     unknown280;                                                          // 278, 280
-		std::uint64_t                                     unknown288;                                                          // 280, 288
-		std::uint64_t                                     unknown290;                                                          // 288, 290
-		std::uint64_t                                     unknown298;                                                          // 290, 298
-		std::uint64_t                                     unknown2A0;                                                          // 298, 2A0
-		std::uint64_t                                     unknown2A8;                                                          // 2A0, 2A8
-		std::uint64_t                                     unknown2B0;                                                          // 2A8, 2B0
+		Utility::Enumeration<BooleanBits, std::uint32_t>  booleanBits;                                                             // E0, E8
+		std::uint32_t                                     unknownEC;                                                               // E4, EC
+		std::uint64_t                                     unknownF0;                                                               // E8, F0
+		AIProcess*                                        currentProcess;                                                          // F0, F8
+		std::uint64_t                                     unknown100;                                                              // F8, 100
+		std::uint64_t                                     unknown108;                                                              // 100, 108
+		std::uint64_t                                     unknown110;                                                              // 108, 110
+		std::uint64_t                                     unknown118;                                                              // 110, 118
+		std::uint64_t                                     unknown120;                                                              // 118, 120
+		std::uint64_t                                     unknown128;                                                              // 120, 128
+		std::uint64_t                                     unknown130;                                                              // 128, 130
+		std::uint64_t                                     unknown138;                                                              // 130, 138
+		std::uint64_t                                     unknown140;                                                              // 138, 140
+		std::uint64_t                                     unknown148;                                                              // 140, 148
+		std::uint64_t                                     unknown150;                                                              // 148, 150
+		std::uint64_t                                     unknown158;                                                              // 150, 158
+		CombatController*                                 combatController;                                                        // 158, 160
+		std::uint64_t                                     unknown168;                                                              // 160, 168
+		std::uint64_t                                     unknown170;                                                              // 168, 170
+		std::uint64_t                                     unknown178;                                                              // 170, 178
+		std::uint64_t                                     unknown180;                                                              // 178, 180
+		CastPowerItem*                                    castPowers;                                                              // 180, 188
+		std::uint64_t                                     unknown190;                                                              // 188, 190
+		std::uint64_t                                     unknown198;                                                              // 190, 198
+		std::uint64_t                                     unknown1A0;                                                              // 198, 1A0
+		ActorMagicCaster*                                 magicCasters[Utility::Conversion::ToUnderlying(SlotType::kTotal)];       // 1A0, 1A8
+		MagicItem*                                        selectedMagicItems[Utility::Conversion::ToUnderlying(SlotType::kTotal)]; // 1C0, 1C8
+		TESForm*                                          selectedPower;                                                           // 1E0, 1E8
+		std::uint64_t                                     unknown1F0;                                                              // 1E8, 1F0
+		TESRace*                                          race;                                                                    // 1F0, 1F8
+		float                                             equippedWeight;                                                          // 1F8, 200
+		Utility::Enumeration<BooleanFlags, std::uint32_t> booleanFlags;                                                            // 1FC, 204
+		std::uint64_t                                     unknown208;                                                              // 200, 208
+		std::uint64_t                                     unknown210;                                                              // 208, 210
+		std::uint64_t                                     unknown218;                                                              // 210, 218
+		std::uint64_t                                     unknown220;                                                              // 218, 220
+		std::uint64_t                                     unknown228;                                                              // 220, 228
+		std::uint64_t                                     unknown230;                                                              // 228, 230
+		std::uint64_t                                     unknown238;                                                              // 230, 238
+		std::uint64_t                                     unknown240;                                                              // 238, 240
+		std::uint64_t                                     unknown248;                                                              // 240, 248
+		std::uint64_t                                     unknown250;                                                              // 248, 250
+		std::uint64_t                                     unknown258;                                                              // 250, 258
+		float                                             lastUpdate;                                                              // 258, 260
+		std::uint32_t                                     unknown264;                                                              // 25C, 264
+		std::uint64_t                                     unknown268;                                                              // 260, 268
+		float                                             armorRating;                                                             // 268, 270
+		float                                             totalArmorBaseFactor;                                                    // 26C, 274
+		std::uint64_t                                     unknown278;                                                              // 270, 278
+		std::uint64_t                                     unknown280;                                                              // 278, 280
+		std::uint64_t                                     unknown288;                                                              // 280, 288
+		std::uint64_t                                     unknown290;                                                              // 288, 290
+		std::uint64_t                                     unknown298;                                                              // 290, 298
+		std::uint64_t                                     unknown2A0;                                                              // 298, 2A0
+		std::uint64_t                                     unknown2A8;                                                              // 2A0, 2A8
+		std::uint64_t                                     unknown2B0;                                                              // 2A8, 2B0
 	};
 	static_assert(offsetof(Actor, booleanBits) == SKYRIM_RELOCATE(0xE0, 0xE8));
 	static_assert(offsetof(Actor, currentProcess) == SKYRIM_RELOCATE(0xF0, 0xF8));
 	static_assert(offsetof(Actor, combatController) == SKYRIM_RELOCATE(0x158, 0x160));
 	static_assert(offsetof(Actor, castPowers) == SKYRIM_RELOCATE(0x180, 0x188));
 	static_assert(offsetof(Actor, magicCasters) == SKYRIM_RELOCATE(0x1A0, 0x1A8));
-	static_assert(offsetof(Actor, selectedSpells) == SKYRIM_RELOCATE(0x1C0, 0x1C8));
+	static_assert(offsetof(Actor, selectedMagicItems) == SKYRIM_RELOCATE(0x1C0, 0x1C8));
 	static_assert(offsetof(Actor, selectedPower) == SKYRIM_RELOCATE(0x1E0, 0x1E8));
 	static_assert(offsetof(Actor, race) == SKYRIM_RELOCATE(0x1F0, 0x1F8));
 	static_assert(offsetof(Actor, equippedWeight) == SKYRIM_RELOCATE(0x1F8, 0x200));

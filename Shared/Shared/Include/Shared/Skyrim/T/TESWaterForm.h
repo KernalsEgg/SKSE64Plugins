@@ -151,7 +151,7 @@ namespace Skyrim
 		std::uint64_t                             unknown1E0;                     // 1E0
 		std::uint64_t                             unknown1E8;                     // 1E8
 		std::uint64_t                             unknown1F0;                     // 1F0
-		SpellItem*                                spellEffect;                    // 1F8
+		SpellItem*                                contactSpellItem;               // 1F8
 		NiPointer<NiTexture>                      noiseTextureDataLayers[4];      // 200, Noise Properties
 		std::uint64_t                             unknown220;                     // 220
 		std::uint64_t                             unknown228;                     // 228
@@ -192,7 +192,7 @@ namespace Skyrim
 	static_assert(offsetof(TESWaterForm, depthProperties) == 0x1A0);
 	static_assert(offsetof(TESWaterForm, sunSparklePower) == 0x1B0);
 	static_assert(offsetof(TESWaterForm, flowmapScale) == 0x1B4);
-	static_assert(offsetof(TESWaterForm, spellEffect) == 0x1F8);
+	static_assert(offsetof(TESWaterForm, contactSpellItem) == 0x1F8);
 	static_assert(offsetof(TESWaterForm, noiseTextureDataLayers) == 0x200);
 	static_assert(offsetof(TESWaterForm, imageSpaceModifier) == 0x240);
 	static_assert(offsetof(TESWaterForm, linearVelocity) == 0x248);

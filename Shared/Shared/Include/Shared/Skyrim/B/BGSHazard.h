@@ -55,7 +55,7 @@ namespace Skyrim
 		float                                      imageSpaceRadius; // 8C
 		float                                      targetInterval;   // 90
 		Utility::Enumeration<Flags, std::uint32_t> hazardFlags;      // 94
-		SpellItem*                                 spell;            // 98
+		SpellItem*                                 spellItem;        // 98
 		TESObjectLIGH*                             light;            // A0
 		BGSImpactDataSet*                          impactDataSet;    // A8
 		BGSSoundDescriptorForm*                    sound;            // B0
@@ -66,7 +66,7 @@ namespace Skyrim
 	static_assert(offsetof(BGSHazard, imageSpaceRadius) == 0x8C);
 	static_assert(offsetof(BGSHazard, targetInterval) == 0x90);
 	static_assert(offsetof(BGSHazard, hazardFlags) == 0x94);
-	static_assert(offsetof(BGSHazard, spell) == 0x98);
+	static_assert(offsetof(BGSHazard, spellItem) == 0x98);
 	static_assert(offsetof(BGSHazard, light) == 0xA0);
 	static_assert(offsetof(BGSHazard, impactDataSet) == 0xA8);
 	static_assert(offsetof(BGSHazard, sound) == 0xB0);

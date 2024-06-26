@@ -59,6 +59,6 @@ namespace ScrambledBugs::Fixes
 			}
 		}
 
-		actor->SetSelectedSpell(castingSource, enchantmentItem);
+		actor->SetSelectedMagicItem(castingSource, enchantmentItem);
 	}
 }

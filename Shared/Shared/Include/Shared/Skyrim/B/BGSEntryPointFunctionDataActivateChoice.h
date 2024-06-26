@@ -39,14 +39,14 @@ namespace Skyrim
 		// Member variables
 		BSFixedString                              buttonLabel;         // 8
 		BGSPerk*                                   perk;                // 10
-		SpellItem*                                 applySpell;          // 18
+		SpellItem*                                 appliedSpellItem;    // 18
 		Utility::Enumeration<Flags, std::uint16_t> activateChoiceFlags; // 20
 		std::uint16_t                              unknown22;           // 22
 		std::uint32_t                              padding24;           // 24
 	};
 	static_assert(offsetof(BGSEntryPointFunctionDataActivateChoice, buttonLabel) == 0x8);
 	static_assert(offsetof(BGSEntryPointFunctionDataActivateChoice, perk) == 0x10);
-	static_assert(offsetof(BGSEntryPointFunctionDataActivateChoice, applySpell) == 0x18);
+	static_assert(offsetof(BGSEntryPointFunctionDataActivateChoice, appliedSpellItem) == 0x18);
 	static_assert(offsetof(BGSEntryPointFunctionDataActivateChoice, activateChoiceFlags) == 0x20);
 	static_assert(sizeof(BGSEntryPointFunctionDataActivateChoice) == 0x28);
 }

@@ -13,11 +13,11 @@ namespace Skyrim
 	{
 		if (this->IsPermanent())
 		{
-			target->AddSpell(this);
+			target->AddSpellItem(this);
 		}
 		else
 		{
-			caster->GetMagicCaster(MagicSystem::CastingSource::kInstant)->CastSpellImmediate(this, false, target, 1.0F, false, 0.0F, nullptr);
+			caster->GetMagicCaster(MagicSystem::CastingSource::kInstant)->CastSpellItemImmediate(this, false, target, 1.0F, false, 0.0F, nullptr);
 		}
 	}
 }
