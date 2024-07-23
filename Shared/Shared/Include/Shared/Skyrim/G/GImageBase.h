@@ -32,7 +32,7 @@ namespace Skyrim
 		static_assert(sizeof(ImageFormat) == 0x4);
 
 		// Member variables
-		Utility::Enumeration<ImageFormat, std::uint32_t> format;      // 0
+		Utility::Enumeration<ImageFormat, std::uint32_t> imageFormat; // 0
 		std::uint32_t                                    width;       // 4
 		std::uint32_t                                    height;      // 8
 		std::uint32_t                                    pitch;       // C
@@ -41,7 +41,7 @@ namespace Skyrim
 		std::uint32_t                                    mipMapCount; // 1C
 		GArray<GColor>                                   colorMap;    // 20
 	};
-	static_assert(offsetof(GImageBase, format) == 0x0);
+	static_assert(offsetof(GImageBase, imageFormat) == 0x0);
 	static_assert(offsetof(GImageBase, width) == 0x4);
 	static_assert(offsetof(GImageBase, height) == 0x8);
 	static_assert(offsetof(GImageBase, pitch) == 0xC);

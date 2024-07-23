@@ -90,7 +90,7 @@ namespace Skyrim
 			kFillGouraud          = 1U << 8,
 			kFillGouraudTexturing = 1U << 9,
 
-			kCxformAdd = 1U << 12,
+			kColorTransformAdd = 1U << 12,
 
 			kNestedMasks = 1U << 13,
 
@@ -242,34 +242,34 @@ namespace Skyrim
 			UserData();
 
 			// Member variables
-			const char*                                              string;        // 0
-			float*                                                   number;        // 8
-			float*                                                   matrix;        // 10
-			std::uint32_t                                            matrixSize;    // 18
-			Utility::Enumeration<UserDataPropertyFlag, std::uint8_t> propertyFlags; // 1C
-			std::uint8_t                                             padding1D;     // 1D
-			std::uint16_t                                            padding1E;     // 1E
+			const char*                                              string;               // 0
+			float*                                                   number;               // 8
+			float*                                                   matrix;               // 10
+			std::uint32_t                                            matrixSize;           // 18
+			Utility::Enumeration<UserDataPropertyFlag, std::uint8_t> userDataPropertyFlag; // 1C
+			std::uint8_t                                             padding1D;            // 1D
+			std::uint16_t                                            padding1E;            // 1E
 		};
 		static_assert(offsetof(UserData, string) == 0x0);
 		static_assert(offsetof(UserData, number) == 0x8);
 		static_assert(offsetof(UserData, matrix) == 0x10);
 		static_assert(offsetof(UserData, matrixSize) == 0x18);
-		static_assert(offsetof(UserData, propertyFlags) == 0x1C);
+		static_assert(offsetof(UserData, userDataPropertyFlag) == 0x1C);
 		static_assert(sizeof(UserData) == 0x20);
 
 		struct FillTexture
 		{
 		public:
 			// Member variables
-			GTexture*                                             texture;       // 0
-			Matrix                                                textureMatrix; // 8
-			Utility::Enumeration<BitmapWrapMode, std::uint32_t>   wrapMode;      // 20
-			Utility::Enumeration<BitmapSampleMode, std::uint32_t> sampleMode;    // 24
+			GTexture*                                             texture;          // 0
+			Matrix                                                textureMatrix;    // 8
+			Utility::Enumeration<BitmapWrapMode, std::uint32_t>   bitmapWrapMode;   // 20
+			Utility::Enumeration<BitmapSampleMode, std::uint32_t> bitmapSampleMode; // 24
 		};
 		static_assert(offsetof(FillTexture, texture) == 0x0);
 		static_assert(offsetof(FillTexture, textureMatrix) == 0x8);
-		static_assert(offsetof(FillTexture, wrapMode) == 0x20);
-		static_assert(offsetof(FillTexture, sampleMode) == 0x24);
+		static_assert(offsetof(FillTexture, bitmapWrapMode) == 0x20);
+		static_assert(offsetof(FillTexture, bitmapSampleMode) == 0x24);
 		static_assert(sizeof(FillTexture) == 0x28);
 
 		struct VertexXY16i
@@ -407,7 +407,7 @@ namespace Skyrim
 
 		private:
 			// Member variables
-			CachedData*   data_;              // 0
+			CachedData*   cachedData_;        // 0
 			bool          discardSharedData_; // 8
 			std::uint8_t  padding9_;          // 9
 			std::uint16_t paddingA_;          // A
@@ -458,15 +458,15 @@ namespace Skyrim
 			bool operator==(const BlurFilterParameters& right) const;
 
 			// Member variables
-			std::uint32_t mode;     // 0
-			float         blurX;    // 4
-			float         blurY;    // 8
-			std::uint32_t passes;   // C
-			GPointF       offset;   // 10
-			GColor        color;    // 18
-			GColor        color2;   // 1C
-			float         strength; // 20
-			Cxform        cxform;   // 24
+			std::uint32_t mode;           // 0
+			float         blurX;          // 4
+			float         blurY;          // 8
+			std::uint32_t passes;         // C
+			GPointF       offset;         // 10
+			GColor        color;          // 18
+			GColor        color2;         // 1C
+			float         strength;       // 20
+			Cxform        colorTransform; // 24
 		};
 		static_assert(offsetof(BlurFilterParameters, mode) == 0x0);
 		static_assert(offsetof(BlurFilterParameters, blurX) == 0x4);
@@ -476,68 +476,68 @@ namespace Skyrim
 		static_assert(offsetof(BlurFilterParameters, color) == 0x18);
 		static_assert(offsetof(BlurFilterParameters, color2) == 0x1C);
 		static_assert(offsetof(BlurFilterParameters, strength) == 0x20);
-		static_assert(offsetof(BlurFilterParameters, cxform) == 0x24);
+		static_assert(offsetof(BlurFilterParameters, colorTransform) == 0x24);
 		static_assert(sizeof(BlurFilterParameters) == 0x44);
 
 		// Override
 		virtual ~GRenderer() override; // 0
 
 		// Add
-		virtual bool           GetRenderCapabilities(RenderCapabilities* capabilities) = 0;                                                                                                                                                                                                 // 1
-		virtual GTexture*      CreateTexture()                                         = 0;                                                                                                                                                                                                 // 2
-		virtual GTexture*      CreateTextureYUV()                                      = 0;                                                                                                                                                                                                 // 3
-		virtual void           BeginFrame() {}                                                                                                                                                                                                                                              // 4
-		virtual void           EndFrame();                                                                                                                                                                                                                                                  // 5
-		virtual GRenderTarget* CreateRenderTarget()                                                                                                = 0;                                                                                                                                     // 6
-		virtual void           SetDisplayRenderTarget(GRenderTarget* renderTarget, bool setState = true)                                           = 0;                                                                                                                                     // 7
-		virtual void           PushRenderTarget(const GRectangleF& frameRectangle, GRenderTarget* renderTarget)                                    = 0;                                                                                                                                     // 8
-		virtual void           PopRenderTarget()                                                                                                   = 0;                                                                                                                                     // 9
-		virtual GTexture*      PushTemporaryRenderTarget(const GRectangleF& frameRectangle, std::uint32_t targetWidth, std::uint32_t targetHeight) = 0;                                                                                                                                     // A
-		virtual void           ReleaseTemporaryRenderTargets(std::uint32_t keepArea) {}                                                                                                                                                                                                     // B
-		virtual void           BeginDisplay(GColor backgroundColor, const GViewport& viewport, float x0, float x1, float y0, float y1) = 0;                                                                                                                                                 // C
-		virtual void           EndDisplay()                                                                                            = 0;                                                                                                                                                 // D
-		virtual void           SetMatrix(const Matrix& matrix)                                                                         = 0;                                                                                                                                                 // E
-		virtual void           SetUserMatrix(const Matrix& matrix)                                                                     = 0;                                                                                                                                                 // F
-		virtual void           SetCxform(const Cxform& cxform)                                                                         = 0;                                                                                                                                                 // 10
-		virtual void           PushBlendMode(Utility::Enumeration<BlendType, std::uint32_t> mode)                                      = 0;                                                                                                                                                 // 11
-		virtual void           PopBlendMode()                                                                                          = 0;                                                                                                                                                 // 12
-		virtual bool           PushUserData(UserData* data) { return false; }                                                                                                                                                                                                               // 13
-		virtual void           PopUserData() {}                                                                                                                                                                                                                                             // 14
-		virtual void           SetPerspective3D(const GMatrix3D& projectionMatrixInput) = 0;                                                                                                                                                                                                // 15
-		virtual void           SetView3D(const GMatrix3D& viewMatrixInput)              = 0;                                                                                                                                                                                                // 16
-		virtual void           SetWorld3D(const GMatrix3D* worldMatrixInput)            = 0;                                                                                                                                                                                                // 17
-		virtual void           SetStereoParameters(StereoParameters parameters);                                                                                                                                                                                                            // 18
-		virtual void           SetStereoDisplay(StereoDisplay display, bool setState = false) {}                                                                                                                                                                                            // 19
-		virtual void           SetVertexData(const void* vertices, std::int32_t vertexCount, Utility::Enumeration<VertexFormat, std::uint32_t> vertexFormat, CacheProvider* cache = nullptr)                                        = 0;                                                    // 1A
-		virtual void           SetIndexData(const void* indices, std::int32_t indexCount, Utility::Enumeration<IndexFormat, std::uint32_t> indexFormat, CacheProvider* cache = nullptr)                                             = 0;                                                    // 1B
-		virtual void           ReleaseCachedData(CachedData* data, Utility::Enumeration<CachedDataType, std::uint32_t> type)                                                                                                        = 0;                                                    // 1C
-		virtual void           DrawIndexedTriangleList(std::int32_t baseVertexIndex, std::int32_t minimumVertexIndex, std::int32_t vertexCount, std::int32_t startIndex, std::int32_t triangleCount)                                = 0;                                                    // 1D
-		virtual void           DrawLineStrip(std::int32_t baseVertexIndex, std::int32_t lineCount)                                                                                                                                  = 0;                                                    // 1E
-		virtual void           LineStyleDisable()                                                                                                                                                                                   = 0;                                                    // 1F
-		virtual void           LineStyleColor(GColor color)                                                                                                                                                                         = 0;                                                    // 20
-		virtual void           FillStyleDisable()                                                                                                                                                                                   = 0;                                                    // 21
-		virtual void           FillStyleColor(GColor color)                                                                                                                                                                         = 0;                                                    // 22
-		virtual void           FillStyleBitmap(const FillTexture* fill)                                                                                                                                                             = 0;                                                    // 23
-		virtual void           FillStyleGouraud(Utility::Enumeration<GouraudFillType, std::uint32_t> fillType, const FillTexture* texture0 = nullptr, const FillTexture* texture1 = nullptr, const FillTexture* texture2 = nullptr) = 0;                                                    // 24
-		virtual void           DrawBitmaps(BitmapDescriptor* bitmapList, std::int32_t listSize, std::int32_t startIndex, std::int32_t count, const GTexture* textureInput, const Matrix& matrix, CacheProvider* cache = nullptr)    = 0;                                                    // 25
-		virtual void           DrawDistanceFieldBitmaps(BitmapDescriptor* bitmapList, std::int32_t listSize, std::int32_t startIndex, std::int32_t count, const GTexture* textureInput, const Matrix& matrix, const DistanceFieldParameters& parameters, CacheProvider* cache = nullptr) {} // 26
-		virtual void           BeginSubmitMask(Utility::Enumeration<SubmitMaskMode, std::uint32_t> maskMode = SubmitMaskMode::kClear)                                                                  = 0;                                                                                 // 27
-		virtual void           EndSubmitMask()                                                                                                                                                         = 0;                                                                                 // 28
-		virtual void           DisableMask()                                                                                                                                                           = 0;                                                                                 // 29
-		virtual std::uint32_t  CheckFilterSupport(const BlurFilterParameters& parameters)                                                                                                              = 0;                                                                                 // 2A
-		virtual void           DrawBlurRectangle(GTexture* sourceInput, const GRectangleF& inputSourceRectangle, const GRectangleF& inputDestinationRectangle, const BlurFilterParameters& parameters) = 0;                                                                                 // 2B
-		virtual void           DrawColorMatrixRectangle(GTexture* sourceInput, const GRectangleF& inputSourceRectangle, const GRectangleF& destinationRectangle, const float* matrix)                  = 0;                                                                                 // 2C
-		virtual void           GetRenderStatistics(Statistics* statistics, bool resetStatistics = false)                                                                                               = 0;                                                                                 // 2D
-		virtual void           GetStatistics(GStatisticBag* bag, bool reset = true)                                                                                                                    = 0;                                                                                 // 2E
-		virtual void           ReleaseResources()                                                                                                                                                      = 0;                                                                                 // 2F
-		virtual bool           AddEventHandler(GRendererEventHandler* handler);                                                                                                                                                                                                             // 30
-		virtual void           RemoveEventHandler(GRendererEventHandler* handler);                                                                                                                                                                                                          // 31
+		virtual bool           GetRenderCapabilities(RenderCapabilities* renderCapabilities) = 0;                                                                                                                                                                                                                      // 1
+		virtual GTexture*      CreateTexture()                                               = 0;                                                                                                                                                                                                                      // 2
+		virtual GTexture*      CreateTextureYUV()                                            = 0;                                                                                                                                                                                                                      // 3
+		virtual void           BeginFrame() {}                                                                                                                                                                                                                                                                         // 4
+		virtual void           EndFrame();                                                                                                                                                                                                                                                                             // 5
+		virtual GRenderTarget* CreateRenderTarget()                                                                                                = 0;                                                                                                                                                                // 6
+		virtual void           SetDisplayRenderTarget(GRenderTarget* renderTarget, bool setState = true)                                           = 0;                                                                                                                                                                // 7
+		virtual void           PushRenderTarget(const GRectangleF& frameRectangle, GRenderTarget* renderTarget)                                    = 0;                                                                                                                                                                // 8
+		virtual void           PopRenderTarget()                                                                                                   = 0;                                                                                                                                                                // 9
+		virtual GTexture*      PushTemporaryRenderTarget(const GRectangleF& frameRectangle, std::uint32_t targetWidth, std::uint32_t targetHeight) = 0;                                                                                                                                                                // A
+		virtual void           ReleaseTemporaryRenderTargets(std::uint32_t keepArea) {}                                                                                                                                                                                                                                // B
+		virtual void           BeginDisplay(GColor backgroundColor, const GViewport& viewport, float x0, float x1, float y0, float y1) = 0;                                                                                                                                                                            // C
+		virtual void           EndDisplay()                                                                                            = 0;                                                                                                                                                                            // D
+		virtual void           SetMatrix(const Matrix& matrix)                                                                         = 0;                                                                                                                                                                            // E
+		virtual void           SetUserMatrix(const Matrix& matrix)                                                                     = 0;                                                                                                                                                                            // F
+		virtual void           SetColorTransform(const Cxform& colorTransform)                                                         = 0;                                                                                                                                                                            // 10
+		virtual void           PushBlendType(Utility::Enumeration<BlendType, std::uint32_t> blendType)                                 = 0;                                                                                                                                                                            // 11
+		virtual void           PopBlendType()                                                                                          = 0;                                                                                                                                                                            // 12
+		virtual bool           PushUserData(UserData* userData) { return false; }                                                                                                                                                                                                                                      // 13
+		virtual void           PopUserData() {}                                                                                                                                                                                                                                                                        // 14
+		virtual void           SetPerspective3D(const GMatrix3D& projectionMatrixInput) = 0;                                                                                                                                                                                                                           // 15
+		virtual void           SetView3D(const GMatrix3D& viewMatrixInput)              = 0;                                                                                                                                                                                                                           // 16
+		virtual void           SetWorld3D(const GMatrix3D* worldMatrixInput)            = 0;                                                                                                                                                                                                                           // 17
+		virtual void           SetStereoParameters(StereoParameters stereoParameters);                                                                                                                                                                                                                                 // 18
+		virtual void           SetStereoDisplay(Utility::Enumeration<StereoDisplay, std::uint32_t> stereoDisplay, bool setState = false) {}                                                                                                                                                                            // 19
+		virtual void           SetVertexData(const void* vertices, std::int32_t vertexCount, Utility::Enumeration<VertexFormat, std::uint32_t> vertexFormat, CacheProvider* cacheProvider = nullptr)                                                   = 0;                                                            // 1A
+		virtual void           SetIndexData(const void* indices, std::int32_t indexCount, Utility::Enumeration<IndexFormat, std::uint32_t> indexFormat, CacheProvider* cacheProvider = nullptr)                                                        = 0;                                                            // 1B
+		virtual void           ReleaseCachedData(CachedData* cachedData, Utility::Enumeration<CachedDataType, std::uint32_t> cachedDataType)                                                                                                           = 0;                                                            // 1C
+		virtual void           DrawIndexedTriangleList(std::int32_t baseVertexIndex, std::int32_t minimumVertexIndex, std::int32_t vertexCount, std::int32_t startIndex, std::int32_t triangleCount)                                                   = 0;                                                            // 1D
+		virtual void           DrawLineStrip(std::int32_t baseVertexIndex, std::int32_t lineCount)                                                                                                                                                     = 0;                                                            // 1E
+		virtual void           LineStyleDisable()                                                                                                                                                                                                      = 0;                                                            // 1F
+		virtual void           LineStyleColor(GColor color)                                                                                                                                                                                            = 0;                                                            // 20
+		virtual void           FillStyleDisable()                                                                                                                                                                                                      = 0;                                                            // 21
+		virtual void           FillStyleColor(GColor color)                                                                                                                                                                                            = 0;                                                            // 22
+		virtual void           FillStyleBitmap(const FillTexture* fillTexture)                                                                                                                                                                         = 0;                                                            // 23
+		virtual void           FillStyleGouraud(Utility::Enumeration<GouraudFillType, std::uint32_t> gouraudFillType, const FillTexture* fillTexture0 = nullptr, const FillTexture* fillTexture1 = nullptr, const FillTexture* fillTexture2 = nullptr) = 0;                                                            // 24
+		virtual void           DrawBitmaps(BitmapDescriptor* bitmapDescriptor, std::int32_t listSize, std::int32_t startIndex, std::int32_t count, const GTexture* textureInput, const Matrix& matrix, CacheProvider* cacheProvider = nullptr)         = 0;                                                            // 25
+		virtual void           DrawDistanceFieldBitmaps(BitmapDescriptor* bitmapDescriptor, std::int32_t listSize, std::int32_t startIndex, std::int32_t count, const GTexture* textureInput, const Matrix& matrix, const DistanceFieldParameters& distanceFieldParameters, CacheProvider* cacheProvider = nullptr) {} // 26
+		virtual void           BeginSubmitMaskMode(Utility::Enumeration<SubmitMaskMode, std::uint32_t> submitMaskMode = SubmitMaskMode::kClear)                                                                  = 0;                                                                                                  // 27
+		virtual void           EndSubmitMaskMode()                                                                                                                                                               = 0;                                                                                                  // 28
+		virtual void           DisableMaskMode()                                                                                                                                                                 = 0;                                                                                                  // 29
+		virtual std::uint32_t  CheckFilterSupport(const BlurFilterParameters& blurFilterParameters)                                                                                                              = 0;                                                                                                  // 2A
+		virtual void           DrawBlurRectangle(GTexture* sourceInput, const GRectangleF& inputSourceRectangle, const GRectangleF& inputDestinationRectangle, const BlurFilterParameters& blurFilterParameters) = 0;                                                                                                  // 2B
+		virtual void           DrawColorMatrixRectangle(GTexture* sourceInput, const GRectangleF& inputSourceRectangle, const GRectangleF& destinationRectangle, const float* matrix)                            = 0;                                                                                                  // 2C
+		virtual void           GetRenderStatistics(Statistics* statistics, bool resetStatistics = false)                                                                                                         = 0;                                                                                                  // 2D
+		virtual void           GetStatistics(GStatisticBag* statisticBag, bool reset = true)                                                                                                                     = 0;                                                                                                  // 2E
+		virtual void           ReleaseResources()                                                                                                                                                                = 0;                                                                                                  // 2F
+		virtual bool           AddEventHandler(GRendererEventHandler* rendererEventHandler);                                                                                                                                                                                                                           // 30
+		virtual void           RemoveEventHandler(GRendererEventHandler* rendererEventHandler);                                                                                                                                                                                                                        // 31
 
 	protected:
 		// Member variables
-		GList<GRendererEventHandler>                       handlers_;           // 10
-		StereoParameters                                   stereo3DParameters_; // 20
-		Utility::Enumeration<StereoDisplay, std::uint32_t> stereo3DDisplay_;    // 34
+		GList<GRendererEventHandler>                       rendererEventHandlers_; // 10
+		StereoParameters                                   stereo3DParameters_;    // 20
+		Utility::Enumeration<StereoDisplay, std::uint32_t> stereo3DDisplay_;       // 34
 	};
 	static_assert(sizeof(GRenderer) == 0x38);
 }

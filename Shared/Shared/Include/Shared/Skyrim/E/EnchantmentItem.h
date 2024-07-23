@@ -30,10 +30,10 @@ namespace Skyrim
 			// Member variables
 			std::int32_t                                                  enchantmentCost;      // 0
 			Utility::Enumeration<Flags, std::uint32_t>                    enchantmentItemFlags; // 4
-			Utility::Enumeration<MagicSystem::CastingType, std::uint32_t> casting;              // 8
+			Utility::Enumeration<MagicSystem::CastingType, std::uint32_t> castingType;          // 8
 			std::int32_t                                                  enchantmentAmount;    // C
 			Utility::Enumeration<MagicSystem::Delivery, std::uint32_t>    delivery;             // 10
-			Utility::Enumeration<MagicSystem::SpellType, std::uint32_t>   type;                 // 14
+			Utility::Enumeration<MagicSystem::SpellType, std::uint32_t>   spellType;            // 14
 			float                                                         chargeTime;           // 18
 			std::uint32_t                                                 padding1C;            // 1C
 			EnchantmentItem*                                              baseEnchantmentItem;  // 20
@@ -41,10 +41,10 @@ namespace Skyrim
 		};
 		static_assert(offsetof(Data, enchantmentCost) == 0x0);
 		static_assert(offsetof(Data, enchantmentItemFlags) == 0x4);
-		static_assert(offsetof(Data, casting) == 0x8);
+		static_assert(offsetof(Data, castingType) == 0x8);
 		static_assert(offsetof(Data, enchantmentAmount) == 0xC);
 		static_assert(offsetof(Data, delivery) == 0x10);
-		static_assert(offsetof(Data, type) == 0x14);
+		static_assert(offsetof(Data, spellType) == 0x14);
 		static_assert(offsetof(Data, chargeTime) == 0x18);
 		static_assert(offsetof(Data, baseEnchantmentItem) == 0x20);
 		static_assert(offsetof(Data, wornRestrictions) == 0x28);

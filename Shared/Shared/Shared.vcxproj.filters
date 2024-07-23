@@ -1137,9 +1137,6 @@
     <ClInclude Include="Include\Shared\Utility\Enumeration.h">
       <Filter>Header Files\Shared\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Shared\Utility\EventSource.h">
-      <Filter>Header Files\Shared\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="Include\Shared\Utility\Log.h">
       <Filter>Header Files\Shared\Utility</Filter>
     </ClInclude>
@@ -1805,6 +1802,9 @@
     </ClInclude>
     <ClInclude Include="Include\Shared\Skyrim\F\FixedStrings.h">
       <Filter>Header Files\Shared\Skyrim\F</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Shared\Utility\Event.h">
+      <Filter>Header Files\Shared\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

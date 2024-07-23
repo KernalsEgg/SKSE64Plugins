@@ -28,22 +28,22 @@ namespace Skyrim
 		public BGSPreloadable // 48
 	{
 	public:
-		enum class Flags : std::uint8_t
-		{
-			kNone                    = 0,
-			kSeverable               = 1U << 0,
-			kIKData                  = 1U << 1,
-			kIKDataBipedData         = 1U << 2,
-			kExplodable              = 1U << 3,
-			kIKDataIsHead            = 1U << 4,
-			kIKDataHeadTracking      = 1U << 5,
-			kExplosionChanceAbsolute = 1U << 6
-		};
-		static_assert(sizeof(Flags) == 0x1);
-
 		struct BodyPart
 		{
 		public:
+			enum class Flags : std::uint8_t
+			{
+				kNone                    = 0,
+				kSeverable               = 1U << 0,
+				kIKData                  = 1U << 1,
+				kIKDataBipedData         = 1U << 2,
+				kExplodable              = 1U << 3,
+				kIKDataIsHead            = 1U << 4,
+				kIKDataHeadTracking      = 1U << 5,
+				kExplosionChanceAbsolute = 1U << 6
+			};
+			static_assert(sizeof(Flags) == 0x1);
+
 			// Member variables
 			BSFixedString                                    partNode;                       // 0
 			BSFixedString                                    vatsTarget;                     // 8
@@ -54,7 +54,7 @@ namespace Skyrim
 			TESModelPSA                                      poseMatching;                   // 50
 			float                                            damageMultiplier;               // 78
 			Utility::Enumeration<Flags, std::uint8_t>        bodyPartFlags;                  // 7C
-			Utility::Enumeration<BodyPartType, std::uint8_t> partType;                       // 7D
+			Utility::Enumeration<BodyPartType, std::uint8_t> bodyPartType;                   // 7D
 			std::uint8_t                                     healthPercentage;               // 7E
 			Utility::Enumeration<ActorValue, std::uint8_t>   actorValue;                     // 7F
 			std::uint8_t                                     toHitChance;                    // 80
@@ -92,7 +92,7 @@ namespace Skyrim
 		static_assert(offsetof(BodyPart, poseMatching) == 0x50);
 		static_assert(offsetof(BodyPart, damageMultiplier) == 0x78);
 		static_assert(offsetof(BodyPart, bodyPartFlags) == 0x7C);
-		static_assert(offsetof(BodyPart, partType) == 0x7D);
+		static_assert(offsetof(BodyPart, bodyPartType) == 0x7D);
 		static_assert(offsetof(BodyPart, healthPercentage) == 0x7E);
 		static_assert(offsetof(BodyPart, actorValue) == 0x7F);
 		static_assert(offsetof(BodyPart, toHitChance) == 0x80);

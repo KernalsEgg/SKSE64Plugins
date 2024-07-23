@@ -24,18 +24,18 @@ namespace Skyrim
 		return middleHighProcessData ? middleHighProcessData->characterController.get() : nullptr;
 	}
 
-	ActorHandle AIProcess::GetCommandingActor() const
+	ActorHandle AIProcess::GetCommandingActorHandle() const
 	{
 		auto* middleHighProcessData = this->middleHighProcessData;
 
-		return middleHighProcessData ? middleHighProcessData->commandingActor : ActorHandle{};
+		return middleHighProcessData ? middleHighProcessData->commandingActorHandle : ActorHandle{};
 	}
 
-	ObjectReferenceHandle AIProcess::GetCurrentFurniture() const
+	ObjectReferenceHandle AIProcess::GetCurrentFurnitureHandle() const
 	{
 		auto* middleHighProcessData = this->middleHighProcessData;
 
-		return middleHighProcessData ? middleHighProcessData->currentFurniture : ObjectReferenceHandle{};
+		return middleHighProcessData ? middleHighProcessData->currentFurnitureHandle : ObjectReferenceHandle{};
 	}
 
 	InventoryEntryData* AIProcess::GetLeftHandInventoryEntryData() const

@@ -218,7 +218,7 @@ namespace Skyrim
 		float                                               stagger;                      // 188, Game Data
 		Utility::Enumeration<OnHit, std::uint32_t>          onHit;                        // 18C, Game Data
 		Utility::Enumeration<ActorValue, std::uint32_t>     skill;                        // 190
-		Utility::Enumeration<ActorValue, std::uint32_t>     resistance;                   // 194, Game Data
+		Utility::Enumeration<ActorValue, std::uint32_t>     resistanceActorValue;         // 194, Game Data
 		Utility::Enumeration<Flags2, std::uint16_t>         weaponFlags2;                 // 198
 		std::uint8_t                                        baseVATSToHitChance;          // 19A, Game Data
 		Utility::Enumeration<AttackAnimation, std::uint8_t> attackAnimation;              // 19B, Art and Sound, Animation
@@ -257,7 +257,7 @@ namespace Skyrim
 	static_assert(offsetof(TESObjectWEAP, stagger) == 0x188);
 	static_assert(offsetof(TESObjectWEAP, onHit) == 0x18C);
 	static_assert(offsetof(TESObjectWEAP, skill) == 0x190);
-	static_assert(offsetof(TESObjectWEAP, resistance) == 0x194);
+	static_assert(offsetof(TESObjectWEAP, resistanceActorValue) == 0x194);
 	static_assert(offsetof(TESObjectWEAP, weaponFlags2) == 0x198);
 	static_assert(offsetof(TESObjectWEAP, baseVATSToHitChance) == 0x19A);
 	static_assert(offsetof(TESObjectWEAP, attackAnimation) == 0x19B);

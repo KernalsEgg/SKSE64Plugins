@@ -16,12 +16,12 @@ namespace Skyrim
 		return *singleton;
 	}
 
-	void BGSCreatedObjectManager::DecrementReference(AlchemyItem* potion)
+	void BGSCreatedObjectManager::DecrementReference(AlchemyItem* alchemyItem)
 	{
 		auto* function{ reinterpret_cast<
 			Utility::TypeTraits::MakeFunctionPointer<decltype(&BGSCreatedObjectManager::DecrementReference)>::type>(
 			Addresses::BGSCreatedObjectManager::DecrementReference()) };
 
-		function(this, potion);
+		function(this, alchemyItem);
 	}
 }

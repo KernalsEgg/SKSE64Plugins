@@ -15,7 +15,7 @@
 #include "Shared/Skyrim/A/ActorValueOwner.h"
 #include "Shared/Skyrim/A/AIProcess.h"
 #include "Shared/Skyrim/A/AITimer.h"
-#include "Shared/Skyrim/A/AITimeStamp.h"
+#include "Shared/Skyrim/A/AITimestamp.h"
 #include "Shared/Skyrim/A/AlchemyItem.h"
 #include "Shared/Skyrim/A/ArrowProjectile.h"
 #include "Shared/Skyrim/A/AssociationType.h"

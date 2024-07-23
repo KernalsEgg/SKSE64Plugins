@@ -56,9 +56,9 @@ namespace BugFixesSSE::Fixes
 			conditionUpdateTime = elapsedTimeDelta;
 
 			auto* subject = activeEffect->magicTarget->GetMagicTargetAsReference();
-			auto* target  = activeEffect->caster.get().get();
+			auto  target  = activeEffect->casterHandle.get();
 
-			activeEffect->conditionStatus = activeEffect->effectItem->conditions.IsTrue(subject, target) && !activeEffect->CheckDisplacement() ?
+			activeEffect->conditionStatus = activeEffect->effectItem->conditions.IsTrue(subject, target.get()) && !activeEffect->CheckDisplacement() ?
 			                                    Skyrim::ActiveEffect::ConditionStatus::kTrue :
 			                                    Skyrim::ActiveEffect::ConditionStatus::kFalse;
 		}

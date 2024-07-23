@@ -8,8 +8,6 @@
 
 namespace Skyrim
 {
-	class ActiveEffect;
-
 	class FindMaxMagnitudeVisitor :
 		public MagicTarget::ForEachActiveEffectVisitor // 0
 	{

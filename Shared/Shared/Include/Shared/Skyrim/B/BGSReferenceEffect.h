@@ -35,13 +35,13 @@ namespace Skyrim
 		virtual void Unknown13(TESForm*) override; // 13
 
 		// Member variables
-		BGSArtObject*                              effectArt;            // 20
-		TESEffectShader*                           shader;               // 28
+		BGSArtObject*                              artObject;            // 20
+		TESEffectShader*                           effectShader;         // 28
 		Utility::Enumeration<Flags, std::uint32_t> referenceEffectFlags; // 30
 		std::uint32_t                              padding14;            // 34
 	};
-	static_assert(offsetof(BGSReferenceEffect, effectArt) == 0x20);
-	static_assert(offsetof(BGSReferenceEffect, shader) == 0x28);
+	static_assert(offsetof(BGSReferenceEffect, artObject) == 0x20);
+	static_assert(offsetof(BGSReferenceEffect, effectShader) == 0x28);
 	static_assert(offsetof(BGSReferenceEffect, referenceEffectFlags) == 0x30);
 	static_assert(sizeof(BGSReferenceEffect) == 0x38);
 }

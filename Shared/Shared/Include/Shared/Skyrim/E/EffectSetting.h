@@ -89,8 +89,8 @@ namespace Skyrim
 		TESObjectLIGH*                                                     castingLight;                // 88
 		float                                                              taperWeight;                 // 90
 		std::uint32_t                                                      padding94;                   // 94
-		TESEffectShader*                                                   hitShader;                   // 98
-		TESEffectShader*                                                   enchantShader;               // A0
+		TESEffectShader*                                                   hitEffectShader;             // 98
+		TESEffectShader*                                                   enchantEffectShader;         // A0
 		std::uint32_t                                                      minimumSkillLevel;           // A8
 		std::uint32_t                                                      spellmakingArea;             // AC
 		float                                                              spellmakingCastingTime;      // B0
@@ -105,17 +105,17 @@ namespace Skyrim
 		Utility::Enumeration<MagicSystem::Delivery, std::uint32_t>         delivery;                    // DC
 		Utility::Enumeration<ActorValue, std::uint32_t>                    secondaryActorValue;         // E0
 		std::uint32_t                                                      unknownE4;                   // E4
-		BGSArtObject*                                                      castingArt;                  // E8
-		BGSArtObject*                                                      hitEffectArt;                // F0
+		BGSArtObject*                                                      castingArtObject;            // E8
+		BGSArtObject*                                                      hitEffectArtObject;          // F0
 		BGSImpactDataSet*                                                  impactDataSet;               // F8
 		float                                                              skillUsageMultiplier;        // 100
 		std::uint32_t                                                      padding104;                  // 104
 		std::uint64_t                                                      unknown108;                  // 108
 		float                                                              dualCastingScale;            // 110
 		std::uint32_t                                                      padding114;                  // 114
-		BGSArtObject*                                                      enchantArt;                  // 118
-		BGSReferenceEffect*                                                hitVisualEffects;            // 120
-		BGSReferenceEffect*                                                enchantVisualEffects;        // 128
+		BGSArtObject*                                                      enchantArtObject;            // 118
+		BGSReferenceEffect*                                                hitReferenceEffect;          // 120
+		BGSReferenceEffect*                                                enchantReferenceEffect;      // 128
 		SpellItem*                                                         equipAbility;                // 130
 		TESImageSpaceModifier*                                             imageSpaceModifier;          // 138
 		BGSPerk*                                                           perkToApply;                 // 140
@@ -123,7 +123,7 @@ namespace Skyrim
 		float                                                              scriptEffectAIDataScore;     // 14C
 		float                                                              scriptEffectAIDataDelayTime; // 150
 		std::uint32_t                                                      padding154;                  // 154
-		BSSimpleList<EffectSetting*>                                       counterEffects;              // 158
+		BSSimpleList<EffectSetting*>                                       counterEffectSettings;       // 158
 		std::uint64_t                                                      unknown168;                  // 168
 		std::uint64_t                                                      unknown170;                  // 170
 		std::uint64_t                                                      unknown178;                  // 178
@@ -137,8 +137,8 @@ namespace Skyrim
 	static_assert(offsetof(EffectSetting, resistanceActorValue) == 0x7C);
 	static_assert(offsetof(EffectSetting, castingLight) == 0x88);
 	static_assert(offsetof(EffectSetting, taperWeight) == 0x90);
-	static_assert(offsetof(EffectSetting, hitShader) == 0x98);
-	static_assert(offsetof(EffectSetting, enchantShader) == 0xA0);
+	static_assert(offsetof(EffectSetting, hitEffectShader) == 0x98);
+	static_assert(offsetof(EffectSetting, enchantEffectShader) == 0xA0);
 	static_assert(offsetof(EffectSetting, minimumSkillLevel) == 0xA8);
 	static_assert(offsetof(EffectSetting, spellmakingArea) == 0xAC);
 	static_assert(offsetof(EffectSetting, spellmakingCastingTime) == 0xB0);
@@ -152,21 +152,21 @@ namespace Skyrim
 	static_assert(offsetof(EffectSetting, castingType) == 0xD8);
 	static_assert(offsetof(EffectSetting, delivery) == 0xDC);
 	static_assert(offsetof(EffectSetting, secondaryActorValue) == 0xE0);
-	static_assert(offsetof(EffectSetting, castingArt) == 0xE8);
-	static_assert(offsetof(EffectSetting, hitEffectArt) == 0xF0);
+	static_assert(offsetof(EffectSetting, castingArtObject) == 0xE8);
+	static_assert(offsetof(EffectSetting, hitEffectArtObject) == 0xF0);
 	static_assert(offsetof(EffectSetting, impactDataSet) == 0xF8);
 	static_assert(offsetof(EffectSetting, skillUsageMultiplier) == 0x100);
 	static_assert(offsetof(EffectSetting, dualCastingScale) == 0x110);
-	static_assert(offsetof(EffectSetting, enchantArt) == 0x118);
-	static_assert(offsetof(EffectSetting, hitVisualEffects) == 0x120);
-	static_assert(offsetof(EffectSetting, enchantVisualEffects) == 0x128);
+	static_assert(offsetof(EffectSetting, enchantArtObject) == 0x118);
+	static_assert(offsetof(EffectSetting, hitReferenceEffect) == 0x120);
+	static_assert(offsetof(EffectSetting, enchantReferenceEffect) == 0x128);
 	static_assert(offsetof(EffectSetting, equipAbility) == 0x130);
 	static_assert(offsetof(EffectSetting, imageSpaceModifier) == 0x138);
 	static_assert(offsetof(EffectSetting, perkToApply) == 0x140);
 	static_assert(offsetof(EffectSetting, castingSoundLevel) == 0x148);
 	static_assert(offsetof(EffectSetting, scriptEffectAIDataScore) == 0x14C);
 	static_assert(offsetof(EffectSetting, scriptEffectAIDataDelayTime) == 0x150);
-	static_assert(offsetof(EffectSetting, counterEffects) == 0x158);
+	static_assert(offsetof(EffectSetting, counterEffectSettings) == 0x158);
 	static_assert(offsetof(EffectSetting, magicItemDescription) == 0x180);
 	static_assert(offsetof(EffectSetting, conditions) == 0x190);
 	static_assert(sizeof(EffectSetting) == 0x198);

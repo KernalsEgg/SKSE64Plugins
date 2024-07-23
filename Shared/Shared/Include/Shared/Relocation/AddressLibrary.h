@@ -15,6 +15,8 @@ namespace Relocation
 	class AddressLibrary
 	{
 	private:
+		static constexpr std::size_t FILE_MAPPING_VERSION{ 1 };
+
 		enum class Format : std::int32_t
 		{
 			kSpecialEdition     = 1,

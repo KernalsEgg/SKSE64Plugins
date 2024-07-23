@@ -16,16 +16,16 @@ namespace ConditionsTargetMagicEffects::Events
 			reinterpret_cast<std::uintptr_t>(std::addressof(BGSEntryPoint::HandleEntryPoint)));
 	}
 
-	/* Dynamically allocate memory on the heap using std::vector instead of statically allocating memory on the stack using arrays so that any number of arguments can be sent */
+	/* Dynamically allocate memory on the heap using vectors instead of statically allocating memory on the stack using arrays so that any number of arguments can be sent */
 	void BGSEntryPoint::HandleEntryPoint(Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint, Skyrim::Actor* perkOwner, ...)
 	{
 		if (entryPoint.underlying() < Utility::Conversion::ToUnderlying(Skyrim::BGSEntryPoint::EntryPoint::kTotal))
 		{
 			if (perkOwner && perkOwner->HasPerkEntries(entryPoint.get()))
 			{
-				auto conditionFilterArgumentCount        = Skyrim::BGSEntryPoint::GetEntryPoint(entryPoint.get())->conditionFilterArgumentCount;
-				auto entryPointFunctionType              = Skyrim::BGSEntryPoint::GetEntryPoint(entryPoint.get())->entryPointFunctionType;
-				auto entryPointFunctionTypeArgumentCount = Skyrim::BGSEntryPointFunction::GetEntryPointFunctionTypeArgumentCount(entryPointFunctionType.get());
+				auto conditionFilterArgumentCount    = Skyrim::BGSEntryPoint::GetEntryPoint(entryPoint)->conditionFilterArgumentCount;
+				auto entryPointFunctionType          = Skyrim::BGSEntryPoint::GetEntryPoint(entryPoint)->entryPointFunctionType;
+				auto entryPointFunctionArgumentCount = Skyrim::BGSEntryPointFunction::GetEntryPointFunctionArgumentCount(entryPointFunctionType.get());
 
 				std::va_list variadicArguments;
 				va_start(variadicArguments, perkOwner);
@@ -40,30 +40,24 @@ namespace ConditionsTargetMagicEffects::Events
 					conditionFilterArguments.push_back(va_arg(variadicArguments, Skyrim::TESForm*));
 				}
 
-				std::vector<void*> entryPointFunctionTypeArguments;
+				std::vector<void*> entryPointFunctionArguments;
 
-				for (std::size_t entryPointFunctionTypeArgumentIndex = 0;
-					 entryPointFunctionTypeArgumentIndex < entryPointFunctionTypeArgumentCount;
-					 ++entryPointFunctionTypeArgumentIndex)
+				for (std::size_t entryPointFunctionArgumentIndex = 0;
+					 entryPointFunctionArgumentIndex < entryPointFunctionArgumentCount;
+					 ++entryPointFunctionArgumentIndex)
 				{
-					entryPointFunctionTypeArguments.push_back(va_arg(variadicArguments, void*));
+					entryPointFunctionArguments.push_back(va_arg(variadicArguments, void*));
 				}
 
-				if (std::none_of(
-						entryPointFunctionTypeArguments.begin(),
-						entryPointFunctionTypeArguments.end(),
-						[](void* entryPointFunctionTypeArgument) -> bool
-						{
-							return !entryPointFunctionTypeArgument;
-						}))
+				if (std::none_of(entryPointFunctionArguments.begin(), entryPointFunctionArguments.end(), std::logical_not{}))
 				{
 					Skyrim::HandleEntryPointVisitor handleEntryPointVisitor(
 						entryPointFunctionType.get(),
 						conditionFilterArguments.empty() ? nullptr : conditionFilterArguments.data(),
-						entryPointFunctionTypeArguments.empty() ? nullptr : entryPointFunctionTypeArguments.data(),
+						entryPointFunctionArguments.empty() ? nullptr : entryPointFunctionArguments.data(),
 						perkOwner,
-						conditionFilterArgumentCount,
-						entryPointFunctionTypeArgumentCount);
+						static_cast<std::uint8_t>(conditionFilterArguments.size()),
+						static_cast<std::uint8_t>(entryPointFunctionArguments.size()));
 
 					perkOwner->ForEachPerkEntry(entryPoint.get(), handleEntryPointVisitor);
 				}
@@ -72,7 +66,7 @@ namespace ConditionsTargetMagicEffects::Events
 					auto effectSettingCount = std::count_if(
 						conditionFilterArguments.begin(),
 						conditionFilterArguments.end(),
-						[](Skyrim::TESForm* form)
+						[](auto* form) -> bool
 						{
 							return form && form->formType == Skyrim::FormType::kMagicEffect;
 						});
@@ -84,30 +78,24 @@ namespace ConditionsTargetMagicEffects::Events
 						conditionFilterArguments.push_back(va_arg(variadicArguments, Skyrim::TESForm*));
 					}
 
-					entryPointFunctionTypeArguments.clear();
+					entryPointFunctionArguments.clear();
 
-					for (std::size_t entryPointFunctionTypeArgumentIndex = 0;
-						 entryPointFunctionTypeArgumentIndex < entryPointFunctionTypeArgumentCount;
-						 ++entryPointFunctionTypeArgumentIndex)
+					for (std::size_t entryPointFunctionArgumentIndex = 0;
+						 entryPointFunctionArgumentIndex < entryPointFunctionArgumentCount;
+						 ++entryPointFunctionArgumentIndex)
 					{
-						entryPointFunctionTypeArguments.push_back(va_arg(variadicArguments, void*));
+						entryPointFunctionArguments.push_back(va_arg(variadicArguments, void*));
 					}
 
-					if (std::none_of(
-							entryPointFunctionTypeArguments.begin(),
-							entryPointFunctionTypeArguments.end(),
-							[](void* entryPointFunctionTypeArgument) -> bool
-							{
-								return !entryPointFunctionTypeArgument;
-							}))
+					if (std::none_of(entryPointFunctionArguments.begin(), entryPointFunctionArguments.end(), std::logical_not{}))
 					{
 						Skyrim::HandleEntryPointVisitor handleEntryPointVisitor(
 							entryPointFunctionType.get(),
 							conditionFilterArguments.empty() ? nullptr : conditionFilterArguments.data(),
-							entryPointFunctionTypeArguments.empty() ? nullptr : entryPointFunctionTypeArguments.data(),
+							entryPointFunctionArguments.empty() ? nullptr : entryPointFunctionArguments.data(),
 							perkOwner,
-							conditionFilterArgumentCount,
-							entryPointFunctionTypeArgumentCount);
+							static_cast<std::uint8_t>(conditionFilterArguments.size()),
+							static_cast<std::uint8_t>(entryPointFunctionArguments.size()));
 
 						perkOwner->ForEachPerkEntry(entryPoint.get(), handleEntryPointVisitor);
 					}

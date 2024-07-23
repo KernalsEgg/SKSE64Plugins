@@ -2,7 +2,6 @@
 
 #include <cstdint>    // Fixed width integer types
 #include <filesystem> // Filesystem library
-#include <memory>     // std::make_shared
 #include <utility>    // std::move
 
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_INFO

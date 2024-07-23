@@ -24,12 +24,12 @@ namespace Skyrim
 		return *singleton;
 	}
 
-	void UIMessageQueue::AddMessage(const BSFixedString& menuName, Utility::Enumeration<UIMessage::Type, std::uint32_t> type, IUIMessageData* data)
+	void UIMessageQueue::AddMessage(const BSFixedString& menuName, Utility::Enumeration<UIMessageType, std::uint32_t> messageType, IUIMessageData* messageData)
 	{
 		auto* function{ reinterpret_cast<
 			Utility::TypeTraits::MakeFunctionPointer<decltype(&UIMessageQueue::AddMessage)>::type>(
 			Addresses::UIMessageQueue::AddMessage()) };
 
-		function(this, menuName, type, data);
+		function(this, menuName, messageType, messageData);
 	}
 }

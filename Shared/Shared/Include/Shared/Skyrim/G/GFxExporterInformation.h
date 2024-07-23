@@ -21,14 +21,14 @@ namespace Skyrim
 		static_assert(sizeof(ExportFlagConstants) == 0x4);
 
 		// Member variables
-		Utility::Enumeration<GFxFileConstants::FileFormatType, std::uint32_t> format;      // 0
-		std::uint32_t                                                         padding4;    // 4
-		const char*                                                           prefix;      // 8
-		const char*                                                           swfName;     // 10
-		std::uint32_t                                                         version;     // 18
-		Utility::Enumeration<ExportFlagConstants, std::uint32_t>              exportFlags; // 1C
+		Utility::Enumeration<GFxFileConstants::FileFormatType, std::uint32_t> fileFormatType; // 0
+		std::uint32_t                                                         padding4;       // 4
+		const char*                                                           prefix;         // 8
+		const char*                                                           swfName;        // 10
+		std::uint32_t                                                         version;        // 18
+		Utility::Enumeration<ExportFlagConstants, std::uint32_t>              exportFlags;    // 1C
 	};
-	static_assert(offsetof(GFxExporterInformation, format) == 0x0);
+	static_assert(offsetof(GFxExporterInformation, fileFormatType) == 0x0);
 	static_assert(offsetof(GFxExporterInformation, prefix) == 0x8);
 	static_assert(offsetof(GFxExporterInformation, swfName) == 0x10);
 	static_assert(offsetof(GFxExporterInformation, version) == 0x18);

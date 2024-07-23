@@ -33,7 +33,7 @@ namespace ScrambledBugs::Patches
 
 		auto* characterController = actor->GetCharacterController();
 
-		if (characterController && characterController->context.currentState == Skyrim::hkpCharacterStateType::kOnGround)
+		if (characterController && characterController->characterContext.currentCharacterStateType == Skyrim::hkpCharacterStateType::kOnGround)
 		{
 			const auto& surfaceInformation = characterController->surfaceInformation;
 

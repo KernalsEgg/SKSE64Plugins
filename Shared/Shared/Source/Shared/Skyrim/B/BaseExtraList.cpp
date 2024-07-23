@@ -8,13 +8,13 @@
 
 namespace Skyrim
 {
-	bool BaseExtraList::PresenceBitField::HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const
+	bool BaseExtraList::PresenceBitField::HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const
 	{
-		std::uint32_t index = type.underlying() >> 3; // Divide by 8
+		std::uint32_t index = extraDataType.underlying() >> 3; // Divide by 8
 
 		if (index < sizeof(PresenceBitField))
 		{
-			std::uint8_t bitMask = 1 << (type.underlying() % 8);
+			std::uint8_t bitMask = 1 << (extraDataType.underlying() % 8);
 
 			return (bitMask & this->bitField_[index]) != 0;
 		}
@@ -41,21 +41,16 @@ namespace Skyrim
 		this->presenceBitField = nullptr;
 	}
 
-	bool BaseExtraList::HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const
+	BSExtraData* BaseExtraList::GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType)
 	{
-		return this->presenceBitField && this->presenceBitField->HasExtraData(type);
-	}
-
-	BSExtraData* BaseExtraList::GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type)
-	{
-		if (!this->HasExtraData(type))
+		if (!this->HasExtraData(extraDataType))
 		{
 			return nullptr;
 		}
 
 		for (auto* extraData = this->extraData; extraData; extraData = extraData->next)
 		{
-			if (extraData->GetType() == type)
+			if (extraData->GetExtraDataType() == extraDataType)
 			{
 				return extraData;
 			}
@@ -64,21 +59,26 @@ namespace Skyrim
 		return nullptr;
 	}
 
-	const BSExtraData* BaseExtraList::GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const
+	const BSExtraData* BaseExtraList::GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const
 	{
-		if (!this->HasExtraData(type))
+		if (!this->HasExtraData(extraDataType))
 		{
 			return nullptr;
 		}
 
 		for (auto* extraData = this->extraData; extraData; extraData = extraData->next)
 		{
-			if (extraData->GetType() == type)
+			if (extraData->GetExtraDataType() == extraDataType)
 			{
 				return extraData;
 			}
 		}
 
 		return nullptr;
+	}
+
+	bool BaseExtraList::HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const
+	{
+		return this->presenceBitField && this->presenceBitField->HasExtraData(extraDataType);
 	}
 }

@@ -2,11 +2,12 @@
 
 #include <algorithm>  // std::count_if, std::none_of
 #include <cmath>      // std::floor, std::round
-#include <cstdarg>    // Variadic arguments
+#include <cstdarg>    // Variadic functions
 #include <cstddef>    // std::size_t
 #include <cstdint>    // Fixed width integer types
 #include <filesystem> // Filesystem library
-#include <memory>     // std::addressof, std::make_shared
+#include <functional> // std::logical_not
+#include <memory>     // std::addressof
 #include <string>     // std::string
 #include <utility>    // std::cmp_less, std::move
 #include <vector>     // std::vector

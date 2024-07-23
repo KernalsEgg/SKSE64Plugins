@@ -49,8 +49,8 @@ namespace Skyrim
 		std::uint32_t                                     padding24;                      // 24
 		NiPointer<BGSAttackData>                          attackData;                     // 28
 		TESObjectWEAP*                                    weapon;                         // 30
-		SpellItem*                                        criticalEffect;                 // 38
-		SpellItem*                                        attackSpellItem;                // 40
+		SpellItem*                                        criticalEffect;                 // 38, TESObjectWEAP
+		SpellItem*                                        attackSpellItem;                // 40, BGSAttackData
 		VATSCommand*                                      vatsCommand;                    // 48
 		float                                             damageAfterResistances;         // 50
 		float                                             damageBeforeResistances;        // 54
@@ -66,7 +66,7 @@ namespace Skyrim
 		std::uint32_t                                     unknown7C;                      // 7C
 		Utility::Enumeration<Flags, std::uint32_t>        hitDataFlags;                   // 80
 		std::uint32_t                                     unknown84;                      // 84
-		Utility::Enumeration<ActorValue, std::uint32_t>   skill;                          // 88
+		Utility::Enumeration<ActorValue, std::uint32_t>   skill;                          // 88, TESObjectWEAP
 		Utility::Enumeration<BodyPartType, std::uint32_t> targetBodyPartType;             // 8C
 	};
 	static_assert(offsetof(HitData, position) == 0x0);

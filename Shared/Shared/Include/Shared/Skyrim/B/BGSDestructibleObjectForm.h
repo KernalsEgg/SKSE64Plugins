@@ -38,7 +38,7 @@ namespace Skyrim
 		BGSDebris*                                debris;                       // 10
 		std::uint32_t                             debrisCount;                  // 18
 		std::uint32_t                             padding1C;                    // 1C
-		TESModelTextureSwap*                      replacementModel;             // 20
+		TESModelTextureSwap*                      replacementModelTextureSwap;  // 20
 	};
 	static_assert(offsetof(DestructibleObjectStage, modelDamageStage) == 0x0);
 	static_assert(offsetof(DestructibleObjectStage, healthPercentage) == 0x1);
@@ -47,7 +47,7 @@ namespace Skyrim
 	static_assert(offsetof(DestructibleObjectStage, explosion) == 0x8);
 	static_assert(offsetof(DestructibleObjectStage, debris) == 0x10);
 	static_assert(offsetof(DestructibleObjectStage, debrisCount) == 0x18);
-	static_assert(offsetof(DestructibleObjectStage, replacementModel) == 0x20);
+	static_assert(offsetof(DestructibleObjectStage, replacementModelTextureSwap) == 0x20);
 	static_assert(sizeof(DestructibleObjectStage) == 0x28);
 
 	struct DestructibleObjectData

@@ -8,8 +8,8 @@
 
 namespace Skyrim
 {
-	GMemoryHeap::HeapDescriptor::HeapDescriptor(Utility::Enumeration<HeapFlags, std::uint32_t> heapDescriptorFlags, UPInt minimumAlignment, UPInt granularity, UPInt reserve, UPInt threshold, UPInt limit, Utility::Enumeration<GHeapID, UPInt> heapID, UPInt arena) :
-		heapDescriptorFlags(heapDescriptorFlags),
+	GMemoryHeap::HeapDescriptor::HeapDescriptor(Utility::Enumeration<HeapFlags, std::uint32_t> heapFlags, UPInt minimumAlignment, UPInt granularity, UPInt reserve, UPInt threshold, UPInt limit, Utility::Enumeration<GHeapID, UPInt> heapID, UPInt arena) :
+		heapFlags(heapFlags),
 		minimumAlignment(minimumAlignment),
 		granularity(granularity),
 		reserve(reserve),
@@ -22,14 +22,14 @@ namespace Skyrim
 
 	void GMemoryHeap::HeapDescriptor::Clear()
 	{
-		this->heapDescriptorFlags = HeapFlags::kNone;
-		this->minimumAlignment    = 16;
-		this->granularity         = 0;
-		this->reserve             = 0;
-		this->threshold           = UPINT_MAXIMUM;
-		this->limit               = 0;
-		this->heapID              = GHeapID::kReserved;
-		this->arena               = 0;
+		this->heapFlags        = HeapFlags::kNone;
+		this->minimumAlignment = 16;
+		this->granularity      = 0;
+		this->reserve          = 0;
+		this->threshold        = UPINT_MAXIMUM;
+		this->limit            = 0;
+		this->heapID           = GHeapID::kReserved;
+		this->arena            = 0;
 	}
 
 	GMemoryHeap::RootHeapDescriptor::RootHeapDescriptor() :

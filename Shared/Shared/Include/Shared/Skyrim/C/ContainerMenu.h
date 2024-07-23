@@ -51,7 +51,7 @@ namespace Skyrim
 		std::uint32_t   paddingA4;             // A4
 		std::uint64_t   unknownA8;             // A8
 		std::uint64_t   unknownB0;             // B0
-		std::uint8_t    unknownB8;             // B8
+		bool            chestLooted;           // B8
 		bool            pcControlsReady;       // B9
 		std::uint16_t   unknownBA;             // BA
 		std::uint32_t   unknownBC;             // BC
@@ -63,6 +63,7 @@ namespace Skyrim
 	static_assert(offsetof(ContainerMenu, selectedBoundObject) == 0x90);
 	static_assert(offsetof(ContainerMenu, selectedExtraDataList) == 0x98);
 	static_assert(offsetof(ContainerMenu, selectedFilterFlag) == 0xA0);
+	static_assert(offsetof(ContainerMenu, chestLooted) == 0xB8);
 	static_assert(offsetof(ContainerMenu, pcControlsReady) == 0xB9);
 	static_assert(sizeof(ContainerMenu) == 0xC0);
 }

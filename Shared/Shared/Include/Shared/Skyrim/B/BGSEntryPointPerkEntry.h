@@ -11,7 +11,6 @@
 
 namespace Skyrim
 {
-	class BGSEntryPointFunctionData;
 	class BGSPerk;
 	class TESCondition;
 
@@ -24,9 +23,9 @@ namespace Skyrim
 
 		// Override (BGSPerkEntry)
 		virtual bool                                      CheckConditionFilters(std::uint32_t argumentCount, TESForm** arguments) const override; // 0
-		virtual BGSEntryPointFunction::EntryPointFunction GetFunction() const override;                                                           // 1
-		virtual BGSEntryPointFunctionData*                GetFunctionData() const override;                                                       // 2
-		virtual PerkEntryType                             GetType() const override;                                                               // 4
+		virtual BGSEntryPointFunction::EntryPointFunction GetEntryPointFunction() const override;                                                 // 1
+		virtual BGSEntryPointFunctionData*                GetEntryPointFunctionData() const override;                                             // 2
+		virtual PerkEntryType                             GetPerkEntryType() const override;                                                      // 4
 		virtual void                                      Unknown5(BGSPerkEntry*) override;                                                       // 5
 		virtual void                                      Unknown6(BGSPerkEntry*) override;                                                       // 6
 		virtual void                                      Unknown7(BGSPerkEntry*) override;                                                       // 7

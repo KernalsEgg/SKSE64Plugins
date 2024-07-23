@@ -15,7 +15,6 @@ namespace ConditionsTargetMagicEffects::Events
 		static bool CheckConditionFilters(Skyrim::BGSEntryPointPerkEntry* entryPointPerkEntry, std::uint32_t argumentCount, Skyrim::TESForm** arguments);
 
 		static Skyrim::NiPointer<Skyrim::TESObjectREFR>  CreateTemporaryConditionReference();
-		static Skyrim::BSSpinLock&                       GetConditionLock();
 		static Skyrim::NiPointer<Skyrim::TESObjectREFR>& GetTemporaryConditionSubjectReference();
 		static Skyrim::NiPointer<Skyrim::TESObjectREFR>& GetTemporaryConditionTargetReference();
 	};

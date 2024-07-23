@@ -108,20 +108,20 @@ namespace Skyrim
 		void         SetLockList(TESForm* lockList);
 		bool         Stackable(bool worn) const;
 
-		BSExtraData*       GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type);
-		const BSExtraData* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const;
-		bool               HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const;
+		BSExtraData*       GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType);
+		const BSExtraData* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
+		bool               HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
 
 		template <class T>
-		T* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type)
+		T* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType)
 		{
-			return static_cast<T*>(this->GetExtraData(type));
+			return static_cast<T*>(this->GetExtraData(extraDataType));
 		}
 
 		template <class T>
-		const T* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const
+		const T* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const
 		{
-			return static_cast<const T*>(this->GetExtraData(type));
+			return static_cast<const T*>(this->GetExtraData(extraDataType));
 		}
 
 	private:

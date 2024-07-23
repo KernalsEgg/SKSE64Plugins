@@ -23,11 +23,11 @@ namespace ScrambledBugs::Fixes
 			return;
 		}
 
-		auto* player = Skyrim::PlayerCharacter::GetSingleton();
+		auto* playerCharacter = Skyrim::PlayerCharacter::GetSingleton();
 
-		if (actor == player)
+		if (actor == playerCharacter)
 		{
-			player->ResetInsufficientChargeMessage(leftHand);
+			playerCharacter->ResetInsufficientChargeMessage(leftHand);
 		}
 
 		auto* enchantmentItem = boundObject->GetEnchantmentItem(extraDataList);

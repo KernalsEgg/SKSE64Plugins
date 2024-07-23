@@ -3,7 +3,7 @@
 #include <cstdint>    // Fixed width integer types
 #include <filesystem> // Filesystem library
 #include <fstream>    // std::ifstream
-#include <memory>     // std::addressof, std::make_shared
+#include <memory>     // std::addressof
 #include <optional>   // std::optional
 #include <utility>    // std::move
 

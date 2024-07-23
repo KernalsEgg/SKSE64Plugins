@@ -38,17 +38,17 @@ namespace Skyrim
 		virtual ~hkpCollisionFilter() override; // 0
 
 		// Override (hkpShapeCollectionFilter)
-		virtual std::int32_t NumberShapeKeyHitsLimitBreached(const hkpCollisionInput& input, const hkpCdBody& bodyA, const hkpCdBody& bodyB, const hkpBvTreeShape* bvTreeShapeB, hkAabb& aabb, hkpShapeKey* shapeKeysInOut, std::int32_t shapeKeysCapacity) const override; // 2
+		virtual std::int32_t NumberShapeKeyHitsLimitBreached(const hkpCollisionInput& input, const hkpCdBody& collisionDetectionBodyA, const hkpCdBody& collisionDetectionBodyB, const hkpBvTreeShape* boundingVolumeTreeShapeB, hkAabb& axisAlignedBoundingBox, hkpShapeKey* shapeKeysInputOutput, std::int32_t shapeKeysCapacity) const override; // 2
 
 		// Add
 		virtual void Initialize(hkpWorld* world); // 3
 
 		// Member variables
-		std::uint64_t                               padding30; // 30
-		hkEnumeration<hkpFilterType, std::uint32_t> type;      // 38
-		std::uint32_t                               padding3C; // 3C
-		std::uint64_t                               padding40; // 40
+		std::uint64_t                               padding30;  // 30
+		hkEnumeration<hkpFilterType, std::uint32_t> filterType; // 38
+		std::uint32_t                               padding3C;  // 3C
+		std::uint64_t                               padding40;  // 40
 	};
-	static_assert(offsetof(hkpCollisionFilter, type) == 0x38);
+	static_assert(offsetof(hkpCollisionFilter, filterType) == 0x38);
 	static_assert(sizeof(hkpCollisionFilter) == 0x48);
 }

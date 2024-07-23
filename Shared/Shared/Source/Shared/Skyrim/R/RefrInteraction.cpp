@@ -18,11 +18,11 @@ namespace Skyrim
 
 	bool RefrInteraction::GetTargetActor(NiPointer<Actor>& targetActor) const
 	{
-		auto target = this->targetHandle.get();
+		auto temporary = this->targetHandle.get();
 
-		if (target && target->formType == FormType::kActor)
+		if (temporary && temporary->formType == FormType::kActor)
 		{
-			targetActor.reset(static_cast<Actor*>(target.get()));
+			targetActor.reset(static_cast<Actor*>(temporary.get()));
 		}
 		else
 		{

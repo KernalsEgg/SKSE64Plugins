@@ -70,30 +70,30 @@ namespace Skyrim
 		{
 		public:
 			HeapDescriptor(
-				Utility::Enumeration<HeapFlags, std::uint32_t> heapDescriptorFlags = HeapFlags::kNone,
-				UPInt                                          minimumAlignment    = 16,
-				UPInt                                          granularity         = 8 * 1024,
-				UPInt                                          reserve             = 8 * 1024,
-				UPInt                                          threshold           = UPINT_MAXIMUM,
-				UPInt                                          limit               = 0,
-				Utility::Enumeration<GHeapID, UPInt>           heapID              = GHeapID::kReserved,
-				UPInt                                          arena               = 0);
+				Utility::Enumeration<HeapFlags, std::uint32_t> heapFlags        = HeapFlags::kNone,
+				UPInt                                          minimumAlignment = 16,
+				UPInt                                          granularity      = 8 * 1024,
+				UPInt                                          reserve          = 8 * 1024,
+				UPInt                                          threshold        = UPINT_MAXIMUM,
+				UPInt                                          limit            = 0,
+				Utility::Enumeration<GHeapID, UPInt>           heapID           = GHeapID::kReserved,
+				UPInt                                          arena            = 0);
 
 			// Member functions
 			void Clear();
 
 			// Member variables
-			Utility::Enumeration<HeapFlags, std::uint32_t> heapDescriptorFlags; // 0
-			std::uint32_t                                  padding4;            // 4
-			UPInt                                          minimumAlignment;    // 8
-			UPInt                                          granularity;         // 10
-			UPInt                                          reserve;             // 18
-			UPInt                                          threshold;           // 20
-			UPInt                                          limit;               // 28
-			Utility::Enumeration<GHeapID, UPInt>           heapID;              // 30
-			UPInt                                          arena;               // 38
+			Utility::Enumeration<HeapFlags, std::uint32_t> heapFlags;        // 0
+			std::uint32_t                                  padding4;         // 4
+			UPInt                                          minimumAlignment; // 8
+			UPInt                                          granularity;      // 10
+			UPInt                                          reserve;          // 18
+			UPInt                                          threshold;        // 20
+			UPInt                                          limit;            // 28
+			Utility::Enumeration<GHeapID, UPInt>           heapID;           // 30
+			UPInt                                          arena;            // 38
 		};
-		static_assert(offsetof(HeapDescriptor, heapDescriptorFlags) == 0x0);
+		static_assert(offsetof(HeapDescriptor, heapFlags) == 0x0);
 		static_assert(offsetof(HeapDescriptor, minimumAlignment) == 0x8);
 		static_assert(offsetof(HeapDescriptor, granularity) == 0x10);
 		static_assert(offsetof(HeapDescriptor, reserve) == 0x18);
@@ -115,11 +115,11 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			HeapDescriptor descriptor; // 0
-			GMemoryHeap*   parent;     // 40
-			char*          name;       // 48
+			HeapDescriptor heapDescriptor; // 0
+			GMemoryHeap*   parent;         // 40
+			char*          name;           // 48
 		};
-		static_assert(offsetof(HeapInformation, descriptor) == 0x0);
+		static_assert(offsetof(HeapInformation, heapDescriptor) == 0x0);
 		static_assert(offsetof(HeapInformation, parent) == 0x40);
 		static_assert(offsetof(HeapInformation, name) == 0x48);
 		static_assert(sizeof(HeapInformation) == 0x50);
@@ -188,8 +188,8 @@ namespace Skyrim
 		virtual void         CreateArena(UPInt arena, GSysAllocPaged* systemAllocation)                  = 0; // 1
 		virtual void         DestroyArena(UPInt arena)                                                   = 0; // 2
 		virtual bool         ArenaIsEmpty(UPInt arena)                                                   = 0; // 3
-		virtual GMemoryHeap* CreateHeap(const char* name, const HeapDescriptor& descriptor)              = 0; // 4
-		virtual void         SetLimitHandler(LimitHandler* handler)                                      = 0; // 5
+		virtual GMemoryHeap* CreateHeap(const char* name, const HeapDescriptor& heapDescriptor)          = 0; // 4
+		virtual void         SetLimitHandler(LimitHandler* limitHandler)                                 = 0; // 5
 		virtual void         SetLimit(UPInt newLimit)                                                    = 0; // 6
 		virtual void         AddReference()                                                              = 0; // 7
 		virtual void         Release()                                                                   = 0; // 8
@@ -203,24 +203,24 @@ namespace Skyrim
 		virtual UPInt        GetUsableSize(const void* pointer)                                          = 0; // 10
 		virtual void*        AllocateSystemDirect(UPInt size)                                            = 0; // 11
 		virtual void         FreeSystemDirect(void* pointer, UPInt size)                                 = 0; // 12
-		virtual bool         GetStatistics(GStatisticBag* bag)                                           = 0; // 13
+		virtual bool         GetStatistics(GStatisticBag* statisticBag)                                  = 0; // 13
 		virtual UPInt        GetFootprint() const                                                        = 0; // 14
 		virtual UPInt        GetTotalFootprint() const                                                   = 0; // 15
 		virtual UPInt        GetUsedSpace() const                                                        = 0; // 16
 		virtual UPInt        GetTotalUsedSpace() const                                                   = 0; // 17
-		virtual void         GetRootStatistics(RootStatistics* statistics)                               = 0; // 18
-		virtual void         VisitMemory(GHeapMemoryVisitor* visitor, std::uint32_t flags)               = 0; // 19
-		virtual void         VisitRootSegments(GHeapSegmentVisitor* visitor)                             = 0; // 1A
-		virtual void         VisitHeapSegments(GHeapSegmentVisitor* visitor) const                       = 0; // 1B
+		virtual void         GetRootStatistics(RootStatistics* rootStatistics)                           = 0; // 18
+		virtual void         VisitMemory(GHeapMemoryVisitor* heapMemoryVisitor, std::uint32_t flags)     = 0; // 19
+		virtual void         VisitRootSegments(GHeapSegmentVisitor* heapSegmentVisitor)                  = 0; // 1A
+		virtual void         VisitHeapSegments(GHeapSegmentVisitor* heapSegmentVisitor) const            = 0; // 1B
 		virtual void         SetTracer(HeapTracer* tracer)                                               = 0; // 1C
 
 	protected:
-		virtual void DestroyItself()                                          = 0; // 1D
-		virtual void UltimateCheckImplementation()                            = 0; // 1E
-		virtual void ReleaseCachedMemoryImplementation()                      = 0; // 1F
-		virtual bool DumpMemoryLeaksImplementation()                          = 0; // 20
-		virtual void CheckIntegrityImplementation() const                     = 0; // 21
-		virtual void GetUserDebugStatistics(RootStatistics* statistics) const = 0; // 22
+		virtual void DestroyItself()                                              = 0; // 1D
+		virtual void UltimateCheckImplementation()                                = 0; // 1E
+		virtual void ReleaseCachedMemoryImplementation()                          = 0; // 1F
+		virtual bool DumpMemoryLeaksImplementation()                              = 0; // 20
+		virtual void CheckIntegrityImplementation() const                         = 0; // 21
+		virtual void GetUserDebugStatistics(RootStatistics* rootStatistics) const = 0; // 22
 
 	public:
 		// Member functions

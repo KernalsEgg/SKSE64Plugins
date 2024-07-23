@@ -14,7 +14,7 @@ namespace ActorBasePerkFix
 	private:
 		static void ApplyBasePerksActor(Skyrim::Actor* actor);
 		static void ApplyBasePerksCharacter(Skyrim::Character* character);
-		static void ApplyBasePerksPlayerCharacter(Skyrim::PlayerCharacter* player);
+		static void ApplyBasePerksPlayerCharacter(Skyrim::PlayerCharacter* playerCharacter);
 		static void QueueApplyPerk(Skyrim::TaskQueueInterface* taskQueueInterface, Skyrim::Actor* perkOwner, Skyrim::BGSPerk* perk, std::uint8_t removeRank, std::uint8_t applyRank);
 
 		static decltype(Events::ApplyBasePerksActor)*           applyBasePerksActor_;

@@ -12,7 +12,7 @@ namespace Skyrim
 	namespace Events
 	{
 		InitializeThread::InitializeThread() :
-			notify_(reinterpret_cast<decltype(InitializeThread::Notify)*>(
+			raise_(reinterpret_cast<decltype(InitializeThread::Raise)*>(
 				Utility::Memory::ReadVirtualFunction(
 					Addresses::InitTESThread::VirtualFunctionTable(),
 					0x1)))
@@ -20,7 +20,7 @@ namespace Skyrim
 			Utility::Memory::SafeWriteVirtualFunction(
 				Addresses::InitTESThread::VirtualFunctionTable(),
 				0x1,
-				reinterpret_cast<std::uintptr_t>(std::addressof(InitializeThread::Notify)));
+				reinterpret_cast<std::uintptr_t>(std::addressof(InitializeThread::Raise)));
 		}
 
 		InitializeThread& InitializeThread::GetSingleton()
@@ -30,23 +30,13 @@ namespace Skyrim
 			return singleton;
 		}
 
-		Utility::EventSource<>& InitializeThread::After()
+		void InitializeThread::Raise(InitTESThread* initializeThread)
 		{
-			return this->after_;
-		}
+			auto& singleton = InitializeThread::GetSingleton();
 
-		Utility::EventSource<>& InitializeThread::Before()
-		{
-			return this->before_;
-		}
-
-		void InitializeThread::Notify(InitTESThread* initializeThread)
-		{
-			const auto& singleton = InitializeThread::GetSingleton();
-
-			singleton.before_.Notify();
-			singleton.notify_(initializeThread);
-			singleton.after_.Notify();
+			singleton.before.Raise();
+			singleton.raise_(initializeThread);
+			singleton.after.Raise();
 		}
 	}
 }

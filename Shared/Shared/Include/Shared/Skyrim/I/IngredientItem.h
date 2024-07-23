@@ -40,11 +40,11 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			std::int32_t                               ingredientValue; // 0
-			Utility::Enumeration<Flags, std::uint32_t> ingredientFlags; // 4
+			std::int32_t                               ingredientValue;     // 0
+			Utility::Enumeration<Flags, std::uint32_t> ingredientItemFlags; // 4
 		};
 		static_assert(offsetof(Data, ingredientValue) == 0x0);
-		static_assert(offsetof(Data, ingredientFlags) == 0x4);
+		static_assert(offsetof(Data, ingredientItemFlags) == 0x4);
 		static_assert(sizeof(Data) == 0x8);
 
 		// Override

@@ -15,7 +15,6 @@
 namespace Skyrim
 {
 	class BGSSoundDescriptorForm;
-	class TESForm;
 
 	class TESObjectDOOR :
 		public TESBoundAnimObject,        // 0

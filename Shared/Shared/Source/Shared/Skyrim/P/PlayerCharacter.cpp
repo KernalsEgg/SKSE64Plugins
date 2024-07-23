@@ -25,19 +25,21 @@ namespace Skyrim
 
 	Actor* PlayerCharacter::GetActorDoingPlayerCommand() const
 	{
-		return this->actorDoingPlayerCommand.get().get();
+		return this->actorDoingPlayerCommandHandle.get().get();
 	}
 
 	bool PlayerCharacter::GetAutomaticAimActor(NiPointer<Actor>& automaticAimActor) const
 	{
-		automaticAimActor = this->automaticAimActor.get();
+		auto temporary = this->automaticAimActorHandle.get();
 
-		if (automaticAimActor && automaticAimActor->GetThirdPerson3D())
+		if (temporary && temporary->GetThirdPerson3D())
 		{
-			return static_cast<bool>(automaticAimActor);
+			automaticAimActor = temporary;
 		}
-
-		automaticAimActor.reset();
+		else
+		{
+			automaticAimActor.reset();
+		}
 
 		return static_cast<bool>(automaticAimActor);
 	}

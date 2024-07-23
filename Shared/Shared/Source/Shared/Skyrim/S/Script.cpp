@@ -14,13 +14,13 @@ namespace Skyrim
 		function();
 	}
 
-	void Script::CompileAndRun(ScriptCompiler* scriptCompiler, Utility::Enumeration<CompilerName, std::uint32_t> type, TESObjectREFR* target)
+	void Script::CompileAndRun(ScriptCompiler* scriptCompiler, Utility::Enumeration<CompilerName, std::uint32_t> compilerName, TESObjectREFR* target)
 	{
 		auto* function{ reinterpret_cast<
 			Utility::TypeTraits::MakeFunctionPointer<decltype(&Script::CompileAndRun)>::type>(
 			Addresses::Script::CompileAndRun()) };
 
-		function(this, scriptCompiler, type, target);
+		function(this, scriptCompiler, compilerName, target);
 	}
 
 	void Script::SetCommand(const char* command)

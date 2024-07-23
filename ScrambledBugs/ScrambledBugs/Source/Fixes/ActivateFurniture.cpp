@@ -30,9 +30,9 @@ namespace ScrambledBugs::Fixes
 	{
 		if (activator)
 		{
-			auto* player = Skyrim::PlayerCharacter::GetSingleton();
+			auto* playerCharacter = Skyrim::PlayerCharacter::GetSingleton();
 
-			if (activator == player && player->IsOnMount())
+			if (activator == playerCharacter && playerCharacter->IsOnMount())
 			{
 				return false;
 			}

@@ -99,7 +99,7 @@ namespace Skyrim
 			double           GetZ() const;
 			double           GetZScale() const;
 
-			bool IsFlagSet(Utility::Enumeration<Flags, std::uint16_t> flag) const;
+			bool IsFlagSet(Utility::Enumeration<Flags, std::uint16_t> flags) const;
 
 			void Set(double x, double y, double rotation, double xScale, double yScale, double alpha, bool visible, double z, double xRotation, double yRotation, double zScale);
 			void SetAlpha(double alpha);
@@ -220,7 +220,7 @@ namespace Skyrim
 		GFxValue(const char* string);
 		GFxValue(const wchar_t* stringW);
 		GFxValue(std::nullptr_t);
-		GFxValue(ValueType type);
+		GFxValue(Utility::Enumeration<ValueType, std::uint32_t> valueType);
 
 		GFxValue& operator=(bool boolean);
 		GFxValue& operator=(double number);
@@ -233,7 +233,7 @@ namespace Skyrim
 		// Member functions
 		GString ToString() const;
 
-		ValueType GetType() const;
+		ValueType GetValueType() const;
 
 		bool IsArray() const;
 		bool IsBoolean() const;
@@ -295,7 +295,7 @@ namespace Skyrim
 
 	protected:
 		void AcquireManagedValue(const GFxValue& value);
-		void ChangeType(Utility::Enumeration<ValueType, std::uint32_t> type);
+		void ChangeValueType(Utility::Enumeration<ValueType, std::uint32_t> valueType);
 		bool IsManagedValue() const;
 		void ReleaseManagedValue();
 
@@ -314,7 +314,7 @@ namespace Skyrim
 
 		// Member variables
 		ObjectInterface*                               objectInterface_; // 0
-		Utility::Enumeration<ValueType, std::uint32_t> type_;            // 8
+		Utility::Enumeration<ValueType, std::uint32_t> valueType_;       // 8
 		ValueUnion                                     value_;           // 10
 	};
 	static_assert(sizeof(GFxValue) == 0x18);

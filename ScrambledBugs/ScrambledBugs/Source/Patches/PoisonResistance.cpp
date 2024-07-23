@@ -26,11 +26,11 @@ namespace ScrambledBugs::Patches
 			return 1.0F;
 		}
 
-		auto  spellType = magicItem->GetSpellType();
-		auto* potion    = spellType == Skyrim::MagicSystem::SpellType::kPotion ? static_cast<Skyrim::AlchemyItem*>(magicItem) : nullptr;
-		auto  isPoison  = potion && potion->IsPoison();
+		auto  spellType   = magicItem->GetSpellType();
+		auto* alchemyItem = spellType == Skyrim::MagicSystem::SpellType::kPotion ? static_cast<Skyrim::AlchemyItem*>(magicItem) : nullptr;
+		auto  isPoison    = alchemyItem && alchemyItem->IsPoison();
 
-		if ((potion && !isPoison && !effectItem->IsHostile()) || (spellType == Skyrim::MagicSystem::SpellType::kIngredient && magicItem->IsFood()))
+		if ((alchemyItem && !isPoison && !effectItem->IsHostile()) || (spellType == Skyrim::MagicSystem::SpellType::kIngredient && magicItem->IsFood()))
 		{
 			return 1.0F;
 		}

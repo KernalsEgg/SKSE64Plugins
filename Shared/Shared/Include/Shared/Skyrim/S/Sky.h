@@ -76,8 +76,8 @@ namespace Skyrim
 		NiPointer<NiNode>                         auroraRoot;                 // 18
 		std::uint64_t                             unknown20;                  // 20
 		std::uint64_t                             unknown28;                  // 28
-		ObjectReferenceHandle                     currentRoom;                // 30
-		ObjectReferenceHandle                     previousRoom;               // 34
+		ObjectReferenceHandle                     currentRoomHandle;          // 30
+		ObjectReferenceHandle                     previousRoomHandle;         // 34
 		std::uint64_t                             unknown38;                  // 38
 		TESClimate*                               currentClimate;             // 40
 		TESWeather*                               currentWeather;             // 48
@@ -155,8 +155,8 @@ namespace Skyrim
 	static_assert(offsetof(Sky, root) == 0x8);
 	static_assert(offsetof(Sky, moonsRoot) == 0x10);
 	static_assert(offsetof(Sky, auroraRoot) == 0x18);
-	static_assert(offsetof(Sky, currentRoom) == 0x30);
-	static_assert(offsetof(Sky, previousRoom) == 0x34);
+	static_assert(offsetof(Sky, currentRoomHandle) == 0x30);
+	static_assert(offsetof(Sky, previousRoomHandle) == 0x34);
 	static_assert(offsetof(Sky, currentClimate) == 0x40);
 	static_assert(offsetof(Sky, currentWeather) == 0x48);
 	static_assert(offsetof(Sky, previousWeather) == 0x50);

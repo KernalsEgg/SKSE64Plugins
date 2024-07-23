@@ -45,7 +45,7 @@ namespace Skyrim
 
 		if (extraInteraction)
 		{
-			referenceInteraction = extraInteraction->interaction;
+			referenceInteraction = extraInteraction->referenceInteraction;
 		}
 		else
 		{
@@ -80,7 +80,7 @@ namespace Skyrim
 	{
 		const auto* extraSoul = this->GetExtraData<ExtraSoul>(ExtraDataType::kSoul);
 
-		return extraSoul ? extraSoul->soul.get() : SoulLevel::kNone;
+		return extraSoul ? extraSoul->soulLevel.get() : SoulLevel::kNone;
 	}
 
 	bool ExtraDataList::IsLeveledBoundObject() const
@@ -113,25 +113,25 @@ namespace Skyrim
 		}
 	}
 
-	BSExtraData* ExtraDataList::GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type)
+	BSExtraData* ExtraDataList::GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType)
 	{
 		BSReadLockGuard readLockGuard(this->lock_);
 
-		return this->baseExtraList_.GetExtraData(type);
+		return this->baseExtraList_.GetExtraData(extraDataType);
 	}
 
-	const BSExtraData* ExtraDataList::GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const
+	const BSExtraData* ExtraDataList::GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const
 	{
 		BSReadLockGuard readLockGuard(this->lock_);
 
-		return this->baseExtraList_.GetExtraData(type);
+		return this->baseExtraList_.GetExtraData(extraDataType);
 	}
 
-	bool ExtraDataList::HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const
+	bool ExtraDataList::HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const
 	{
 		BSReadLockGuard readLockGuard(this->lock_);
 
-		return this->baseExtraList_.HasExtraData(type);
+		return this->baseExtraList_.HasExtraData(extraDataType);
 	}
 
 	void ExtraDataList::SetLockList(TESForm* lockList)
@@ -149,7 +149,7 @@ namespace Skyrim
 
 		for (const auto& extraData : *this)
 		{
-			switch (extraData.GetType())
+			switch (extraData.GetExtraDataType())
 			{
 				case ExtraDataType::kWorn:
 				case ExtraDataType::kWornLeft:

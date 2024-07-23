@@ -16,8 +16,8 @@ namespace Skyrim
 		return function();
 	}
 
-	TESForm* BGSDefaultObjectManager::GetDefaultObject(Utility::Enumeration<DefaultObjects, std::uint32_t> defaultObject) const
+	TESForm* BGSDefaultObjectManager::GetDefaultObject(Utility::Enumeration<DefaultObject, std::uint32_t> defaultObject) const
 	{
-		return this->objectInitialized[defaultObject.underlying()] ? this->objects[defaultObject.underlying()] : nullptr;
+		return this->defaultObjectInitialized[defaultObject.underlying()] ? this->defaultObjects[defaultObject.underlying()] : nullptr;
 	}
 }

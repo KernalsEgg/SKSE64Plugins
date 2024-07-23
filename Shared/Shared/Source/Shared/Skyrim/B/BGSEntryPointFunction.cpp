@@ -14,19 +14,19 @@ namespace Skyrim
 			Utility::Enumeration<EntryPointFunction, std::uint32_t>     entryPointFunction,
 			TESObjectREFR*                                              perkOwner,
 			Utility::Enumeration<EntryPointFunctionType, std::uint32_t> entryPointFunctionType,
-			std::uint8_t                                                entryPointFunctionTypeArgumentCount,
-			void**                                                      entryPointFunctionTypeArguments,
+			std::uint8_t                                                entryPointFunctionArgumentCount,
+			void**                                                      entryPointFunctionArguments,
 			BGSEntryPointFunctionData*                                  entryPointFunctionData)
 		{
 			auto* function{ reinterpret_cast<decltype(BGSEntryPointFunction::ExecuteFunction)*>(
 				Addresses::BGSEntryPointFunction::ExecuteFunction()) };
 
-			function(entryPointFunction, perkOwner, entryPointFunctionType, entryPointFunctionTypeArgumentCount, entryPointFunctionTypeArguments, entryPointFunctionData);
+			function(entryPointFunction, perkOwner, entryPointFunctionType, entryPointFunctionArgumentCount, entryPointFunctionArguments, entryPointFunctionData);
 		}
 
-		std::uint32_t GetEntryPointFunctionTypeArgumentCount(Utility::Enumeration<EntryPointFunctionType, std::uint32_t> entryPointFunctionType)
+		std::uint32_t GetEntryPointFunctionArgumentCount(Utility::Enumeration<EntryPointFunctionType, std::uint32_t> entryPointFunctionType)
 		{
-			auto* singleton{ reinterpret_cast<std::uint32_t*>(Addresses::BGSEntryPointFunction::EntryPointFunctionTypeArgumentCount()) };
+			auto* singleton{ reinterpret_cast<std::uint32_t*>(Addresses::BGSEntryPointFunction::EntryPointFunctionArgumentCount()) };
 
 			return *singleton;
 		}

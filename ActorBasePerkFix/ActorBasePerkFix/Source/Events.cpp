@@ -36,11 +36,11 @@ namespace ActorBasePerkFix
 		Events::applyBasePerksCharacter_(character);
 	}
 
-	void Events::ApplyBasePerksPlayerCharacter(Skyrim::PlayerCharacter* player)
+	void Events::ApplyBasePerksPlayerCharacter(Skyrim::PlayerCharacter* playerCharacter)
 	{
-		player->RemoveBasePerks();
+		playerCharacter->RemoveBasePerks();
 
-		Events::applyBasePerksPlayerCharacter_(player);
+		Events::applyBasePerksPlayerCharacter_(playerCharacter);
 	}
 
 	void Events::QueueApplyPerk(Skyrim::TaskQueueInterface* taskQueueInterface, Skyrim::Actor* perkOwner, Skyrim::BGSPerk* perk, std::uint8_t removeRank, std::uint8_t applyRank)

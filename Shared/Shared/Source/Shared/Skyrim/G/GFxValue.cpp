@@ -106,9 +106,9 @@ namespace Skyrim
 		return this->zScale_;
 	}
 
-	bool GFxValue::DisplayInformation::IsFlagSet(Utility::Enumeration<Flags, std::uint16_t> flag) const
+	bool GFxValue::DisplayInformation::IsFlagSet(Utility::Enumeration<Flags, std::uint16_t> flags) const
 	{
-		return this->variablesSet_.all(flag.get());
+		return this->variablesSet_.all(flags.get());
 	}
 
 	void GFxValue::DisplayInformation::Set(double x, double y, double rotation, double xScale, double yScale, double alpha, bool visible, double z, double xRotation, double yRotation, double zScale)
@@ -440,13 +440,13 @@ namespace Skyrim
 
 	GFxValue::GFxValue() :
 		objectInterface_(nullptr),
-		type_(ValueType::kUndefined)
+		valueType_(ValueType::kUndefined)
 	{
 	}
 
 	GFxValue::GFxValue(const GFxValue& right) :
 		objectInterface_(nullptr),
-		type_(right.type_)
+		valueType_(right.valueType_)
 	{
 		this->value_ = right.value_;
 
@@ -458,12 +458,12 @@ namespace Skyrim
 
 	GFxValue::GFxValue(GFxValue&& right) :
 		objectInterface_(std::move(right.objectInterface_)),
-		type_(std::move(right.type_))
+		valueType_(std::move(right.valueType_))
 	{
 		this->value_.object = std::move(right.value_.object);
 
 		right.objectInterface_ = nullptr;
-		right.type_            = ValueType::kUndefined;
+		right.valueType_       = ValueType::kUndefined;
 		right.value_.object    = nullptr;
 	}
 
@@ -484,8 +484,8 @@ namespace Skyrim
 				this->ReleaseManagedValue();
 			}
 
-			this->type_  = right.type_;
-			this->value_ = right.value_;
+			this->valueType_ = right.valueType_;
+			this->value_     = right.value_;
 
 			if (right.IsManagedValue())
 			{
@@ -501,11 +501,11 @@ namespace Skyrim
 		if (this != std::addressof(right))
 		{
 			this->objectInterface_ = std::move(right.objectInterface_);
-			this->type_            = std::move(right.type_);
+			this->valueType_       = std::move(right.valueType_);
 			this->value_.object    = std::move(right.value_.object);
 
 			right.objectInterface_ = nullptr;
-			right.type_            = ValueType::kUndefined;
+			right.valueType_       = ValueType::kUndefined;
 			right.value_.object    = nullptr;
 		}
 
@@ -514,41 +514,41 @@ namespace Skyrim
 
 	GFxValue::GFxValue(bool boolean) :
 		objectInterface_(nullptr),
-		type_(ValueType::kBoolean)
+		valueType_(ValueType::kBoolean)
 	{
 		this->value_.boolean = boolean;
 	}
 
 	GFxValue::GFxValue(double number) :
 		objectInterface_(nullptr),
-		type_(ValueType::kNumber)
+		valueType_(ValueType::kNumber)
 	{
 		this->value_.number = number;
 	}
 
 	GFxValue::GFxValue(const char* string) :
 		objectInterface_(nullptr),
-		type_(ValueType::kString)
+		valueType_(ValueType::kString)
 	{
 		this->value_.string = string;
 	}
 
 	GFxValue::GFxValue(const wchar_t* stringW) :
 		objectInterface_(nullptr),
-		type_(ValueType::kStringW)
+		valueType_(ValueType::kStringW)
 	{
 		this->value_.stringW = stringW;
 	}
 
 	GFxValue::GFxValue(std::nullptr_t) :
 		objectInterface_(nullptr),
-		type_(ValueType::kNull)
+		valueType_(ValueType::kNull)
 	{
 	}
 
-	GFxValue::GFxValue(ValueType type) :
+	GFxValue::GFxValue(Utility::Enumeration<ValueType, std::uint32_t> valueType) :
 		objectInterface_(nullptr),
-		type_(type)
+		valueType_(valueType)
 	{
 		this->value_.string = nullptr;
 	}
@@ -590,12 +590,12 @@ namespace Skyrim
 
 	bool GFxValue::operator==(const GFxValue& right)
 	{
-		if (this->type_ != right.type_)
+		if (this->valueType_ != right.valueType_)
 		{
 			return false;
 		}
 
-		switch ((this->type_ & 0xF).get())
+		switch ((this->valueType_ & 0xF).get())
 		{
 			case ValueType::kBoolean:
 			{
@@ -625,39 +625,39 @@ namespace Skyrim
 		return GString(this->GetString());
 	}
 
-	GFxValue::ValueType GFxValue::GetType() const
+	GFxValue::ValueType GFxValue::GetValueType() const
 	{
-		return (this->type_ & static_cast<ValueType>(ValueTypeControl::kTypeMask)).get();
+		return (this->valueType_ & static_cast<ValueType>(ValueTypeControl::kTypeMask)).get();
 	}
 
 	bool GFxValue::IsArray() const
 	{
-		return this->GetType() == ValueType::kArray;
+		return this->GetValueType() == ValueType::kArray;
 	}
 
 	bool GFxValue::IsBoolean() const
 	{
-		return this->GetType() == ValueType::kBoolean;
+		return this->GetValueType() == ValueType::kBoolean;
 	}
 
 	bool GFxValue::IsDisplayObject() const
 	{
-		return this->GetType() == ValueType::kDisplayObject;
+		return this->GetValueType() == ValueType::kDisplayObject;
 	}
 
 	bool GFxValue::IsNull() const
 	{
-		return this->GetType() == ValueType::kNull;
+		return this->GetValueType() == ValueType::kNull;
 	}
 
 	bool GFxValue::IsNumber() const
 	{
-		return this->GetType() == ValueType::kNumber;
+		return this->GetValueType() == ValueType::kNumber;
 	}
 
 	bool GFxValue::IsObject() const
 	{
-		switch (this->GetType())
+		switch (this->GetValueType())
 		{
 			case ValueType::kArray:
 			case ValueType::kDisplayObject:
@@ -674,17 +674,17 @@ namespace Skyrim
 
 	bool GFxValue::IsString() const
 	{
-		return this->GetType() == ValueType::kString;
+		return this->GetValueType() == ValueType::kString;
 	}
 
 	bool GFxValue::IsStringW() const
 	{
-		return this->GetType() == ValueType::kStringW;
+		return this->GetValueType() == ValueType::kStringW;
 	}
 
 	bool GFxValue::IsUndefined() const
 	{
-		return this->GetType() == ValueType::kUndefined;
+		return this->GetValueType() == ValueType::kUndefined;
 	}
 
 	bool GFxValue::GetBoolean() const
@@ -709,60 +709,60 @@ namespace Skyrim
 
 	void GFxValue::SetBoolean(bool boolean)
 	{
-		this->ChangeType(ValueType::kBoolean);
+		this->ChangeValueType(ValueType::kBoolean);
 
 		this->value_.boolean = boolean;
 	}
 
 	void GFxValue::SetNull()
 	{
-		this->ChangeType(ValueType::kNull);
+		this->ChangeValueType(ValueType::kNull);
 	}
 
 	void GFxValue::SetNumber(double number)
 	{
-		this->ChangeType(ValueType::kNumber);
+		this->ChangeValueType(ValueType::kNumber);
 
 		this->value_.number = number;
 	}
 
 	void GFxValue::SetString(const char* string)
 	{
-		this->ChangeType(ValueType::kString);
+		this->ChangeValueType(ValueType::kString);
 
 		this->value_.string = string;
 	}
 
 	void GFxValue::SetStringW(const wchar_t* stringW)
 	{
-		this->ChangeType(ValueType::kStringW);
+		this->ChangeValueType(ValueType::kStringW);
 
 		this->value_.stringW = stringW;
 	}
 
 	void GFxValue::SetUndefined()
 	{
-		this->ChangeType(ValueType::kUndefined);
+		this->ChangeValueType(ValueType::kUndefined);
 	}
 
 	void GFxValue::SetConvertBoolean()
 	{
-		this->ChangeType(ValueType::kConvertBoolean);
+		this->ChangeValueType(ValueType::kConvertBoolean);
 	}
 
 	void GFxValue::SetConvertNumber()
 	{
-		this->ChangeType(ValueType::kConvertNumber);
+		this->ChangeValueType(ValueType::kConvertNumber);
 	}
 
 	void GFxValue::SetConvertString()
 	{
-		this->ChangeType(ValueType::kConvertString);
+		this->ChangeValueType(ValueType::kConvertString);
 	}
 
 	void GFxValue::SetConvertStringW()
 	{
-		this->ChangeType(ValueType::kConvertStringW);
+		this->ChangeValueType(ValueType::kConvertStringW);
 	}
 
 	bool GFxValue::HasMember(const char* name) const
@@ -877,19 +877,19 @@ namespace Skyrim
 		this->objectInterface_->ObjectAddReference(this, this->value_.object);
 	}
 
-	void GFxValue::ChangeType(Utility::Enumeration<ValueType, std::uint32_t> type)
+	void GFxValue::ChangeValueType(Utility::Enumeration<ValueType, std::uint32_t> valueType)
 	{
 		if (this->IsManagedValue())
 		{
 			this->ReleaseManagedValue();
 		}
 
-		this->type_ = type;
+		this->valueType_ = valueType;
 	}
 
 	bool GFxValue::IsManagedValue() const
 	{
-		return this->type_.all(static_cast<ValueType>(ValueTypeControl::kManagedBit));
+		return this->valueType_.all(static_cast<ValueType>(ValueTypeControl::kManagedBit));
 	}
 
 	void GFxValue::ReleaseManagedValue()

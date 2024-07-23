@@ -16,7 +16,7 @@ namespace Skyrim
 		virtual ~ExtraHealth() override; // 0
 
 		// Override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                            // 1
+		virtual ExtraDataType GetExtraDataType() const override;                   // 1
 		virtual bool          IsNotEqual(const BSExtraData* right) const override; // 2
 
 		// Member variables

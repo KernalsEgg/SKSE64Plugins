@@ -54,7 +54,7 @@ namespace Skyrim
 		Utility::Enumeration<Flags, std::uint8_t>        impactDataFlags;     // 5C
 		Utility::Enumeration<ImpactResult, std::uint8_t> effectImpactResult;  // 5D
 		std::uint16_t                                    padding5E;           // 5E
-		BGSTextureSet*                                   textureSet;          // 60
+		BGSTextureSet*                                   primaryTextureSet;   // 60
 		BGSTextureSet*                                   secondaryTextureSet; // 68
 		BGSSoundDescriptorForm*                          impactSound1;        // 70
 		BGSSoundDescriptorForm*                          impactSound2;        // 78
@@ -69,7 +69,7 @@ namespace Skyrim
 	static_assert(offsetof(BGSImpactData, impactSoundLevel) == 0x58);
 	static_assert(offsetof(BGSImpactData, impactDataFlags) == 0x5C);
 	static_assert(offsetof(BGSImpactData, effectImpactResult) == 0x5D);
-	static_assert(offsetof(BGSImpactData, textureSet) == 0x60);
+	static_assert(offsetof(BGSImpactData, primaryTextureSet) == 0x60);
 	static_assert(offsetof(BGSImpactData, secondaryTextureSet) == 0x68);
 	static_assert(offsetof(BGSImpactData, impactSound1) == 0x70);
 	static_assert(offsetof(BGSImpactData, impactSound2) == 0x78);

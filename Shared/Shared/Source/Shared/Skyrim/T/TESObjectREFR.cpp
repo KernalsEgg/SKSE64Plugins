@@ -100,7 +100,7 @@ namespace Skyrim
 		return function(this);
 	}
 
-	BipedObjectSlot TESObjectREFR::GetShieldObject() const
+	BipedObjectSlot TESObjectREFR::GetShieldBipedObjectSlot() const
 	{
 		auto* baseObject = this->baseObject;
 
@@ -111,7 +111,7 @@ namespace Skyrim
 
 		auto* race = static_cast<TESNPC*>(baseObject)->race;
 
-		return race ? race->shieldBipedObject.get() : BipedObjectSlot::kNone;
+		return race ? race->shieldBipedObjectSlot.get() : BipedObjectSlot::kNone;
 	}
 
 	bool TESObjectREFR::Is3DLoaded() const

@@ -62,7 +62,7 @@ namespace ScrambledBugs::Fixes
 
 		if (effectSetting && effectSetting->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kRecover))
 		{
-			auto* caster = activeEffect->caster.get().get();
+			auto caster = activeEffect->casterHandle.get();
 
 			if (caster)
 			{
@@ -81,7 +81,7 @@ namespace ScrambledBugs::Fixes
 				if (dualCasting != dualCasted)
 				{
 					auto* magicItem = activeEffect->magicItem;
-					auto  cost      = magicItem->GetCost(caster);
+					auto  cost      = magicItem->GetCost(caster.get());
 
 					auto effectiveness = caster->GetDualCastingEffectiveness(cost);
 

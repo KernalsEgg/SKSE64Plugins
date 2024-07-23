@@ -52,7 +52,7 @@ namespace Skyrim
 		}
 
 		// Member functions
-		void CompileAndRun(ScriptCompiler* scriptCompiler, Utility::Enumeration<CompilerName, std::uint32_t> type, TESObjectREFR* target);
+		void CompileAndRun(ScriptCompiler* scriptCompiler, Utility::Enumeration<CompilerName, std::uint32_t> compilerName, TESObjectREFR* target);
 		void SetCommand(const char* command);
 
 		// Member variables

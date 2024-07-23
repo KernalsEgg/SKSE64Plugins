@@ -16,13 +16,13 @@ namespace Trails::Events
 			return Skyrim::EventNotifyControl::kContinue;
 		}
 
-		auto        actorHandle = eventArguments->actor;
+		auto        actorHandle = eventArguments->actorHandle;
 		std::string tag         = eventArguments->tag.data();
 
 		SKSE::Storage::GetSingleton().GetTaskInterface()->AddTask(
 			[actorHandle, tag]()
 			{
-				auto* actor = actorHandle.get().get();
+				auto actor = actorHandle.get();
 
 				if (!actor)
 				{
@@ -36,7 +36,7 @@ namespace Trails::Events
 						continue;
 					}
 
-					if (!conditions->matchConditions.IsTrue(actor, actor))
+					if (!conditions->matchConditions.IsTrue(actor.get(), actor.get()))
 					{
 						continue;
 					}
@@ -45,7 +45,7 @@ namespace Trails::Events
 
 					for (auto footprintsIterator = footprintsRange.first; footprintsIterator != footprintsRange.second; ++footprintsIterator)
 					{
-						ImpactManager::PlayImpactEffect(actor, footprintsIterator->second);
+						ImpactManager::PlayImpactEffect(actor.get(), footprintsIterator->second);
 					}
 				}
 			});

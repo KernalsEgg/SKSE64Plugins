@@ -65,7 +65,7 @@ namespace Skyrim
 		const char*                                         inGameName;                 // 50
 		BSFixedString                                       abbreviation;               // 58
 		Utility::Enumeration<Flags, std::uint32_t>          actorValueInformationFlags; // 60
-		Utility::Enumeration<ActorValueType, std::uint32_t> type;                       // 64
+		Utility::Enumeration<ActorValueType, std::uint32_t> actorValueType;             // 64
 		std::uint64_t                                       unknown68;                  // 68
 		std::uint64_t                                       unknown70;                  // 70
 		std::uint64_t                                       unknown78;                  // 78
@@ -94,7 +94,7 @@ namespace Skyrim
 	static_assert(offsetof(ActorValueInfo, inGameName) == 0x50);
 	static_assert(offsetof(ActorValueInfo, abbreviation) == 0x58);
 	static_assert(offsetof(ActorValueInfo, actorValueInformationFlags) == 0x60);
-	static_assert(offsetof(ActorValueInfo, type) == 0x64);
+	static_assert(offsetof(ActorValueInfo, actorValueType) == 0x64);
 	static_assert(offsetof(ActorValueInfo, skill) == 0x108);
 	static_assert(offsetof(ActorValueInfo, perkTree) == 0x118);
 	static_assert(sizeof(ActorValueInfo) == 0x128);

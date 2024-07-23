@@ -27,8 +27,8 @@ namespace Skyrim
 		virtual void             Unknown9(ReferenceEffectController*);     // 9
 		virtual void             UnknownA(ReferenceEffectController*);     // A
 		virtual TESObjectREFR*   GetTarget()                          = 0; // B
-		virtual BGSArtObject*    GetHitEffectArt()                    = 0; // C
-		virtual TESEffectShader* GetHitShader()                       = 0; // D
+		virtual BGSArtObject*    GetHitEffectArtObject()              = 0; // C
+		virtual TESEffectShader* GetHitEffectShader()                 = 0; // D
 		virtual void             UnknownE(ReferenceEffectController*) = 0; // E
 		virtual NiAVObject*      GetAttachRoot();                          // F
 		virtual void             Unknown10(ReferenceEffectController*);    // 10

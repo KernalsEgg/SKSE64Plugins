@@ -223,14 +223,14 @@ namespace Skyrim
 		DataDescriptorUnion dataDescriptorUnion;
 
 		dataDescriptorUnion.dataDescriptor = this->dataDescriptorUnion_.dataDescriptor;
-		dataDescriptorUnion.heapTypeBits.reset(HeapType::kMask);
+		dataDescriptorUnion.heapType.reset(HeapType::kMask);
 
 		return dataDescriptorUnion.dataDescriptor;
 	}
 
 	GString::HeapType GString::GetHeapType() const
 	{
-		return (this->dataDescriptorUnion_.heapTypeBits & HeapType::kMask).get();
+		return (this->dataDescriptorUnion_.heapType & HeapType::kMask).get();
 	}
 
 	void GString::SetData(GString::DataDescriptor* dataDescriptor)
@@ -238,6 +238,6 @@ namespace Skyrim
 		auto heapType = this->GetHeapType();
 
 		this->dataDescriptorUnion_.dataDescriptor = dataDescriptor;
-		this->dataDescriptorUnion_.heapTypeBits.set(heapType);
+		this->dataDescriptorUnion_.heapType.set(heapType);
 	}
 }

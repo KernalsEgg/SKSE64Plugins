@@ -11,14 +11,6 @@
 
 namespace Utility
 {
-	Trampoline::~Trampoline()
-	{
-		if (this->address_)
-		{
-			Trampoline::Free(this->address_);
-		}
-	}
-
 	Trampoline& Trampoline::GetSingleton()
 	{
 		static Trampoline singleton;
@@ -26,52 +18,97 @@ namespace Utility
 		return singleton;
 	}
 
+	void Trampoline::Commit()
+	{
+		std::call_once(
+			this->onceFlag_,
+			[this]() -> void
+			{
+				std::scoped_lock scopedLock(this->sharedMutex_);
+
+				auto position = this->position_.load();
+
+				if (position > 0)
+				{
+					const auto& executable = Relocation::Executable::GetSingleton();
+					this->address_.reset(reinterpret_cast<void*>(Trampoline::Allocate(executable.GetAddress(), executable.GetSize(), position)));
+
+					if (!this->address_)
+					{
+						InformationBox::Error("Failed to allocate 0x{:X} bytes of memory.", position);
+					}
+
+					this->commit_.Raise(reinterpret_cast<std::uintptr_t>(this->address_.get()));
+				}
+			});
+	}
+
 	void Trampoline::RelativeCall5(std::uintptr_t address, std::uintptr_t function)
 	{
+		std::shared_lock sharedLock(this->sharedMutex_);
+
 		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
 
-		this->commit_.RegisterSink(
-			[address, function, position](std::uintptr_t trampolineAddress) -> void
-			{
-				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
-				Memory::SafeWriteRelativeCall5(address, trampolineAddress + position);
-			});
+		this->commit_.Subscribe(
+			std::make_shared<decltype(Trampoline::commit_)::handler_type::element_type>(
+				[address, function, position](const std::uintptr_t& trampolineAddress) -> auto
+				{
+					Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
+					Memory::SafeWriteRelativeCall5(address, trampolineAddress + position);
+
+					return false;
+				}));
 	}
 
 	void Trampoline::RelativeCall6(std::uintptr_t address, std::uintptr_t function)
 	{
+		std::shared_lock sharedLock(this->sharedMutex_);
+
 		auto position = this->Reserve(sizeof(std::uintptr_t));
 
-		this->commit_.RegisterSink(
-			[address, function, position](std::uintptr_t trampolineAddress) -> void
-			{
-				Memory::SafeWrite(trampolineAddress + position, function);
-				Memory::SafeWriteRelativeCall6(address, trampolineAddress + position);
-			});
+		this->commit_.Subscribe(
+			std::make_shared<decltype(Trampoline::commit_)::handler_type::element_type>(
+				[address, function, position](const std::uintptr_t& trampolineAddress) -> auto
+				{
+					Memory::SafeWrite(trampolineAddress + position, function);
+					Memory::SafeWriteRelativeCall6(address, trampolineAddress + position);
+
+					return false;
+				}));
 	}
 
 	void Trampoline::RelativeJump5(std::uintptr_t address, std::uintptr_t function)
 	{
+		std::shared_lock sharedLock(this->sharedMutex_);
+
 		auto position = this->Reserve(sizeof(Assembly::AbsoluteJump));
 
-		this->commit_.RegisterSink(
-			[address, function, position](std::uintptr_t trampolineAddress) -> void
-			{
-				Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
-				Memory::SafeWriteRelativeJump5(address, trampolineAddress + position);
-			});
+		this->commit_.Subscribe(
+			std::make_shared<decltype(Trampoline::commit_)::handler_type::element_type>(
+				[address, function, position](const std::uintptr_t& trampolineAddress) -> auto
+				{
+					Memory::SafeWriteAbsoluteJump(trampolineAddress + position, function);
+					Memory::SafeWriteRelativeJump5(address, trampolineAddress + position);
+
+					return false;
+				}));
 	}
 
 	void Trampoline::RelativeJump6(std::uintptr_t address, std::uintptr_t function)
 	{
+		std::shared_lock sharedLock(this->sharedMutex_);
+
 		auto position = this->Reserve(sizeof(std::uintptr_t));
 
-		this->commit_.RegisterSink(
-			[address, function, position](std::uintptr_t trampolineAddress) -> void
-			{
-				Memory::SafeWrite(trampolineAddress + position, function);
-				Memory::SafeWriteRelativeJump6(address, trampolineAddress + position);
-			});
+		this->commit_.Subscribe(
+			std::make_shared<decltype(Trampoline::commit_)::handler_type::element_type>(
+				[address, function, position](const std::uintptr_t& trampolineAddress) -> auto
+				{
+					Memory::SafeWrite(trampolineAddress + position, function);
+					Memory::SafeWriteRelativeJump6(address, trampolineAddress + position);
+
+					return false;
+				}));
 	}
 
 	/// <summary>https://stackoverflow.com/a/54732489</summary>
@@ -128,37 +165,6 @@ namespace Utility
 	void Trampoline::Free(std::uintptr_t allocationAddress)
 	{
 		::VirtualFree(reinterpret_cast<::LPVOID>(allocationAddress), 0, MEM_RELEASE);
-	}
-
-	void Trampoline::Commit()
-	{
-		if (this->position_ > 0)
-		{
-			const auto& executable = Relocation::Executable::GetSingleton();
-			this->address_         = Trampoline::Allocate(executable.GetAddress(), executable.GetSize(), this->position_);
-
-			if (!this->address_)
-			{
-				InformationBox::Error("Failed to allocate 0x{:X} bytes of memory.", this->position_.load());
-			}
-
-			this->commit_.Notify(this->address_);
-		}
-	}
-
-	std::uintptr_t Trampoline::GetAddress() const
-	{
-		return this->address_;
-	}
-
-	EventSource<std::uintptr_t>& Trampoline::GetEventSource()
-	{
-		return this->commit_;
-	}
-
-	std::size_t Trampoline::GetPosition() const
-	{
-		return this->position_;
 	}
 
 	std::size_t Trampoline::Reserve(std::size_t size)

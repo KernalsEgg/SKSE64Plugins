@@ -25,10 +25,10 @@ namespace Skyrim
 
 		// Add
 		virtual bool                                      CheckConditionFilters(std::uint32_t argumentCount, TESForm** arguments) const; // 0
-		virtual BGSEntryPointFunction::EntryPointFunction GetFunction() const;                                                           // 1
-		virtual BGSEntryPointFunctionData*                GetFunctionData() const;                                                       // 2
+		virtual BGSEntryPointFunction::EntryPointFunction GetEntryPointFunction() const;                                                 // 1
+		virtual BGSEntryPointFunctionData*                GetEntryPointFunctionData() const;                                             // 2
 		virtual ~BGSPerkEntry();                                                                                                         // 3
-		virtual PerkEntryType GetType() const = 0;                                                                                       // 4
+		virtual PerkEntryType GetPerkEntryType() const = 0;                                                                              // 4
 		virtual void          Unknown5(BGSPerkEntry*);                                                                                   // 5
 		virtual void          Unknown6(BGSPerkEntry*);                                                                                   // 6
 		virtual void          Unknown7(BGSPerkEntry*);                                                                                   // 7

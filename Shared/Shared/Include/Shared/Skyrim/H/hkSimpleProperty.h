@@ -40,7 +40,7 @@ namespace Skyrim
 		hkSimpleProperty() {}
 		hkSimpleProperty(std::uint32_t key, std::int32_t value);
 		hkSimpleProperty(std::uint32_t key, hkSimplePropertyValue value);
-		hkSimpleProperty(hkFinishLoadedObjectFlag flag) {}
+		hkSimpleProperty(hkFinishLoadedObjectFlag finishLoadedObjectFlag) {}
 
 		// Member variables
 		std::uint32_t         key;      // 0

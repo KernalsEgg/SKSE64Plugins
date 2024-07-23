@@ -42,4 +42,9 @@ namespace SKSE
 		Skyrim::TESForm*                          source;
 		Utility::Enumeration<Slot, std::uint32_t> slot;
 	};
+	static_assert(offsetof(ActionEvent, type) == 0x0);
+	static_assert(offsetof(ActionEvent, actor) == 0x8);
+	static_assert(offsetof(ActionEvent, source) == 0x10);
+	static_assert(offsetof(ActionEvent, slot) == 0x18);
+	static_assert(sizeof(ActionEvent) == 0x20);
 }

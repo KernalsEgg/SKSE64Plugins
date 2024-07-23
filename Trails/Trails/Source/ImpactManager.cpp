@@ -95,7 +95,7 @@ namespace Trails
 
 		auto havokWorldScale = Skyrim::bhkWorld::GetScale();
 
-		pickData.rayCastInput.from.quad = ::_mm_setr_ps(
+		pickData.worldRayCastInput.from.quad = ::_mm_setr_ps(
 			origin.x * havokWorldScale,
 			origin.y * havokWorldScale,
 			origin.z * havokWorldScale,
@@ -115,7 +115,7 @@ namespace Trails
 
 				if (characterController)
 				{
-					characterController->GetCollisionFilterInformation(pickData.rayCastInput.filterInformation);
+					characterController->GetCollisionFilterInformation(pickData.worldRayCastInput.filterInformation);
 				}
 
 				break;
@@ -132,11 +132,11 @@ namespace Trails
 
 						if (rigidBody)
 						{
-							auto* referencedObject = static_cast<Skyrim::hkpWorldObject*>(rigidBody->referencedObject.get());
+							auto* worldObject = static_cast<Skyrim::hkpWorldObject*>(rigidBody->referencedObject.get());
 
-							if (referencedObject)
+							if (worldObject)
 							{
-								pickData.rayCastInput.filterInformation = referencedObject->collidable.broadPhaseHandle.collisionFilterInformation;
+								pickData.worldRayCastInput.filterInformation = worldObject->linkedCollidable.typedBroadPhaseHandle.collisionFilterInformation;
 							}
 						}
 					}
@@ -170,14 +170,14 @@ namespace Trails
 		std::uint32_t       materialID{ 0 };
 		Skyrim::NiAVObject* target3D{ nullptr };
 
-		auto terrain = Skyrim::hkpGroupFilter::GetSystemGroupFromFilterInformation(rootCollidable->broadPhaseHandle.collisionFilterInformation) ==
+		auto terrain = Skyrim::hkpGroupFilter::GetSystemGroupFromFilterInformation(rootCollidable->typedBroadPhaseHandle.collisionFilterInformation) ==
 		               Utility::Conversion::ToUnderlying(Skyrim::hkpGroupFilter::SystemGroup::kTerrain);
 
 		if (terrain)
 		{
 			materialID = Skyrim::TES::GetSingleton()->GetMaterialID(position);
 
-			if (rootCollidable->broadPhaseHandle.type == Utility::Conversion::ToUnderlying(Skyrim::hkpWorldObject::BroadPhaseType::kEntity))
+			if (rootCollidable->typedBroadPhaseHandle.type == Utility::Conversion::ToUnderlying(Skyrim::hkpWorldObject::BroadPhaseType::kEntity))
 			{
 				auto* owner = rootCollidable->GetOwner<Skyrim::hkpWorldObject>();
 
@@ -191,11 +191,11 @@ namespace Trails
 
 						if (property)
 						{
-							auto* parent = property->parentNode;
+							auto* parentNode = property->parentNode;
 
-							if (parent)
+							if (parentNode)
 							{
-								target3D = parent;
+								target3D = parentNode;
 							}
 						}
 					}
@@ -265,26 +265,26 @@ namespace Trails
 			.unknown30  = 0,
 		});
 
-		auto* textureSet = impactData->textureSet;
+		auto* primaryTextureSet = impactData->primaryTextureSet;
 
-		if (!textureSet)
+		if (!primaryTextureSet)
 		{
 			return true;
 		}
 
 		auto* target = Skyrim::TESObjectREFR::GetReferenceFrom3D(target3D);
 
-		if (!terrain && !(target && target->ShouldApplyDecal()))
+		if (!terrain && (!target || !target->ShouldApplyDecal()))
 		{
 			return true;
 		}
 
 		Skyrim::BGSDecalManager::CreationData creationData;
-		creationData.position    = position;
-		creationData.normal      = normal;
-		creationData.target3D    = Skyrim::NiPointer<Skyrim::NiAVObject>(target3D);
-		creationData.textureSet1 = textureSet;
-		creationData.textureSet2 = impactData->secondaryTextureSet;
+		creationData.position            = position;
+		creationData.normal              = normal;
+		creationData.target3D            = Skyrim::NiPointer<Skyrim::NiAVObject>(target3D);
+		creationData.primaryTextureSet   = primaryTextureSet;
+		creationData.secondaryTextureSet = impactData->secondaryTextureSet;
 
 		const auto& decalData = impactData->decalData;
 
@@ -379,7 +379,7 @@ namespace Trails
 		{
 			std::uniform_int_distribution subtextureIndexDistribution(0, 3);
 
-			creationData.subTextureIndex = static_cast<std::uint8_t>(subtextureIndexDistribution(randomNumberGenerator));
+			creationData.subTextureIndex = static_cast<std::int8_t>(subtextureIndexDistribution(randomNumberGenerator));
 		}
 
 		creationData.parallax      = decalDataFlags.all(Skyrim::DecalData::Flags::kParallax);

@@ -24,16 +24,16 @@ namespace Skyrim
 	HandleEntryPointVisitor::HandleEntryPointVisitor(
 		Utility::Enumeration<BGSEntryPointFunction::EntryPointFunctionType, std::uint32_t> entryPointFunctionType,
 		TESForm**                                                                          conditionFilterArguments,
-		void**                                                                             entryPointFunctionTypeArguments,
+		void**                                                                             entryPointFunctionArguments,
 		Actor*                                                                             perkOwner,
 		std::uint8_t                                                                       conditionFilterArgumentCount,
-		std::uint8_t                                                                       entryPointFunctionTypeArgumentCount) :
+		std::uint8_t                                                                       entryPointFunctionArgumentCount) :
 		entryPointFunctionType(entryPointFunctionType),
 		conditionFilterArguments(conditionFilterArguments),
-		entryPointFunctionTypeArguments(entryPointFunctionTypeArguments),
+		entryPointFunctionArguments(entryPointFunctionArguments),
 		perkOwner(perkOwner),
 		conditionFilterArgumentCount(conditionFilterArgumentCount),
-		entryPointFunctionTypeArgumentCount(entryPointFunctionTypeArgumentCount)
+		entryPointFunctionArgumentCount(entryPointFunctionArgumentCount)
 	{
 	}
 }

@@ -20,8 +20,8 @@ namespace Skyrim
 		virtual ~hkpCharacterStateManager() override; // 0
 
 		// Member variables
-		hkpCharacterState* registeredStates[Utility::Conversion::ToUnderlying(hkpCharacterStateType::kTotal)]; // 10
+		hkpCharacterState* registeredCharacterStates[Utility::Conversion::ToUnderlying(hkpCharacterStateType::kTotal)]; // 10
 	};
-	static_assert(offsetof(hkpCharacterStateManager, registeredStates) == 0x10);
+	static_assert(offsetof(hkpCharacterStateManager, registeredCharacterStates) == 0x10);
 	static_assert(sizeof(hkpCharacterStateManager) == 0x68);
 }

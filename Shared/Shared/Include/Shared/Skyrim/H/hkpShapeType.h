@@ -17,7 +17,7 @@ namespace Skyrim
 		kCapsule            = 5,
 		kConvexVertices     = 6,
 		kCollection         = 7,
-		kBVTree             = 8,
+		kBoundingVolumeTree = 8,
 		kList               = 9,
 		kMopp               = 10,
 		kConvexTranslate    = 11,

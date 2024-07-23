@@ -9,7 +9,7 @@
 
 namespace Skyrim
 {
-	void hkpClosestRayHitCollector::AddRayHit(const hkpCdBody& cdBody, const hkpShapeRayCastCollectorOutput& hitInformation)
+	void hkpClosestRayHitCollector::AddRayHit(const hkpCdBody& collisionDetectionBody, const hkpShapeRayCastCollectorOutput& hitInformation)
 	{
 		if (this->rayHit.hitFraction > hitInformation.hitFraction)
 		{
@@ -18,9 +18,9 @@ namespace Skyrim
 			this->rayHit.extraInformation = hitInformation.extraInformation;
 			this->rayHit.shapeKey         = hitInformation.shapeKey;
 
-			hkpRayHitCollector::ShapeKeysFromCdBody(this->rayHit.shapeKeys, hkpShapeRayCastOutput::kMaximumHierarchyDepth, cdBody);
+			hkpRayHitCollector::ShapeKeysFromCollisionDetectionBody(this->rayHit.shapeKeys, hkpShapeRayCastOutput::kMaximumHierarchyDepth, collisionDetectionBody);
 
-			const auto* rootCollidable = std::addressof(cdBody);
+			const auto* rootCollidable = std::addressof(collisionDetectionBody);
 
 			for (const auto* parent = rootCollidable->parent; parent; parent = parent->parent)
 			{

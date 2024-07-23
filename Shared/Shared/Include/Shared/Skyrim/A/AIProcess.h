@@ -79,8 +79,8 @@ namespace Skyrim
 		// Member functions
 		InventoryEntryData*     GetAmmunitionInventoryEntryData() const;
 		bhkCharacterController* GetCharacterController() const;
-		ActorHandle             GetCommandingActor() const;
-		ObjectReferenceHandle   GetCurrentFurniture() const;
+		ActorHandle             GetCommandingActorHandle() const;
+		ObjectReferenceHandle   GetCurrentFurnitureHandle() const;
 		InventoryEntryData*     GetLeftHandInventoryEntryData() const;
 		InventoryEntryData*     GetRightHandInventoryEntryData() const;
 		NiAVObject*             GetHeadNode() const;

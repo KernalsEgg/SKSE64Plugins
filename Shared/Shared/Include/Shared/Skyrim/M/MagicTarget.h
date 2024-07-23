@@ -45,7 +45,7 @@ namespace Skyrim
 
 		// Member functions
 		Actor* GetMagicTargetAsActor();
-		void   ForEachActiveEffect(ForEachActiveEffectVisitor& visitor);
+		void   ForEachActiveEffect(ForEachActiveEffectVisitor& forEachActiveEffectVisitor);
 
 		// Member variables
 		std::uint64_t unknown8;  // 8

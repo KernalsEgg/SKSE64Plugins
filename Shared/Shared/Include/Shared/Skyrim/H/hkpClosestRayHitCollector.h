@@ -17,7 +17,7 @@ namespace Skyrim
 		virtual ~hkpClosestRayHitCollector() override = default; // 1
 
 		// Override (hkpRayHitCollector)
-		virtual void AddRayHit(const hkpCdBody& cdBody, const hkpShapeRayCastCollectorOutput& hitInformation) override; // 0
+		virtual void AddRayHit(const hkpCdBody& collisionDetectionBody, const hkpShapeRayCastCollectorOutput& hitInformation) override; // 0
 
 		// Member functions
 		constexpr bool HasHit() noexcept

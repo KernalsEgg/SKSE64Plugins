@@ -19,9 +19,9 @@ namespace Skyrim
 	public:
 		// Member variables
 		TESBoundObject*       boundObject;     // 0
-		TESObjectARMA*        addon;           // 8
+		TESObjectARMA*        armorAddon;      // 8
 		TESModel*             bipedModel;      // 10
-		BGSTextureSet*        skinTexture;     // 18
+		BGSTextureSet*        skinTextureSet;  // 18
 		NiPointer<NiAVObject> bipedModelClone; // 20
 		std::uint64_t         unknown28;       // 28
 		std::uint64_t         unknown30;       // 30
@@ -35,9 +35,9 @@ namespace Skyrim
 		std::uint64_t         unknown70;       // 70
 	};
 	static_assert(offsetof(BipedObject, boundObject) == 0x0);
-	static_assert(offsetof(BipedObject, addon) == 0x8);
+	static_assert(offsetof(BipedObject, armorAddon) == 0x8);
 	static_assert(offsetof(BipedObject, bipedModel) == 0x10);
-	static_assert(offsetof(BipedObject, skinTexture) == 0x18);
+	static_assert(offsetof(BipedObject, skinTextureSet) == 0x18);
 	static_assert(offsetof(BipedObject, bipedModelClone) == 0x20);
 	static_assert(sizeof(BipedObject) == 0x78);
 }

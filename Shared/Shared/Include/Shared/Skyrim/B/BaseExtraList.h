@@ -24,7 +24,7 @@ namespace Skyrim
 			SKYRIM_MEMORY_REDEFINE_NEW();
 
 			// Member functions
-			bool HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const;
+			bool HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
 
 		private:
 			// Member variables
@@ -47,9 +47,9 @@ namespace Skyrim
 		BaseExtraList& operator=(BaseExtraList&&)      = delete;
 
 		// Member functions
-		BSExtraData*       GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type);
-		const BSExtraData* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const;
-		bool               HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> type) const;
+		BSExtraData*       GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType);
+		const BSExtraData* GetExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
+		bool               HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const;
 
 		// Member variables
 		BSExtraData*      extraData{ nullptr };        // 0, 8

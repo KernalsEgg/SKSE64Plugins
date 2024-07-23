@@ -62,7 +62,7 @@ namespace Skyrim
 		public:
 			// Member variables
 			DataDescriptor*                       dataDescriptor{ nullptr };
-			Utility::Enumeration<HeapType, UPInt> heapTypeBits;
+			Utility::Enumeration<HeapType, UPInt> heapType;
 		};
 		static_assert(sizeof(DataDescriptorUnion) == 0x8);
 

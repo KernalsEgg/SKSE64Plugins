@@ -107,7 +107,7 @@ namespace Skyrim
 
 		namespace BGSEntryPointFunction
 		{
-			std::uintptr_t EntryPointFunctionTypeArgumentCount();
+			std::uintptr_t EntryPointFunctionArgumentCount();
 			std::uintptr_t ExecuteFunction();
 		}
 

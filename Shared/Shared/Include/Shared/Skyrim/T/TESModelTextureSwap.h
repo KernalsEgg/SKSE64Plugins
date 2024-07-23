@@ -19,12 +19,12 @@ namespace Skyrim
 		{
 		public:
 			// Member variables
-			BGSTextureSet* newTexture; // 0
-			std::uint32_t  index3D;    // 8
-			std::uint32_t  paddingC;   // C
-			BSFixedString  name3D;     // 10
+			BGSTextureSet* newTextureSet; // 0
+			std::uint32_t  index3D;       // 8
+			std::uint32_t  paddingC;      // C
+			BSFixedString  name3D;        // 10
 		};
-		static_assert(offsetof(AlternateTexture, newTexture) == 0x0);
+		static_assert(offsetof(AlternateTexture, newTextureSet) == 0x0);
 		static_assert(offsetof(AlternateTexture, index3D) == 0x8);
 		static_assert(offsetof(AlternateTexture, name3D) == 0x10);
 		static_assert(sizeof(AlternateTexture) == 0x18);

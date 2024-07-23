@@ -24,8 +24,8 @@ namespace Skyrim
 		virtual ~hkReferencedObject() override; // 0
 
 		// Add
-		virtual const hkClass* GetClassType() const;                                                                                     // 1
-		virtual void           CalculateContentStatistics(hkStatisticsCollector* collector, const hkClass* referencedObjectClass) const; // 2
+		virtual const hkClass* GetClassType() const;                                                                                               // 1
+		virtual void           CalculateContentStatistics(hkStatisticsCollector* statisticsCollector, const hkClass* referencedObjectClass) const; // 2
 
 		// Member functions
 		void          AddReference() const;

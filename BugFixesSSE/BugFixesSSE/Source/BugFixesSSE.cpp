@@ -12,14 +12,13 @@ namespace BugFixesSSE
 		void Load()
 		{
 			auto path   = std::filesystem::path(Relocation::DynamicLinkLibrary::GetSingleton().GetPath()).replace_extension("log");
-			auto sink   = std::make_shared<spdlog::sinks::basic_file_sink_mt>(path.string(), true);
-			auto logger = std::make_shared<spdlog::logger>("logger", std::move(sink));
+			auto logger = spdlog::basic_logger_mt(path.string(), path.string(), true);
 
-			logger->set_level(spdlog::level::info);
 			logger->flush_on(spdlog::level::info);
+			logger->set_level(spdlog::level::info);
+			logger->set_pattern("[%Y-%m-%d %T.%e %z] [%l] [%t] [%s:%#] %v");
 
 			spdlog::set_default_logger(std::move(logger));
-			spdlog::set_pattern("[%Y-%m-%d %T.%e %z] [%l] [%t] [%s:%#] %v");
 		}
 	}
 

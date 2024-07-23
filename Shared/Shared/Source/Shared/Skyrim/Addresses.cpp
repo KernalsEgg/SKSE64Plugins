@@ -355,7 +355,7 @@ namespace Skyrim
 		namespace BGSEntryPointFunction
 		{
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x1DD3BA0, 1.6.318.0: SkyrimSE.exe + 0x1E67C90</summary>
-			std::uintptr_t EntryPointFunctionTypeArgumentCount()
+			std::uintptr_t EntryPointFunctionArgumentCount()
 			{
 				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(502187, 369210)) };
 

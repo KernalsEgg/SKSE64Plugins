@@ -11,7 +11,7 @@ namespace Skyrim
 		maximumCollectionRoots(std::numeric_limits<std::uint32_t>::max()),
 		framesBetweenCollections(std::numeric_limits<std::uint32_t>::max())
 	{
-		this->descriptor.arena = memoryArena;
+		this->heapDescriptor.arena = memoryArena;
 	}
 
 	GFxMovieView* GFxMovieDef::CreateInstance(bool initializeFirstFrame, UPInt memoryArena)

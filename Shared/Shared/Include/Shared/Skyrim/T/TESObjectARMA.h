@@ -36,31 +36,31 @@ namespace Skyrim
 		virtual void Unknown13(TESForm*) override; // 13
 
 		// Member variables
-		std::uint8_t        priorities[Utility::Conversion::ToUnderlying(Sex::kTotal)];             // 40
-		bool                weightSlider[Utility::Conversion::ToUnderlying(Sex::kTotal)];           // 42
-		std::uint8_t        unused[Utility::Conversion::ToUnderlying(Sex::kTotal)];                 // 44
-		std::uint8_t        detectionSoundValue;                                                    // 46
-		std::uint8_t        padding47;                                                              // 47
-		float               weaponAdjust;                                                           // 48
-		std::uint32_t       padding4C;                                                              // 4C
-		TESModelTextureSwap bipedModels[Utility::Conversion::ToUnderlying(Sex::kTotal)];            // 50
-		TESModelTextureSwap firstPersonBipedModels[Utility::Conversion::ToUnderlying(Sex::kTotal)]; // C0
-		BGSTextureSet*      skinTextures[Utility::Conversion::ToUnderlying(Sex::kTotal)];           // 130
-		BGSListForm*        skinTextureSwapLists[Utility::Conversion::ToUnderlying(Sex::kTotal)];   // 140
-		BSTArray<TESRace*>  additionalRaces;                                                        // 150
-		BGSFootstepSet*     footstep;                                                               // 168
-		BGSArtObject*       artObject;                                                              // 170
+		std::uint8_t        priorities[Utility::Conversion::ToUnderlying(Sex::kTotal)];                        // 40
+		bool                weightSlider[Utility::Conversion::ToUnderlying(Sex::kTotal)];                      // 42
+		std::uint8_t        unused[Utility::Conversion::ToUnderlying(Sex::kTotal)];                            // 44
+		std::uint8_t        detectionSoundValue;                                                               // 46
+		std::uint8_t        padding47;                                                                         // 47
+		float               weaponAdjust;                                                                      // 48
+		std::uint32_t       padding4C;                                                                         // 4C
+		TESModelTextureSwap bipedModelTextureSwaps[Utility::Conversion::ToUnderlying(Sex::kTotal)];            // 50
+		TESModelTextureSwap firstPersonBipedModelTextureSwaps[Utility::Conversion::ToUnderlying(Sex::kTotal)]; // C0
+		BGSTextureSet*      skinTextureSets[Utility::Conversion::ToUnderlying(Sex::kTotal)];                   // 130
+		BGSListForm*        skinTextureSetSwapLists[Utility::Conversion::ToUnderlying(Sex::kTotal)];           // 140
+		BSTArray<TESRace*>  additionalRaces;                                                                   // 150
+		BGSFootstepSet*     footstepSet;                                                                       // 168
+		BGSArtObject*       artObject;                                                                         // 170
 	};
 	static_assert(offsetof(TESObjectARMA, priorities) == 0x40);
 	static_assert(offsetof(TESObjectARMA, weightSlider) == 0x42);
 	static_assert(offsetof(TESObjectARMA, detectionSoundValue) == 0x46);
 	static_assert(offsetof(TESObjectARMA, weaponAdjust) == 0x48);
-	static_assert(offsetof(TESObjectARMA, bipedModels) == 0x50);
-	static_assert(offsetof(TESObjectARMA, firstPersonBipedModels) == 0xC0);
-	static_assert(offsetof(TESObjectARMA, skinTextures) == 0x130);
-	static_assert(offsetof(TESObjectARMA, skinTextureSwapLists) == 0x140);
+	static_assert(offsetof(TESObjectARMA, bipedModelTextureSwaps) == 0x50);
+	static_assert(offsetof(TESObjectARMA, firstPersonBipedModelTextureSwaps) == 0xC0);
+	static_assert(offsetof(TESObjectARMA, skinTextureSets) == 0x130);
+	static_assert(offsetof(TESObjectARMA, skinTextureSetSwapLists) == 0x140);
 	static_assert(offsetof(TESObjectARMA, additionalRaces) == 0x150);
-	static_assert(offsetof(TESObjectARMA, footstep) == 0x168);
+	static_assert(offsetof(TESObjectARMA, footstepSet) == 0x168);
 	static_assert(offsetof(TESObjectARMA, artObject) == 0x170);
 	static_assert(sizeof(TESObjectARMA) == 0x178);
 }

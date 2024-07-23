@@ -48,9 +48,9 @@ namespace Skyrim
 			Utility::Enumeration<EntryPointFunction, std::uint32_t>     entryPointFunction,
 			TESObjectREFR*                                              perkOwner,
 			Utility::Enumeration<EntryPointFunctionType, std::uint32_t> entryPointFunctionType,
-			std::uint8_t                                                entryPointFunctionTypeArgumentCount,
-			void**                                                      entryPointFunctionTypeArguments,
+			std::uint8_t                                                entryPointFunctionArgumentCount,
+			void**                                                      entryPointFunctionArguments,
 			BGSEntryPointFunctionData*                                  entryPointFunctionData);
-		std::uint32_t GetEntryPointFunctionTypeArgumentCount(Utility::Enumeration<EntryPointFunctionType, std::uint32_t> entryPointFunctionType);
+		std::uint32_t GetEntryPointFunctionArgumentCount(Utility::Enumeration<EntryPointFunctionType, std::uint32_t> entryPointFunctionType);
 	}
 }

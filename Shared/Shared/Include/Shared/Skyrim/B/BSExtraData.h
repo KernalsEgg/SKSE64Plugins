@@ -16,7 +16,7 @@ namespace Skyrim
 
 		// Add
 		virtual ~BSExtraData();                                           // 0
-		virtual ExtraDataType GetType() const = 0;                        // 1
+		virtual ExtraDataType GetExtraDataType() const = 0;               // 1
 		virtual bool          IsNotEqual(const BSExtraData* right) const; // 2
 
 		// Member variables

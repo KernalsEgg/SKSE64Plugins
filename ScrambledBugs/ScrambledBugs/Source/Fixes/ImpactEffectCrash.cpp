@@ -31,7 +31,7 @@ namespace ScrambledBugs::Fixes
 
 	bool ImpactEffectCrash::DecalApplier(Skyrim::BSTempEffectSimpleDecal* temporaryEffectSimpleDecal)
 	{
-		if (temporaryEffectSimpleDecal->textureSet1)
+		if (temporaryEffectSimpleDecal->primaryTextureSet)
 		{
 			return ImpactEffectCrash::decalApplier_(temporaryEffectSimpleDecal);
 		}
@@ -45,7 +45,7 @@ namespace ScrambledBugs::Fixes
 
 	bool ImpactEffectCrash::UpdateDecals(Skyrim::BSTempEffectSimpleDecal* temporaryEffectSimpleDecal)
 	{
-		if (temporaryEffectSimpleDecal->textureSet1)
+		if (temporaryEffectSimpleDecal->primaryTextureSet)
 		{
 			return ImpactEffectCrash::updateDecals_(temporaryEffectSimpleDecal);
 		}

@@ -19,7 +19,7 @@ namespace ScrambledBugs::Patches
 			return;
 		}
 
-		/* Remove the CastPermanentMagicFunctor flag responsible for setting ActiveEffect flags to disable hit effect art */
+		/* Do not set a CastPermanentMagicFunctor flag that sets a ActiveEffect flag to not attach hit effect art */
 		Utility::Memory::SafeWrite(
 			Addresses::Patches::AttachHitEffectArt::SetCastPermanentMagicFunctorFlags,
 			std::optional<std::uint8_t>{}, 0xF8ui8, // and al, F8

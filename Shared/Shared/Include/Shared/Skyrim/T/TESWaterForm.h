@@ -99,7 +99,7 @@ namespace Skyrim
 		std::uint64_t                             unknown60;                      // 60
 		std::uint64_t                             unknown68;                      // 68
 		std::uint64_t                             unknown70;                      // 70
-		TESTexture                                noiseTextureLayers[4];          // 78, Noise Properties
+		TESTexture                                noiseLayerTextures[4];          // 78, Noise Properties
 		std::uint8_t                              opacity;                        // B8, Water Properties
 		Utility::Enumeration<Flags, std::uint8_t> waterFormFlags;                 // B9
 		std::uint8_t                              paddingBA;                      // BA
@@ -121,8 +121,8 @@ namespace Skyrim
 		DisplacementSimulator                     displacementSimulator;          // 118, Water Properties
 		std::uint32_t                             unknown12C;                     // 12C
 		float                                     noiseFalloff;                   // 130, Noise Properties
-		float                                     windDirectionLayers[3];         // 134, Noise Properties
-		float                                     windSpeedLayers[3];             // 140, Noise Properties
+		float                                     noiseLayerWindDirections[3];    // 134, Noise Properties
+		float                                     noiseLayerWindSpeeds[3];        // 140, Noise Properties
 		std::uint32_t                             unknown14C;                     // 14C
 		std::uint32_t                             unknown150;                     // 150
 		float                                     aboveWaterFogAmount;            // 154, Fog Properties
@@ -135,8 +135,8 @@ namespace Skyrim
 		std::uint32_t                             unknown170;                     // 170
 		float                                     specularRadius;                 // 174, Specular Properties
 		float                                     specularBrightness;             // 178, Specular Properties
-		float                                     uvScaleLayers[3];               // 17C, Noise Properties
-		float                                     amplitudeScaleLayers[3];        // 188, Noise Properties
+		float                                     noiseLayerUVScales[3];          // 17C, Noise Properties
+		float                                     noiseLayerAmplitudeScales[3];   // 188, Noise Properties
 		float                                     reflectionMagnitude;            // 194, Water Properties
 		float                                     sunSparkleMagnitude;            // 198, Specular Properties
 		float                                     sunSpecularMagnitude;           // 19C, Specular Properties
@@ -152,7 +152,7 @@ namespace Skyrim
 		std::uint64_t                             unknown1E8;                     // 1E8
 		std::uint64_t                             unknown1F0;                     // 1F0
 		SpellItem*                                contactSpellItem;               // 1F8
-		NiPointer<NiTexture>                      noiseTextureDataLayers[4];      // 200, Noise Properties
+		NiPointer<NiTexture>                      noiseLayerTextureData[4];       // 200, Noise Properties
 		std::uint64_t                             unknown220;                     // 220
 		std::uint64_t                             unknown228;                     // 228
 		std::uint64_t                             unknown230;                     // 230
@@ -161,7 +161,7 @@ namespace Skyrim
 		NiPoint3                                  linearVelocity;                 // 248, Water Properties
 		NiPoint3                                  angularVelocity;                // 254, Water Properties
 	};
-	static_assert(offsetof(TESWaterForm, noiseTextureLayers) == 0x78);
+	static_assert(offsetof(TESWaterForm, noiseLayerTextures) == 0x78);
 	static_assert(offsetof(TESWaterForm, opacity) == 0xB8);
 	static_assert(offsetof(TESWaterForm, waterFormFlags) == 0xB9);
 	static_assert(offsetof(TESWaterForm, material) == 0xC0);
@@ -174,8 +174,8 @@ namespace Skyrim
 	static_assert(offsetof(TESWaterForm, colorProperties) == 0xF8);
 	static_assert(offsetof(TESWaterForm, displacementSimulator) == 0x118);
 	static_assert(offsetof(TESWaterForm, noiseFalloff) == 0x130);
-	static_assert(offsetof(TESWaterForm, windDirectionLayers) == 0x134);
-	static_assert(offsetof(TESWaterForm, windSpeedLayers) == 0x140);
+	static_assert(offsetof(TESWaterForm, noiseLayerWindDirections) == 0x134);
+	static_assert(offsetof(TESWaterForm, noiseLayerWindSpeeds) == 0x140);
 	static_assert(offsetof(TESWaterForm, aboveWaterFogAmount) == 0x154);
 	static_assert(offsetof(TESWaterForm, underWaterFogAmount) == 0x15C);
 	static_assert(offsetof(TESWaterForm, underWaterFogDistanceNearPlane) == 0x160);
@@ -184,8 +184,8 @@ namespace Skyrim
 	static_assert(offsetof(TESWaterForm, specularPower) == 0x16C);
 	static_assert(offsetof(TESWaterForm, specularRadius) == 0x174);
 	static_assert(offsetof(TESWaterForm, specularBrightness) == 0x178);
-	static_assert(offsetof(TESWaterForm, uvScaleLayers) == 0x17C);
-	static_assert(offsetof(TESWaterForm, amplitudeScaleLayers) == 0x188);
+	static_assert(offsetof(TESWaterForm, noiseLayerUVScales) == 0x17C);
+	static_assert(offsetof(TESWaterForm, noiseLayerAmplitudeScales) == 0x188);
 	static_assert(offsetof(TESWaterForm, reflectionMagnitude) == 0x194);
 	static_assert(offsetof(TESWaterForm, sunSparkleMagnitude) == 0x198);
 	static_assert(offsetof(TESWaterForm, sunSpecularMagnitude) == 0x19C);
@@ -193,7 +193,7 @@ namespace Skyrim
 	static_assert(offsetof(TESWaterForm, sunSparklePower) == 0x1B0);
 	static_assert(offsetof(TESWaterForm, flowmapScale) == 0x1B4);
 	static_assert(offsetof(TESWaterForm, contactSpellItem) == 0x1F8);
-	static_assert(offsetof(TESWaterForm, noiseTextureDataLayers) == 0x200);
+	static_assert(offsetof(TESWaterForm, noiseLayerTextureData) == 0x200);
 	static_assert(offsetof(TESWaterForm, imageSpaceModifier) == 0x240);
 	static_assert(offsetof(TESWaterForm, linearVelocity) == 0x248);
 	static_assert(offsetof(TESWaterForm, angularVelocity) == 0x254);

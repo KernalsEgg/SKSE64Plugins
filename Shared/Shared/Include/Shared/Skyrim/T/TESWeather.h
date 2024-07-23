@@ -160,8 +160,8 @@ namespace Skyrim
 		std::uint8_t                              thunderLightningFrequency;                                                                                      // 66E, Precipitation, Thunder/Lightning
 		Utility::Enumeration<Flags, std::uint8_t> weatherFlags;                                                                                                   // 66F
 		Color3                                    lightningColor;                                                                                                 // 670, Precipitation, Lightning Color
-		std::uint8_t                              visualEffectBegin;                                                                                              // 673, Effects, Visual Effect
-		std::uint8_t                              visualEffectEnd;                                                                                                // 674, Effects, Visual Effect
+		std::uint8_t                              referenceEffectBegin;                                                                                           // 673, Effects, Visual Effect
+		std::uint8_t                              referenceEffectEnd;                                                                                             // 674, Effects, Visual Effect
 		std::uint8_t                              windDirection;                                                                                                  // 675, General
 		std::uint8_t                              windDirectionRange;                                                                                             // 676, General
 		std::uint8_t                              unknown677;                                                                                                     // 677
@@ -177,7 +177,7 @@ namespace Skyrim
 		BGSLensFlare*                             sunGlareLensFlare;                                                                                              // 8A0, General
 		BGSVolumetricLighting*                    volumetricLighting[Utility::Conversion::ToUnderlying(Time::kTotal)];                                            // 8A8, General
 		BGSShaderParticleGeometryData*            precipitation;                                                                                                  // 8C8, Precipitation, Precipitation
-		BGSReferenceEffect*                       visualEffect;                                                                                                   // 8D0, Visual Effect
+		BGSReferenceEffect*                       referenceEffect;                                                                                                // 8D0, Visual Effect
 	};
 	static_assert(offsetof(TESWeather, cloudTextures) == 0x20);
 	static_assert(offsetof(TESWeather, cloudSpeedY) == 0x220);
@@ -196,8 +196,8 @@ namespace Skyrim
 	static_assert(offsetof(TESWeather, thunderLightningFrequency) == 0x66E);
 	static_assert(offsetof(TESWeather, weatherFlags) == 0x66F);
 	static_assert(offsetof(TESWeather, lightningColor) == 0x670);
-	static_assert(offsetof(TESWeather, visualEffectBegin) == 0x673);
-	static_assert(offsetof(TESWeather, visualEffectEnd) == 0x674);
+	static_assert(offsetof(TESWeather, referenceEffectBegin) == 0x673);
+	static_assert(offsetof(TESWeather, referenceEffectEnd) == 0x674);
 	static_assert(offsetof(TESWeather, windDirection) == 0x675);
 	static_assert(offsetof(TESWeather, windDirectionRange) == 0x676);
 	static_assert(offsetof(TESWeather, fogDistance) == 0x678);
@@ -212,6 +212,6 @@ namespace Skyrim
 	static_assert(offsetof(TESWeather, sunGlareLensFlare) == 0x8A0);
 	static_assert(offsetof(TESWeather, volumetricLighting) == 0x8A8);
 	static_assert(offsetof(TESWeather, precipitation) == 0x8C8);
-	static_assert(offsetof(TESWeather, visualEffect) == 0x8D0);
+	static_assert(offsetof(TESWeather, referenceEffect) == 0x8D0);
 	static_assert(sizeof(TESWeather) == 0x8D8);
 }

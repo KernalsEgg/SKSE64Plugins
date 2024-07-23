@@ -34,7 +34,7 @@ namespace Skyrim
 		// Member variables
 		std::uint8_t                                                                           padding39;                                                            // 39
 		std::uint16_t                                                                          padding3A;                                                            // 3A
-		ActorHandle                                                                            cameraTarget;                                                         // 3C
+		ActorHandle                                                                            cameraTargetHandle;                                                   // 3C
 		BSTSmallArray<TESCameraState*, Utility::Conversion::ToUnderlying(CameraState::kTotal)> temporaryReturnStates;                                                // 40
 		BSTSmartPointer<TESCameraState>                                                        cameraStates[Utility::Conversion::ToUnderlying(CameraState::kTotal)]; // B8
 		std::uint64_t                                                                          unknown120;                                                           // 120
@@ -56,7 +56,7 @@ namespace Skyrim
 		std::uint8_t                                                                           padding165;                                                           // 165
 		std::uint16_t                                                                          padding166;                                                           // 166
 	};
-	static_assert(offsetof(PlayerCamera, cameraTarget) == 0x3C);
+	static_assert(offsetof(PlayerCamera, cameraTargetHandle) == 0x3C);
 	static_assert(offsetof(PlayerCamera, temporaryReturnStates) == 0x40);
 	static_assert(offsetof(PlayerCamera, cameraStates) == 0xB8);
 	static_assert(offsetof(PlayerCamera, rigidBody) == 0x128);

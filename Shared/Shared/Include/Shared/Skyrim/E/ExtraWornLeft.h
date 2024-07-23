@@ -16,7 +16,7 @@ namespace Skyrim
 		virtual ~ExtraWornLeft() override; // 0
 
 		// Override (BSExtraData)
-		virtual ExtraDataType GetType() const override; // 1
+		virtual ExtraDataType GetExtraDataType() const override; // 1
 	};
 	static_assert(sizeof(ExtraWornLeft) == 0x10);
 }

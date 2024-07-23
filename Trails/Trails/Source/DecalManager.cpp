@@ -14,11 +14,9 @@ namespace Trails
 
 		if (decals->GetBool())
 		{
-			auto* target3D = creationData.target3D.get();
-
-			if (target3D)
+			if (creationData.target3D)
 			{
-				auto* target3DNode = target3D->AsNiNode();
+				auto* target3DNode = creationData.target3D->AsNiNode();
 
 				if (target3DNode)
 				{

@@ -22,13 +22,13 @@ namespace Skyrim
 		using Handle        = void*;
 
 		// Add
-		virtual ~GRenderTarget() {}                                         // 0
-		virtual bool       InitializeRenderTarget(GTexture* target)    = 0; // 1
-		virtual GRenderer* GetRenderer() const                         = 0; // 2
-		virtual Handle     GetUserData() const                         = 0; // 3
-		virtual void       SetUserData(Handle data)                    = 0; // 4
-		virtual void       AddChangeHandler(ChangeHandler* handler)    = 0; // 5
-		virtual void       RemoveChangeHandler(ChangeHandler* handler) = 0; // 6
+		virtual ~GRenderTarget() {}                                               // 0
+		virtual bool       InitializeRenderTarget(GTexture* target)          = 0; // 1
+		virtual GRenderer* GetRenderer() const                               = 0; // 2
+		virtual Handle     GetUserData() const                               = 0; // 3
+		virtual void       SetUserData(Handle data)                          = 0; // 4
+		virtual void       AddChangeHandler(ChangeHandler* changeHandler)    = 0; // 5
+		virtual void       RemoveChangeHandler(ChangeHandler* changeHandler) = 0; // 6
 
 		GRenderTarget();
 

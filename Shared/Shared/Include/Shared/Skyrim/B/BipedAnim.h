@@ -19,7 +19,7 @@ namespace Skyrim
 	{
 	public:
 		// Member functions
-		BipedObject* GetShieldObject();
+		BipedObject* GetShieldBipedObject();
 
 		// Member variables
 		std::uint32_t padding4;                                                                         // 4

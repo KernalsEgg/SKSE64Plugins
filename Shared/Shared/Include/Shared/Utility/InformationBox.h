@@ -12,7 +12,7 @@ namespace Utility::InformationBox
 	struct Error
 	{
 	public:
-		explicit Error(std::string_view format, Arguments... arguments, std::source_location sourceLocation = std::source_location::current())
+		explicit Error(std::string_view format, const Arguments&... arguments, std::source_location sourceLocation = std::source_location::current())
 		{
 			::MessageBoxA(
 				nullptr,
@@ -31,5 +31,5 @@ namespace Utility::InformationBox
 	};
 
 	template <class... Arguments>
-	Error(std::string_view, Arguments...) -> Error<Arguments...>;
+	Error(std::string_view, const Arguments&...) -> Error<Arguments...>;
 }

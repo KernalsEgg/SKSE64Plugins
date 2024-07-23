@@ -42,7 +42,7 @@ namespace ConditionsTargetMagicEffects::Events
 			bool        append{ false };
 			std::string buffer{};
 
-			auto* player = Skyrim::PlayerCharacter::GetSingleton();
+			auto* playerCharacter = Skyrim::PlayerCharacter::GetSingleton();
 
 			for (auto* effectItem : magicItem->effectItems)
 			{
@@ -66,7 +66,7 @@ namespace ConditionsTargetMagicEffects::Events
 
 				Skyrim::BGSEntryPoint::HandleEntryPoint(
 					Skyrim::BGSEntryPoint::EntryPoint::kModifySpellDuration,
-					player,
+					playerCharacter,
 					effectSetting,
 					magicItem,
 					nullptr,
@@ -78,7 +78,7 @@ namespace ConditionsTargetMagicEffects::Events
 				{
 					Skyrim::BGSEntryPoint::HandleEntryPoint(
 						Skyrim::BGSEntryPoint::EntryPoint::kModifySpellDuration,
-						player,
+						playerCharacter,
 						magicItem,
 						nullptr,
 						std::addressof(duration));
@@ -86,7 +86,7 @@ namespace ConditionsTargetMagicEffects::Events
 
 				Skyrim::BGSEntryPoint::HandleEntryPoint(
 					Skyrim::BGSEntryPoint::EntryPoint::kModifySpellMagnitude,
-					player,
+					playerCharacter,
 					effectSetting,
 					magicItem,
 					nullptr,
@@ -98,7 +98,7 @@ namespace ConditionsTargetMagicEffects::Events
 				{
 					Skyrim::BGSEntryPoint::HandleEntryPoint(
 						Skyrim::BGSEntryPoint::EntryPoint::kModifySpellMagnitude,
-						player,
+						playerCharacter,
 						magicItem,
 						nullptr,
 						std::addressof(magnitude));

@@ -75,7 +75,7 @@ namespace Skyrim
 
 		// Member variables
 		Utility::Enumeration<Flags, std::uint16_t>      projectileFlags;         // 80
-		Utility::Enumeration<Type, std::uint16_t>       projectileType;          // 82
+		Utility::Enumeration<Type, std::uint16_t>       type;                    // 82
 		float                                           gravity;                 // 84
 		float                                           speed;                   // 88
 		float                                           range;                   // 8C
@@ -105,7 +105,7 @@ namespace Skyrim
 		std::uint32_t                                   padding134;              // 134
 	};
 	static_assert(offsetof(BGSProjectile, projectileFlags) == 0x80);
-	static_assert(offsetof(BGSProjectile, projectileType) == 0x82);
+	static_assert(offsetof(BGSProjectile, type) == 0x82);
 	static_assert(offsetof(BGSProjectile, gravity) == 0x84);
 	static_assert(offsetof(BGSProjectile, speed) == 0x88);
 	static_assert(offsetof(BGSProjectile, range) == 0x8C);

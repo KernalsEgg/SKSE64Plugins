@@ -20,11 +20,11 @@ namespace ScrambledBugs::Patches
 
 	float DifficultyMultipliers::AdjustHealthDamageToDifficulty(Skyrim::Actor* target, float damage, float onlyReduceDamage)
 	{
-		auto* player               = Skyrim::PlayerCharacter::GetSingleton();
+		auto* playerCharacter      = Skyrim::PlayerCharacter::GetSingleton();
 		auto  difficultyMultiplier = Skyrim::PlayerCharacter::GetDifficultyMultiplier(
-            player->difficulty,
+            playerCharacter->difficulty,
             Skyrim::ActorValue::kHealth,
-            target == player ||
+            target == playerCharacter ||
                 (DifficultyMultipliers::teammates_ && DifficultyMultipliers::IsTeammate(target)) ||
                 (DifficultyMultipliers::commandedActors_ && DifficultyMultipliers::IsCommandedActor(target)));
 
@@ -84,7 +84,7 @@ namespace ScrambledBugs::Patches
 
 	bool DifficultyMultipliers::IsCommandedActor(Skyrim::Actor* actor)
 	{
-		return actor->GetCommandingActor().get().get() == Skyrim::PlayerCharacter::GetSingleton();
+		return actor->GetCommandingActorHandle().get().get() == Skyrim::PlayerCharacter::GetSingleton();
 	}
 
 	bool DifficultyMultipliers::IsTeammate(Skyrim::Actor* actor)

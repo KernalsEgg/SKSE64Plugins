@@ -16,8 +16,8 @@ namespace Skyrim
 	{
 	public:
 		// Add
-		virtual bool IsCollisionEnabled(const hkpShapeRayCastInput& inputA, const hkpShapeContainer& containerB, hkpShapeKey keyB) const = 0; // 0
-		virtual ~hkpRayShapeCollectionFilter();                                                                                               // 1
+		virtual bool IsCollisionEnabled(const hkpShapeRayCastInput& inputA, const hkpShapeContainer& shapeContainerB, hkpShapeKey shapeKeyB) const = 0; // 0
+		virtual ~hkpRayShapeCollectionFilter();                                                                                                         // 1
 	};
 	static_assert(sizeof(hkpRayShapeCollectionFilter) == 0x8);
 }

@@ -171,35 +171,25 @@ namespace Utility::Assembly
 #pragma pack(pop)
 
 	constexpr std::array<std::uint8_t, 0x1> NO_OPERATION_1{ 0x90 };
-	static_assert(Memory::SizeOf<decltype(NO_OPERATION_1)>::VALUE == 0x1);
-
 	constexpr std::array<std::uint8_t, 0x2> NO_OPERATION_2{ 0x66, 0x90 };
-	static_assert(Memory::SizeOf<decltype(NO_OPERATION_2)>::VALUE == 0x2);
-
 	constexpr std::array<std::uint8_t, 0x3> NO_OPERATION_3{ 0x0F, 0x1F, 0x00 };
-	static_assert(Memory::SizeOf<decltype(NO_OPERATION_3)>::VALUE == 0x3);
-
 	constexpr std::array<std::uint8_t, 0x4> NO_OPERATION_4{ 0x0F, 0x1F, 0x40, 0x00 };
-	static_assert(Memory::SizeOf<decltype(NO_OPERATION_4)>::VALUE == 0x4);
-
 	constexpr std::array<std::uint8_t, 0x5> NO_OPERATION_5{ 0x0F, 0x1F, 0x44, 0x00, 0x00 };
-	static_assert(Memory::SizeOf<decltype(NO_OPERATION_5)>::VALUE == 0x5);
-
 	constexpr std::array<std::uint8_t, 0x6> NO_OPERATION_6{ 0x66, 0x0F, 0x1F, 0x44, 0x00, 0x00 };
-	static_assert(Memory::SizeOf<decltype(NO_OPERATION_6)>::VALUE == 0x6);
-
 	constexpr std::array<std::uint8_t, 0x7> NO_OPERATION_7{ 0x0F, 0x1F, 0x80, 0x00, 0x00, 0x00, 0x00 };
-	static_assert(Memory::SizeOf<decltype(NO_OPERATION_7)>::VALUE == 0x7);
-
 	constexpr std::array<std::uint8_t, 0x8> NO_OPERATION_8{ 0x0F, 0x1F, 0x84, 0x00, 0x00, 0x00, 0x00, 0x00 };
-	static_assert(Memory::SizeOf<decltype(NO_OPERATION_8)>::VALUE == 0x8);
-
 	constexpr std::array<std::uint8_t, 0x9> NO_OPERATION_9{ 0x66, 0x0F, 0x1F, 0x84, 0x00, 0x00, 0x00, 0x00, 0x00 };
-	static_assert(Memory::SizeOf<decltype(NO_OPERATION_9)>::VALUE == 0x9);
-
 	constexpr std::array<std::uint8_t, 0xA> NO_OPERATION_A{ 0x66, 0x66, 0x0F, 0x1F, 0x84, 0x00, 0x00, 0x00, 0x00, 0x00 };
-	static_assert(Memory::SizeOf<decltype(NO_OPERATION_A)>::VALUE == 0xA);
-
 	constexpr std::array<std::uint8_t, 0xB> NO_OPERATION_B{ 0x66, 0x66, 0x66, 0x0F, 0x1F, 0x84, 0x00, 0x00, 0x00, 0x00, 0x00 };
+	static_assert(Memory::SizeOf<decltype(NO_OPERATION_1)>::VALUE == 0x1);
+	static_assert(Memory::SizeOf<decltype(NO_OPERATION_2)>::VALUE == 0x2);
+	static_assert(Memory::SizeOf<decltype(NO_OPERATION_3)>::VALUE == 0x3);
+	static_assert(Memory::SizeOf<decltype(NO_OPERATION_4)>::VALUE == 0x4);
+	static_assert(Memory::SizeOf<decltype(NO_OPERATION_5)>::VALUE == 0x5);
+	static_assert(Memory::SizeOf<decltype(NO_OPERATION_6)>::VALUE == 0x6);
+	static_assert(Memory::SizeOf<decltype(NO_OPERATION_7)>::VALUE == 0x7);
+	static_assert(Memory::SizeOf<decltype(NO_OPERATION_8)>::VALUE == 0x8);
+	static_assert(Memory::SizeOf<decltype(NO_OPERATION_9)>::VALUE == 0x9);
+	static_assert(Memory::SizeOf<decltype(NO_OPERATION_A)>::VALUE == 0xA);
 	static_assert(Memory::SizeOf<decltype(NO_OPERATION_B)>::VALUE == 0xB);
 }

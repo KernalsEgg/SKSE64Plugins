@@ -10,6 +10,7 @@ namespace Skyrim
 
 	struct FactionRank
 	{
+	public:
 		TESFaction*   faction;  // 0
 		std::int8_t   rank;     // 8
 		std::uint8_t  padding9; // 9

@@ -13,27 +13,30 @@ namespace Trails
 		void Load()
 		{
 			auto path   = std::filesystem::path(Relocation::DynamicLinkLibrary::GetSingleton().GetPath()).replace_extension("log");
-			auto sink   = std::make_shared<spdlog::sinks::basic_file_sink_mt>(path.string(), true);
-			auto logger = std::make_shared<spdlog::logger>("logger", std::move(sink));
+			auto logger = spdlog::basic_logger_mt(path.string(), path.string(), true);
 
-			logger->set_level(spdlog::level::info);
 			logger->flush_on(spdlog::level::info);
+			logger->set_level(spdlog::level::info);
+			logger->set_pattern("[%Y-%m-%d %T.%e %z] [%l] [%t] [%s:%#] %v");
 
 			spdlog::set_default_logger(std::move(logger));
-			spdlog::set_pattern("[%Y-%m-%d %T.%e %z] [%l] [%t] [%s:%#] %v");
 		}
 	}
 
-	void OnInitializeThread()
+	bool InitializeThread()
 	{
 		SPDLOG_INFO("\n{}", Settings::GetSingleton().Serialize().dump(1, '\t'));
 
 		Skyrim::BGSFootstepManager::GetSingleton()->RegisterSink(std::addressof(Events::FootstepEventSink::GetSingleton()));
+
+		return true;
 	}
 
 	void Load()
 	{
-		Skyrim::Events::InitializeThread::GetSingleton().After().RegisterSink(Trails::OnInitializeThread);
+		Skyrim::Events::InitializeThread::GetSingleton().after.Subscribe(
+			std::make_shared<decltype(Skyrim::Events::InitializeThread::after)::handler_type::element_type>(
+				Trails::InitializeThread));
 	}
 }
 

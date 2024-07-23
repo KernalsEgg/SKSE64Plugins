@@ -9,8 +9,6 @@
 
 namespace Skyrim
 {
-	class hkpWorld;
-
 	class bhkWorldObject :
 		public bhkSerializable // 0
 	{

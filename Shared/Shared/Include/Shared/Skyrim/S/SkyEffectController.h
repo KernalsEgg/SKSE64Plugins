@@ -18,8 +18,8 @@ namespace Skyrim
 		// Override (ReferenceEffectController)
 		virtual void             UnknownA(ReferenceEffectController*) override;  // A
 		virtual TESObjectREFR*   GetTarget() override;                           // B
-		virtual BGSArtObject*    GetHitEffectArt() override;                     // C
-		virtual TESEffectShader* GetHitShader() override;                        // D
+		virtual BGSArtObject*    GetHitEffectArtObject() override;               // C
+		virtual TESEffectShader* GetHitEffectShader() override;                  // D
 		virtual void             UnknownE(ReferenceEffectController*) override;  // E
 		virtual NiAVObject*      GetAttachRoot() override;                       // F
 		virtual void             Unknown1A(ReferenceEffectController*) override; // 1A

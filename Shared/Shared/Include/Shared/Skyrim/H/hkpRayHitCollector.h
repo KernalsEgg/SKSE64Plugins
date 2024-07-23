@@ -16,8 +16,8 @@ namespace Skyrim
 	{
 	public:
 		// Add
-		virtual void AddRayHit(const hkpCdBody& cdBody, const hkpShapeRayCastCollectorOutput& hitInformation) = 0;       // 0
-		virtual ~hkpRayHitCollector()                                                                         = default; // 1
+		virtual void AddRayHit(const hkpCdBody& collisionDetectionBody, const hkpShapeRayCastCollectorOutput& hitInformation) = 0;       // 0
+		virtual ~hkpRayHitCollector()                                                                                         = default; // 1
 
 		// Member functions
 		constexpr void Reset() noexcept
@@ -25,7 +25,7 @@ namespace Skyrim
 			this->earlyOutHitFraction = 1.0F;
 		}
 
-		static std::int32_t ShapeKeysFromCdBody(hkpShapeKey* buffer, std::int32_t maximumKeys, const hkpCdBody& cdBody);
+		static std::int32_t ShapeKeysFromCollisionDetectionBody(hkpShapeKey* buffer, std::int32_t maximumKeys, const hkpCdBody& collisionDetectionBody);
 
 		// Member variables
 		float         earlyOutHitFraction{ 1.0F }; // 8

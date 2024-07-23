@@ -13,6 +13,7 @@ namespace Skyrim
 	public:
 		struct Axis
 		{
+		public:
 			Color positive; // 0
 			Color negative; // 4
 		};

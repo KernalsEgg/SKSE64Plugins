@@ -2,7 +2,7 @@
 
 #include "Shared/PrecompiledHeader.h"
 
-#include "Shared/Utility/EventSource.h"
+#include "Shared/Utility/Event.h"
 
 
 
@@ -26,15 +26,13 @@ namespace Skyrim
 
 			static InitializeThread& GetSingleton();
 
-			Utility::EventSource<>& After();
-			Utility::EventSource<>& Before();
+			Utility::Event<> after{};
+			Utility::Event<> before{};
 
 		private:
-			static void Notify(InitTESThread* initializeThread);
+			static void Raise(InitTESThread* initializeThread);
 
-			decltype(InitializeThread::Notify)* notify_{};
-			Utility::EventSource<>              after_{};
-			Utility::EventSource<>              before_{};
+			decltype(InitializeThread::Raise)* raise_{};
 		};
 	}
 }

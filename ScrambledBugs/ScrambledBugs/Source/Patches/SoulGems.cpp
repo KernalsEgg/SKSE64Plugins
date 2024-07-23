@@ -31,7 +31,7 @@ namespace ScrambledBugs::Patches
 		{
 			auto* soulGem = static_cast<Skyrim::TESSoulGem*>(boundObject);
 
-			if (soulGem->soul == Skyrim::SoulLevel::kNone)
+			if (soulGem->soulLevel == Skyrim::SoulLevel::kNone)
 			{
 				auto soulGemCountDelta = inventoryEntryData->countDelta;
 

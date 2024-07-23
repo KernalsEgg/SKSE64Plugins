@@ -11,20 +11,20 @@ namespace Skyrim
 {
 	class BSFixedString;
 
+	enum class InputEventType : std::uint32_t
+	{
+		kButton        = 0,
+		kMouseMove     = 1,
+		kCharacter     = 2,
+		kThumbstick    = 3,
+		kDeviceConnect = 4,
+		kKinect        = 5
+	};
+	static_assert(sizeof(InputEventType) == 0x4);
+
 	class InputEvent
 	{
 	public:
-		enum class Type : std::uint32_t
-		{
-			kButton        = 0,
-			kMouseMove     = 1,
-			kCharacter     = 2,
-			kThumbstick    = 3,
-			kDeviceConnect = 4,
-			kKinect        = 5
-		};
-		static_assert(sizeof(Type) == 0x4);
-
 		template <class T>
 		class iterator
 		{
@@ -89,9 +89,9 @@ namespace Skyrim
 		constexpr iterator<const InputEvent> cend() const noexcept { return this->end(); }
 
 		// Member variables
-		Utility::Enumeration<InputDevice, std::uint32_t> inputDevice;    // 8
-		Utility::Enumeration<Type, std::uint32_t>        inputEventType; // C
-		InputEvent*                                      next;           // 10
+		Utility::Enumeration<InputDevice, std::uint32_t>    inputDevice;    // 8
+		Utility::Enumeration<InputEventType, std::uint32_t> inputEventType; // C
+		InputEvent*                                         next;           // 10
 	};
 	static_assert(offsetof(InputEvent, inputDevice) == 0x8);
 	static_assert(offsetof(InputEvent, inputEventType) == 0xC);

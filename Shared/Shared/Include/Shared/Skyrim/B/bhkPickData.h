@@ -16,8 +16,8 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		hkpWorldRayCastInput  rayCastInput{};               // 0
-		hkpWorldRayCastOutput rayCastOutput{};              // 30
+		hkpWorldRayCastInput  worldRayCastInput{};          // 0
+		hkpWorldRayCastOutput worldRayCastOutput{};         // 30
 		hkVector4             ray{};                        // 90
 		hkpRayHitCollector*   rayHitCollectorA0{ nullptr }; // A0
 		hkpRayHitCollector*   rayHitCollectorA8{ nullptr }; // A8
@@ -29,8 +29,8 @@ namespace Skyrim
 		std::uint32_t         paddingC4;                    // C4
 		std::uint64_t         paddingC8;                    // C8
 	};
-	static_assert(offsetof(bhkPickData, rayCastInput) == 0x0);
-	static_assert(offsetof(bhkPickData, rayCastOutput) == 0x30);
+	static_assert(offsetof(bhkPickData, worldRayCastInput) == 0x0);
+	static_assert(offsetof(bhkPickData, worldRayCastOutput) == 0x30);
 	static_assert(offsetof(bhkPickData, ray) == 0x90);
 	static_assert(offsetof(bhkPickData, rayHitCollectorA0) == 0xA0);
 	static_assert(offsetof(bhkPickData, rayHitCollectorA8) == 0xA8);

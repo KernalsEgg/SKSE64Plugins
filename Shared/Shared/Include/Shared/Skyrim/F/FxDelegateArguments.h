@@ -15,7 +15,7 @@ namespace Skyrim
 	class FxDelegateArguments
 	{
 	public:
-		FxDelegateArguments(GFxValue responseID, FxDelegateHandler* handler, GFxMovieView* movie, const GFxValue* values, std::uint32_t argumentCount);
+		FxDelegateArguments(GFxValue responseID, FxDelegateHandler* delegateHandler, GFxMovieView* movieView, const GFxValue* values, std::uint32_t argumentCount);
 
 		// Member functions
 		const GFxValue& operator[](UPInt index) const;

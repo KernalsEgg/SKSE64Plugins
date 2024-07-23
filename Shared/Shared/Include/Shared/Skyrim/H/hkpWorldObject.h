@@ -45,7 +45,7 @@ namespace Skyrim
 		virtual ~hkpWorldObject() override; // 0
 
 		// Override (hkReferencedObject)
-		virtual void CalculateContentStatistics(hkStatisticsCollector* collector, const hkClass* referencedObjectClass) const override; // 2
+		virtual void CalculateContentStatistics(hkStatisticsCollector* statisticsCollector, const hkClass* referencedObjectClass) const override; // 2
 
 		// Add
 		virtual hkWorldOperation::Result SetShape(const hkpShape* shape);              // 3
@@ -59,7 +59,7 @@ namespace Skyrim
 		// Member variables
 		hkpWorld*                 world;               // 10
 		std::uint64_t             userData;            // 18
-		hkpLinkedCollidable       collidable;          // 20
+		hkpLinkedCollidable       linkedCollidable;    // 20
 		hkMultipleThreadCheck     multipleThreadCheck; // A0
 		std::uint32_t             paddingAC;           // AC
 		hkStringPointer           name;                // B0
@@ -68,7 +68,7 @@ namespace Skyrim
 	};
 	static_assert(offsetof(hkpWorldObject, world) == 0x10);
 	static_assert(offsetof(hkpWorldObject, userData) == 0x18);
-	static_assert(offsetof(hkpWorldObject, collidable) == 0x20);
+	static_assert(offsetof(hkpWorldObject, linkedCollidable) == 0x20);
 	static_assert(offsetof(hkpWorldObject, multipleThreadCheck) == 0xA0);
 	static_assert(offsetof(hkpWorldObject, name) == 0xB0);
 	static_assert(offsetof(hkpWorldObject, properties) == 0xB8);

@@ -32,10 +32,10 @@ namespace ScrambledBugs::Fixes
 
 		bool perkQuickDraw;
 
-		auto*        player              = Skyrim::PlayerCharacter::GetSingleton();
+		auto*        playerCharacter     = Skyrim::PlayerCharacter::GetSingleton();
 		static auto* arrowBowMinimumTime = Skyrim::GameSettingCollection::InitializeSetting("fArrowBowMinTime");
 
-		float pullTime = player->GetAnimationVariableBool(Skyrim::BSFixedString("bPerkQuickDraw"), perkQuickDraw) && perkQuickDraw ?
+		float pullTime = playerCharacter->GetAnimationVariableBool(Skyrim::BSFixedString("bPerkQuickDraw"), perkQuickDraw) && perkQuickDraw ?
 		                     drawTime - (arrowBowMinimumTime->GetFloat() / QuickShot::playbackSpeed_) :
 		                     drawTime - arrowBowMinimumTime->GetFloat();
 

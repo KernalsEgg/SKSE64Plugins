@@ -29,6 +29,7 @@ namespace Skyrim
 	public:
 		struct CalculateSizeForSPUInput
 		{
+		public:
 			bool midPhaseAgent3Registered; // 0
 			bool isFixedOrKeyframed;       // 1
 			bool hasDynamicMotionSaved;    // 2
@@ -42,14 +43,14 @@ namespace Skyrim
 		virtual ~hkpShape() override; // 0
 
 		// Add
-		virtual float                    GetMaximumProjection(const hkVector4& direction) const;                                                                                           // 3
-		virtual const hkpShapeContainer* GetContainer() const;                                                                                                                             // 4
-		virtual bool                     IsConvex() const;                                                                                                                                 // 5
-		virtual std::int32_t             CalculateSizeForSpu(const CalculateSizeForSPUInput& input, std::int32_t spuBufferSizeLeft) const;                                                 // 6
-		virtual void                     GetAabbImplementation(const hkTransform& localToWorld, float tolerance, hkAabb& out) const                                          = 0;          // 7
-		virtual bool                     CastRayImplementation(const hkpShapeRayCastInput& input, hkpShapeRayCastOutput& output) const                                       = 0;          // 8
-		virtual void                     CastRayWithCollectorImplementation(const hkpShapeRayCastInput& input, const hkpCdBody& cdBody, hkpRayHitCollector& collector) const = 0;          // 9
-		virtual hkVector4Comparison      CastRayBundleImplementation(const hkpShapeRayBundleCastInput& input, hkpShapeRayBundleCastOutput& output, const hkVector4Comparison& mask) const; // A
+		virtual float                    GetMaximumProjection(const hkVector4& direction) const;                                                                                                        // 3
+		virtual const hkpShapeContainer* GetShapeContainer() const;                                                                                                                                     // 4
+		virtual bool                     IsConvex() const;                                                                                                                                              // 5
+		virtual std::int32_t             CalculateSizeForSpu(const CalculateSizeForSPUInput& input, std::int32_t spuBufferSizeLeft) const;                                                              // 6
+		virtual void                     GetAxisAlignedBoundingBoxImplementation(const hkTransform& localToWorld, float tolerance, hkAabb& output) const                                           = 0; // 7
+		virtual bool                     CastRayImplementation(const hkpShapeRayCastInput& input, hkpShapeRayCastOutput& output) const                                                             = 0; // 8
+		virtual void                     CastRayWithCollectorImplementation(const hkpShapeRayCastInput& input, const hkpCdBody& collisionDetectionBody, hkpRayHitCollector& rayHitCollector) const = 0; // 9
+		virtual hkVector4Comparison      CastRayBundleImplementation(const hkpShapeRayBundleCastInput& input, hkpShapeRayBundleCastOutput& output, const hkVector4Comparison& mask) const;              // A
 
 		// Member variables
 		std::uint64_t                                     userData;  // 10

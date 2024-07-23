@@ -41,9 +41,9 @@ namespace Skyrim
 			// Member variables
 			std::int32_t                                                  spellCost;      // 0
 			Utility::Enumeration<Flags, std::uint32_t>                    spellItemFlags; // 4
-			Utility::Enumeration<MagicSystem::SpellType, std::uint32_t>   type;           // 8
+			Utility::Enumeration<MagicSystem::SpellType, std::uint32_t>   spellType;      // 8
 			float                                                         chargeTime;     // C
-			Utility::Enumeration<MagicSystem::CastingType, std::uint32_t> casting;        // 10
+			Utility::Enumeration<MagicSystem::CastingType, std::uint32_t> castingType;    // 10
 			Utility::Enumeration<MagicSystem::Delivery, std::uint32_t>    delivery;       // 14
 			float                                                         castDuration;   // 18
 			float                                                         range;          // 1C
@@ -51,9 +51,9 @@ namespace Skyrim
 		};
 		static_assert(offsetof(Data, spellCost) == 0x0);
 		static_assert(offsetof(Data, spellItemFlags) == 0x4);
-		static_assert(offsetof(Data, type) == 0x8);
+		static_assert(offsetof(Data, spellType) == 0x8);
 		static_assert(offsetof(Data, chargeTime) == 0xC);
-		static_assert(offsetof(Data, casting) == 0x10);
+		static_assert(offsetof(Data, castingType) == 0x10);
 		static_assert(offsetof(Data, delivery) == 0x14);
 		static_assert(offsetof(Data, castDuration) == 0x18);
 		static_assert(offsetof(Data, range) == 0x1C);

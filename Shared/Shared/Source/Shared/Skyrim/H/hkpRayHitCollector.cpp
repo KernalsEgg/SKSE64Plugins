@@ -9,12 +9,12 @@
 
 namespace Skyrim
 {
-	std::int32_t hkpRayHitCollector::ShapeKeysFromCdBody(hkpShapeKey* buffer, std::int32_t maximumKeys, const hkpCdBody& cdBody)
+	std::int32_t hkpRayHitCollector::ShapeKeysFromCollisionDetectionBody(hkpShapeKey* buffer, std::int32_t maximumKeys, const hkpCdBody& collisionDetectionBody)
 	{
 		std::int32_t     shapeIndex{ 0 };
 		const hkpCdBody* shapes[hkpShapeRayCastOutput::kMaximumHierarchyDepth];
 
-		for (const auto* shape = std::addressof(cdBody); shape->parent; shape = shape->parent)
+		for (const auto* shape = std::addressof(collisionDetectionBody); shape->parent; shape = shape->parent)
 		{
 			shapes[shapeIndex] = shape;
 

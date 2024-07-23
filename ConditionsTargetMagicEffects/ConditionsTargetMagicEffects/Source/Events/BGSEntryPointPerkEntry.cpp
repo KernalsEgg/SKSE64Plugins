@@ -25,8 +25,6 @@ namespace ConditionsTargetMagicEffects::Events
 
 		bool result{ true };
 
-		Skyrim::BSSpinLockGuard conditionLockGuard{ BGSEntryPointPerkEntry::GetConditionLock() };
-
 		for (std::size_t argumentIndex = 0, conditionIndex = 0; conditionIndex < argumentCount; ++argumentIndex, ++conditionIndex)
 		{
 			if (!result)
@@ -41,7 +39,7 @@ namespace ConditionsTargetMagicEffects::Events
 
 			if (argument && argument->formType == Skyrim::FormType::kMagicEffect)
 			{
-				auto* effectSetting = argument;
+				auto* effectSetting = static_cast<Skyrim::EffectSetting*>(argument);
 
 				argument = arguments[++argumentIndex];
 
@@ -87,23 +85,16 @@ namespace ConditionsTargetMagicEffects::Events
 		return temporaryConditionReference;
 	}
 
-	Skyrim::BSSpinLock& BGSEntryPointPerkEntry::GetConditionLock()
-	{
-		static Skyrim::BSSpinLock conditionLock{};
-
-		return conditionLock;
-	}
-
 	Skyrim::NiPointer<Skyrim::TESObjectREFR>& BGSEntryPointPerkEntry::GetTemporaryConditionSubjectReference()
 	{
-		static Skyrim::NiPointer<Skyrim::TESObjectREFR> temporaryConditionSubjectReference{ BGSEntryPointPerkEntry::CreateTemporaryConditionReference() };
+		thread_local static Skyrim::NiPointer<Skyrim::TESObjectREFR> temporaryConditionSubjectReference{ BGSEntryPointPerkEntry::CreateTemporaryConditionReference() };
 
 		return temporaryConditionSubjectReference;
 	}
 
 	Skyrim::NiPointer<Skyrim::TESObjectREFR>& BGSEntryPointPerkEntry::GetTemporaryConditionTargetReference()
 	{
-		static Skyrim::NiPointer<Skyrim::TESObjectREFR> temporaryConditionTargetReference{ BGSEntryPointPerkEntry::CreateTemporaryConditionReference() };
+		thread_local static Skyrim::NiPointer<Skyrim::TESObjectREFR> temporaryConditionTargetReference{ BGSEntryPointPerkEntry::CreateTemporaryConditionReference() };
 
 		return temporaryConditionTargetReference;
 	}

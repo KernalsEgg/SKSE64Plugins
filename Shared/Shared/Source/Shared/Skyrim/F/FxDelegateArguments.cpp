@@ -6,10 +6,10 @@
 
 namespace Skyrim
 {
-	FxDelegateArguments::FxDelegateArguments(GFxValue responseID, FxDelegateHandler* handler, GFxMovieView* movie, const GFxValue* values, std::uint32_t argumentCount) :
+	FxDelegateArguments::FxDelegateArguments(GFxValue responseID, FxDelegateHandler* delegateHandler, GFxMovieView* movieView, const GFxValue* values, std::uint32_t argumentCount) :
 		responseID_(responseID),
-		delegateHandler_(handler),
-		movieView_(movie),
+		delegateHandler_(delegateHandler),
+		movieView_(movieView),
 		arguments_(values),
 		argumentCount_(argumentCount)
 	{

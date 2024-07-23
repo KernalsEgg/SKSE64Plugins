@@ -30,7 +30,7 @@ namespace Skyrim
 		static UIMessageQueue* GetSingleton();
 
 		// Member functions
-		void AddMessage(const BSFixedString& menuName, Utility::Enumeration<UIMessage::Type, std::uint32_t> type, IUIMessageData* data);
+		void AddMessage(const BSFixedString& menuName, Utility::Enumeration<UIMessageType, std::uint32_t> messageType, IUIMessageData* messageData);
 
 		// Member variables
 		std::uint8_t                                 padding1;               // 1

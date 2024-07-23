@@ -11,8 +11,8 @@ namespace Skyrim
 {
 	Actor* ReferenceEffect::GetTargetActor() const
 	{
-		auto* target = this->target.get().get();
+		auto target = this->targetHandle.get();
 
-		return target && target->formType == FormType::kActor ? static_cast<Actor*>(target) : nullptr;
+		return target && target->formType == FormType::kActor ? static_cast<Actor*>(target.get()) : nullptr;
 	}
 }

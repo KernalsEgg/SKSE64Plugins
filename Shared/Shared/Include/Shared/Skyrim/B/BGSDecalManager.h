@@ -40,8 +40,8 @@ namespace Skyrim
 			ObjectReferenceHandle targetHandle{};                                                   // 24
 			NiPointer<NiAVObject> target3D{ nullptr };                                              // 28
 			NiNode*               clone{ nullptr };                                                 // 30
-			BGSTextureSet*        textureSet1{ nullptr };                                           // 38
-			BGSTextureSet*        textureSet2{ nullptr };                                           // 40
+			BGSTextureSet*        primaryTextureSet{ nullptr };                                     // 38
+			BGSTextureSet*        secondaryTextureSet{ nullptr };                                   // 40
 			std::uint32_t         unknown48{ static_cast<std::uint32_t>(-1) };                      // 48
 			float                 width{ 0.0F };                                                    // 4C
 			float                 height{ 0.0F };                                                   // 50
@@ -77,8 +77,8 @@ namespace Skyrim
 		static_assert(offsetof(CreationData, targetHandle) == 0x24);
 		static_assert(offsetof(CreationData, target3D) == 0x28);
 		static_assert(offsetof(CreationData, clone) == 0x30);
-		static_assert(offsetof(CreationData, textureSet1) == 0x38);
-		static_assert(offsetof(CreationData, textureSet2) == 0x40);
+		static_assert(offsetof(CreationData, primaryTextureSet) == 0x38);
+		static_assert(offsetof(CreationData, secondaryTextureSet) == 0x40);
 		static_assert(offsetof(CreationData, width) == 0x4C);
 		static_assert(offsetof(CreationData, height) == 0x50);
 		static_assert(offsetof(CreationData, depth) == 0x54);

@@ -24,10 +24,10 @@ namespace Skyrim
 
 		// Member variables
 		InventoryEntryData*   inventoryEntryData; // 8
-		ObjectReferenceHandle owner;              // 10
+		ObjectReferenceHandle ownerHandle;        // 10
 		std::uint32_t         padding14;          // 14
 	};
 	static_assert(offsetof(StandardItemData, inventoryEntryData) == 0x8);
-	static_assert(offsetof(StandardItemData, owner) == 0x10);
+	static_assert(offsetof(StandardItemData, ownerHandle) == 0x10);
 	static_assert(sizeof(StandardItemData) == 0x18);
 }

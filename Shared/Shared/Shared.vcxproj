@@ -579,7 +579,7 @@
     <ClInclude Include="Include\Shared\Utility\Assembly.h" />
     <ClInclude Include="Include\Shared\Utility\Conversion.h" />
     <ClInclude Include="Include\Shared\Utility\Enumeration.h" />
-    <ClInclude Include="Include\Shared\Utility\EventSource.h" />
+    <ClInclude Include="Include\Shared\Utility\Event.h" />
     <ClInclude Include="Include\Shared\Utility\Format.h" />
     <ClInclude Include="Include\Shared\Utility\Log.h" />
     <ClInclude Include="Include\Shared\Utility\Math.h" />

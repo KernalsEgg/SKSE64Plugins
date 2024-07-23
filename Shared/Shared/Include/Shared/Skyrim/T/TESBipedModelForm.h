@@ -27,12 +27,12 @@ namespace Skyrim
 		virtual void Unknown3(BaseFormComponent*) override; // 3
 
 		// Member variables
-		TESModelTextureSwap worldModels[Utility::Conversion::ToUnderlying(Sex::kTotal)];  // 8
-		TESIcon             iconImages[Utility::Conversion::ToUnderlying(Sex::kTotal)];   // 78
-		BGSMessageIcon      messageIcons[Utility::Conversion::ToUnderlying(Sex::kTotal)]; // 98
-		TESModelRDT         ragdollConstraintTemplate;                                    // C8
+		TESModelTextureSwap worldModelTextureSwaps[Utility::Conversion::ToUnderlying(Sex::kTotal)]; // 8
+		TESIcon             iconImages[Utility::Conversion::ToUnderlying(Sex::kTotal)];             // 78
+		BGSMessageIcon      messageIcons[Utility::Conversion::ToUnderlying(Sex::kTotal)];           // 98
+		TESModelRDT         ragdollConstraintTemplate;                                              // C8
 	};
-	static_assert(offsetof(TESBipedModelForm, worldModels) == 0x8);
+	static_assert(offsetof(TESBipedModelForm, worldModelTextureSwaps) == 0x8);
 	static_assert(offsetof(TESBipedModelForm, iconImages) == 0x78);
 	static_assert(offsetof(TESBipedModelForm, messageIcons) == 0x98);
 	static_assert(offsetof(TESBipedModelForm, ragdollConstraintTemplate) == 0xC8);

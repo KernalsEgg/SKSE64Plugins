@@ -20,22 +20,22 @@ namespace Skyrim
 	public:
 		enum class Flags : std::uint32_t
 		{
-			kNone                                     = 0,
-			kNoMembraneShader                         = 1U << 0,
-			kFillTextureEffectGrayscaleToPaletteColor = 1U << 1,
-			kFillTextureEffectGrayscaleToPaletteAlpha = 1U << 2,
-			kNoParticleShader                         = 1U << 3,
-			kEdgeEffectInverse                        = 1U << 4,
-			kAffectSkinOnly                           = 1U << 5,
-			kIgnoreAlpha                              = 1U << 6,
-			kProjectedUVs                             = 1U << 7,
-			kIgnoreBaseGeometryTextureAlpha           = 1U << 8,
-			kLighting                                 = 1U << 9,
-			kNoWeapons                                = 1U << 10,
-			kNotAnimated                              = 1U << 15,
-			kParticleShaderGrayscaleToPaletteColor    = 1U << 16,
-			kParticleShaderGrayscaleToPaletteAlpha    = 1U << 17,
-			kUseBloodGeometry                         = 1U << 24
+			kNone                                  = 0,
+			kNoMembraneShader                      = 1U << 0,
+			kTextureEffectGrayscaleToPaletteColor  = 1U << 1,
+			kTextureEffectGrayscaleToPaletteAlpha  = 1U << 2,
+			kNoParticleShader                      = 1U << 3,
+			kEdgeEffectInverse                     = 1U << 4,
+			kAffectSkinOnly                        = 1U << 5,
+			kIgnoreAlpha                           = 1U << 6,
+			kProjectedUVs                          = 1U << 7,
+			kIgnoreBaseGeometryTextureAlpha        = 1U << 8,
+			kLighting                              = 1U << 9,
+			kNoWeapons                             = 1U << 10,
+			kNotAnimated                           = 1U << 15,
+			kParticleShaderGrayscaleToPaletteColor = 1U << 16,
+			kParticleShaderGrayscaleToPaletteAlpha = 1U << 17,
+			kUseBloodGeometry                      = 1U << 24
 		};
 		static_assert(sizeof(Flags) == 0x4);
 
@@ -52,15 +52,15 @@ namespace Skyrim
 		::D3DBLEND                                 membraneShaderSourceBlendMode;              // 24
 		::D3DBLENDOP                               membraneShaderBlendOperation;               // 28
 		::D3DCMPFUNC                               membraneShaderZTestFunction;                // 2C
-		Color                                      fillTextureEffectColorKey1;                 // 30
-		float                                      fillTextureEffectAlphaFadeInTime;           // 34
-		float                                      fillTextureEffectFullAlphaTime;             // 38
-		float                                      fillTextureEffectAlphaFadeOutTime;          // 3C
-		float                                      fillTextureEffectPersistentAlphaRatio;      // 40
-		float                                      fillTextureEffectAlphaPulseAmplitude;       // 44
-		float                                      fillTextureEffectAlphaPulseFrequency;       // 48
-		float                                      fillTextureEffectTextureAnimationSpeedU;    // 4C
-		float                                      fillTextureEffectTextureAnimationSpeedV;    // 50
+		Color                                      textureEffectColorKey1;                     // 30
+		float                                      textureEffectAlphaFadeInTime;               // 34
+		float                                      textureEffectFullAlphaTime;                 // 38
+		float                                      textureEffectAlphaFadeOutTime;              // 3C
+		float                                      textureEffectPersistentAlphaRatio;          // 40
+		float                                      textureEffectAlphaPulseAmplitude;           // 44
+		float                                      textureEffectAlphaPulseFrequency;           // 48
+		float                                      textureEffectTextureAnimationSpeedU;        // 4C
+		float                                      textureEffectTextureAnimationSpeedV;        // 50
 		float                                      edgeEffectFallOff;                          // 54
 		Color                                      edgeEffectColor;                            // 58
 		float                                      edgeEffectAlphaFadeInTime;                  // 5C
@@ -69,13 +69,13 @@ namespace Skyrim
 		float                                      edgeEffectPersistentAlphaRatio;             // 68
 		float                                      edgeEffectAlphaPulseAmplitude;              // 6C
 		float                                      edgeEffectAlphaPulseFrequency;              // 70
-		float                                      fillTextureEffectFullAlphaRatio;            // 74
+		float                                      textureEffectFullAlphaRatio;                // 74
 		float                                      edgeEffectFullAlphaRatio;                   // 78
-		::D3DBLEND                                 membraneShaderDestBlendMode;                // 7C
+		::D3DBLEND                                 membraneShaderDestinationBlendMode;         // 7C
 		::D3DBLEND                                 particleShaderSourceBlendMode;              // 80
 		::D3DBLENDOP                               particleShaderBlendOperation;               // 84
 		::D3DCMPFUNC                               particleShaderZTestFunction;                // 88
-		::D3DBLEND                                 particleShaderDestBlendMode;                // 8C
+		::D3DBLEND                                 particleShaderDestinationBlendMode;         // 8C
 		float                                      particleShaderParticleBirthRampUpTime;      // 90
 		float                                      particleShaderFullParticleBirthTime;        // 94
 		float                                      particleShaderParticleBirthRampDownTime;    // 98
@@ -127,14 +127,14 @@ namespace Skyrim
 		float                                      addonModelsScaleOutTime;                    // 158
 		std::uint32_t                              padding15C;                                 // 15C
 		BGSSoundDescriptorForm*                    ambientSound;                               // 160
-		Color                                      fillTextureEffectColorKey2;                 // 168
-		Color                                      fillTextureEffectColorKey3;                 // 16C
-		float                                      fillTextureEffectColorKey1Scale;            // 170
-		float                                      fillTextureEffectColorKey2Scale;            // 174
-		float                                      fillTextureEffectColorKey3Scale;            // 178
-		float                                      fillTextureEffectColorKey1Time;             // 17C
-		float                                      fillTextureEffectColorKey2Time;             // 180
-		float                                      fillTextureEffectColorKey3Time;             // 184
+		Color                                      textureEffectColorKey2;                     // 168
+		Color                                      textureEffectColorKey3;                     // 16C
+		float                                      textureEffectColorKey1Scale;                // 170
+		float                                      textureEffectColorKey2Scale;                // 174
+		float                                      textureEffectColorKey3Scale;                // 178
+		float                                      textureEffectColorKey1Time;                 // 17C
+		float                                      textureEffectColorKey2Time;                 // 180
+		float                                      textureEffectColorKey3Time;                 // 184
 		float                                      particleShaderColorScale;                   // 188
 		float                                      particleShaderBirthPositionOffset;          // 18C
 		float                                      particleShaderBirthPositionOffsetRange;     // 190
@@ -146,13 +146,13 @@ namespace Skyrim
 		float                                      animatedFrameCount;                         // 1A8
 		float                                      animatedFrameCountVariation;                // 1AC
 		Utility::Enumeration<Flags, std::uint32_t> effectShaderFlags;                          // 1B0
-		float                                      fillTextureEffectTextureScaleU;             // 1B4
-		float                                      fillTextureEffectTextureScaleV;             // 1B8
+		float                                      textureEffectTextureScaleU;                 // 1B4
+		float                                      textureEffectTextureScaleV;                 // 1B8
 		std::uint32_t                              particleShaderSceneGraphEmitDepthLimit;     // 1BC
-		TESTexture                                 fillTextureEffectFillTexture;               // 1C0
+		TESTexture                                 textureEffectFillTexture;                   // 1C0
 		TESTexture                                 particleShaderTexture;                      // 1D0
 		TESTexture                                 holesTexture;                               // 1E0
-		TESTexture                                 fillTextureEffectPaletteTexture;            // 1F0
+		TESTexture                                 textureEffectPaletteTexture;                // 1F0
 		TESTexture                                 particleShaderPaletteTexture;               // 200
 		std::uint64_t                              unknown210;                                 // 210
 		std::uint64_t                              unknown218;                                 // 218
@@ -160,15 +160,15 @@ namespace Skyrim
 	static_assert(offsetof(TESEffectShader, membraneShaderSourceBlendMode) == 0x24);
 	static_assert(offsetof(TESEffectShader, membraneShaderBlendOperation) == 0x28);
 	static_assert(offsetof(TESEffectShader, membraneShaderZTestFunction) == 0x2C);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectColorKey1) == 0x30);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectAlphaFadeInTime) == 0x34);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectFullAlphaTime) == 0x38);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectAlphaFadeOutTime) == 0x3C);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectPersistentAlphaRatio) == 0x40);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectAlphaPulseAmplitude) == 0x44);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectAlphaPulseFrequency) == 0x48);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectTextureAnimationSpeedU) == 0x4C);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectTextureAnimationSpeedV) == 0x50);
+	static_assert(offsetof(TESEffectShader, textureEffectColorKey1) == 0x30);
+	static_assert(offsetof(TESEffectShader, textureEffectAlphaFadeInTime) == 0x34);
+	static_assert(offsetof(TESEffectShader, textureEffectFullAlphaTime) == 0x38);
+	static_assert(offsetof(TESEffectShader, textureEffectAlphaFadeOutTime) == 0x3C);
+	static_assert(offsetof(TESEffectShader, textureEffectPersistentAlphaRatio) == 0x40);
+	static_assert(offsetof(TESEffectShader, textureEffectAlphaPulseAmplitude) == 0x44);
+	static_assert(offsetof(TESEffectShader, textureEffectAlphaPulseFrequency) == 0x48);
+	static_assert(offsetof(TESEffectShader, textureEffectTextureAnimationSpeedU) == 0x4C);
+	static_assert(offsetof(TESEffectShader, textureEffectTextureAnimationSpeedV) == 0x50);
 	static_assert(offsetof(TESEffectShader, edgeEffectFallOff) == 0x54);
 	static_assert(offsetof(TESEffectShader, edgeEffectColor) == 0x58);
 	static_assert(offsetof(TESEffectShader, edgeEffectAlphaFadeInTime) == 0x5C);
@@ -177,13 +177,13 @@ namespace Skyrim
 	static_assert(offsetof(TESEffectShader, edgeEffectPersistentAlphaRatio) == 0x68);
 	static_assert(offsetof(TESEffectShader, edgeEffectAlphaPulseAmplitude) == 0x6C);
 	static_assert(offsetof(TESEffectShader, edgeEffectAlphaPulseFrequency) == 0x70);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectFullAlphaRatio) == 0x74);
+	static_assert(offsetof(TESEffectShader, textureEffectFullAlphaRatio) == 0x74);
 	static_assert(offsetof(TESEffectShader, edgeEffectFullAlphaRatio) == 0x78);
-	static_assert(offsetof(TESEffectShader, membraneShaderDestBlendMode) == 0x7C);
+	static_assert(offsetof(TESEffectShader, membraneShaderDestinationBlendMode) == 0x7C);
 	static_assert(offsetof(TESEffectShader, particleShaderSourceBlendMode) == 0x80);
 	static_assert(offsetof(TESEffectShader, particleShaderBlendOperation) == 0x84);
 	static_assert(offsetof(TESEffectShader, particleShaderZTestFunction) == 0x88);
-	static_assert(offsetof(TESEffectShader, particleShaderDestBlendMode) == 0x8C);
+	static_assert(offsetof(TESEffectShader, particleShaderDestinationBlendMode) == 0x8C);
 	static_assert(offsetof(TESEffectShader, particleShaderParticleBirthRampUpTime) == 0x90);
 	static_assert(offsetof(TESEffectShader, particleShaderFullParticleBirthTime) == 0x94);
 	static_assert(offsetof(TESEffectShader, particleShaderParticleBirthRampDownTime) == 0x98);
@@ -232,14 +232,14 @@ namespace Skyrim
 	static_assert(offsetof(TESEffectShader, addonModelsScaleInTime) == 0x154);
 	static_assert(offsetof(TESEffectShader, addonModelsScaleOutTime) == 0x158);
 	static_assert(offsetof(TESEffectShader, ambientSound) == 0x160);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectColorKey2) == 0x168);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectColorKey3) == 0x16C);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectColorKey1Scale) == 0x170);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectColorKey2Scale) == 0x174);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectColorKey3Scale) == 0x178);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectColorKey1Time) == 0x17C);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectColorKey2Time) == 0x180);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectColorKey3Time) == 0x184);
+	static_assert(offsetof(TESEffectShader, textureEffectColorKey2) == 0x168);
+	static_assert(offsetof(TESEffectShader, textureEffectColorKey3) == 0x16C);
+	static_assert(offsetof(TESEffectShader, textureEffectColorKey1Scale) == 0x170);
+	static_assert(offsetof(TESEffectShader, textureEffectColorKey2Scale) == 0x174);
+	static_assert(offsetof(TESEffectShader, textureEffectColorKey3Scale) == 0x178);
+	static_assert(offsetof(TESEffectShader, textureEffectColorKey1Time) == 0x17C);
+	static_assert(offsetof(TESEffectShader, textureEffectColorKey2Time) == 0x180);
+	static_assert(offsetof(TESEffectShader, textureEffectColorKey3Time) == 0x184);
 	static_assert(offsetof(TESEffectShader, particleShaderColorScale) == 0x188);
 	static_assert(offsetof(TESEffectShader, particleShaderBirthPositionOffset) == 0x18C);
 	static_assert(offsetof(TESEffectShader, particleShaderBirthPositionOffsetRange) == 0x190);
@@ -251,13 +251,13 @@ namespace Skyrim
 	static_assert(offsetof(TESEffectShader, animatedFrameCount) == 0x1A8);
 	static_assert(offsetof(TESEffectShader, animatedFrameCountVariation) == 0x1AC);
 	static_assert(offsetof(TESEffectShader, effectShaderFlags) == 0x1B0);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectTextureScaleU) == 0x1B4);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectTextureScaleV) == 0x1B8);
+	static_assert(offsetof(TESEffectShader, textureEffectTextureScaleU) == 0x1B4);
+	static_assert(offsetof(TESEffectShader, textureEffectTextureScaleV) == 0x1B8);
 	static_assert(offsetof(TESEffectShader, particleShaderSceneGraphEmitDepthLimit) == 0x1BC);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectFillTexture) == 0x1C0);
+	static_assert(offsetof(TESEffectShader, textureEffectFillTexture) == 0x1C0);
 	static_assert(offsetof(TESEffectShader, particleShaderTexture) == 0x1D0);
 	static_assert(offsetof(TESEffectShader, holesTexture) == 0x1E0);
-	static_assert(offsetof(TESEffectShader, fillTextureEffectPaletteTexture) == 0x1F0);
+	static_assert(offsetof(TESEffectShader, textureEffectPaletteTexture) == 0x1F0);
 	static_assert(offsetof(TESEffectShader, particleShaderPaletteTexture) == 0x200);
 	static_assert(sizeof(TESEffectShader) == 0x220);
 }

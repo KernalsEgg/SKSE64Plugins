@@ -71,10 +71,10 @@ namespace Skyrim
 		// Add
 		virtual void                        SetViewport(const GViewport& viewDescription)                                                                                                               = 0; // 19
 		virtual void                        GetViewport(GViewport* viewDescription) const                                                                                                               = 0; // 1A
-		virtual void                        SetViewScaleMode(Utility::Enumeration<ScaleModeType, std::uint32_t> type)                                                                                   = 0; // 1B
-		virtual ScaleModeType               GetViewScaleMode() const                                                                                                                                    = 0; // 1C
-		virtual void                        SetViewAlignment(Utility::Enumeration<AlignType, std::uint32_t> type)                                                                                       = 0; // 1D
-		virtual AlignType                   GetViewAlignment() const                                                                                                                                    = 0; // 1E
+		virtual void                        SetViewScaleModeType(Utility::Enumeration<ScaleModeType, std::uint32_t> scaleModeType)                                                                      = 0; // 1B
+		virtual ScaleModeType               GetViewScaleModeType() const                                                                                                                                = 0; // 1C
+		virtual void                        SetViewAlignType(Utility::Enumeration<AlignType, std::uint32_t> alignType)                                                                                  = 0; // 1D
+		virtual AlignType                   GetViewAlignType() const                                                                                                                                    = 0; // 1E
 		virtual GRectangleF                 GetVisibleFrameRectangle() const                                                                                                                            = 0; // 1F
 		virtual void                        SetPerspective3D(const GMatrix3D& projectionMatrixInput)                                                                                                    = 0; // 20
 		virtual void                        SetView3D(const GMatrix3D& viewMatrixInput)                                                                                                                 = 0; // 21
@@ -92,8 +92,8 @@ namespace Skyrim
 		virtual std::uint32_t               HandleEvent(const GFxEvent& event)                                                                                                                          = 0; // 2D
 		virtual void                        GetMouseState(std::uint32_t mouseIndex, float* x, float* y, std::uint32_t* buttons)                                                                         = 0; // 2E
 		virtual void                        NotifyMouseState(float x, float y, std::uint32_t buttons, std::uint32_t mouseIndex = 0)                                                                     = 0; // 2F
-		virtual bool                        HitTest(float x, float y, Utility::Enumeration<HitTestType, std::uint32_t> testCondition = HitTestType::kShapes, std::uint32_t controllerIndex = 0)         = 0; // 30
-		virtual bool                        HitTest3D(GPoint3F* out, float x, float y, std::uint32_t controllerIndex = 0)                                                                               = 0; // 31
+		virtual bool                        HitTest(float x, float y, Utility::Enumeration<HitTestType, std::uint32_t> hitTestType = HitTestType::kShapes, std::uint32_t controllerIndex = 0)           = 0; // 30
+		virtual bool                        HitTest3D(GPoint3F* output, float x, float y, std::uint32_t controllerIndex = 0)                                                                            = 0; // 31
 		virtual void                        SetExternalInterfaceReturnValue(const GFxValue& returnValue)                                                                                                = 0; // 32
 		virtual void*                       GetUserData() const                                                                                                                                         = 0; // 33
 		virtual void                        SetUserData(void* userData)                                                                                                                                 = 0; // 34
@@ -104,7 +104,7 @@ namespace Skyrim
 		virtual std::uint32_t               GetMouseCursorCount() const                                                                                                                                 = 0; // 39
 		virtual void                        SetControllerCount(std::uint32_t count)                                                                                                                     = 0; // 3A
 		virtual std::uint32_t               GetControllerCount() const                                                                                                                                  = 0; // 3B
-		virtual void                        GetStatistics(GStatisticBag* bag, bool reset = true)                                                                                                        = 0; // 3C
+		virtual void                        GetStatistics(GStatisticBag* statisticBag, bool reset = true)                                                                                               = 0; // 3C
 		virtual GMemoryHeap*                GetHeap() const                                                                                                                                             = 0; // 3D
 		virtual void                        ForceCollectGarbage()                                                                                                                                       = 0; // 3E
 		virtual GPointF                     TranslateToScreen(const GPointF& point, GRenderer::Matrix userMatrix = GRenderer::Matrix::Identity)                                                         = 0; // 3F

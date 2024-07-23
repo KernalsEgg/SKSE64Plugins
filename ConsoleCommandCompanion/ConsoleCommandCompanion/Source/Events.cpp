@@ -8,10 +8,12 @@ namespace ConsoleCommandCompanion
 {
 	void Events::InitializeEventSink::RegisterSink()
 	{
-		Skyrim::Events::InitializeThread::GetSingleton().After().RegisterSink(InitializeEventSink::ProcessEvent);
+		Skyrim::Events::InitializeThread::GetSingleton().after.Subscribe(
+			std::make_shared<decltype(Skyrim::Events::InitializeThread::after)::handler_type::element_type>(
+				InitializeEventSink::ProcessEvent));
 	}
 
-	void Events::InitializeEventSink::ProcessEvent()
+	bool Events::InitializeEventSink::ProcessEvent()
 	{
 		/* Create the Console menu to allow batch files to be run */
 		if (!Skyrim::UI::GetSingleton()->IsMenuOpen(Skyrim::InterfaceStrings::GetSingleton()->console))
@@ -24,6 +26,8 @@ namespace ConsoleCommandCompanion
 
 		LoadGameEventSink::GetSingleton().RegisterSink();
 		ButtonEventSink::GetSingleton().RegisterSink();
+
+		return true;
 	}
 
 	Skyrim::EventNotifyControl Events::LoadGameEventSink::ProcessEvent(const Skyrim::TESLoadGameEvent* eventArguments, Skyrim::BSTEventSource<Skyrim::TESLoadGameEvent>* eventSource)
@@ -136,7 +140,7 @@ namespace ConsoleCommandCompanion
 			{
 				switch (inputEvent.inputEventType.get())
 				{
-					case Skyrim::InputEvent::Type::kButton:
+					case Skyrim::InputEventType::kButton:
 					{
 						const auto& buttonEvent = static_cast<const Skyrim::ButtonEvent&>(inputEvent);
 
@@ -177,7 +181,7 @@ namespace ConsoleCommandCompanion
 			{
 				switch (inputEvent.inputEventType.get())
 				{
-					case Skyrim::InputEvent::Type::kButton:
+					case Skyrim::InputEventType::kButton:
 					{
 						const auto& buttonEvent = static_cast<const Skyrim::ButtonEvent&>(inputEvent);
 
@@ -218,7 +222,7 @@ namespace ConsoleCommandCompanion
 			{
 				switch (inputEvent.inputEventType.get())
 				{
-					case Skyrim::InputEvent::Type::kButton:
+					case Skyrim::InputEventType::kButton:
 					{
 						const auto& buttonEvent = static_cast<const Skyrim::ButtonEvent&>(inputEvent);
 
@@ -259,7 +263,7 @@ namespace ConsoleCommandCompanion
 			{
 				switch (inputEvent.inputEventType.get())
 				{
-					case Skyrim::InputEvent::Type::kButton:
+					case Skyrim::InputEventType::kButton:
 					{
 						const auto& buttonEvent = static_cast<const Skyrim::ButtonEvent&>(inputEvent);
 

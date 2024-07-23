@@ -4,6 +4,7 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
+#include "Shared/Utility/Conversion.h"
 #include "Shared/Utility/Memory.h"
 
 
@@ -27,25 +28,21 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 
 		ApplySpells::castSpells_ = castSpells;
 
-		*reinterpret_cast<decltype(ApplySpells::SelectSpell)**>(Addresses::Patches::PerkEntryPoints::ApplySpells::SelectSpell) = std::addressof(ApplySpells::SelectSpell);
-
-		ApplySpells::applyBashingSpell_                  = reinterpret_cast<decltype(ApplySpells::applyBashingSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyBashingSpell));
-		ApplySpells::applyCombatHitSpell_                = reinterpret_cast<decltype(ApplySpells::applyCombatHitSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyCombatHitSpell));
-		ApplySpells::applyCombatHitSpellArrowProjectile_ = reinterpret_cast<decltype(ApplySpells::applyCombatHitSpellArrowProjectile_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyCombatHitSpellArrowProjectile));
-		ApplySpells::applyReanimateSpell_                = reinterpret_cast<decltype(ApplySpells::applyReanimateSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyReanimateSpell));
-		ApplySpells::applySneakingSpell_                 = reinterpret_cast<decltype(ApplySpells::applySneakingSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplySneakingSpell));
-		ApplySpells::applyWeaponSwingSpell_              = reinterpret_cast<decltype(ApplySpells::applyWeaponSwingSpell_)>(Utility::Memory::ReadRelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyWeaponSwingSpell));
-
 		const auto* trampolineInterface = SKSE::Storage::GetSingleton().GetTrampolineInterface();
 
 		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyBashingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplySpells::ApplyBashingSpell)));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyCombatHitSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplySpells::ApplyCombatHitSpell)));
-		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyCombatHitSpellArrowProjectile, reinterpret_cast<std::uintptr_t>(std::addressof(ApplySpells::ApplyCombatHitSpellArrowProjectile)));
+		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyCombatHitSpellArrowProjectile, reinterpret_cast<std::uintptr_t>(std::addressof(ApplySpells::ApplyCombatHitSpell)));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyReanimateSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplySpells::ApplyReanimateSpell)));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplySneakingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplySpells::ApplySneakingSpell)));
 		trampolineInterface->RelativeCall5(Addresses::Patches::PerkEntryPoints::ApplySpells::ApplyWeaponSwingSpell, reinterpret_cast<std::uintptr_t>(std::addressof(ApplySpells::ApplyWeaponSwingSpell)));
+
+		*reinterpret_cast<decltype(ApplySpells::SelectSpell)**>(Addresses::Patches::PerkEntryPoints::ApplySpells::SelectSpell) = std::addressof(ApplySpells::SelectSpell);
 	}
 
+	/* Apply Bashing Spell
+	* Perk Owner
+	* Target */
 	void ApplySpells::ApplyBashingSpell(
 		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
 		Skyrim::Actor*                                                         perkOwner,
@@ -56,16 +53,21 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> bashingSpellItems;
-
-		ApplySpells::applyBashingSpell_(entryPoint, perkOwner, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(bashingSpellItems)));
+		auto bashingSpellItems = ApplySpells::HandleEntryPoint(entryPoint, perkOwner, std::vector<Skyrim::TESForm*>{ perkOwner, target });
 
 		for (auto* bashingSpellItem : bashingSpellItems)
 		{
-			bashingSpellItem->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
+			if (bashingSpellItem)
+			{
+				static_cast<Skyrim::SpellItem*>(bashingSpellItem)->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
+			}
 		}
 	}
 
+	/* Apply Combat Hit Spell
+	* Perk Owner
+	* Weapon
+	* Target */
 	void ApplySpells::ApplyCombatHitSpell(
 		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
 		Skyrim::Actor*                                                         perkOwner,
@@ -78,38 +80,21 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> combatHitSpellItems;
-
-		ApplySpells::applyCombatHitSpell_(entryPoint, perkOwner, weapon, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(combatHitSpellItems)));
+		auto combatHitSpellItems = ApplySpells::HandleEntryPoint(entryPoint, perkOwner, std::vector<Skyrim::TESForm*>{ perkOwner, weapon, target });
 
 		for (auto* combatHitSpellItem : combatHitSpellItems)
 		{
-			combatHitSpellItem->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
+			if (combatHitSpellItem)
+			{
+				static_cast<Skyrim::SpellItem*>(combatHitSpellItem)->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
+			}
 		}
 	}
 
-	void ApplySpells::ApplyCombatHitSpellArrowProjectile(
-		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
-		Skyrim::Actor*                                                         perkOwner,
-		Skyrim::TESObjectWEAP*                                                 weapon,
-		Skyrim::Actor*                                                         target,
-		Skyrim::SpellItem**                                                    result)
-	{
-		// perkOwner != nullptr
-		// weapon != nullptr
-		// target != nullptr
-		// result != nullptr
-
-		std::vector<Skyrim::SpellItem*> combatHitSpellItems;
-
-		ApplySpells::applyCombatHitSpellArrowProjectile_(entryPoint, perkOwner, weapon, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(combatHitSpellItems)));
-
-		for (auto* combatHitSpellItem : combatHitSpellItems)
-		{
-			combatHitSpellItem->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
-		}
-	}
-
+	/* Apply Reanimate Spell
+	* Perk Owner
+	* Spell
+	* Target */
 	void ApplySpells::ApplyReanimateSpell(
 		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
 		Skyrim::Actor*                                                         perkOwner,
@@ -122,16 +107,19 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// target != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> reanimateSpellItems;
-
-		ApplySpells::applyReanimateSpell_(entryPoint, perkOwner, spellItem, target, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(reanimateSpellItems)));
+		auto reanimateSpellItems = ApplySpells::HandleEntryPoint(entryPoint, perkOwner, std::vector<Skyrim::TESForm*>{ perkOwner, spellItem, target });
 
 		for (auto* reanimateSpellItem : reanimateSpellItems)
 		{
-			reanimateSpellItem->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
+			if (reanimateSpellItem)
+			{
+				static_cast<Skyrim::SpellItem*>(reanimateSpellItem)->Apply(target, ApplySpells::castSpells_ ? perkOwner : target);
+			}
 		}
 	}
 
+	/* Apply Sneaking Spell
+	* Perk Owner */
 	void ApplySpells::ApplySneakingSpell(
 		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
 		Skyrim::Actor*                                                         perkOwner,
@@ -140,16 +128,21 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// perkOwner != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> sneakingSpellItems;
-
-		ApplySpells::applySneakingSpell_(entryPoint, perkOwner, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(sneakingSpellItems)));
+		auto sneakingSpellItems = ApplySpells::HandleEntryPoint(entryPoint, perkOwner, std::vector<Skyrim::TESForm*>{ perkOwner });
 
 		for (auto* sneakingSpellItem : sneakingSpellItems)
 		{
-			sneakingSpellItem->Apply(perkOwner, perkOwner);
+			if (sneakingSpellItem)
+			{
+				static_cast<Skyrim::SpellItem*>(sneakingSpellItem)->Apply(perkOwner, perkOwner);
+			}
 		}
 	}
 
+	/* Apply Weapon Swing Spell
+	* Perk Owner
+	* Attacker
+	* Attacker Weapon */
 	void ApplySpells::ApplyWeaponSwingSpell(
 		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
 		Skyrim::Actor*                                                         perkOwner,
@@ -162,25 +155,71 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 		// attackerWeapon != nullptr
 		// result != nullptr
 
-		std::vector<Skyrim::SpellItem*> weaponSwingSpellItems;
-
-		ApplySpells::applyWeaponSwingSpell_(entryPoint, perkOwner, attacker, attackerWeapon, reinterpret_cast<Skyrim::SpellItem**>(std::addressof(weaponSwingSpellItems)));
+		auto weaponSwingSpellItems = ApplySpells::HandleEntryPoint(entryPoint, perkOwner, std::vector<Skyrim::TESForm*>{ perkOwner, attacker, attackerWeapon });
 
 		for (auto* weaponSwingSpellItem : weaponSwingSpellItems)
 		{
-			weaponSwingSpellItem->Apply(perkOwner, ApplySpells::castSpells_ ? attacker : perkOwner);
+			if (weaponSwingSpellItem)
+			{
+				static_cast<Skyrim::SpellItem*>(weaponSwingSpellItem)->Apply(perkOwner, ApplySpells::castSpells_ ? attacker : perkOwner);
+			}
 		}
+	}
+
+	std::vector<void*> ApplySpells::HandleEntryPoint(
+		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
+		Skyrim::Actor*                                                         perkOwner,
+		std::vector<Skyrim::TESForm*>                                          conditionFilterArguments)
+	{
+		if (entryPoint.underlying() < Utility::Conversion::ToUnderlying(Skyrim::BGSEntryPoint::EntryPoint::kTotal))
+		{
+			if (perkOwner && perkOwner->HasPerkEntries(entryPoint.get()))
+			{
+				auto conditionFilterArgumentCount = Skyrim::BGSEntryPoint::GetEntryPoint(entryPoint)->conditionFilterArgumentCount;
+
+				if (conditionFilterArguments.size() == conditionFilterArgumentCount)
+				{
+					auto entryPointFunctionType          = Skyrim::BGSEntryPoint::GetEntryPoint(entryPoint)->entryPointFunctionType;
+					auto entryPointFunctionArgumentCount = Skyrim::BGSEntryPointFunction::GetEntryPointFunctionArgumentCount(entryPointFunctionType.get());
+
+					/* If the last spell item is a null pointer then all spell items have been found
+					* Increment the size of the vector in each iteration */
+					std::vector<void*> entryPointFunctionArguments{};
+
+					do
+					{
+						entryPointFunctionArguments = { entryPointFunctionArgumentCount++, nullptr };
+
+						Skyrim::HandleEntryPointVisitor handleEntryPointVisitor(
+							entryPointFunctionType.get(),
+							conditionFilterArguments.empty() ? nullptr : conditionFilterArguments.data(),
+							entryPointFunctionArguments.empty() ? nullptr : entryPointFunctionArguments.data(),
+							perkOwner,
+							static_cast<std::uint8_t>(conditionFilterArguments.size()),
+							static_cast<std::uint8_t>(entryPointFunctionArguments.size()));
+
+						perkOwner->ForEachPerkEntry(entryPoint.get(), handleEntryPointVisitor);
+					} while (!std::count(entryPointFunctionArguments.begin(), entryPointFunctionArguments.end(), nullptr));
+
+					std::erase(entryPointFunctionArguments, nullptr);
+
+					return entryPointFunctionArguments;
+				}
+			}
+		}
+
+		return {};
 	}
 
 	void ApplySpells::SelectSpell(
 		Skyrim::TESObjectREFR*                                                                     perkOwner,
 		Utility::Enumeration<Skyrim::BGSEntryPointFunction::EntryPointFunctionType, std::uint32_t> entryPointFunctionType,
-		std::uint8_t                                                                               entryPointFunctionTypeArgumentCount,
-		void**                                                                                     entryPointFunctionTypeArguments,
+		std::uint8_t                                                                               entryPointFunctionArgumentCount,
+		void**                                                                                     entryPointFunctionArguments,
 		Skyrim::BGSEntryPointFunctionData*                                                         entryPointFunctionData)
 	{
 		// perkOwner != nullptr
-		// entryPointFunctionTypeArguments != nullptr
+		// entryPointFunctionArguments != nullptr
 		// entryPointFunctionData != nullptr
 
 		if (entryPointFunctionType != Skyrim::BGSEntryPointFunction::EntryPointFunctionType::kSpellItem)
@@ -188,12 +227,12 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			return;
 		}
 
-		if (entryPointFunctionTypeArgumentCount != Skyrim::BGSEntryPointFunction::GetEntryPointFunctionTypeArgumentCount(Skyrim::BGSEntryPointFunction::EntryPointFunctionType::kSpellItem))
+		if (!entryPointFunctionArguments)
 		{
 			return;
 		}
 
-		if (entryPointFunctionData->GetType() != Skyrim::BGSEntryPointFunctionData::EntryPointFunctionDataType::kSpellItem)
+		if (entryPointFunctionData->GetEntryPointFunctionDataType() != Skyrim::BGSEntryPointFunctionData::EntryPointFunctionData::kSpellItem)
 		{
 			return;
 		}
@@ -205,21 +244,15 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			return;
 		}
 
-		auto* spellItems = static_cast<std::vector<Skyrim::SpellItem*>*>(*entryPointFunctionTypeArguments);
+		std::span<void*> entryPointFunctionArgumentSpan(entryPointFunctionArguments, entryPointFunctionArgumentCount);
 
-		if (!spellItems)
+		auto entryPointFunctionArgumentIterator = std::find(entryPointFunctionArgumentSpan.begin(), entryPointFunctionArgumentSpan.end(), nullptr);
+
+		if (entryPointFunctionArgumentIterator != entryPointFunctionArgumentSpan.end())
 		{
-			return;
+			*entryPointFunctionArgumentIterator = spellItem;
 		}
-
-		spellItems->push_back(spellItem);
 	}
 
-	bool                                                       ApplySpells::castSpells_{};
-	decltype(ApplySpells::ApplyBashingSpell)*                  ApplySpells::applyBashingSpell_{ nullptr };
-	decltype(ApplySpells::ApplyCombatHitSpell)*                ApplySpells::applyCombatHitSpell_{ nullptr };
-	decltype(ApplySpells::ApplyCombatHitSpellArrowProjectile)* ApplySpells::applyCombatHitSpellArrowProjectile_{ nullptr };
-	decltype(ApplySpells::ApplyReanimateSpell)*                ApplySpells::applyReanimateSpell_{ nullptr };
-	decltype(ApplySpells::ApplySneakingSpell)*                 ApplySpells::applySneakingSpell_{ nullptr };
-	decltype(ApplySpells::ApplyWeaponSwingSpell)*              ApplySpells::applyWeaponSwingSpell_{ nullptr };
+	bool ApplySpells::castSpells_{};
 }

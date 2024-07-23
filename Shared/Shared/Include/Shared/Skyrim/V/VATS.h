@@ -31,32 +31,32 @@ namespace Skyrim
 		void  SetMagicTimeSlowdown(float magicTimeSlowdown, float playerMagicTimeSlowdown);
 
 		// Member variables
-		std::uint8_t                           unknown1;                // 1
-		std::uint16_t                          unknown2;                // 2
-		std::uint32_t                          unknown4;                // 4
-		BSTArray<BSTSmartPointer<VATSCommand>> commands;                // 8
-		Utility::Enumeration<Mode>             mode;                    // 20
-		std::uint32_t                          unknown24;               // 24
-		std::uint64_t                          unknown28;               // 28
-		std::uint64_t                          unknown30;               // 30
-		std::uint64_t                          unknown38;               // 38
-		std::uint64_t                          unknown40;               // 40
-		std::uint64_t                          unknown48;               // 48
-		std::uint64_t                          unknown50;               // 50
-		std::uint64_t                          unknown58;               // 58
-		std::uint64_t                          unknown60;               // 60
-		std::uint64_t                          unknown68;               // 68
-		std::uint64_t                          unknown70;               // 70
-		std::uint64_t                          unknown78;               // 78
-		float                                  magicTimeSlowdown;       // 80
-		float                                  playerMagicTimeSlowdown; // 84
-		std::uint64_t                          unknown88;               // 88
-		std::uint64_t                          unknown90;               // 90
-		std::uint64_t                          unknown98;               // 98
-		std::uint64_t                          unknownA0;               // A0
-		std::uint64_t                          unknownA8;               // A8
-		std::uint64_t                          unknownB0;               // B0
-		std::uint64_t                          unknownB8;               // B8
+		std::uint8_t                              unknown1;                // 1
+		std::uint16_t                             unknown2;                // 2
+		std::uint32_t                             unknown4;                // 4
+		BSTArray<BSTSmartPointer<VATSCommand>>    commands;                // 8
+		Utility::Enumeration<Mode, std::uint32_t> mode;                    // 20
+		std::uint32_t                             unknown24;               // 24
+		std::uint64_t                             unknown28;               // 28
+		std::uint64_t                             unknown30;               // 30
+		std::uint64_t                             unknown38;               // 38
+		std::uint64_t                             unknown40;               // 40
+		std::uint64_t                             unknown48;               // 48
+		std::uint64_t                             unknown50;               // 50
+		std::uint64_t                             unknown58;               // 58
+		std::uint64_t                             unknown60;               // 60
+		std::uint64_t                             unknown68;               // 68
+		std::uint64_t                             unknown70;               // 70
+		std::uint64_t                             unknown78;               // 78
+		float                                     magicTimeSlowdown;       // 80
+		float                                     playerMagicTimeSlowdown; // 84
+		std::uint64_t                             unknown88;               // 88
+		std::uint64_t                             unknown90;               // 90
+		std::uint64_t                             unknown98;               // 98
+		std::uint64_t                             unknownA0;               // A0
+		std::uint64_t                             unknownA8;               // A8
+		std::uint64_t                             unknownB0;               // B0
+		std::uint64_t                             unknownB8;               // B8
 	};
 	static_assert(offsetof(VATS, commands) == 0x8);
 	static_assert(offsetof(VATS, mode) == 0x20);

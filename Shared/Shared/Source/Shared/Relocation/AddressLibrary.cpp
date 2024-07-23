@@ -85,7 +85,7 @@ namespace Relocation
 			Pair{
 				.identifier = identifier,
 				.offset     = {} },
-			[](const Pair& left, const Pair& right) -> bool
+			[](const auto& left, const auto& right) -> bool
 			{
 				return left.identifier < right.identifier;
 			});
@@ -121,7 +121,7 @@ namespace Relocation
 		header.Read(inputFileStream, productVersion);
 
 		auto fileMappingSize = static_cast<std::size_t>(sizeof(Pair) * header.addressCount);
-		auto fileMappingName = std::format("Shared-AddressLibrary-1-{}", inputFileStreamPath.stem().string());
+		auto fileMappingName = std::format("Shared-AddressLibrary-{}-{}", AddressLibrary::FILE_MAPPING_VERSION, inputFileStreamPath.stem().string());
 
 		if (!this->fileMapping_.Open(fileMappingName))
 		{
@@ -141,7 +141,7 @@ namespace Relocation
 			std::sort(
 				this->span_.begin(),
 				this->span_.end(),
-				[](const Pair& left, const Pair& right)
+				[](const auto& left, const auto& right) -> bool
 				{
 					return left.identifier < right.identifier;
 				});

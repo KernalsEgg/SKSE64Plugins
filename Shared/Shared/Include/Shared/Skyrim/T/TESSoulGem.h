@@ -36,13 +36,13 @@ namespace Skyrim
 
 		// Member variables
 		TESSoulGem*                                   linkedTo;   // 100
-		Utility::Enumeration<SoulLevel, std::uint8_t> soul;       // 108
+		Utility::Enumeration<SoulLevel, std::uint8_t> soulLevel;  // 108
 		Utility::Enumeration<SoulLevel, std::uint8_t> capacity;   // 109
 		std::uint16_t                                 padding10A; // 10A
 		std::uint32_t                                 padding10C; // 10C
 	};
 	static_assert(offsetof(TESSoulGem, linkedTo) == 0x100);
-	static_assert(offsetof(TESSoulGem, soul) == 0x108);
+	static_assert(offsetof(TESSoulGem, soulLevel) == 0x108);
 	static_assert(offsetof(TESSoulGem, capacity) == 0x109);
 	static_assert(sizeof(TESSoulGem) == 0x110);
 }

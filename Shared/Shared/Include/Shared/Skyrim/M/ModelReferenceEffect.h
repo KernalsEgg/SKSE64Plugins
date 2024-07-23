@@ -36,18 +36,18 @@ namespace Skyrim
 		virtual ~ModelReferenceEffect() override; // 0
 
 		// Override (ReferenceEffect)
-		virtual const NiRTTI*      GetRTTI() const override;             // 2
-		virtual void               Unknown28(BSTempEffect*) override;    // 28
-		virtual void               Unknown29(BSTempEffect*) override;    // 29
-		virtual BSTempEffect::Type GetType() const override;             // 2C
-		virtual void               Unknown2D(BSTempEffect*) override;    // 2D
-		virtual void               Unknown2E(BSTempEffect*) override;    // 2E
-		virtual void               Unknown36(ReferenceEffect*) override; // 36
-		virtual void               Unknown3A(ReferenceEffect*) override; // 3A
-		virtual void               Unknown3B(ReferenceEffect*) override; // 3B
-		virtual void               Unknown3C(ReferenceEffect*) override; // 3C
-		virtual void               Unknown3D(ReferenceEffect*) override; // 3D
-		virtual void               Unknown3E(ReferenceEffect*) override; // 3E
+		virtual const NiRTTI*       GetRTTI() const override;                // 2
+		virtual void                Unknown28(BSTempEffect*) override;       // 28
+		virtual void                Unknown29(BSTempEffect*) override;       // 29
+		virtual TemporaryEffectType GetTemporaryEffectType() const override; // 2C
+		virtual void                Unknown2D(BSTempEffect*) override;       // 2D
+		virtual void                Unknown2E(BSTempEffect*) override;       // 2E
+		virtual void                Unknown36(ReferenceEffect*) override;    // 36
+		virtual void                Unknown3A(ReferenceEffect*) override;    // 3A
+		virtual void                Unknown3B(ReferenceEffect*) override;    // 3B
+		virtual void                Unknown3C(ReferenceEffect*) override;    // 3C
+		virtual void                Unknown3D(ReferenceEffect*) override;    // 3D
+		virtual void                Unknown3E(ReferenceEffect*) override;    // 3E
 
 		// Override (SimpleAnimationGraphManagerHolder)
 		virtual void Unknown8(IAnimationGraphManagerHolder*) override; // 8

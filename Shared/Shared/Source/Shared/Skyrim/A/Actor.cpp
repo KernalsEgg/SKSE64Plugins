@@ -71,11 +71,11 @@ namespace Skyrim
 		return currentProcess ? currentProcess->GetCharacterController() : nullptr;
 	}
 
-	ActorHandle Actor::GetCommandingActor() const
+	ActorHandle Actor::GetCommandingActorHandle() const
 	{
 		auto* currentProcess = this->currentProcess;
 
-		return currentProcess ? currentProcess->GetCommandingActor() : ActorHandle{};
+		return currentProcess ? currentProcess->GetCommandingActorHandle() : ActorHandle{};
 	}
 
 	bool Actor::GetControllingActor(NiPointer<Actor>& controllingActor)
@@ -110,16 +110,16 @@ namespace Skyrim
 
 	TESObjectARMO* Actor::GetEquippedShield() const
 	{
-		auto* thirdPersonBiped = this->GetThirdPersonBiped().get();
+		const auto& thirdPersonBiped = this->GetThirdPersonBiped();
 
 		if (!thirdPersonBiped)
 		{
 			return nullptr;
 		}
 
-		auto shieldObject = thirdPersonBiped->GetShieldObject();
+		auto shieldBipedObject = thirdPersonBiped->GetShieldBipedObject();
 
-		return shieldObject ? static_cast<TESObjectARMO*>(shieldObject->boundObject) : nullptr;
+		return shieldBipedObject ? static_cast<TESObjectARMO*>(shieldBipedObject->boundObject) : nullptr;
 	}
 
 	TESObjectWEAP* Actor::GetEquippedWeapon(bool leftHand) const
@@ -186,10 +186,14 @@ namespace Skyrim
 		{
 			BSTSmartPointer<RefrInteraction> referenceInteraction;
 
-			if (this->GetInteraction(referenceInteraction) && referenceInteraction->GetTargetActor(mount))
+			if (this->GetInteraction(referenceInteraction))
 			{
-				if (mount->booleanFlags.all(Actor::BooleanFlags::kMount))
+				NiPointer<Actor> targetActor;
+
+				if (referenceInteraction->GetTargetActor(targetActor) && targetActor->booleanFlags.all(Actor::BooleanFlags::kMount))
 				{
+					mount = targetActor;
+
 					return static_cast<bool>(mount);
 				}
 			}
@@ -206,10 +210,14 @@ namespace Skyrim
 		{
 			BSTSmartPointer<RefrInteraction> referenceInteraction;
 
-			if (this->GetInteraction(referenceInteraction) && referenceInteraction->GetActor(rider))
+			if (this->GetInteraction(referenceInteraction))
 			{
-				if (rider->booleanFlags.none(Actor::BooleanFlags::kMount))
+				NiPointer<Actor> actor;
+
+				if (referenceInteraction->GetActor(actor) && actor->booleanFlags.none(Actor::BooleanFlags::kMount))
 				{
+					rider = actor;
+
 					return static_cast<bool>(rider);
 				}
 			}

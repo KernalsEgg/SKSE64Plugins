@@ -58,22 +58,22 @@ namespace SKSE
 		using EventCallback = void(Message* message);
 
 		bool          Dispatch(std::uint32_t messageType, void* data, std::uint32_t dataLength, const char* receiver) const;
-		void*         GetEventDispatcher(Utility::Enumeration<Dispatcher, std::uint32_t> dispatcherID) const;
+		void*         GetEventDispatcher(Utility::Enumeration<Dispatcher, std::uint32_t> dispatcher) const;
 		bool          RegisterListener(EventCallback* eventCallback) const;
 		bool          RegisterListener(const char* sender, EventCallback* eventCallback) const;
 		std::uint32_t Version() const;
 
 		template <class T>
-		Skyrim::BSTEventSource<T>* GetEventDispatcher(Utility::Enumeration<Dispatcher, std::uint32_t> dispatcherID) const
+		Skyrim::BSTEventSource<T>* GetEventDispatcher(Utility::Enumeration<Dispatcher, std::uint32_t> dispatcher) const
 		{
-			return static_cast<Skyrim::BSTEventSource<T>*>(this->GetEventDispatcher(dispatcherID));
+			return static_cast<Skyrim::BSTEventSource<T>*>(this->GetEventDispatcher(dispatcher));
 		}
 
 	private:
 		std::uint32_t version_;
 		bool (*registerListener_)(PluginHandle listener, const char* sender, EventCallback* eventCallback);
 		bool (*dispatch_)(PluginHandle sender, std::uint32_t messageType, void* data, std::uint32_t dataLength, const char* receiver);
-		void* (*getEventDispatcher_)(Utility::Enumeration<Dispatcher, std::uint32_t> dispatcherID);
+		void* (*getEventDispatcher_)(Utility::Enumeration<Dispatcher, std::uint32_t> dispatcher);
 	};
 	static_assert(sizeof(MessagingInterface) == 0x20);
 }

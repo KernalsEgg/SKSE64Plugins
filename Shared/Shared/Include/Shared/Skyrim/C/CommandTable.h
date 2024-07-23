@@ -53,14 +53,14 @@ namespace Skyrim
 	{
 	public:
 		// Member variables
-		const char*                                              parameterName; // 0
-		Utility::Enumeration<ScriptParameterType, std::uint32_t> parameterType; // 8
-		bool                                                     optional;      // C
-		std::uint8_t                                             paddingD;      // D
-		std::uint16_t                                            paddingE;      // E
+		const char*                                              scriptParameterName; // 0
+		Utility::Enumeration<ScriptParameterType, std::uint32_t> scriptParameterType; // 8
+		bool                                                     optional;            // C
+		std::uint8_t                                             paddingD;            // D
+		std::uint16_t                                            paddingE;            // E
 	};
-	static_assert(offsetof(ScriptParameter, parameterName) == 0x0);
-	static_assert(offsetof(ScriptParameter, parameterType) == 0x8);
+	static_assert(offsetof(ScriptParameter, scriptParameterName) == 0x0);
+	static_assert(offsetof(ScriptParameter, scriptParameterType) == 0x8);
 	static_assert(offsetof(ScriptParameter, optional) == 0xC);
 	static_assert(sizeof(ScriptParameter) == 0x10);
 
@@ -161,7 +161,7 @@ namespace Skyrim
 		std::uint32_t                                     offset;                // 208
 		char                                              output[512];           // 20C
 		std::uint32_t                                     outputSize;            // 40C
-		Utility::Enumeration<ScriptOutput, std::uint32_t> expression;            // 410
+		Utility::Enumeration<ScriptOutput, std::uint32_t> scriptOutput;          // 410
 		std::uint32_t                                     referencedObjectIndex; // 414
 		Utility::Enumeration<ScriptError, std::uint32_t>  scriptError;           // 418
 	};
@@ -171,7 +171,7 @@ namespace Skyrim
 	static_assert(offsetof(ScriptLine, offset) == 0x208);
 	static_assert(offsetof(ScriptLine, output) == 0x20C);
 	static_assert(offsetof(ScriptLine, outputSize) == 0x40C);
-	static_assert(offsetof(ScriptLine, expression) == 0x410);
+	static_assert(offsetof(ScriptLine, scriptOutput) == 0x410);
 	static_assert(offsetof(ScriptLine, referencedObjectIndex) == 0x414);
 	static_assert(offsetof(ScriptLine, scriptError) == 0x418);
 	static_assert(sizeof(ScriptLine) == 0x41C);

@@ -91,10 +91,10 @@ namespace Skyrim
 		std::uint64_t                                     unknown1F0;                   // 1F0
 		std::uint64_t                                     unknown1F8;                   // 1F8
 		std::uint64_t                                     unknown200;                   // 200
-		ObjectReferenceHandle                             currentFurniture;             // 208
+		ObjectReferenceHandle                             currentFurnitureHandle;       // 208
 		std::uint32_t                                     unknown20C;                   // 20C
 		std::uint64_t                                     unknown210;                   // 210
-		ActorHandle                                       commandingActor;              // 218
+		ActorHandle                                       commandingActorHandle;        // 218
 		std::uint32_t                                     unknown21C;                   // 21C
 		InventoryEntryData*                               leftHandInventoryEntryData;   // 220
 		std::uint64_t                                     unknown228;                   // 228
@@ -139,8 +139,8 @@ namespace Skyrim
 	static_assert(offsetof(MiddleHighProcessData, headNode) == 0x158);
 	static_assert(offsetof(MiddleHighProcessData, torsoNode) == 0x160);
 	static_assert(offsetof(MiddleHighProcessData, lastHitData) == 0x190);
-	static_assert(offsetof(MiddleHighProcessData, currentFurniture) == 0x208);
-	static_assert(offsetof(MiddleHighProcessData, commandingActor) == 0x218);
+	static_assert(offsetof(MiddleHighProcessData, currentFurnitureHandle) == 0x208);
+	static_assert(offsetof(MiddleHighProcessData, commandingActorHandle) == 0x218);
 	static_assert(offsetof(MiddleHighProcessData, leftHandInventoryEntryData) == 0x220);
 	static_assert(offsetof(MiddleHighProcessData, characterController) == 0x250);
 	static_assert(offsetof(MiddleHighProcessData, rightHandInventoryEntryData) == 0x260);

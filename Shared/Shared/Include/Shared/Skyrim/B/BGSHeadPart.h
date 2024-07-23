@@ -35,7 +35,7 @@ namespace Skyrim
 		};
 		static_assert(sizeof(Flags) == 0x1);
 
-		enum class Type : std::uint32_t
+		enum class HeadPartType : std::uint32_t
 		{
 			kMisc       = 0,
 			kFace       = 1,
@@ -45,7 +45,7 @@ namespace Skyrim
 			kScar       = 5,
 			kEyebrows   = 6
 		};
-		static_assert(sizeof(Type) == 0x4);
+		static_assert(sizeof(HeadPartType) == 0x4);
 
 		// Override
 		virtual ~BGSHeadPart() override; // 0
@@ -59,21 +59,21 @@ namespace Skyrim
 		virtual bool        SetEditorID(const char* editorID) override; // 33
 
 		// Member variables
-		Utility::Enumeration<Flags, std::uint8_t> headPartFlags;            // 68
-		std::uint8_t                              padding69;                // 69
-		std::uint16_t                             padding6A;                // 6A
-		Utility::Enumeration<Type, std::uint32_t> type;                     // 6C
-		BSTArray<BGSHeadPart*>                    extraParts;               // 70
-		BGSTextureSet*                            textureSet;               // 88
-		TESModelTri                               raceMorph;                // 90
-		TESModelTri                               morph;                    // B8
-		TESModelTri                               characterGenerationMorph; // E0
-		BGSColorForm*                             color;                    // 108
-		BGSListForm*                              validRaces;               // 110
-		BSFixedString                             editorID;                 // 118
+		Utility::Enumeration<Flags, std::uint8_t>         headPartFlags;            // 68
+		std::uint8_t                                      padding69;                // 69
+		std::uint16_t                                     padding6A;                // 6A
+		Utility::Enumeration<HeadPartType, std::uint32_t> headPartType;             // 6C
+		BSTArray<BGSHeadPart*>                            extraParts;               // 70
+		BGSTextureSet*                                    textureSet;               // 88
+		TESModelTri                                       raceMorph;                // 90
+		TESModelTri                                       morph;                    // B8
+		TESModelTri                                       characterGenerationMorph; // E0
+		BGSColorForm*                                     color;                    // 108
+		BGSListForm*                                      validRaces;               // 110
+		BSFixedString                                     editorID;                 // 118
 	};
 	static_assert(offsetof(BGSHeadPart, headPartFlags) == 0x68);
-	static_assert(offsetof(BGSHeadPart, type) == 0x6C);
+	static_assert(offsetof(BGSHeadPart, headPartType) == 0x6C);
 	static_assert(offsetof(BGSHeadPart, extraParts) == 0x70);
 	static_assert(offsetof(BGSHeadPart, textureSet) == 0x88);
 	static_assert(offsetof(BGSHeadPart, raceMorph) == 0x90);

@@ -18,15 +18,15 @@ namespace Skyrim
 		virtual ~ExtraSoul() override; // 0
 
 		// Override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                            // 1
+		virtual ExtraDataType GetExtraDataType() const override;                   // 1
 		virtual bool          IsNotEqual(const BSExtraData* right) const override; // 2
 
 		// Member variables
-		Utility::Enumeration<SoulLevel, std::uint8_t> soul;      // 10
+		Utility::Enumeration<SoulLevel, std::uint8_t> soulLevel; // 10
 		std::uint8_t                                  padding11; // 11
 		std::uint16_t                                 padding12; // 12
 		std::uint32_t                                 padding14; // 14
 	};
-	static_assert(offsetof(ExtraSoul, soul) == 0x10);
+	static_assert(offsetof(ExtraSoul, soulLevel) == 0x10);
 	static_assert(sizeof(ExtraSoul) == 0x18);
 }

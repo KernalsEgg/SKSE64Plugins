@@ -10,25 +10,25 @@
 
 namespace Skyrim
 {
-	BipedObject* BipedAnim::GetShieldObject()
+	BipedObject* BipedAnim::GetShieldBipedObject()
 	{
-		auto* actor = this->actorHandle.get().get();
+		auto actor = this->actorHandle.get();
 
 		if (!actor)
 		{
 			return nullptr;
 		}
 
-		Utility::Enumeration<BipedObjectSlot, std::uint32_t> shieldObjectSlot = actor->GetShieldObject();
+		Utility::Enumeration<BipedObjectSlot, std::uint32_t> shieldBipedObjectSlot = actor->GetShieldBipedObjectSlot();
 
-		if (shieldObjectSlot == BipedObjectSlot::kNone)
+		if (shieldBipedObjectSlot == BipedObjectSlot::kNone)
 		{
 			return nullptr;
 		}
 
-		auto* shieldObject = std::addressof(this->bipedObjects[shieldObjectSlot.underlying()]);
-		auto* shield       = shieldObject->boundObject;
+		auto* shieldBipedObject = std::addressof(this->bipedObjects[shieldBipedObjectSlot.underlying()]);
+		auto* shield            = shieldBipedObject->boundObject;
 
-		return shield && shield->formType == FormType::kArmor ? shieldObject : nullptr;
+		return shield && shield->formType == FormType::kArmor ? shieldBipedObject : nullptr;
 	}
 }

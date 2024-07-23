@@ -19,12 +19,12 @@ namespace Skyrim
 		virtual ~ExtraInteraction() override; // 0
 
 		// Override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                            // 1
+		virtual ExtraDataType GetExtraDataType() const override;                   // 1
 		virtual bool          IsNotEqual(const BSExtraData* right) const override; // 2
 
 		// Member variables
-		BSTSmartPointer<RefrInteraction> interaction; // 10
+		BSTSmartPointer<RefrInteraction> referenceInteraction; // 10
 	};
-	static_assert(offsetof(ExtraInteraction, interaction) == 0x10);
+	static_assert(offsetof(ExtraInteraction, referenceInteraction) == 0x10);
 	static_assert(sizeof(ExtraInteraction) == 0x18);
 }

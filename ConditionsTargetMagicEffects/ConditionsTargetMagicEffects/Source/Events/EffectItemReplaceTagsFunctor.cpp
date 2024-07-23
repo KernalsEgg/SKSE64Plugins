@@ -28,15 +28,15 @@ namespace ConditionsTargetMagicEffects::Events
 
 				if (effectSetting->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kNoMagnitude))
 				{
-					auto* player    = Skyrim::PlayerCharacter::GetSingleton();
-					auto* magicItem = effectItemReplaceTagsFunctor->magicItem;
-					auto  magnitude = effectItem->GetMagnitude();
+					auto* playerCharacter = Skyrim::PlayerCharacter::GetSingleton();
+					auto* magicItem       = effectItemReplaceTagsFunctor->magicItem;
+					auto  magnitude       = effectItem->GetMagnitude();
 
 					bool modifiedSpellMagnitude{ false };
 
 					Skyrim::BGSEntryPoint::HandleEntryPoint(
 						Skyrim::BGSEntryPoint::EntryPoint::kModifySpellMagnitude,
-						player,
+						playerCharacter,
 						effectSetting,
 						magicItem,
 						nullptr,
@@ -48,7 +48,7 @@ namespace ConditionsTargetMagicEffects::Events
 					{
 						Skyrim::BGSEntryPoint::HandleEntryPoint(
 							Skyrim::BGSEntryPoint::EntryPoint::kModifySpellMagnitude,
-							player,
+							playerCharacter,
 							magicItem,
 							nullptr,
 							std::addressof(magnitude));
@@ -79,15 +79,15 @@ namespace ConditionsTargetMagicEffects::Events
 
 				if (effectSetting->effectSettingFlags.none(Skyrim::EffectSetting::Flags::kNoDuration))
 				{
-					auto* player    = Skyrim::PlayerCharacter::GetSingleton();
-					auto* magicItem = effectItemReplaceTagsFunctor->magicItem;
-					auto  duration  = static_cast<float>(effectItem->GetDuration());
+					auto* playerCharacter = Skyrim::PlayerCharacter::GetSingleton();
+					auto* magicItem       = effectItemReplaceTagsFunctor->magicItem;
+					auto  duration        = static_cast<float>(effectItem->GetDuration());
 
 					bool modifiedSpellDuration{ false };
 
 					Skyrim::BGSEntryPoint::HandleEntryPoint(
 						Skyrim::BGSEntryPoint::EntryPoint::kModifySpellDuration,
-						player,
+						playerCharacter,
 						effectSetting,
 						magicItem,
 						nullptr,
@@ -99,7 +99,7 @@ namespace ConditionsTargetMagicEffects::Events
 					{
 						Skyrim::BGSEntryPoint::HandleEntryPoint(
 							Skyrim::BGSEntryPoint::EntryPoint::kModifySpellDuration,
-							player,
+							playerCharacter,
 							magicItem,
 							nullptr,
 							std::addressof(duration));

@@ -28,13 +28,13 @@ namespace SKSE
 		return result;
 	}
 
-	void* MessagingInterface::GetEventDispatcher(Utility::Enumeration<Dispatcher, std::uint32_t> dispatcherID) const
+	void* MessagingInterface::GetEventDispatcher(Utility::Enumeration<Dispatcher, std::uint32_t> dispatcher) const
 	{
-		auto* result = this->getEventDispatcher_(dispatcherID);
+		auto* result = this->getEventDispatcher_(dispatcher);
 
 		if (!result)
 		{
-			Utility::InformationBox::Error("Event dispatcher not found, {}.", dispatcherID.underlying());
+			Utility::InformationBox::Error("Event dispatcher not found, {}.", dispatcher.underlying());
 		}
 
 		return result;

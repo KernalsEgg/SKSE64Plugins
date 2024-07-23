@@ -15,7 +15,7 @@ namespace ConsoleCommandCompanion
 		{
 		public:
 			static void RegisterSink();
-			static void ProcessEvent();
+			static bool ProcessEvent();
 		};
 
 		class LoadGameEventSink :

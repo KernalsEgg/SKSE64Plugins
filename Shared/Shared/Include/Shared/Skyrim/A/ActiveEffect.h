@@ -90,7 +90,7 @@ namespace Skyrim
 		std::uint64_t                                                   unknown20;             // 20
 		std::uint64_t                                                   unknown28;             // 28
 		std::uint32_t                                                   unknown30;             // 30
-		ActorHandle                                                     caster;                // 34
+		ActorHandle                                                     casterHandle;          // 34
 		std::uint64_t                                                   unknown38;             // 38
 		MagicItem*                                                      magicItem;             // 40
 		EffectItem*                                                     effectItem;            // 48
@@ -108,7 +108,7 @@ namespace Skyrim
 		Utility::Enumeration<MagicSystem::CastingSource, std::uint32_t> castingSource;         // 88
 		std::uint32_t                                                   padding8C;             // 8C
 	};
-	static_assert(offsetof(ActiveEffect, caster) == 0x34);
+	static_assert(offsetof(ActiveEffect, casterHandle) == 0x34);
 	static_assert(offsetof(ActiveEffect, magicItem) == 0x40);
 	static_assert(offsetof(ActiveEffect, effectItem) == 0x48);
 	static_assert(offsetof(ActiveEffect, magicTarget) == 0x50);

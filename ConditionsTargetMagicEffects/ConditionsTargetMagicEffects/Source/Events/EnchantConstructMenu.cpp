@@ -49,8 +49,8 @@ namespace ConditionsTargetMagicEffects::Events
 				maximumPower = static_cast<float>(duration);
 			}
 
-			auto* player          = Skyrim::PlayerCharacter::GetSingleton();
-			auto  enchantingSkill = player->GetActorValue(Skyrim::ActorValue::kEnchanting);
+			auto* playerCharacter = Skyrim::PlayerCharacter::GetSingleton();
+			auto  enchantingSkill = playerCharacter->GetActorValue(Skyrim::ActorValue::kEnchanting);
 
 			maximumPower = Skyrim::EnchantmentItem::ModifyPower(maximumPower, enchantingSkill);
 
@@ -58,7 +58,7 @@ namespace ConditionsTargetMagicEffects::Events
 
 			Skyrim::BGSEntryPoint::HandleEntryPoint(
 				Skyrim::BGSEntryPoint::EntryPoint::kModifyEnchantmentPower,
-				player,
+				playerCharacter,
 				effectSetting,
 				enchantmentEntry->enchantmentItem,
 				nullptr,
@@ -70,7 +70,7 @@ namespace ConditionsTargetMagicEffects::Events
 			{
 				Skyrim::BGSEntryPoint::HandleEntryPoint(
 					Skyrim::BGSEntryPoint::EntryPoint::kModifyEnchantmentPower,
-					player,
+					playerCharacter,
 					enchantmentEntry->enchantmentItem,
 					createEffectFunctor->boundObject,
 					std::addressof(maximumPower));

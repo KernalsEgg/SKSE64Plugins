@@ -25,7 +25,7 @@ namespace Skyrim
 		number(nullptr),
 		matrix(nullptr),
 		matrixSize(0),
-		propertyFlags(UserDataPropertyFlag::kNone)
+		userDataPropertyFlag(UserDataPropertyFlag::kNone)
 	{
 	}
 

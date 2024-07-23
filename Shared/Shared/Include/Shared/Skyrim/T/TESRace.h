@@ -299,16 +299,16 @@ namespace Skyrim
 		float                                                accelerationRate;                                                                        // 120, Move Data
 		float                                                decelerationRate;                                                                        // 124, Move Data
 		Utility::Enumeration<Size, std::uint32_t>            size;                                                                                    // 128, General Data
-		Utility::Enumeration<BipedObjectSlot, std::uint32_t> headBipedObject;                                                                         // 12C, Face Data
-		Utility::Enumeration<BipedObjectSlot, std::uint32_t> hairBipedObject;                                                                         // 130, Face Data
+		Utility::Enumeration<BipedObjectSlot, std::uint32_t> headBipedObjectSlot;                                                                     // 12C, Face Data
+		Utility::Enumeration<BipedObjectSlot, std::uint32_t> hairBipedObjectSlot;                                                                     // 130, Face Data
 		float                                                injuredHealthPercentage;                                                                 // 134, Combat Data
-		Utility::Enumeration<BipedObjectSlot, std::uint32_t> shieldBipedObject;                                                                       // 138, Body Data
+		Utility::Enumeration<BipedObjectSlot, std::uint32_t> shieldBipedObjectSlot;                                                                   // 138, Body Data
 		float                                                healthRegeneration;                                                                      // 13C, General Data
 		float                                                magickaRegeneration;                                                                     // 140, General Data
 		float                                                staminaRegeneration;                                                                     // 144, General Data
 		float                                                unarmedDamage;                                                                           // 148, Combat Data
 		float                                                unarmedReach;                                                                            // 14C, Combat Data
-		Utility::Enumeration<BipedObjectSlot, std::uint32_t> bodyBipedObject;                                                                         // 150, Body Data
+		Utility::Enumeration<BipedObjectSlot, std::uint32_t> bodyBipedObjectSlot;                                                                     // 150, Body Data
 		float                                                aimAngleTolerance;                                                                       // 154, Combat Data
 		float                                                flightRadius;                                                                            // 158, General Data
 		float                                                angularAccelerationRate;                                                                 // 15C, Move Data
@@ -320,7 +320,7 @@ namespace Skyrim
 		std::uint32_t                                        unknown18C;                                                                              // 18C
 		std::uint32_t                                        unknown190;                                                                              // 190
 		std::uint32_t                                        padding194;                                                                              // 194
-		BGSTextureModel                                      bodyTextures[Utility::Conversion::ToUnderlying(Sex::kTotal)];                            // 198, Body Data
+		BGSTextureModel                                      bodyTextureModels[Utility::Conversion::ToUnderlying(Sex::kTotal)];                       // 198, Body Data
 		BGSBehaviorGraphModel                                behaviorGraphs[Utility::Conversion::ToUnderlying(Sex::kTotal)];                          // 1E8, Body Data
 		BSFixedString                                        behaviorGraphRootNames[Utility::Conversion::ToUnderlying(Sex::kTotal)];                  // 238
 		BSFixedString                                        behaviorGraphProjectNames[Utility::Conversion::ToUnderlying(Sex::kTotal)];               // 248
@@ -341,7 +341,7 @@ namespace Skyrim
 		BSFixedString                                        editorID;                                                                                // 2E0
 		BGSMaterialType*                                     impactMaterialType;                                                                      // 2E8, Blood, When we are hit
 		BGSImpactDataSet*                                    impactDataSet;                                                                           // 2F0, Blood, When we hit something else
-		BGSArtObject*                                        decapitateBloodArt;                                                                      // 2F8, Blood, When we are hit
+		BGSArtObject*                                        decapitateBloodArtObject;                                                                // 2F8, Blood, When we are hit
 		BGSSoundDescriptorForm*                              openCorse;                                                                               // 300, Blood, Sounds made when looted
 		BGSSoundDescriptorForm*                              closeCorpse;                                                                             // 308, Blood, Sounds made when looted
 		BSFixedString                                        bipedObjectNames[Utility::Conversion::ToUnderlying(BipedObjectSlot::kCreationKitTotal)]; // 310
@@ -370,16 +370,16 @@ namespace Skyrim
 	static_assert(offsetof(TESRace, accelerationRate) == 0x120);
 	static_assert(offsetof(TESRace, decelerationRate) == 0x124);
 	static_assert(offsetof(TESRace, size) == 0x128);
-	static_assert(offsetof(TESRace, headBipedObject) == 0x12C);
-	static_assert(offsetof(TESRace, hairBipedObject) == 0x130);
+	static_assert(offsetof(TESRace, headBipedObjectSlot) == 0x12C);
+	static_assert(offsetof(TESRace, hairBipedObjectSlot) == 0x130);
 	static_assert(offsetof(TESRace, injuredHealthPercentage) == 0x134);
-	static_assert(offsetof(TESRace, shieldBipedObject) == 0x138);
+	static_assert(offsetof(TESRace, shieldBipedObjectSlot) == 0x138);
 	static_assert(offsetof(TESRace, healthRegeneration) == 0x13C);
 	static_assert(offsetof(TESRace, magickaRegeneration) == 0x140);
 	static_assert(offsetof(TESRace, staminaRegeneration) == 0x144);
 	static_assert(offsetof(TESRace, unarmedDamage) == 0x148);
 	static_assert(offsetof(TESRace, unarmedReach) == 0x14C);
-	static_assert(offsetof(TESRace, bodyBipedObject) == 0x150);
+	static_assert(offsetof(TESRace, bodyBipedObjectSlot) == 0x150);
 	static_assert(offsetof(TESRace, aimAngleTolerance) == 0x154);
 	static_assert(offsetof(TESRace, flightRadius) == 0x158);
 	static_assert(offsetof(TESRace, angularAccelerationRate) == 0x15C);
@@ -388,7 +388,7 @@ namespace Skyrim
 	static_assert(offsetof(TESRace, mountOffsets) == 0x168);
 	static_assert(offsetof(TESRace, dismountOffsets) == 0x174);
 	static_assert(offsetof(TESRace, mountCameraOffsets) == 0x180);
-	static_assert(offsetof(TESRace, bodyTextures) == 0x198);
+	static_assert(offsetof(TESRace, bodyTextureModels) == 0x198);
 	static_assert(offsetof(TESRace, behaviorGraphs) == 0x1E8);
 	static_assert(offsetof(TESRace, behaviorGraphRootNames) == 0x238);
 	static_assert(offsetof(TESRace, behaviorGraphProjectNames) == 0x248);
@@ -399,7 +399,7 @@ namespace Skyrim
 	static_assert(offsetof(TESRace, editorID) == 0x2E0);
 	static_assert(offsetof(TESRace, impactMaterialType) == 0x2E8);
 	static_assert(offsetof(TESRace, impactDataSet) == 0x2F0);
-	static_assert(offsetof(TESRace, decapitateBloodArt) == 0x2F8);
+	static_assert(offsetof(TESRace, decapitateBloodArtObject) == 0x2F8);
 	static_assert(offsetof(TESRace, openCorse) == 0x300);
 	static_assert(offsetof(TESRace, closeCorpse) == 0x308);
 	static_assert(offsetof(TESRace, bipedObjectNames) == 0x310);

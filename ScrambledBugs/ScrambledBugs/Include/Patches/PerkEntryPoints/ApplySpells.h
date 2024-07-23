@@ -25,12 +25,6 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			Skyrim::TESObjectWEAP*                                                 weapon,
 			Skyrim::Actor*                                                         target,
 			Skyrim::SpellItem**                                                    result);
-		static void ApplyCombatHitSpellArrowProjectile(
-			Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
-			Skyrim::Actor*                                                         perkOwner,
-			Skyrim::TESObjectWEAP*                                                 weapon,
-			Skyrim::Actor*                                                         target,
-			Skyrim::SpellItem**                                                    result);
 		static void ApplyReanimateSpell(
 			Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
 			Skyrim::Actor*                                                         perkOwner,
@@ -47,19 +41,17 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 			Skyrim::Actor*                                                         attacker,
 			Skyrim::TESObjectWEAP*                                                 attackerWeapon,
 			Skyrim::SpellItem**                                                    result);
+		static std::vector<void*> HandleEntryPoint(
+			Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
+			Skyrim::Actor*                                                         perkOwner,
+			std::vector<Skyrim::TESForm*>                                          conditionFilterArguments);
 		static void SelectSpell(
 			Skyrim::TESObjectREFR*                                                                     perkOwner,
 			Utility::Enumeration<Skyrim::BGSEntryPointFunction::EntryPointFunctionType, std::uint32_t> entryPointFunctionType,
-			std::uint8_t                                                                               entryPointFunctionTypeArgumentCount,
-			void**                                                                                     entryPointFunctionTypeArguments,
+			std::uint8_t                                                                               entryPointFunctionArgumentCount,
+			void**                                                                                     entryPointFunctionArguments,
 			Skyrim::BGSEntryPointFunctionData*                                                         entryPointFunctionData);
 
-		static bool                                                       castSpells_;
-		static decltype(ApplySpells::ApplyBashingSpell)*                  applyBashingSpell_;
-		static decltype(ApplySpells::ApplyCombatHitSpell)*                applyCombatHitSpell_;
-		static decltype(ApplySpells::ApplyCombatHitSpellArrowProjectile)* applyCombatHitSpellArrowProjectile_;
-		static decltype(ApplySpells::ApplyReanimateSpell)*                applyReanimateSpell_;
-		static decltype(ApplySpells::ApplySneakingSpell)*                 applySneakingSpell_;
-		static decltype(ApplySpells::ApplyWeaponSwingSpell)*              applyWeaponSwingSpell_;
+		static bool castSpells_;
 	};
 }

@@ -31,7 +31,7 @@ namespace Skyrim
 		static BGSCreatedObjectManager* GetSingleton();
 
 		// Member functions
-		void DecrementReference(AlchemyItem* potion);
+		void DecrementReference(AlchemyItem* alchemyItem);
 
 		// Member variables
 		std::uint64_t                  unknown0;                      // 0
