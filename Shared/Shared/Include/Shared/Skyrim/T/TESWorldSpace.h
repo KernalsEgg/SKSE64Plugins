@@ -3,6 +3,7 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/B/BSCoreTypes.h"
+#include "Shared/Skyrim/B/BSCRC32.h"
 #include "Shared/Skyrim/B/BSString.h"
 #include "Shared/Skyrim/B/BSTArray.h"
 #include "Shared/Skyrim/B/BSTHashMap.h"
@@ -55,6 +56,19 @@ namespace Skyrim
 	static_assert(offsetof(CellID, x) == 0x0);
 	static_assert(offsetof(CellID, y) == 0x2);
 	static_assert(sizeof(CellID) == 0x4);
+
+	namespace Implementation
+	{
+		template <>
+		struct BSCRC32<CellID>
+		{
+		public:
+			inline std::uint32_t operator()(CellID key) const noexcept
+			{
+				return BSCRC32<std::uint32_t>()(reinterpret_cast<const std::uint32_t&>(key));
+			}
+		};
+	}
 
 	class BGSLargeReferenceData
 	{

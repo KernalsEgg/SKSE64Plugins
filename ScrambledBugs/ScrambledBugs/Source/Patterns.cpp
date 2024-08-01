@@ -4,6 +4,7 @@
 
 #include "Addresses.h"
 #include "Shared/Relocation/AddressLibrary.h"
+#include "Shared/Relocation/PreprocessorDirectives.h"
 
 
 
@@ -54,12 +55,23 @@ namespace ScrambledBugs::Patterns
 
 		namespace KillCamera
 		{
-			bool HasWeapon()
+			bool ApplyCombatHitSpell()
 			{
 				return Relocation::AddressLibrary::MatchPattern(
-					Addresses::Fixes::KillCamera::HasWeapon,                                                          // 7 + 3 = 0xA
-					0x4Cui8, 0x8Bui8, 0x86ui8, static_cast<std::int32_t>(offsetof(Skyrim::Projectile, weaponSource)), // mov r8, [rsi+1B8]
-					0x4Dui8, 0x85ui8, 0xC0ui8                                                                         // test r8, r8
+					Addresses::Fixes::KillCamera::ApplyCombatHitSpell, // 0x5
+					0xE8ui8, std::optional<std::int32_t>{}             // call BGSEntryPoint::HandleEntryPoint
+				);
+			}
+
+			bool GetWeapon()
+			{
+				return Relocation::AddressLibrary::MatchPattern(
+					Addresses::Fixes::KillCamera::GetWeapon,
+					SKYRIM_RELOCATE(
+						SKYRIM_VARIADIC_ARGUMENTS(                                                                             // 0x7
+							0x4Cui8, 0x8Bui8, 0x87ui8, static_cast<std::int32_t>(offsetof(Skyrim::Projectile, weaponSource))), // mov r8, [rdi+1B0]
+						SKYRIM_VARIADIC_ARGUMENTS(                                                                             // 0x7
+							0x4Cui8, 0x8Bui8, 0x86ui8, static_cast<std::int32_t>(offsetof(Skyrim::Projectile, weaponSource)))) // mov r8, [rsi+1B8]
 				);
 			}
 		}

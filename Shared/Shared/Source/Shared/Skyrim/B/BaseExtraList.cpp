@@ -10,7 +10,7 @@ namespace Skyrim
 {
 	bool BaseExtraList::PresenceBitField::HasExtraData(Utility::Enumeration<ExtraDataType, std::uint32_t> extraDataType) const
 	{
-		std::uint32_t index = extraDataType.underlying() >> 3; // Divide by 8
+		std::uint32_t index = extraDataType.underlying() / 8;
 
 		if (index < sizeof(PresenceBitField))
 		{

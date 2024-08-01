@@ -51,6 +51,7 @@
     <ClInclude Include="Include\Shared\SKSE\PluginHandle.h" />
     <ClInclude Include="Include\Shared\SKSE\PluginInformation.h" />
     <ClInclude Include="Include\Shared\SKSE\PluginVersionData.h" />
+    <ClInclude Include="Include\Shared\SKSE\ScaleformInterface.h" />
     <ClInclude Include="Include\Shared\SKSE\SerializationInterface.h" />
     <ClInclude Include="Include\Shared\SKSE\SKSE.h" />
     <ClInclude Include="Include\Shared\SKSE\Storage.h" />
@@ -164,13 +165,14 @@
     <ClInclude Include="Include\Shared\Skyrim\B\BipedAnim.h" />
     <ClInclude Include="Include\Shared\Skyrim\B\BipedObject.h" />
     <ClInclude Include="Include\Shared\Skyrim\B\BipedObjectSlot.h" />
-    <ClInclude Include="Include\Shared\Skyrim\B\BodyPartType.h" />
+    <ClInclude Include="Include\Shared\Skyrim\B\BGSBodyPartDefinitions.h" />
     <ClInclude Include="Include\Shared\Skyrim\B\BSAnimationGraphChannel.h" />
     <ClInclude Include="Include\Shared\Skyrim\B\BSAnimationGraphEvent.h" />
     <ClInclude Include="Include\Shared\Skyrim\B\BSAtomic.h" />
     <ClInclude Include="Include\Shared\Skyrim\B\BSAudioManager.h" />
     <ClInclude Include="Include\Shared\Skyrim\B\BSBound.h" />
     <ClInclude Include="Include\Shared\Skyrim\B\BSCoreTypes.h" />
+    <ClInclude Include="Include\Shared\Skyrim\B\BSCRC32.h" />
     <ClInclude Include="Include\Shared\Skyrim\B\BSExtraData.h" />
     <ClInclude Include="Include\Shared\Skyrim\B\BSFadeNode.h" />
     <ClInclude Include="Include\Shared\Skyrim\B\BSFile.h" />
@@ -212,6 +214,7 @@
     <ClInclude Include="Include\Shared\Skyrim\C\Character.h" />
     <ClInclude Include="Include\Shared\Skyrim\C\CharEvent.h" />
     <ClInclude Include="Include\Shared\Skyrim\C\Clouds.h" />
+    <ClInclude Include="Include\Shared\Skyrim\C\CollisionLayer.h" />
     <ClInclude Include="Include\Shared\Skyrim\C\Color.h" />
     <ClInclude Include="Include\Shared\Skyrim\C\CombatController.h" />
     <ClInclude Include="Include\Shared\Skyrim\C\CombatReaction.h" />
@@ -246,6 +249,7 @@
     <ClInclude Include="Include\Shared\Skyrim\E\ExtraHealth.h" />
     <ClInclude Include="Include\Shared\Skyrim\E\ExtraInteraction.h" />
     <ClInclude Include="Include\Shared\Skyrim\E\ExtraLevCreaModifier.h" />
+    <ClInclude Include="Include\Shared\Skyrim\E\ExtraLock.h" />
     <ClInclude Include="Include\Shared\Skyrim\E\ExtraLockList.h" />
     <ClInclude Include="Include\Shared\Skyrim\E\ExtraOwnership.h" />
     <ClInclude Include="Include\Shared\Skyrim\E\ExtraPoison.h" />
@@ -292,6 +296,7 @@
     <ClInclude Include="Include\Shared\Skyrim\G\GetMagicItemDescriptionFunctor.h" />
     <ClInclude Include="Include\Shared\Skyrim\G\GFxExporterInformation.h" />
     <ClInclude Include="Include\Shared\Skyrim\G\GFxFileConstants.h" />
+    <ClInclude Include="Include\Shared\Skyrim\G\GFxFunctionHandler.h" />
     <ClInclude Include="Include\Shared\Skyrim\G\GFxMovie.h" />
     <ClInclude Include="Include\Shared\Skyrim\G\GFxMovieDef.h" />
     <ClInclude Include="Include\Shared\Skyrim\G\GFxMovieView.h" />
@@ -459,6 +464,7 @@
     <ClInclude Include="Include\Shared\Skyrim\R\ReferenceEffectController.h" />
     <ClInclude Include="Include\Shared\Skyrim\R\RefrInteraction.h" />
     <ClInclude Include="Include\Shared\Skyrim\R\RegSettingCollection.h" />
+    <ClInclude Include="Include\Shared\Skyrim\R\ResetElapsedTimeMatchingEffects.h" />
     <ClInclude Include="Include\Shared\Skyrim\Skyrim.h" />
     <ClInclude Include="Include\Shared\Skyrim\S\ScaleformTypes.h" />
     <ClInclude Include="Include\Shared\Skyrim\S\ScrapHeap.h" />
@@ -600,6 +606,7 @@
     <ClCompile Include="Source\Shared\Relocation\Module.cpp" />
     <ClCompile Include="Source\Shared\SKSE\Interface.cpp" />
     <ClCompile Include="Source\Shared\SKSE\MessagingInterface.cpp" />
+    <ClCompile Include="Source\Shared\SKSE\ScaleformInterface.cpp" />
     <ClCompile Include="Source\Shared\SKSE\SerializationInterface.cpp" />
     <ClCompile Include="Source\Shared\SKSE\Storage.cpp" />
     <ClCompile Include="Source\Shared\SKSE\TaskInterface.cpp" />

@@ -16,6 +16,8 @@ namespace Skyrim
 		{
 			kNone                  = static_cast<std::underlying_type_t<ArchetypeID>>(-1),
 			kScript                = 1,
+			kLock                  = 15,
+			kOpen                  = 16,
 			kAccumulatingMagnitude = 32
 		};
 		static_assert(sizeof(ArchetypeID) == 0x4);

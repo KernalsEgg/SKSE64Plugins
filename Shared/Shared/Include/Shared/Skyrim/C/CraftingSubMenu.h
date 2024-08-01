@@ -9,7 +9,11 @@
 
 namespace Skyrim
 {
+	struct ItemCard;
 	struct TESFurnitureEvent;
+
+	class GFxMovieView;
+	class TESFurniture;
 
 	namespace CraftingSubMenus
 	{
@@ -33,9 +37,9 @@ namespace Skyrim
 			virtual EventNotifyControl ProcessEvent(const TESFurnitureEvent* eventArguments, BSTEventSource<TESFurnitureEvent>* eventSource) override; // 1
 
 			// Member variables
-			std::uint64_t unknown18; // 18
-			std::uint64_t unknown20; // 20
-			std::uint64_t unknown28; // 28
+			GFxMovieView* movieView; // 18
+			TESFurniture* furniture; // 20
+			ItemCard*     itemCard;  // 28
 			std::uint64_t unknown30; // 30
 			std::uint64_t unknown38; // 38
 			std::uint64_t unknown40; // 40
@@ -63,6 +67,9 @@ namespace Skyrim
 			std::uint64_t unknownF0; // F0
 			std::uint64_t unknownF8; // F8
 		};
+		static_assert(offsetof(CraftingSubMenu, movieView) == 0x18);
+		static_assert(offsetof(CraftingSubMenu, furniture) == 0x20);
+		static_assert(offsetof(CraftingSubMenu, itemCard) == 0x28);
 		static_assert(sizeof(CraftingSubMenu) == 0x100);
 	}
 }

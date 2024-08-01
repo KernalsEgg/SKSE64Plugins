@@ -4,6 +4,7 @@
 
 #include "Addresses.h"
 #include "Patterns.h"
+#include "Shared/Relocation/PreprocessorDirectives.h"
 #include "Shared/Utility/Assembly.h"
 #include "Shared/Utility/Memory.h"
 
@@ -13,21 +14,47 @@ namespace ScrambledBugs::Fixes
 {
 	void KillCamera::Fix(bool& killCamera)
 	{
-		if (!Patterns::Fixes::KillCamera::HasWeapon())
+		if (!Patterns::Fixes::KillCamera::ApplyCombatHitSpell() ||
+			!Patterns::Fixes::KillCamera::GetWeapon())
 		{
 			killCamera = false;
 
 			return;
 		}
 
-		Utility::Memory::SafeWrite(Addresses::Fixes::KillCamera::HasWeapon, std::optional<Utility::Assembly::RelativeCall5>{}, Utility::Assembly::NO_OPERATION_5);
-		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5Branch(
-			Addresses::Fixes::KillCamera::HasWeapon,
-			0x4Cui8, 0x8Bui8, 0x86ui8, static_cast<std::int32_t>(offsetof(Skyrim::Projectile, weaponSource)),                                                             // mov r8, [rsi+1B8]
-			0x4Dui8, 0x85ui8, 0xC0ui8,                                                                                                                                    // test r8, r8
-			0x74ui8, 0x0Aui8,                                                                                                                                             // jz A
-			0xF7ui8, 0x86ui8, static_cast<std::int32_t>(offsetof(Skyrim::Projectile, projectileFlags)), static_cast<std::uint32_t>(Skyrim::Projectile::Flags::k3DLoaded), // test [rsi+1D4], 100
-			0xC3ui8                                                                                                                                                       // ret
+		Utility::Memory::SafeWrite(
+			Addresses::Fixes::KillCamera::GetWeapon,
+			SKYRIM_RELOCATE(
+				SKYRIM_VARIADIC_ARGUMENTS(              // 3 + 4 = 0x7
+					0x4Cui8, 0x8Bui8, 0xC7ui8,          // mov r8, rdi
+					Utility::Assembly::NO_OPERATION_4), // nop
+				SKYRIM_VARIADIC_ARGUMENTS(              // 3 + 4 = 0x7
+					0x4Cui8, 0x8Bui8, 0xC6ui8,          // mov r8, rsi
+					Utility::Assembly::NO_OPERATION_4)) // nop
 		);
+
+		KillCamera::applyCombatHitSpell_ = reinterpret_cast<decltype(KillCamera::applyCombatHitSpell_)>(
+			Utility::Memory::ReadRelativeCall5(
+				Addresses::Fixes::KillCamera::ApplyCombatHitSpell));
+		SKSE::Storage::GetSingleton().GetTrampolineInterface()->RelativeCall5(
+			Addresses::Fixes::KillCamera::ApplyCombatHitSpell,
+			reinterpret_cast<std::uintptr_t>(std::addressof(KillCamera::ApplyCombatHitSpell)));
 	}
+
+	void KillCamera::ApplyCombatHitSpell(
+		Utility::Enumeration<Skyrim::BGSEntryPoint::EntryPoint, std::uint32_t> entryPoint,
+		Skyrim::Actor*                                                         perkOwner,
+		Skyrim::TESObjectWEAP*                                                 weapon,
+		Skyrim::Actor*                                                         target,
+		Skyrim::SpellItem**                                                    result)
+	{
+		auto* arrowProjectile = reinterpret_cast<Skyrim::ArrowProjectile*>(weapon);
+
+		if (arrowProjectile->projectileFlags.all(Skyrim::Projectile::Flags::k3DLoaded) && arrowProjectile->weaponSource)
+		{
+			KillCamera::applyCombatHitSpell_(entryPoint, perkOwner, arrowProjectile->weaponSource, target, result);
+		}
+	}
+
+	decltype(KillCamera::ApplyCombatHitSpell)* KillCamera::applyCombatHitSpell_{ nullptr };
 }

@@ -3,6 +3,7 @@
 #include "PrecompiledHeader.h"
 
 #include "Shared/Relocation/AddressLibrary.h"
+#include "Shared/Relocation/PreprocessorDirectives.h"
 
 
 
@@ -51,8 +52,11 @@ namespace ScrambledBugs::Addresses
 
 		namespace KillCamera
 		{
-			/// <summary>1.5.97.0: SkyrimSE.exe + 0x732400 + 0x261 (42547), 1.6.318.0: SkyrimSE.exe + 0x75D560</summary>
-			inline const std::uintptr_t HasWeapon{ Relocation::AddressLibrary::GetSingleton().GetAddress(43710) + 0x2D0 }; // ArrowProjectile::AddImpact
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x732400, 1.6.318.0: SkyrimSE.exe + 0x75D560</summary>
+			inline const std::uintptr_t ApplyCombatHitSpell{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(42547, 43710)) + SKYRIM_RELOCATE(0x28B, 0x2F6) }; // ArrowProjectile::AddImpact
+
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x732400, 1.6.318.0: SkyrimSE.exe + 0x75D560</summary>
+			inline const std::uintptr_t GetWeapon{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(42547, 43710)) + SKYRIM_RELOCATE(0x261, 0x2D0) }; // ArrowProjectile::AddImpact
 		}
 
 		namespace LeftHandPowerAttacks

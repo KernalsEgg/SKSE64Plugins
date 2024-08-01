@@ -97,7 +97,7 @@ namespace ConditionsTargetMagicEffects::Events
 
 			switch (enchantmentEntry->filterFlag.get())
 			{
-				case Skyrim::CraftingSubMenus::EnchantConstructMenu::CategoryListEntry::FilterFlag::kEffectArmor:
+				case Skyrim::CraftingSubMenus::EnchantConstructMenu::FilterFlag::kEffectArmor:
 				{
 					power = maximumPower * createEffectFunctor->effectiveness;
 
@@ -108,7 +108,7 @@ namespace ConditionsTargetMagicEffects::Events
 
 					[[fallthrough]];
 				}
-				case Skyrim::CraftingSubMenus::EnchantConstructMenu::CategoryListEntry::FilterFlag::kEffectWeapon:
+				case Skyrim::CraftingSubMenus::EnchantConstructMenu::FilterFlag::kEffectWeapon:
 				{
 					enchantmentEntry->power = power;
 

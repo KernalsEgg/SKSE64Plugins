@@ -54,11 +54,12 @@ namespace Skyrim
 
 		enum class BooleanFlags : std::uint32_t
 		{
-			kNone       = 0,
-			kMount      = 1U << 1,
-			kInKillMove = 1U << 14,
-			kEssential  = 1U << 18,
-			kProtected  = 1U << 19
+			kNone                     = 0,
+			kMount                    = 1U << 1,
+			kInKillMove               = 1U << 14,
+			kEssential                = 1U << 18,
+			kProtected                = 1U << 19,
+			kCheckAddEffectDualCasted = 1U << 30
 		};
 		static_assert(sizeof(BooleanFlags) == 0x4);
 

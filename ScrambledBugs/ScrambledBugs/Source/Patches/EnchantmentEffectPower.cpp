@@ -95,7 +95,7 @@ namespace ScrambledBugs::Patches
 
 				switch (enchantmentEntry->filterFlag.get())
 				{
-					case Skyrim::CraftingSubMenus::EnchantConstructMenu::CategoryListEntry::FilterFlag::kEffectArmor:
+					case Skyrim::CraftingSubMenus::EnchantConstructMenu::FilterFlag::kEffectArmor:
 					{
 						power = maximumPower * createEffectFunctor->effectiveness;
 
@@ -106,7 +106,7 @@ namespace ScrambledBugs::Patches
 
 						[[fallthrough]];
 					}
-					case Skyrim::CraftingSubMenus::EnchantConstructMenu::CategoryListEntry::FilterFlag::kEffectWeapon:
+					case Skyrim::CraftingSubMenus::EnchantConstructMenu::FilterFlag::kEffectWeapon:
 					{
 						enchantmentEntry->power = power;
 
@@ -120,7 +120,7 @@ namespace ScrambledBugs::Patches
 
 				switch (enchantmentEntry->filterFlag.get())
 				{
-					case Skyrim::CraftingSubMenus::EnchantConstructMenu::CategoryListEntry::FilterFlag::kEffectArmor:
+					case Skyrim::CraftingSubMenus::EnchantConstructMenu::FilterFlag::kEffectArmor:
 					{
 						power = maximumPower * createEffectFunctor->effectiveness;
 

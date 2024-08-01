@@ -2334,6 +2334,14 @@ namespace Skyrim
 				return address;
 			}
 
+			/// <summary>1.5.97.0: SkyrimSE.exe + 0x2A74C0, 1.6.318.0: SkyrimSE.exe + 0x2B9260</summary>
+			std::uintptr_t GetReferenceLock()
+			{
+				static auto address{ Relocation::AddressLibrary::GetSingleton().GetAddress(SKYRIM_RELOCATE(19818, 20223)) };
+
+				return address;
+			}
+
 			/// <summary>1.5.97.0: SkyrimSE.exe + 0x2961F0, 1.6.318.0: SkyrimSE.exe + 0x2A88A0</summary>
 			std::uintptr_t GetReferenceName()
 			{

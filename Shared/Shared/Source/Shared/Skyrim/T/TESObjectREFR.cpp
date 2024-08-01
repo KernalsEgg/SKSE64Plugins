@@ -91,6 +91,15 @@ namespace Skyrim
 		return function(this);
 	}
 
+	ReferenceLock* TESObjectREFR::GetReferenceLock() const
+	{
+		auto* function{ reinterpret_cast<
+			Utility::TypeTraits::MakeFunctionPointer<decltype(&TESObjectREFR::GetReferenceLock)>::type>(
+			Addresses::TESObjectREFR::GetReferenceLock()) };
+
+		return function(this);
+	}
+
 	const char* TESObjectREFR::GetReferenceName() const
 	{
 		auto* function{ reinterpret_cast<

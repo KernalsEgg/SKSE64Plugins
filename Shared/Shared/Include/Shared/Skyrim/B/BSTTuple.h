@@ -30,6 +30,9 @@ namespace Skyrim
 			BSTTuple(const first_type& first, const second_type& second)
 				noexcept(std::is_nothrow_copy_constructible_v<first_type> && std::is_nothrow_copy_constructible_v<second_type>)
 			requires(std::is_copy_constructible_v<first_type> && std::is_copy_constructible_v<second_type>)
+			:
+			first(first),
+			second(second)
 		{
 		}
 

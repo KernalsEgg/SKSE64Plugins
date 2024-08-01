@@ -17,6 +17,7 @@
 		"leftHandPowerAttacks":				true,	/* Calculate the stamina required to perform left handed power attacks using left handed weapons. */
 		"magicEffectFlags":					true,	/* Respect magic effect flags when power affects duration and magnitude. */
 		"modifyArmorWeightPerkEntryPoint":	true,	/* The weight of only worn armor is modified by the Mod Armor Weight perk entry point. */
+		"openEffectArchetype":				true,	/* Restore the Lock and Open effect archetypes. */
 		"powerCooldowns":					true,	/* Save the cooldowns of all powers. */
 		"projectileFadeDuration":			true,	/* Projectiles that fade before updating are also destroyed. */
 		"terrainImpactEffects":				true,	/* Play impact effects on terrain even in cells that have been partially unloaded. */

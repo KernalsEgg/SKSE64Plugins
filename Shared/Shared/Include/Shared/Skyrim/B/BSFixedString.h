@@ -2,6 +2,7 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/B/BSCRC32.h"
 #include "Shared/Skyrim/B/BSStringPool.h"
 
 
@@ -169,4 +170,17 @@ namespace Skyrim
 		const_pointer data_{ nullptr }; // 0
 	};
 	static_assert(sizeof(BSFixedString) == 0x8);
+
+	namespace Implementation
+	{
+		template <>
+		struct BSCRC32<BSFixedString>
+		{
+		public:
+			inline std::uint32_t operator()(const BSFixedString& key) const noexcept
+			{
+				return BSCRC32<BSFixedString::const_pointer>()(key.data());
+			}
+		};
+	}
 }

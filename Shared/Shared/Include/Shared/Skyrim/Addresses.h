@@ -799,6 +799,7 @@ namespace Skyrim
 			std::uintptr_t Activate();
 			std::uintptr_t GetInventoryChanges();
 			std::uintptr_t GetReferenceFrom3D();
+			std::uintptr_t GetReferenceLock();
 			std::uintptr_t GetReferenceName();
 			std::uintptr_t IsCrimeToActivate();
 		}

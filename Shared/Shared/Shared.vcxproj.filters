@@ -411,7 +411,7 @@
     <ClInclude Include="Include\Shared\Skyrim\B\BipedObjectSlot.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Shared\Skyrim\B\BodyPartType.h">
+    <ClInclude Include="Include\Shared\Skyrim\B\BGSBodyPartDefinitions.h">
       <Filter>Header Files\Shared\Skyrim\B</Filter>
     </ClInclude>
     <ClInclude Include="Include\Shared\Skyrim\B\BSAnimationGraphEvent.h">
@@ -1806,6 +1806,24 @@
     <ClInclude Include="Include\Shared\Utility\Event.h">
       <Filter>Header Files\Shared\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="Include\Shared\Skyrim\E\ExtraLock.h">
+      <Filter>Header Files\Shared\Skyrim\E</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Shared\Skyrim\C\CollisionLayer.h">
+      <Filter>Header Files\Shared\Skyrim\C</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Shared\Skyrim\R\ResetElapsedTimeMatchingEffects.h">
+      <Filter>Header Files\Shared\Skyrim\R</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Shared\Skyrim\G\GFxFunctionHandler.h">
+      <Filter>Header Files\Shared\Skyrim\G</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Shared\SKSE\ScaleformInterface.h">
+      <Filter>Header Files\Shared\SKSE</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Shared\Skyrim\B\BSCRC32.h">
+      <Filter>Header Files\Shared\Skyrim\B</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Shared\PrecompiledHeader.cpp">
@@ -2266,6 +2284,9 @@
     </ClCompile>
     <ClCompile Include="Source\Shared\Skyrim\T\TESFile.cpp">
       <Filter>Source Files\Shared\Skyrim\T</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shared\SKSE\ScaleformInterface.cpp">
+      <Filter>Source Files\Shared\SKSE</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

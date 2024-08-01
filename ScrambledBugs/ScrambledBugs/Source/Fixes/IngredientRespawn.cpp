@@ -32,11 +32,15 @@ namespace ScrambledBugs::Fixes
 	{
 		// reference != nullptr
 
-		auto formType = reference->baseObject->formType;
-
-		if (formType == Skyrim::FormType::kTree || formType == Skyrim::FormType::kFlora)
+		switch (reference->baseObject->formType.get())
 		{
-			reference->RemoveChanges(Utility::Conversion::ToUnderlying(Skyrim::TESObjectREFR::ChangeFlags::kEmpty));
+			case Skyrim::FormType::kTree:
+			case Skyrim::FormType::kFlora:
+			{
+				reference->RemoveChanges(Utility::Conversion::ToUnderlying(Skyrim::TESObjectREFR::ChangeFlags::kEmpty));
+
+				break;
+			}
 		}
 
 		IngredientRespawn::setEmpty_(reference, empty);

@@ -21,6 +21,7 @@
 namespace Skyrim
 {
 	struct BSAnimationGraphEvent;
+	struct ReferenceLock;
 
 	class BipedAnim;
 	class InventoryChanges;
@@ -249,6 +250,7 @@ namespace Skyrim
 		float             GetDistanceSquared(TESObjectREFR* target, bool ignoreDisabled, bool ignoreWorldSpace) const;
 		bool              GetInteraction(BSTSmartPointer<RefrInteraction>& referenceInteraction) const;
 		InventoryChanges* GetInventoryChanges();
+		ReferenceLock*    GetReferenceLock() const;
 		const char*       GetReferenceName() const;
 		BipedObjectSlot   GetShieldBipedObjectSlot() const;
 		bool              Is3DLoaded() const;

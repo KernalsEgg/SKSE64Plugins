@@ -26,7 +26,8 @@ namespace ScrambledBugs::Patterns
 
 		namespace KillCamera
 		{
-			bool HasWeapon();
+			bool ApplyCombatHitSpell();
+			bool GetWeapon();
 		}
 
 		namespace ProjectileFadeDuration

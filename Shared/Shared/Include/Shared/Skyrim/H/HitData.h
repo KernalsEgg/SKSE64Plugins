@@ -3,7 +3,7 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/ActorValue.h"
-#include "Shared/Skyrim/B/BodyPartType.h"
+#include "Shared/Skyrim/B/BGSBodyPartDefinitions.h"
 #include "Shared/Skyrim/B/BSPointerHandle.h"
 #include "Shared/Skyrim/N/NiPoint3.h"
 #include "Shared/Skyrim/N/NiPointer.h"
@@ -41,33 +41,33 @@ namespace Skyrim
 		static_assert(sizeof(Flags) == 0x4);
 
 		// Member variables
-		NiPoint3                                          position;                       // 0
-		NiPoint3                                          direction;                      // C
-		ActorHandle                                       aggressorHandle;                // 18
-		ActorHandle                                       targetHandle;                   // 1C
-		ObjectReferenceHandle                             sourceHandle;                   // 20
-		std::uint32_t                                     padding24;                      // 24
-		NiPointer<BGSAttackData>                          attackData;                     // 28
-		TESObjectWEAP*                                    weapon;                         // 30
-		SpellItem*                                        criticalEffect;                 // 38, TESObjectWEAP
-		SpellItem*                                        attackSpellItem;                // 40, BGSAttackData
-		VATSCommand*                                      vatsCommand;                    // 48
-		float                                             damageAfterResistances;         // 50
-		float                                             damageBeforeResistances;        // 54
-		float                                             targetBodyPartDamage;           // 58
-		float                                             percentageBlocked;              // 5C
-		float                                             damageToArmor;                  // 60
-		float                                             damageToWeapon;                 // 64
-		float                                             stagger;                        // 68
-		std::uint32_t                                     unknown6C;                      // 6C
-		float                                             sneakAttackDamageMultiplier;    // 70
-		float                                             targetBodyPartDamageMultiplier; // 74
-		float                                             reflectedDamage;                // 78
-		std::uint32_t                                     unknown7C;                      // 7C
-		Utility::Enumeration<Flags, std::uint32_t>        hitDataFlags;                   // 80
-		std::uint32_t                                     unknown84;                      // 84
-		Utility::Enumeration<ActorValue, std::uint32_t>   skill;                          // 88, TESObjectWEAP
-		Utility::Enumeration<BodyPartType, std::uint32_t> targetBodyPartType;             // 8C
+		NiPoint3                                                          position;                       // 0
+		NiPoint3                                                          direction;                      // C
+		ActorHandle                                                       aggressorHandle;                // 18
+		ActorHandle                                                       targetHandle;                   // 1C
+		ObjectReferenceHandle                                             sourceHandle;                   // 20
+		std::uint32_t                                                     padding24;                      // 24
+		NiPointer<BGSAttackData>                                          attackData;                     // 28
+		TESObjectWEAP*                                                    weapon;                         // 30
+		SpellItem*                                                        criticalEffect;                 // 38, TESObjectWEAP
+		SpellItem*                                                        attackSpellItem;                // 40, BGSAttackData
+		VATSCommand*                                                      vatsCommand;                    // 48
+		float                                                             damageAfterResistances;         // 50
+		float                                                             damageBeforeResistances;        // 54
+		float                                                             targetBodyPartDamage;           // 58
+		float                                                             percentageBlocked;              // 5C
+		float                                                             damageToArmor;                  // 60
+		float                                                             damageToWeapon;                 // 64
+		float                                                             stagger;                        // 68
+		std::uint32_t                                                     unknown6C;                      // 6C
+		float                                                             sneakAttackDamageMultiplier;    // 70
+		float                                                             targetBodyPartDamageMultiplier; // 74
+		float                                                             reflectedDamage;                // 78
+		std::uint32_t                                                     unknown7C;                      // 7C
+		Utility::Enumeration<Flags, std::uint32_t>                        hitDataFlags;                   // 80
+		std::uint32_t                                                     unknown84;                      // 84
+		Utility::Enumeration<ActorValue, std::uint32_t>                   skill;                          // 88, TESObjectWEAP
+		Utility::Enumeration<BGSBodyPartDefinitions::Limb, std::uint32_t> targetLimb;                     // 8C
 	};
 	static_assert(offsetof(HitData, position) == 0x0);
 	static_assert(offsetof(HitData, direction) == 0xC);
@@ -91,6 +91,6 @@ namespace Skyrim
 	static_assert(offsetof(HitData, reflectedDamage) == 0x78);
 	static_assert(offsetof(HitData, hitDataFlags) == 0x80);
 	static_assert(offsetof(HitData, skill) == 0x88);
-	static_assert(offsetof(HitData, targetBodyPartType) == 0x8C);
+	static_assert(offsetof(HitData, targetLimb) == 0x8C);
 	static_assert(sizeof(HitData) == 0x90);
 }

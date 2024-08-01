@@ -13,7 +13,7 @@ namespace Skyrim
 	{
 	public:
 		// Override
-		virtual ~GRefCountImpl() override; // 0
+		virtual ~GRefCountImpl() override = default; // 0
 
 		// Member functions
 		void AddReference();

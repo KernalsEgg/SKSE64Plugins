@@ -19,6 +19,7 @@ namespace SKSE
 		this->releaseIndex_ = interface->GetReleaseIndex();
 
 		this->messagingInterface_     = interface->QueryInterface<MessagingInterface>(Interface::kMessaging);
+		this->scaleformInterface_     = interface->QueryInterface<ScaleformInterface>(Interface::kScaleform);
 		this->serializationInterface_ = interface->QueryInterface<SerializationInterface>(Interface::kSerialization);
 		this->taskInterface_          = interface->QueryInterface<TaskInterface>(Interface::kTask);
 		this->trampolineInterface_    = interface->QueryInterface<TrampolineInterface>(Interface::kTrampoline);
@@ -43,6 +44,11 @@ namespace SKSE
 	const MessagingInterface* Storage::GetMessagingInterface() const
 	{
 		return this->messagingInterface_;
+	}
+
+	const ScaleformInterface* Storage::GetScaleformInterface() const
+	{
+		return this->scaleformInterface_;
 	}
 
 	const SerializationInterface* Storage::GetSerializationInterface() const

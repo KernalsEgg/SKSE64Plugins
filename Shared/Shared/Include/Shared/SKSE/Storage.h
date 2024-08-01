@@ -10,6 +10,7 @@
 #include "Shared/SKSE/ModCallbackEvent.h"
 #include "Shared/SKSE/NiNodeUpdateEvent.h"
 #include "Shared/SKSE/PluginHandle.h"
+#include "Shared/SKSE/ScaleformInterface.h"
 #include "Shared/SKSE/SerializationInterface.h"
 #include "Shared/SKSE/TaskInterface.h"
 #include "Shared/SKSE/TrampolineInterface.h"
@@ -30,6 +31,7 @@ namespace SKSE
 		std::uint32_t GetReleaseIndex() const;
 
 		const MessagingInterface*     GetMessagingInterface() const;
+		const ScaleformInterface*     GetScaleformInterface() const;
 		const SerializationInterface* GetSerializationInterface() const;
 		const TaskInterface*          GetTaskInterface() const;
 		const TrampolineInterface*    GetTrampolineInterface() const;
@@ -45,6 +47,7 @@ namespace SKSE
 		std::uint32_t releaseIndex_{ 0 };
 
 		MessagingInterface*     messagingInterface_{ nullptr };
+		ScaleformInterface*     scaleformInterface_{ nullptr };
 		SerializationInterface* serializationInterface_{ nullptr };
 		TaskInterface*          taskInterface_{ nullptr };
 		TrampolineInterface*    trampolineInterface_{ nullptr };

@@ -199,7 +199,7 @@ namespace ScrambledBugs::Patches::PerkEntryPoints
 							static_cast<std::uint8_t>(entryPointFunctionArguments.size()));
 
 						perkOwner->ForEachPerkEntry(entryPoint.get(), handleEntryPointVisitor);
-					} while (!std::count(entryPointFunctionArguments.begin(), entryPointFunctionArguments.end(), nullptr));
+					} while (std::find(entryPointFunctionArguments.begin(), entryPointFunctionArguments.end(), nullptr) == entryPointFunctionArguments.end());
 
 					std::erase(entryPointFunctionArguments, nullptr);
 

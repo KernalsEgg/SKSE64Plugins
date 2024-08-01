@@ -12,6 +12,7 @@
 #include "Shared/SKSE/PluginHandle.h"
 #include "Shared/SKSE/PluginInformation.h"
 #include "Shared/SKSE/PluginVersionData.h"
+#include "Shared/SKSE/ScaleformInterface.h"
 #include "Shared/SKSE/SerializationInterface.h"
 #include "Shared/SKSE/Storage.h"
 #include "Shared/SKSE/TaskInterface.h"

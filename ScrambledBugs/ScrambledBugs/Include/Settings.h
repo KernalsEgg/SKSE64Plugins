@@ -37,6 +37,7 @@ namespace ScrambledBugs
 			bool      leftHandPowerAttacks{};
 			bool      magicEffectFlags{};
 			bool      modifyArmorWeightPerkEntryPoint{};
+			bool      openEffectArchetype{};
 			bool      powerCooldowns{};
 			bool      projectileFadeDuration{};
 			bool      terrainImpactEffects{};

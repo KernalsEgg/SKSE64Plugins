@@ -3,8 +3,8 @@
 #include "Shared/PrecompiledHeader.h"
 
 #include "Shared/Skyrim/A/ActorValue.h"
+#include "Shared/Skyrim/B/BGSBodyPartDefinitions.h"
 #include "Shared/Skyrim/B/BGSPreloadable.h"
-#include "Shared/Skyrim/B/BodyPartType.h"
 #include "Shared/Skyrim/B/BSFixedString.h"
 #include "Shared/Skyrim/N/NiPoint3.h"
 #include "Shared/Skyrim/T/TESForm.h"
@@ -45,43 +45,43 @@ namespace Skyrim
 			static_assert(sizeof(Flags) == 0x1);
 
 			// Member variables
-			BSFixedString                                    partNode;                       // 0
-			BSFixedString                                    vatsTarget;                     // 8
-			BSFixedString                                    ikDataStartNode;                // 10
-			BSFixedString                                    partName;                       // 18
-			BSFixedString                                    goreEffectsTargetBone;          // 20
-			TESModel                                         explodableLimbReplacement;      // 28
-			TESModelPSA                                      poseMatching;                   // 50
-			float                                            damageMultiplier;               // 78
-			Utility::Enumeration<Flags, std::uint8_t>        bodyPartFlags;                  // 7C
-			Utility::Enumeration<BodyPartType, std::uint8_t> bodyPartType;                   // 7D
-			std::uint8_t                                     healthPercentage;               // 7E
-			Utility::Enumeration<ActorValue, std::uint8_t>   actorValue;                     // 7F
-			std::uint8_t                                     toHitChance;                    // 80
-			std::uint8_t                                     explodableExplosionChance;      // 81
-			std::uint8_t                                     explodableGenericDebrisCount;   // 82
-			std::uint8_t                                     padding83;                      // 83
-			std::uint32_t                                    padding84;                      // 84
-			BGSDebris*                                       explodableGenericDebris;        // 88
-			BGSExplosion*                                    explodableExplosion;            // 90
-			float                                            trackingMaximumAngle;           // 98
-			float                                            explodableGenericDebrisScale;   // 9C
-			std::uint8_t                                     severableGenericDebrisCount;    // A0
-			std::uint8_t                                     paddingA1;                      // A1
-			std::uint16_t                                    paddingA2;                      // A2
-			std::uint32_t                                    paddingA4;                      // A4
-			BGSDebris*                                       severableGenericDebris;         // A8
-			BGSExplosion*                                    severableExplosion;             // B0
-			float                                            severableGenericDebrisScale;    // B8
-			NiPoint3                                         goreEffectsLocalTranslate;      // BC
-			NiPoint3                                         goreEffectsLocalRotate;         // C8
-			std::uint32_t                                    paddingD4;                      // D4
-			BGSImpactDataSet*                                severableBloodSpurt;            // D8
-			BGSImpactDataSet*                                explodableBloodSpurt;           // E0
-			std::uint8_t                                     severableDecalCount;            // E8
-			std::uint8_t                                     explodableDecalCount;           // E9
-			std::uint16_t                                    paddingEA;                      // EA
-			float                                            explodableLimbReplacementScale; // EC
+			BSFixedString                                                    partNode;                       // 0
+			BSFixedString                                                    vatsTarget;                     // 8
+			BSFixedString                                                    ikDataStartNode;                // 10
+			BSFixedString                                                    partName;                       // 18
+			BSFixedString                                                    goreEffectsTargetBone;          // 20
+			TESModel                                                         explodableLimbReplacement;      // 28
+			TESModelPSA                                                      poseMatching;                   // 50
+			float                                                            damageMultiplier;               // 78
+			Utility::Enumeration<Flags, std::uint8_t>                        bodyPartFlags;                  // 7C
+			Utility::Enumeration<BGSBodyPartDefinitions::Limb, std::uint8_t> partType;                       // 7D
+			std::uint8_t                                                     healthPercentage;               // 7E
+			Utility::Enumeration<ActorValue, std::uint8_t>                   actorValue;                     // 7F
+			std::uint8_t                                                     toHitChance;                    // 80
+			std::uint8_t                                                     explodableExplosionChance;      // 81
+			std::uint8_t                                                     explodableGenericDebrisCount;   // 82
+			std::uint8_t                                                     padding83;                      // 83
+			std::uint32_t                                                    padding84;                      // 84
+			BGSDebris*                                                       explodableGenericDebris;        // 88
+			BGSExplosion*                                                    explodableExplosion;            // 90
+			float                                                            trackingMaximumAngle;           // 98
+			float                                                            explodableGenericDebrisScale;   // 9C
+			std::uint8_t                                                     severableGenericDebrisCount;    // A0
+			std::uint8_t                                                     paddingA1;                      // A1
+			std::uint16_t                                                    paddingA2;                      // A2
+			std::uint32_t                                                    paddingA4;                      // A4
+			BGSDebris*                                                       severableGenericDebris;         // A8
+			BGSExplosion*                                                    severableExplosion;             // B0
+			float                                                            severableGenericDebrisScale;    // B8
+			NiPoint3                                                         goreEffectsLocalTranslate;      // BC
+			NiPoint3                                                         goreEffectsLocalRotate;         // C8
+			std::uint32_t                                                    paddingD4;                      // D4
+			BGSImpactDataSet*                                                severableBloodSpurt;            // D8
+			BGSImpactDataSet*                                                explodableBloodSpurt;           // E0
+			std::uint8_t                                                     severableDecalCount;            // E8
+			std::uint8_t                                                     explodableDecalCount;           // E9
+			std::uint16_t                                                    paddingEA;                      // EA
+			float                                                            explodableLimbReplacementScale; // EC
 		};
 		static_assert(offsetof(BodyPart, partNode) == 0x0);
 		static_assert(offsetof(BodyPart, vatsTarget) == 0x8);
@@ -92,7 +92,7 @@ namespace Skyrim
 		static_assert(offsetof(BodyPart, poseMatching) == 0x50);
 		static_assert(offsetof(BodyPart, damageMultiplier) == 0x78);
 		static_assert(offsetof(BodyPart, bodyPartFlags) == 0x7C);
-		static_assert(offsetof(BodyPart, bodyPartType) == 0x7D);
+		static_assert(offsetof(BodyPart, partType) == 0x7D);
 		static_assert(offsetof(BodyPart, healthPercentage) == 0x7E);
 		static_assert(offsetof(BodyPart, actorValue) == 0x7F);
 		static_assert(offsetof(BodyPart, toHitChance) == 0x80);
@@ -128,8 +128,8 @@ namespace Skyrim
 		virtual void Unknown4(BGSPreloadable*) override; // 4
 
 		// Member variables
-		BodyPart*   partData[Utility::Conversion::ToUnderlying(BodyPartType::kTotal)]; // 50
-		BGSRagdoll* ragdollData;                                                       // 80
+		BodyPart*   partData[Utility::Conversion::ToUnderlying(BGSBodyPartDefinitions::Limb::kTotal)]; // 50
+		BGSRagdoll* ragdollData;                                                                       // 80
 	};
 	static_assert(offsetof(BGSBodyPartData, partData) == 0x50);
 	static_assert(offsetof(BGSBodyPartData, ragdollData) == 0x80);

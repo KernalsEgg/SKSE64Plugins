@@ -47,6 +47,7 @@
     <ClInclude Include="Include\Fixes\LeftHandPowerAttacks.h" />
     <ClInclude Include="Include\Fixes\MagicEffectFlags.h" />
     <ClInclude Include="Include\Fixes\ModifyArmorWeightPerkEntryPoint.h" />
+    <ClInclude Include="Include\Fixes\OpenEffectArchetype.h" />
     <ClInclude Include="Include\Fixes\PowerCooldowns.h" />
     <ClInclude Include="Include\Fixes\ProjectileFadeDuration.h" />
     <ClInclude Include="Include\Fixes\QuickShot.h" />
@@ -89,6 +90,7 @@
     <ClCompile Include="Source\Fixes\LeftHandPowerAttacks.cpp" />
     <ClCompile Include="Source\Fixes\MagicEffectFlags.cpp" />
     <ClCompile Include="Source\Fixes\ModifyArmorWeightPerkEntryPoint.cpp" />
+    <ClCompile Include="Source\Fixes\OpenEffectArchetype.cpp" />
     <ClCompile Include="Source\Fixes\PowerCooldowns.cpp" />
     <ClCompile Include="Source\Fixes\ProjectileFadeDuration.cpp" />
     <ClCompile Include="Source\Fixes\QuickShot.cpp" />

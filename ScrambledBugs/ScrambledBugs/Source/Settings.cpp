@@ -13,6 +13,7 @@
 #include "Fixes/LeftHandPowerAttacks.h"
 #include "Fixes/MagicEffectFlags.h"
 #include "Fixes/ModifyArmorWeightPerkEntryPoint.h"
+#include "Fixes/OpenEffectArchetype.h"
 #include "Fixes/PowerCooldowns.h"
 #include "Fixes/ProjectileFadeDuration.h"
 #include "Fixes/QuickShot.h"
@@ -77,6 +78,7 @@ namespace ScrambledBugs
 		Settings::Deserialize(directory / "LeftHandPowerAttacks.json", this->leftHandPowerAttacks);
 		Settings::Deserialize(directory / "MagicEffectFlags.json", this->magicEffectFlags);
 		Settings::Deserialize(directory / "ModifyArmorWeightPerkEntryPoint.json", this->modifyArmorWeightPerkEntryPoint);
+		Settings::Deserialize(directory / "OpenEffectArchetype.json", this->openEffectArchetype);
 		Settings::Deserialize(directory / "PowerCooldowns.json", this->powerCooldowns);
 		Settings::Deserialize(directory / "ProjectileFadeDuration.json", this->projectileFadeDuration);
 		Settings::Deserialize(directory / "TerrainImpactEffects.json", this->terrainImpactEffects);
@@ -103,6 +105,7 @@ namespace ScrambledBugs
 		json["leftHandPowerAttacks"]            = this->leftHandPowerAttacks;
 		json["magicEffectFlags"]                = this->magicEffectFlags;
 		json["modifyArmorWeightPerkEntryPoint"] = this->modifyArmorWeightPerkEntryPoint;
+		json["openEffectArchetype"]             = this->openEffectArchetype;
 		json["powerCooldowns"]                  = this->powerCooldowns;
 		json["projectileFadeDuration"]          = this->projectileFadeDuration;
 		json["terrainImpactEffects"]            = this->terrainImpactEffects;
@@ -333,11 +336,6 @@ namespace ScrambledBugs
 			ScrambledBugs::Fixes::IsCurrentSpell::Fix(this->fixes.isCurrentSpell);
 		}
 
-		if (this->fixes.killCamera)
-		{
-			ScrambledBugs::Fixes::KillCamera::Fix(this->fixes.killCamera);
-		}
-
 		if (this->fixes.leftHandPowerAttacks)
 		{
 			ScrambledBugs::Fixes::LeftHandPowerAttacks::Fix(this->fixes.leftHandPowerAttacks);
@@ -351,6 +349,11 @@ namespace ScrambledBugs
 		if (this->fixes.modifyArmorWeightPerkEntryPoint)
 		{
 			ScrambledBugs::Fixes::ModifyArmorWeightPerkEntryPoint::Fix(this->fixes.modifyArmorWeightPerkEntryPoint);
+		}
+
+		if (this->fixes.openEffectArchetype)
+		{
+			ScrambledBugs::Fixes::OpenEffectArchetype::Fix(this->fixes.openEffectArchetype);
 		}
 
 		if (this->fixes.powerCooldowns)
@@ -474,6 +477,13 @@ namespace ScrambledBugs
 	{
 		SPDLOG_INFO("Post Loading...\n{}", this->Serialize().dump(1, '\t'));
 
+		// Must be fixed after the Perk Entry Points: Apply Spells fix
+		if (this->fixes.killCamera)
+		{
+			ScrambledBugs::Fixes::KillCamera::Fix(this->fixes.killCamera);
+		}
+
+		// Must be patched after the Conditions Target Magic Effects plugin
 		if (this->patches.enchantmentEffectPower)
 		{
 			ScrambledBugs::Patches::EnchantmentEffectPower::Patch(this->patches.enchantmentEffectPower);

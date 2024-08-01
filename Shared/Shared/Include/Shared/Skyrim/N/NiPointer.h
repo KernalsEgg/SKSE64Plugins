@@ -2,6 +2,8 @@
 
 #include "Shared/PrecompiledHeader.h"
 
+#include "Shared/Skyrim/B/BSCRC32.h"
+
 
 
 namespace Skyrim
@@ -222,5 +224,18 @@ namespace Skyrim
 	constexpr bool operator!=(std::nullptr_t, const NiPointer<T>& right) noexcept
 	{
 		return right;
+	}
+
+	namespace Implementation
+	{
+		template <class T>
+		struct BSCRC32<NiPointer<T>>
+		{
+		public:
+			inline std::uint32_t operator()(const NiPointer<T>& key) const noexcept
+			{
+				return BSCRC32<T*>()(key.get());
+			}
+		};
 	}
 }
